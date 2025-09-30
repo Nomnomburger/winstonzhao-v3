@@ -1,103 +1,179 @@
+'use client';
+
 import Image from "next/image";
+import { useEffect, useRef } from "react";
 
-export default function Home() {
+const galleryItems = [
+  {
+    id: 1,
+    src: "https://picsum.photos/400/300?random=1",
+    alt: "Full Sprint — Heatmap.com",
+    title: "Full Sprint — Heatmap.com",
+    bgColor: "from-blue-400 to-yellow-400"
+  },
+  {
+    id: 2,
+    src: "https://picsum.photos/400/300?random=2",
+    alt: "Heatmap.com Redesign",
+    title: "Heatmap.com Redesign",
+    bgColor: "from-orange-300 to-red-400"
+  },
+  {
+    id: 3,
+    src: "https://picsum.photos/400/300?random=3",
+    alt: "MuniSync Platform",
+    title: "MuniSync Platform",
+    bgColor: "from-blue-300 to-purple-400"
+  },
+  {
+    id: 4,
+    src: "https://picsum.photos/400/300?random=4",
+    alt: "Full Sprint — Heatmap.com",
+    title: "Full Sprint — Heatmap.com",
+    bgColor: "from-gray-300 to-gray-600"
+  }
+];
+
+export default function HomeGallery() {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  
+  // Duplicate items for infinite scroll
+  const duplicatedItems = [...galleryItems, ...galleryItems, ...galleryItems];
+  const itemWidth = 416; // 400px + 16px gap
+  const totalWidth = galleryItems.length * itemWidth;
+  
+  useEffect(() => {
+    // Prevent body scroll
+    document.body.style.overflow = 'hidden';
+    
+    // Start at the middle set (showing the offset like in Figma)
+    const initialOffset = -184; // Offset from Figma design
+    const middleSetStart = totalWidth + initialOffset;
+    
+    if (scrollRef.current) {
+      scrollRef.current.scrollLeft = middleSetStart;
+    }
+    
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [totalWidth]);
+
+  useEffect(() => {
+    const handleWheel = (e: WheelEvent) => {
+      e.preventDefault();
+      
+      if (!scrollRef.current) return;
+      
+      // Convert vertical scroll to horizontal
+      const scrollAmount = e.deltaY !== 0 ? e.deltaY : e.deltaX;
+      scrollRef.current.scrollLeft += scrollAmount;
+    };
+    
+    // Add event listener to the entire page
+    window.addEventListener('wheel', handleWheel, { passive: false });
+    
+    return () => {
+      window.removeEventListener('wheel', handleWheel);
+    };
+  }, []);
+  
+  const handleScroll = () => {
+    if (!scrollRef.current) return;
+    
+    const currentScroll = scrollRef.current.scrollLeft;
+    const maxScroll = scrollRef.current.scrollWidth - scrollRef.current.clientWidth;
+    
+    // Handle infinite scroll boundaries with smooth transitions
+    if (currentScroll <= 50) {
+      scrollRef.current.scrollLeft = totalWidth + currentScroll;
+    } else if (currentScroll >= maxScroll - 50) {
+      scrollRef.current.scrollLeft = currentScroll - totalWidth;
+    }
+  };
+
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <div className="bg-white h-screen flex flex-col overflow-hidden">
+      {/* Header */}
+      <div className="flex flex-col justify-between w-full p-6 flex-shrink-0">
+        {/* Header Content - Name */}
+        <div className="flex items-center justify-between w-full mb-16 sm:mb-20">
+          <h1 className="header-text">
+            Winston
+          </h1>
+          <h1 className="header-text">
+            Zhao
+          </h1>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+        
+        {/* Navigation */}
+        <div className="flex items-center justify-between w-full">
+          <div className="flex gap-1">
+            <span className="nav-text text-black">ALL</span>
+            <span className="nav-text text-[#a2a2a2]">CASE STUDY</span>
+            <span className="nav-text text-[#a2a2a2]">UI/UX</span>
+            <span className="nav-text text-[#a2a2a2]">BRANDING</span>
+            <span className="nav-text text-[#a2a2a2]">AWARDS</span>
+          </div>
+          <div className="flex gap-1">
+            <span className="nav-text text-black">GALLERY</span>
+            <span className="nav-text text-[#a2a2a2]">LIST</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Gallery */}
+      <div className="flex-1 flex items-center justify-center overflow-hidden">
+        <div
+          ref={scrollRef}
+          className="gallery-container flex gap-4 px-6 overflow-x-auto overflow-y-hidden scrollbar-hide"
+          onScroll={handleScroll}
         >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+          {duplicatedItems.map((item, index) => (
+            <div key={`${item.id}-${Math.floor(index / galleryItems.length)}`} className="flex flex-col gap-2 flex-shrink-0">
+              <div className={`w-[400px] h-[300px] bg-gradient-to-br ${item.bgColor} rounded-2xl overflow-hidden`}>
+                <Image
+                  src={item.src}
+                  alt={item.alt}
+                  width={400}
+                  height={300}
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <p className="gallery-description">
+                {item.title}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Footer */}
+      <div className="w-full p-6 grid grid-cols-[minmax(0px,_1fr)_400px_400px_minmax(0px,_1fr)] gap-4 items-end flex-shrink-0">
+        <div className="[grid-area:1_/_1] footer-links self-end">
+          <p className="mb-0">About</p>
+          <p className="mb-0">Playground</p>
+          <p>Contact</p>
+        </div>
+        
+        <div className="[grid-area:1_/_2] gallery-description text-black self-end">
+          <p className="mb-0">Campus Leader @ Figma</p>
+          <p className="mb-0">President @ GBDA Society</p>
+          <p>Co-Founder @ Villio AI</p>
+        </div>
+        
+        <div className="[grid-area:1_/_3] footer-description self-end">
+          <p>
+            I&apos;m a Global Business & Digital Arts student at the University of 
+            Waterloo. As a product designer, I craft software and digital 
+            experiences that solve problems and delight users.
+          </p>
+        </div>
+        
+        <div className="[grid-area:1_/_4] flex flex-col gap-2.5 items-end justify-end self-end">
+          <div className="w-11 h-7 bg-black rounded"></div>
+        </div>
+      </div>
     </div>
   );
 }
