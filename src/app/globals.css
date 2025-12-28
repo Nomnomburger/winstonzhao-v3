@@ -11,12 +11,13 @@
   --font-sans: var(--font-pp-neue-montreal);
 }
 
-@media (prefers-color-scheme: dark) {
+/* Dark mode disabled - forcing light mode */
+/* @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
     --foreground: #ededed;
   }
-}
+} */
 
 html,
 body {
