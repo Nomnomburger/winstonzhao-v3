@@ -2,7 +2,7 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #1E1E1E;
 }
 
 @theme inline {
@@ -11,13 +11,12 @@
   --font-sans: var(--font-pp-neue-montreal);
 }
 
-/* Dark mode disabled - forcing light mode */
-/* @media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #1E1E1E;
+    --foreground: #ffffff;
   }
-} */
+}
 
 html,
 body {
@@ -39,4 +38,20 @@ body {
 
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
+}
+
+@keyframes spin-slow {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 6s cubic-bezier(0.85, 0, 0.15, 1) infinite;
 }

@@ -3,7 +3,6 @@
 import { useRouter } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 
-const imgContainer = "http://localhost:3845/assets/dcbaa7f5003a0420024277458e92f4ab7c6314de.svg";
 
 export default function HomePanel() {
   const router = useRouter();
@@ -60,14 +59,14 @@ export default function HomePanel() {
   }, []);
 
   return (
-    <div className="bg-white flex flex-col items-center justify-between min-h-screen w-full">
+    <div className="bg-white dark:bg-[#1E1E1E] flex flex-col items-center justify-between min-h-screen w-full">
       <div className="flex flex-col items-start grow p-9 w-full">
         <div className="flex flex-col gap-12 items-start w-full">
           {/* Header Content */}
           <div ref={containerRef} className="flex items-start px-0 py-2 w-full">
             <h1 
               ref={headerRef}
-              className="font-medium text-black whitespace-nowrap leading-none"
+              className="font-medium text-[#1E1E1E] dark:text-white whitespace-nowrap leading-none"
               style={{
                 fontSize: fontSize,
                 letterSpacing: '-0.05em',
@@ -81,16 +80,16 @@ export default function HomePanel() {
 
           {/* Roles and Projects Section */}
           <div className="flex gap-12 items-center w-full">
-            <div className="grow font-normal text-base text-black text-left">
+            <div className="grow font-normal text-base text-[#1E1E1E] dark:text-white text-left">
               <p className="mb-0">Product Design @ Yelo</p>
               <p>Campus Leader @ Figma</p>
             </div>
             <button
               onClick={() => router.push('/projects')}
-              className="flex gap-3 items-start font-medium text-black whitespace-nowrap cursor-pointer"
+              className="flex gap-2 items-start font-medium text-[#1E1E1E] dark:text-white whitespace-nowrap cursor-pointer"
             >
-              <span className="text-2xl leading-normal">16</span>
-              <span className="text-[64px] leading-none tracking-[-2.56px]">
+              <span className="text-[20px] leading-normal">16</span>
+              <span className="text-[48px] leading-none tracking-[-2.56px]">
                 projects ↗
               </span>
             </button>
@@ -98,15 +97,21 @@ export default function HomePanel() {
 
           {/* Bio Section */}
           <div className="flex gap-16 items-start">
-            <div className="font-normal leading-none text-[64px] text-black whitespace-nowrap tracking-[-2.56px]">
+            <div className="font-medium leading-none text-[48px] text-[#1E1E1E] dark:text-white whitespace-nowrap tracking-[-2.56px]">
               <p className="mb-0">product designer</p>
               <p className="mb-0">blending form and function</p>
               <p className="mb-0">currently studying at the</p>
               <p>University of Waterloo</p>
             </div>
-            <div className="w-9 h-9 shrink-0">
-              <img alt="" className="block w-full h-full" src={imgContainer} />
-            </div>
+            <button
+              onClick={() => router.push('/about')}
+              className="w-9 h-9 shrink-0 text-[#1E1E1E] dark:text-white cursor-pointer"
+            >
+              <svg width="36" height="36" viewBox="0 0 36 36" fill="none" className="animate-spin-slow">
+                <path d="M0 18L36 18" stroke="currentColor" strokeWidth="2"/>
+                <path d="M18 0V36" stroke="currentColor" strokeWidth="2"/>
+              </svg>
+            </button>
           </div>
         </div>
       </div>
