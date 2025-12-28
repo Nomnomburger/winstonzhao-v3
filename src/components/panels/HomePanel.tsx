@@ -12,7 +12,16 @@ interface AnimatedWordProps {
 
 function AnimatedWord({ children, delay, movement = '40%' }: AnimatedWordProps) {
   return (
-    <span className="inline-block overflow-hidden align-bottom">
+    <motion.span 
+      className="inline-block align-bottom"
+      initial={{ clipPath: 'inset(-10% -10% 0 -10%)' }}
+      animate={{ clipPath: 'inset(-10% -10% -20% -10%)' }}
+      transition={{
+        duration: 0.5,
+        delay: delay + 0.5,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+    >
       <motion.span
         className="inline-block"
         initial={{ y: movement, opacity: 0 }}
@@ -25,7 +34,7 @@ function AnimatedWord({ children, delay, movement = '40%' }: AnimatedWordProps) 
       >
         {children}
       </motion.span>
-    </span>
+    </motion.span>
   );
 }
 
@@ -140,7 +149,7 @@ export default function HomePanel({ showContent = true }: HomePanelProps) {
       <div className="flex flex-col items-start grow p-9 w-full">
         <div className="flex flex-col gap-12 items-start w-full">
           {/* Header Content */}
-          <div ref={containerRef} className="flex items-start px-0 py-2 w-full overflow-hidden">
+          <div ref={containerRef} className="flex items-start px-0 py-2 w-full">
             <h1 
               ref={headerRef}
               className="font-medium text-[#1E1E1E] dark:text-white whitespace-nowrap leading-none"
@@ -162,7 +171,16 @@ export default function HomePanel({ showContent = true }: HomePanelProps) {
 
           {/* Roles and Projects Section */}
           <div className="flex gap-12 items-center w-full">
-            <div className="grow font-normal text-base text-[#1E1E1E] dark:text-white text-left overflow-hidden">
+            <motion.div 
+              className="grow font-normal text-base text-[#1E1E1E] dark:text-white text-left"
+              initial={{ clipPath: 'inset(-10% -10% 0 -10%)' }}
+              animate={{ clipPath: 'inset(-10% -10% -20% -10%)' }}
+              transition={{
+                duration: 0.5,
+                delay: role1Delay + 0.5,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+            >
               {showContent ? (
                 <motion.div
                   initial={{ y: '40%', opacity: 0 }}
@@ -182,12 +200,21 @@ export default function HomePanel({ showContent = true }: HomePanelProps) {
                   <p>Campus Leader @ Figma</p>
                 </div>
               )}
-            </div>
+            </motion.div>
             <button
               onClick={() => router.push('/projects')}
-              className="flex gap-2 items-start font-medium text-[#1E1E1E] dark:text-white whitespace-nowrap cursor-pointer overflow-hidden"
+              className="flex gap-2 items-start font-medium text-[#1E1E1E] dark:text-white whitespace-nowrap cursor-pointer"
             >
-              <span className="text-[20px] leading-normal overflow-hidden">
+              <motion.span 
+                className="text-[20px] leading-normal"
+                initial={{ clipPath: 'inset(-10% -10% 0 -10%)' }}
+                animate={{ clipPath: 'inset(-10% -10% -20% -10%)' }}
+                transition={{
+                  duration: 0.5,
+                  delay: projectsDelay + 0.5,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+              >
                 {showContent ? (
                   <motion.span
                     className="inline-block"
@@ -204,8 +231,17 @@ export default function HomePanel({ showContent = true }: HomePanelProps) {
                 ) : (
                   <span className="opacity-0">16</span>
                 )}
-              </span>
-              <span className="text-[48px] leading-none tracking-[-2.56px] overflow-hidden">
+              </motion.span>
+              <motion.span 
+                className="text-[48px] leading-none tracking-[-2.56px]"
+                initial={{ clipPath: 'inset(-10% -10% 0 -10%)' }}
+                animate={{ clipPath: 'inset(-10% -10% -20% -10%)' }}
+                transition={{
+                  duration: 0.5,
+                  delay: projectsDelay + stagger + 0.5,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+              >
                 {showContent ? (
                   <motion.span
                     className="inline-block"
@@ -222,14 +258,14 @@ export default function HomePanel({ showContent = true }: HomePanelProps) {
                 ) : (
                   <span className="opacity-0">projects ↗</span>
                 )}
-              </span>
+              </motion.span>
             </button>
           </div>
 
           {/* Bio Section */}
           <div className="flex gap-16 items-start">
             <div className="font-medium leading-none text-[48px] text-[#1E1E1E] dark:text-white whitespace-nowrap tracking-[-2.56px]">
-              <p className="mb-0 overflow-hidden">
+              <p className="mb-0">
                 {showContent ? (
                   <AnimatedText baseDelay={bio1Delay} staggerDelay={0.03}>
                     product designer
@@ -238,7 +274,7 @@ export default function HomePanel({ showContent = true }: HomePanelProps) {
                   <span className="opacity-0">product designer</span>
                 )}
               </p>
-              <p className="mb-0 overflow-hidden">
+              <p className="mb-0">
                 {showContent ? (
                   <AnimatedText baseDelay={bio2Delay} staggerDelay={0.03}>
                     blending form and function
@@ -247,7 +283,7 @@ export default function HomePanel({ showContent = true }: HomePanelProps) {
                   <span className="opacity-0">blending form and function</span>
                 )}
               </p>
-              <p className="mb-0 overflow-hidden">
+              <p className="mb-0">
                 {showContent ? (
                   <AnimatedText baseDelay={bio3Delay} staggerDelay={0.03}>
                     currently studying at the
@@ -256,7 +292,7 @@ export default function HomePanel({ showContent = true }: HomePanelProps) {
                   <span className="opacity-0">currently studying at the</span>
                 )}
               </p>
-              <p className="overflow-hidden">
+              <p>
                 {showContent ? (
                   <AnimatedText baseDelay={bio4Delay} staggerDelay={0.03}>
                     University of Waterloo
