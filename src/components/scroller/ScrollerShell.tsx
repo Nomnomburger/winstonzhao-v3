@@ -3,6 +3,7 @@
 import { useEffect, useLayoutEffect, useRef, useState, useCallback } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import dynamic from 'next/dynamic';
+import { motion, AnimatePresence } from 'framer-motion';
 import BottomNav from '../nav/BottomNav';
 import HomePanel from '../panels/HomePanel';
 import AboutPanel from '../panels/AboutPanel';
@@ -43,11 +44,38 @@ const ROUTE_TO_PATH: Record<RouteName, string> = {
   contact: '/contact',
 };
 
+function LoadingScreen({ onComplete }: { onComplete: () => void }) {
+  return (
+    <motion.div
+      className="fixed inset-0 bg-white dark:bg-[#1E1E1E] flex items-center justify-center z-50"
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+    >
+      <div className="w-full h-[2px] relative">
+        <motion.div
+          className="absolute top-0 left-0 h-full bg-[#1E1E1E] dark:bg-white"
+          initial={{ width: '0%' }}
+          animate={{ width: '100%' }}
+          transition={{
+            duration: 1.2,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+          onAnimationComplete={onComplete}
+        />
+      </div>
+    </motion.div>
+  );
+}
+
 export default function ScrollerShell() {
   const router = useRouter();
   const pathname = usePathname();
   const containerRef = useRef<HTMLDivElement>(null);
   const panelScrollRefs = useRef<(HTMLDivElement | null)[]>([]);
+  
+  // Loading state
+  const [isLoading, setIsLoading] = useState(true);
+  const [showContent, setShowContent] = useState(false);
   
   // Determine index from current pathname (memoized with empty deps since it doesn't depend on any state/props)
   const getIndexFromPath = useCallback((currentPathname: string): number => {
@@ -72,6 +100,12 @@ export default function ScrollerShell() {
   // Thresholds for elastic snap feel
   const OVERFLOW_THRESHOLD = 260;
   const SNAP_SETTLE_TIMEOUT = 120;
+
+  const handleLoadingComplete = () => {
+    setIsLoading(false);
+    // Small delay before starting content animations
+    setTimeout(() => setShowContent(true), 100);
+  };
 
   const goToIndex = useCallback((targetIndex: number, smooth = true) => {
     if (targetIndex < 0 || targetIndex >= ROUTES.length) return;
@@ -374,6 +408,12 @@ export default function ScrollerShell() {
 
   return (
     <div className="relative w-screen h-screen">
+      <AnimatePresence mode="wait">
+        {isLoading && (
+          <LoadingScreen onComplete={handleLoadingComplete} />
+        )}
+      </AnimatePresence>
+
       <div
         ref={containerRef}
         className="flex w-screen h-screen overflow-x-scroll overflow-y-hidden snap-x snap-mandatory scrollbar-hide"
@@ -386,7 +426,7 @@ export default function ScrollerShell() {
             ref={(el) => { panelScrollRefs.current[0] = el; }}
             className="h-screen overflow-y-auto overscroll-contain"
           >
-            <HomePanel />
+            <HomePanel showContent={showContent} />
           </div>
         </div>
 
@@ -431,8 +471,17 @@ export default function ScrollerShell() {
         </div>
       </div>
 
-      <BottomNav activeRoute={currentRoute} onNavigate={goToRoute} />
+      <AnimatePresence>
+        {showContent && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <BottomNav activeRoute={currentRoute} onNavigate={goToRoute} />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
-
