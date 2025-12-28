@@ -28,10 +28,21 @@ const springTransition = {
 
 export default function BottomNav({ activeRoute, onNavigate }: BottomNavProps) {
   const [isHovered, setIsHovered] = useState(false);
+  const [mouseX, setMouseX] = useState<number | null>(null);
   const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const [labelWidths, setLabelWidths] = useState<number[]>([]);
   const labelRefs = useRef<(HTMLSpanElement | null)[]>([]);
   const measureContainerRef = useRef<HTMLDivElement>(null);
+
+  // Track mouse position when hovering
+  const handleMouseMove = (e: React.MouseEvent) => {
+    setMouseX(e.clientX);
+  };
+
+  // Check if mouse is near left edge (within 15% of viewport)
+  const isNearLeftEdge = mouseX !== null && mouseX < window.innerWidth * 0.15;
+  // Check if mouse is near right edge (within 15% of viewport)
+  const isNearRightEdge = mouseX !== null && mouseX > window.innerWidth * 0.85;
 
   // Measure label widths on mount
   useLayoutEffect(() => {
@@ -70,6 +81,23 @@ export default function BottomNav({ activeRoute, onNavigate }: BottomNavProps) {
   const rightSideWidth = (labelWidths[3] || 0) + (labelWidths[4] || 0);
   const centerOffset = (rightSideWidth - leftSideWidth) / 2;
 
+  // Get current page index for arrow navigation
+  const currentIndex = NAV_ITEMS.findIndex((item) => item.route === activeRoute);
+  const hasPrevPage = currentIndex > 0;
+  const hasNextPage = currentIndex < NAV_ITEMS.length - 1;
+
+  const goToPrevPage = () => {
+    if (hasPrevPage) {
+      onNavigate(NAV_ITEMS[currentIndex - 1].route);
+    }
+  };
+
+  const goToNextPage = () => {
+    if (hasNextPage) {
+      onNavigate(NAV_ITEMS[currentIndex + 1].route);
+    }
+  };
+
   return (
     <nav
       className="fixed bottom-0 left-0 right-0 z-50 flex items-end justify-center pb-[36px]"
@@ -86,23 +114,71 @@ export default function BottomNav({ activeRoute, onNavigate }: BottomNavProps) {
         }
         hoverTimeoutRef.current = setTimeout(() => {
           setIsHovered(false);
+          setMouseX(null);
           hoverTimeoutRef.current = null;
         }, 500);
       }}
+      onMouseMove={handleMouseMove}
       aria-label="Main navigation"
     >
-      <LayoutGroup>
-        <motion.ul
-          className="flex items-end justify-center list-none m-0 p-0"
-          style={{ height: 36 }}
-          initial={{ gap: '10px', x: 0 }}
-          animate={{ 
-            gap: isHovered ? '48px' : '10px',
-            x: isHovered ? centerOffset : 0,
+      {/* Left Arrow - Fixed to bottom left corner */}
+      <motion.button
+        onClick={goToPrevPage}
+        className="bg-transparent border-none cursor-pointer p-0 z-50"
+        style={{ 
+          position: 'fixed',
+          bottom: 36,
+          left: 36,
+          width: 17, 
+          height: 17,
+        }}
+        disabled={!hasPrevPage}
+        aria-label="Go to previous page"
+      >
+        <motion.svg
+          width="17"
+          height="17"
+          viewBox="0 0 17 17"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          animate={{
+            opacity: isHovered && hasPrevPage && isNearLeftEdge ? 1 : 0.6,
           }}
-          transition={springTransition}
-          layout
+          transition={{ duration: 0.15 }}
         >
+          {/* Horizontal line - stays in place */}
+          <path
+            d="M17 16H1"
+            className="stroke-[#1E1E1E] dark:stroke-white"
+            strokeWidth="2"
+          />
+          {/* Vertical line morphs to diagonal for arrow */}
+          <motion.path
+            className="stroke-[#1E1E1E] dark:stroke-white"
+            strokeWidth="2"
+            animate={{
+              d: isHovered && hasPrevPage && isNearLeftEdge
+                ? "M1 16L9 8"   // Diagonal up-right (arrow pointing left)
+                : "M1 16L1 0",  // Vertical up (bracket)
+            }}
+            transition={springTransition}
+          />
+        </motion.svg>
+      </motion.button>
+
+      <div className="flex items-end justify-center">
+        <LayoutGroup>
+          <motion.ul
+            className="flex items-end justify-center list-none m-0 p-0"
+            style={{ height: 36 }}
+            initial={{ gap: '10px', x: 0 }}
+            animate={{ 
+              gap: isHovered ? '48px' : '10px',
+              x: isHovered ? centerOffset : 0,
+            }}
+            transition={springTransition}
+            layout
+          >
           {NAV_ITEMS.map((item, index) => {
             const isActive = activeRoute === item.route;
             const labelWidth = labelWidths[index] || 0;
@@ -199,8 +275,54 @@ export default function BottomNav({ activeRoute, onNavigate }: BottomNavProps) {
               </motion.li>
             );
           })}
-        </motion.ul>
-      </LayoutGroup>
+          </motion.ul>
+        </LayoutGroup>
+      </div>
+
+      {/* Right Arrow - Fixed to bottom right corner */}
+      <motion.button
+        onClick={goToNextPage}
+        className="bg-transparent border-none cursor-pointer p-0 z-50"
+        style={{ 
+          position: 'fixed',
+          bottom: 36,
+          right: 36,
+          width: 17, 
+          height: 17,
+        }}
+        disabled={!hasNextPage}
+        aria-label="Go to next page"
+      >
+        <motion.svg
+          width="17"
+          height="17"
+          viewBox="0 0 17 17"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          animate={{
+            opacity: isHovered && hasNextPage && isNearRightEdge ? 1 : 0.6,
+          }}
+          transition={{ duration: 0.15 }}
+        >
+          {/* Horizontal line - stays in place */}
+          <path
+            d="M16 16H0"
+            className="stroke-[#1E1E1E] dark:stroke-white"
+            strokeWidth="2"
+          />
+          {/* Vertical line morphs to diagonal for arrow */}
+          <motion.path
+            className="stroke-[#1E1E1E] dark:stroke-white"
+            strokeWidth="2"
+            animate={{
+              d: isHovered && hasNextPage && isNearRightEdge
+                ? "M16 16L8 8"   // Diagonal up-left (arrow pointing right)
+                : "M16 16L16 0", // Vertical up (bracket)
+            }}
+            transition={springTransition}
+          />
+        </motion.svg>
+      </motion.button>
     </nav>
   );
 }
