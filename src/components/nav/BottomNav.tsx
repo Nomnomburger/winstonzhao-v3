@@ -100,7 +100,7 @@ export default function BottomNav({ activeRoute, onNavigate }: BottomNavProps) {
 
   return (
     <nav
-      className="fixed bottom-0 left-0 right-0 z-50 flex items-end justify-center pb-[36px]"
+      className="fixed bottom-0 left-0 right-0 z-50 flex items-end justify-center pb-[24px]"
       onMouseEnter={() => {
         if (hoverTimeoutRef.current) {
           clearTimeout(hoverTimeoutRef.current);
@@ -127,18 +127,18 @@ export default function BottomNav({ activeRoute, onNavigate }: BottomNavProps) {
         className="bg-transparent border-none cursor-pointer p-0 z-50"
         style={{ 
           position: 'fixed',
-          bottom: 36,
-          left: 36,
-          width: 17, 
-          height: 17,
+          bottom: 24,
+          left: 24,
+          width: 12, 
+          height: 12,
         }}
         disabled={!hasPrevPage}
         aria-label="Go to previous page"
       >
         <motion.svg
-          width="17"
-          height="17"
-          viewBox="0 0 17 17"
+          width="12"
+          height="12"
+          viewBox="0 0 12 12"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           animate={{
@@ -148,7 +148,7 @@ export default function BottomNav({ activeRoute, onNavigate }: BottomNavProps) {
         >
           {/* Horizontal line - stays in place */}
           <path
-            d="M17 16H1"
+            d="M12 11H1"
             className="stroke-[#1E1E1E] dark:stroke-white"
             strokeWidth="2"
           />
@@ -158,8 +158,8 @@ export default function BottomNav({ activeRoute, onNavigate }: BottomNavProps) {
             strokeWidth="2"
             animate={{
               d: isHovered && hasPrevPage && isNearLeftEdge
-                ? "M1 16L9 8"   // Diagonal up-right (arrow pointing left)
-                : "M1 16L1 0",  // Vertical up (bracket)
+                ? "M1 11L6 6"   // Diagonal up-right (arrow pointing left)
+                : "M1 11L1 0",  // Vertical up (bracket)
             }}
             transition={springTransition}
           />
@@ -171,9 +171,9 @@ export default function BottomNav({ activeRoute, onNavigate }: BottomNavProps) {
           <motion.ul
             className="flex items-end justify-center list-none m-0 p-0"
             style={{ height: 36 }}
-            initial={{ gap: '10px', x: 0 }}
+            initial={{ gap: '12px', x: 0 }}
             animate={{ 
-              gap: isHovered ? '48px' : '10px',
+              gap: isHovered ? '48px' : '12px',
               x: isHovered ? centerOffset : 0,
             }}
             transition={springTransition}
@@ -183,10 +183,10 @@ export default function BottomNav({ activeRoute, onNavigate }: BottomNavProps) {
             const isActive = activeRoute === item.route;
             const labelWidth = labelWidths[index] || 0;
 
-            // Bar heights: collapsed active=36, inactive=16; expanded active=15, inactive=3
+            // Bar heights: collapsed active=24, inactive=12; expanded active=15, inactive=3
             const barHeight = isHovered
               ? isActive ? 15 : 3
-              : isActive ? 36 : 16;
+              : isActive ? 24 : 12;
 
             // Bar bottom position: collapsed=0, expanded=22 (above text)
             const barBottom = isHovered ? 22 : 0;
@@ -285,18 +285,18 @@ export default function BottomNav({ activeRoute, onNavigate }: BottomNavProps) {
         className="bg-transparent border-none cursor-pointer p-0 z-50"
         style={{ 
           position: 'fixed',
-          bottom: 36,
-          right: 36,
-          width: 17, 
-          height: 17,
+          bottom: 24,
+          right: 24,
+          width: 12, 
+          height: 12,
         }}
         disabled={!hasNextPage}
         aria-label="Go to next page"
       >
         <motion.svg
-          width="17"
-          height="17"
-          viewBox="0 0 17 17"
+          width="12"
+          height="12"
+          viewBox="0 0 12 12"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
           animate={{
@@ -306,7 +306,7 @@ export default function BottomNav({ activeRoute, onNavigate }: BottomNavProps) {
         >
           {/* Horizontal line - stays in place */}
           <path
-            d="M16 16H0"
+            d="M11 11H0"
             className="stroke-[#1E1E1E] dark:stroke-white"
             strokeWidth="2"
           />
@@ -316,8 +316,8 @@ export default function BottomNav({ activeRoute, onNavigate }: BottomNavProps) {
             strokeWidth="2"
             animate={{
               d: isHovered && hasNextPage && isNearRightEdge
-                ? "M16 16L8 8"   // Diagonal up-left (arrow pointing right)
-                : "M16 16L16 0", // Vertical up (bracket)
+                ? "M11 11L6 6"   // Diagonal up-left (arrow pointing right)
+                : "M11 11L11 0", // Vertical up (bracket)
             }}
             transition={springTransition}
           />
