@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, useMotionValue, useSpring } from 'framer-motion';
+import { motion, useMotionValue, useSpring, AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 
@@ -108,6 +108,7 @@ export default function HomePanel({ showContent = true }: HomePanelProps) {
   const headerRef = useRef<HTMLHeadingElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [fontSize, setFontSize] = useState('220.84px');
+  const [hasShrunk, setHasShrunk] = useState(false);
   const currentTime = useCurrentTime();
   const mousePosition = useMousePosition();
   const [flowerAnimationDone, setFlowerAnimationDone] = useState(false);
@@ -130,6 +131,9 @@ export default function HomePanel({ showContent = true }: HomePanelProps) {
 
   useEffect(() => {
     const updateFontSize = () => {
+      // Don't update if already shrunk
+      if (hasShrunk) return;
+      
       if (headerRef.current && containerRef.current) {
         const containerWidth = containerRef.current.offsetWidth;
         const text = headerRef.current.textContent || '';
@@ -174,53 +178,87 @@ export default function HomePanel({ showContent = true }: HomePanelProps) {
     updateFontSize();
     window.addEventListener('resize', updateFontSize);
     return () => window.removeEventListener('resize', updateFontSize);
-  }, []);
+  }, [hasShrunk]);
 
-  // Animation configuration
-  const baseDelay = 0.2;
+  // Timing configuration
+  const headerAnimationDelay = 0.2; // When header starts appearing
+  const shrinkDelay = 1.3; // Seconds after page load to start shrinking
+  const shrinkDuration = 0.8; // Duration of shrink animation
+  
+  // Trigger shrink after delay
+  useEffect(() => {
+    if (!showContent) return;
+    const timer = setTimeout(() => {
+      setHasShrunk(true);
+    }, shrinkDelay * 1000);
+    return () => clearTimeout(timer);
+  }, [showContent]);
+
+  // Animation configuration - content appears during/after shrink
+  const contentBaseDelay = 0.4; // Delay after shrink before content animates
   const stagger = 0.1;
   const bioStagger = 0.03; // Tighter stagger for bio section
   
-  // Header section timing
-  const headerDelay = baseDelay;
-  const projectsDelay = baseDelay + 2 * stagger; // After "Winston Zhao" (2 words)
+  // Header section timing (initial appear animation)
+  const headerDelay = headerAnimationDelay;
+  
+  // Everything else animates relative to when shrink happens
+  const projectsDelay = contentBaseDelay;
   
   // Bio section - starts after a pause, then flows continuously
-  const bioPause = 0.4; // Pause before bio section starts
-  const bioStartDelay = projectsDelay + 2 * stagger + bioPause; // After projects button finishes
+  const bioPause = 0.5;
+  const bioStartDelay = projectsDelay + 2 * stagger + bioPause;
   
   // Bio lines flow continuously with tight timing
   const bio1Delay = bioStartDelay;
-  const bio2Delay = bioStartDelay + 2 * bioStagger; // After "product designer" (2 words)
-  const bio3Delay = bioStartDelay + 6 * bioStagger; // After "blending form and function" (4 more words)
-  const bio4Delay = bioStartDelay + 10 * bioStagger; // After "currently studying at the" (4 more words)
+  const bio2Delay = bioStartDelay + 2 * bioStagger;
+  const bio3Delay = bioStartDelay + 6 * bioStagger;
+  const bio4Delay = bioStartDelay + 10 * bioStagger;
   
   // Icon and roles appear after bio
   const iconDelay = bio4Delay;
   const rolesDelay = bio4Delay + 4 * bioStagger;
   const timeDelay = rolesDelay + 0.05;
   const flowerDelay = timeDelay + 0.5;
+  const resumeDelay = contentBaseDelay + 0.1;
 
   // Set flower animation done after the drawing completes
   useEffect(() => {
-    if (!showContent) return;
+    if (!showContent || !hasShrunk) return;
     // flowerDelay + 3.5 (last path delay) + 1.8 (last path duration) = total time
     const totalFlowerTime = (flowerDelay + 5.3) * 1000;
     const timer = setTimeout(() => setFlowerAnimationDone(true), totalFlowerTime);
     return () => clearTimeout(timer);
-  }, [showContent, flowerDelay]);
+  }, [showContent, hasShrunk, flowerDelay]);
 
   return (
     <div className="bg-white dark:bg-[#1E1E1E] flex flex-col items-center justify-between min-h-screen w-full relative">
       <div className="flex flex-col items-start grow p-6 w-full">
         <div className="flex flex-col gap-9 items-start w-full">
           {/* Header Content */}
-          <div ref={containerRef} className="flex items-start px-0 py-2 w-full">
-            <h1 
+          <motion.div 
+            ref={containerRef} 
+            className="flex items-start justify-between w-full"
+            animate={{
+              height: hasShrunk ? '128px' : 'auto',
+            }}
+            transition={{
+              duration: shrinkDuration,
+              ease: [0.76, 0, 0.15, 1],
+            }}
+          >
+            <motion.h1 
               ref={headerRef}
               className="font-medium text-[#1E1E1E] dark:text-white whitespace-nowrap leading-none"
+              animate={{
+                fontSize: hasShrunk ? '128px' : fontSize,
+                paddingTop: hasShrunk ? '8px' : '0px',
+              }}
+              transition={{
+                duration: shrinkDuration,
+                ease: [0.76, 0, 0.15, 1],
+              }}
               style={{
-                fontSize: fontSize,
                 letterSpacing: '-0.05em',
                 marginTop: '-0.15em',
                 marginBottom: '-0.1em',
@@ -232,226 +270,268 @@ export default function HomePanel({ showContent = true }: HomePanelProps) {
                 </AnimatedText>
               )}
               {!showContent && <span className="opacity-0">Winston Zhao</span>}
-            </h1>
-          </div>
+            </motion.h1>
+            
+            {/* Download Resume Button - appears after shrink */}
+            <AnimatePresence>
+              {hasShrunk && showContent && (
+                <motion.button
+                  className="font-medium text-[16px] text-[#1E1E1E] dark:text-white whitespace-nowrap cursor-pointer"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    duration: 0.6,
+                    delay: resumeDelay,
+                    ease: [0.4, 0, 0.2, 1],
+                  }}
+                >
+                  download resume ↓
+                </motion.button>
+              )}
+            </AnimatePresence>
+          </motion.div>
 
           {/* Projects and Bio Section - 5 Column Grid */}
-          <div className="grid grid-cols-5 gap-6 w-full">
-            {/* Column 1: Projects Button */}
-            <div className="col-span-1">
-              <button
-                onClick={() => router.push('/projects')}
-                className="flex gap-2 items-start font-medium text-[#1E1E1E] dark:text-white whitespace-nowrap cursor-pointer"
+          <AnimatePresence>
+            {hasShrunk && (
+              <motion.div 
+                className="grid grid-cols-5 gap-6 w-full"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.3 }}
               >
-                <motion.span 
-                  className="text-[20px] leading-normal"
-                  initial={{ clipPath: 'inset(-10% -10% 0 -10%)' }}
-                  animate={{ clipPath: 'inset(-10% -10% -20% -10%)' }}
-                  transition={{
-                    duration: 0.5,
-                    delay: projectsDelay + 0.5,
-                    ease: [0.4, 0, 0.2, 1],
-                  }}
-                >
-                  {showContent ? (
-                    <motion.span
-                      className="inline-block"
-                      initial={{ y: '40%', opacity: 0 }}
-                      animate={{ y: '0%', opacity: 1 }}
+                {/* Column 1: Projects Button */}
+                <div className="col-span-1">
+                  <button
+                    onClick={() => router.push('/projects')}
+                    className="flex gap-2 items-start font-medium text-[#1E1E1E] dark:text-white whitespace-nowrap cursor-pointer"
+                  >
+                    <motion.span 
+                      className="text-[20px] leading-normal"
+                      initial={{ clipPath: 'inset(-10% -10% 0 -10%)' }}
+                      animate={{ clipPath: 'inset(-10% -10% -20% -10%)' }}
                       transition={{
-                        duration: 0.9,
-                        delay: projectsDelay,
+                        duration: 0.5,
+                        delay: projectsDelay + 0.5,
                         ease: [0.4, 0, 0.2, 1],
                       }}
                     >
-                      16
+                      {showContent ? (
+                        <motion.span
+                          className="inline-block"
+                          initial={{ y: '40%', opacity: 0 }}
+                          animate={{ y: '0%', opacity: 1 }}
+                          transition={{
+                            duration: 0.9,
+                            delay: projectsDelay,
+                            ease: [0.4, 0, 0.2, 1],
+                          }}
+                        >
+                          16
+                        </motion.span>
+                      ) : (
+                        <span className="opacity-0">16</span>
+                      )}
                     </motion.span>
-                  ) : (
-                    <span className="opacity-0">16</span>
-                  )}
-                </motion.span>
-                <motion.span 
-                  className="text-[64px] leading-none tracking-[-2.56px]"
-                  initial={{ clipPath: 'inset(-10% -10% 0 -10%)' }}
-                  animate={{ clipPath: 'inset(-10% -10% -20% -10%)' }}
-                  transition={{
-                    duration: 0.5,
-                    delay: projectsDelay + stagger + 0.5,
-                    ease: [0.4, 0, 0.2, 1],
-                  }}
-                >
-                  {showContent ? (
-                    <motion.span
-                      className="inline-block"
-                      initial={{ y: '40%', opacity: 0 }}
-                      animate={{ y: '0%', opacity: 1 }}
+                    <motion.span 
+                      className="text-[64px] leading-none tracking-[-2.56px]"
+                      initial={{ clipPath: 'inset(-10% -10% 0 -10%)' }}
+                      animate={{ clipPath: 'inset(-10% -10% -20% -10%)' }}
                       transition={{
-                        duration: 0.9,
-                        delay: projectsDelay + stagger,
+                        duration: 0.5,
+                        delay: projectsDelay + stagger + 0.5,
                         ease: [0.4, 0, 0.2, 1],
                       }}
                     >
-                      projects ↗
+                      {showContent ? (
+                        <motion.span
+                          className="inline-block"
+                          initial={{ y: '40%', opacity: 0 }}
+                          animate={{ y: '0%', opacity: 1 }}
+                          transition={{
+                            duration: 0.9,
+                            delay: projectsDelay + stagger,
+                            ease: [0.4, 0, 0.2, 1],
+                          }}
+                        >
+                          projects ↗
+                        </motion.span>
+                      ) : (
+                        <span className="opacity-0">projects ↗</span>
+                      )}
                     </motion.span>
-                  ) : (
-                    <span className="opacity-0">projects ↗</span>
-                  )}
-                </motion.span>
-              </button>
-            </div>
+                  </button>
+                </div>
 
-            {/* Column 2: Empty */}
-            <div className="col-span-1" />
+                {/* Column 2: Empty */}
+                <div className="col-span-1" />
 
-            {/* Columns 3-5: Bio Section */}
-            <div className="col-span-3 flex items-start justify-between">
-              <div className="font-medium leading-none text-[64px] text-[#1E1E1E] dark:text-white whitespace-nowrap tracking-[-2.56px]">
-                <p className="mb-0">
+                {/* Columns 3-5: Bio Section */}
+                <div className="col-span-3 flex items-start justify-between">
+                  <div className="font-medium leading-none text-[64px] text-[#1E1E1E] dark:text-white whitespace-nowrap tracking-[-2.56px]">
+                    <p className="mb-0">
+                      {showContent ? (
+                        <AnimatedText baseDelay={bio1Delay} staggerDelay={0.03}>
+                          product designer
+                        </AnimatedText>
+                      ) : (
+                        <span className="opacity-0">product designer</span>
+                      )}
+                    </p>
+                    <p className="mb-0">
+                      {showContent ? (
+                        <AnimatedText baseDelay={bio2Delay} staggerDelay={0.03}>
+                          blending form and function
+                        </AnimatedText>
+                      ) : (
+                        <span className="opacity-0">blending form and function</span>
+                      )}
+                    </p>
+                    <p className="mb-0">
+                      {showContent ? (
+                        <AnimatedText baseDelay={bio3Delay} staggerDelay={0.03}>
+                          currently studying at the
+                        </AnimatedText>
+                      ) : (
+                        <span className="opacity-0">currently studying at the</span>
+                      )}
+                    </p>
+                    <p>
+                      {showContent ? (
+                        <AnimatedText baseDelay={bio4Delay} staggerDelay={0.03}>
+                          University of Waterloo
+                        </AnimatedText>
+                      ) : (
+                        <span className="opacity-0">University of Waterloo</span>
+                      )}
+                    </p>
+                  </div>
                   {showContent ? (
-                    <AnimatedText baseDelay={bio1Delay} staggerDelay={0.03}>
-                      product designer
-                    </AnimatedText>
+                    <motion.button
+                      onClick={() => router.push('/about')}
+                      className="w-9 h-9 shrink-0 text-[#1E1E1E] dark:text-white cursor-pointer"
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{
+                        duration: 0.8,
+                        delay: iconDelay,
+                        ease: [0.4, 0, 0.2, 1],
+                      }}
+                    >
+                      <svg width="36" height="36" viewBox="0 0 36 36" fill="none" className="animate-spin-slow">
+                        <path d="M0 18L36 18" stroke="currentColor" strokeWidth="2"/>
+                        <path d="M18 0V36" stroke="currentColor" strokeWidth="2"/>
+                      </svg>
+                    </motion.button>
                   ) : (
-                    <span className="opacity-0">product designer</span>
+                    <button className="w-9 h-9 shrink-0 opacity-0">
+                      <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+                        <path d="M0 18L36 18" stroke="currentColor" strokeWidth="2"/>
+                        <path d="M18 0V36" stroke="currentColor" strokeWidth="2"/>
+                      </svg>
+                    </button>
                   )}
-                </p>
-                <p className="mb-0">
-                  {showContent ? (
-                    <AnimatedText baseDelay={bio2Delay} staggerDelay={0.03}>
-                      blending form and function
-                    </AnimatedText>
-                  ) : (
-                    <span className="opacity-0">blending form and function</span>
-                  )}
-                </p>
-                <p className="mb-0">
-                  {showContent ? (
-                    <AnimatedText baseDelay={bio3Delay} staggerDelay={0.03}>
-                      currently studying at the
-                    </AnimatedText>
-                  ) : (
-                    <span className="opacity-0">currently studying at the</span>
-                  )}
-                </p>
-                <p>
-                  {showContent ? (
-                    <AnimatedText baseDelay={bio4Delay} staggerDelay={0.03}>
-                      University of Waterloo
-                    </AnimatedText>
-                  ) : (
-                    <span className="opacity-0">University of Waterloo</span>
-                  )}
-                </p>
-              </div>
-              {showContent ? (
-                <motion.button
-                  onClick={() => router.push('/about')}
-                  className="w-9 h-9 shrink-0 text-[#1E1E1E] dark:text-white cursor-pointer"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{
-                    duration: 0.8,
-                    delay: iconDelay,
-                    ease: [0.4, 0, 0.2, 1],
-                  }}
-                >
-                  <svg width="36" height="36" viewBox="0 0 36 36" fill="none" className="animate-spin-slow">
-                    <path d="M0 18L36 18" stroke="currentColor" strokeWidth="2"/>
-                    <path d="M18 0V36" stroke="currentColor" strokeWidth="2"/>
-                  </svg>
-                </motion.button>
-              ) : (
-                <button className="w-9 h-9 shrink-0 opacity-0">
-                  <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
-                    <path d="M0 18L36 18" stroke="currentColor" strokeWidth="2"/>
-                    <path d="M18 0V36" stroke="currentColor" strokeWidth="2"/>
-                  </svg>
-                </button>
-              )}
-            </div>
-          </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
 
           {/* Roles and Time Section - 5 Column Grid */}
-          <div className="grid grid-cols-5 gap-6 items-end w-full font-medium text-[16px] text-[#1E1E1E] dark:text-white leading-tight mt-3">
-            {/* Columns 1-2: Empty */}
-            <div className="col-span-2" />
+          <AnimatePresence>
+            {hasShrunk && (
+              <motion.div 
+                className="grid grid-cols-5 gap-6 items-end w-full font-medium text-[16px] text-[#1E1E1E] dark:text-white leading-tight mt-3"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.3 }}
+              >
+                {/* Columns 1-2: Empty */}
+                <div className="col-span-2" />
 
-            {/* Column 3: Roles */}
-            <motion.div 
-              className="col-span-1"
-              initial={{ clipPath: 'inset(-10% -10% 0 -10%)' }}
-              animate={{ clipPath: 'inset(-10% -10% -20% -10%)' }}
-              transition={{
-                duration: 0.5,
-                delay: rolesDelay + 0.5,
-                ease: [0.4, 0, 0.2, 1],
-              }}
-            >
-              {showContent ? (
-                <motion.div
-                  initial={{ y: '40%', opacity: 0 }}
-                  animate={{ y: '0%', opacity: 1 }}
+                {/* Column 3: Roles */}
+                <motion.div 
+                  className="col-span-1"
+                  initial={{ clipPath: 'inset(-10% -10% 0 -10%)' }}
+                  animate={{ clipPath: 'inset(-10% -10% -20% -10%)' }}
                   transition={{
-                    duration: 0.9,
-                    delay: rolesDelay,
+                    duration: 0.5,
+                    delay: rolesDelay + 0.5,
                     ease: [0.4, 0, 0.2, 1],
                   }}
                 >
-                  <p>Product Design @ Yelo</p>
-                  <p>Campus Leader @ Figma</p>
+                  {showContent ? (
+                    <motion.div
+                      initial={{ y: '40%', opacity: 0 }}
+                      animate={{ y: '0%', opacity: 1 }}
+                      transition={{
+                        duration: 0.9,
+                        delay: rolesDelay,
+                        ease: [0.4, 0, 0.2, 1],
+                      }}
+                    >
+                      <p>Product Design @ Yelo</p>
+                      <p>Campus Leader @ Figma</p>
+                    </motion.div>
+                  ) : (
+                    <div className="opacity-0">
+                      <p>Product Design @ Yelo</p>
+                      <p>Campus Leader @ Figma</p>
+                    </div>
+                  )}
                 </motion.div>
-              ) : (
-                <div className="opacity-0">
-                  <p>Product Design @ Yelo</p>
-                  <p>Campus Leader @ Figma</p>
-                </div>
-              )}
-            </motion.div>
 
-            {/* Column 4: Empty */}
-            <div className="col-span-1" />
+                {/* Column 4: Empty */}
+                <div className="col-span-1" />
 
-            {/* Column 5: Time */}
-            <motion.div 
-              className="col-span-1 flex items-center justify-end gap-1.5 whitespace-nowrap"
-              initial={{ clipPath: 'inset(-10% -10% 0 -10%)' }}
-              animate={{ clipPath: 'inset(-10% -10% -20% -10%)' }}
-              transition={{
-                duration: 0.5,
-                delay: timeDelay + 0.5,
-                ease: [0.4, 0, 0.2, 1],
-              }}
-            >
-              {showContent ? (
-                <motion.div
-                  className="flex items-center gap-1.5"
-                  initial={{ y: '40%', opacity: 0 }}
-                  animate={{ y: '0%', opacity: 1 }}
+                {/* Column 5: Time */}
+                <motion.div 
+                  className="col-span-1 flex items-center justify-end gap-1.5 whitespace-nowrap"
+                  initial={{ clipPath: 'inset(-10% -10% 0 -10%)' }}
+                  animate={{ clipPath: 'inset(-10% -10% -20% -10%)' }}
                   transition={{
-                    duration: 0.9,
-                    delay: timeDelay,
+                    duration: 0.5,
+                    delay: timeDelay + 0.5,
                     ease: [0.4, 0, 0.2, 1],
                   }}
                 >
-                  <span>{currentTime}</span>
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#1E1E1E] dark:bg-white shrink-0" />
+                  {showContent ? (
+                    <motion.div
+                      className="flex items-center gap-1.5"
+                      initial={{ y: '40%', opacity: 0 }}
+                      animate={{ y: '0%', opacity: 1 }}
+                      transition={{
+                        duration: 0.9,
+                        delay: timeDelay,
+                        ease: [0.4, 0, 0.2, 1],
+                      }}
+                    >
+                      <span>{currentTime}</span>
+                      <span className="w-2.5 h-2.5 rounded-full bg-[#1E1E1E] dark:bg-white shrink-0" />
+                    </motion.div>
+                  ) : (
+                    <div className="flex items-center gap-1.5 opacity-0">
+                      <span>{currentTime}</span>
+                      <span className="w-2.5 h-2.5 rounded-full bg-[#1E1E1E] dark:bg-white shrink-0" />
+                    </div>
+                  )}
                 </motion.div>
-              ) : (
-                <div className="flex items-center gap-1.5 opacity-0">
-                  <span>{currentTime}</span>
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#1E1E1E] dark:bg-white shrink-0" />
-                </div>
-              )}
-            </motion.div>
-          </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
 
         </div>
       </div>
 
       {/* Flower - Absolute position, bottom left of home panel */}
-      {showContent ? (
-        <div className="absolute left-12 bottom-20 h-[20vh] sm:h-[25vh] md:h-[30vh] lg:h-[35vh] w-auto pointer-events-none overflow-visible">
-          <svg
+      <AnimatePresence>
+        {showContent && hasShrunk && (
+          <motion.div 
+            className="absolute left-12 bottom-20 h-[20vh] sm:h-[25vh] md:h-[30vh] lg:h-[35vh] w-auto pointer-events-none overflow-visible"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.3 }}
+          >
+            <svg
             viewBox="0 0 82 267"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -548,17 +628,9 @@ export default function HomePanel({ showContent = true }: HomePanelProps) {
             }}
           />
           </svg>
-        </div>
-      ) : (
-        <svg
-          viewBox="0 0 82 267"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="fixed left-12 bottom-20 h-[20vh] sm:h-[25vh] md:h-[30vh] lg:h-[35vh] w-auto opacity-0 pointer-events-none"
-        >
-          <path d="M34.2297 34.8757C34.1212 34.981 34.7771 36.4603 36.398 38.9642C37.8465 41.2017 41.7558 41.5576 45.2503 41.111C47.5358 40.8188 46.8754 36.61 46.6137 33.8516C46.4848 32.4928 45.8286 31.2944 44.923 30.478C44.0174 29.6617 42.7455 29.2834 41.5557 29.5714C40.3659 29.8593 39.2967 30.8247 37.668 32.7383" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-        </svg>
-      )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
