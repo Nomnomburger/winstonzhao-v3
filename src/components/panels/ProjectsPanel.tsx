@@ -200,9 +200,7 @@ export default function ProjectsPanel() {
                 <div
                   key={project._id}
                   ref={(el) => { imageRefs.current[index] = el; }}
-                  className={`relative shrink-0 transition-all duration-300 my-[12px] ${
-                    hoveredIndex !== null && !isHovered ? 'opacity-40' : 'opacity-100'
-                  }`}
+                  className="relative shrink-0 transition-all duration-300 my-[12px]"
                   style={{
                     width: isHovered ? '200px' : '150px',
                     height: isHovered ? '150px' : '112px',
