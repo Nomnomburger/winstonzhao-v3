@@ -65,22 +65,33 @@ export default function ProjectsPanel() {
 
   // Scroll to target image (hovered or middle)
   useEffect(() => {
-    const targetIndex = hoveredIndex !== null ? hoveredIndex : getMiddleIndex(filteredProjects.length);
-    
-    if (imageListRef.current && imageRefs.current[targetIndex]) {
-      const container = imageListRef.current;
-      const imageEl = imageRefs.current[targetIndex];
-      if (imageEl) {
-        const containerHeight = container.clientHeight;
-        const imageTop = imageEl.offsetTop;
-        const imageHeight = imageEl.clientHeight;
-        const scrollTarget = imageTop - (containerHeight / 2) + (imageHeight / 2);
-        
-        container.scrollTo({
-          top: scrollTarget,
-          behavior: 'smooth',
-        });
+    const scrollToImage = (index: number) => {
+      if (imageListRef.current && imageRefs.current[index]) {
+        const container = imageListRef.current;
+        const imageEl = imageRefs.current[index];
+        if (imageEl) {
+          const containerHeight = container.clientHeight;
+          const imageTop = imageEl.offsetTop;
+          const imageHeight = imageEl.clientHeight;
+          const scrollTarget = imageTop - (containerHeight / 2) + (imageHeight / 2);
+          
+          container.scrollTo({
+            top: scrollTarget,
+            behavior: 'smooth',
+          });
+        }
       }
+    };
+
+    if (hoveredIndex !== null) {
+      // Scroll immediately when hovering
+      scrollToImage(hoveredIndex);
+    } else {
+      // Delay scroll to middle to let image resize transitions complete (450ms)
+      const timer = setTimeout(() => {
+        scrollToImage(getMiddleIndex(filteredProjects.length));
+      }, 250);
+      return () => clearTimeout(timer);
     }
   }, [hoveredIndex, filteredProjects.length]);
 
@@ -188,6 +199,7 @@ export default function ProjectsPanel() {
             style={{ 
               paddingTop: 'calc(50vh - 56px)',
               paddingBottom: 'calc(50vh - 56px)',
+              scrollBehavior: 'smooth',
             }}
           >
             {filteredProjects.map((project, index) => {
@@ -200,10 +212,11 @@ export default function ProjectsPanel() {
                 <div
                   key={project._id}
                   ref={(el) => { imageRefs.current[index] = el; }}
-                  className="relative shrink-0 transition-all duration-300 my-[12px]"
+                  className="relative shrink-0 my-[12px]"
                   style={{
                     width: isHovered ? '200px' : '150px',
                     height: isHovered ? '150px' : '112px',
+                    transition: 'all 450ms cubic-bezier(0.25, 0.46, 0.45, 0.94)',
                   }}
                 >
                   {imageUrl ? (
