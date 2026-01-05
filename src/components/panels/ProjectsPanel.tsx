@@ -66,31 +66,30 @@ export default function ProjectsPanel() {
   // Scroll to target image (hovered or middle)
   useEffect(() => {
     const scrollToImage = (index: number) => {
-      if (imageListRef.current && imageRefs.current[index]) {
+      if (imageListRef.current) {
         const container = imageListRef.current;
-        const imageEl = imageRefs.current[index];
-        if (imageEl) {
-          const containerHeight = container.clientHeight;
-          const imageTop = imageEl.offsetTop;
-          const imageHeight = imageEl.clientHeight;
-          const scrollTarget = imageTop - (containerHeight / 2) + (imageHeight / 2);
-          
-          container.scrollTo({
-            top: scrollTarget,
-            behavior: 'smooth',
-          });
-        }
+        const containerHeight = container.clientHeight;
+        // Layout is constant - no margins change, only transforms
+        const baseHeight = 112;
+        const marginY = 12;
+        const paddingTop = window.innerHeight / 2 - 56;
+        const imageTop = paddingTop + marginY + index * (baseHeight + marginY * 2);
+        const scrollTarget = imageTop - (containerHeight / 2) + (baseHeight / 2);
+        
+        container.scrollTo({
+          top: scrollTarget,
+          behavior: 'smooth',
+        });
       }
     };
 
     if (hoveredIndex !== null) {
-      // Scroll immediately when hovering
       scrollToImage(hoveredIndex);
     } else {
-      // Delay scroll to middle to let image resize transitions complete (450ms)
+      // Small delay to let transform transition complete
       const timer = setTimeout(() => {
         scrollToImage(getMiddleIndex(filteredProjects.length));
-      }, 250);
+      }, 150);
       return () => clearTimeout(timer);
     }
   }, [hoveredIndex, filteredProjects.length]);
@@ -204,9 +203,29 @@ export default function ProjectsPanel() {
           >
             {filteredProjects.map((project, index) => {
               const imageUrl = project.coverImage
-                ? urlFor(project.coverImage).width(200).height(150).url()
+                ? urlFor(project.coverImage).width(400).height(300).url()
                 : null;
               const isHovered = hoveredIndex === index;
+              // Scale factors: 200/150 ≈ 1.333, 150/112 ≈ 1.339
+              const scaleX = 200 / 150;
+              const scaleY = 150 / 112;
+              // Visual height extension when scaled: (150 - 112) / 2 = 19px each side
+              const visualExtension = 19;
+              
+              // Use pure transforms - no layout changes
+              // Images above hovered: move up; Images below hovered: move down
+              let transform = 'scale(1) translateY(0)';
+              if (isHovered) {
+                transform = `scale(${scaleX}, ${scaleY})`;
+              } else if (hoveredIndex !== null) {
+                if (index < hoveredIndex) {
+                  // Above hovered - move up
+                  transform = `translateY(-${visualExtension}px)`;
+                } else {
+                  // Below hovered - move down
+                  transform = `translateY(${visualExtension}px)`;
+                }
+              }
 
               return (
                 <div
@@ -214,9 +233,11 @@ export default function ProjectsPanel() {
                   ref={(el) => { imageRefs.current[index] = el; }}
                   className="relative shrink-0 my-[12px]"
                   style={{
-                    width: isHovered ? '200px' : '150px',
-                    height: isHovered ? '150px' : '112px',
-                    transition: 'all 450ms cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                    width: '150px',
+                    height: '112px',
+                    transform,
+                    zIndex: isHovered ? 10 : 1,
+                    transition: 'transform 450ms cubic-bezier(0.25, 0.46, 0.45, 0.94)',
                   }}
                 >
                   {imageUrl ? (

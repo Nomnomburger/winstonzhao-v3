@@ -44,3 +44,4 @@ next-env.d.ts
 # sanity
 studio/.sanity
 studio/.env
+.env*.local
