@@ -121,10 +121,67 @@ export default function BottomNav({ activeRoute, onNavigate }: BottomNavProps) {
       onMouseMove={handleMouseMove}
       aria-label="Main navigation"
     >
+      {/* Progressive blur backdrop with gradient - only show on non-home pages */}
+      <AnimatePresence>
+        {activeRoute !== 'home' && (
+          <>
+            <motion.div
+              key="blur-backdrop"
+              className="absolute pointer-events-none"
+              style={{
+                bottom: 0,
+                left: 0,
+                right: 0,
+                height: '200px',
+                backdropFilter: 'blur(15px)',
+                WebkitBackdropFilter: 'blur(15px)',
+                maskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.2) 20%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.8) 80%, rgba(0,0,0,1) 100%)',
+                WebkitMaskImage: 'linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.2) 20%, rgba(0,0,0,0.5) 50%, rgba(0,0,0,0.8) 80%, rgba(0,0,0,1) 100%)',
+              }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3, ease: 'easeInOut' }}
+            />
+            {/* Gradient overlay */}
+            <motion.div
+              key="gradient-overlay"
+              className="absolute pointer-events-none"
+              style={{
+                bottom: 0,
+                left: 0,
+                right: 0,
+                height: '200px',
+                background: 'linear-gradient(to bottom, transparent 0%, rgba(255,255,255,0.3) 40%, rgba(255,255,255,0.6) 70%, rgba(255,255,255,0.8) 100%)',
+              }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3, ease: 'easeInOut' }}
+            />
+            {/* Dark mode gradient overlay */}
+            <motion.div
+              key="dark-gradient-overlay"
+              className="absolute pointer-events-none dark:block hidden"
+              style={{
+                bottom: 0,
+                left: 0,
+                right: 0,
+                height: '200px',
+                background: 'linear-gradient(to bottom, transparent 0%, rgba(30,30,30,0.3) 40%, rgba(30,30,30,0.6) 70%, rgba(30,30,30,0.8) 100%)',
+              }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3, ease: 'easeInOut' }}
+            />
+          </>
+        )}
+      </AnimatePresence>
       {/* Left Arrow - Fixed to bottom left corner */}
       <motion.button
         onClick={goToPrevPage}
-        className="bg-transparent border-none cursor-pointer p-0 z-50"
+        className="relative bg-transparent border-none cursor-pointer p-0 z-50"
         style={{ 
           position: 'fixed',
           bottom: 24,
@@ -166,7 +223,7 @@ export default function BottomNav({ activeRoute, onNavigate }: BottomNavProps) {
         </motion.svg>
       </motion.button>
 
-      <div className="flex items-end justify-center">
+      <div className="relative flex items-end justify-center z-10">
         <LayoutGroup>
           <motion.ul
             className="flex items-end justify-center list-none m-0 p-0"
@@ -282,7 +339,7 @@ export default function BottomNav({ activeRoute, onNavigate }: BottomNavProps) {
       {/* Right Arrow - Fixed to bottom right corner */}
       <motion.button
         onClick={goToNextPage}
-        className="bg-transparent border-none cursor-pointer p-0 z-50"
+        className="relative bg-transparent border-none cursor-pointer p-0 z-50"
         style={{ 
           position: 'fixed',
           bottom: 24,

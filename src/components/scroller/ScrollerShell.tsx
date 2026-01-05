@@ -90,6 +90,9 @@ export default function ScrollerShell() {
   // Get initial index from pathname
   const initialIndexValue = typeof window !== 'undefined' && pathname ? getIndexFromPath(pathname) : 0;
   const [activeIndex, setActiveIndex] = useState(initialIndexValue);
+  // Initialize opacities based on initial index
+  const initialOpacities = ROUTES.map((_, index) => index === initialIndexValue ? 1 : 0);
+  const [panelOpacities, setPanelOpacities] = useState<number[]>(initialOpacities);
   const overflowForceRef = useRef(0);
   const lastDeltaRef = useRef({ deltaX: 0, deltaY: 0 });
   const isScrollingRef = useRef(false);
@@ -191,6 +194,18 @@ export default function ScrollerShell() {
     activeIndexRef.current = initIndex;
     hasInitializedRef.current = true;
     
+    // Update opacities based on initial scroll position
+    const panelWidth = window.innerWidth;
+    const newOpacities = ROUTES.map((_, index) => {
+      const panelCenter = index * panelWidth + panelWidth / 2;
+      const distance = Math.abs(expectedScroll + panelWidth / 2 - panelCenter);
+      const maxDistance = panelWidth;
+      const normalizedDistance = Math.min(distance / maxDistance, 1);
+      const opacity = 1 - (normalizedDistance * 0.4);
+      return Math.max(0.6, Math.min(1, opacity));
+    });
+    setPanelOpacities(newOpacities);
+    
     setTimeout(() => {
       isInitializingRef.current = false;
     }, 100);
@@ -207,6 +222,18 @@ export default function ScrollerShell() {
       containerRef.current.scrollLeft = expectedScroll;
       setActiveIndex(newIndex);
       activeIndexRef.current = newIndex;
+      
+      // Update opacities based on new scroll position
+      const panelWidth = window.innerWidth;
+      const newOpacities = ROUTES.map((_, index) => {
+        const panelCenter = index * panelWidth + panelWidth / 2;
+        const distance = Math.abs(expectedScroll + panelWidth / 2 - panelCenter);
+        const maxDistance = panelWidth;
+        const normalizedDistance = Math.min(distance / maxDistance, 1);
+        const opacity = 1 - normalizedDistance;
+        return Math.max(0, Math.min(1, opacity));
+      });
+      setPanelOpacities(newOpacities);
     }
   }, [pathname, getIndexFromPath]); // Removed activeIndex from deps since we use activeIndexRef.current
 
@@ -215,7 +242,7 @@ export default function ScrollerShell() {
     activeIndexRef.current = activeIndex;
   }, [activeIndex]);
 
-  // Handle scroll events to track active panel (only update after scroll settles)
+  // Handle scroll events to track active panel and update opacities
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
@@ -226,13 +253,28 @@ export default function ScrollerShell() {
       // Don't track during initialization
       if (isInitializingRef.current) return;
       
+      const scrollLeft = container.scrollLeft;
+      const panelWidth = window.innerWidth;
+      
+      // Calculate opacity for each panel based on scroll position
+      const newOpacities = ROUTES.map((_, index) => {
+        const panelCenter = index * panelWidth + panelWidth / 2;
+        const distance = Math.abs(scrollLeft + panelWidth / 2 - panelCenter);
+        const maxDistance = panelWidth;
+        // Opacity goes from 1 (when centered) to 0 (transparent when far away)
+        // Use a smooth curve for the transition
+        const normalizedDistance = Math.min(distance / maxDistance, 1);
+        const opacity = 1 - normalizedDistance; // 1.0 to 0 (transparent)
+        return Math.max(0, Math.min(1, opacity));
+      });
+      
+      setPanelOpacities(newOpacities);
+      
       clearTimeout(scrollTimeout);
       
       // Wait for scroll to settle before updating index
       scrollTimeout = setTimeout(() => {
         if (isScrollingRef.current || isInitializingRef.current) return;
-        const scrollLeft = container.scrollLeft;
-        const panelWidth = window.innerWidth;
         const newIndex = Math.round(scrollLeft / panelWidth);
         
         if (newIndex !== activeIndexRef.current && newIndex >= 0 && newIndex < ROUTES.length) {
@@ -421,54 +463,84 @@ export default function ScrollerShell() {
       >
 
         {/* Home Panel */}
-        <div className="w-screen h-screen shrink-0 snap-start">
+        <motion.div 
+          className="w-screen h-screen shrink-0 snap-start"
+          animate={{
+            opacity: panelOpacities[0],
+          }}
+          transition={{ duration: 0.1, ease: 'linear' }}
+        >
           <div
             ref={(el) => { panelScrollRefs.current[0] = el; }}
             className="h-screen overflow-y-auto overscroll-contain"
           >
             <HomePanel showContent={showContent} />
           </div>
-        </div>
+        </motion.div>
 
         {/* Projects Panel */}
-        <div className="w-screen h-screen shrink-0 snap-start">
+        <motion.div 
+          className="w-screen h-screen shrink-0 snap-start"
+          animate={{
+            opacity: panelOpacities[1],
+          }}
+          transition={{ duration: 0.1, ease: 'linear' }}
+        >
           <div
             ref={(el) => { panelScrollRefs.current[1] = el; }}
             className="h-screen overflow-y-auto overscroll-contain"
           >
             <ProjectsPanel />
           </div>
-        </div>
+        </motion.div>
 
         {/* Playground Panel */}
-        <div className="w-screen h-screen shrink-0 snap-start">
+        <motion.div 
+          className="w-screen h-screen shrink-0 snap-start"
+          animate={{
+            opacity: panelOpacities[2],
+          }}
+          transition={{ duration: 0.1, ease: 'linear' }}
+        >
           <div
             ref={(el) => { panelScrollRefs.current[2] = el; }}
             className="h-screen overflow-y-auto overscroll-contain"
           >
             <PlaygroundPanel />
           </div>
-        </div>
+        </motion.div>
 
         {/* About Panel */}
-        <div className="w-screen h-screen shrink-0 snap-start">
+        <motion.div 
+          className="w-screen h-screen shrink-0 snap-start"
+          animate={{
+            opacity: panelOpacities[3],
+          }}
+          transition={{ duration: 0.1, ease: 'linear' }}
+        >
           <div
             ref={(el) => { panelScrollRefs.current[3] = el; }}
             className="h-screen overflow-y-auto overscroll-contain"
           >
             <AboutPanel />
           </div>
-        </div>
+        </motion.div>
 
         {/* Contact Panel */}
-        <div className="w-screen h-screen shrink-0 snap-start">
+        <motion.div 
+          className="w-screen h-screen shrink-0 snap-start"
+          animate={{
+            opacity: panelOpacities[4],
+          }}
+          transition={{ duration: 0.1, ease: 'linear' }}
+        >
           <div
             ref={(el) => { panelScrollRefs.current[4] = el; }}
             className="h-screen overflow-y-auto overscroll-contain"
           >
             <ContactPanel />
           </div>
-        </div>
+        </motion.div>
       </div>
 
       <AnimatePresence>
