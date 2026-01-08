@@ -33,6 +33,8 @@ export default function BottomNav({ activeRoute, onNavigate }: BottomNavProps) {
   const [labelWidths, setLabelWidths] = useState<number[]>([]);
   const labelRefs = useRef<(HTMLSpanElement | null)[]>([]);
   const measureContainerRef = useRef<HTMLDivElement>(null);
+  const [hoveredTab, setHoveredTab] = useState<RouteName | null>(null);
+  const [pressedTab, setPressedTab] = useState<RouteName | null>(null);
 
   // Track mouse position when hovering
   const handleMouseMove = (e: React.MouseEvent) => {
@@ -143,10 +145,10 @@ export default function BottomNav({ activeRoute, onNavigate }: BottomNavProps) {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3, ease: 'easeInOut' }}
             />
-            {/* Gradient overlay */}
+            {/* Gradient overlay - light mode only */}
             <motion.div
               key="gradient-overlay"
-              className="absolute pointer-events-none"
+              className="absolute pointer-events-none dark:hidden"
               style={{
                 bottom: 0,
                 left: 0,
@@ -239,11 +241,24 @@ export default function BottomNav({ activeRoute, onNavigate }: BottomNavProps) {
           {NAV_ITEMS.map((item, index) => {
             const isActive = activeRoute === item.route;
             const labelWidth = labelWidths[index] || 0;
+            const isTabHovered = hoveredTab === item.route;
+            const isTabPressed = pressedTab === item.route;
 
             // Bar heights: collapsed active=24, inactive=12; expanded active=15, inactive=3
-            const barHeight = isHovered
+            // For inactive tabs: +3px on hover, -3px on press (from hover state)
+            let barHeight = isHovered
               ? isActive ? 15 : 3
               : isActive ? 24 : 12;
+            
+            if (!isActive) {
+              if (isTabPressed) {
+                // Pressed state: shrink by 3px from base
+                barHeight -= 3;
+              } else if (isTabHovered) {
+                // Hover state: grow by 3px
+                barHeight += 3;
+              }
+            }
 
             // Bar bottom position: collapsed=0, expanded=22 (above text)
             const barBottom = isHovered ? 22 : 0;
@@ -258,6 +273,13 @@ export default function BottomNav({ activeRoute, onNavigate }: BottomNavProps) {
               >
                 <motion.button
                   onClick={() => onNavigate(item.route)}
+                  onMouseEnter={() => !isActive && setHoveredTab(item.route)}
+                  onMouseLeave={() => {
+                    setHoveredTab(null);
+                    setPressedTab(null);
+                  }}
+                  onMouseDown={() => !isActive && setPressedTab(item.route)}
+                  onMouseUp={() => setPressedTab(null)}
                   className="flex flex-col items-center justify-end relative bg-transparent border-none cursor-pointer p-0"
                   style={{ height: 36 }}
                   aria-current={isActive ? 'page' : undefined}
