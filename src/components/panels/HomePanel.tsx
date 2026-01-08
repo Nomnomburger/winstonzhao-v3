@@ -3,6 +3,7 @@
 import { motion, useMotionValue, useSpring, AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
+import Image from 'next/image';
 
 function useMousePosition() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -233,6 +234,13 @@ export default function HomePanel({ showContent = true }: HomePanelProps) {
 
   return (
     <div className="bg-white dark:bg-[#1E1E1E] flex flex-col items-center justify-between min-h-screen w-full relative">
+      {/* Subtle radial gradient at bottom */}
+      <div 
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: 'radial-gradient(ellipse 100% 50% at 50% 100%, rgba(121, 164, 199, 0.1) 0%, rgba(176, 177, 147, 0.05) 50%, rgba(231, 189, 95, 0) 100%)',
+        }}
+      />
       <div className="flex flex-col items-start grow p-6 w-full">
         <div className="flex flex-col gap-9 items-start w-full">
           {/* Header Content */}
@@ -468,14 +476,59 @@ export default function HomePanel({ showContent = true }: HomePanelProps) {
                         delay: rolesDelay,
                         ease: [0.4, 0, 0.2, 1],
                       }}
+                      className="flex flex-col gap-2"
                     >
-                      <p>Product Design @ Yelo</p>
-                      <p>Campus Leader @ Figma</p>
+                      <div className="flex items-center gap-2">
+                        <div className="w-4 h-4 shrink-0">
+                          <Image
+                            src="/Yelo Icon.png"
+                            alt="Yelo"
+                            width={16}
+                            height={16}
+                            className="w-full h-full object-contain"
+                          />
+                        </div>
+                        <p className="leading-tight">Product Design @ Yelo</p>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <div className="w-4 h-4 shrink-0">
+                          <Image
+                            src="/Figma App Icon.png"
+                            alt="Figma"
+                            width={16}
+                            height={16}
+                            className="w-full h-full object-contain"
+                          />
+                        </div>
+                        <p className="leading-tight">Campus Leader @ Figma</p>
+                      </div>
                     </motion.div>
                   ) : (
-                    <div className="opacity-0">
-                      <p>Product Design @ Yelo</p>
-                      <p>Campus Leader @ Figma</p>
+                    <div className="opacity-0 flex flex-col gap-2">
+                      <div className="flex items-center gap-2">
+                        <div className="w-4 h-4 shrink-0">
+                          <Image
+                            src="/Yelo Icon.png"
+                            alt="Yelo"
+                            width={16}
+                            height={16}
+                            className="w-full h-full object-contain"
+                          />
+                        </div>
+                        <p className="leading-tight">Product Design @ Yelo</p>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <div className="w-4 h-4 shrink-0">
+                          <Image
+                            src="/Figma App Icon.png"
+                            alt="Figma"
+                            width={16}
+                            height={16}
+                            className="w-full h-full object-contain"
+                          />
+                        </div>
+                        <p className="leading-tight">Campus Leader @ Figma</p>
+                      </div>
                     </div>
                   )}
                 </motion.div>
