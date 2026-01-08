@@ -70,9 +70,9 @@ export default function ProjectsPanel() {
         const container = imageListRef.current;
         const containerHeight = container.clientHeight;
         // Layout is constant - no margins change, only transforms
-        const baseHeight = 112;
-        const marginY = 12;
-        const paddingTop = window.innerHeight / 2 - 56;
+        const baseHeight = 149;
+        const marginY = 18;
+        const paddingTop = window.innerHeight / 2 - 74.5;
         const imageTop = paddingTop + marginY + index * (baseHeight + marginY * 2);
         const scrollTarget = imageTop - (containerHeight / 2) + (baseHeight / 2);
         
@@ -191,13 +191,13 @@ export default function ProjectsPanel() {
         </div>
 
         {/* Image List - Middle Column (Full viewport height, fixed width wrapper) */}
-        <div className="relative shrink-0 w-[200px] h-screen">
+        <div className="relative shrink-0 w-[266px] h-screen">
           <div 
             ref={imageListRef}
             className="absolute inset-0 flex flex-col items-center overflow-y-auto scrollbar-hide"
             style={{ 
-              paddingTop: 'calc(50vh - 56px)',
-              paddingBottom: 'calc(50vh - 56px)',
+              paddingTop: 'calc(50vh - 74.5px)',
+              paddingBottom: 'calc(50vh - 74.5px)',
               scrollBehavior: 'smooth',
             }}
           >
@@ -206,11 +206,11 @@ export default function ProjectsPanel() {
                 ? urlFor(project.coverImage).width(400).height(300).url()
                 : null;
               const isHovered = hoveredIndex === index;
-              // Scale factors: 200/150 ≈ 1.333, 150/112 ≈ 1.339
-              const scaleX = 200 / 150;
-              const scaleY = 150 / 112;
-              // Visual height extension when scaled: (150 - 112) / 2 = 19px each side
-              const visualExtension = 19;
+              // Scale factors: 266/200 ≈ 1.33, 200/149 ≈ 1.342
+              const scaleX = 266 / 200;
+              const scaleY = 200 / 149;
+              // Visual height extension when scaled: (200 - 149) / 2 = 25.5px each side
+              const visualExtension = 25.5;
               
               // Use pure transforms - no layout changes
               // Images above hovered: move up; Images below hovered: move down
@@ -231,10 +231,10 @@ export default function ProjectsPanel() {
                 <div
                   key={project._id}
                   ref={(el) => { imageRefs.current[index] = el; }}
-                  className="relative shrink-0 my-[12px]"
+                  className="relative shrink-0 my-[18px]"
                   style={{
-                    width: '150px',
-                    height: '112px',
+                    width: '200px',
+                    height: '149px',
                     transform,
                     zIndex: isHovered ? 10 : 1,
                     transition: 'transform 450ms cubic-bezier(0.25, 0.46, 0.45, 0.94)',

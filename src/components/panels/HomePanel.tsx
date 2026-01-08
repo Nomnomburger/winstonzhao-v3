@@ -276,7 +276,7 @@ export default function HomePanel({ showContent = true }: HomePanelProps) {
             <AnimatePresence>
               {hasShrunk && showContent && (
                 <motion.button
-                  className="font-medium text-[16px] text-[#1E1E1E] dark:text-white whitespace-nowrap cursor-pointer"
+                  className="font-medium text-[14px] text-[#1E1E1E] dark:text-white whitespace-nowrap cursor-pointer"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{
@@ -440,7 +440,7 @@ export default function HomePanel({ showContent = true }: HomePanelProps) {
           <AnimatePresence>
             {hasShrunk && (
               <motion.div 
-                className="grid grid-cols-5 gap-6 items-end w-full font-medium text-[16px] text-[#1E1E1E] dark:text-white leading-tight mt-3"
+                className="grid grid-cols-5 gap-6 items-end w-full font-medium text-[14px] text-[#1E1E1E] dark:text-white leading-tight mt-3"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.3 }}
@@ -505,13 +505,13 @@ export default function HomePanel({ showContent = true }: HomePanelProps) {
                         ease: [0.4, 0, 0.2, 1],
                       }}
                     >
-                      <span>{currentTime}</span>
-                      <span className="w-2.5 h-2.5 rounded-full bg-[#1E1E1E] dark:bg-white shrink-0" />
+                      <span className="leading-none">{currentTime}</span>
+                      <span className="w-2.5 h-2.5 rounded-full bg-[#1E1E1E] dark:bg-white shrink-0 self-center" />
                     </motion.div>
                   ) : (
                     <div className="flex items-center gap-1.5 opacity-0">
-                      <span>{currentTime}</span>
-                      <span className="w-2.5 h-2.5 rounded-full bg-[#1E1E1E] dark:bg-white shrink-0" />
+                      <span className="leading-none">{currentTime}</span>
+                      <span className="w-2.5 h-2.5 rounded-full bg-[#1E1E1E] dark:bg-white shrink-0 self-center" />
                     </div>
                   )}
                 </motion.div>
