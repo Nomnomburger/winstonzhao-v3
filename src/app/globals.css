@@ -30,16 +30,6 @@ body {
   font-family: var(--font-pp-neue-montreal), Arial, Helvetica, sans-serif;
 }
 
-/* Hide scrollbars */
-.scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
-}
-
 @keyframes spin-slow {
   0% {
     transform: rotate(0deg);
