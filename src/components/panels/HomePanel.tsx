@@ -198,8 +198,21 @@ export default function HomePanel({ showContent = true }: HomePanelProps) {
 
   return (
     <div className="bg-white dark:bg-[#1E1E1E] flex flex-col gap-9 h-screen w-full relative overflow-hidden">
+      {/* Background column guides - same grid as the page content */}
+      <motion.div
+        className="absolute inset-y-0 inset-x-9 grid grid-cols-5 gap-x-6 pointer-events-none"
+        aria-hidden="true"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: showContent ? 1 : 0 }}
+        transition={{ duration: 0.8, delay: 0.2, ease: [0.4, 0, 0.2, 1] }}
+      >
+        {Array.from({ length: 5 }).map((_, i) => (
+          <div key={i} className="border-x border-[#1E1E1E]/8 dark:border-white/8" />
+        ))}
+      </motion.div>
+
       {/* Header Section */}
-      <div className="flex flex-col items-start p-9 w-full">
+      <div className="relative flex flex-col items-start p-9 w-full">
         <div className="flex flex-col gap-9 items-start w-full">
           {/* Header Content */}
           <motion.div
@@ -519,7 +532,7 @@ export default function HomePanel({ showContent = true }: HomePanelProps) {
       <AnimatePresence>
         {hasShrunk && showContent && (
           <motion.div
-            className="flex flex-1 items-end justify-between p-9 w-full text-[#1E1E1E] dark:text-white"
+            className="relative flex flex-1 items-end justify-between p-9 w-full text-[#1E1E1E] dark:text-white"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
