@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 
 // Placeholder targets — update with the real URLs
-const LINKEDIN_URL = 'https://www.linkedin.com/in/winstonzhao';
+const LINKEDIN_URL = 'https://www.linkedin.com/in/zhaowinston/?skipRedirect=true';
 const OLD_SITE_URL = 'https://winstonzhao.ca';
 const RESUME_URL = '/resume.pdf';
 const EMAIL = 'hello@winstonzhao.ca';
@@ -442,7 +442,7 @@ export default function HomePanel({ showContent = true }: HomePanelProps) {
                               className="w-full h-full object-cover"
                             />
                           </div>
-                          <p className="font-normal text-[12px] tracking-[-0.24px] leading-normal whitespace-nowrap">Design at Newly</p>
+                          <p className="font-normal text-[12px] tracking-[-0.24px] leading-normal whitespace-nowrap">Design at <a href="https://newly.app" target="_blank" rel="noopener noreferrer" className="hover:underline">Newly</a></p>
                         </div>
                         <div className="flex gap-1.5 items-center">
                           <div className="w-3.5 h-3.5 shrink-0">
@@ -454,7 +454,7 @@ export default function HomePanel({ showContent = true }: HomePanelProps) {
                               className="w-full h-full object-contain"
                             />
                           </div>
-                          <p className="font-normal text-[12px] tracking-[-0.24px] leading-normal whitespace-nowrap">Campus Leader at Figma</p>
+                          <p className="font-normal text-[12px] tracking-[-0.24px] leading-normal whitespace-nowrap">Campus Leader at <a href="https://figma.com" target="_blank" rel="noopener noreferrer" className="hover:underline">Figma</a></p>
                         </div>
                         <div className="flex gap-1.5 items-center">
                           <div className="w-3.5 h-3.5 shrink-0 rounded-[3px] overflow-hidden">
@@ -466,7 +466,7 @@ export default function HomePanel({ showContent = true }: HomePanelProps) {
                               className="w-full h-full object-cover"
                             />
                           </div>
-                          <p className="font-normal text-[12px] tracking-[-0.24px] leading-normal whitespace-nowrap">Prev. Design at TextQL</p>
+                          <p className="font-normal text-[12px] tracking-[-0.24px] leading-normal whitespace-nowrap">Prev. Design at <a href="https://textql.com" target="_blank" rel="noopener noreferrer" className="hover:underline">TextQL</a></p>
                         </div>
                       </motion.div>
                     ) : (
