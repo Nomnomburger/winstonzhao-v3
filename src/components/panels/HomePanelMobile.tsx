@@ -342,30 +342,38 @@ export default function HomePanelMobile({
                   marginBottom: '-0.1em',
                 }}
               >
-                <span className="block whitespace-nowrap">
-                  {langSwitched ? (
-                    <ScrambleText from={fromFirstName} charDelay={switchCharDelay}>
-                      {firstName}
-                    </ScrambleText>
-                  ) : showContent ? (
-                    <AnimatedText baseDelay={headerDelay} staggerDelay={stagger}>
-                      {firstName}
-                    </AnimatedText>
-                  ) : (
-                    <span className="opacity-0">{firstName}</span>
-                  )}
-                  {/* Chinese name beside the header (zh only). Also rendered
-                      without a live switch when the session restored Chinese.
-                      Nudged down from the line-box top to the cap top of the
-                      name (the font's ascent overshoots the glyphs). */}
+                <span className="flex items-baseline whitespace-nowrap">
+                  <span>
+                    {langSwitched ? (
+                      <ScrambleText from={fromFirstName} charDelay={switchCharDelay}>
+                        {firstName}
+                      </ScrambleText>
+                    ) : showContent ? (
+                      <AnimatedText baseDelay={headerDelay} staggerDelay={stagger}>
+                        {firstName}
+                      </AnimatedText>
+                    ) : (
+                      <span className="opacity-0">{firstName}</span>
+                    )}
+                  </span>
+                  {/* Chinese name at the right edge of the page (zh only),
+                      sharing the "Zhao" line's baseline so the bottoms of the
+                      two texts align. Also rendered without a live switch when
+                      the session restored Chinese. */}
                   {(langSwitched || (t.nativeName !== '' && hasShrunk && showContent)) && (
                     <span
-                      className="inline-block align-top font-light text-[12px] leading-none ml-2 relative"
-                      style={{ letterSpacing: '-0.02em', top: shrunkFontSize * 0.15 }}
+                      className="font-light text-[12px] leading-none ml-auto"
+                      style={{ letterSpacing: '-0.02em' }}
                     >
-                      <ScrambleText from={fromT.nativeName} charDelay={switchCharDelay}>
-                        {t.nativeName}
-                      </ScrambleText>
+                      {langSwitched ? (
+                        <ScrambleText from={fromT.nativeName} charDelay={switchCharDelay}>
+                          {t.nativeName}
+                        </ScrambleText>
+                      ) : (
+                        <AnimatedText baseDelay={globeDelay} staggerDelay={stagger} instant={instant}>
+                          {t.nativeName}
+                        </AnimatedText>
+                      )}
                     </span>
                   )}
                 </span>
