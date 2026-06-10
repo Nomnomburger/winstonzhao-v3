@@ -15,14 +15,18 @@ import {
   EMAIL,
 } from './shared';
 
-interface HomePanelProps {
+// "Zhao" sits in the second of the two mobile grid columns: half the
+// container width plus half the 12px column gap (~51.7% of the row).
+const ZHAO_COLUMN_OFFSET = '51.7%';
+
+interface HomePanelMobileProps {
   showContent?: boolean;
 }
 
-export default function HomePanel({ showContent = true }: HomePanelProps) {
+export default function HomePanelMobile({ showContent = true }: HomePanelMobileProps) {
   const headerRef = useRef<HTMLHeadingElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const [fontSize, setFontSize] = useState('220.84px');
+  const [fontSize, setFontSize] = useState('96px');
   const [hasShrunk, setHasShrunk] = useState(false);
   const currentTime = useCurrentTime();
 
@@ -33,9 +37,9 @@ export default function HomePanel({ showContent = true }: HomePanelProps) {
 
       if (headerRef.current && containerRef.current) {
         const containerWidth = containerRef.current.offsetWidth;
-        const text = headerRef.current.textContent || '';
 
-        // Create a temporary element to measure text width
+        // Create a temporary element to measure text width.
+        // On mobile the name stacks in two lines, so fit the longest word.
         const measureEl = document.createElement('span');
         measureEl.style.visibility = 'hidden';
         measureEl.style.position = 'absolute';
@@ -43,13 +47,13 @@ export default function HomePanel({ showContent = true }: HomePanelProps) {
         measureEl.style.fontFamily = getComputedStyle(headerRef.current).fontFamily;
         measureEl.style.fontWeight = getComputedStyle(headerRef.current).fontWeight;
         measureEl.style.letterSpacing = '-0.05em';
-        measureEl.textContent = text;
+        measureEl.textContent = 'Winston';
         document.body.appendChild(measureEl);
 
         // Binary search for the right font size
         let minSize = 10;
-        let maxSize = 500;
-        let bestSize = 220.84;
+        let maxSize = 400;
+        let bestSize = 96;
 
         for (let i = 0; i < 20; i++) {
           const testSize = (minSize + maxSize) / 2;
@@ -99,12 +103,9 @@ export default function HomePanel({ showContent = true }: HomePanelProps) {
   // Header section timing (initial appear animation)
   const headerDelay = headerAnimationDelay;
 
-  // Everything else animates relative to when shrink happens
-  const sayHiDelay = contentBaseDelay;
-
   // Bio section - starts after a pause, then flows continuously
   const bioPause = 0.5;
-  const bioStartDelay = sayHiDelay + 2 * stagger + bioPause;
+  const bioStartDelay = contentBaseDelay + bioPause;
 
   // Bio lines flow continuously with tight timing
   const bio1Delay = bioStartDelay;
@@ -112,21 +113,22 @@ export default function HomePanel({ showContent = true }: HomePanelProps) {
   const bio3Delay = bioStartDelay + 6 * bioStagger;
   const bio4Delay = bioStartDelay + 10 * bioStagger;
 
-  // Icon and roles appear after bio
-  const iconDelay = bio4Delay;
-  const rolesDelay = bio4Delay + 4 * bioStagger;
+  // Say hi and icon follow the bio
+  const sayHiDelay = bio4Delay + 4 * bioStagger;
+  const iconDelay = sayHiDelay + stagger;
+  const rolesDelay = sayHiDelay + stagger;
   const timeDelay = rolesDelay + 0.05;
-  const languagesDelay = contentBaseDelay + 0.1;
+  const globeDelay = contentBaseDelay + 0.1;
   const footerDelay = rolesDelay + 0.1;
 
   return (
-    <div className="bg-background flex flex-col gap-9 h-screen w-full relative overflow-hidden">
-      {/* Background column guides - same grid as the page content */}
+    <div className="bg-background flex flex-col gap-9 min-h-dvh w-full relative">
+      {/* Background column guides - 2 column mobile grid */}
       <div
-        className="absolute inset-y-0 inset-x-9 grid grid-cols-5 gap-x-6 pointer-events-none"
+        className="absolute inset-y-0 inset-x-6 grid grid-cols-2 gap-x-3 pointer-events-none"
         aria-hidden="true"
       >
-        {Array.from({ length: 5 }).map((_, i) => (
+        {Array.from({ length: 2 }).map((_, i) => (
           <motion.div
             key={i}
             className="border-x border-[#1E1E1E]/8 dark:border-white/8 origin-top"
@@ -138,26 +140,15 @@ export default function HomePanel({ showContent = true }: HomePanelProps) {
       </div>
 
       {/* Header Section */}
-      <div className="relative flex flex-col items-start p-9 w-full">
-        <div className="flex flex-col gap-9 items-start w-full">
+      <div className="relative flex flex-col flex-1 items-start p-6 w-full">
+        <div className="flex flex-col flex-1 gap-12 items-start w-full">
           {/* Header Content */}
-          <motion.div
-            ref={containerRef}
-            className="flex items-start justify-between w-full"
-            animate={{
-              height: hasShrunk ? '128px' : 'auto',
-            }}
-            transition={{
-              duration: shrinkDuration,
-              ease: [0.76, 0, 0.15, 1],
-            }}
-          >
+          <div ref={containerRef} className="relative w-full py-1">
             <motion.h1
               ref={headerRef}
-              className="font-medium text-[#1E1E1E] dark:text-white whitespace-nowrap leading-none"
+              className="font-medium text-[#1E1E1E] dark:text-white leading-none w-full"
               animate={{
-                fontSize: hasShrunk ? '128px' : fontSize,
-                paddingTop: hasShrunk ? '8px' : '0px',
+                fontSize: hasShrunk ? '64px' : fontSize,
               }}
               transition={{
                 duration: shrinkDuration,
@@ -165,52 +156,112 @@ export default function HomePanel({ showContent = true }: HomePanelProps) {
               }}
               style={{
                 letterSpacing: '-0.05em',
-                marginTop: '-0.15em',
-                marginBottom: '-0.1em',
               }}
             >
-              {showContent && (
-                <AnimatedText baseDelay={headerDelay} staggerDelay={stagger}>
-                  Winston Zhao
-                </AnimatedText>
-              )}
-              {!showContent && <span className="opacity-0">Winston Zhao</span>}
+              <span className="block whitespace-nowrap">
+                {showContent ? (
+                  <AnimatedText baseDelay={headerDelay} staggerDelay={stagger}>
+                    Winston
+                  </AnimatedText>
+                ) : (
+                  <span className="opacity-0">Winston</span>
+                )}
+              </span>
+              <motion.span
+                className="block whitespace-nowrap mt-4"
+                animate={{
+                  paddingLeft: hasShrunk ? ZHAO_COLUMN_OFFSET : '0%',
+                }}
+                transition={{
+                  duration: shrinkDuration,
+                  ease: [0.76, 0, 0.15, 1],
+                }}
+              >
+                {showContent ? (
+                  <AnimatedText baseDelay={headerDelay + stagger} staggerDelay={stagger}>
+                    Zhao
+                  </AnimatedText>
+                ) : (
+                  <span className="opacity-0">Zhao</span>
+                )}
+              </motion.span>
             </motion.h1>
 
-            {/* Language Switcher - appears after shrink */}
+            {/* Globe - appears after shrink */}
             <AnimatePresence>
               {hasShrunk && showContent && (
                 <motion.div
-                  className="flex gap-1.5 items-center justify-center font-normal text-[12px] tracking-[-0.24px] text-[#1E1E1E] dark:text-white whitespace-nowrap leading-normal"
+                  className="absolute top-1 right-0 w-4 h-4 text-[#1E1E1E] dark:text-white"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{
                     duration: 0.6,
-                    delay: languagesDelay,
+                    delay: globeDelay,
                     ease: [0.4, 0, 0.2, 1],
                   }}
                 >
-                  <p>EN</p>
-                  <p>SV</p>
-                  <p>中文</p>
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-label="Language" role="img">
+                    <circle cx="8" cy="8" r="6.5" stroke="currentColor" />
+                    <path d="M1.5 8H14.5" stroke="currentColor" />
+                    <path d="M8 1.5C9.8 3.3 10.75 5.55 10.75 8C10.75 10.45 9.8 12.7 8 14.5C6.2 12.7 5.25 10.45 5.25 8C5.25 5.55 6.2 3.3 8 1.5Z" stroke="currentColor" />
+                  </svg>
                 </motion.div>
               )}
             </AnimatePresence>
-          </motion.div>
+          </div>
 
           {/* Bio Section */}
           <AnimatePresence>
             {hasShrunk && (
               <motion.div
-                className="flex flex-col gap-12 w-full"
+                className="flex flex-col flex-1 w-full"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.3 }}
               >
-                {/* Say Hi and Bio - 5 Column Grid */}
-                <div className="grid grid-cols-5 gap-x-6 w-full">
-                  {/* Column 1: Say Hi Link */}
-                  <div className="col-span-1">
+                <div className="flex flex-col gap-12 w-full">
+                  {/* Bio */}
+                  <div className="font-medium leading-none text-[32px] text-[#1E1E1E] dark:text-white tracking-[-1.28px]">
+                    <p className="mb-0">
+                      {showContent ? (
+                        <AnimatedText baseDelay={bio1Delay} staggerDelay={0.03}>
+                          product designer
+                        </AnimatedText>
+                      ) : (
+                        <span className="opacity-0">product designer</span>
+                      )}
+                    </p>
+                    <p className="mb-0">
+                      {showContent ? (
+                        <AnimatedText baseDelay={bio2Delay} staggerDelay={0.03}>
+                          blending form and function
+                        </AnimatedText>
+                      ) : (
+                        <span className="opacity-0">blending form and function</span>
+                      )}
+                    </p>
+                    <p className="mb-0">
+                      {showContent ? (
+                        <AnimatedText baseDelay={bio3Delay} staggerDelay={0.03}>
+                          currently in stockholm
+                        </AnimatedText>
+                      ) : (
+                        <span className="opacity-0">currently in stockholm</span>
+                      )}
+                    </p>
+                    <p>
+                      {showContent ? (
+                        <AnimatedText baseDelay={bio4Delay} staggerDelay={0.03}>
+                          building at newly
+                        </AnimatedText>
+                      ) : (
+                        <span className="opacity-0">building at newly</span>
+                      )}
+                    </p>
+                  </div>
+
+                  {/* Say Hi + Icon */}
+                  <div className="flex gap-9 items-center justify-between w-full">
                     <a
                       href={LINKEDIN_URL}
                       target="_blank"
@@ -218,7 +269,7 @@ export default function HomePanel({ showContent = true }: HomePanelProps) {
                       className="flex gap-2 items-start font-medium text-[#1E1E1E] dark:text-white whitespace-nowrap cursor-pointer"
                     >
                       <motion.span
-                        className="text-[64px] leading-none tracking-[-2.56px]"
+                        className="text-[32px] leading-none tracking-[-1.28px]"
                         initial={{ clipPath: 'inset(-10% -10% 0 -10%)' }}
                         animate={{ clipPath: 'inset(-10% -10% -20% -10%)' }}
                         transition={{
@@ -245,7 +296,7 @@ export default function HomePanel({ showContent = true }: HomePanelProps) {
                         )}
                       </motion.span>
                       <motion.span
-                        className="text-[20px] leading-normal tracking-[-0.4px]"
+                        className="text-[12px] leading-normal tracking-[-0.24px]"
                         initial={{ clipPath: 'inset(-10% -10% 0 -10%)' }}
                         animate={{ clipPath: 'inset(-10% -10% -20% -10%)' }}
                         transition={{
@@ -272,51 +323,6 @@ export default function HomePanel({ showContent = true }: HomePanelProps) {
                         )}
                       </motion.span>
                     </a>
-                  </div>
-
-                  {/* Column 2: Empty */}
-                  <div className="col-span-1" />
-
-                  {/* Columns 3-5: Bio */}
-                  <div className="col-span-3 flex items-start justify-between">
-                    <div className="font-medium leading-none text-[64px] text-[#1E1E1E] dark:text-white whitespace-nowrap tracking-[-2.56px]">
-                      <p className="mb-0">
-                        {showContent ? (
-                          <AnimatedText baseDelay={bio1Delay} staggerDelay={0.03}>
-                            product designer
-                          </AnimatedText>
-                        ) : (
-                          <span className="opacity-0">product designer</span>
-                        )}
-                      </p>
-                      <p className="mb-0">
-                        {showContent ? (
-                          <AnimatedText baseDelay={bio2Delay} staggerDelay={0.03}>
-                            blending form and function
-                          </AnimatedText>
-                        ) : (
-                          <span className="opacity-0">blending form and function</span>
-                        )}
-                      </p>
-                      <p className="mb-0">
-                        {showContent ? (
-                          <AnimatedText baseDelay={bio3Delay} staggerDelay={0.03}>
-                            currently in stockholm
-                          </AnimatedText>
-                        ) : (
-                          <span className="opacity-0">currently in stockholm</span>
-                        )}
-                      </p>
-                      <p>
-                        {showContent ? (
-                          <AnimatedText baseDelay={bio4Delay} staggerDelay={0.03}>
-                            building at newly
-                          </AnimatedText>
-                        ) : (
-                          <span className="opacity-0">building at newly</span>
-                        )}
-                      </p>
-                    </div>
                     {showContent ? (
                       <motion.div
                         className="w-9 h-9 shrink-0 text-[#1E1E1E] dark:text-white"
@@ -344,14 +350,13 @@ export default function HomePanel({ showContent = true }: HomePanelProps) {
                   </div>
                 </div>
 
-                {/* Roles and Time - 5 Column Grid */}
-                <div className="grid grid-cols-5 gap-x-6 items-center w-full text-[#1E1E1E] dark:text-white">
-                  {/* Columns 1-2: Empty */}
-                  <div className="col-span-2" />
+                {/* Spacer - keeps the Figma frame's gap above the roles row,
+                    but stretches on tall screens to pin the footer down */}
+                <div className="flex-1 min-h-40" aria-hidden="true" />
 
-                  {/* Columns 3-4: Roles */}
+                {/* Roles and Time */}
+                <div className="flex items-start justify-between w-full text-[#1E1E1E] dark:text-white">
                   <motion.div
-                    className="col-span-2"
                     initial={{ clipPath: 'inset(-10% -10% 0 -10%)' }}
                     animate={{ clipPath: 'inset(-10% -10% -20% -10%)' }}
                     transition={{
@@ -369,22 +374,22 @@ export default function HomePanel({ showContent = true }: HomePanelProps) {
                           delay: rolesDelay,
                           ease: [0.4, 0, 0.2, 1],
                         }}
-                        className="flex gap-4 items-center"
+                        className="flex flex-col gap-2 items-start"
                       >
                         <NewlyRole />
                         <FigmaRole />
                         <TextQLRole />
                       </motion.div>
                     ) : (
-                      <div className="opacity-0 flex gap-3 items-center">
+                      <div className="opacity-0 flex flex-col gap-2 items-start">
                         <p className="font-normal text-[12px] tracking-[-0.24px] leading-normal whitespace-nowrap">Design at Newly</p>
                       </div>
                     )}
                   </motion.div>
 
-                  {/* Column 5: Time */}
+                  {/* Time */}
                   <motion.div
-                    className="col-span-1 flex items-center justify-end gap-1.5 whitespace-nowrap"
+                    className="flex items-center justify-end gap-1.5 whitespace-nowrap"
                     initial={{ clipPath: 'inset(-10% -10% 0 -10%)' }}
                     animate={{ clipPath: 'inset(-10% -10% -20% -10%)' }}
                     transition={{
@@ -425,7 +430,7 @@ export default function HomePanel({ showContent = true }: HomePanelProps) {
       <AnimatePresence>
         {hasShrunk && showContent && (
           <motion.div
-            className="relative flex flex-1 items-end justify-between p-9 w-full text-[#1E1E1E] dark:text-white"
+            className="relative flex flex-col gap-12 p-6 w-full text-[#1E1E1E] dark:text-white"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
@@ -434,7 +439,22 @@ export default function HomePanel({ showContent = true }: HomePanelProps) {
               ease: [0.4, 0, 0.2, 1],
             }}
           >
-            <div className="flex gap-6 items-center">
+            <div className="max-w-[354px] font-normal text-[12px] tracking-[-0.24px] leading-normal">
+              <p className="mb-0">I&rsquo;m in the process of creating a new portfolio.</p>
+              <p>
+                Check back soon, or{' '}
+                <a
+                  href={OLD_SITE_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline"
+                >
+                  visit the old site
+                </a>
+                .
+              </p>
+            </div>
+            <div className="flex items-end justify-between w-full">
               <div className="w-[45px] h-[28px] shrink-0">
                 <Image
                   src="/wz-logo.svg"
@@ -444,25 +464,10 @@ export default function HomePanel({ showContent = true }: HomePanelProps) {
                   className="w-full h-full object-contain dark:invert"
                 />
               </div>
-              <div className="w-[354px] font-normal text-[12px] tracking-[-0.24px] leading-normal">
-                <p className="mb-0">I&rsquo;m in the process of creating a new portfolio.</p>
-                <p>
-                  Check back soon, or{' '}
-                  <a
-                    href={OLD_SITE_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="underline"
-                  >
-                    visit the old site
-                  </a>
-                  .
-                </p>
+              <div className="flex gap-3 items-center justify-end font-normal text-[12px] tracking-[-0.24px] leading-normal whitespace-nowrap">
+                <a href={`mailto:${EMAIL}`}>hello [at] winstonzhao.ca</a>
+                <a href={RESUME_URL} target="_blank" rel="noopener noreferrer">resume</a>
               </div>
-            </div>
-            <div className="flex gap-3 items-center justify-end font-normal text-[12px] tracking-[-0.24px] leading-normal whitespace-nowrap">
-              <a href={`mailto:${EMAIL}`}>hello [at] winstonzhao.ca</a>
-              <a href={RESUME_URL} target="_blank" rel="noopener noreferrer">resume</a>
             </div>
           </motion.div>
         )}
