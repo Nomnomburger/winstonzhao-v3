@@ -183,16 +183,10 @@ export default function HomePanel({
     ease: [0.76, 0, 0.15, 1] as const,
   };
 
-  // Scramble timing for language switches: each bio line starts resolving
-  // when the previous one finishes, like one continuous typing pass.
+  // Scramble timing for language switches: all texts animate at once, each
+  // sweeping through its own characters left to right.
   const switchCharDelay = 0.02;
   const bioIntroDelays = [bio1Delay, bio2Delay, bio3Delay, bio4Delay];
-  const bioSwitchDelay = (index: number) =>
-    t.bioLines.slice(0, index).reduce((sum, line) => sum + line.length * switchCharDelay, 0);
-
-  // Footer line two resolves after line one, segment by segment.
-  const checkBackSwitchDelay = t.newPortfolio.length * switchCharDelay;
-  const oldSiteSwitchDelay = checkBackSwitchDelay + t.checkBackPrefix.length * switchCharDelay;
 
   // Role labels render as plain text until a language switch, then scramble.
   const roleLabel = (text: string, fromText: string) =>
@@ -373,11 +367,7 @@ export default function HomePanel({
                       {t.bioLines.map((line, index) => (
                         <p key={index} className={index < t.bioLines.length - 1 ? 'mb-0' : undefined}>
                           {langSwitched ? (
-                            <ScrambleText
-                              from={fromT.bioLines[index]}
-                              baseDelay={bioSwitchDelay(index)}
-                              charDelay={switchCharDelay}
-                            >
+                            <ScrambleText from={fromT.bioLines[index]} charDelay={switchCharDelay}>
                               {line}
                             </ScrambleText>
                           ) : showContent ? (
@@ -529,7 +519,7 @@ export default function HomePanel({
                 </p>
                 <p>
                   {langSwitched ? (
-                    <ScrambleText from={fromT.checkBackPrefix} baseDelay={checkBackSwitchDelay} charDelay={switchCharDelay}>
+                    <ScrambleText from={fromT.checkBackPrefix} charDelay={switchCharDelay}>
                       {t.checkBackPrefix}
                     </ScrambleText>
                   ) : (
@@ -542,7 +532,7 @@ export default function HomePanel({
                     className="underline"
                   >
                     {langSwitched ? (
-                      <ScrambleText from={fromT.oldSiteLink} baseDelay={oldSiteSwitchDelay} charDelay={switchCharDelay}>
+                      <ScrambleText from={fromT.oldSiteLink} charDelay={switchCharDelay}>
                         {t.oldSiteLink}
                       </ScrambleText>
                     ) : (
