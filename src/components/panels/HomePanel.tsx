@@ -19,6 +19,10 @@ interface HomePanelProps {
   showContent?: boolean;
 }
 
+// Vertical column guides are hidden in the current design.
+// Flip this back to true to restore them.
+const SHOW_COLUMN_GUIDES = false;
+
 export default function HomePanel({ showContent = true }: HomePanelProps) {
   const headerRef = useRef<HTMLHeadingElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -121,21 +125,23 @@ export default function HomePanel({ showContent = true }: HomePanelProps) {
 
   return (
     <div className="bg-background flex flex-col gap-9 h-screen w-full relative overflow-hidden">
-      {/* Background column guides - same grid as the page content */}
-      <div
-        className="absolute inset-y-0 inset-x-9 grid grid-cols-5 gap-x-6 pointer-events-none"
-        aria-hidden="true"
-      >
-        {Array.from({ length: 5 }).map((_, i) => (
-          <motion.div
-            key={i}
-            className="border-x border-[#1E1E1E]/8 dark:border-white/8 origin-top"
-            initial={{ scaleY: 0 }}
-            animate={{ scaleY: showContent ? 1 : 0 }}
-            transition={{ duration: 1.2, delay: headerAnimationDelay + i * 0.15, ease: [0.22, 1, 0.36, 1] }}
-          />
-        ))}
-      </div>
+      {/* Background column guides - same grid as the page content (currently hidden) */}
+      {SHOW_COLUMN_GUIDES && (
+        <div
+          className="absolute inset-y-0 inset-x-9 grid grid-cols-5 gap-x-6 pointer-events-none"
+          aria-hidden="true"
+        >
+          {Array.from({ length: 5 }).map((_, i) => (
+            <motion.div
+              key={i}
+              className="border-x border-[#1E1E1E]/8 dark:border-white/8 origin-top"
+              initial={{ scaleY: 0 }}
+              animate={{ scaleY: showContent ? 1 : 0 }}
+              transition={{ duration: 1.2, delay: headerAnimationDelay + i * 0.15, ease: [0.22, 1, 0.36, 1] }}
+            />
+          ))}
+        </div>
+      )}
 
       {/* Header Section */}
       <div className="relative flex flex-col items-start p-9 w-full">
