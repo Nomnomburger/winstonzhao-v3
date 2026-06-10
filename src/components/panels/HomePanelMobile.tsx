@@ -333,8 +333,9 @@ export default function HomePanelMobile({
                   ) : (
                     <span className="opacity-0">{firstName}</span>
                   )}
-                  {/* Chinese name beside the header (zh only) */}
-                  {langSwitched && (
+                  {/* Chinese name beside the header (zh only). Also rendered
+                      without a live switch when the session restored Chinese. */}
+                  {(langSwitched || (t.nativeName !== '' && hasShrunk && showContent)) && (
                     <span
                       className="inline-block align-top font-light text-[12px] leading-none ml-2"
                       style={{ letterSpacing: '-0.02em' }}

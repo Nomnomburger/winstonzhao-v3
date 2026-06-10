@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import HomePanel from '@/components/panels/HomePanel';
 import HomePanelMobile from '@/components/panels/HomePanelMobile';
@@ -34,12 +34,45 @@ function LoadingScreen({ onComplete }: { onComplete: () => void }) {
 // so the intro only plays on a fresh page load
 let hasPlayedIntro = false;
 
+// The selected language also survives navigation away and back; the
+// sessionStorage copy additionally survives full reloads within the tab.
+let savedLanguage: Language = 'en';
+const LANGUAGE_STORAGE_KEY = 'language';
+
+const isLanguage = (value: unknown): value is Language =>
+  value === 'en' || value === 'sv' || value === 'zh';
+
 export default function Home() {
   const [skipIntro] = useState(hasPlayedIntro);
   const [isLoading, setIsLoading] = useState(!hasPlayedIntro);
   const [showContent, setShowContent] = useState(hasPlayedIntro);
-  const [language, setLanguage] = useState<Language>('en');
+  const [language, setLanguageState] = useState<Language>(savedLanguage);
   const isMobile = useIsMobile();
+
+  // Restore the language on a fresh load (after hydration, so server and
+  // client markup match).
+  useEffect(() => {
+    try {
+      const stored = sessionStorage.getItem(LANGUAGE_STORAGE_KEY);
+      if (isLanguage(stored)) {
+        savedLanguage = stored;
+        setLanguageState(stored);
+      }
+    } catch {
+      // sessionStorage unavailable (e.g. blocked) — keep the default
+    }
+  }, []);
+
+  const setLanguage = (lang: Language) => {
+    savedLanguage = lang;
+    try {
+      sessionStorage.setItem(LANGUAGE_STORAGE_KEY, lang);
+    } catch {
+      // sessionStorage unavailable — the module variable still covers
+      // client-side navigation
+    }
+    setLanguageState(lang);
+  };
 
   const handleLoadingComplete = () => {
     hasPlayedIntro = true;
