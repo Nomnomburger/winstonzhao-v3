@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ReactNode, useEffect, useState } from 'react';
+import { ReactNode, useEffect, useRef, useState } from 'react';
 
 // Placeholder targets — update with the real URLs
 export const LINKEDIN_URL = 'https://www.linkedin.com/in/zhaowinston/?skipRedirect=true';
@@ -77,34 +77,86 @@ export function AnimatedText({ children, baseDelay = 0, staggerDelay = 0.08, cla
   );
 }
 
-interface TypewriterTextProps {
+const SCRAMBLE_CHARS = 'abcdefghijklmnopqrstuvwxyzåäö';
+
+interface ScrambleTextProps {
   children: string;
+  // Text shown before the first animation (the outgoing copy)
+  from?: string;
   baseDelay?: number;
   charDelay?: number;
+  // How long each character flickers through random letters before settling
+  scrambleDuration?: number;
   className?: string;
 }
 
-// Reveals text character by character, like typing. Used when the language
-// changes so the new copy re-animates in place without any layout shift.
-export function TypewriterText({ children, baseDelay = 0, charDelay = 0.02, className = '' }: TypewriterTextProps) {
-  const chars = Array.from(children);
+// Typewriter-style scramble: the current text stays on screen and each
+// character cycles through random letters before settling on the new copy.
+// Used when the language changes so text is replaced in place.
+export function ScrambleText({
+  children,
+  from,
+  baseDelay = 0,
+  charDelay = 0.02,
+  scrambleDuration = 0.35,
+  className = '',
+}: ScrambleTextProps) {
+  const [display, setDisplay] = useState(from ?? children);
+  const displayRef = useRef(from ?? children);
 
-  return (
-    <span className={className} aria-label={children}>
-      {chars.map((char, index) => (
-        <motion.span
-          key={index}
-          aria-hidden="true"
-          className="whitespace-pre"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.05, delay: baseDelay + index * charDelay }}
-        >
-          {char}
-        </motion.span>
-      ))}
-    </span>
-  );
+  useEffect(() => {
+    if (displayRef.current === children) return;
+
+    const fromChars = Array.from(displayRef.current);
+    const toChars = Array.from(children);
+    const length = Math.max(fromChars.length, toChars.length);
+    // Current random letter per slot, held for a few frames so it reads as
+    // flicker rather than pure noise.
+    const scratch: string[] = [];
+    const start = performance.now();
+    let frame: number;
+
+    const randomChar = (target: string) => {
+      const char = SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)];
+      const isUpper = target !== target.toLowerCase() && target === target.toUpperCase();
+      return isUpper ? char.toUpperCase() : char;
+    };
+
+    const tick = (now: number) => {
+      const elapsed = (now - start) / 1000;
+      let out = '';
+      let settled = true;
+
+      for (let i = 0; i < length; i++) {
+        const to = toChars[i] ?? '';
+        const scrambleStart = baseDelay + i * charDelay;
+
+        if (elapsed >= scrambleStart + scrambleDuration) {
+          out += to;
+        } else if (elapsed >= scrambleStart) {
+          settled = false;
+          if (to === ' ') {
+            out += ' ';
+          } else {
+            if (!scratch[i] || Math.random() < 0.3) scratch[i] = randomChar(to || 'a');
+            out += scratch[i];
+          }
+        } else {
+          settled = false;
+          out += fromChars[i] ?? '';
+        }
+      }
+
+      displayRef.current = out;
+      setDisplay(out);
+      if (!settled) frame = requestAnimationFrame(tick);
+    };
+
+    frame = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(frame);
+  }, [children, baseDelay, charDelay, scrambleDuration]);
+
+  return <span className={className}>{display}</span>;
 }
 
 export function useCurrentTime() {

@@ -6,7 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import {
   AnimatedText,
-  TypewriterText,
+  ScrambleText,
   useCurrentTime,
   NewlyRole,
   FigmaRole,
@@ -58,13 +58,18 @@ export default function HomePanelMobile({
   const [footerOpen, setFooterOpen] = useState(false);
   const [footerOffset, setFooterOffset] = useState(FOOTER_OFFSET_FALLBACK);
   // True once the user has changed language: changed copy then re-animates
-  // with the typewriter effect instead of the intro animations.
+  // with the scramble effect instead of the intro animations.
   const [langSwitched, setLangSwitched] = useState(false);
+  // Language shown before the switch, so the outgoing copy stays on screen
+  // until the scramble replaces it.
+  const [prevLanguage, setPrevLanguage] = useState<Language>(language);
   const currentTime = useCurrentTime();
   const t = translations[language];
+  const fromT = translations[prevLanguage];
 
   // The globe cycles between English and Swedish
   const toggleLanguage = () => {
+    setPrevLanguage(language);
     setLangSwitched(true);
     onLanguageChange?.(language === 'en' ? 'sv' : 'en');
   };
@@ -215,24 +220,23 @@ export default function HomePanelMobile({
     ease: [0.76, 0, 0.15, 1] as const,
   };
 
-  // Typewriter timing for language switches: each bio line starts typing
+  // Scramble timing for language switches: each bio line starts resolving
   // when the previous one finishes, like one continuous typing pass.
   const switchCharDelay = 0.02;
   const bioIntroDelays = [bio1Delay, bio2Delay, bio3Delay, bio4Delay];
   const bioSwitchDelay = (index: number) =>
     t.bioLines.slice(0, index).reduce((sum, line) => sum + line.length * switchCharDelay, 0);
 
-  // Footer line two types after line one, segment by segment.
+  // Footer line two resolves after line one, segment by segment.
   const checkBackSwitchDelay = t.newPortfolio.length * switchCharDelay;
   const oldSiteSwitchDelay = checkBackSwitchDelay + t.checkBackPrefix.length * switchCharDelay;
-  const dotSwitchDelay = oldSiteSwitchDelay + t.oldSiteLink.length * switchCharDelay;
 
-  // Role labels render as plain text until a language switch, then retype.
-  const roleLabel = (text: string) =>
+  // Role labels render as plain text until a language switch, then scramble.
+  const roleLabel = (text: string, fromText: string) =>
     langSwitched ? (
-      <TypewriterText key={language} charDelay={switchCharDelay}>
+      <ScrambleText from={fromText} charDelay={switchCharDelay}>
         {text}
-      </TypewriterText>
+      </ScrambleText>
     ) : (
       text
     );
@@ -409,13 +413,13 @@ export default function HomePanelMobile({
                       {t.bioLines.map((line, index) => (
                         <p key={index} className={index < t.bioLines.length - 1 ? 'mb-0' : undefined}>
                           {langSwitched ? (
-                            <TypewriterText
-                              key={language}
+                            <ScrambleText
+                              from={fromT.bioLines[index]}
                               baseDelay={bioSwitchDelay(index)}
                               charDelay={switchCharDelay}
                             >
                               {line}
-                            </TypewriterText>
+                            </ScrambleText>
                           ) : showContent ? (
                             <AnimatedText baseDelay={bioIntroDelays[index]} staggerDelay={0.03}>
                               {line}
@@ -446,9 +450,9 @@ export default function HomePanelMobile({
                           }}
                         >
                           {langSwitched ? (
-                            <TypewriterText key={language} charDelay={switchCharDelay}>
+                            <ScrambleText from={fromT.sayHi} charDelay={switchCharDelay}>
                               {t.sayHi}
-                            </TypewriterText>
+                            </ScrambleText>
                           ) : showContent ? (
                             <motion.span
                               className="inline-block"
@@ -543,9 +547,9 @@ export default function HomePanelMobile({
                           }}
                           className="flex flex-col gap-1 items-start"
                         >
-                          <NewlyRole label={roleLabel(t.designAt)} />
-                          <FigmaRole label={roleLabel(t.campusLeaderAt)} />
-                          <TextQLRole label={roleLabel(t.prevDesignAt)} />
+                          <NewlyRole label={roleLabel(t.designAt, fromT.designAt)} />
+                          <FigmaRole label={roleLabel(t.campusLeaderAt, fromT.campusLeaderAt)} />
+                          <TextQLRole label={roleLabel(t.prevDesignAt, fromT.prevDesignAt)} />
                         </motion.div>
                       ) : (
                         <div className="opacity-0 flex flex-col gap-1 items-start">
@@ -643,18 +647,18 @@ export default function HomePanelMobile({
           <div className="max-w-[354px] font-normal text-[12px] tracking-[-0.24px] leading-normal">
             <p className="mb-0">
               {langSwitched ? (
-                <TypewriterText key={language} charDelay={switchCharDelay}>
+                <ScrambleText from={fromT.newPortfolio} charDelay={switchCharDelay}>
                   {t.newPortfolio}
-                </TypewriterText>
+                </ScrambleText>
               ) : (
                 t.newPortfolio
               )}
             </p>
             <p>
               {langSwitched ? (
-                <TypewriterText key={`${language}-prefix`} baseDelay={checkBackSwitchDelay} charDelay={switchCharDelay}>
+                <ScrambleText from={fromT.checkBackPrefix} baseDelay={checkBackSwitchDelay} charDelay={switchCharDelay}>
                   {t.checkBackPrefix}
-                </TypewriterText>
+                </ScrambleText>
               ) : (
                 t.checkBackPrefix
               )}
@@ -665,20 +669,14 @@ export default function HomePanelMobile({
                 className="underline"
               >
                 {langSwitched ? (
-                  <TypewriterText key={language} baseDelay={oldSiteSwitchDelay} charDelay={switchCharDelay}>
+                  <ScrambleText from={fromT.oldSiteLink} baseDelay={oldSiteSwitchDelay} charDelay={switchCharDelay}>
                     {t.oldSiteLink}
-                  </TypewriterText>
+                  </ScrambleText>
                 ) : (
                   t.oldSiteLink
                 )}
               </a>
-              {langSwitched ? (
-                <TypewriterText key={`${language}-dot`} baseDelay={dotSwitchDelay} charDelay={switchCharDelay}>
-                  .
-                </TypewriterText>
-              ) : (
-                '.'
-              )}
+              .
             </p>
           </div>
           <div className="flex items-end justify-between w-full">
@@ -695,9 +693,9 @@ export default function HomePanelMobile({
               <a href={`mailto:${EMAIL}`}>hello [at] winstonzhao.ca</a>
               <Link href={RESUME_URL}>
                 {langSwitched ? (
-                  <TypewriterText key={language} charDelay={switchCharDelay}>
+                  <ScrambleText from={fromT.resume} charDelay={switchCharDelay}>
                     {t.resume}
-                  </TypewriterText>
+                  </ScrambleText>
                 ) : (
                   t.resume
                 )}
