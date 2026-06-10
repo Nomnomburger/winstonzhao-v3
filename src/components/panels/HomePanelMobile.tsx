@@ -408,7 +408,11 @@ export default function HomePanelMobile({
                       {t.bioLines.map((line, index) => (
                         <p key={index} className={index < t.bioLines.length - 1 ? 'mb-0' : undefined}>
                           {langSwitched ? (
-                            <ScrambleText from={fromT.bioLines[index]} charDelay={switchCharDelay}>
+                            <ScrambleText
+                              from={fromT.bioLines[index]}
+                              charDelay={switchCharDelay}
+                              className="whitespace-nowrap"
+                            >
                               {line}
                             </ScrambleText>
                           ) : showContent ? (
