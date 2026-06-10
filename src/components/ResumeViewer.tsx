@@ -70,21 +70,11 @@ interface BufferedPageProps {
 // hidden slot, and swap slots only once the new render has completed.
 function BufferedPage({ pageNumber, displayWidth, settledWidth }: BufferedPageProps) {
   const [aspect, setAspect] = useState<number | null>(null);
-  const [slotWidths, setSlotWidths] = useState<{ a: number; b: number | null }>({
-    a: settledWidth,
-    b: null,
-  });
   const [visibleSlot, setVisibleSlot] = useState<'a' | 'b'>('a');
+  const [visibleWidth, setVisibleWidth] = useState(settledWidth);
 
-  const visibleWidth = (visibleSlot === 'b' && slotWidths.b !== null ? slotWidths.b : slotWidths.a);
-
-  useEffect(() => {
-    if (settledWidth === visibleWidth) return;
-    const hidden = visibleSlot === 'a' ? 'b' : 'a';
-    setSlotWidths((widths) =>
-      widths[hidden] === settledWidth ? widths : { ...widths, [hidden]: settledWidth }
-    );
-  }, [settledWidth, visibleWidth, visibleSlot]);
+  // The hidden slot re-renders at the new size whenever one is pending
+  const hiddenWidth = settledWidth !== visibleWidth ? settledWidth : null;
 
   const handleLoadSuccess = (page: PDFPageProxy) => {
     const viewport = page.getViewport({ scale: 1 });
@@ -92,9 +82,9 @@ function BufferedPage({ pageNumber, displayWidth, settledWidth }: BufferedPagePr
   };
 
   const renderSlot = (slot: 'a' | 'b') => {
-    const width = slot === 'a' ? slotWidths.a : slotWidths.b;
-    if (width === null) return null;
     const isVisible = slot === visibleSlot;
+    const width = isVisible ? visibleWidth : hiddenWidth;
+    if (width === null) return null;
     return (
       <div
         className={`absolute top-0 left-0 ${isVisible ? '' : 'opacity-0 pointer-events-none'}`}
@@ -111,7 +101,10 @@ function BufferedPage({ pageNumber, displayWidth, settledWidth }: BufferedPagePr
           loading={null}
           onLoadSuccess={handleLoadSuccess}
           onRenderSuccess={() => {
-            if (!isVisible) setVisibleSlot(slot);
+            if (!isVisible) {
+              setVisibleSlot(slot);
+              setVisibleWidth(width);
+            }
           }}
         />
       </div>
