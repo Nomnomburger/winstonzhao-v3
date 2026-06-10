@@ -7,6 +7,7 @@ import Link from 'next/link';
 import {
   AnimatedText,
   ScrambleText,
+  formatStockholmTime,
   useCurrentTime,
   NewlyRole,
   FigmaRole,
@@ -47,7 +48,7 @@ export default function HomePanel({
   // Language shown before the switch, so the outgoing copy stays on screen
   // until the scramble replaces it.
   const [prevLanguage, setPrevLanguage] = useState<Language>(language);
-  const currentTime = useCurrentTime();
+  const currentTime = useCurrentTime(language);
   const t = translations[language];
   const fromT = translations[prevLanguage];
 
@@ -185,7 +186,7 @@ export default function HomePanel({
 
   // Scramble timing for language switches: all texts animate at once, each
   // sweeping through its own characters left to right.
-  const switchCharDelay = 0.02;
+  const switchCharDelay = 0.03;
   const bioIntroDelays = [bio1Delay, bio2Delay, bio3Delay, bio4Delay];
 
   // Role labels render as plain text until a language switch, then scramble.
@@ -467,7 +468,15 @@ export default function HomePanel({
                           ease: [0.4, 0, 0.2, 1],
                         }}
                       >
-                        <span className="font-medium text-[12px] tracking-[-0.24px] leading-normal">{currentTime}</span>
+                        <span className="font-medium text-[12px] tracking-[-0.24px] leading-normal">
+                          {langSwitched ? (
+                            <ScrambleText from={formatStockholmTime(prevLanguage)} charDelay={switchCharDelay}>
+                              {currentTime}
+                            </ScrambleText>
+                          ) : (
+                            currentTime
+                          )}
+                        </span>
                         <span className="w-2.5 h-2.5 rounded-full bg-[#1E1E1E] dark:bg-white shrink-0 self-center" />
                       </motion.div>
                     ) : (

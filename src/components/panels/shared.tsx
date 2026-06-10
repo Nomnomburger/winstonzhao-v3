@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { ReactNode, useEffect, useRef, useState } from 'react';
+import { Language } from './translations';
 
 // Placeholder targets — update with the real URLs
 export const LINKEDIN_URL = 'https://www.linkedin.com/in/zhaowinston/?skipRedirect=true';
@@ -77,7 +78,8 @@ export function AnimatedText({ children, baseDelay = 0, staggerDelay = 0.08, cla
   );
 }
 
-const SCRAMBLE_CHARS = 'abcdefghijklmnopqrstuvwxyzåäö';
+const SCRAMBLE_LETTERS = 'abcdefghijklmnopqrstuvwxyzåäö';
+const SCRAMBLE_DIGITS = '0123456789';
 
 interface ScrambleTextProps {
   children: string;
@@ -98,7 +100,7 @@ export function ScrambleText({
   from,
   baseDelay = 0,
   charDelay = 0.02,
-  scrambleDuration = 0.35,
+  scrambleDuration = 0.6,
   className = '',
 }: ScrambleTextProps) {
   const [display, setDisplay] = useState(from ?? children);
@@ -117,7 +119,13 @@ export function ScrambleText({
     let frame: number;
 
     const randomChar = (target: string) => {
-      const char = SCRAMBLE_CHARS[Math.floor(Math.random() * SCRAMBLE_CHARS.length)];
+      // Digits flicker through digits, letters through letters; spaces and
+      // punctuation stay in place so word shapes remain readable.
+      if (/\d/.test(target)) {
+        return SCRAMBLE_DIGITS[Math.floor(Math.random() * SCRAMBLE_DIGITS.length)];
+      }
+      if (target && !/\p{L}/u.test(target)) return target;
+      const char = SCRAMBLE_LETTERS[Math.floor(Math.random() * SCRAMBLE_LETTERS.length)];
       const isUpper = target !== target.toLowerCase() && target === target.toUpperCase();
       return isUpper ? char.toUpperCase() : char;
     };
@@ -129,21 +137,26 @@ export function ScrambleText({
 
       for (let i = 0; i < length; i++) {
         const to = toChars[i] ?? '';
+        const fromChar = fromChars[i] ?? '';
+
+        // Unchanged characters never scramble — e.g. only the digits move
+        // when the clock changes format.
+        if (fromChar === to) {
+          out += to;
+          continue;
+        }
+
         const scrambleStart = baseDelay + i * charDelay;
 
         if (elapsed >= scrambleStart + scrambleDuration) {
           out += to;
         } else if (elapsed >= scrambleStart) {
           settled = false;
-          if (to === ' ') {
-            out += ' ';
-          } else {
-            if (!scratch[i] || Math.random() < 0.3) scratch[i] = randomChar(to || 'a');
-            out += scratch[i];
-          }
+          if (!scratch[i] || Math.random() < 0.3) scratch[i] = randomChar(to);
+          out += scratch[i];
         } else {
           settled = false;
-          out += fromChars[i] ?? '';
+          out += fromChar;
         }
       }
 
@@ -159,25 +172,29 @@ export function ScrambleText({
   return <span className={className}>{display}</span>;
 }
 
-export function useCurrentTime() {
+// Swedish uses 24-hour time with no AM/PM; English keeps the 12-hour clock.
+export function formatStockholmTime(language: Language, date = new Date()) {
+  const formatter = new Intl.DateTimeFormat(language === 'sv' ? 'sv-SE' : 'en-US', {
+    hour: language === 'sv' ? '2-digit' : 'numeric',
+    minute: '2-digit',
+    hour12: language !== 'sv',
+    timeZone: 'Europe/Stockholm',
+  });
+  return `STHLM ${formatter.format(date)}`;
+}
+
+export function useCurrentTime(language: Language = 'en') {
   const [time, setTime] = useState<string>('');
 
   useEffect(() => {
-    const formatter = new Intl.DateTimeFormat('en-US', {
-      hour: 'numeric',
-      minute: '2-digit',
-      hour12: true,
-      timeZone: 'Europe/Stockholm',
-    });
-
     const updateTime = () => {
-      setTime(`STHLM ${formatter.format(new Date())}`);
+      setTime(formatStockholmTime(language));
     };
 
     updateTime();
     const interval = setInterval(updateTime, 1000);
     return () => clearInterval(interval);
-  }, []);
+  }, [language]);
 
   return time;
 }
