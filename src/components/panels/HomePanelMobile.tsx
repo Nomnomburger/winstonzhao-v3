@@ -132,15 +132,36 @@ export default function HomePanelMobile({ showContent = true }: HomePanelMobileP
   const arrowsDelay = timeDelay + 0.05;
   const globeDelay = contentBaseDelay + 0.1;
 
-  const toggleFooter = () => {
-    if (footerRef.current) {
+  const setFooterRevealed = (open: boolean) => {
+    if (open && footerRef.current) {
       setFooterOffset(footerRef.current.offsetHeight + 36);
     }
-    setFooterOpen((open) => !open);
+    setFooterOpen(open);
+  };
+
+  const toggleFooter = () => setFooterRevealed(!footerOpen);
+
+  // Swiping up reveals the footer, swiping down hides it
+  const touchStartY = useRef<number | null>(null);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartY.current = e.touches[0].clientY;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartY.current === null || !hasShrunk) return;
+    const deltaY = touchStartY.current - e.changedTouches[0].clientY;
+    touchStartY.current = null;
+    if (Math.abs(deltaY) < 50) return;
+    setFooterRevealed(deltaY > 0);
   };
 
   return (
-    <div className="bg-background h-dvh w-full relative overflow-hidden">
+    <div
+      className="bg-background h-dvh w-full relative overflow-hidden"
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+    >
       {/* Background column guides - 2 column mobile grid (currently hidden) */}
       {SHOW_COLUMN_GUIDES && (
         <div
@@ -493,13 +514,16 @@ export default function HomePanelMobile({ showContent = true }: HomePanelMobileP
                               ease: [0.4, 0, 0.2, 1],
                             }}
                           >
-                            <motion.span
-                              className="inline-block"
-                              animate={{ rotate: footerOpen ? 180 : 0 }}
-                              transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
-                            >
-                              ↑↑
-                            </motion.span>
+                            {[0, 1].map((i) => (
+                              <motion.span
+                                key={i}
+                                className="inline-block"
+                                animate={{ rotate: footerOpen ? 180 : 0 }}
+                                transition={{ duration: 0.4, delay: i * 0.08, ease: [0.4, 0, 0.2, 1] }}
+                              >
+                                ↑
+                              </motion.span>
+                            ))}
                           </motion.button>
                         ) : (
                           <span className="opacity-0 font-medium text-[12px] tracking-[-0.24px] leading-normal">↑↑</span>
