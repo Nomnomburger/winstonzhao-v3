@@ -78,5 +78,5 @@ body {
    hundreds of text spans every frame */
 .pdf-gesturing .react-pdf__Page__textContent,
 .pdf-gesturing .react-pdf__Page__annotations {
-  display: none;
+  visibility: hidden;
 }

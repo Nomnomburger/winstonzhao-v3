@@ -62,47 +62,13 @@ function ProgressiveBlur() {
   );
 }
 
-// Crisp re-render of a page at the current display size, shown only once
-// fully rendered so the base texture stays visible underneath meanwhile
-function RefineLayer({
-  pageNumber,
-  width,
-  onDone,
-}: {
-  pageNumber: number;
-  width: number;
-  onDone: () => void;
-}) {
-  const [ready, setReady] = useState(false);
-  const devicePixelRatio = Math.min(
-    typeof window === 'undefined' ? 1 : window.devicePixelRatio || 1,
-    MAX_REFINE_WIDTH / width
-  );
-  return (
-    <div
-      className="absolute top-0 left-0"
-      style={{ width, opacity: ready ? 1 : 0 }}
-    >
-      <Page
-        pageNumber={pageNumber}
-        width={width}
-        devicePixelRatio={devicePixelRatio}
-        renderTextLayer={false}
-        renderAnnotationLayer={false}
-        loading={null}
-        onRenderSuccess={() => {
-          setReady(true);
-          onDone();
-        }}
-      />
-    </div>
-  );
-}
-
 // Each page renders once at a fixed high resolution and zooming only
 // CSS-scales that texture, so gestures always run on the compositor and
 // can never be starved by pdf.js raster work. When a deep zoom sits idle,
-// a RefineLayer adds a pixel-exact render on top for sharpness.
+// a sharpening overlay adds a pixel-exact render on top. The overlay is
+// double-buffered: the previous sharp render stays visible (CSS-scaled)
+// while the next one renders in a hidden slot, so the page never falls
+// back to the soft base texture between zoom levels.
 function FixedResPage({
   pageNumber,
   renderWidth,
@@ -115,13 +81,21 @@ function FixedResPage({
   renderWidth: number;
   // Size the page currently occupies on screen
   displayWidth: number;
-  // When set (== displayWidth), mount the idle sharpening overlay
+  // When set (== displayWidth), a sharpening render at this width is wanted
   refineWidth: number | null;
   onRefineDone: () => void;
 }) {
   const [aspect, setAspect] = useState<number | null>(null);
+  // Last completed sharpening render: which slot holds it and its width
+  const [shown, setShown] = useState<{ slot: 'a' | 'b'; width: number } | null>(null);
 
-  const devicePixelRatio = Math.min(
+  const refineDpr = (width: number) =>
+    Math.min(
+      typeof window === 'undefined' ? 1 : window.devicePixelRatio || 1,
+      MAX_REFINE_WIDTH / width
+    );
+
+  const baseDpr = Math.min(
     (typeof window === 'undefined' ? 1 : window.devicePixelRatio || 1) * 2.5,
     MAX_CANVAS_WIDTH / renderWidth
   );
@@ -131,12 +105,54 @@ function FixedResPage({
     setAspect(viewport.height / viewport.width);
   };
 
+  // A new render is pending whenever a refine width is wanted and differs
+  // from what's already shown; it renders in the slot not currently shown
+  const pendingWidth =
+    refineWidth !== null && refineWidth !== shown?.width ? refineWidth : null;
+  const pendingSlot: 'a' | 'b' = shown?.slot === 'a' ? 'b' : 'a';
+
+  const renderRefineSlot = (slot: 'a' | 'b') => {
+    const isShown = shown !== null && shown.slot === slot;
+    const width = isShown ? shown.width : slot === pendingSlot ? pendingWidth : null;
+    if (width === null) return null;
+    return (
+      <div
+        key={slot}
+        className={`absolute top-0 left-0 ${isShown ? '' : 'opacity-0 pointer-events-none'}`}
+        style={{
+          width,
+          transform: isShown ? `scale(${displayWidth / width})` : undefined,
+          transformOrigin: 'top left',
+        }}
+      >
+        <Page
+          key={`${slot}-${width}`}
+          pageNumber={pageNumber}
+          width={width}
+          devicePixelRatio={refineDpr(width)}
+          renderTextLayer={false}
+          renderAnnotationLayer={false}
+          loading={null}
+          onRenderSuccess={() => {
+            if (!isShown) {
+              setShown({ slot, width });
+              onRefineDone();
+            }
+          }}
+        />
+      </div>
+    );
+  };
+
   return (
     <div
       className="relative overflow-hidden border-[0.5px] border-black"
       style={{
         width: displayWidth,
         height: displayWidth * (aspect ?? LETTER_ASPECT),
+        // Own compositor layer: the border then scales with the gesture
+        // transform instead of waiting for a re-raster
+        transform: 'translateZ(0)',
       }}
     >
       <div
@@ -150,19 +166,13 @@ function FixedResPage({
         <Page
           pageNumber={pageNumber}
           width={renderWidth}
-          devicePixelRatio={devicePixelRatio}
+          devicePixelRatio={baseDpr}
           loading={null}
           onLoadSuccess={handleLoadSuccess}
         />
       </div>
-      {refineWidth !== null && (
-        <RefineLayer
-          key={`refine-${refineWidth}`}
-          pageNumber={pageNumber}
-          width={refineWidth}
-          onDone={onRefineDone}
-        />
-      )}
+      {renderRefineSlot('a')}
+      {renderRefineSlot('b')}
     </div>
   );
 }
@@ -203,6 +213,9 @@ export default function ResumeViewer() {
   // Idle sharpening overlay: target width, and whether a render is running
   const [refineWidth, setRefineWidth] = useState<number | null>(null);
   const refineInFlight = useRef(false);
+  // Bumped whenever a gesture ends, so the sharpening pass reschedules
+  // even when the gesture didn't change the committed scale
+  const [idleTick, setIdleTick] = useState(0);
 
   const startGesture = useCallback((anchorY: number) => {
     const content = contentRef.current;
@@ -256,6 +269,7 @@ export default function ResumeViewer() {
     const g = gesture.current;
     if (!content || !container || !g) return;
     gesture.current = null;
+    setIdleTick((tick) => tick + 1);
     const next = clampScale(committedScale.current * g.factor);
     if (next === committedScale.current) {
       // Pure pan (or no-op): fold the translation into the scroll position
@@ -295,15 +309,16 @@ export default function ResumeViewer() {
   useEffect(() => {
     if (baseWidth === null) return;
     const displayWidth = baseWidth * scale;
+    if (refineWidth === displayWidth) return;
     const dpr = window.devicePixelRatio || 1;
     const baseTexture = Math.min(baseWidth * dpr * 2.5, MAX_CANVAS_WIDTH);
     if (displayWidth * dpr <= baseTexture) return;
     const timer = setTimeout(() => {
       refineInFlight.current = true;
       setRefineWidth(displayWidth);
-    }, 450);
+    }, 150);
     return () => clearTimeout(timer);
-  }, [scale, baseWidth]);
+  }, [scale, baseWidth, idleTick, refineWidth]);
 
   const handleRefineDone = useCallback(() => {
     refineInFlight.current = false;
