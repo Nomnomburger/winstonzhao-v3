@@ -199,6 +199,14 @@ export default function HomePanel({
       text
     );
 
+  // The Chinese version uses a lighter weight and half the tracking for the
+  // large display text (per the zh Figma frame).
+  const isZh = language === 'zh';
+  const bigTextWeight = isZh ? 'font-light' : 'font-medium';
+  const bigTextTracking = isZh
+    ? 'tracking-[-0.8px] lg:tracking-[-1.04px] xl:tracking-[-1.28px]'
+    : 'tracking-[-1.6px] lg:tracking-[-2.08px] xl:tracking-[-2.56px]';
+
   return (
     <div className="bg-background flex flex-col gap-9 h-screen w-full relative overflow-hidden">
       {/* Background column guides - same grid as the page content (currently hidden) */}
@@ -246,12 +254,28 @@ export default function HomePanel({
                 marginBottom: '-0.1em',
               }}
             >
-              {showContent && (
+              {langSwitched ? (
+                <ScrambleText from={fromT.name} charDelay={switchCharDelay}>
+                  {t.name}
+                </ScrambleText>
+              ) : showContent ? (
                 <AnimatedText baseDelay={headerDelay} staggerDelay={stagger} instant={instant}>
-                  Winston Zhao
+                  {t.name}
                 </AnimatedText>
+              ) : (
+                <span className="opacity-0">{t.name}</span>
               )}
-              {!showContent && <span className="opacity-0">Winston Zhao</span>}
+              {/* Chinese name beside the header (zh only) */}
+              {langSwitched && (
+                <span
+                  className="inline-block align-top font-light text-[20px] leading-none ml-4"
+                  style={{ letterSpacing: '-0.02em' }}
+                >
+                  <ScrambleText from={fromT.nativeName} charDelay={switchCharDelay}>
+                    {t.nativeName}
+                  </ScrambleText>
+                </span>
+              )}
             </motion.h1>
 
             {/* Language Switcher - appears after shrink */}
@@ -273,7 +297,9 @@ export default function HomePanel({
                   <button type="button" onClick={() => handleLanguageChange('sv')} className="cursor-pointer">
                     SV
                   </button>
-                  <p>中文</p>
+                  <button type="button" onClick={() => handleLanguageChange('zh')} className="cursor-pointer">
+                    中文
+                  </button>
                 </motion.div>
               )}
             </AnimatePresence>
@@ -296,10 +322,10 @@ export default function HomePanel({
                       href={LINKEDIN_URL}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex gap-2 items-start font-medium text-[#1E1E1E] dark:text-white whitespace-nowrap cursor-pointer"
+                      className={`flex gap-2 items-start ${bigTextWeight} text-[#1E1E1E] dark:text-white whitespace-nowrap cursor-pointer`}
                     >
                       <motion.span
-                        className="text-[40px] lg:text-[52px] xl:text-[64px] leading-none tracking-[-1.6px] lg:tracking-[-2.08px] xl:tracking-[-2.56px]"
+                        className={`text-[40px] lg:text-[52px] xl:text-[64px] leading-none ${bigTextTracking}`}
                         initial={{ clipPath: 'inset(-10% -10% 0 -10%)' }}
                         animate={{ clipPath: 'inset(-10% -10% -20% -10%)' }}
                         transition={{
@@ -339,7 +365,11 @@ export default function HomePanel({
                           ease: [0.4, 0, 0.2, 1],
                         }}
                       >
-                        {showContent ? (
+                        {langSwitched ? (
+                          <ScrambleText from={fromT.sayHiLabel} charDelay={switchCharDelay}>
+                            {t.sayHiLabel}
+                          </ScrambleText>
+                        ) : showContent ? (
                           <motion.span
                             className="inline-block"
                             initial={instant ? false : { y: '40%', opacity: 0 }}
@@ -350,10 +380,10 @@ export default function HomePanel({
                               ease: [0.4, 0, 0.2, 1],
                             }}
                           >
-                            LNKD
+                            {t.sayHiLabel}
                           </motion.span>
                         ) : (
-                          <span className="opacity-0">LNKD</span>
+                          <span className="opacity-0">{t.sayHiLabel}</span>
                         )}
                       </motion.span>
                     </a>
@@ -364,7 +394,7 @@ export default function HomePanel({
 
                   {/* Columns 3-5: Bio */}
                   <div className="col-span-4 lg:col-span-3 flex items-start justify-between">
-                    <div className="font-medium leading-none text-[40px] lg:text-[52px] xl:text-[64px] text-[#1E1E1E] dark:text-white whitespace-nowrap tracking-[-1.6px] lg:tracking-[-2.08px] xl:tracking-[-2.56px]">
+                    <div className={`${bigTextWeight} leading-none text-[40px] lg:text-[52px] xl:text-[64px] text-[#1E1E1E] dark:text-white whitespace-nowrap ${bigTextTracking}`}>
                       {t.bioLines.map((line, index) => (
                         <p key={index} className={index < t.bioLines.length - 1 ? 'mb-0' : undefined}>
                           {langSwitched ? (
@@ -548,7 +578,13 @@ export default function HomePanel({
                       t.oldSiteLink
                     )}
                   </a>
-                  .
+                  {langSwitched ? (
+                    <ScrambleText from={fromT.period} charDelay={switchCharDelay}>
+                      {t.period}
+                    </ScrambleText>
+                  ) : (
+                    t.period
+                  )}
                 </p>
               </div>
             </div>

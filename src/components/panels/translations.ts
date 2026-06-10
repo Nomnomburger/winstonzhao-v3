@@ -1,8 +1,12 @@
-export type Language = 'en' | 'sv';
+export type Language = 'en' | 'sv' | 'zh';
 
 export const translations = {
   en: {
+    name: 'Winston Zhao',
+    // Chinese name shown beside the header in the zh version
+    nativeName: '',
     sayHi: 'say hi',
+    sayHiLabel: 'LNKD',
     bioLines: [
       'product designer',
       'blending form and function',
@@ -15,10 +19,14 @@ export const translations = {
     newPortfolio: 'I’m in the process of creating a new portfolio.',
     checkBackPrefix: 'Check back soon, or ',
     oldSiteLink: 'visit the old site',
+    period: '.',
     resume: 'resume',
   },
   sv: {
+    name: 'Winston Zhao',
+    nativeName: '',
     sayHi: 'säg hej',
+    sayHiLabel: 'LNKD',
     bioLines: [
       'produktdesigner',
       'förenar form och funktion',
@@ -31,6 +39,27 @@ export const translations = {
     newPortfolio: 'Ny portfolio är på gång.',
     checkBackPrefix: 'Kika in igen snart, eller ',
     oldSiteLink: 'besök den gamla sajten',
+    period: '.',
     resume: 'CV (EN)',
+  },
+  zh: {
+    name: 'Zhao Sizhong',
+    nativeName: '赵思中',
+    sayHi: '打个招呼',
+    sayHiLabel: '领英',
+    bioLines: [
+      '产品设计师',
+      '兼顾形式与功能',
+      '现居斯德哥尔摩',
+      '正参与 Newly 的开发',
+    ],
+    designAt: '产品设计在',
+    campusLeaderAt: '校园大使',
+    prevDesignAt: '前 产品设计在',
+    newPortfolio: '正在重新设计网站和补充新项目。',
+    checkBackPrefix: '记得回来看看，或先',
+    oldSiteLink: '访问旧网站',
+    period: '。',
+    resume: '简历 (英文)',
   },
 } as const satisfies Record<Language, unknown>;

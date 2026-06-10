@@ -80,6 +80,7 @@ export function AnimatedText({ children, baseDelay = 0, staggerDelay = 0.08, cla
 
 const SCRAMBLE_LETTERS = 'abcdefghijklmnopqrstuvwxyzåäö';
 const SCRAMBLE_DIGITS = '0123456789';
+const SCRAMBLE_CJK = '设计形式功能产品师招呼现居开发参与网站项目简历英文访问德哥尔摩';
 
 interface ScrambleTextProps {
   children: string;
@@ -119,10 +120,14 @@ export function ScrambleText({
     let frame: number;
 
     const randomChar = (target: string) => {
-      // Digits flicker through digits, letters through letters; spaces and
-      // punctuation stay in place so word shapes remain readable.
+      // Digits flicker through digits, CJK through CJK, letters through
+      // letters; spaces and punctuation stay in place so word shapes
+      // remain readable.
       if (/\d/.test(target)) {
         return SCRAMBLE_DIGITS[Math.floor(Math.random() * SCRAMBLE_DIGITS.length)];
+      }
+      if (/[㐀-鿿]/.test(target)) {
+        return SCRAMBLE_CJK[Math.floor(Math.random() * SCRAMBLE_CJK.length)];
       }
       if (target && !/\p{L}/u.test(target)) return target;
       const char = SCRAMBLE_LETTERS[Math.floor(Math.random() * SCRAMBLE_LETTERS.length)];
@@ -172,12 +177,19 @@ export function ScrambleText({
   return <span className={className}>{display}</span>;
 }
 
-// Swedish uses 24-hour time with no AM/PM; English keeps the 12-hour clock.
+// English uses the 12-hour clock; Swedish and Chinese use 24-hour time
+// with no AM/PM.
+const TIME_LOCALES: Record<Language, string> = {
+  en: 'en-US',
+  sv: 'sv-SE',
+  zh: 'zh-CN',
+};
+
 export function formatStockholmTime(language: Language, date = new Date()) {
-  const formatter = new Intl.DateTimeFormat(language === 'sv' ? 'sv-SE' : 'en-US', {
-    hour: language === 'sv' ? '2-digit' : 'numeric',
+  const formatter = new Intl.DateTimeFormat(TIME_LOCALES[language], {
+    hour: language === 'en' ? 'numeric' : '2-digit',
     minute: '2-digit',
-    hour12: language !== 'sv',
+    hour12: language === 'en',
     timeZone: 'Europe/Stockholm',
   });
   return `STHLM ${formatter.format(date)}`;
