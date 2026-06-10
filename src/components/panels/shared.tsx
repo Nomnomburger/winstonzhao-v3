@@ -90,6 +90,11 @@ interface ScrambleTextProps {
   charDelay?: number;
   // How long each character flickers through random letters before settling
   scrambleDuration?: number;
+  // 'right' matches the texts up from their right ends, so when the length
+  // changes the characters are added or deleted on the LEFT and the right
+  // edge stays put. Use for right-anchored text. The sweep also runs from
+  // the anchored side outward, so insertions appear last, furthest left.
+  align?: 'left' | 'right';
   className?: string;
 }
 
@@ -102,6 +107,7 @@ export function ScrambleText({
   baseDelay = 0,
   charDelay = 0.02,
   scrambleDuration = 0.5,
+  align = 'left',
   className = '',
 }: ScrambleTextProps) {
   const [display, setDisplay] = useState(from ?? children);
@@ -110,8 +116,12 @@ export function ScrambleText({
   useEffect(() => {
     if (displayRef.current === children) return;
 
-    const fromChars = Array.from(displayRef.current);
-    const toChars = Array.from(children);
+    // Right-aligned mode runs the whole animation on reversed strings (and
+    // reverses each frame back on the way out), which lines the texts up
+    // from their right ends.
+    const reverse = (s: string) => Array.from(s).reverse().join('');
+    const fromChars = Array.from(align === 'right' ? reverse(displayRef.current) : displayRef.current);
+    const toChars = Array.from(align === 'right' ? reverse(children) : children);
     const length = Math.max(fromChars.length, toChars.length);
     // Current random letter per slot, held for a few frames so it reads as
     // flicker rather than pure noise.
@@ -178,14 +188,15 @@ export function ScrambleText({
         }
       }
 
-      displayRef.current = out;
-      setDisplay(out);
+      const text = align === 'right' ? reverse(out) : out;
+      displayRef.current = text;
+      setDisplay(text);
       if (!settled) frame = requestAnimationFrame(tick);
     };
 
     frame = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(frame);
-  }, [children, baseDelay, charDelay, scrambleDuration]);
+  }, [children, baseDelay, charDelay, scrambleDuration, align]);
 
   return <span className={className}>{display}</span>;
 }

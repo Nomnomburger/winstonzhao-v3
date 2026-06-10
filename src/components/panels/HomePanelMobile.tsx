@@ -244,6 +244,13 @@ export default function HomePanelMobile({
   // Scramble timing for language switches: all texts animate at once, each
   // sweeping through its own characters left to right.
   const switchCharDelay = 0.02;
+  // The second name line is right-anchored during switches, so extra
+  // characters ("Zhao" → "Sizhong") are added on the LEFT and the right
+  // edge never leaves the page. Its sweep is held back and spread out so
+  // the profile photo (0.8s slide to the page edge in Chinese) clears the
+  // lane before the name grows into it.
+  const lastNameSwitchDelay = 0.3;
+  const lastNameSwitchCharDelay = 0.05;
   const bioIntroDelays = [bio1Delay, bio2Delay, bio3Delay, bio4Delay];
 
   // Role labels render as plain text until a language switch, then scramble.
@@ -377,15 +384,24 @@ export default function HomePanelMobile({
                     </span>
                   )}
                 </span>
+                {/* After a language switch the line becomes a right-anchored
+                    flex row: if the scrambling name is momentarily wider than
+                    the padded box it overflows to the LEFT, so the right edge
+                    never goes off screen while the padding tween catches up. */}
                 <motion.span
-                  className="block whitespace-nowrap relative"
+                  className={`${langSwitched ? 'flex justify-end' : 'block'} whitespace-nowrap relative`}
                   animate={{
                     paddingLeft: hasShrunk ? `${lineOffsetRatio * 100}%` : '0%',
                   }}
                   transition={shrinkTransition}
                 >
                   {langSwitched ? (
-                    <ScrambleText from={fromLastName} charDelay={switchCharDelay}>
+                    <ScrambleText
+                      from={fromLastName}
+                      align="right"
+                      baseDelay={lastNameSwitchDelay}
+                      charDelay={lastNameSwitchCharDelay}
+                    >
                       {lastName}
                     </ScrambleText>
                   ) : showContent ? (
