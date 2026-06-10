@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import {
   AnimatedText,
   useCurrentTime,
@@ -34,9 +35,11 @@ const FOOTER_OFFSET_FALLBACK = 188;
 
 interface HomePanelMobileProps {
   showContent?: boolean;
+  // Render everything in its final state with no entrance animations
+  instant?: boolean;
 }
 
-export default function HomePanelMobile({ showContent = true }: HomePanelMobileProps) {
+export default function HomePanelMobile({ showContent = true, instant = false }: HomePanelMobileProps) {
   const headerRef = useRef<HTMLHeadingElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const footerRef = useRef<HTMLDivElement>(null);
@@ -155,12 +158,12 @@ export default function HomePanelMobile({ showContent = true }: HomePanelMobileP
 
   // Trigger shrink after delay
   useEffect(() => {
-    if (!showContent) return;
+    if (!showContent || instant) return;
     const timer = setTimeout(() => {
       setHasShrunk(true);
     }, shrinkDelay * 1000);
     return () => clearTimeout(timer);
-  }, [showContent]);
+  }, [showContent, instant]);
 
   // Animation configuration - content appears during/after shrink
   const contentBaseDelay = 0.4; // Delay after shrink before content animates

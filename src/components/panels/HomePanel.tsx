@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import {
   AnimatedText,
   useCurrentTime,
@@ -17,6 +18,8 @@ import {
 
 interface HomePanelProps {
   showContent?: boolean;
+  // Render everything in its final state with no entrance animations
+  instant?: boolean;
 }
 
 // Vertical column guides are hidden in the current design.
@@ -116,12 +119,12 @@ export default function HomePanel({ showContent = true }: HomePanelProps) {
 
   // Trigger shrink after delay
   useEffect(() => {
-    if (!showContent) return;
+    if (!showContent || instant) return;
     const timer = setTimeout(() => {
       setHasShrunk(true);
     }, shrinkDelay * 1000);
     return () => clearTimeout(timer);
-  }, [showContent]);
+  }, [showContent, instant]);
 
   // Animation configuration - content appears during/after shrink
   const contentBaseDelay = 0.4; // Delay after shrink before content animates
@@ -204,7 +207,7 @@ export default function HomePanel({ showContent = true }: HomePanelProps) {
               }}
             >
               {showContent && (
-                <AnimatedText baseDelay={headerDelay} staggerDelay={stagger}>
+                <AnimatedText baseDelay={headerDelay} staggerDelay={stagger} instant={instant}>
                   Winston Zhao
                 </AnimatedText>
               )}
@@ -216,7 +219,7 @@ export default function HomePanel({ showContent = true }: HomePanelProps) {
               {hasShrunk && showContent && (
                 <motion.div
                   className="flex gap-1.5 items-center justify-center font-normal text-[12px] tracking-[-0.24px] text-[#1E1E1E] dark:text-white whitespace-nowrap leading-normal"
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={instant ? false : { opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{
                     duration: 0.6,
@@ -237,7 +240,7 @@ export default function HomePanel({ showContent = true }: HomePanelProps) {
             {hasShrunk && (
               <motion.div
                 className="flex flex-col gap-12 w-full"
-                initial={{ opacity: 0 }}
+                initial={instant ? false : { opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.3 }}
               >
@@ -264,7 +267,7 @@ export default function HomePanel({ showContent = true }: HomePanelProps) {
                         {showContent ? (
                           <motion.span
                             className="inline-block"
-                            initial={{ y: '40%', opacity: 0 }}
+                            initial={instant ? false : { y: '40%', opacity: 0 }}
                             animate={{ y: '0%', opacity: 1 }}
                             transition={{
                               duration: 0.9,
@@ -291,7 +294,7 @@ export default function HomePanel({ showContent = true }: HomePanelProps) {
                         {showContent ? (
                           <motion.span
                             className="inline-block"
-                            initial={{ y: '40%', opacity: 0 }}
+                            initial={instant ? false : { y: '40%', opacity: 0 }}
                             animate={{ y: '0%', opacity: 1 }}
                             transition={{
                               duration: 0.9,
@@ -316,7 +319,7 @@ export default function HomePanel({ showContent = true }: HomePanelProps) {
                     <div className="font-medium leading-none text-[40px] lg:text-[52px] xl:text-[64px] text-[#1E1E1E] dark:text-white whitespace-nowrap tracking-[-1.6px] lg:tracking-[-2.08px] xl:tracking-[-2.56px]">
                       <p className="mb-0">
                         {showContent ? (
-                          <AnimatedText baseDelay={bio1Delay} staggerDelay={0.03}>
+                          <AnimatedText baseDelay={bio1Delay} staggerDelay={0.03} instant={instant}>
                             product designer
                           </AnimatedText>
                         ) : (
@@ -325,7 +328,7 @@ export default function HomePanel({ showContent = true }: HomePanelProps) {
                       </p>
                       <p className="mb-0">
                         {showContent ? (
-                          <AnimatedText baseDelay={bio2Delay} staggerDelay={0.03}>
+                          <AnimatedText baseDelay={bio2Delay} staggerDelay={0.03} instant={instant}>
                             blending form and function
                           </AnimatedText>
                         ) : (
@@ -334,7 +337,7 @@ export default function HomePanel({ showContent = true }: HomePanelProps) {
                       </p>
                       <p className="mb-0">
                         {showContent ? (
-                          <AnimatedText baseDelay={bio3Delay} staggerDelay={0.03}>
+                          <AnimatedText baseDelay={bio3Delay} staggerDelay={0.03} instant={instant}>
                             currently in stockholm
                           </AnimatedText>
                         ) : (
@@ -343,7 +346,7 @@ export default function HomePanel({ showContent = true }: HomePanelProps) {
                       </p>
                       <p>
                         {showContent ? (
-                          <AnimatedText baseDelay={bio4Delay} staggerDelay={0.03}>
+                          <AnimatedText baseDelay={bio4Delay} staggerDelay={0.03} instant={instant}>
                             building at newly
                           </AnimatedText>
                         ) : (
@@ -354,7 +357,7 @@ export default function HomePanel({ showContent = true }: HomePanelProps) {
                     {showContent ? (
                       <motion.div
                         className="w-9 h-9 shrink-0 text-[#1E1E1E] dark:text-white"
-                        initial={{ opacity: 0, scale: 0.8 }}
+                        initial={instant ? false : { opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{
                           duration: 0.8,
@@ -396,7 +399,7 @@ export default function HomePanel({ showContent = true }: HomePanelProps) {
                   >
                     {showContent ? (
                       <motion.div
-                        initial={{ y: '40%', opacity: 0 }}
+                        initial={instant ? false : { y: '40%', opacity: 0 }}
                         animate={{ y: '0%', opacity: 1 }}
                         transition={{
                           duration: 0.9,
@@ -419,7 +422,7 @@ export default function HomePanel({ showContent = true }: HomePanelProps) {
                   {/* Column 5: Time */}
                   <motion.div
                     className="col-span-1 flex items-center justify-end gap-1.5 whitespace-nowrap"
-                    initial={{ clipPath: 'inset(-10% -10% 0 -10%)' }}
+                    initial={instant ? false : { clipPath: 'inset(-10% -10% 0 -10%)' }}
                     animate={{ clipPath: 'inset(-10% -10% -20% -10%)' }}
                     transition={{
                       duration: 0.5,
@@ -430,7 +433,7 @@ export default function HomePanel({ showContent = true }: HomePanelProps) {
                     {showContent ? (
                       <motion.div
                         className="flex items-center gap-1.5"
-                        initial={{ y: '40%', opacity: 0 }}
+                        initial={instant ? false : { y: '40%', opacity: 0 }}
                         animate={{ y: '0%', opacity: 1 }}
                         transition={{
                           duration: 0.9,
@@ -460,7 +463,7 @@ export default function HomePanel({ showContent = true }: HomePanelProps) {
         {hasShrunk && showContent && (
           <motion.div
             className="relative flex flex-1 items-end justify-between p-9 w-full text-[#1E1E1E] dark:text-white"
-            initial={{ opacity: 0, y: 20 }}
+            initial={instant ? false : { opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
               duration: 0.6,
@@ -496,7 +499,7 @@ export default function HomePanel({ showContent = true }: HomePanelProps) {
             </div>
             <div className="flex gap-3 items-center justify-end font-normal text-[12px] tracking-[-0.24px] leading-normal whitespace-nowrap">
               <a href={`mailto:${EMAIL}`}>hello [at] winstonzhao.ca</a>
-              <a href={RESUME_URL} target="_blank" rel="noopener noreferrer">resume</a>
+              <Link href={RESUME_URL}>resume</Link>
             </div>
           </motion.div>
         )}

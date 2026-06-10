@@ -6,16 +6,24 @@ import { useEffect, useState } from 'react';
 // Placeholder targets — update with the real URLs
 export const LINKEDIN_URL = 'https://www.linkedin.com/in/zhaowinston/?skipRedirect=true';
 export const OLD_SITE_URL = 'https://winstonzhao.ca';
-export const RESUME_URL = '/resume.pdf';
+export const RESUME_URL = '/resume';
 export const EMAIL = 'hello@winstonzhao.ca';
 
 interface AnimatedWordProps {
   children: string;
   delay: number;
   movement?: string;
+  instant?: boolean;
 }
 
-export function AnimatedWord({ children, delay, movement = '40%' }: AnimatedWordProps) {
+export function AnimatedWord({ children, delay, movement = '40%', instant = false }: AnimatedWordProps) {
+  if (instant) {
+    return (
+      <span className="inline-block align-bottom">
+        <span className="inline-block">{children}</span>
+      </span>
+    );
+  }
   return (
     <motion.span
       className="inline-block align-bottom"
@@ -49,16 +57,17 @@ interface AnimatedTextProps {
   staggerDelay?: number;
   className?: string;
   movement?: string;
+  instant?: boolean;
 }
 
-export function AnimatedText({ children, baseDelay = 0, staggerDelay = 0.08, className = '', movement = '40%' }: AnimatedTextProps) {
+export function AnimatedText({ children, baseDelay = 0, staggerDelay = 0.08, className = '', movement = '40%', instant = false }: AnimatedTextProps) {
   const words = children.split(' ');
 
   return (
     <span className={className}>
       {words.map((word, index) => (
         <span key={index}>
-          <AnimatedWord delay={baseDelay + index * staggerDelay} movement={movement}>
+          <AnimatedWord delay={baseDelay + index * staggerDelay} movement={movement} instant={instant}>
             {word}
           </AnimatedWord>
           {index < words.length - 1 && ' '}

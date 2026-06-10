@@ -29,12 +29,18 @@ function LoadingScreen({ onComplete }: { onComplete: () => void }) {
   );
 }
 
+// Survives client-side navigation (e.g. visiting /resume and closing it)
+// so the intro only plays on a fresh page load
+let hasPlayedIntro = false;
+
 export default function Home() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [showContent, setShowContent] = useState(false);
+  const [skipIntro] = useState(hasPlayedIntro);
+  const [isLoading, setIsLoading] = useState(!hasPlayedIntro);
+  const [showContent, setShowContent] = useState(hasPlayedIntro);
   const isMobile = useIsMobile();
 
   const handleLoadingComplete = () => {
+    hasPlayedIntro = true;
     setIsLoading(false);
     // Small delay before starting content animations
     setTimeout(() => setShowContent(true), 100);
@@ -47,9 +53,9 @@ export default function Home() {
       </AnimatePresence>
 
       {isMobile ? (
-        <HomePanelMobile showContent={showContent} />
+        <HomePanelMobile showContent={showContent} instant={skipIntro} />
       ) : (
-        <HomePanel showContent={showContent} />
+        <HomePanel showContent={showContent} instant={skipIntro} />
       )}
     </div>
   );

@@ -51,3 +51,21 @@ body {
   text-decoration-thickness: 0.5px;
   text-underline-offset: 0.15em;
 }
+
+/* Scrollable but without visible scrollbars (resume viewer) */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* While pinch-zooming the resume, hide the pdf.js DOM layers so the
+   browser only scales the canvas texture instead of re-rasterizing
+   hundreds of text spans every frame */
+.pdf-gesturing .react-pdf__Page__textContent,
+.pdf-gesturing .react-pdf__Page__annotations {
+  visibility: hidden;
+}
