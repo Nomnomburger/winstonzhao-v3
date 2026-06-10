@@ -234,29 +234,28 @@ export default function HomePanelMobile({ showContent = true }: HomePanelMobileP
                     <span className="opacity-0">Zhao</span>
                   )}
 
-                  {/* Profile picture - appears beside "Zhao" once the name settles */}
-                  <AnimatePresence>
-                    {hasShrunk && showContent && (
-                      <motion.span
-                        className="block absolute right-[calc(50%+6px)] top-1/2 -mt-[23px] w-[46px] h-[46px]"
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{
-                          duration: 0.6,
-                          delay: shrinkDuration,
-                          ease: [0.4, 0, 0.2, 1],
-                        }}
-                      >
-                        <Image
-                          src="/profile.png"
-                          alt="Winston Zhao"
-                          width={46}
-                          height={46}
-                          className="w-full h-full object-cover"
-                        />
-                      </motion.span>
-                    )}
-                  </AnimatePresence>
+                  {/* Profile picture - appears beside "Zhao" once the name settles.
+                      Always mounted (with priority) so the image is preloaded
+                      while the loading line runs, instead of popping in late. */}
+                  <motion.span
+                    className="block absolute right-[calc(50%+6px)] top-1/2 -mt-[23px] w-[46px] h-[46px]"
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={hasShrunk && showContent ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+                    transition={{
+                      duration: 0.6,
+                      delay: shrinkDuration,
+                      ease: [0.4, 0, 0.2, 1],
+                    }}
+                  >
+                    <Image
+                      src="/profile.png"
+                      alt="Winston Zhao"
+                      width={46}
+                      height={46}
+                      priority
+                      className="w-full h-full object-cover"
+                    />
+                  </motion.span>
                 </motion.span>
               </motion.h1>
 
