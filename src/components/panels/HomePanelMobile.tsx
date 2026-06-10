@@ -22,13 +22,15 @@ const ZHAO_COLUMN_OFFSET = '51.7%';
 
 interface HomePanelMobileProps {
   showContent?: boolean;
+  // Render everything in its final state with no entrance animations
+  instant?: boolean;
 }
 
-export default function HomePanelMobile({ showContent = true }: HomePanelMobileProps) {
+export default function HomePanelMobile({ showContent = true, instant = false }: HomePanelMobileProps) {
   const headerRef = useRef<HTMLHeadingElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [fontSize, setFontSize] = useState('96px');
-  const [hasShrunk, setHasShrunk] = useState(false);
+  const [hasShrunk, setHasShrunk] = useState(instant);
   const currentTime = useCurrentTime();
 
   useEffect(() => {
@@ -89,12 +91,12 @@ export default function HomePanelMobile({ showContent = true }: HomePanelMobileP
 
   // Trigger shrink after delay
   useEffect(() => {
-    if (!showContent) return;
+    if (!showContent || instant) return;
     const timer = setTimeout(() => {
       setHasShrunk(true);
     }, shrinkDelay * 1000);
     return () => clearTimeout(timer);
-  }, [showContent]);
+  }, [showContent, instant]);
 
   // Animation configuration - content appears during/after shrink
   const contentBaseDelay = 0.4; // Delay after shrink before content animates
@@ -133,7 +135,7 @@ export default function HomePanelMobile({ showContent = true }: HomePanelMobileP
           <motion.div
             key={i}
             className="border-x border-[#1E1E1E]/8 dark:border-white/8 origin-top"
-            initial={{ scaleY: 0 }}
+            initial={instant ? false : { scaleY: 0 }}
             animate={{ scaleY: showContent ? 1 : 0 }}
             transition={{ duration: 1.2, delay: headerAnimationDelay + i * 0.15, ease: [0.22, 1, 0.36, 1] }}
           />
@@ -161,7 +163,7 @@ export default function HomePanelMobile({ showContent = true }: HomePanelMobileP
             >
               <span className="block whitespace-nowrap">
                 {showContent ? (
-                  <AnimatedText baseDelay={headerDelay} staggerDelay={stagger}>
+                  <AnimatedText baseDelay={headerDelay} staggerDelay={stagger} instant={instant}>
                     Winston
                   </AnimatedText>
                 ) : (
@@ -179,7 +181,7 @@ export default function HomePanelMobile({ showContent = true }: HomePanelMobileP
                 }}
               >
                 {showContent ? (
-                  <AnimatedText baseDelay={headerDelay + stagger} staggerDelay={stagger}>
+                  <AnimatedText baseDelay={headerDelay + stagger} staggerDelay={stagger} instant={instant}>
                     Zhao
                   </AnimatedText>
                 ) : (
@@ -193,7 +195,7 @@ export default function HomePanelMobile({ showContent = true }: HomePanelMobileP
               {hasShrunk && showContent && (
                 <motion.div
                   className="absolute top-1 right-0 w-4 h-4 text-[#1E1E1E] dark:text-white"
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={instant ? false : { opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{
                     duration: 0.6,
@@ -216,7 +218,7 @@ export default function HomePanelMobile({ showContent = true }: HomePanelMobileP
             {hasShrunk && (
               <motion.div
                 className="flex flex-col flex-1 w-full"
-                initial={{ opacity: 0 }}
+                initial={instant ? false : { opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.3 }}
               >
@@ -225,7 +227,7 @@ export default function HomePanelMobile({ showContent = true }: HomePanelMobileP
                   <div className="font-medium leading-none text-[32px] text-[#1E1E1E] dark:text-white tracking-[-1.28px]">
                     <p className="mb-0">
                       {showContent ? (
-                        <AnimatedText baseDelay={bio1Delay} staggerDelay={0.03}>
+                        <AnimatedText baseDelay={bio1Delay} staggerDelay={0.03} instant={instant}>
                           product designer
                         </AnimatedText>
                       ) : (
@@ -234,7 +236,7 @@ export default function HomePanelMobile({ showContent = true }: HomePanelMobileP
                     </p>
                     <p className="mb-0">
                       {showContent ? (
-                        <AnimatedText baseDelay={bio2Delay} staggerDelay={0.03}>
+                        <AnimatedText baseDelay={bio2Delay} staggerDelay={0.03} instant={instant}>
                           blending form and function
                         </AnimatedText>
                       ) : (
@@ -243,7 +245,7 @@ export default function HomePanelMobile({ showContent = true }: HomePanelMobileP
                     </p>
                     <p className="mb-0">
                       {showContent ? (
-                        <AnimatedText baseDelay={bio3Delay} staggerDelay={0.03}>
+                        <AnimatedText baseDelay={bio3Delay} staggerDelay={0.03} instant={instant}>
                           currently in stockholm
                         </AnimatedText>
                       ) : (
@@ -252,7 +254,7 @@ export default function HomePanelMobile({ showContent = true }: HomePanelMobileP
                     </p>
                     <p>
                       {showContent ? (
-                        <AnimatedText baseDelay={bio4Delay} staggerDelay={0.03}>
+                        <AnimatedText baseDelay={bio4Delay} staggerDelay={0.03} instant={instant}>
                           building at newly
                         </AnimatedText>
                       ) : (
@@ -271,7 +273,7 @@ export default function HomePanelMobile({ showContent = true }: HomePanelMobileP
                     >
                       <motion.span
                         className="text-[32px] leading-none tracking-[-1.28px]"
-                        initial={{ clipPath: 'inset(-10% -10% 0 -10%)' }}
+                        initial={instant ? false : { clipPath: 'inset(-10% -10% 0 -10%)' }}
                         animate={{ clipPath: 'inset(-10% -10% -20% -10%)' }}
                         transition={{
                           duration: 0.5,
@@ -282,7 +284,7 @@ export default function HomePanelMobile({ showContent = true }: HomePanelMobileP
                         {showContent ? (
                           <motion.span
                             className="inline-block"
-                            initial={{ y: '40%', opacity: 0 }}
+                            initial={instant ? false : { y: '40%', opacity: 0 }}
                             animate={{ y: '0%', opacity: 1 }}
                             transition={{
                               duration: 0.9,
@@ -298,7 +300,7 @@ export default function HomePanelMobile({ showContent = true }: HomePanelMobileP
                       </motion.span>
                       <motion.span
                         className="text-[12px] leading-normal tracking-[-0.24px]"
-                        initial={{ clipPath: 'inset(-10% -10% 0 -10%)' }}
+                        initial={instant ? false : { clipPath: 'inset(-10% -10% 0 -10%)' }}
                         animate={{ clipPath: 'inset(-10% -10% -20% -10%)' }}
                         transition={{
                           duration: 0.5,
@@ -309,7 +311,7 @@ export default function HomePanelMobile({ showContent = true }: HomePanelMobileP
                         {showContent ? (
                           <motion.span
                             className="inline-block"
-                            initial={{ y: '40%', opacity: 0 }}
+                            initial={instant ? false : { y: '40%', opacity: 0 }}
                             animate={{ y: '0%', opacity: 1 }}
                             transition={{
                               duration: 0.9,
@@ -327,7 +329,7 @@ export default function HomePanelMobile({ showContent = true }: HomePanelMobileP
                     {showContent ? (
                       <motion.div
                         className="w-9 h-9 shrink-0 text-[#1E1E1E] dark:text-white"
-                        initial={{ opacity: 0, scale: 0.8 }}
+                        initial={instant ? false : { opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{
                           duration: 0.8,
@@ -358,7 +360,7 @@ export default function HomePanelMobile({ showContent = true }: HomePanelMobileP
                 {/* Roles and Time */}
                 <div className="flex items-start justify-between w-full text-[#1E1E1E] dark:text-white">
                   <motion.div
-                    initial={{ clipPath: 'inset(-10% -10% 0 -10%)' }}
+                    initial={instant ? false : { clipPath: 'inset(-10% -10% 0 -10%)' }}
                     animate={{ clipPath: 'inset(-10% -10% -20% -10%)' }}
                     transition={{
                       duration: 0.5,
@@ -368,7 +370,7 @@ export default function HomePanelMobile({ showContent = true }: HomePanelMobileP
                   >
                     {showContent ? (
                       <motion.div
-                        initial={{ y: '40%', opacity: 0 }}
+                        initial={instant ? false : { y: '40%', opacity: 0 }}
                         animate={{ y: '0%', opacity: 1 }}
                         transition={{
                           duration: 0.9,
@@ -391,7 +393,7 @@ export default function HomePanelMobile({ showContent = true }: HomePanelMobileP
                   {/* Time */}
                   <motion.div
                     className="flex items-center justify-end gap-1.5 whitespace-nowrap"
-                    initial={{ clipPath: 'inset(-10% -10% 0 -10%)' }}
+                    initial={instant ? false : { clipPath: 'inset(-10% -10% 0 -10%)' }}
                     animate={{ clipPath: 'inset(-10% -10% -20% -10%)' }}
                     transition={{
                       duration: 0.5,
@@ -402,7 +404,7 @@ export default function HomePanelMobile({ showContent = true }: HomePanelMobileP
                     {showContent ? (
                       <motion.div
                         className="flex items-center gap-1.5"
-                        initial={{ y: '40%', opacity: 0 }}
+                        initial={instant ? false : { y: '40%', opacity: 0 }}
                         animate={{ y: '0%', opacity: 1 }}
                         transition={{
                           duration: 0.9,
@@ -432,7 +434,7 @@ export default function HomePanelMobile({ showContent = true }: HomePanelMobileP
         {hasShrunk && showContent && (
           <motion.div
             className="relative flex flex-col gap-12 p-6 w-full text-[#1E1E1E] dark:text-white"
-            initial={{ opacity: 0, y: 20 }}
+            initial={instant ? false : { opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
               duration: 0.6,

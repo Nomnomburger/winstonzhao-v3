@@ -14,7 +14,6 @@ const RESUME_PDF = '/winstonzhao-resume.pdf';
 
 const MIN_SCALE = 0.5;
 const MAX_SCALE = 4;
-const PAGE_ASPECT_RATIO = 11 / 8.5; // US letter portrait
 
 const clampScale = (value: number) =>
   Math.min(MAX_SCALE, Math.max(MIN_SCALE, value));
@@ -60,29 +59,63 @@ export default function ResumeViewer() {
   const [numPages, setNumPages] = useState(0);
   const [baseWidth, setBaseWidth] = useState<number | null>(null);
   const [scale, setScale] = useState(1);
+  // pdf.js re-renders are too slow to follow a pinch, so the canvas renders
+  // at renderScale and CSS-scales by scale/renderScale until the gesture
+  // settles, then re-renders crisply at the final size
+  const [renderScale, setRenderScale] = useState(1);
+  const scaleRef = useRef(1);
   const pinchDistance = useRef<number | null>(null);
 
-  // Fit the page within the viewport at scale 1
+  useEffect(() => {
+    scaleRef.current = scale;
+  }, [scale]);
+
+  useEffect(() => {
+    if (scale === renderScale) return;
+    const timer = setTimeout(() => setRenderScale(scale), 250);
+    return () => clearTimeout(timer);
+  }, [scale, renderScale]);
+
+  // Start at a comfortable reading width, top-aligned so the rest scrolls
   useEffect(() => {
     const compute = () => {
-      const width = Math.min(
-        680,
-        window.innerWidth - 72,
-        (window.innerHeight - 180) / PAGE_ASPECT_RATIO
-      );
-      setBaseWidth(Math.max(260, width));
+      setBaseWidth(Math.max(260, Math.min(860, window.innerWidth - 72)));
     };
     compute();
     window.addEventListener('resize', compute);
     return () => window.removeEventListener('resize', compute);
   }, []);
 
-  // Zoom with trackpad pinch / ctrl+scroll / cmd+scroll
+  // Trackpad pinch in Safari fires gesture* events instead of ctrl+wheel
+  useEffect(() => {
+    let gestureStartScale = 1;
+    const onGestureStart = (e: Event) => {
+      e.preventDefault();
+      gestureStartScale = scaleRef.current;
+    };
+    const onGestureChange = (e: Event) => {
+      e.preventDefault();
+      const gestureScale = (e as Event & { scale?: number }).scale;
+      if (gestureScale) setScale(clampScale(gestureStartScale * gestureScale));
+    };
+    const onGestureEnd = (e: Event) => e.preventDefault();
+    window.addEventListener('gesturestart', onGestureStart);
+    window.addEventListener('gesturechange', onGestureChange);
+    window.addEventListener('gestureend', onGestureEnd);
+    return () => {
+      window.removeEventListener('gesturestart', onGestureStart);
+      window.removeEventListener('gesturechange', onGestureChange);
+      window.removeEventListener('gestureend', onGestureEnd);
+    };
+  }, []);
+
+  // Trackpad pinch in Chrome/Firefox fires wheel events with ctrlKey set;
+  // also covers ctrl/cmd + scroll on a mouse
   useEffect(() => {
     const onWheel = (e: WheelEvent) => {
       if (!e.ctrlKey && !e.metaKey) return;
       e.preventDefault();
-      setScale((s) => clampScale(s * Math.exp(-e.deltaY * 0.002)));
+      setScale((s) => clampScale(s * Math.exp(-e.deltaY * 0.003)));
     };
     window.addEventListener('wheel', onWheel, { passive: false });
     return () => window.removeEventListener('wheel', onWheel);
@@ -105,15 +138,18 @@ export default function ResumeViewer() {
     return () => window.removeEventListener('keydown', onKeyDown);
   }, [router]);
 
-  // Pinch zoom on touch devices
+  // Pinch zoom on touch devices; Safari handles this via gesture* events
   const touchDistance = (touches: React.TouchList) =>
     Math.hypot(
       touches[0].clientX - touches[1].clientX,
       touches[0].clientY - touches[1].clientY
     );
 
+  const supportsGestureEvents = () =>
+    typeof window !== 'undefined' && 'GestureEvent' in window;
+
   const handleTouchStart = (e: React.TouchEvent) => {
-    if (e.touches.length === 2) {
+    if (e.touches.length === 2 && !supportsGestureEvents()) {
       pinchDistance.current = touchDistance(e.touches);
     }
   };
@@ -131,7 +167,8 @@ export default function ResumeViewer() {
     pinchDistance.current = null;
   };
 
-  const pageWidth = baseWidth ? baseWidth * scale : undefined;
+  const pageWidth = baseWidth ? baseWidth * renderScale : undefined;
+  const cssScale = scale / renderScale;
 
   return (
     <div
@@ -142,33 +179,41 @@ export default function ResumeViewer() {
       onTouchEnd={handleTouchEnd}
     >
       <div className="flex h-fit w-fit min-h-full min-w-full">
-        <div className="m-auto px-9 pt-9 pb-40">
+        <div className="mx-auto px-9 pt-9 pb-40">
           {baseWidth !== null && (
-            <Document
-              file={RESUME_PDF}
-              onLoadSuccess={({ numPages }) => setNumPages(numPages)}
-              loading={null}
-              error={
-                <p className="font-normal text-[12px] tracking-[-0.24px] leading-normal text-[#1E1E1E] dark:text-white">
-                  failed to load resume
-                </p>
+            <div
+              style={
+                cssScale !== 1
+                  ? { transform: `scale(${cssScale})`, transformOrigin: 'top center' }
+                  : undefined
               }
-              className="flex flex-col gap-6"
             >
-              {Array.from({ length: numPages }, (_, index) => (
-                <div
-                  key={index}
-                  className="border-[0.5px] border-black"
-                  style={{ width: pageWidth }}
-                >
-                  <Page
-                    pageNumber={index + 1}
-                    width={pageWidth}
-                    loading={null}
-                  />
-                </div>
-              ))}
-            </Document>
+              <Document
+                file={RESUME_PDF}
+                onLoadSuccess={({ numPages }) => setNumPages(numPages)}
+                loading={null}
+                error={
+                  <p className="font-normal text-[12px] tracking-[-0.24px] leading-normal text-[#1E1E1E] dark:text-white">
+                    failed to load resume
+                  </p>
+                }
+                className="flex flex-col gap-6"
+              >
+                {Array.from({ length: numPages }, (_, index) => (
+                  <div
+                    key={index}
+                    className="border-[0.5px] border-black"
+                    style={{ width: pageWidth }}
+                  >
+                    <Page
+                      pageNumber={index + 1}
+                      width={pageWidth}
+                      loading={null}
+                    />
+                  </div>
+                ))}
+              </Document>
+            </div>
           )}
         </div>
       </div>
