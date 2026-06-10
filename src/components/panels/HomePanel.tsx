@@ -22,11 +22,16 @@ interface HomePanelProps {
   instant?: boolean;
 }
 
-export default function HomePanel({ showContent = true, instant = false }: HomePanelProps) {
+// Vertical column guides are hidden in the current design.
+// Flip this back to true to restore them.
+const SHOW_COLUMN_GUIDES = false;
+
+export default function HomePanel({ showContent = true }: HomePanelProps) {
   const headerRef = useRef<HTMLHeadingElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [fontSize, setFontSize] = useState('220.84px');
-  const [hasShrunk, setHasShrunk] = useState(instant);
+  const [shrunkFontSize, setShrunkFontSize] = useState('128px');
+  const [hasShrunk, setHasShrunk] = useState(false);
   const currentTime = useCurrentTime();
 
   useEffect(() => {
@@ -80,6 +85,33 @@ export default function HomePanel({ showContent = true, instant = false }: HomeP
     return () => window.removeEventListener('resize', updateFontSize);
   }, [hasShrunk]);
 
+  // Scale the shrunk header up on screens larger than a 16" MacBook (1728px),
+  // keeping 128px as the floor for normal laptop sizes.
+  useEffect(() => {
+    const updateShrunkFontSize = () => {
+      const breakpoint = 1728;
+      const baseSize = 128;
+      // How aggressively the header grows past the breakpoint (1 = linear with
+      // width; higher = grows faster on large displays).
+      const growthFactor = 2;
+      const width = window.innerWidth;
+      let size;
+      if (width < 1024) {
+        // Cramped layouts between mobile and lg: shrink the header a lot.
+        size = 72;
+      } else if (width > breakpoint) {
+        size = baseSize + ((width - breakpoint) / breakpoint) * baseSize * growthFactor;
+      } else {
+        size = baseSize;
+      }
+      setShrunkFontSize(`${size}px`);
+    };
+
+    updateShrunkFontSize();
+    window.addEventListener('resize', updateShrunkFontSize);
+    return () => window.removeEventListener('resize', updateShrunkFontSize);
+  }, []);
+
   // Timing configuration
   const headerAnimationDelay = 0.2; // When header starts appearing
   const shrinkDelay = 1.3; // Seconds after page load to start shrinking
@@ -124,21 +156,23 @@ export default function HomePanel({ showContent = true, instant = false }: HomeP
 
   return (
     <div className="bg-background flex flex-col gap-9 h-screen w-full relative overflow-hidden">
-      {/* Background column guides - same grid as the page content */}
-      <div
-        className="absolute inset-y-0 inset-x-9 grid grid-cols-5 gap-x-6 pointer-events-none"
-        aria-hidden="true"
-      >
-        {Array.from({ length: 5 }).map((_, i) => (
-          <motion.div
-            key={i}
-            className="border-x border-[#1E1E1E]/8 dark:border-white/8 origin-top"
-            initial={instant ? false : { scaleY: 0 }}
-            animate={{ scaleY: showContent ? 1 : 0 }}
-            transition={{ duration: 1.2, delay: headerAnimationDelay + i * 0.15, ease: [0.22, 1, 0.36, 1] }}
-          />
-        ))}
-      </div>
+      {/* Background column guides - same grid as the page content (currently hidden) */}
+      {SHOW_COLUMN_GUIDES && (
+        <div
+          className="absolute inset-y-0 inset-x-9 grid grid-cols-5 gap-x-6 pointer-events-none"
+          aria-hidden="true"
+        >
+          {Array.from({ length: 5 }).map((_, i) => (
+            <motion.div
+              key={i}
+              className="border-x border-[#1E1E1E]/8 dark:border-white/8 origin-top"
+              initial={{ scaleY: 0 }}
+              animate={{ scaleY: showContent ? 1 : 0 }}
+              transition={{ duration: 1.2, delay: headerAnimationDelay + i * 0.15, ease: [0.22, 1, 0.36, 1] }}
+            />
+          ))}
+        </div>
+      )}
 
       {/* Header Section */}
       <div className="relative flex flex-col items-start p-9 w-full">
@@ -148,7 +182,7 @@ export default function HomePanel({ showContent = true, instant = false }: HomeP
             ref={containerRef}
             className="flex items-start justify-between w-full"
             animate={{
-              height: hasShrunk ? '128px' : 'auto',
+              height: hasShrunk ? shrunkFontSize : 'auto',
             }}
             transition={{
               duration: shrinkDuration,
@@ -159,7 +193,7 @@ export default function HomePanel({ showContent = true, instant = false }: HomeP
               ref={headerRef}
               className="font-medium text-[#1E1E1E] dark:text-white whitespace-nowrap leading-none"
               animate={{
-                fontSize: hasShrunk ? '128px' : fontSize,
+                fontSize: hasShrunk ? shrunkFontSize : fontSize,
                 paddingTop: hasShrunk ? '8px' : '0px',
               }}
               transition={{
@@ -221,8 +255,8 @@ export default function HomePanel({ showContent = true, instant = false }: HomeP
                       className="flex gap-2 items-start font-medium text-[#1E1E1E] dark:text-white whitespace-nowrap cursor-pointer"
                     >
                       <motion.span
-                        className="text-[64px] leading-none tracking-[-2.56px]"
-                        initial={instant ? false : { clipPath: 'inset(-10% -10% 0 -10%)' }}
+                        className="text-[40px] lg:text-[52px] xl:text-[64px] leading-none tracking-[-1.6px] lg:tracking-[-2.08px] xl:tracking-[-2.56px]"
+                        initial={{ clipPath: 'inset(-10% -10% 0 -10%)' }}
                         animate={{ clipPath: 'inset(-10% -10% -20% -10%)' }}
                         transition={{
                           duration: 0.5,
@@ -248,8 +282,8 @@ export default function HomePanel({ showContent = true, instant = false }: HomeP
                         )}
                       </motion.span>
                       <motion.span
-                        className="text-[20px] leading-normal tracking-[-0.4px]"
-                        initial={instant ? false : { clipPath: 'inset(-10% -10% 0 -10%)' }}
+                        className="text-[13px] lg:text-[16px] xl:text-[20px] leading-normal tracking-[-0.26px] lg:tracking-[-0.32px] xl:tracking-[-0.4px]"
+                        initial={{ clipPath: 'inset(-10% -10% 0 -10%)' }}
                         animate={{ clipPath: 'inset(-10% -10% -20% -10%)' }}
                         transition={{
                           duration: 0.5,
@@ -277,12 +311,12 @@ export default function HomePanel({ showContent = true, instant = false }: HomeP
                     </a>
                   </div>
 
-                  {/* Column 2: Empty */}
-                  <div className="col-span-1" />
+                  {/* Column 2: Empty spacer (collapses below lg to tighten the gap) */}
+                  <div className="hidden lg:block lg:col-span-1" />
 
                   {/* Columns 3-5: Bio */}
-                  <div className="col-span-3 flex items-start justify-between">
-                    <div className="font-medium leading-none text-[64px] text-[#1E1E1E] dark:text-white whitespace-nowrap tracking-[-2.56px]">
+                  <div className="col-span-4 lg:col-span-3 flex items-start justify-between">
+                    <div className="font-medium leading-none text-[40px] lg:text-[52px] xl:text-[64px] text-[#1E1E1E] dark:text-white whitespace-nowrap tracking-[-1.6px] lg:tracking-[-2.08px] xl:tracking-[-2.56px]">
                       <p className="mb-0">
                         {showContent ? (
                           <AnimatedText baseDelay={bio1Delay} staggerDelay={0.03} instant={instant}>
@@ -349,13 +383,13 @@ export default function HomePanel({ showContent = true, instant = false }: HomeP
 
                 {/* Roles and Time - 5 Column Grid */}
                 <div className="grid grid-cols-5 gap-x-6 items-center w-full text-[#1E1E1E] dark:text-white">
-                  {/* Columns 1-2: Empty */}
-                  <div className="col-span-2" />
+                  {/* Columns 1-2: Empty (collapses below lg to left-align roles) */}
+                  <div className="hidden lg:block lg:col-span-2" />
 
                   {/* Columns 3-4: Roles */}
                   <motion.div
-                    className="col-span-2"
-                    initial={instant ? false : { clipPath: 'inset(-10% -10% 0 -10%)' }}
+                    className="col-span-4 lg:col-span-2"
+                    initial={{ clipPath: 'inset(-10% -10% 0 -10%)' }}
                     animate={{ clipPath: 'inset(-10% -10% -20% -10%)' }}
                     transition={{
                       duration: 0.5,
@@ -372,7 +406,7 @@ export default function HomePanel({ showContent = true, instant = false }: HomeP
                           delay: rolesDelay,
                           ease: [0.4, 0, 0.2, 1],
                         }}
-                        className="flex gap-4 items-center"
+                        className="flex gap-3 items-center"
                       >
                         <NewlyRole />
                         <FigmaRole />
