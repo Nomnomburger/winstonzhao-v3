@@ -41,7 +41,7 @@ export default function Home() {
   };
 
   return (
-    <div className="relative w-screen min-h-dvh">
+    <div className="relative w-screen h-dvh">
       <AnimatePresence mode="wait">
         {isLoading && <LoadingScreen onComplete={handleLoadingComplete} />}
       </AnimatePresence>
