@@ -58,85 +58,60 @@ function ProgressiveBlur() {
   );
 }
 
-// pdf.js clears its canvas while re-rendering, which makes the page flash
-// when the zoom level commits. Double-buffer instead: keep the current
-// render on screen (CSS-scaled to the new size) while the new size renders
-// in a hidden slot, and swap slots only once the new render has completed.
-function BufferedPage({
+// Each page renders exactly once, at a fixed high resolution, and zooming
+// only CSS-scales that texture. pdf.js never re-renders during or after a
+// zoom, so nothing can saturate the raster threads and freeze a gesture.
+// At maximum zoom the texture is slightly upscaled — a fair trade for
+// gestures that always run on the compositor.
+function FixedResPage({
   pageNumber,
-  width,
-  suspendRender,
+  renderWidth,
+  displayWidth,
 }: {
   pageNumber: number;
-  width: number;
-  // Rasterizing a large canvas saturates the raster threads and makes an
-  // active pinch stutter or freeze, so pending re-renders wait (and
-  // in-flight ones are cancelled) while a gesture is running
-  suspendRender: boolean;
+  // CSS width pdf.js renders at; the canvas texture is sized by this
+  // times the boosted devicePixelRatio below
+  renderWidth: number;
+  // Size the page currently occupies on screen
+  displayWidth: number;
 }) {
   const [aspect, setAspect] = useState<number | null>(null);
-  const [visibleSlot, setVisibleSlot] = useState<'a' | 'b'>('a');
-  const [visibleWidth, setVisibleWidth] = useState(width);
 
-  // The hidden slot re-renders at the new size whenever one is pending
-  const hiddenWidth = !suspendRender && width !== visibleWidth ? width : null;
+  // Render sharp enough for deep zoom while keeping the texture bounded
+  const devicePixelRatio = Math.min(
+    (typeof window === 'undefined' ? 1 : window.devicePixelRatio || 1) * 2.5,
+    MAX_CANVAS_WIDTH / renderWidth
+  );
 
   const handleLoadSuccess = (page: PDFPageProxy) => {
     const viewport = page.getViewport({ scale: 1 });
     setAspect(viewport.height / viewport.width);
   };
 
-  const renderSlot = (slot: 'a' | 'b') => {
-    const isVisible = slot === visibleSlot;
-    const slotWidth = isVisible ? visibleWidth : hiddenWidth;
-    if (slotWidth === null) return null;
-    const cssScale = width / slotWidth;
-    const devicePixelRatio = Math.min(
-      typeof window === 'undefined' ? 1 : window.devicePixelRatio || 1,
-      2,
-      MAX_CANVAS_WIDTH / slotWidth
-    );
-    return (
-      <div
-        key={slot}
-        className={`absolute top-0 left-0 ${isVisible ? '' : 'opacity-0 pointer-events-none'}`}
-        style={{
-          width: slotWidth,
-          transform:
-            isVisible && Math.abs(cssScale - 1) > 1e-4
-              ? `scale(${cssScale})`
-              : undefined,
-          transformOrigin: 'top left',
-        }}
-      >
-        <Page
-          key={`${slot}-${slotWidth}`}
-          pageNumber={pageNumber}
-          width={slotWidth}
-          devicePixelRatio={devicePixelRatio}
-          loading={null}
-          onLoadSuccess={handleLoadSuccess}
-          onRenderSuccess={() => {
-            if (!isVisible) {
-              setVisibleSlot(slot);
-              setVisibleWidth(slotWidth);
-            }
-          }}
-        />
-      </div>
-    );
-  };
-
   return (
     <div
       className="relative overflow-hidden border-[0.5px] border-black"
       style={{
-        width,
-        height: width * (aspect ?? LETTER_ASPECT),
+        width: displayWidth,
+        height: displayWidth * (aspect ?? LETTER_ASPECT),
       }}
     >
-      {renderSlot('a')}
-      {renderSlot('b')}
+      <div
+        className="absolute top-0 left-0"
+        style={{
+          width: renderWidth,
+          transform: `scale(${displayWidth / renderWidth})`,
+          transformOrigin: 'top left',
+        }}
+      >
+        <Page
+          pageNumber={pageNumber}
+          width={renderWidth}
+          devicePixelRatio={devicePixelRatio}
+          loading={null}
+          onLoadSuccess={handleLoadSuccess}
+        />
+      </div>
     </div>
   );
 }
@@ -160,8 +135,6 @@ export default function ResumeViewer() {
   // with a plain CSS transform — pure compositor work, like native pinch.
   // On phones the fit width is too small to read, so open already zoomed
   // to a readable width, anchored at the page's top-left corner.
-  // While true, a pinch/zoom gesture is active and buffered re-renders pause
-  const [gesturing, setGesturing] = useState(false);
   const [scale, setScale] = useState(() => {
     if (typeof window === 'undefined' || window.innerWidth >= 768) return 1;
     const fitWidth = Math.max(260, Math.min(860, window.innerWidth - 72));
@@ -188,8 +161,6 @@ export default function ResumeViewer() {
     // Hide the pdf.js text/annotation layers (see globals.css) so the
     // browser only scales the canvas texture while the gesture runs
     containerRef.current?.classList.add('pdf-gesturing');
-    // Pause buffered re-renders so they don't compete with the gesture
-    setGesturing(true);
   }, []);
 
   const updateGesture = useCallback((factor: number, midY?: number) => {
@@ -210,7 +181,6 @@ export default function ResumeViewer() {
     const g = gesture.current;
     if (!content || !container || !g) return;
     gesture.current = null;
-    setGesturing(false);
     const next = clampScale(committedScale.current * g.factor);
     if (next === committedScale.current) {
       // Pure pan (or no-op): fold the translation into the scroll position
@@ -395,11 +365,11 @@ export default function ResumeViewer() {
                 className="flex flex-col gap-6"
               >
                 {Array.from({ length: numPages }, (_, index) => (
-                  <BufferedPage
+                  <FixedResPage
                     key={index}
                     pageNumber={index + 1}
-                    width={baseWidth * scale}
-                    suspendRender={gesturing}
+                    renderWidth={baseWidth}
+                    displayWidth={baseWidth * scale}
                   />
                 ))}
               </Document>
