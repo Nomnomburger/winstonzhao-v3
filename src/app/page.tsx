@@ -7,7 +7,7 @@ import HomePanel from '@/components/panels/HomePanel';
 function LoadingScreen({ onComplete }: { onComplete: () => void }) {
   return (
     <motion.div
-      className="fixed inset-0 bg-white dark:bg-[#1E1E1E] flex items-center justify-center z-50"
+      className="fixed inset-0 flex items-center justify-center z-50 pointer-events-none"
       exit={{ opacity: 0 }}
       transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
     >

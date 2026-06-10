@@ -13,7 +13,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #1E1E1E;
+    --background: #111111;
     --foreground: #ffffff;
   }
 }
@@ -44,4 +44,10 @@ body {
 
 .animate-spin-slow {
   animation: spin-slow 6s cubic-bezier(0.85, 0, 0.15, 1) infinite;
+}
+
+.underline,
+.hover\:underline:hover {
+  text-decoration-thickness: 0.5px;
+  text-underline-offset: 0.15em;
 }
