@@ -148,8 +148,14 @@ export default function ResumeViewer() {
   // Committed zoom level: only updates when a gesture ends, so React never
   // re-renders mid-pinch. While a gesture is active the content is scaled
   // with a plain CSS transform — pure compositor work, like native pinch.
-  const [scale, setScale] = useState(1);
-  const committedScale = useRef(1);
+  // On phones the fit width is too small to read, so open already zoomed
+  // to a readable width, anchored at the page's top-left corner.
+  const [scale, setScale] = useState(() => {
+    if (typeof window === 'undefined' || window.innerWidth >= 768) return 1;
+    const fitWidth = Math.max(260, Math.min(860, window.innerWidth - 72));
+    return clampScale(680 / fitWidth);
+  });
+  const committedScale = useRef(scale);
   const containerRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const gesture = useRef<GestureState | null>(null);
@@ -164,6 +170,9 @@ export default function ResumeViewer() {
     gesture.current = { factor: 1, dx: 0, dy: 0, anchorX, anchorY };
     content.style.transformOrigin = `${anchorX - rect.left}px ${anchorY - rect.top}px`;
     content.style.willChange = 'transform';
+    // Hide the pdf.js text/annotation layers (see globals.css) so the
+    // browser only scales the canvas texture while the gesture runs
+    containerRef.current?.classList.add('pdf-gesturing');
   }, []);
 
   const updateGesture = useCallback(
@@ -194,6 +203,7 @@ export default function ResumeViewer() {
       content.style.transform = '';
       content.style.transformOrigin = '';
       content.style.willChange = '';
+      container.classList.remove('pdf-gesturing');
       container.scrollLeft -= g.dx;
       container.scrollTop -= g.dy;
       return;
@@ -216,6 +226,7 @@ export default function ResumeViewer() {
     content.style.transform = '';
     content.style.transformOrigin = '';
     content.style.willChange = '';
+    container.classList.remove('pdf-gesturing');
     const rect = content.getBoundingClientRect();
     container.scrollLeft += rect.left - visual.left;
     container.scrollTop += rect.top - visual.top;
@@ -357,7 +368,7 @@ export default function ResumeViewer() {
   return (
     <div
       ref={containerRef}
-      className="fixed inset-0 overflow-auto bg-background"
+      className="fixed inset-0 overflow-auto bg-background no-scrollbar"
       style={{ touchAction: 'pan-x pan-y' }}
     >
       <div className="flex h-fit w-fit min-h-full min-w-full">
