@@ -62,13 +62,24 @@ function ProgressiveBlur() {
 // when the zoom level commits. Double-buffer instead: keep the current
 // render on screen (CSS-scaled to the new size) while the new size renders
 // in a hidden slot, and swap slots only once the new render has completed.
-function BufferedPage({ pageNumber, width }: { pageNumber: number; width: number }) {
+function BufferedPage({
+  pageNumber,
+  width,
+  suspendRender,
+}: {
+  pageNumber: number;
+  width: number;
+  // Rasterizing a large canvas saturates the raster threads and makes an
+  // active pinch stutter or freeze, so pending re-renders wait (and
+  // in-flight ones are cancelled) while a gesture is running
+  suspendRender: boolean;
+}) {
   const [aspect, setAspect] = useState<number | null>(null);
   const [visibleSlot, setVisibleSlot] = useState<'a' | 'b'>('a');
   const [visibleWidth, setVisibleWidth] = useState(width);
 
   // The hidden slot re-renders at the new size whenever one is pending
-  const hiddenWidth = width !== visibleWidth ? width : null;
+  const hiddenWidth = !suspendRender && width !== visibleWidth ? width : null;
 
   const handleLoadSuccess = (page: PDFPageProxy) => {
     const viewport = page.getViewport({ scale: 1 });
@@ -133,11 +144,10 @@ function BufferedPage({ pageNumber, width }: { pageNumber: number; width: number
 interface GestureState {
   // Visual scale factor relative to the committed scale
   factor: number;
-  // Pan that follows the finger midpoint
-  dx: number;
+  // Vertical pan that follows the finger midpoint; horizontally the page
+  // stays locked to the viewport's center column so it never drifts
+  // off-center and snaps back on release
   dy: number;
-  // Gesture anchor in viewport coordinates
-  anchorX: number;
   anchorY: number;
 }
 
@@ -150,6 +160,8 @@ export default function ResumeViewer() {
   // with a plain CSS transform — pure compositor work, like native pinch.
   // On phones the fit width is too small to read, so open already zoomed
   // to a readable width, anchored at the page's top-left corner.
+  // While true, a pinch/zoom gesture is active and buffered re-renders pause
+  const [gesturing, setGesturing] = useState(false);
   const [scale, setScale] = useState(() => {
     if (typeof window === 'undefined' || window.innerWidth >= 768) return 1;
     const fitWidth = Math.max(260, Math.min(860, window.innerWidth - 72));
@@ -163,33 +175,34 @@ export default function ResumeViewer() {
   // corrected after the re-render commits
   const pendingVisual = useRef<DOMRect | null>(null);
 
-  const startGesture = useCallback((anchorX: number, anchorY: number) => {
+  const startGesture = useCallback((anchorY: number) => {
     const content = contentRef.current;
     if (!content || gesture.current) return;
     const rect = content.getBoundingClientRect();
-    gesture.current = { factor: 1, dx: 0, dy: 0, anchorX, anchorY };
-    content.style.transformOrigin = `${anchorX - rect.left}px ${anchorY - rect.top}px`;
+    gesture.current = { factor: 1, dy: 0, anchorY };
+    // Scale around the viewport's horizontal center so the page stays
+    // centered while zooming; vertically anchor at the fingers/cursor
+    const originX = window.innerWidth / 2 - rect.left;
+    content.style.transformOrigin = `${originX}px ${anchorY - rect.top}px`;
     content.style.willChange = 'transform';
     // Hide the pdf.js text/annotation layers (see globals.css) so the
     // browser only scales the canvas texture while the gesture runs
     containerRef.current?.classList.add('pdf-gesturing');
+    // Pause buffered re-renders so they don't compete with the gesture
+    setGesturing(true);
   }, []);
 
-  const updateGesture = useCallback(
-    (factor: number, midX?: number, midY?: number) => {
-      const content = contentRef.current;
-      const g = gesture.current;
-      if (!content || !g) return;
-      // Clamp visually so the gesture can't exceed the zoom limits
-      g.factor = clampScale(committedScale.current * factor) / committedScale.current;
-      if (midX !== undefined && midY !== undefined) {
-        g.dx = midX - g.anchorX;
-        g.dy = midY - g.anchorY;
-      }
-      content.style.transform = `translate(${g.dx}px, ${g.dy}px) scale(${g.factor})`;
-    },
-    []
-  );
+  const updateGesture = useCallback((factor: number, midY?: number) => {
+    const content = contentRef.current;
+    const g = gesture.current;
+    if (!content || !g) return;
+    // Clamp visually so the gesture can't exceed the zoom limits
+    g.factor = clampScale(committedScale.current * factor) / committedScale.current;
+    if (midY !== undefined) {
+      g.dy = midY - g.anchorY;
+    }
+    content.style.transform = `translateY(${g.dy}px) scale(${g.factor})`;
+  }, []);
 
   const endGesture = useCallback(() => {
     const content = contentRef.current;
@@ -197,6 +210,7 @@ export default function ResumeViewer() {
     const g = gesture.current;
     if (!content || !container || !g) return;
     gesture.current = null;
+    setGesturing(false);
     const next = clampScale(committedScale.current * g.factor);
     if (next === committedScale.current) {
       // Pure pan (or no-op): fold the translation into the scroll position
@@ -204,7 +218,6 @@ export default function ResumeViewer() {
       content.style.transformOrigin = '';
       content.style.willChange = '';
       container.classList.remove('pdf-gesturing');
-      container.scrollLeft -= g.dx;
       container.scrollTop -= g.dy;
       return;
     }
@@ -246,11 +259,8 @@ export default function ResumeViewer() {
   useEffect(() => {
     const onGestureStart = (e: Event) => {
       e.preventDefault();
-      const ge = e as Event & { clientX?: number; clientY?: number };
-      startGesture(
-        ge.clientX ?? window.innerWidth / 2,
-        ge.clientY ?? window.innerHeight / 2
-      );
+      const ge = e as Event & { clientY?: number };
+      startGesture(ge.clientY ?? window.innerHeight / 2);
     };
     const onGestureChange = (e: Event) => {
       e.preventDefault();
@@ -282,7 +292,7 @@ export default function ResumeViewer() {
       e.preventDefault();
       if (!gesture.current) {
         wheelFactor = 1;
-        startGesture(e.clientX, e.clientY);
+        startGesture(e.clientY);
       }
       wheelFactor *= Math.exp(-e.deltaY * 0.003);
       updateGesture(wheelFactor);
@@ -315,14 +325,14 @@ export default function ResumeViewer() {
         e.preventDefault();
         const m = measure(e.touches);
         startDistance = m.distance;
-        startGesture(m.midX, m.midY);
+        startGesture(m.midY);
       }
     };
     const onTouchMove = (e: TouchEvent) => {
       if (e.touches.length !== 2 || startDistance === null) return;
       e.preventDefault();
       const m = measure(e.touches);
-      updateGesture(m.distance / startDistance, m.midX, m.midY);
+      updateGesture(m.distance / startDistance, m.midY);
     };
     const onTouchEnd = () => {
       if (startDistance === null) return;
@@ -344,10 +354,8 @@ export default function ResumeViewer() {
   // Zoom with +/- keys, reset with 0, close with escape
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
-      const centerX = window.innerWidth / 2;
-      const centerY = window.innerHeight / 2;
       const step = (factor: number) => {
-        startGesture(centerX, centerY);
+        startGesture(window.innerHeight / 2);
         updateGesture(factor);
         endGesture();
       };
@@ -391,6 +399,7 @@ export default function ResumeViewer() {
                     key={index}
                     pageNumber={index + 1}
                     width={baseWidth * scale}
+                    suspendRender={gesturing}
                   />
                 ))}
               </Document>
