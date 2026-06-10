@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Document, Page, pdfjs } from 'react-pdf';
+import type { PDFPageProxy } from 'pdfjs-dist';
 import 'react-pdf/dist/Page/TextLayer.css';
 import 'react-pdf/dist/Page/AnnotationLayer.css';
 
@@ -14,6 +15,7 @@ const RESUME_PDF = '/winstonzhao-resume.pdf';
 
 const MIN_SCALE = 0.5;
 const MAX_SCALE = 4;
+const LETTER_ASPECT = 11 / 8.5;
 
 const clampScale = (value: number) =>
   Math.min(MAX_SCALE, Math.max(MIN_SCALE, value));
@@ -54,14 +56,89 @@ function ProgressiveBlur() {
   );
 }
 
+interface BufferedPageProps {
+  pageNumber: number;
+  // Size the page occupies on screen right now (follows the gesture live)
+  displayWidth: number;
+  // Size pdf.js should render at (updates once zooming settles)
+  settledWidth: number;
+}
+
+// pdf.js clears its canvas while re-rendering, which makes the page flash
+// during zoom. Double-buffer instead: keep the current render on screen
+// (CSS-scaled to the live display size) while the new size renders in a
+// hidden slot, and swap slots only once the new render has completed.
+function BufferedPage({ pageNumber, displayWidth, settledWidth }: BufferedPageProps) {
+  const [aspect, setAspect] = useState<number | null>(null);
+  const [slotWidths, setSlotWidths] = useState<{ a: number; b: number | null }>({
+    a: settledWidth,
+    b: null,
+  });
+  const [visibleSlot, setVisibleSlot] = useState<'a' | 'b'>('a');
+
+  const visibleWidth = (visibleSlot === 'b' && slotWidths.b !== null ? slotWidths.b : slotWidths.a);
+
+  useEffect(() => {
+    if (settledWidth === visibleWidth) return;
+    const hidden = visibleSlot === 'a' ? 'b' : 'a';
+    setSlotWidths((widths) =>
+      widths[hidden] === settledWidth ? widths : { ...widths, [hidden]: settledWidth }
+    );
+  }, [settledWidth, visibleWidth, visibleSlot]);
+
+  const handleLoadSuccess = (page: PDFPageProxy) => {
+    const viewport = page.getViewport({ scale: 1 });
+    setAspect(viewport.height / viewport.width);
+  };
+
+  const renderSlot = (slot: 'a' | 'b') => {
+    const width = slot === 'a' ? slotWidths.a : slotWidths.b;
+    if (width === null) return null;
+    const isVisible = slot === visibleSlot;
+    return (
+      <div
+        className={`absolute top-0 left-0 ${isVisible ? '' : 'opacity-0 pointer-events-none'}`}
+        style={{
+          width,
+          transform: isVisible ? `scale(${displayWidth / width})` : undefined,
+          transformOrigin: 'top left',
+        }}
+      >
+        <Page
+          key={`${slot}-${width}`}
+          pageNumber={pageNumber}
+          width={width}
+          loading={null}
+          onLoadSuccess={handleLoadSuccess}
+          onRenderSuccess={() => {
+            if (!isVisible) setVisibleSlot(slot);
+          }}
+        />
+      </div>
+    );
+  };
+
+  return (
+    <div
+      className="relative overflow-hidden border-[0.5px] border-black"
+      style={{
+        width: displayWidth,
+        height: displayWidth * (aspect ?? LETTER_ASPECT),
+      }}
+    >
+      {renderSlot('a')}
+      {renderSlot('b')}
+    </div>
+  );
+}
+
 export default function ResumeViewer() {
   const router = useRouter();
   const [numPages, setNumPages] = useState(0);
   const [baseWidth, setBaseWidth] = useState<number | null>(null);
   const [scale, setScale] = useState(1);
-  // pdf.js re-renders are too slow to follow a pinch, so the canvas renders
-  // at renderScale and CSS-scales by scale/renderScale until the gesture
-  // settles, then re-renders crisply at the final size
+  // The canvas re-renders at renderScale once the gesture pauses; until
+  // then BufferedPage CSS-scales the previous render to follow the pinch
   const [renderScale, setRenderScale] = useState(1);
   const scaleRef = useRef(1);
   const pinchDistance = useRef<number | null>(null);
@@ -167,9 +244,6 @@ export default function ResumeViewer() {
     pinchDistance.current = null;
   };
 
-  const pageWidth = baseWidth ? baseWidth * renderScale : undefined;
-  const cssScale = scale / renderScale;
-
   return (
     <div
       className="fixed inset-0 overflow-auto bg-background"
@@ -181,47 +255,36 @@ export default function ResumeViewer() {
       <div className="flex h-fit w-fit min-h-full min-w-full">
         <div className="mx-auto px-9 pt-9 pb-40">
           {baseWidth !== null && (
-            <div
-              style={
-                cssScale !== 1
-                  ? { transform: `scale(${cssScale})`, transformOrigin: 'top center' }
-                  : undefined
+            <Document
+              file={RESUME_PDF}
+              onLoadSuccess={({ numPages }) => setNumPages(numPages)}
+              loading={null}
+              error={
+                <p className="font-normal text-[12px] tracking-[-0.24px] leading-normal text-[#1E1E1E] dark:text-white">
+                  failed to load resume
+                </p>
               }
+              className="flex flex-col gap-6"
             >
-              <Document
-                file={RESUME_PDF}
-                onLoadSuccess={({ numPages }) => setNumPages(numPages)}
-                loading={null}
-                error={
-                  <p className="font-normal text-[12px] tracking-[-0.24px] leading-normal text-[#1E1E1E] dark:text-white">
-                    failed to load resume
-                  </p>
-                }
-                className="flex flex-col gap-6"
-              >
-                {Array.from({ length: numPages }, (_, index) => (
-                  <div
-                    key={index}
-                    className="border-[0.5px] border-black"
-                    style={{ width: pageWidth }}
-                  >
-                    <Page
-                      pageNumber={index + 1}
-                      width={pageWidth}
-                      loading={null}
-                    />
-                  </div>
-                ))}
-              </Document>
-            </div>
+              {Array.from({ length: numPages }, (_, index) => (
+                <BufferedPage
+                  key={index}
+                  pageNumber={index + 1}
+                  displayWidth={baseWidth * scale}
+                  settledWidth={baseWidth * renderScale}
+                />
+              ))}
+            </Document>
           )}
         </div>
       </div>
 
       <ProgressiveBlur />
 
-      {/* Actions - fixed so they stay put while the pdf zooms underneath */}
-      <div className="fixed bottom-9 left-1/2 -translate-x-1/2 z-20 flex items-center gap-3 font-normal text-[12px] tracking-[-0.24px] leading-normal text-[#1E1E1E] dark:text-white whitespace-nowrap">
+      {/* Actions - fixed so they stay put while the pdf zooms underneath;
+          white + difference blending flips them dark over the light pdf
+          and light over the dark page background */}
+      <div className="fixed bottom-9 left-1/2 -translate-x-1/2 z-20 flex items-center gap-3 font-normal text-[12px] tracking-[-0.24px] leading-normal text-white mix-blend-difference whitespace-nowrap">
         <button
           type="button"
           onClick={() => router.push('/')}
