@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import {
   AnimatedText,
   useCurrentTime,
@@ -466,7 +467,7 @@ export default function HomePanelMobile({ showContent = true }: HomePanelMobileP
               </div>
               <div className="flex gap-3 items-center justify-end font-normal text-[12px] tracking-[-0.24px] leading-normal whitespace-nowrap">
                 <a href={`mailto:${EMAIL}`}>hello [at] winstonzhao.ca</a>
-                <a href={RESUME_URL} target="_blank" rel="noopener noreferrer">resume</a>
+                <Link href={RESUME_URL}>resume</Link>
               </div>
             </div>
           </motion.div>

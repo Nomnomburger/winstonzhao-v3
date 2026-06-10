@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 // Placeholder targets — update with the real URLs
 export const LINKEDIN_URL = 'https://www.linkedin.com/in/zhaowinston/?skipRedirect=true';
 export const OLD_SITE_URL = 'https://winstonzhao.ca';
-export const RESUME_URL = '/resume.pdf';
+export const RESUME_URL = '/resume';
 export const EMAIL = 'hello@winstonzhao.ca';
 
 interface AnimatedWordProps {
