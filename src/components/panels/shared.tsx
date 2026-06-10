@@ -153,6 +153,17 @@ export function ScrambleText({
 
         const scrambleStart = baseDelay + i * charDelay;
 
+        // Characters past the end of the new text never scramble — they
+        // delete when the sweep reaches them, so the line shrinks toward
+        // the shorter text instead of flickering at full length.
+        if (to === '') {
+          if (elapsed < scrambleStart) {
+            settled = false;
+            out += fromChar;
+          }
+          continue;
+        }
+
         if (elapsed >= scrambleStart + scrambleDuration) {
           out += to;
         } else if (elapsed >= scrambleStart) {
