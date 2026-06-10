@@ -122,7 +122,7 @@ export default function HomePanelMobile({ showContent = true }: HomePanelMobileP
   const footerDelay = rolesDelay + 0.1;
 
   return (
-    <div className="bg-background flex flex-col gap-9 h-dvh w-full relative overflow-hidden">
+    <div className="bg-background flex flex-col gap-9 min-h-dvh w-full relative">
       {/* Background column guides - 2 column mobile grid */}
       <div
         className="absolute inset-y-0 inset-x-6 grid grid-cols-2 gap-x-3 pointer-events-none"
@@ -140,8 +140,8 @@ export default function HomePanelMobile({ showContent = true }: HomePanelMobileP
       </div>
 
       {/* Header Section */}
-      <div className="relative flex flex-col flex-1 min-h-0 items-start p-6 w-full">
-        <div className="flex flex-col flex-1 min-h-0 gap-12 items-start w-full">
+      <div className="relative flex flex-col flex-1 items-start p-6 w-full">
+        <div className="flex flex-col flex-1 gap-12 items-start w-full">
           {/* Header Content */}
           <div ref={containerRef} className="relative w-full py-1">
             <motion.h1
@@ -214,7 +214,7 @@ export default function HomePanelMobile({ showContent = true }: HomePanelMobileP
           <AnimatePresence>
             {hasShrunk && (
               <motion.div
-                className="flex flex-col flex-1 min-h-0 justify-between gap-12 w-full"
+                className="flex flex-col flex-1 w-full"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.3 }}
@@ -349,6 +349,10 @@ export default function HomePanelMobile({ showContent = true }: HomePanelMobileP
                     )}
                   </div>
                 </div>
+
+                {/* Spacer - keeps the Figma frame's gap above the roles row,
+                    but stretches on tall screens to pin the footer down */}
+                <div className="flex-1 min-h-40" aria-hidden="true" />
 
                 {/* Roles and Time */}
                 <div className="flex items-start justify-between w-full text-[#1E1E1E] dark:text-white">

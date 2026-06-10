@@ -24,6 +24,17 @@ body {
   overflow: hidden;
 }
 
+/* On mobile the page flows past the first screen and scrolls */
+@media (max-width: 767px) {
+  html,
+  body {
+    height: auto;
+    min-height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
