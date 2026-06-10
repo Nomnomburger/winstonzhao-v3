@@ -108,30 +108,30 @@ export function useIsMobile(breakpoint = 768) {
 
 export function NewlyRole() {
   return (
-    <div className="flex gap-1.5 items-center">
-      <div className="w-3.5 h-3.5 shrink-0 flex items-center justify-center">
-        <svg viewBox="0 0 692 528" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Newly" role="img" className="w-[10px] h-[7.63px] overflow-visible">
-          <path d="M528.018 109.224C528.018 139.39 552.469 163.842 582.636 163.842H637.269C667.436 163.842 691.888 188.294 691.888 218.461V473.371C691.888 503.538 667.436 527.99 637.269 527.99H564.439C534.272 527.99 509.821 503.538 509.821 473.371V236.672C509.821 206.505 485.369 182.053 455.202 182.053H236.686C206.519 182.053 182.067 206.505 182.067 236.672V473.371C182.067 503.538 157.615 527.99 127.448 527.99H54.6187C24.4518 527.99 0 503.538 0 473.371V218.475C0 188.308 24.4518 163.856 54.6187 163.856H109.237C139.404 163.856 163.856 139.404 163.856 109.237V54.6187C163.856 24.4518 188.308 0 218.475 0H473.385C503.552 0 528.004 24.4518 528.004 54.6187V109.224H528.018Z" fill="currentColor"/>
-          <path d="M282.199 292.993C307.343 292.993 327.712 326.619 327.712 368.105C327.712 368.977 327.698 369.849 327.685 370.721C327.491 379.729 319.7 386.316 310.691 386.316H253.693C244.684 386.316 236.893 379.715 236.7 370.721C236.686 369.849 236.672 368.991 236.672 368.105C236.686 326.633 257.069 292.993 282.199 292.993Z" fill="currentColor"/>
-          <path d="M409.661 292.993C434.804 292.993 455.174 326.619 455.174 368.105C455.174 368.977 455.16 369.849 455.146 370.721C454.952 379.729 447.162 386.316 438.153 386.316H381.154C372.146 386.316 364.355 379.715 364.161 370.721C364.147 369.849 364.134 368.991 364.134 368.105C364.134 326.633 384.517 292.993 409.661 292.993Z" fill="currentColor"/>
+    <div className="flex gap-[2px] items-center">
+      <p className="font-normal text-[12px] tracking-[-0.24px] leading-normal whitespace-nowrap">Design at</p>
+      <div className="w-3.5 h-3.5 shrink-0 flex items-center justify-center relative -top-[1px]">
+        <svg viewBox="0 0 12 9.15607" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Newly" role="img" className="w-[12px] h-[9.156px] overflow-visible">
+          <path d="M9.15638 1.89468C9.15638 2.41779 9.58039 2.84181 10.1035 2.84181H11.0509C11.574 2.84181 11.9981 3.26583 11.9981 3.78896V8.20937C11.9981 8.73249 11.574 9.15652 11.0509 9.15652H9.78796C9.26483 9.15652 8.84083 8.73249 8.84083 8.20937V4.10476C8.84083 3.58163 8.4168 3.15761 7.89368 3.15761H4.10438C3.58125 3.15761 3.15723 3.58163 3.15723 4.10476V8.20937C3.15723 8.73249 2.73321 9.15652 2.21008 9.15652H0.947145C0.42402 9.15652 0 8.73249 0 8.20937V3.7892C0 3.26608 0.42402 2.84205 0.947145 2.84205H1.89428C2.41741 2.84205 2.84143 2.41803 2.84143 1.8949V0.947766C2.84143 0.424641 3.26546 0.000620978 3.78858 0.000620978H8.20899C8.73212 0.000620978 9.15614 0.424641 9.15614 0.947766V1.89468H9.15638Z" fill="currentColor"/>
+          <path d="M4.89574 5.08094C5.33176 5.08094 5.68498 5.66405 5.68498 6.38346C5.68498 6.39858 5.68474 6.4137 5.68451 6.42882C5.68115 6.58503 5.54604 6.69926 5.38982 6.69926H4.40141C4.24519 6.69926 4.11008 6.58479 4.10674 6.42882C4.10649 6.4137 4.10625 6.39882 4.10625 6.38346C4.10649 5.66429 4.45996 5.08094 4.89574 5.08094Z" fill="currentColor"/>
+          <path d="M7.10355 5.08094C7.53955 5.08094 7.89279 5.66405 7.89279 6.38346C7.89279 6.39858 7.89255 6.4137 7.89231 6.42882C7.88894 6.58503 7.75385 6.69926 7.59763 6.69926H6.60921C6.453 6.69926 6.3179 6.58479 6.31453 6.42882C6.31429 6.4137 6.31406 6.39882 6.31406 6.38346C6.31429 5.66429 6.66753 5.08094 7.10355 5.08094Z" fill="currentColor"/>
         </svg>
       </div>
-      <p className="font-normal text-[12px] tracking-[-0.24px] leading-normal whitespace-nowrap">Design at <a href="https://newly.app" target="_blank" rel="noopener noreferrer" className="hover:underline">Newly</a></p>
+      <p className="font-normal text-[12px] tracking-[-0.24px] leading-normal whitespace-nowrap"><a href="https://newly.app" target="_blank" rel="noopener noreferrer" className="hover:underline">Newly</a></p>
     </div>
   );
 }
 
 export function FigmaRole() {
   return (
-    <div className="flex gap-1.5 items-center">
-      {/* The Figma mark is narrower than the other glyphs, so left-align it
-          at the same 2px inset to keep the icons' left edges in line */}
-      <div className="w-3.5 h-3.5 shrink-0 flex items-center justify-start pl-[2px]">
-        <svg viewBox="0 0 125 180" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Figma" role="img" className="w-[6.94px] h-[10px] overflow-visible">
-          <path fillRule="evenodd" clipRule="evenodd" d="M15.2907 61.8108C6.08543 55.8127 0 45.4277 0 33.6214C0 15.0528 15.0528 0 33.6214 0H91.2255C109.794 0 124.847 15.0528 124.847 33.6214C124.847 45.4277 118.761 55.8127 109.556 61.8108C118.761 67.809 124.847 78.194 124.847 90.0003C124.847 108.569 109.794 123.622 91.2255 123.622H90.6127C81.8351 123.622 73.8432 120.258 67.8555 114.749V146.072C67.8555 164.848 52.4734 180 33.7737 180C15.2433 180 0 164.985 0 146.379C0 134.573 6.0852 124.188 15.2902 118.189C6.0852 112.191 0 101.806 0 90.0003C0 78.194 6.08543 67.809 15.2907 61.8108ZM67.8555 90.0003C67.8555 102.569 78.0443 112.757 90.6127 112.757H91.2255C103.794 112.757 113.983 102.569 113.983 90.0003C113.983 77.4319 103.794 67.2432 91.2255 67.2432H90.6127C78.0443 67.2432 67.8555 77.4319 67.8555 90.0003ZM56.9913 67.2432H33.6214C21.0529 67.2432 10.8642 77.4319 10.8642 90.0003C10.8642 102.543 21.0116 112.716 33.5449 112.757L33.5805 112.757L56.9913 112.757V67.2432ZM33.6214 123.622C33.5959 123.622 33.5704 123.622 33.5449 123.622C21.0117 123.663 10.8642 133.836 10.8642 146.379C10.8642 158.909 21.1671 169.136 33.7737 169.136C46.5496 169.136 56.9913 158.772 56.9913 146.072V123.622H33.6214ZM56.9913 56.3785H33.6214C21.0529 56.3785 10.8642 46.1898 10.8642 33.6214C10.8642 21.0529 21.0529 10.8642 33.6214 10.8642H56.9913V56.3785ZM91.2255 56.3785H67.8555V10.8642H91.2255C103.794 10.8642 113.983 21.0529 113.983 33.6214C113.983 46.1898 103.794 56.3785 91.2255 56.3785Z" fill="currentColor"/>
+    <div className="flex gap-px items-center">
+      <p className="font-normal text-[12px] tracking-[-0.24px] leading-normal whitespace-nowrap">Campus Leader at</p>
+      <div className="w-3.5 h-3.5 shrink-0 flex items-center justify-center relative -top-[1px]">
+        <svg viewBox="0 0 8 11" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Figma" role="img" className="w-[8px] h-[11px] overflow-visible">
+          <path fillRule="evenodd" clipRule="evenodd" d="M0.979804 3.77733C0.389945 3.41078 0 2.77614 0 2.05464C0 0.919893 0.96456 0 2.15441 0H5.84559C7.03543 0 8 0.919893 8 2.05464C8 2.77614 7.61002 3.41078 7.02018 3.77733C7.61002 4.14388 8 4.77852 8 5.50002C8 6.63477 7.03543 7.55468 5.84559 7.55468H5.80632C5.24387 7.55468 4.73176 7.3491 4.34807 7.01244V8.92662C4.34807 10.074 3.36241 11 2.16417 11C0.976767 11 0 10.0824 0 8.94538C0 8.22391 0.38993 7.58927 0.979772 7.22266C0.38993 6.85612 0 6.22148 0 5.50002C0 4.77852 0.389945 4.14388 0.979804 3.77733ZM4.34807 5.50002C4.34807 6.26811 5.00096 6.89071 5.80632 6.89071H5.84559C6.65096 6.89071 7.30385 6.26811 7.30385 5.50002C7.30385 4.73195 6.65096 4.10931 5.84559 4.10931H5.80632C5.00096 4.10931 4.34807 4.73195 4.34807 5.50002ZM3.65191 4.10931H2.15441C1.34904 4.10931 0.696161 4.73195 0.696161 5.50002C0.696161 6.26652 1.34639 6.8882 2.1495 6.89071H2.15179H3.65191V4.10931ZM2.15441 7.55468C2.15277 7.55468 2.15114 7.55468 2.1495 7.55468C1.3464 7.55718 0.696161 8.17887 0.696161 8.94538C0.696161 9.71111 1.35635 10.3361 2.16417 10.3361C2.98283 10.3361 3.65191 9.70273 3.65191 8.92662V7.55468H2.15441ZM3.65191 3.44535H2.15441C1.34904 3.44535 0.696161 2.82271 0.696161 2.05464C0.696161 1.28657 1.34904 0.663923 2.15441 0.663923H3.65191V3.44535ZM5.84559 3.44535H4.34807V0.663923H5.84559C6.65096 0.663923 7.30385 1.28657 7.30385 2.05464C7.30385 2.82271 6.65096 3.44535 5.84559 3.44535Z" fill="currentColor"/>
         </svg>
       </div>
-      <p className="font-normal text-[12px] tracking-[-0.24px] leading-normal whitespace-nowrap">Campus Leader at <a href="https://figma.com" target="_blank" rel="noopener noreferrer" className="hover:underline">Figma</a></p>
+      <p className="font-normal text-[12px] tracking-[-0.24px] leading-normal whitespace-nowrap"><a href="https://figma.com" target="_blank" rel="noopener noreferrer" className="hover:underline">Figma</a></p>
     </div>
   );
 }
@@ -160,11 +160,12 @@ export function TextQLMark({ className = '', ariaLabel }: TextQLMarkProps) {
 
 export function TextQLRole() {
   return (
-    <div className="flex gap-1.5 items-center">
-      <div className="w-3.5 h-3.5 shrink-0 flex items-center justify-center">
-        <TextQLMark className="w-[10px] h-[7.15px] overflow-visible" ariaLabel="TextQL" />
+    <div className="flex gap-[2px] items-center">
+      <p className="font-normal text-[12px] tracking-[-0.24px] leading-normal whitespace-nowrap">Prev. Design at</p>
+      <div className="w-3.5 h-3.5 shrink-0 flex items-center justify-center relative -top-[1px]">
+        <TextQLMark className="w-[12px] h-[8.578px] overflow-visible" ariaLabel="TextQL" />
       </div>
-      <p className="font-normal text-[12px] tracking-[-0.24px] leading-normal whitespace-nowrap">Prev. Design at <a href="https://textql.com" target="_blank" rel="noopener noreferrer" className="hover:underline">TextQL</a></p>
+      <p className="font-normal text-[12px] tracking-[-0.24px] leading-normal whitespace-nowrap"><a href="https://textql.com" target="_blank" rel="noopener noreferrer" className="hover:underline">TextQL</a></p>
     </div>
   );
 }

@@ -17,7 +17,12 @@ import {
 
 // "Zhao" sits in the second of the two mobile grid columns: half the
 // container width plus half the 12px column gap (~51.7% of the row).
-const ZHAO_COLUMN_OFFSET = '51.7%';
+const ZHAO_COLUMN_OFFSET_RATIO = 0.517;
+const ZHAO_COLUMN_OFFSET = `${ZHAO_COLUMN_OFFSET_RATIO * 100}%`;
+
+// Profile photo height relative to the shrunk font size — matches the visual
+// (cap) height of "Zhao" (46px photo next to 64px text in the original design).
+const PHOTO_TO_FONT_RATIO = 46 / 64;
 
 // Vertical column guides are hidden in the current design.
 // Flip this back to true to restore them.
@@ -36,6 +41,7 @@ export default function HomePanelMobile({ showContent = true }: HomePanelMobileP
   const containerRef = useRef<HTMLDivElement>(null);
   const footerRef = useRef<HTMLDivElement>(null);
   const [fontSize, setFontSize] = useState('96px');
+  const [shrunkFontSize, setShrunkFontSize] = useState(64);
   const [hasShrunk, setHasShrunk] = useState(false);
   const [footerOpen, setFooterOpen] = useState(false);
   const [footerOffset, setFooterOffset] = useState(FOOTER_OFFSET_FALLBACK);
@@ -91,6 +97,56 @@ export default function HomePanelMobile({ showContent = true }: HomePanelMobileP
     window.addEventListener('resize', updateFontSize);
     return () => window.removeEventListener('resize', updateFontSize);
   }, [hasShrunk]);
+
+  // Shrunk size: "Zhao" fills from its column offset to the right edge of the
+  // page; "Winston" shares the size and the photo scales with Zhao's height.
+  useEffect(() => {
+    const updateShrunkFontSize = () => {
+      if (!headerRef.current || !containerRef.current) return;
+
+      const containerWidth = containerRef.current.offsetWidth;
+      const targetWidth = containerWidth * (1 - ZHAO_COLUMN_OFFSET_RATIO);
+
+      const measureEl = document.createElement('span');
+      measureEl.style.visibility = 'hidden';
+      measureEl.style.position = 'absolute';
+      measureEl.style.whiteSpace = 'nowrap';
+      measureEl.style.fontFamily = getComputedStyle(headerRef.current).fontFamily;
+      measureEl.style.fontWeight = getComputedStyle(headerRef.current).fontWeight;
+      measureEl.style.letterSpacing = '-0.05em';
+      measureEl.textContent = 'Zhao';
+      document.body.appendChild(measureEl);
+
+      let minSize = 10;
+      let maxSize = 300;
+      let bestSize = 64;
+
+      for (let i = 0; i < 20; i++) {
+        const testSize = (minSize + maxSize) / 2;
+        measureEl.style.fontSize = `${testSize}px`;
+        const textWidth = measureEl.offsetWidth;
+
+        if (Math.abs(textWidth - targetWidth) < 1) {
+          bestSize = testSize;
+          break;
+        } else if (textWidth < targetWidth) {
+          minSize = testSize;
+          bestSize = testSize;
+        } else {
+          maxSize = testSize;
+        }
+      }
+
+      document.body.removeChild(measureEl);
+      setShrunkFontSize(bestSize);
+    };
+
+    updateShrunkFontSize();
+    window.addEventListener('resize', updateShrunkFontSize);
+    return () => window.removeEventListener('resize', updateShrunkFontSize);
+  }, []);
+
+  const photoSize = shrunkFontSize * PHOTO_TO_FONT_RATIO;
 
   // Timing configuration
   const headerAnimationDelay = 0.2; // When header starts appearing
@@ -195,7 +251,7 @@ export default function HomePanelMobile({ showContent = true }: HomePanelMobileP
                 ref={headerRef}
                 className="font-medium text-[#1E1E1E] dark:text-white leading-none w-full"
                 animate={{
-                  fontSize: hasShrunk ? '64px' : fontSize,
+                  fontSize: hasShrunk ? `${shrunkFontSize}px` : fontSize,
                 }}
                 transition={{
                   duration: shrinkDuration,
@@ -238,7 +294,12 @@ export default function HomePanelMobile({ showContent = true }: HomePanelMobileP
                       Always mounted (with priority) so the image is preloaded
                       while the loading line runs, instead of popping in late. */}
                   <motion.span
-                    className="block absolute right-[calc(50%+6px)] top-1/2 -mt-[23px] w-[46px] h-[46px]"
+                    className="block absolute right-[calc(50%+6px)] top-1/2"
+                    style={{
+                      width: photoSize,
+                      height: photoSize,
+                      marginTop: -photoSize / 2,
+                    }}
                     initial={{ opacity: 0, scale: 0.8 }}
                     animate={hasShrunk && showContent ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
                     transition={{
@@ -250,8 +311,8 @@ export default function HomePanelMobile({ showContent = true }: HomePanelMobileP
                     <Image
                       src="/profile.png"
                       alt="Winston Zhao"
-                      width={46}
-                      height={46}
+                      width={128}
+                      height={128}
                       priority
                       className="w-full h-full object-cover"
                     />
