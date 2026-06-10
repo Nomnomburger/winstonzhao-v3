@@ -14,11 +14,15 @@ pdfjs.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.mjs';
 const RESUME_PDF = '/winstonzhao-resume.pdf';
 
 const MIN_SCALE = 0.5;
-const MAX_SCALE = 4;
+const MAX_SCALE = 3;
 const LETTER_ASPECT = 11 / 8.5;
-// Keep canvases under ~4k px wide so deep zoom doesn't allocate huge
-// textures, which makes panning stutter (especially on mobile)
+// Base texture bound: rendered once, never re-rendered
 const MAX_CANVAS_WIDTH = 4096;
+// Sharpening overlay bound (device px); rendered only when zoom is idle
+const MAX_REFINE_WIDTH = 5500;
+// Must match the content wrapper's pt-9 / pb-40 paddings below
+const PAD_TOP = 36;
+const PAD_BOTTOM = 160;
 
 const clampScale = (value: number) =>
   Math.min(MAX_SCALE, Math.max(MIN_SCALE, value));
@@ -58,26 +62,65 @@ function ProgressiveBlur() {
   );
 }
 
-// Each page renders exactly once, at a fixed high resolution, and zooming
-// only CSS-scales that texture. pdf.js never re-renders during or after a
-// zoom, so nothing can saturate the raster threads and freeze a gesture.
-// At maximum zoom the texture is slightly upscaled — a fair trade for
-// gestures that always run on the compositor.
+// Crisp re-render of a page at the current display size, shown only once
+// fully rendered so the base texture stays visible underneath meanwhile
+function RefineLayer({
+  pageNumber,
+  width,
+  onDone,
+}: {
+  pageNumber: number;
+  width: number;
+  onDone: () => void;
+}) {
+  const [ready, setReady] = useState(false);
+  const devicePixelRatio = Math.min(
+    typeof window === 'undefined' ? 1 : window.devicePixelRatio || 1,
+    MAX_REFINE_WIDTH / width
+  );
+  return (
+    <div
+      className="absolute top-0 left-0"
+      style={{ width, opacity: ready ? 1 : 0 }}
+    >
+      <Page
+        pageNumber={pageNumber}
+        width={width}
+        devicePixelRatio={devicePixelRatio}
+        renderTextLayer={false}
+        renderAnnotationLayer={false}
+        loading={null}
+        onRenderSuccess={() => {
+          setReady(true);
+          onDone();
+        }}
+      />
+    </div>
+  );
+}
+
+// Each page renders once at a fixed high resolution and zooming only
+// CSS-scales that texture, so gestures always run on the compositor and
+// can never be starved by pdf.js raster work. When a deep zoom sits idle,
+// a RefineLayer adds a pixel-exact render on top for sharpness.
 function FixedResPage({
   pageNumber,
   renderWidth,
   displayWidth,
+  refineWidth,
+  onRefineDone,
 }: {
   pageNumber: number;
-  // CSS width pdf.js renders at; the canvas texture is sized by this
-  // times the boosted devicePixelRatio below
+  // CSS width pdf.js renders the base texture at
   renderWidth: number;
   // Size the page currently occupies on screen
   displayWidth: number;
+  // When set (== displayWidth), mount the idle sharpening overlay
+  refineWidth: number | null;
+  onRefineDone: () => void;
 }) {
   const [aspect, setAspect] = useState<number | null>(null);
 
-  // Render sharp enough for deep zoom while keeping the texture bounded
   const devicePixelRatio = Math.min(
     (typeof window === 'undefined' ? 1 : window.devicePixelRatio || 1) * 2.5,
     MAX_CANVAS_WIDTH / renderWidth
@@ -112,6 +155,14 @@ function FixedResPage({
           onLoadSuccess={handleLoadSuccess}
         />
       </div>
+      {refineWidth !== null && (
+        <RefineLayer
+          key={`refine-${refineWidth}`}
+          pageNumber={pageNumber}
+          width={refineWidth}
+          onDone={onRefineDone}
+        />
+      )}
     </div>
   );
 }
@@ -119,11 +170,13 @@ function FixedResPage({
 interface GestureState {
   // Visual scale factor relative to the committed scale
   factor: number;
-  // Vertical pan that follows the finger midpoint; horizontally the page
-  // stays locked to the viewport's center column so it never drifts
-  // off-center and snaps back on release
+  // Vertical pan; horizontally the page stays locked to the viewport's
+  // center column so it never drifts off-center and snaps back on release
   dy: number;
   anchorY: number;
+  // Content rect at gesture start, for clamping against the page bounds
+  rectTop: number;
+  rectHeight: number;
 }
 
 export default function ResumeViewer() {
@@ -147,12 +200,21 @@ export default function ResumeViewer() {
   // Where the content appeared when the gesture ended, so scroll can be
   // corrected after the re-render commits
   const pendingVisual = useRef<DOMRect | null>(null);
+  // Idle sharpening overlay: target width, and whether a render is running
+  const [refineWidth, setRefineWidth] = useState<number | null>(null);
+  const refineInFlight = useRef(false);
 
   const startGesture = useCallback((anchorY: number) => {
     const content = contentRef.current;
     if (!content || gesture.current) return;
     const rect = content.getBoundingClientRect();
-    gesture.current = { factor: 1, dy: 0, anchorY };
+    gesture.current = {
+      factor: 1,
+      dy: 0,
+      anchorY,
+      rectTop: rect.top,
+      rectHeight: rect.height,
+    };
     // Scale around the viewport's horizontal center so the page stays
     // centered while zooming; vertically anchor at the fingers/cursor
     const originX = window.innerWidth / 2 - rect.left;
@@ -161,6 +223,11 @@ export default function ResumeViewer() {
     // Hide the pdf.js text/annotation layers (see globals.css) so the
     // browser only scales the canvas texture while the gesture runs
     containerRef.current?.classList.add('pdf-gesturing');
+    // Cancel an in-flight sharpening render so it can't compete
+    if (refineInFlight.current) {
+      refineInFlight.current = false;
+      setRefineWidth(null);
+    }
   }, []);
 
   const updateGesture = useCallback((factor: number, midY?: number) => {
@@ -169,10 +236,18 @@ export default function ResumeViewer() {
     if (!content || !g) return;
     // Clamp visually so the gesture can't exceed the zoom limits
     g.factor = clampScale(committedScale.current * factor) / committedScale.current;
-    if (midY !== undefined) {
-      g.dy = midY - g.anchorY;
-    }
-    content.style.transform = `translateY(${g.dy}px) scale(${g.factor})`;
+    let dy = midY !== undefined ? midY - g.anchorY : 0;
+    // Glue the page to its vertical bounds while scaling, so releasing the
+    // gesture never snaps: the top edge may not drop below its resting
+    // position, and no gap may open at the bottom while content overflows
+    const top = g.anchorY + (g.rectTop - g.anchorY) * g.factor + dy;
+    const height = g.rectHeight * g.factor;
+    const upper = PAD_TOP;
+    const lower = Math.min(upper, window.innerHeight - PAD_BOTTOM - height);
+    const clampedTop = Math.min(upper, Math.max(lower, top));
+    dy += clampedTop - top;
+    g.dy = dy;
+    content.style.transform = `translateY(${dy}px) scale(${g.factor})`;
   }, []);
 
   const endGesture = useCallback(() => {
@@ -214,6 +289,25 @@ export default function ResumeViewer() {
     container.scrollLeft += rect.left - visual.left;
     container.scrollTop += rect.top - visual.top;
   }, [scale]);
+
+  // Once a zoom level sits idle and the base texture would be upscaled,
+  // schedule a crisp overlay render at the exact display size
+  useEffect(() => {
+    if (baseWidth === null) return;
+    const displayWidth = baseWidth * scale;
+    const dpr = window.devicePixelRatio || 1;
+    const baseTexture = Math.min(baseWidth * dpr * 2.5, MAX_CANVAS_WIDTH);
+    if (displayWidth * dpr <= baseTexture) return;
+    const timer = setTimeout(() => {
+      refineInFlight.current = true;
+      setRefineWidth(displayWidth);
+    }, 450);
+    return () => clearTimeout(timer);
+  }, [scale, baseWidth]);
+
+  const handleRefineDone = useCallback(() => {
+    refineInFlight.current = false;
+  }, []);
 
   // Start at a comfortable reading width, top-aligned so the rest scrolls
   useEffect(() => {
@@ -277,7 +371,7 @@ export default function ResumeViewer() {
   }, [startGesture, updateGesture, endGesture]);
 
   // Pinch zoom on touch devices (Safari handles this via gesture* events):
-  // zoom around the finger midpoint and pan as the midpoint moves
+  // zoom around the finger midpoint and pan vertically as it moves
   useEffect(() => {
     const container = containerRef.current;
     if (!container || 'GestureEvent' in window) return;
@@ -287,7 +381,6 @@ export default function ResumeViewer() {
         touches[0].clientX - touches[1].clientX,
         touches[0].clientY - touches[1].clientY
       ),
-      midX: (touches[0].clientX + touches[1].clientX) / 2,
       midY: (touches[0].clientY + touches[1].clientY) / 2,
     });
     const onTouchStart = (e: TouchEvent) => {
@@ -343,6 +436,8 @@ export default function ResumeViewer() {
     return () => window.removeEventListener('keydown', onKeyDown);
   }, [startGesture, updateGesture, endGesture, router]);
 
+  const displayWidth = baseWidth !== null ? baseWidth * scale : null;
+
   return (
     <div
       ref={containerRef}
@@ -351,7 +446,7 @@ export default function ResumeViewer() {
     >
       <div className="flex h-fit w-fit min-h-full min-w-full">
         <div className="mx-auto px-9 pt-9 pb-40">
-          {baseWidth !== null && (
+          {baseWidth !== null && displayWidth !== null && (
             <div ref={contentRef}>
               <Document
                 file={RESUME_PDF}
@@ -369,7 +464,9 @@ export default function ResumeViewer() {
                     key={index}
                     pageNumber={index + 1}
                     renderWidth={baseWidth}
-                    displayWidth={baseWidth * scale}
+                    displayWidth={displayWidth}
+                    refineWidth={refineWidth === displayWidth ? refineWidth : null}
+                    onRefineDone={handleRefineDone}
                   />
                 ))}
               </Document>
