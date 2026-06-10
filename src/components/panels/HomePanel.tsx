@@ -154,6 +154,11 @@ export default function HomePanel({ showContent = true, instant = false }: HomeP
   const languagesDelay = contentBaseDelay + 0.1;
   const footerDelay = rolesDelay + 0.1;
 
+  const shrinkTransition = {
+    duration: instant ? 0 : shrinkDuration,
+    ease: [0.76, 0, 0.15, 1] as const,
+  };
+
   return (
     <div className="bg-background flex flex-col gap-9 h-screen w-full relative overflow-hidden">
       {/* Background column guides - same grid as the page content (currently hidden) */}
@@ -184,22 +189,17 @@ export default function HomePanel({ showContent = true, instant = false }: HomeP
             animate={{
               height: hasShrunk ? shrunkFontSize : 'auto',
             }}
-            transition={{
-              duration: shrinkDuration,
-              ease: [0.76, 0, 0.15, 1],
-            }}
+            transition={shrinkTransition}
           >
             <motion.h1
               ref={headerRef}
               className="font-medium text-[#1E1E1E] dark:text-white whitespace-nowrap leading-none"
+              initial={instant ? false : undefined}
               animate={{
                 fontSize: hasShrunk ? shrunkFontSize : fontSize,
                 paddingTop: hasShrunk ? '8px' : '0px',
               }}
-              transition={{
-                duration: shrinkDuration,
-                ease: [0.76, 0, 0.15, 1],
-              }}
+              transition={shrinkTransition}
               style={{
                 letterSpacing: '-0.05em',
                 marginTop: '-0.15em',

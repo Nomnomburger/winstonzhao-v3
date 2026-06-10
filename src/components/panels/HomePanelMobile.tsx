@@ -191,6 +191,11 @@ export default function HomePanelMobile({ showContent = true, instant = false }:
   const arrowsDelay = timeDelay + 0.05;
   const globeDelay = contentBaseDelay + 0.1;
 
+  const shrinkTransition = {
+    duration: instant ? 0 : shrinkDuration,
+    ease: [0.76, 0, 0.15, 1] as const,
+  };
+
   const setFooterRevealed = (open: boolean) => {
     if (open && footerRef.current) {
       setFooterOffset(footerRef.current.offsetHeight + 36);
@@ -253,13 +258,11 @@ export default function HomePanelMobile({ showContent = true, instant = false }:
               <motion.h1
                 ref={headerRef}
                 className="font-medium text-[#1E1E1E] dark:text-white leading-none w-full"
+                initial={instant ? false : undefined}
                 animate={{
                   fontSize: hasShrunk ? `${shrunkFontSize}px` : fontSize,
                 }}
-                transition={{
-                  duration: shrinkDuration,
-                  ease: [0.76, 0, 0.15, 1],
-                }}
+                transition={shrinkTransition}
                 style={{
                   letterSpacing: '-0.05em',
                   marginTop: '-0.15em',
@@ -280,10 +283,7 @@ export default function HomePanelMobile({ showContent = true, instant = false }:
                   animate={{
                     paddingLeft: hasShrunk ? ZHAO_COLUMN_OFFSET : '0%',
                   }}
-                  transition={{
-                    duration: shrinkDuration,
-                    ease: [0.76, 0, 0.15, 1],
-                  }}
+                  transition={shrinkTransition}
                 >
                   {showContent ? (
                     <AnimatedText baseDelay={headerDelay + stagger} staggerDelay={stagger}>
@@ -632,7 +632,7 @@ export default function HomePanelMobile({ showContent = true, instant = false }:
             </div>
             <div className="flex gap-3 items-center justify-end font-normal text-[12px] tracking-[-0.24px] leading-normal whitespace-nowrap">
               <a href={`mailto:${EMAIL}`}>hello [at] winstonzhao.ca</a>
-              <a href={RESUME_URL} target="_blank" rel="noopener noreferrer">resume</a>
+              <Link href={RESUME_URL}>resume</Link>
             </div>
           </div>
         </div>
