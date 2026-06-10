@@ -262,6 +262,13 @@ export default function HomePanelMobile({
   const bigTextWeight = isZh ? 'font-light' : 'font-medium';
   const bigTextTracking = isZh ? 'tracking-[-0.64px]' : 'tracking-[-1.28px]';
 
+  // Photo position: 12px to the left of the last name for latin layouts,
+  // flush with the page's left edge for Chinese. Both values share the same
+  // calc() shape so framer can tween between them.
+  const photoLeft = isZh
+    ? 'calc(0% + 0px)'
+    : `calc(${lineOffsetRatio * 100}% + ${-(photoSize + 12)}px)`;
+
   const setFooterRevealed = (open: boolean) => {
     if (open && footerRef.current) {
       setFooterOffset(footerRef.current.offsetHeight + 36);
@@ -348,11 +355,13 @@ export default function HomePanelMobile({
                     <span className="opacity-0">{firstName}</span>
                   )}
                   {/* Chinese name beside the header (zh only). Also rendered
-                      without a live switch when the session restored Chinese. */}
+                      without a live switch when the session restored Chinese.
+                      Nudged down from the line-box top to the cap top of the
+                      name (the font's ascent overshoots the glyphs). */}
                   {(langSwitched || (t.nativeName !== '' && hasShrunk && showContent)) && (
                     <span
-                      className="inline-block align-top font-light text-[12px] leading-none ml-2"
-                      style={{ letterSpacing: '-0.02em' }}
+                      className="inline-block align-top font-light text-[12px] leading-none ml-2 relative"
+                      style={{ letterSpacing: '-0.02em', top: shrunkFontSize * 0.15 }}
                     >
                       <ScrambleText from={fromT.nativeName} charDelay={switchCharDelay}>
                         {t.nativeName}
@@ -385,18 +394,21 @@ export default function HomePanelMobile({
                   <motion.span
                     className="block absolute top-1/2"
                     style={{
-                      // 12px gap to the left of wherever the last name starts
-                      right: `calc(${(1 - lineOffsetRatio) * 100}% + 12px)`,
                       width: photoSize,
                       height: photoSize,
                       marginTop: -photoSize / 2,
                     }}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={hasShrunk && showContent ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+                    initial={{ opacity: 0, scale: 0.8, left: photoLeft }}
+                    animate={
+                      hasShrunk && showContent
+                        ? { opacity: 1, scale: 1, left: photoLeft }
+                        : { opacity: 0, scale: 0.8, left: photoLeft }
+                    }
                     transition={{
-                      duration: 0.6,
-                      delay: shrinkDuration,
-                      ease: [0.4, 0, 0.2, 1],
+                      opacity: { duration: 0.6, delay: shrinkDuration, ease: [0.4, 0, 0.2, 1] },
+                      scale: { duration: 0.6, delay: shrinkDuration, ease: [0.4, 0, 0.2, 1] },
+                      // Slide in step with the name line's offset change
+                      left: shrinkTransition,
                     }}
                   >
                     <Image
