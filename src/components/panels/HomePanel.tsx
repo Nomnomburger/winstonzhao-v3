@@ -6,6 +6,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import {
   AnimatedText,
+  ScrambleText,
+  formatStockholmTime,
   useCurrentTime,
   NewlyRole,
   FigmaRole,
@@ -15,24 +17,47 @@ import {
   RESUME_URL,
   EMAIL,
 } from './shared';
+import { Language, translations } from './translations';
 
 interface HomePanelProps {
   showContent?: boolean;
   // Render everything in its final state with no entrance animations
   instant?: boolean;
+  language?: Language;
+  onLanguageChange?: (language: Language) => void;
 }
 
 // Vertical column guides are hidden in the current design.
 // Flip this back to true to restore them.
 const SHOW_COLUMN_GUIDES = false;
 
-export default function HomePanel({ showContent = true, instant = false }: HomePanelProps) {
+export default function HomePanel({
+  showContent = true,
+  instant = false,
+  language = 'en',
+  onLanguageChange,
+}: HomePanelProps) {
   const headerRef = useRef<HTMLHeadingElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [fontSize, setFontSize] = useState('220.84px');
   const [shrunkFontSize, setShrunkFontSize] = useState('128px');
   const [hasShrunk, setHasShrunk] = useState(instant);
-  const currentTime = useCurrentTime();
+  // True once the user has changed language: changed copy then re-animates
+  // with the scramble effect instead of the intro animations.
+  const [langSwitched, setLangSwitched] = useState(false);
+  // Language shown before the switch, so the outgoing copy stays on screen
+  // until the scramble replaces it.
+  const [prevLanguage, setPrevLanguage] = useState<Language>(language);
+  const currentTime = useCurrentTime(language);
+  const t = translations[language];
+  const fromT = translations[prevLanguage];
+
+  const handleLanguageChange = (lang: Language) => {
+    if (lang === language) return;
+    setPrevLanguage(language);
+    setLangSwitched(true);
+    onLanguageChange?.(lang);
+  };
 
   useEffect(() => {
     const updateFontSize = () => {
@@ -159,6 +184,29 @@ export default function HomePanel({ showContent = true, instant = false }: HomeP
     ease: [0.76, 0, 0.15, 1] as const,
   };
 
+  // Scramble timing for language switches: all texts animate at once, each
+  // sweeping through its own characters left to right.
+  const switchCharDelay = 0.02;
+  const bioIntroDelays = [bio1Delay, bio2Delay, bio3Delay, bio4Delay];
+
+  // Role labels render as plain text until a language switch, then scramble.
+  const roleLabel = (text: string, fromText: string) =>
+    langSwitched ? (
+      <ScrambleText from={fromText} charDelay={switchCharDelay}>
+        {text}
+      </ScrambleText>
+    ) : (
+      text
+    );
+
+  // The Chinese version uses a lighter weight and half the tracking for the
+  // large display text (per the zh Figma frame).
+  const isZh = language === 'zh';
+  const bigTextWeight = isZh ? 'font-light' : 'font-medium';
+  const bigTextTracking = isZh
+    ? 'tracking-[-0.8px] lg:tracking-[-1.04px] xl:tracking-[-1.28px]'
+    : 'tracking-[-1.6px] lg:tracking-[-2.08px] xl:tracking-[-2.56px]';
+
   return (
     <div className="bg-background flex flex-col gap-9 h-screen w-full relative overflow-hidden">
       {/* Background column guides - same grid as the page content (currently hidden) */}
@@ -191,28 +239,50 @@ export default function HomePanel({ showContent = true, instant = false }: HomeP
             }}
             transition={shrinkTransition}
           >
-            <motion.h1
-              ref={headerRef}
-              className="font-medium text-[#1E1E1E] dark:text-white whitespace-nowrap leading-none"
-              initial={instant ? false : undefined}
-              animate={{
-                fontSize: hasShrunk ? shrunkFontSize : fontSize,
-                paddingTop: hasShrunk ? '8px' : '0px',
-              }}
-              transition={shrinkTransition}
-              style={{
-                letterSpacing: '-0.05em',
-                marginTop: '-0.15em',
-                marginBottom: '-0.1em',
-              }}
-            >
-              {showContent && (
-                <AnimatedText baseDelay={headerDelay} staggerDelay={stagger} instant={instant}>
-                  Winston Zhao
-                </AnimatedText>
+            <div className="flex gap-4 items-start">
+              <motion.h1
+                ref={headerRef}
+                className="font-medium text-[#1E1E1E] dark:text-white whitespace-nowrap leading-none"
+                initial={instant ? false : undefined}
+                animate={{
+                  fontSize: hasShrunk ? shrunkFontSize : fontSize,
+                  paddingTop: hasShrunk ? '8px' : '0px',
+                }}
+                transition={shrinkTransition}
+                style={{
+                  letterSpacing: '-0.05em',
+                  marginTop: '-0.15em',
+                  marginBottom: '-0.1em',
+                }}
+              >
+                {langSwitched ? (
+                  <ScrambleText from={fromT.name} charDelay={switchCharDelay}>
+                    {t.name}
+                  </ScrambleText>
+                ) : showContent ? (
+                  <AnimatedText baseDelay={headerDelay} staggerDelay={stagger} instant={instant}>
+                    {t.name}
+                  </AnimatedText>
+                ) : (
+                  <span className="opacity-0">{t.name}</span>
+                )}
+              </motion.h1>
+
+              {/* Chinese name beside the header (zh only). Also rendered
+                  without a live switch when the session restored Chinese.
+                  Sits outside the h1 so its top lines up with the language
+                  switcher rather than the name's overshooting line box. */}
+              {(langSwitched || (t.nativeName !== '' && hasShrunk && showContent)) && (
+                <span
+                  className="font-light text-[20px] leading-none"
+                  style={{ letterSpacing: '-0.02em' }}
+                >
+                  <ScrambleText from={fromT.nativeName} charDelay={switchCharDelay}>
+                    {t.nativeName}
+                  </ScrambleText>
+                </span>
               )}
-              {!showContent && <span className="opacity-0">Winston Zhao</span>}
-            </motion.h1>
+            </div>
 
             {/* Language Switcher - appears after shrink */}
             <AnimatePresence>
@@ -227,9 +297,15 @@ export default function HomePanel({ showContent = true, instant = false }: HomeP
                     ease: [0.4, 0, 0.2, 1],
                   }}
                 >
-                  <p>EN</p>
-                  <p>SV</p>
-                  <p>中文</p>
+                  <button type="button" onClick={() => handleLanguageChange('en')} className="cursor-pointer">
+                    EN
+                  </button>
+                  <button type="button" onClick={() => handleLanguageChange('sv')} className="cursor-pointer">
+                    SV
+                  </button>
+                  <button type="button" onClick={() => handleLanguageChange('zh')} className="cursor-pointer">
+                    中文
+                  </button>
                 </motion.div>
               )}
             </AnimatePresence>
@@ -252,10 +328,10 @@ export default function HomePanel({ showContent = true, instant = false }: HomeP
                       href={LINKEDIN_URL}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex gap-2 items-start font-medium text-[#1E1E1E] dark:text-white whitespace-nowrap cursor-pointer"
+                      className={`flex gap-2 items-start ${bigTextWeight} text-[#1E1E1E] dark:text-white whitespace-nowrap cursor-pointer`}
                     >
                       <motion.span
-                        className="text-[40px] lg:text-[52px] xl:text-[64px] leading-none tracking-[-1.6px] lg:tracking-[-2.08px] xl:tracking-[-2.56px]"
+                        className={`text-[40px] lg:text-[52px] xl:text-[64px] leading-none ${bigTextTracking}`}
                         initial={{ clipPath: 'inset(-10% -10% 0 -10%)' }}
                         animate={{ clipPath: 'inset(-10% -10% -20% -10%)' }}
                         transition={{
@@ -264,7 +340,11 @@ export default function HomePanel({ showContent = true, instant = false }: HomeP
                           ease: [0.4, 0, 0.2, 1],
                         }}
                       >
-                        {showContent ? (
+                        {langSwitched ? (
+                          <ScrambleText from={fromT.sayHi} charDelay={switchCharDelay}>
+                            {t.sayHi}
+                          </ScrambleText>
+                        ) : showContent ? (
                           <motion.span
                             className="inline-block"
                             initial={instant ? false : { y: '40%', opacity: 0 }}
@@ -275,10 +355,10 @@ export default function HomePanel({ showContent = true, instant = false }: HomeP
                               ease: [0.4, 0, 0.2, 1],
                             }}
                           >
-                            say hi
+                            {t.sayHi}
                           </motion.span>
                         ) : (
-                          <span className="opacity-0">say hi</span>
+                          <span className="opacity-0">{t.sayHi}</span>
                         )}
                       </motion.span>
                       <motion.span
@@ -291,7 +371,11 @@ export default function HomePanel({ showContent = true, instant = false }: HomeP
                           ease: [0.4, 0, 0.2, 1],
                         }}
                       >
-                        {showContent ? (
+                        {langSwitched ? (
+                          <ScrambleText from={fromT.sayHiLabel} charDelay={switchCharDelay}>
+                            {t.sayHiLabel}
+                          </ScrambleText>
+                        ) : showContent ? (
                           <motion.span
                             className="inline-block"
                             initial={instant ? false : { y: '40%', opacity: 0 }}
@@ -302,10 +386,10 @@ export default function HomePanel({ showContent = true, instant = false }: HomeP
                               ease: [0.4, 0, 0.2, 1],
                             }}
                           >
-                            LNKD
+                            {t.sayHiLabel}
                           </motion.span>
                         ) : (
-                          <span className="opacity-0">LNKD</span>
+                          <span className="opacity-0">{t.sayHiLabel}</span>
                         )}
                       </motion.span>
                     </a>
@@ -316,43 +400,22 @@ export default function HomePanel({ showContent = true, instant = false }: HomeP
 
                   {/* Columns 3-5: Bio */}
                   <div className="col-span-4 lg:col-span-3 flex items-start justify-between">
-                    <div className="font-medium leading-none text-[40px] lg:text-[52px] xl:text-[64px] text-[#1E1E1E] dark:text-white whitespace-nowrap tracking-[-1.6px] lg:tracking-[-2.08px] xl:tracking-[-2.56px]">
-                      <p className="mb-0">
-                        {showContent ? (
-                          <AnimatedText baseDelay={bio1Delay} staggerDelay={0.03} instant={instant}>
-                            product designer
-                          </AnimatedText>
-                        ) : (
-                          <span className="opacity-0">product designer</span>
-                        )}
-                      </p>
-                      <p className="mb-0">
-                        {showContent ? (
-                          <AnimatedText baseDelay={bio2Delay} staggerDelay={0.03} instant={instant}>
-                            blending form and function
-                          </AnimatedText>
-                        ) : (
-                          <span className="opacity-0">blending form and function</span>
-                        )}
-                      </p>
-                      <p className="mb-0">
-                        {showContent ? (
-                          <AnimatedText baseDelay={bio3Delay} staggerDelay={0.03} instant={instant}>
-                            currently in stockholm
-                          </AnimatedText>
-                        ) : (
-                          <span className="opacity-0">currently in stockholm</span>
-                        )}
-                      </p>
-                      <p>
-                        {showContent ? (
-                          <AnimatedText baseDelay={bio4Delay} staggerDelay={0.03} instant={instant}>
-                            building at newly
-                          </AnimatedText>
-                        ) : (
-                          <span className="opacity-0">building at newly</span>
-                        )}
-                      </p>
+                    <div className={`${bigTextWeight} leading-none text-[40px] lg:text-[52px] xl:text-[64px] text-[#1E1E1E] dark:text-white whitespace-nowrap ${bigTextTracking}`}>
+                      {t.bioLines.map((line, index) => (
+                        <p key={index} className={index < t.bioLines.length - 1 ? 'mb-0' : undefined}>
+                          {langSwitched ? (
+                            <ScrambleText from={fromT.bioLines[index]} charDelay={switchCharDelay}>
+                              {line}
+                            </ScrambleText>
+                          ) : showContent ? (
+                            <AnimatedText baseDelay={bioIntroDelays[index]} staggerDelay={0.03} instant={instant}>
+                              {line}
+                            </AnimatedText>
+                          ) : (
+                            <span className="opacity-0">{line}</span>
+                          )}
+                        </p>
+                      ))}
                     </div>
                     {showContent ? (
                       <motion.div
@@ -408,9 +471,9 @@ export default function HomePanel({ showContent = true, instant = false }: HomeP
                         }}
                         className="flex gap-3 items-center"
                       >
-                        <NewlyRole />
-                        <FigmaRole />
-                        <TextQLRole />
+                        <NewlyRole label={roleLabel(t.designAt, fromT.designAt)} />
+                        <FigmaRole label={roleLabel(t.campusLeaderAt, fromT.campusLeaderAt)} />
+                        <TextQLRole label={roleLabel(t.prevDesignAt, fromT.prevDesignAt)} />
                       </motion.div>
                     ) : (
                       <div className="opacity-0 flex gap-3 items-center">
@@ -441,7 +504,15 @@ export default function HomePanel({ showContent = true, instant = false }: HomeP
                           ease: [0.4, 0, 0.2, 1],
                         }}
                       >
-                        <span className="font-medium text-[12px] tracking-[-0.24px] leading-normal">{currentTime}</span>
+                        <span className="font-medium text-[12px] tracking-[-0.24px] leading-normal">
+                          {langSwitched ? (
+                            <ScrambleText from={formatStockholmTime(prevLanguage)} charDelay={switchCharDelay}>
+                              {currentTime}
+                            </ScrambleText>
+                          ) : (
+                            currentTime
+                          )}
+                        </span>
                         <span className="w-2.5 h-2.5 rounded-full bg-[#1E1E1E] dark:bg-white shrink-0 self-center" />
                       </motion.div>
                     ) : (
@@ -482,24 +553,58 @@ export default function HomePanel({ showContent = true, instant = false }: HomeP
                 />
               </div>
               <div className="w-[354px] font-normal text-[12px] tracking-[-0.24px] leading-normal">
-                <p className="mb-0">I&rsquo;m in the process of creating a new portfolio.</p>
+                <p className="mb-0">
+                  {langSwitched ? (
+                    <ScrambleText from={fromT.newPortfolio} charDelay={switchCharDelay}>
+                      {t.newPortfolio}
+                    </ScrambleText>
+                  ) : (
+                    t.newPortfolio
+                  )}
+                </p>
                 <p>
-                  Check back soon, or{' '}
+                  {langSwitched ? (
+                    <ScrambleText from={fromT.checkBackPrefix} charDelay={switchCharDelay}>
+                      {t.checkBackPrefix}
+                    </ScrambleText>
+                  ) : (
+                    t.checkBackPrefix
+                  )}
                   <a
                     href={OLD_SITE_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="underline"
                   >
-                    visit the old site
+                    {langSwitched ? (
+                      <ScrambleText from={fromT.oldSiteLink} charDelay={switchCharDelay}>
+                        {t.oldSiteLink}
+                      </ScrambleText>
+                    ) : (
+                      t.oldSiteLink
+                    )}
                   </a>
-                  .
+                  {langSwitched ? (
+                    <ScrambleText from={fromT.period} charDelay={switchCharDelay}>
+                      {t.period}
+                    </ScrambleText>
+                  ) : (
+                    t.period
+                  )}
                 </p>
               </div>
             </div>
             <div className="flex gap-3 items-center justify-end font-normal text-[12px] tracking-[-0.24px] leading-normal whitespace-nowrap">
               <a href={`mailto:${EMAIL}`}>hello [at] winstonzhao.ca</a>
-              <Link href={RESUME_URL}>resume</Link>
+              <Link href={RESUME_URL}>
+                {langSwitched ? (
+                  <ScrambleText from={fromT.resume} charDelay={switchCharDelay}>
+                    {t.resume}
+                  </ScrambleText>
+                ) : (
+                  t.resume
+                )}
+              </Link>
             </div>
           </motion.div>
         )}

@@ -6,6 +6,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import {
   AnimatedText,
+  ScrambleText,
+  formatStockholmTime,
   useCurrentTime,
   NewlyRole,
   FigmaRole,
@@ -15,11 +17,11 @@ import {
   RESUME_URL,
   EMAIL,
 } from './shared';
+import { Language, translations } from './translations';
 
 // "Zhao" sits in the second of the two mobile grid columns: half the
 // container width plus half the 12px column gap (~51.7% of the row).
 const ZHAO_COLUMN_OFFSET_RATIO = 0.517;
-const ZHAO_COLUMN_OFFSET = `${ZHAO_COLUMN_OFFSET_RATIO * 100}%`;
 
 // Profile photo height relative to the shrunk font size — matches the visual
 // (cap) height of "Zhao" (46px photo next to 64px text in the original design).
@@ -37,9 +39,16 @@ interface HomePanelMobileProps {
   showContent?: boolean;
   // Render everything in its final state with no entrance animations
   instant?: boolean;
+  language?: Language;
+  onLanguageChange?: (language: Language) => void;
 }
 
-export default function HomePanelMobile({ showContent = true, instant = false }: HomePanelMobileProps) {
+export default function HomePanelMobile({
+  showContent = true,
+  instant = false,
+  language = 'en',
+  onLanguageChange,
+}: HomePanelMobileProps) {
   const headerRef = useRef<HTMLHeadingElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const footerRef = useRef<HTMLDivElement>(null);
@@ -48,7 +57,31 @@ export default function HomePanelMobile({ showContent = true, instant = false }:
   const [hasShrunk, setHasShrunk] = useState(instant);
   const [footerOpen, setFooterOpen] = useState(false);
   const [footerOffset, setFooterOffset] = useState(FOOTER_OFFSET_FALLBACK);
-  const currentTime = useCurrentTime();
+  // True once the user has changed language: changed copy then re-animates
+  // with the scramble effect instead of the intro animations.
+  const [langSwitched, setLangSwitched] = useState(false);
+  // Language shown before the switch, so the outgoing copy stays on screen
+  // until the scramble replaces it.
+  const [prevLanguage, setPrevLanguage] = useState<Language>(language);
+  // Left offset of the second name line, measured so the current last name
+  // ends at the right edge (matches ZHAO_COLUMN_OFFSET_RATIO for "Zhao").
+  const [lineOffsetRatio, setLineOffsetRatio] = useState(ZHAO_COLUMN_OFFSET_RATIO);
+  const currentTime = useCurrentTime(language);
+  const t = translations[language];
+  const fromT = translations[prevLanguage];
+
+  // The globe cycles English → Swedish → Chinese
+  const toggleLanguage = () => {
+    setPrevLanguage(language);
+    setLangSwitched(true);
+    const next: Record<Language, Language> = { en: 'sv', sv: 'zh', zh: 'en' };
+    onLanguageChange?.(next[language]);
+  };
+
+  // The name stacks in two lines on mobile ("Winston" / "Zhao", or
+  // "Zhao" / "Sizhong" in Chinese).
+  const [firstName, lastName] = t.name.split(' ');
+  const [fromFirstName, fromLastName] = fromT.name.split(' ');
 
   useEffect(() => {
     const updateFontSize = () => {
@@ -101,13 +134,18 @@ export default function HomePanelMobile({ showContent = true, instant = false }:
     return () => window.removeEventListener('resize', updateFontSize);
   }, [hasShrunk]);
 
-  // Shrunk size: "Zhao" fills from its column offset to the right edge of the
-  // page; "Winston" shares the size and the photo scales with Zhao's height.
+  // Shrunk size: "Zhao" fills from its column offset to the right edge of
+  // the page. The size is always fitted to the English name so switching
+  // language never changes it; longer last names (e.g. "Sizhong") keep the
+  // size and right-align by shrinking the second line's offset instead.
   useEffect(() => {
     const updateShrunkFontSize = () => {
       if (!headerRef.current || !containerRef.current) return;
 
       const containerWidth = containerRef.current.offsetWidth;
+      // Not laid out yet — keep the previous size and offset
+      if (containerWidth === 0) return;
+
       const targetWidth = containerWidth * (1 - ZHAO_COLUMN_OFFSET_RATIO);
 
       const measureEl = document.createElement('span');
@@ -140,14 +178,21 @@ export default function HomePanelMobile({ showContent = true, instant = false }:
         }
       }
 
+      // Right-align the current last name at that size by computing how far
+      // from the left edge it has to start.
+      measureEl.style.fontSize = `${bestSize}px`;
+      measureEl.textContent = lastName;
+      const lastNameWidth = measureEl.offsetWidth;
+
       document.body.removeChild(measureEl);
       setShrunkFontSize(bestSize);
+      setLineOffsetRatio(Math.max(0, (containerWidth - lastNameWidth) / containerWidth));
     };
 
     updateShrunkFontSize();
     window.addEventListener('resize', updateShrunkFontSize);
     return () => window.removeEventListener('resize', updateShrunkFontSize);
-  }, []);
+  }, [lastName]);
 
   const photoSize = shrunkFontSize * PHOTO_TO_FONT_RATIO;
 
@@ -195,6 +240,34 @@ export default function HomePanelMobile({ showContent = true, instant = false }:
     duration: instant ? 0 : shrinkDuration,
     ease: [0.76, 0, 0.15, 1] as const,
   };
+
+  // Scramble timing for language switches: all texts animate at once, each
+  // sweeping through its own characters left to right.
+  const switchCharDelay = 0.02;
+  const bioIntroDelays = [bio1Delay, bio2Delay, bio3Delay, bio4Delay];
+
+  // Role labels render as plain text until a language switch, then scramble.
+  const roleLabel = (text: string, fromText: string) =>
+    langSwitched ? (
+      <ScrambleText from={fromText} charDelay={switchCharDelay}>
+        {text}
+      </ScrambleText>
+    ) : (
+      text
+    );
+
+  // The Chinese version uses a lighter weight and half the tracking for the
+  // large display text (per the zh Figma frame).
+  const isZh = language === 'zh';
+  const bigTextWeight = isZh ? 'font-light' : 'font-medium';
+  const bigTextTracking = isZh ? 'tracking-[-0.64px]' : 'tracking-[-1.28px]';
+
+  // Photo position: 12px to the left of the last name for latin layouts,
+  // flush with the page's left edge for Chinese. Both values share the same
+  // calc() shape so framer can tween between them.
+  const photoLeft = isZh
+    ? 'calc(0% + 0px)'
+    : `calc(${lineOffsetRatio * 100}% + ${-(photoSize + 12)}px)`;
 
   const setFooterRevealed = (open: boolean) => {
     if (open && footerRef.current) {
@@ -270,45 +343,72 @@ export default function HomePanelMobile({ showContent = true, instant = false }:
                 }}
               >
                 <span className="block whitespace-nowrap">
-                  {showContent ? (
+                  {langSwitched ? (
+                    <ScrambleText from={fromFirstName} charDelay={switchCharDelay}>
+                      {firstName}
+                    </ScrambleText>
+                  ) : showContent ? (
                     <AnimatedText baseDelay={headerDelay} staggerDelay={stagger}>
-                      Winston
+                      {firstName}
                     </AnimatedText>
                   ) : (
-                    <span className="opacity-0">Winston</span>
+                    <span className="opacity-0">{firstName}</span>
+                  )}
+                  {/* Chinese name beside the header (zh only). Also rendered
+                      without a live switch when the session restored Chinese.
+                      Nudged down from the line-box top to the cap top of the
+                      name (the font's ascent overshoots the glyphs). */}
+                  {(langSwitched || (t.nativeName !== '' && hasShrunk && showContent)) && (
+                    <span
+                      className="inline-block align-top font-light text-[12px] leading-none ml-2 relative"
+                      style={{ letterSpacing: '-0.02em', top: shrunkFontSize * 0.15 }}
+                    >
+                      <ScrambleText from={fromT.nativeName} charDelay={switchCharDelay}>
+                        {t.nativeName}
+                      </ScrambleText>
+                    </span>
                   )}
                 </span>
                 <motion.span
                   className="block whitespace-nowrap relative"
                   animate={{
-                    paddingLeft: hasShrunk ? ZHAO_COLUMN_OFFSET : '0%',
+                    paddingLeft: hasShrunk ? `${lineOffsetRatio * 100}%` : '0%',
                   }}
                   transition={shrinkTransition}
                 >
-                  {showContent ? (
+                  {langSwitched ? (
+                    <ScrambleText from={fromLastName} charDelay={switchCharDelay}>
+                      {lastName}
+                    </ScrambleText>
+                  ) : showContent ? (
                     <AnimatedText baseDelay={headerDelay + stagger} staggerDelay={stagger}>
-                      Zhao
+                      {lastName}
                     </AnimatedText>
                   ) : (
-                    <span className="opacity-0">Zhao</span>
+                    <span className="opacity-0">{lastName}</span>
                   )}
 
                   {/* Profile picture - appears beside "Zhao" once the name settles.
                       Always mounted (with priority) so the image is preloaded
                       while the loading line runs, instead of popping in late. */}
                   <motion.span
-                    className="block absolute right-[calc(50%+6px)] top-1/2"
+                    className="block absolute top-1/2"
                     style={{
                       width: photoSize,
                       height: photoSize,
                       marginTop: -photoSize / 2,
                     }}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={hasShrunk && showContent ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+                    initial={{ opacity: 0, scale: 0.8, left: photoLeft }}
+                    animate={
+                      hasShrunk && showContent
+                        ? { opacity: 1, scale: 1, left: photoLeft }
+                        : { opacity: 0, scale: 0.8, left: photoLeft }
+                    }
                     transition={{
-                      duration: 0.6,
-                      delay: shrinkDuration,
-                      ease: [0.4, 0, 0.2, 1],
+                      opacity: { duration: 0.6, delay: shrinkDuration, ease: [0.4, 0, 0.2, 1] },
+                      scale: { duration: 0.6, delay: shrinkDuration, ease: [0.4, 0, 0.2, 1] },
+                      // Slide in step with the name line's offset change
+                      left: shrinkTransition,
                     }}
                   >
                     <Image
@@ -336,11 +436,18 @@ export default function HomePanelMobile({ showContent = true, instant = false }:
                       ease: [0.4, 0, 0.2, 1],
                     }}
                   >
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-label="Language" role="img">
-                      <circle cx="8" cy="8" r="6.5" stroke="currentColor" />
-                      <path d="M1.5 8H14.5" stroke="currentColor" />
-                      <path d="M8 1.5C9.8 3.3 10.75 5.55 10.75 8C10.75 10.45 9.8 12.7 8 14.5C6.2 12.7 5.25 10.45 5.25 8C5.25 5.55 6.2 3.3 8 1.5Z" stroke="currentColor" />
-                    </svg>
+                    <button
+                      type="button"
+                      onClick={toggleLanguage}
+                      aria-label="Switch language"
+                      className="block w-full h-full cursor-pointer"
+                    >
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <circle cx="8" cy="8" r="6.5" stroke="currentColor" />
+                        <path d="M1.5 8H14.5" stroke="currentColor" />
+                        <path d="M8 1.5C9.8 3.3 10.75 5.55 10.75 8C10.75 10.45 9.8 12.7 8 14.5C6.2 12.7 5.25 10.45 5.25 8C5.25 5.55 6.2 3.3 8 1.5Z" stroke="currentColor" />
+                      </svg>
+                    </button>
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -357,43 +464,26 @@ export default function HomePanelMobile({ showContent = true, instant = false }:
                 >
                   <div className="flex flex-col gap-12 w-full">
                     {/* Bio */}
-                    <div className="font-medium leading-none text-[32px] text-[#1E1E1E] dark:text-white tracking-[-1.28px]">
-                      <p className="mb-0">
-                        {showContent ? (
-                          <AnimatedText baseDelay={bio1Delay} staggerDelay={0.03}>
-                            product designer
-                          </AnimatedText>
-                        ) : (
-                          <span className="opacity-0">product designer</span>
-                        )}
-                      </p>
-                      <p className="mb-0">
-                        {showContent ? (
-                          <AnimatedText baseDelay={bio2Delay} staggerDelay={0.03}>
-                            blending form and function
-                          </AnimatedText>
-                        ) : (
-                          <span className="opacity-0">blending form and function</span>
-                        )}
-                      </p>
-                      <p className="mb-0">
-                        {showContent ? (
-                          <AnimatedText baseDelay={bio3Delay} staggerDelay={0.03}>
-                            currently in stockholm
-                          </AnimatedText>
-                        ) : (
-                          <span className="opacity-0">currently in stockholm</span>
-                        )}
-                      </p>
-                      <p>
-                        {showContent ? (
-                          <AnimatedText baseDelay={bio4Delay} staggerDelay={0.03}>
-                            building at newly
-                          </AnimatedText>
-                        ) : (
-                          <span className="opacity-0">building at newly</span>
-                        )}
-                      </p>
+                    <div className={`${bigTextWeight} leading-none text-[32px] text-[#1E1E1E] dark:text-white ${bigTextTracking}`}>
+                      {t.bioLines.map((line, index) => (
+                        <p key={index} className={index < t.bioLines.length - 1 ? 'mb-0' : undefined}>
+                          {langSwitched ? (
+                            <ScrambleText
+                              from={fromT.bioLines[index]}
+                              charDelay={switchCharDelay}
+                              className="whitespace-nowrap"
+                            >
+                              {line}
+                            </ScrambleText>
+                          ) : showContent ? (
+                            <AnimatedText baseDelay={bioIntroDelays[index]} staggerDelay={0.03}>
+                              {line}
+                            </AnimatedText>
+                          ) : (
+                            <span className="opacity-0">{line}</span>
+                          )}
+                        </p>
+                      ))}
                     </div>
 
                     {/* Say Hi + Icon */}
@@ -402,10 +492,10 @@ export default function HomePanelMobile({ showContent = true, instant = false }:
                         href={LINKEDIN_URL}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex gap-2 items-start font-medium text-[#1E1E1E] dark:text-white whitespace-nowrap cursor-pointer"
+                        className={`flex gap-2 items-start ${bigTextWeight} text-[#1E1E1E] dark:text-white whitespace-nowrap cursor-pointer`}
                       >
                         <motion.span
-                          className="text-[32px] leading-none tracking-[-1.28px]"
+                          className={`text-[32px] leading-none ${bigTextTracking}`}
                           initial={{ clipPath: 'inset(-10% -10% 0 -10%)' }}
                           animate={{ clipPath: 'inset(-10% -10% -20% -10%)' }}
                           transition={{
@@ -414,7 +504,11 @@ export default function HomePanelMobile({ showContent = true, instant = false }:
                             ease: [0.4, 0, 0.2, 1],
                           }}
                         >
-                          {showContent ? (
+                          {langSwitched ? (
+                            <ScrambleText from={fromT.sayHi} charDelay={switchCharDelay}>
+                              {t.sayHi}
+                            </ScrambleText>
+                          ) : showContent ? (
                             <motion.span
                               className="inline-block"
                               initial={{ y: '40%', opacity: 0 }}
@@ -425,10 +519,10 @@ export default function HomePanelMobile({ showContent = true, instant = false }:
                                 ease: [0.4, 0, 0.2, 1],
                               }}
                             >
-                              say hi
+                              {t.sayHi}
                             </motion.span>
                           ) : (
-                            <span className="opacity-0">say hi</span>
+                            <span className="opacity-0">{t.sayHi}</span>
                           )}
                         </motion.span>
                         <motion.span
@@ -441,7 +535,11 @@ export default function HomePanelMobile({ showContent = true, instant = false }:
                             ease: [0.4, 0, 0.2, 1],
                           }}
                         >
-                          {showContent ? (
+                          {langSwitched ? (
+                            <ScrambleText from={fromT.sayHiLabel} charDelay={switchCharDelay}>
+                              {t.sayHiLabel}
+                            </ScrambleText>
+                          ) : showContent ? (
                             <motion.span
                               className="inline-block"
                               initial={{ y: '40%', opacity: 0 }}
@@ -452,10 +550,10 @@ export default function HomePanelMobile({ showContent = true, instant = false }:
                                 ease: [0.4, 0, 0.2, 1],
                               }}
                             >
-                              LNKD
+                              {t.sayHiLabel}
                             </motion.span>
                           ) : (
-                            <span className="opacity-0">LNKD</span>
+                            <span className="opacity-0">{t.sayHiLabel}</span>
                           )}
                         </motion.span>
                       </a>
@@ -508,9 +606,9 @@ export default function HomePanelMobile({ showContent = true, instant = false }:
                           }}
                           className="flex flex-col gap-1 items-start"
                         >
-                          <NewlyRole />
-                          <FigmaRole />
-                          <TextQLRole />
+                          <NewlyRole label={roleLabel(t.designAt, fromT.designAt)} />
+                          <FigmaRole label={roleLabel(t.campusLeaderAt, fromT.campusLeaderAt)} />
+                          <TextQLRole label={roleLabel(t.prevDesignAt, fromT.prevDesignAt)} />
                         </motion.div>
                       ) : (
                         <div className="opacity-0 flex flex-col gap-1 items-start">
@@ -542,7 +640,15 @@ export default function HomePanelMobile({ showContent = true, instant = false }:
                               ease: [0.4, 0, 0.2, 1],
                             }}
                           >
-                            <span className="font-medium text-[12px] tracking-[-0.24px] leading-normal">{currentTime}</span>
+                            <span className="font-medium text-[12px] tracking-[-0.24px] leading-normal">
+                              {langSwitched ? (
+                                <ScrambleText from={formatStockholmTime(prevLanguage)} charDelay={switchCharDelay}>
+                                  {currentTime}
+                                </ScrambleText>
+                              ) : (
+                                currentTime
+                              )}
+                            </span>
                             <span className="w-2.5 h-2.5 rounded-full bg-[#1E1E1E] dark:bg-white shrink-0 self-center" />
                           </motion.div>
                         ) : (
@@ -606,18 +712,44 @@ export default function HomePanelMobile({ showContent = true, instant = false }:
           className="relative flex flex-col gap-12 p-6 w-full text-[#1E1E1E] dark:text-white"
         >
           <div className="max-w-[354px] font-normal text-[12px] tracking-[-0.24px] leading-normal">
-            <p className="mb-0">I&rsquo;m in the process of creating a new portfolio.</p>
+            <p className="mb-0">
+              {langSwitched ? (
+                <ScrambleText from={fromT.newPortfolio} charDelay={switchCharDelay}>
+                  {t.newPortfolio}
+                </ScrambleText>
+              ) : (
+                t.newPortfolio
+              )}
+            </p>
             <p>
-              Check back soon, or{' '}
+              {langSwitched ? (
+                <ScrambleText from={fromT.checkBackPrefix} charDelay={switchCharDelay}>
+                  {t.checkBackPrefix}
+                </ScrambleText>
+              ) : (
+                t.checkBackPrefix
+              )}
               <a
                 href={OLD_SITE_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="underline"
               >
-                visit the old site
+                {langSwitched ? (
+                  <ScrambleText from={fromT.oldSiteLink} charDelay={switchCharDelay}>
+                    {t.oldSiteLink}
+                  </ScrambleText>
+                ) : (
+                  t.oldSiteLink
+                )}
               </a>
-              .
+              {langSwitched ? (
+                <ScrambleText from={fromT.period} charDelay={switchCharDelay}>
+                  {t.period}
+                </ScrambleText>
+              ) : (
+                t.period
+              )}
             </p>
           </div>
           <div className="flex items-end justify-between w-full">
@@ -632,7 +764,15 @@ export default function HomePanelMobile({ showContent = true, instant = false }:
             </div>
             <div className="flex gap-3 items-center justify-end font-normal text-[12px] tracking-[-0.24px] leading-normal whitespace-nowrap">
               <a href={`mailto:${EMAIL}`}>hello [at] winstonzhao.ca</a>
-              <Link href={RESUME_URL}>resume</Link>
+              <Link href={RESUME_URL}>
+                {langSwitched ? (
+                  <ScrambleText from={fromT.resume} charDelay={switchCharDelay}>
+                    {t.resume}
+                  </ScrambleText>
+                ) : (
+                  t.resume
+                )}
+              </Link>
             </div>
           </div>
         </div>

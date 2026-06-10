@@ -1,7 +1,8 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import { ReactNode, useEffect, useRef, useState } from 'react';
+import { Language } from './translations';
 
 // Placeholder targets — update with the real URLs
 export const LINKEDIN_URL = 'https://www.linkedin.com/in/zhaowinston/?skipRedirect=true';
@@ -77,25 +78,146 @@ export function AnimatedText({ children, baseDelay = 0, staggerDelay = 0.08, cla
   );
 }
 
-export function useCurrentTime() {
+const SCRAMBLE_LETTERS = 'abcdefghijklmnopqrstuvwxyzåäö';
+const SCRAMBLE_DIGITS = '0123456789';
+const SCRAMBLE_CJK = '设计形式功能产品师招呼现居开发参与网站项目简历英文访问德哥尔摩';
+
+interface ScrambleTextProps {
+  children: string;
+  // Text shown before the first animation (the outgoing copy)
+  from?: string;
+  baseDelay?: number;
+  charDelay?: number;
+  // How long each character flickers through random letters before settling
+  scrambleDuration?: number;
+  className?: string;
+}
+
+// Typewriter-style scramble: the current text stays on screen and each
+// character cycles through random letters before settling on the new copy.
+// Used when the language changes so text is replaced in place.
+export function ScrambleText({
+  children,
+  from,
+  baseDelay = 0,
+  charDelay = 0.02,
+  scrambleDuration = 0.5,
+  className = '',
+}: ScrambleTextProps) {
+  const [display, setDisplay] = useState(from ?? children);
+  const displayRef = useRef(from ?? children);
+
+  useEffect(() => {
+    if (displayRef.current === children) return;
+
+    const fromChars = Array.from(displayRef.current);
+    const toChars = Array.from(children);
+    const length = Math.max(fromChars.length, toChars.length);
+    // Current random letter per slot, held for a few frames so it reads as
+    // flicker rather than pure noise.
+    const scratch: string[] = [];
+    const start = performance.now();
+    let frame: number;
+
+    const randomChar = (target: string) => {
+      // Digits flicker through digits, CJK through CJK, letters through
+      // letters; spaces and punctuation stay in place so word shapes
+      // remain readable.
+      if (/\d/.test(target)) {
+        return SCRAMBLE_DIGITS[Math.floor(Math.random() * SCRAMBLE_DIGITS.length)];
+      }
+      if (/[㐀-鿿]/.test(target)) {
+        return SCRAMBLE_CJK[Math.floor(Math.random() * SCRAMBLE_CJK.length)];
+      }
+      if (target && !/\p{L}/u.test(target)) return target;
+      const char = SCRAMBLE_LETTERS[Math.floor(Math.random() * SCRAMBLE_LETTERS.length)];
+      const isUpper = target !== target.toLowerCase() && target === target.toUpperCase();
+      return isUpper ? char.toUpperCase() : char;
+    };
+
+    const tick = (now: number) => {
+      const elapsed = (now - start) / 1000;
+      let out = '';
+      let settled = true;
+
+      for (let i = 0; i < length; i++) {
+        const to = toChars[i] ?? '';
+        const fromChar = fromChars[i] ?? '';
+
+        // Unchanged characters never scramble — e.g. only the digits move
+        // when the clock changes format.
+        if (fromChar === to) {
+          out += to;
+          continue;
+        }
+
+        const scrambleStart = baseDelay + i * charDelay;
+
+        // Characters past the end of the new text never scramble — they
+        // delete when the sweep reaches them, so the line shrinks toward
+        // the shorter text instead of flickering at full length.
+        if (to === '') {
+          if (elapsed < scrambleStart) {
+            settled = false;
+            out += fromChar;
+          }
+          continue;
+        }
+
+        if (elapsed >= scrambleStart + scrambleDuration) {
+          out += to;
+        } else if (elapsed >= scrambleStart) {
+          settled = false;
+          if (!scratch[i] || Math.random() < 0.3) scratch[i] = randomChar(to);
+          out += scratch[i];
+        } else {
+          settled = false;
+          out += fromChar;
+        }
+      }
+
+      displayRef.current = out;
+      setDisplay(out);
+      if (!settled) frame = requestAnimationFrame(tick);
+    };
+
+    frame = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(frame);
+  }, [children, baseDelay, charDelay, scrambleDuration]);
+
+  return <span className={className}>{display}</span>;
+}
+
+// English uses the 12-hour clock; Swedish and Chinese use 24-hour time
+// with no AM/PM.
+const TIME_LOCALES: Record<Language, string> = {
+  en: 'en-US',
+  sv: 'sv-SE',
+  zh: 'zh-CN',
+};
+
+export function formatStockholmTime(language: Language, date = new Date()) {
+  const formatter = new Intl.DateTimeFormat(TIME_LOCALES[language], {
+    hour: language === 'en' ? 'numeric' : '2-digit',
+    minute: '2-digit',
+    hour12: language === 'en',
+    timeZone: 'Europe/Stockholm',
+  });
+  return `STHLM ${formatter.format(date)}`;
+}
+
+export function useCurrentTime(language: Language = 'en') {
   const [time, setTime] = useState<string>('');
 
   useEffect(() => {
-    const formatter = new Intl.DateTimeFormat('en-US', {
-      hour: 'numeric',
-      minute: '2-digit',
-      hour12: true,
-      timeZone: 'Europe/Stockholm',
-    });
-
     const updateTime = () => {
-      setTime(`STHLM ${formatter.format(new Date())}`);
+      setTime(formatStockholmTime(language));
     };
 
     updateTime();
     const interval = setInterval(updateTime, 1000);
     return () => clearInterval(interval);
-  }, []);
+  }, [language]);
 
   return time;
 }
@@ -115,10 +237,10 @@ export function useIsMobile(breakpoint = 768) {
   return isMobile;
 }
 
-export function NewlyRole() {
+export function NewlyRole({ label = 'Design at' }: { label?: ReactNode }) {
   return (
     <div className="flex gap-[2px] items-center">
-      <p className="font-normal text-[12px] tracking-[-0.24px] leading-normal whitespace-nowrap">Design at</p>
+      <p className="font-normal text-[12px] tracking-[-0.24px] leading-normal whitespace-nowrap">{label}</p>
       <div className="w-3.5 h-3.5 shrink-0 flex items-center justify-center relative -top-[1px]">
         <svg viewBox="0 0 12 9.15607" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Newly" role="img" className="w-[12px] h-[9.156px] overflow-visible">
           <path d="M9.15638 1.89468C9.15638 2.41779 9.58039 2.84181 10.1035 2.84181H11.0509C11.574 2.84181 11.9981 3.26583 11.9981 3.78896V8.20937C11.9981 8.73249 11.574 9.15652 11.0509 9.15652H9.78796C9.26483 9.15652 8.84083 8.73249 8.84083 8.20937V4.10476C8.84083 3.58163 8.4168 3.15761 7.89368 3.15761H4.10438C3.58125 3.15761 3.15723 3.58163 3.15723 4.10476V8.20937C3.15723 8.73249 2.73321 9.15652 2.21008 9.15652H0.947145C0.42402 9.15652 0 8.73249 0 8.20937V3.7892C0 3.26608 0.42402 2.84205 0.947145 2.84205H1.89428C2.41741 2.84205 2.84143 2.41803 2.84143 1.8949V0.947766C2.84143 0.424641 3.26546 0.000620978 3.78858 0.000620978H8.20899C8.73212 0.000620978 9.15614 0.424641 9.15614 0.947766V1.89468H9.15638Z" fill="currentColor"/>
@@ -131,10 +253,10 @@ export function NewlyRole() {
   );
 }
 
-export function FigmaRole() {
+export function FigmaRole({ label = 'Campus Leader at' }: { label?: ReactNode }) {
   return (
     <div className="flex gap-px items-center">
-      <p className="font-normal text-[12px] tracking-[-0.24px] leading-normal whitespace-nowrap">Campus Leader at</p>
+      <p className="font-normal text-[12px] tracking-[-0.24px] leading-normal whitespace-nowrap">{label}</p>
       <div className="w-3.5 h-3.5 shrink-0 flex items-center justify-center relative -top-[1px]">
         <svg viewBox="0 0 8 11" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Figma" role="img" className="w-[8px] h-[11px] overflow-visible">
           <path fillRule="evenodd" clipRule="evenodd" d="M0.979804 3.77733C0.389945 3.41078 0 2.77614 0 2.05464C0 0.919893 0.96456 0 2.15441 0H5.84559C7.03543 0 8 0.919893 8 2.05464C8 2.77614 7.61002 3.41078 7.02018 3.77733C7.61002 4.14388 8 4.77852 8 5.50002C8 6.63477 7.03543 7.55468 5.84559 7.55468H5.80632C5.24387 7.55468 4.73176 7.3491 4.34807 7.01244V8.92662C4.34807 10.074 3.36241 11 2.16417 11C0.976767 11 0 10.0824 0 8.94538C0 8.22391 0.38993 7.58927 0.979772 7.22266C0.38993 6.85612 0 6.22148 0 5.50002C0 4.77852 0.389945 4.14388 0.979804 3.77733ZM4.34807 5.50002C4.34807 6.26811 5.00096 6.89071 5.80632 6.89071H5.84559C6.65096 6.89071 7.30385 6.26811 7.30385 5.50002C7.30385 4.73195 6.65096 4.10931 5.84559 4.10931H5.80632C5.00096 4.10931 4.34807 4.73195 4.34807 5.50002ZM3.65191 4.10931H2.15441C1.34904 4.10931 0.696161 4.73195 0.696161 5.50002C0.696161 6.26652 1.34639 6.8882 2.1495 6.89071H2.15179H3.65191V4.10931ZM2.15441 7.55468C2.15277 7.55468 2.15114 7.55468 2.1495 7.55468C1.3464 7.55718 0.696161 8.17887 0.696161 8.94538C0.696161 9.71111 1.35635 10.3361 2.16417 10.3361C2.98283 10.3361 3.65191 9.70273 3.65191 8.92662V7.55468H2.15441ZM3.65191 3.44535H2.15441C1.34904 3.44535 0.696161 2.82271 0.696161 2.05464C0.696161 1.28657 1.34904 0.663923 2.15441 0.663923H3.65191V3.44535ZM5.84559 3.44535H4.34807V0.663923H5.84559C6.65096 0.663923 7.30385 1.28657 7.30385 2.05464C7.30385 2.82271 6.65096 3.44535 5.84559 3.44535Z" fill="currentColor"/>
@@ -167,10 +289,10 @@ export function TextQLMark({ className = '', ariaLabel }: TextQLMarkProps) {
   );
 }
 
-export function TextQLRole() {
+export function TextQLRole({ label = 'Prev. Design at' }: { label?: ReactNode }) {
   return (
     <div className="flex gap-[2px] items-center">
-      <p className="font-normal text-[12px] tracking-[-0.24px] leading-normal whitespace-nowrap">Prev. Design at</p>
+      <p className="font-normal text-[12px] tracking-[-0.24px] leading-normal whitespace-nowrap">{label}</p>
       <div className="w-3.5 h-3.5 shrink-0 flex items-center justify-center relative -top-[1px]">
         <TextQLMark className="w-[12px] h-[8.578px] overflow-visible" ariaLabel="TextQL" />
       </div>
