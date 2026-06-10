@@ -22,7 +22,6 @@ import { Language, translations } from './translations';
 // "Zhao" sits in the second of the two mobile grid columns: half the
 // container width plus half the 12px column gap (~51.7% of the row).
 const ZHAO_COLUMN_OFFSET_RATIO = 0.517;
-const ZHAO_COLUMN_OFFSET = `${ZHAO_COLUMN_OFFSET_RATIO * 100}%`;
 
 // Profile photo height relative to the shrunk font size — matches the visual
 // (cap) height of "Zhao" (46px photo next to 64px text in the original design).
@@ -64,6 +63,9 @@ export default function HomePanelMobile({
   // Language shown before the switch, so the outgoing copy stays on screen
   // until the scramble replaces it.
   const [prevLanguage, setPrevLanguage] = useState<Language>(language);
+  // Left offset of the second name line, measured so the current last name
+  // ends at the right edge (matches ZHAO_COLUMN_OFFSET_RATIO for "Zhao").
+  const [lineOffsetRatio, setLineOffsetRatio] = useState(ZHAO_COLUMN_OFFSET_RATIO);
   const currentTime = useCurrentTime(language);
   const t = translations[language];
   const fromT = translations[prevLanguage];
@@ -132,13 +134,18 @@ export default function HomePanelMobile({
     return () => window.removeEventListener('resize', updateFontSize);
   }, [hasShrunk]);
 
-  // Shrunk size: "Zhao" fills from its column offset to the right edge of the
-  // page; "Winston" shares the size and the photo scales with Zhao's height.
+  // Shrunk size: "Zhao" fills from its column offset to the right edge of
+  // the page. The size is always fitted to the English name so switching
+  // language never changes it; longer last names (e.g. "Sizhong") keep the
+  // size and right-align by shrinking the second line's offset instead.
   useEffect(() => {
     const updateShrunkFontSize = () => {
       if (!headerRef.current || !containerRef.current) return;
 
       const containerWidth = containerRef.current.offsetWidth;
+      // Not laid out yet — keep the previous size and offset
+      if (containerWidth === 0) return;
+
       const targetWidth = containerWidth * (1 - ZHAO_COLUMN_OFFSET_RATIO);
 
       const measureEl = document.createElement('span');
@@ -148,7 +155,7 @@ export default function HomePanelMobile({
       measureEl.style.fontFamily = getComputedStyle(headerRef.current).fontFamily;
       measureEl.style.fontWeight = getComputedStyle(headerRef.current).fontWeight;
       measureEl.style.letterSpacing = '-0.05em';
-      measureEl.textContent = lastName;
+      measureEl.textContent = 'Zhao';
       document.body.appendChild(measureEl);
 
       let minSize = 10;
@@ -171,8 +178,15 @@ export default function HomePanelMobile({
         }
       }
 
+      // Right-align the current last name at that size by computing how far
+      // from the left edge it has to start.
+      measureEl.style.fontSize = `${bestSize}px`;
+      measureEl.textContent = lastName;
+      const lastNameWidth = measureEl.offsetWidth;
+
       document.body.removeChild(measureEl);
       setShrunkFontSize(bestSize);
+      setLineOffsetRatio(Math.max(0, (containerWidth - lastNameWidth) / containerWidth));
     };
 
     updateShrunkFontSize();
@@ -349,7 +363,7 @@ export default function HomePanelMobile({
                 <motion.span
                   className="block whitespace-nowrap relative"
                   animate={{
-                    paddingLeft: hasShrunk ? ZHAO_COLUMN_OFFSET : '0%',
+                    paddingLeft: hasShrunk ? `${lineOffsetRatio * 100}%` : '0%',
                   }}
                   transition={shrinkTransition}
                 >
@@ -369,8 +383,10 @@ export default function HomePanelMobile({
                       Always mounted (with priority) so the image is preloaded
                       while the loading line runs, instead of popping in late. */}
                   <motion.span
-                    className="block absolute right-[calc(50%+6px)] top-1/2"
+                    className="block absolute top-1/2"
                     style={{
+                      // 12px gap to the left of wherever the last name starts
+                      right: `calc(${(1 - lineOffsetRatio) * 100}% + 12px)`,
                       width: photoSize,
                       height: photoSize,
                       marginTop: -photoSize / 2,

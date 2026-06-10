@@ -239,37 +239,42 @@ export default function HomePanel({
             }}
             transition={shrinkTransition}
           >
-            <motion.h1
-              ref={headerRef}
-              className="font-medium text-[#1E1E1E] dark:text-white whitespace-nowrap leading-none"
-              initial={instant ? false : undefined}
-              animate={{
-                fontSize: hasShrunk ? shrunkFontSize : fontSize,
-                paddingTop: hasShrunk ? '8px' : '0px',
-              }}
-              transition={shrinkTransition}
-              style={{
-                letterSpacing: '-0.05em',
-                marginTop: '-0.15em',
-                marginBottom: '-0.1em',
-              }}
-            >
-              {langSwitched ? (
-                <ScrambleText from={fromT.name} charDelay={switchCharDelay}>
-                  {t.name}
-                </ScrambleText>
-              ) : showContent ? (
-                <AnimatedText baseDelay={headerDelay} staggerDelay={stagger} instant={instant}>
-                  {t.name}
-                </AnimatedText>
-              ) : (
-                <span className="opacity-0">{t.name}</span>
-              )}
+            <div className="flex gap-4 items-start">
+              <motion.h1
+                ref={headerRef}
+                className="font-medium text-[#1E1E1E] dark:text-white whitespace-nowrap leading-none"
+                initial={instant ? false : undefined}
+                animate={{
+                  fontSize: hasShrunk ? shrunkFontSize : fontSize,
+                  paddingTop: hasShrunk ? '8px' : '0px',
+                }}
+                transition={shrinkTransition}
+                style={{
+                  letterSpacing: '-0.05em',
+                  marginTop: '-0.15em',
+                  marginBottom: '-0.1em',
+                }}
+              >
+                {langSwitched ? (
+                  <ScrambleText from={fromT.name} charDelay={switchCharDelay}>
+                    {t.name}
+                  </ScrambleText>
+                ) : showContent ? (
+                  <AnimatedText baseDelay={headerDelay} staggerDelay={stagger} instant={instant}>
+                    {t.name}
+                  </AnimatedText>
+                ) : (
+                  <span className="opacity-0">{t.name}</span>
+                )}
+              </motion.h1>
+
               {/* Chinese name beside the header (zh only). Also rendered
-                  without a live switch when the session restored Chinese. */}
+                  without a live switch when the session restored Chinese.
+                  Sits outside the h1 so its top lines up with the language
+                  switcher rather than the name's overshooting line box. */}
               {(langSwitched || (t.nativeName !== '' && hasShrunk && showContent)) && (
                 <span
-                  className="inline-block align-top font-light text-[20px] leading-none ml-4"
+                  className="font-light text-[20px] leading-none"
                   style={{ letterSpacing: '-0.02em' }}
                 >
                   <ScrambleText from={fromT.nativeName} charDelay={switchCharDelay}>
@@ -277,7 +282,7 @@ export default function HomePanel({
                   </ScrambleText>
                 </span>
               )}
-            </motion.h1>
+            </div>
 
             {/* Language Switcher - appears after shrink */}
             <AnimatePresence>
