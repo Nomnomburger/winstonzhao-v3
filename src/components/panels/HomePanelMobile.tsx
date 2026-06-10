@@ -223,7 +223,7 @@ export default function HomePanelMobile({
 
   // Scramble timing for language switches: all texts animate at once, each
   // sweeping through its own characters left to right.
-  const switchCharDelay = 0.03;
+  const switchCharDelay = 0.05;
   const bioIntroDelays = [bio1Delay, bio2Delay, bio3Delay, bio4Delay];
 
   // Role labels render as plain text until a language switch, then scramble.

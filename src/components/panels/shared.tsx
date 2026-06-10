@@ -100,7 +100,7 @@ export function ScrambleText({
   from,
   baseDelay = 0,
   charDelay = 0.02,
-  scrambleDuration = 0.6,
+  scrambleDuration = 1,
   className = '',
 }: ScrambleTextProps) {
   const [display, setDisplay] = useState(from ?? children);
