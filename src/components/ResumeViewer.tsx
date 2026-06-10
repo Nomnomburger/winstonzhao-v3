@@ -6,10 +6,8 @@ import { Document, Page, pdfjs } from 'react-pdf';
 import 'react-pdf/dist/Page/TextLayer.css';
 import 'react-pdf/dist/Page/AnnotationLayer.css';
 
-pdfjs.GlobalWorkerOptions.workerSrc = new URL(
-  'pdfjs-dist/build/pdf.worker.min.mjs',
-  import.meta.url
-).toString();
+// Served from public/, kept in sync with pdfjs-dist by scripts/copy-pdf-worker.mjs
+pdfjs.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.mjs';
 
 // Single source of truth for the resume file — replace public/winstonzhao-resume.pdf to update
 const RESUME_PDF = '/winstonzhao-resume.pdf';
