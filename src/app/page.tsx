@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import HomePanel from '@/components/panels/HomePanel';
+import HomePanelMobile from '@/components/panels/HomePanelMobile';
+import { useIsMobile } from '@/components/panels/shared';
 
 function LoadingScreen({ onComplete }: { onComplete: () => void }) {
   return (
@@ -30,6 +32,7 @@ function LoadingScreen({ onComplete }: { onComplete: () => void }) {
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
   const [showContent, setShowContent] = useState(false);
+  const isMobile = useIsMobile();
 
   const handleLoadingComplete = () => {
     setIsLoading(false);
@@ -38,12 +41,16 @@ export default function Home() {
   };
 
   return (
-    <div className="relative w-screen h-screen">
+    <div className="relative w-screen h-dvh">
       <AnimatePresence mode="wait">
         {isLoading && <LoadingScreen onComplete={handleLoadingComplete} />}
       </AnimatePresence>
 
-      <HomePanel showContent={showContent} />
+      {isMobile ? (
+        <HomePanelMobile showContent={showContent} />
+      ) : (
+        <HomePanel showContent={showContent} />
+      )}
     </div>
   );
 }
