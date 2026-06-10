@@ -6,6 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import {
   AnimatedText,
+  TypewriterText,
   useCurrentTime,
   NewlyRole,
   FigmaRole,
@@ -15,6 +16,7 @@ import {
   RESUME_URL,
   EMAIL,
 } from './shared';
+import { Language, translations } from './translations';
 
 // "Zhao" sits in the second of the two mobile grid columns: half the
 // container width plus half the 12px column gap (~51.7% of the row).
@@ -37,9 +39,16 @@ interface HomePanelMobileProps {
   showContent?: boolean;
   // Render everything in its final state with no entrance animations
   instant?: boolean;
+  language?: Language;
+  onLanguageChange?: (language: Language) => void;
 }
 
-export default function HomePanelMobile({ showContent = true, instant = false }: HomePanelMobileProps) {
+export default function HomePanelMobile({
+  showContent = true,
+  instant = false,
+  language = 'en',
+  onLanguageChange,
+}: HomePanelMobileProps) {
   const headerRef = useRef<HTMLHeadingElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const footerRef = useRef<HTMLDivElement>(null);
@@ -48,7 +57,17 @@ export default function HomePanelMobile({ showContent = true, instant = false }:
   const [hasShrunk, setHasShrunk] = useState(instant);
   const [footerOpen, setFooterOpen] = useState(false);
   const [footerOffset, setFooterOffset] = useState(FOOTER_OFFSET_FALLBACK);
+  // True once the user has changed language: changed copy then re-animates
+  // with the typewriter effect instead of the intro animations.
+  const [langSwitched, setLangSwitched] = useState(false);
   const currentTime = useCurrentTime();
+  const t = translations[language];
+
+  // The globe cycles between English and Swedish
+  const toggleLanguage = () => {
+    setLangSwitched(true);
+    onLanguageChange?.(language === 'en' ? 'sv' : 'en');
+  };
 
   useEffect(() => {
     const updateFontSize = () => {
@@ -196,6 +215,28 @@ export default function HomePanelMobile({ showContent = true, instant = false }:
     ease: [0.76, 0, 0.15, 1] as const,
   };
 
+  // Typewriter timing for language switches: each bio line starts typing
+  // when the previous one finishes, like one continuous typing pass.
+  const switchCharDelay = 0.02;
+  const bioIntroDelays = [bio1Delay, bio2Delay, bio3Delay, bio4Delay];
+  const bioSwitchDelay = (index: number) =>
+    t.bioLines.slice(0, index).reduce((sum, line) => sum + line.length * switchCharDelay, 0);
+
+  // Footer line two types after line one, segment by segment.
+  const checkBackSwitchDelay = t.newPortfolio.length * switchCharDelay;
+  const oldSiteSwitchDelay = checkBackSwitchDelay + t.checkBackPrefix.length * switchCharDelay;
+  const dotSwitchDelay = oldSiteSwitchDelay + t.oldSiteLink.length * switchCharDelay;
+
+  // Role labels render as plain text until a language switch, then retype.
+  const roleLabel = (text: string) =>
+    langSwitched ? (
+      <TypewriterText key={language} charDelay={switchCharDelay}>
+        {text}
+      </TypewriterText>
+    ) : (
+      text
+    );
+
   const setFooterRevealed = (open: boolean) => {
     if (open && footerRef.current) {
       setFooterOffset(footerRef.current.offsetHeight + 36);
@@ -336,11 +377,18 @@ export default function HomePanelMobile({ showContent = true, instant = false }:
                       ease: [0.4, 0, 0.2, 1],
                     }}
                   >
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-label="Language" role="img">
-                      <circle cx="8" cy="8" r="6.5" stroke="currentColor" />
-                      <path d="M1.5 8H14.5" stroke="currentColor" />
-                      <path d="M8 1.5C9.8 3.3 10.75 5.55 10.75 8C10.75 10.45 9.8 12.7 8 14.5C6.2 12.7 5.25 10.45 5.25 8C5.25 5.55 6.2 3.3 8 1.5Z" stroke="currentColor" />
-                    </svg>
+                    <button
+                      type="button"
+                      onClick={toggleLanguage}
+                      aria-label="Switch language"
+                      className="block w-full h-full cursor-pointer"
+                    >
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                        <circle cx="8" cy="8" r="6.5" stroke="currentColor" />
+                        <path d="M1.5 8H14.5" stroke="currentColor" />
+                        <path d="M8 1.5C9.8 3.3 10.75 5.55 10.75 8C10.75 10.45 9.8 12.7 8 14.5C6.2 12.7 5.25 10.45 5.25 8C5.25 5.55 6.2 3.3 8 1.5Z" stroke="currentColor" />
+                      </svg>
+                    </button>
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -358,42 +406,25 @@ export default function HomePanelMobile({ showContent = true, instant = false }:
                   <div className="flex flex-col gap-12 w-full">
                     {/* Bio */}
                     <div className="font-medium leading-none text-[32px] text-[#1E1E1E] dark:text-white tracking-[-1.28px]">
-                      <p className="mb-0">
-                        {showContent ? (
-                          <AnimatedText baseDelay={bio1Delay} staggerDelay={0.03}>
-                            product designer
-                          </AnimatedText>
-                        ) : (
-                          <span className="opacity-0">product designer</span>
-                        )}
-                      </p>
-                      <p className="mb-0">
-                        {showContent ? (
-                          <AnimatedText baseDelay={bio2Delay} staggerDelay={0.03}>
-                            blending form and function
-                          </AnimatedText>
-                        ) : (
-                          <span className="opacity-0">blending form and function</span>
-                        )}
-                      </p>
-                      <p className="mb-0">
-                        {showContent ? (
-                          <AnimatedText baseDelay={bio3Delay} staggerDelay={0.03}>
-                            currently in stockholm
-                          </AnimatedText>
-                        ) : (
-                          <span className="opacity-0">currently in stockholm</span>
-                        )}
-                      </p>
-                      <p>
-                        {showContent ? (
-                          <AnimatedText baseDelay={bio4Delay} staggerDelay={0.03}>
-                            building at newly
-                          </AnimatedText>
-                        ) : (
-                          <span className="opacity-0">building at newly</span>
-                        )}
-                      </p>
+                      {t.bioLines.map((line, index) => (
+                        <p key={index} className={index < t.bioLines.length - 1 ? 'mb-0' : undefined}>
+                          {langSwitched ? (
+                            <TypewriterText
+                              key={language}
+                              baseDelay={bioSwitchDelay(index)}
+                              charDelay={switchCharDelay}
+                            >
+                              {line}
+                            </TypewriterText>
+                          ) : showContent ? (
+                            <AnimatedText baseDelay={bioIntroDelays[index]} staggerDelay={0.03}>
+                              {line}
+                            </AnimatedText>
+                          ) : (
+                            <span className="opacity-0">{line}</span>
+                          )}
+                        </p>
+                      ))}
                     </div>
 
                     {/* Say Hi + Icon */}
@@ -414,7 +445,11 @@ export default function HomePanelMobile({ showContent = true, instant = false }:
                             ease: [0.4, 0, 0.2, 1],
                           }}
                         >
-                          {showContent ? (
+                          {langSwitched ? (
+                            <TypewriterText key={language} charDelay={switchCharDelay}>
+                              {t.sayHi}
+                            </TypewriterText>
+                          ) : showContent ? (
                             <motion.span
                               className="inline-block"
                               initial={{ y: '40%', opacity: 0 }}
@@ -425,10 +460,10 @@ export default function HomePanelMobile({ showContent = true, instant = false }:
                                 ease: [0.4, 0, 0.2, 1],
                               }}
                             >
-                              say hi
+                              {t.sayHi}
                             </motion.span>
                           ) : (
-                            <span className="opacity-0">say hi</span>
+                            <span className="opacity-0">{t.sayHi}</span>
                           )}
                         </motion.span>
                         <motion.span
@@ -508,9 +543,9 @@ export default function HomePanelMobile({ showContent = true, instant = false }:
                           }}
                           className="flex flex-col gap-1 items-start"
                         >
-                          <NewlyRole />
-                          <FigmaRole />
-                          <TextQLRole />
+                          <NewlyRole label={roleLabel(t.designAt)} />
+                          <FigmaRole label={roleLabel(t.campusLeaderAt)} />
+                          <TextQLRole label={roleLabel(t.prevDesignAt)} />
                         </motion.div>
                       ) : (
                         <div className="opacity-0 flex flex-col gap-1 items-start">
@@ -606,18 +641,44 @@ export default function HomePanelMobile({ showContent = true, instant = false }:
           className="relative flex flex-col gap-12 p-6 w-full text-[#1E1E1E] dark:text-white"
         >
           <div className="max-w-[354px] font-normal text-[12px] tracking-[-0.24px] leading-normal">
-            <p className="mb-0">I&rsquo;m in the process of creating a new portfolio.</p>
+            <p className="mb-0">
+              {langSwitched ? (
+                <TypewriterText key={language} charDelay={switchCharDelay}>
+                  {t.newPortfolio}
+                </TypewriterText>
+              ) : (
+                t.newPortfolio
+              )}
+            </p>
             <p>
-              Check back soon, or{' '}
+              {langSwitched ? (
+                <TypewriterText key={`${language}-prefix`} baseDelay={checkBackSwitchDelay} charDelay={switchCharDelay}>
+                  {t.checkBackPrefix}
+                </TypewriterText>
+              ) : (
+                t.checkBackPrefix
+              )}
               <a
                 href={OLD_SITE_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="underline"
               >
-                visit the old site
+                {langSwitched ? (
+                  <TypewriterText key={language} baseDelay={oldSiteSwitchDelay} charDelay={switchCharDelay}>
+                    {t.oldSiteLink}
+                  </TypewriterText>
+                ) : (
+                  t.oldSiteLink
+                )}
               </a>
-              .
+              {langSwitched ? (
+                <TypewriterText key={`${language}-dot`} baseDelay={dotSwitchDelay} charDelay={switchCharDelay}>
+                  .
+                </TypewriterText>
+              ) : (
+                '.'
+              )}
             </p>
           </div>
           <div className="flex items-end justify-between w-full">
@@ -632,7 +693,15 @@ export default function HomePanelMobile({ showContent = true, instant = false }:
             </div>
             <div className="flex gap-3 items-center justify-end font-normal text-[12px] tracking-[-0.24px] leading-normal whitespace-nowrap">
               <a href={`mailto:${EMAIL}`}>hello [at] winstonzhao.ca</a>
-              <Link href={RESUME_URL}>resume</Link>
+              <Link href={RESUME_URL}>
+                {langSwitched ? (
+                  <TypewriterText key={language} charDelay={switchCharDelay}>
+                    {t.resume}
+                  </TypewriterText>
+                ) : (
+                  t.resume
+                )}
+              </Link>
             </div>
           </div>
         </div>

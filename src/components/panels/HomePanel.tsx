@@ -6,6 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import {
   AnimatedText,
+  TypewriterText,
   useCurrentTime,
   NewlyRole,
   FigmaRole,
@@ -15,24 +16,42 @@ import {
   RESUME_URL,
   EMAIL,
 } from './shared';
+import { Language, translations } from './translations';
 
 interface HomePanelProps {
   showContent?: boolean;
   // Render everything in its final state with no entrance animations
   instant?: boolean;
+  language?: Language;
+  onLanguageChange?: (language: Language) => void;
 }
 
 // Vertical column guides are hidden in the current design.
 // Flip this back to true to restore them.
 const SHOW_COLUMN_GUIDES = false;
 
-export default function HomePanel({ showContent = true, instant = false }: HomePanelProps) {
+export default function HomePanel({
+  showContent = true,
+  instant = false,
+  language = 'en',
+  onLanguageChange,
+}: HomePanelProps) {
   const headerRef = useRef<HTMLHeadingElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [fontSize, setFontSize] = useState('220.84px');
   const [shrunkFontSize, setShrunkFontSize] = useState('128px');
   const [hasShrunk, setHasShrunk] = useState(instant);
+  // True once the user has changed language: changed copy then re-animates
+  // with the typewriter effect instead of the intro animations.
+  const [langSwitched, setLangSwitched] = useState(false);
   const currentTime = useCurrentTime();
+  const t = translations[language];
+
+  const handleLanguageChange = (lang: Language) => {
+    if (lang === language) return;
+    setLangSwitched(true);
+    onLanguageChange?.(lang);
+  };
 
   useEffect(() => {
     const updateFontSize = () => {
@@ -159,6 +178,28 @@ export default function HomePanel({ showContent = true, instant = false }: HomeP
     ease: [0.76, 0, 0.15, 1] as const,
   };
 
+  // Typewriter timing for language switches: each bio line starts typing
+  // when the previous one finishes, like one continuous typing pass.
+  const switchCharDelay = 0.02;
+  const bioIntroDelays = [bio1Delay, bio2Delay, bio3Delay, bio4Delay];
+  const bioSwitchDelay = (index: number) =>
+    t.bioLines.slice(0, index).reduce((sum, line) => sum + line.length * switchCharDelay, 0);
+
+  // Footer line two types after line one, segment by segment.
+  const checkBackSwitchDelay = t.newPortfolio.length * switchCharDelay;
+  const oldSiteSwitchDelay = checkBackSwitchDelay + t.checkBackPrefix.length * switchCharDelay;
+  const dotSwitchDelay = oldSiteSwitchDelay + t.oldSiteLink.length * switchCharDelay;
+
+  // Role labels render as plain text until a language switch, then retype.
+  const roleLabel = (text: string) =>
+    langSwitched ? (
+      <TypewriterText key={language} charDelay={switchCharDelay}>
+        {text}
+      </TypewriterText>
+    ) : (
+      text
+    );
+
   return (
     <div className="bg-background flex flex-col gap-9 h-screen w-full relative overflow-hidden">
       {/* Background column guides - same grid as the page content (currently hidden) */}
@@ -227,8 +268,12 @@ export default function HomePanel({ showContent = true, instant = false }: HomeP
                     ease: [0.4, 0, 0.2, 1],
                   }}
                 >
-                  <p>EN</p>
-                  <p>SV</p>
+                  <button type="button" onClick={() => handleLanguageChange('en')} className="cursor-pointer">
+                    EN
+                  </button>
+                  <button type="button" onClick={() => handleLanguageChange('sv')} className="cursor-pointer">
+                    SV
+                  </button>
                   <p>中文</p>
                 </motion.div>
               )}
@@ -264,7 +309,11 @@ export default function HomePanel({ showContent = true, instant = false }: HomeP
                           ease: [0.4, 0, 0.2, 1],
                         }}
                       >
-                        {showContent ? (
+                        {langSwitched ? (
+                          <TypewriterText key={language} charDelay={switchCharDelay}>
+                            {t.sayHi}
+                          </TypewriterText>
+                        ) : showContent ? (
                           <motion.span
                             className="inline-block"
                             initial={instant ? false : { y: '40%', opacity: 0 }}
@@ -275,10 +324,10 @@ export default function HomePanel({ showContent = true, instant = false }: HomeP
                               ease: [0.4, 0, 0.2, 1],
                             }}
                           >
-                            say hi
+                            {t.sayHi}
                           </motion.span>
                         ) : (
-                          <span className="opacity-0">say hi</span>
+                          <span className="opacity-0">{t.sayHi}</span>
                         )}
                       </motion.span>
                       <motion.span
@@ -317,42 +366,25 @@ export default function HomePanel({ showContent = true, instant = false }: HomeP
                   {/* Columns 3-5: Bio */}
                   <div className="col-span-4 lg:col-span-3 flex items-start justify-between">
                     <div className="font-medium leading-none text-[40px] lg:text-[52px] xl:text-[64px] text-[#1E1E1E] dark:text-white whitespace-nowrap tracking-[-1.6px] lg:tracking-[-2.08px] xl:tracking-[-2.56px]">
-                      <p className="mb-0">
-                        {showContent ? (
-                          <AnimatedText baseDelay={bio1Delay} staggerDelay={0.03} instant={instant}>
-                            product designer
-                          </AnimatedText>
-                        ) : (
-                          <span className="opacity-0">product designer</span>
-                        )}
-                      </p>
-                      <p className="mb-0">
-                        {showContent ? (
-                          <AnimatedText baseDelay={bio2Delay} staggerDelay={0.03} instant={instant}>
-                            blending form and function
-                          </AnimatedText>
-                        ) : (
-                          <span className="opacity-0">blending form and function</span>
-                        )}
-                      </p>
-                      <p className="mb-0">
-                        {showContent ? (
-                          <AnimatedText baseDelay={bio3Delay} staggerDelay={0.03} instant={instant}>
-                            currently in stockholm
-                          </AnimatedText>
-                        ) : (
-                          <span className="opacity-0">currently in stockholm</span>
-                        )}
-                      </p>
-                      <p>
-                        {showContent ? (
-                          <AnimatedText baseDelay={bio4Delay} staggerDelay={0.03} instant={instant}>
-                            building at newly
-                          </AnimatedText>
-                        ) : (
-                          <span className="opacity-0">building at newly</span>
-                        )}
-                      </p>
+                      {t.bioLines.map((line, index) => (
+                        <p key={index} className={index < t.bioLines.length - 1 ? 'mb-0' : undefined}>
+                          {langSwitched ? (
+                            <TypewriterText
+                              key={language}
+                              baseDelay={bioSwitchDelay(index)}
+                              charDelay={switchCharDelay}
+                            >
+                              {line}
+                            </TypewriterText>
+                          ) : showContent ? (
+                            <AnimatedText baseDelay={bioIntroDelays[index]} staggerDelay={0.03} instant={instant}>
+                              {line}
+                            </AnimatedText>
+                          ) : (
+                            <span className="opacity-0">{line}</span>
+                          )}
+                        </p>
+                      ))}
                     </div>
                     {showContent ? (
                       <motion.div
@@ -408,9 +440,9 @@ export default function HomePanel({ showContent = true, instant = false }: HomeP
                         }}
                         className="flex gap-3 items-center"
                       >
-                        <NewlyRole />
-                        <FigmaRole />
-                        <TextQLRole />
+                        <NewlyRole label={roleLabel(t.designAt)} />
+                        <FigmaRole label={roleLabel(t.campusLeaderAt)} />
+                        <TextQLRole label={roleLabel(t.prevDesignAt)} />
                       </motion.div>
                     ) : (
                       <div className="opacity-0 flex gap-3 items-center">
@@ -482,24 +514,58 @@ export default function HomePanel({ showContent = true, instant = false }: HomeP
                 />
               </div>
               <div className="w-[354px] font-normal text-[12px] tracking-[-0.24px] leading-normal">
-                <p className="mb-0">I&rsquo;m in the process of creating a new portfolio.</p>
+                <p className="mb-0">
+                  {langSwitched ? (
+                    <TypewriterText key={language} charDelay={switchCharDelay}>
+                      {t.newPortfolio}
+                    </TypewriterText>
+                  ) : (
+                    t.newPortfolio
+                  )}
+                </p>
                 <p>
-                  Check back soon, or{' '}
+                  {langSwitched ? (
+                    <TypewriterText key={`${language}-prefix`} baseDelay={checkBackSwitchDelay} charDelay={switchCharDelay}>
+                      {t.checkBackPrefix}
+                    </TypewriterText>
+                  ) : (
+                    t.checkBackPrefix
+                  )}
                   <a
                     href={OLD_SITE_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="underline"
                   >
-                    visit the old site
+                    {langSwitched ? (
+                      <TypewriterText key={language} baseDelay={oldSiteSwitchDelay} charDelay={switchCharDelay}>
+                        {t.oldSiteLink}
+                      </TypewriterText>
+                    ) : (
+                      t.oldSiteLink
+                    )}
                   </a>
-                  .
+                  {langSwitched ? (
+                    <TypewriterText key={`${language}-dot`} baseDelay={dotSwitchDelay} charDelay={switchCharDelay}>
+                      .
+                    </TypewriterText>
+                  ) : (
+                    '.'
+                  )}
                 </p>
               </div>
             </div>
             <div className="flex gap-3 items-center justify-end font-normal text-[12px] tracking-[-0.24px] leading-normal whitespace-nowrap">
               <a href={`mailto:${EMAIL}`}>hello [at] winstonzhao.ca</a>
-              <Link href={RESUME_URL}>resume</Link>
+              <Link href={RESUME_URL}>
+                {langSwitched ? (
+                  <TypewriterText key={language} charDelay={switchCharDelay}>
+                    {t.resume}
+                  </TypewriterText>
+                ) : (
+                  t.resume
+                )}
+              </Link>
             </div>
           </motion.div>
         )}

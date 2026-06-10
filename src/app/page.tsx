@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import HomePanel from '@/components/panels/HomePanel';
 import HomePanelMobile from '@/components/panels/HomePanelMobile';
 import { useIsMobile } from '@/components/panels/shared';
+import type { Language } from '@/components/panels/translations';
 
 function LoadingScreen({ onComplete }: { onComplete: () => void }) {
   return (
@@ -37,6 +38,7 @@ export default function Home() {
   const [skipIntro] = useState(hasPlayedIntro);
   const [isLoading, setIsLoading] = useState(!hasPlayedIntro);
   const [showContent, setShowContent] = useState(hasPlayedIntro);
+  const [language, setLanguage] = useState<Language>('en');
   const isMobile = useIsMobile();
 
   const handleLoadingComplete = () => {
@@ -53,9 +55,19 @@ export default function Home() {
       </AnimatePresence>
 
       {isMobile ? (
-        <HomePanelMobile showContent={showContent} instant={skipIntro} />
+        <HomePanelMobile
+          showContent={showContent}
+          instant={skipIntro}
+          language={language}
+          onLanguageChange={setLanguage}
+        />
       ) : (
-        <HomePanel showContent={showContent} instant={skipIntro} />
+        <HomePanel
+          showContent={showContent}
+          instant={skipIntro}
+          language={language}
+          onLanguageChange={setLanguage}
+        />
       )}
     </div>
   );
