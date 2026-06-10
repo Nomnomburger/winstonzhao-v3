@@ -78,7 +78,12 @@ export function AnimatedText({ children, baseDelay = 0, staggerDelay = 0.08, cla
   );
 }
 
-const SCRAMBLE_LETTERS = 'abcdefghijklmnopqrstuvwxyzåäö';
+// Letters grouped by approximate advance width, so a flickering character
+// stays about as wide as the one it stands in for. Drawing from the whole
+// alphabet let runs of wide letters (m, w) make a line momentarily much
+// longer than either the old or the new text — on mobile, wide flicker on
+// "Sizhong" could reach the profile photo.
+const SCRAMBLE_LETTER_POOLS = ['ijl', 'ftr', 'mw', 'abcdeghknopqsuvxyzåäö'];
 const SCRAMBLE_DIGITS = '0123456789';
 const SCRAMBLE_CJK = '设计形式功能产品师招呼现居开发参与网站项目简历英文访问德哥尔摩';
 
@@ -140,9 +145,17 @@ export function ScrambleText({
         return SCRAMBLE_CJK[Math.floor(Math.random() * SCRAMBLE_CJK.length)];
       }
       if (target && !/\p{L}/u.test(target)) return target;
-      const char = SCRAMBLE_LETTERS[Math.floor(Math.random() * SCRAMBLE_LETTERS.length)];
+      const lower = target.toLowerCase();
+      const pool =
+        SCRAMBLE_LETTER_POOLS.find((p) => p.includes(lower)) ??
+        SCRAMBLE_LETTER_POOLS[SCRAMBLE_LETTER_POOLS.length - 1];
       const isUpper = target !== target.toLowerCase() && target === target.toUpperCase();
-      return isUpper ? char.toUpperCase() : char;
+      // Uppercase forms of the medium pool spread much wider than their
+      // lowercase ones (Q vs q), so capitals flicker through a tighter
+      // same-width subset instead.
+      const upperPool = pool === SCRAMBLE_LETTER_POOLS[3] ? 'BEPSZ' : pool.toUpperCase();
+      const finalPool = isUpper ? upperPool : pool;
+      return finalPool[Math.floor(Math.random() * finalPool.length)];
     };
 
     const tick = (now: number) => {
