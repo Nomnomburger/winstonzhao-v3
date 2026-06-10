@@ -45,7 +45,7 @@ export default function HomePanelMobile({ showContent = true, instant = false }:
   const footerRef = useRef<HTMLDivElement>(null);
   const [fontSize, setFontSize] = useState('96px');
   const [shrunkFontSize, setShrunkFontSize] = useState(64);
-  const [hasShrunk, setHasShrunk] = useState(false);
+  const [hasShrunk, setHasShrunk] = useState(instant);
   const [footerOpen, setFooterOpen] = useState(false);
   const [footerOffset, setFooterOffset] = useState(FOOTER_OFFSET_FALLBACK);
   const currentTime = useCurrentTime();

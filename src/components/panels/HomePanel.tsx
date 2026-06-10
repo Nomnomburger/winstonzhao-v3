@@ -26,12 +26,12 @@ interface HomePanelProps {
 // Flip this back to true to restore them.
 const SHOW_COLUMN_GUIDES = false;
 
-export default function HomePanel({ showContent = true }: HomePanelProps) {
+export default function HomePanel({ showContent = true, instant = false }: HomePanelProps) {
   const headerRef = useRef<HTMLHeadingElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [fontSize, setFontSize] = useState('220.84px');
   const [shrunkFontSize, setShrunkFontSize] = useState('128px');
-  const [hasShrunk, setHasShrunk] = useState(false);
+  const [hasShrunk, setHasShrunk] = useState(instant);
   const currentTime = useCurrentTime();
 
   useEffect(() => {
