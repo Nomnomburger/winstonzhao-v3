@@ -506,14 +506,14 @@ export default function HomePanelMobile({ showContent = true, instant = false }:
                             delay: rolesDelay,
                             ease: [0.4, 0, 0.2, 1],
                           }}
-                          className="flex flex-col gap-2 items-start"
+                          className="flex flex-col gap-1 items-start"
                         >
                           <NewlyRole />
                           <FigmaRole />
                           <TextQLRole />
                         </motion.div>
                       ) : (
-                        <div className="opacity-0 flex flex-col gap-2 items-start">
+                        <div className="opacity-0 flex flex-col gap-1 items-start">
                           <p className="font-normal text-[12px] tracking-[-0.24px] leading-normal whitespace-nowrap">Design at Newly</p>
                         </div>
                       )}
