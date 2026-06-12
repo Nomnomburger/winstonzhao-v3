@@ -31,6 +31,13 @@ interface HomePanelProps {
 // Flip this back to true to restore them.
 const SHOW_COLUMN_GUIDES = false;
 
+// Split the display name into its leading word and the rest so the two can
+// shrink on a stagger. A single-word name keeps everything in the first slot.
+const splitName = (name: string): [string, string] => {
+  const i = name.indexOf(' ');
+  return i === -1 ? [name, ''] : [name.slice(0, i), name.slice(i + 1)];
+};
+
 export default function HomePanel({
   showContent = true,
   instant = false,
@@ -141,6 +148,13 @@ export default function HomePanel({
   const headerAnimationDelay = 0.2; // When header starts appearing
   const shrinkDelay = 1.3; // Seconds after page load to start shrinking
   const shrinkDuration = 0.8; // Duration of shrink animation
+  const nameStagger = 0.06; // How far the last name trails the first during shrink
+
+  // True once the staggered name shrink has fully played out. The name words
+  // use framer layout (FLIP) animations so position and scale stagger
+  // together; layout is switched off afterwards so later width changes
+  // (language scrambles, resizes) don't replay the slow shrink ease.
+  const [nameShrinkDone, setNameShrinkDone] = useState(instant);
 
   // Trigger shrink after delay
   useEffect(() => {
@@ -148,7 +162,13 @@ export default function HomePanel({
     const timer = setTimeout(() => {
       setHasShrunk(true);
     }, shrinkDelay * 1000);
-    return () => clearTimeout(timer);
+    const doneTimer = setTimeout(() => {
+      setNameShrinkDone(true);
+    }, (shrinkDelay + shrinkDuration + nameStagger) * 1000 + 100);
+    return () => {
+      clearTimeout(timer);
+      clearTimeout(doneTimer);
+    };
   }, [showContent, instant]);
 
   // Animation configuration - content appears during/after shrink
@@ -184,10 +204,41 @@ export default function HomePanel({
     ease: [0.76, 0, 0.15, 1] as const,
   };
 
+  // The name shrinks in two pieces: the first name leads and the last name
+  // follows a beat later. The delay only applies once the shrink fires so the
+  // pre-shrink fit-to-width sizing stays in sync across both words.
+  const lastNameShrinkTransition = {
+    ...shrinkTransition,
+    delay: instant || !hasShrunk ? 0 : nameStagger,
+  };
+
   // Scramble timing for language switches: all texts animate at once, each
   // sweeping through its own characters left to right.
   const switchCharDelay = 0.02;
   const bioIntroDelays = [bio1Delay, bio2Delay, bio3Delay, bio4Delay];
+
+  const [firstName, lastName] = splitName(t.name);
+  const [fromFirstName, fromLastName] = splitName(fromT.name);
+
+  // Renders one word of the header name with the same intro / scramble /
+  // hidden branches the full name used. The scramble sweep offsets the second
+  // word by the first word's characters so the sweep still reads as one pass.
+  const namePart = (text: string, fromText: string, wordIndex: number) =>
+    langSwitched ? (
+      <ScrambleText
+        from={fromText}
+        baseDelay={wordIndex === 0 ? 0 : (firstName.length + 1) * switchCharDelay}
+        charDelay={switchCharDelay}
+      >
+        {text}
+      </ScrambleText>
+    ) : showContent ? (
+      <AnimatedText baseDelay={headerDelay + wordIndex * stagger} staggerDelay={stagger} instant={instant}>
+        {text}
+      </AnimatedText>
+    ) : (
+      <span className="opacity-0">{text}</span>
+    );
 
   // Role labels render as plain text until a language switch, then scramble.
   const roleLabel = (text: string, fromText: string) =>
@@ -240,33 +291,40 @@ export default function HomePanel({
             transition={shrinkTransition}
           >
             <div className="flex gap-4 items-start">
-              <motion.h1
+              {/* The font size snaps to its target and each word FLIPs from
+                  its previous box via the layout prop, so the last name's
+                  position and scale can trail the first name's together. */}
+              <h1
                 ref={headerRef}
                 className="font-medium text-[#1E1E1E] dark:text-white whitespace-nowrap leading-none"
-                initial={instant ? false : undefined}
-                animate={{
-                  fontSize: hasShrunk ? shrunkFontSize : fontSize,
-                  paddingTop: hasShrunk ? '8px' : '0px',
-                }}
-                transition={shrinkTransition}
                 style={{
                   letterSpacing: '-0.05em',
                   marginTop: '-0.15em',
                   marginBottom: '-0.1em',
+                  fontSize: hasShrunk ? shrunkFontSize : fontSize,
+                  paddingTop: hasShrunk ? '8px' : '0px',
                 }}
               >
-                {langSwitched ? (
-                  <ScrambleText from={fromT.name} charDelay={switchCharDelay}>
-                    {t.name}
-                  </ScrambleText>
-                ) : showContent ? (
-                  <AnimatedText baseDelay={headerDelay} staggerDelay={stagger} instant={instant}>
-                    {t.name}
-                  </AnimatedText>
-                ) : (
-                  <span className="opacity-0">{t.name}</span>
+                <motion.span
+                  layout={!nameShrinkDone}
+                  className="inline-block align-top"
+                  transition={shrinkTransition}
+                >
+                  {namePart(firstName, fromFirstName, 0)}
+                </motion.span>
+                {lastName && (
+                  <>
+                    {' '}
+                    <motion.span
+                      layout={!nameShrinkDone}
+                      className="inline-block align-top"
+                      transition={lastNameShrinkTransition}
+                    >
+                      {namePart(lastName, fromLastName, 1)}
+                    </motion.span>
+                  </>
                 )}
-              </motion.h1>
+              </h1>
 
               {/* Chinese name beside the header (zh only). Also rendered
                   without a live switch when the session restored Chinese.
