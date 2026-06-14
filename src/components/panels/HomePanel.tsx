@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -66,18 +66,23 @@ const HOVER_BIO_WORDS: Record<number, { key: HoverKey; word: Record<Language, st
   3: { key: 'newly', word: { en: 'newly', sv: 'newly', zh: 'Newly' } },
 };
 
-// Hovering eases display text to a slightly lighter weight via a font-weight
-// transition (the same mechanism used for language switches). PP Neue Montreal
-// ships as discrete static weights, so the change steps through the bundled
-// weights (500 → 450 → 400) over the transition rather than snapping at once.
-const WEIGHT_NORMAL = 500;
-const WEIGHT_HOVER = 400;
-const WEIGHT_NORMAL_ZH = 300;
-const WEIGHT_HOVER_ZH = 100; // nearest lighter weight the font provides
-const WEIGHT_FADE_MS = 700;
+// Hovering eases display text to a slightly lighter weight. This reuses the
+// exact Tailwind mechanism the language switch uses (weight class swap +
+// transition-[font-weight] duration-700), which is the transition that already
+// reads well in this app. `font-medium` 500 → `font-normal` 400 (latin), or
+// `font-light` 300 → `font-thin` 100 (zh, which only has those two light cuts).
+const weightClasses = (active: boolean, zh: boolean) =>
+  active ? (zh ? 'font-thin' : 'font-normal') : zh ? 'font-light' : 'font-medium';
+const WEIGHT_TRANSITION = 'transition-[font-weight] duration-700 ease-in-out';
+
 // After a language switch the keyword lines render as one unit so the full-line
 // scramble plays; once it settles they swap to their static, hoverable form.
 const SCRAMBLE_SETTLE_MS = 1100;
+
+// While hovering a text trigger, the image trails the pointer at a fraction of
+// its movement, eased by a spring so it glides to rest when the pointer stops.
+const FOLLOW_FACTOR = 0.12;
+const FOLLOW_SPRING = { stiffness: 110, damping: 18, mass: 0.6 } as const;
 
 export default function HomePanel({
   showContent = true,
@@ -108,6 +113,36 @@ export default function HomePanel({
   const currentTime = useCurrentTime(language);
   const t = translations[language];
   const fromT = translations[prevLanguage];
+
+  // Pointer-follow for the hover image: the target tracks a damped fraction of
+  // the pointer's movement since hover started; a spring eases the image toward
+  // it so it lags and glides to rest.
+  const followX = useMotionValue(0);
+  const followY = useMotionValue(0);
+  const imageX = useSpring(followX, FOLLOW_SPRING);
+  const imageY = useSpring(followY, FOLLOW_SPRING);
+  const hoverOrigin = useRef<{ x: number; y: number } | null>(null);
+
+  const beginHover = (key: HoverKey, e: React.MouseEvent) => {
+    setHovered(key);
+    hoverOrigin.current = { x: e.clientX, y: e.clientY };
+    // Snap the offset back to zero so the image starts at its anchor point.
+    followX.set(0);
+    followY.set(0);
+    imageX.jump(0);
+    imageY.jump(0);
+  };
+
+  const moveHover = (e: React.MouseEvent) => {
+    if (!hoverOrigin.current) return;
+    followX.set((e.clientX - hoverOrigin.current.x) * FOLLOW_FACTOR);
+    followY.set((e.clientY - hoverOrigin.current.y) * FOLLOW_FACTOR);
+  };
+
+  const endHover = (key: HoverKey) => {
+    setHovered((h) => (h === key ? null : h));
+    hoverOrigin.current = null;
+  };
 
   const handleLanguageChange = (lang: Language) => {
     if (lang === language) return;
@@ -322,20 +357,10 @@ export default function HomePanel({
       <>
         {before}
         <span
-          className="cursor-pointer transition-[font-weight] ease-in-out"
-          style={{
-            transitionDuration: `${WEIGHT_FADE_MS}ms`,
-            fontWeight:
-              hovered === key
-                ? isZh
-                  ? WEIGHT_HOVER_ZH
-                  : WEIGHT_HOVER
-                : isZh
-                  ? WEIGHT_NORMAL_ZH
-                  : WEIGHT_NORMAL,
-          }}
-          onMouseEnter={() => setHovered(key)}
-          onMouseLeave={() => setHovered((h) => (h === key ? null : h))}
+          className={`cursor-pointer ${weightClasses(hovered === key, isZh)} ${WEIGHT_TRANSITION}`}
+          onMouseEnter={(e) => beginHover(key, e)}
+          onMouseMove={moveHover}
+          onMouseLeave={() => endHover(key)}
         >
           {word}
         </span>
@@ -413,7 +438,7 @@ export default function HomePanel({
           bio layout. */}
       <div className="hidden lg:block absolute inset-0 pointer-events-none z-0" aria-hidden="true">
         {HOVER_IMAGES.map((img) => (
-          <div
+          <motion.div
             key={img.key}
             className="absolute"
             style={{
@@ -422,6 +447,8 @@ export default function HomePanel({
               width: img.width,
               height: img.height,
               opacity: hovered === img.key ? 1 : 0,
+              x: imageX,
+              y: imageY,
             }}
           >
             <Image
@@ -432,7 +459,7 @@ export default function HomePanel({
               priority
               className="w-full h-full object-cover"
             />
-          </div>
+          </motion.div>
         ))}
       </div>
 
@@ -454,19 +481,18 @@ export default function HomePanel({
                   position and scale can trail the first name's together. */}
               <h1
                 ref={headerRef}
-                onMouseEnter={() => {
-                  if (introDone) setHovered('name');
+                onMouseEnter={(e) => {
+                  if (introDone) beginHover('name', e);
                 }}
-                onMouseLeave={() => setHovered((h) => (h === 'name' ? null : h))}
-                className={`text-[#1E1E1E] dark:text-white whitespace-nowrap leading-none transition-[font-weight] ease-in-out ${introDone ? 'cursor-pointer' : ''}`}
+                onMouseMove={moveHover}
+                onMouseLeave={() => endHover('name')}
+                className={`${weightClasses(hovered === 'name', false)} ${WEIGHT_TRANSITION} text-[#1E1E1E] dark:text-white whitespace-nowrap leading-none ${introDone ? 'cursor-pointer' : ''}`}
                 style={{
                   letterSpacing: '-0.05em',
                   marginTop: '-0.15em',
                   marginBottom: '-0.1em',
                   fontSize: hasShrunk ? shrunkFontSize : fontSize,
                   paddingTop: hasShrunk ? '8px' : '0px',
-                  transitionDuration: `${WEIGHT_FADE_MS}ms`,
-                  fontWeight: hovered === 'name' ? WEIGHT_HOVER : WEIGHT_NORMAL,
                 }}
               >
                 <motion.span
