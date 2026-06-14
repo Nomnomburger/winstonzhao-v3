@@ -416,32 +416,29 @@ export default function HomePanel({
       {/* Hover images - desktop only (lg+). The name and the highlighted bio
           words ("stockholm", "newly") reveal an image in the blank left space,
           popping in with the same scale + fade as the mobile profile photo.
+          All three stay mounted (with priority) so they're preloaded on page
+          load and appear instantly on hover instead of fetching mid-reveal.
           Hidden below lg so they never collide with the narrower bio layout. */}
       <div className="hidden lg:block absolute inset-0 pointer-events-none z-0" aria-hidden="true">
-        <AnimatePresence>
-          {HOVER_IMAGES.map(
-            (img) =>
-              hovered === img.key && (
-                <motion.div
-                  key={img.key}
-                  className="absolute"
-                  style={{ left: img.left, top: img.top, width: img.width, height: img.height }}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.8 }}
-                  transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
-                >
-                  <Image
-                    src={img.src}
-                    alt={img.alt}
-                    width={img.width}
-                    height={img.height}
-                    className="w-full h-full object-cover"
-                  />
-                </motion.div>
-              )
-          )}
-        </AnimatePresence>
+        {HOVER_IMAGES.map((img) => (
+          <motion.div
+            key={img.key}
+            className="absolute"
+            style={{ left: img.left, top: img.top, width: img.width, height: img.height }}
+            initial={false}
+            animate={hovered === img.key ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
+            transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
+          >
+            <Image
+              src={img.src}
+              alt={img.alt}
+              width={img.width}
+              height={img.height}
+              priority
+              className="w-full h-full object-cover"
+            />
+          </motion.div>
+        ))}
       </div>
 
       {/* Header Section */}
