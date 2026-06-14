@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
-import { ReactNode, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
@@ -66,59 +66,18 @@ const HOVER_BIO_WORDS: Record<number, { key: HoverKey; word: Record<Language, st
   3: { key: 'newly', word: { en: 'newly', sv: 'newly', zh: 'Newly' } },
 };
 
-// Hovering makes display text ease to a slightly lighter weight. PP Neue
-// Montreal ships as discrete static weights (no variable axis), so a plain
-// font-weight transition snaps between the bundled files. WeightCrossfade
-// instead stacks two identical copies at the two weights and crossfades their
-// opacity, which reads as a smooth thinning.
+// Hovering eases display text to a slightly lighter weight via a font-weight
+// transition (the same mechanism used for language switches). PP Neue Montreal
+// ships as discrete static weights, so the change steps through the bundled
+// weights (500 → 450 → 400) over the transition rather than snapping at once.
 const WEIGHT_NORMAL = 500;
 const WEIGHT_HOVER = 400;
 const WEIGHT_NORMAL_ZH = 300;
 const WEIGHT_HOVER_ZH = 100; // nearest lighter weight the font provides
-const WEIGHT_FADE_MS = 300;
-
-function WeightCrossfade({
-  active,
-  base,
-  over,
-  baseWeight,
-  hoverWeight,
-  className = '',
-  onMouseEnter,
-  onMouseLeave,
-}: {
-  active: boolean;
-  // Two renders of the same text; both stay mounted so they line up exactly.
-  base: ReactNode;
-  over: ReactNode;
-  baseWeight: number;
-  hoverWeight: number;
-  className?: string;
-  onMouseEnter?: () => void;
-  onMouseLeave?: () => void;
-}) {
-  return (
-    <span
-      className={`relative inline-block ${className}`}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
-    >
-      <span
-        className="transition-opacity ease-in-out"
-        style={{ opacity: active ? 0 : 1, transitionDuration: `${WEIGHT_FADE_MS}ms`, fontWeight: baseWeight }}
-      >
-        {base}
-      </span>
-      <span
-        aria-hidden
-        className="absolute left-0 top-0 whitespace-nowrap transition-opacity ease-in-out"
-        style={{ opacity: active ? 1 : 0, transitionDuration: `${WEIGHT_FADE_MS}ms`, fontWeight: hoverWeight }}
-      >
-        {over}
-      </span>
-    </span>
-  );
-}
+const WEIGHT_FADE_MS = 700;
+// After a language switch the keyword lines render as one unit so the full-line
+// scramble plays; once it settles they swap to their static, hoverable form.
+const SCRAMBLE_SETTLE_MS = 1100;
 
 export default function HomePanel({
   showContent = true,
@@ -143,6 +102,9 @@ export default function HomePanel({
   // Hover only becomes active once the intro has finished playing, so nothing
   // pops up mid-animation while the page is still loading in.
   const [introDone, setIntroDone] = useState(instant);
+  // False while a language-switch scramble is playing, so the keyword bio lines
+  // stay rendered as one scrambling unit until it settles.
+  const [scrambleSettled, setScrambleSettled] = useState(true);
   const currentTime = useCurrentTime(language);
   const t = translations[language];
   const fromT = translations[prevLanguage];
@@ -151,8 +113,17 @@ export default function HomePanel({
     if (lang === language) return;
     setPrevLanguage(language);
     setLangSwitched(true);
+    setScrambleSettled(false);
     onLanguageChange?.(lang);
   };
+
+  // Re-arm the "scramble settled" flag after each language change so the
+  // keyword lines return to their hoverable split form once the sweep ends.
+  useEffect(() => {
+    if (!langSwitched) return;
+    const timer = setTimeout(() => setScrambleSettled(true), SCRAMBLE_SETTLE_MS);
+    return () => clearTimeout(timer);
+  }, [language, langSwitched]);
 
   useEffect(() => {
     const updateFontSize = () => {
@@ -161,9 +132,7 @@ export default function HomePanel({
 
       if (headerRef.current && containerRef.current) {
         const containerWidth = containerRef.current.offsetWidth;
-        // Use the known name rather than textContent: the hover crossfade keeps
-        // a second copy of the name in the heading, which would double it.
-        const text = t.name;
+        const text = headerRef.current.textContent || '';
 
         // Create a temporary element to measure text width
         const measureEl = document.createElement('span');
@@ -205,7 +174,7 @@ export default function HomePanel({
     updateFontSize();
     window.addEventListener('resize', updateFontSize);
     return () => window.removeEventListener('resize', updateFontSize);
-  }, [hasShrunk, t.name]);
+  }, [hasShrunk]);
 
   // Scale the shrunk header up on screens larger than a 16" MacBook (1728px),
   // keeping 128px as the floor for normal laptop sizes.
@@ -320,12 +289,20 @@ export default function HomePanel({
   const switchCharDelay = 0.02;
   const bioIntroDelays = [bio1Delay, bio2Delay, bio3Delay, bio4Delay];
 
-  // Renders one bio line. Lines that contain a hover word are split into
-  // before / word / after so the word can carry its own hover handlers while
-  // keeping the original intro stagger and language-switch scramble continuous.
+  // Renders one bio line. While the intro / language-switch animation is still
+  // playing, the whole line renders as one unit so the original word stagger
+  // and full-line scramble are untouched. Once it settles, keyword lines swap
+  // to a static split where the keyword carries its own hover handlers and
+  // font-weight transition (the swap is seamless — identical glyphs).
   const renderBioLine = (line: string, index: number, fromLine: string) => {
-    const plain = () =>
-      langSwitched ? (
+    const config = HOVER_BIO_WORDS[index];
+    const word = config ? config.word[language] : undefined;
+    const hasWord = !!config && !!word && line.includes(word);
+    // Interactions wait for the intro; after a switch, also wait for the sweep.
+    const settled = introDone && (!langSwitched || scrambleSettled);
+
+    if (!hasWord || !settled) {
+      return langSwitched ? (
         <ScrambleText from={fromLine} charDelay={switchCharDelay}>
           {line}
         </ScrambleText>
@@ -336,100 +313,34 @@ export default function HomePanel({
       ) : (
         <span className="opacity-0">{line}</span>
       );
+    }
 
-    const config = HOVER_BIO_WORDS[index];
-    const word = config ? config.word[language] : undefined;
-    if (!config || !word || !line.includes(word)) return plain();
-
-    const key = config.key;
+    const key = config!.key;
     const isZh = language === 'zh';
-    const [before, after] = line.split(word);
-    // Crossfade the keyword between its normal and lighter weight on hover.
-    // `make` is called twice so both stacked copies are byte-identical and line
-    // up exactly. Hover is inert until the intro has finished.
-    const wrap = (make: () => ReactNode) => (
-      <WeightCrossfade
-        active={hovered === key}
-        baseWeight={isZh ? WEIGHT_NORMAL_ZH : WEIGHT_NORMAL}
-        hoverWeight={isZh ? WEIGHT_HOVER_ZH : WEIGHT_HOVER}
-        className={introDone ? 'cursor-pointer' : ''}
-        onMouseEnter={() => {
-          if (introDone) setHovered(key);
-        }}
-        onMouseLeave={() => setHovered((h) => (h === key ? null : h))}
-        base={make()}
-        over={make()}
-      />
-    );
-
-    if (langSwitched) {
-      const fromWord = config.word[prevLanguage];
-      const [beforeFrom, afterFrom] =
-        fromWord && fromLine.includes(fromWord) ? fromLine.split(fromWord) : [fromLine, ''];
-      return (
-        <>
-          <ScrambleText from={beforeFrom} charDelay={switchCharDelay}>
-            {before}
-          </ScrambleText>
-          {wrap(() => (
-            <ScrambleText
-              from={fromWord ?? word}
-              baseDelay={before.length * switchCharDelay}
-              charDelay={switchCharDelay}
-            >
-              {word}
-            </ScrambleText>
-          ))}
-          {after && (
-            <ScrambleText
-              from={afterFrom}
-              baseDelay={(before.length + word.length) * switchCharDelay}
-              charDelay={switchCharDelay}
-            >
-              {after}
-            </ScrambleText>
-          )}
-        </>
-      );
-    }
-
-    if (showContent) {
-      const countWords = (s: string) => (s.trim() ? s.trim().split(/\s+/).length : 0);
-      const beforeWords = countWords(before);
-      const wordWords = countWords(word);
-      return (
-        <>
-          <AnimatedText baseDelay={bioIntroDelays[index]} staggerDelay={0.03} instant={instant}>
-            {before}
-          </AnimatedText>
-          {wrap(() => (
-            <AnimatedText
-              baseDelay={bioIntroDelays[index] + beforeWords * 0.03}
-              staggerDelay={0.03}
-              instant={instant}
-            >
-              {word}
-            </AnimatedText>
-          ))}
-          {after && (
-            <AnimatedText
-              baseDelay={bioIntroDelays[index] + (beforeWords + wordWords) * 0.03}
-              staggerDelay={0.03}
-              instant={instant}
-            >
-              {after}
-            </AnimatedText>
-          )}
-        </>
-      );
-    }
-
+    const [before, after] = line.split(word!);
     return (
-      <span className="opacity-0">
+      <>
         {before}
-        {wrap(() => word)}
+        <span
+          className="cursor-pointer transition-[font-weight] ease-in-out"
+          style={{
+            transitionDuration: `${WEIGHT_FADE_MS}ms`,
+            fontWeight:
+              hovered === key
+                ? isZh
+                  ? WEIGHT_HOVER_ZH
+                  : WEIGHT_HOVER
+                : isZh
+                  ? WEIGHT_NORMAL_ZH
+                  : WEIGHT_NORMAL,
+          }}
+          onMouseEnter={() => setHovered(key)}
+          onMouseLeave={() => setHovered((h) => (h === key ? null : h))}
+        >
+          {word}
+        </span>
         {after}
-      </span>
+      </>
     );
   };
 
@@ -547,13 +458,15 @@ export default function HomePanel({
                   if (introDone) setHovered('name');
                 }}
                 onMouseLeave={() => setHovered((h) => (h === 'name' ? null : h))}
-                className={`font-medium text-[#1E1E1E] dark:text-white whitespace-nowrap leading-none ${introDone ? 'cursor-pointer' : ''}`}
+                className={`text-[#1E1E1E] dark:text-white whitespace-nowrap leading-none transition-[font-weight] ease-in-out ${introDone ? 'cursor-pointer' : ''}`}
                 style={{
                   letterSpacing: '-0.05em',
                   marginTop: '-0.15em',
                   marginBottom: '-0.1em',
                   fontSize: hasShrunk ? shrunkFontSize : fontSize,
                   paddingTop: hasShrunk ? '8px' : '0px',
+                  transitionDuration: `${WEIGHT_FADE_MS}ms`,
+                  fontWeight: hovered === 'name' ? WEIGHT_HOVER : WEIGHT_NORMAL,
                 }}
               >
                 <motion.span
@@ -561,13 +474,7 @@ export default function HomePanel({
                   className="inline-block align-top"
                   transition={shrinkTransition}
                 >
-                  <WeightCrossfade
-                    active={hovered === 'name'}
-                    baseWeight={WEIGHT_NORMAL}
-                    hoverWeight={WEIGHT_HOVER}
-                    base={namePart(firstName, fromFirstName, 0)}
-                    over={namePart(firstName, fromFirstName, 0)}
-                  />
+                  {namePart(firstName, fromFirstName, 0)}
                 </motion.span>
                 {lastName && (
                   <>
@@ -577,13 +484,7 @@ export default function HomePanel({
                       className="inline-block align-top"
                       transition={lastNameShrinkTransition}
                     >
-                      <WeightCrossfade
-                        active={hovered === 'name'}
-                        baseWeight={WEIGHT_NORMAL}
-                        hoverWeight={WEIGHT_HOVER}
-                        base={namePart(lastName, fromLastName, 1)}
-                        over={namePart(lastName, fromLastName, 1)}
-                      />
+                      {namePart(lastName, fromLastName, 1)}
                     </motion.span>
                   </>
                 )}
