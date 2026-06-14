@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
@@ -66,14 +66,55 @@ const HOVER_BIO_WORDS: Record<number, { key: HoverKey; word: Record<Language, st
   3: { key: 'newly', word: { en: 'newly', sv: 'newly', zh: 'Newly' } },
 };
 
-// Hovering eases display text to a slightly lighter weight. This reuses the
-// exact Tailwind mechanism the language switch uses (weight class swap +
-// transition-[font-weight] duration-700), which is the transition that already
-// reads well in this app. `font-medium` 500 → `font-normal` 400 (latin), or
-// `font-light` 300 → `font-thin` 100 (zh, which only has those two light cuts).
-const weightClasses = (active: boolean, zh: boolean) =>
-  active ? (zh ? 'font-thin' : 'font-normal') : zh ? 'font-light' : 'font-medium';
-const WEIGHT_TRANSITION = 'transition-[font-weight] duration-700 ease-in-out';
+// Hovering eases display text to a slightly lighter weight. PP Neue Montreal
+// ships only as discrete static weights, so a CSS font-weight transition can't
+// interpolate — it visibly steps between the bundled cuts. To get a smooth
+// change we stack two copies (normal + lighter) and crossfade their opacity,
+// which interpolates continuously. Latin: medium 500 ↔ regular 400. zh only has
+// light/thin in this range, so: light 300 ↔ thin 100.
+const baseWeightClass = (zh: boolean) => (zh ? 'font-light' : 'font-medium');
+const hoverWeightClass = (zh: boolean) => (zh ? 'font-thin' : 'font-normal');
+const FADE = 'transition-opacity duration-300 ease-out';
+
+// Crossfades the same text between two font weights. The base copy stays in
+// flow (defines size + baseline so it sits correctly inline); the lighter copy
+// is overlaid on top and the two trade opacity on hover.
+function WeightFade({
+  active,
+  children,
+  zh,
+  className = '',
+  onMouseEnter,
+  onMouseMove,
+  onMouseLeave,
+}: {
+  active: boolean;
+  children: ReactNode;
+  zh: boolean;
+  className?: string;
+  onMouseEnter?: (e: React.MouseEvent) => void;
+  onMouseMove?: (e: React.MouseEvent) => void;
+  onMouseLeave?: () => void;
+}) {
+  return (
+    <span
+      className={`relative inline-block ${className}`}
+      onMouseEnter={onMouseEnter}
+      onMouseMove={onMouseMove}
+      onMouseLeave={onMouseLeave}
+    >
+      <span className={`${baseWeightClass(zh)} ${FADE} ${active ? 'opacity-0' : 'opacity-100'}`}>
+        {children}
+      </span>
+      <span
+        aria-hidden
+        className={`absolute left-0 top-0 whitespace-nowrap ${hoverWeightClass(zh)} ${FADE} ${active ? 'opacity-100' : 'opacity-0'}`}
+      >
+        {children}
+      </span>
+    </span>
+  );
+}
 
 // After a language switch the keyword lines render as one unit so the full-line
 // scramble plays; once it settles they swap to their static, hoverable form.
@@ -113,6 +154,10 @@ export default function HomePanel({
   const currentTime = useCurrentTime(language);
   const t = translations[language];
   const fromT = translations[prevLanguage];
+
+  // Hover (and the weight crossfade) turns on once the intro has played; after a
+  // language switch it waits for the full-line scramble to settle first.
+  const interactive = introDone && (!langSwitched || scrambleSettled);
 
   // Pointer-follow for the hover image: the target tracks a damped fraction of
   // the pointer's movement since hover started; a spring eases the image toward
@@ -333,10 +378,8 @@ export default function HomePanel({
     const config = HOVER_BIO_WORDS[index];
     const word = config ? config.word[language] : undefined;
     const hasWord = !!config && !!word && line.includes(word);
-    // Interactions wait for the intro; after a switch, also wait for the sweep.
-    const settled = introDone && (!langSwitched || scrambleSettled);
 
-    if (!hasWord || !settled) {
+    if (!hasWord || !interactive) {
       return langSwitched ? (
         <ScrambleText from={fromLine} charDelay={switchCharDelay}>
           {line}
@@ -356,14 +399,16 @@ export default function HomePanel({
     return (
       <>
         {before}
-        <span
-          className={`cursor-pointer ${weightClasses(hovered === key, isZh)} ${WEIGHT_TRANSITION}`}
+        <WeightFade
+          active={hovered === key}
+          zh={isZh}
+          className="cursor-pointer"
           onMouseEnter={(e) => beginHover(key, e)}
           onMouseMove={moveHover}
           onMouseLeave={() => endHover(key)}
         >
           {word}
-        </span>
+        </WeightFade>
         {after}
       </>
     );
@@ -482,11 +527,11 @@ export default function HomePanel({
               <h1
                 ref={headerRef}
                 onMouseEnter={(e) => {
-                  if (introDone) beginHover('name', e);
+                  if (interactive) beginHover('name', e);
                 }}
                 onMouseMove={moveHover}
                 onMouseLeave={() => endHover('name')}
-                className={`${weightClasses(hovered === 'name', false)} ${WEIGHT_TRANSITION} text-[#1E1E1E] dark:text-white whitespace-nowrap leading-none ${introDone ? 'cursor-pointer' : ''}`}
+                className={`font-medium text-[#1E1E1E] dark:text-white whitespace-nowrap leading-none ${interactive ? 'cursor-pointer' : ''}`}
                 style={{
                   letterSpacing: '-0.05em',
                   marginTop: '-0.15em',
@@ -500,7 +545,13 @@ export default function HomePanel({
                   className="inline-block align-top"
                   transition={shrinkTransition}
                 >
-                  {namePart(firstName, fromFirstName, 0)}
+                  {interactive ? (
+                    <WeightFade active={hovered === 'name'} zh={false}>
+                      {firstName}
+                    </WeightFade>
+                  ) : (
+                    namePart(firstName, fromFirstName, 0)
+                  )}
                 </motion.span>
                 {lastName && (
                   <>
@@ -510,7 +561,13 @@ export default function HomePanel({
                       className="inline-block align-top"
                       transition={lastNameShrinkTransition}
                     >
-                      {namePart(lastName, fromLastName, 1)}
+                      {interactive ? (
+                        <WeightFade active={hovered === 'name'} zh={false}>
+                          {lastName}
+                        </WeightFade>
+                      ) : (
+                        namePart(lastName, fromLastName, 1)
+                      )}
                     </motion.span>
                   </>
                 )}
