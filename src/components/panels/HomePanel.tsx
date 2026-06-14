@@ -66,6 +66,60 @@ const HOVER_BIO_WORDS: Record<number, { key: HoverKey; word: Record<Language, st
   3: { key: 'newly', word: { en: 'newly', sv: 'newly', zh: 'Newly' } },
 };
 
+// Hovering makes display text ease to a slightly lighter weight. PP Neue
+// Montreal ships as discrete static weights (no variable axis), so a plain
+// font-weight transition snaps between the bundled files. WeightCrossfade
+// instead stacks two identical copies at the two weights and crossfades their
+// opacity, which reads as a smooth thinning.
+const WEIGHT_NORMAL = 500;
+const WEIGHT_HOVER = 400;
+const WEIGHT_NORMAL_ZH = 300;
+const WEIGHT_HOVER_ZH = 100; // nearest lighter weight the font provides
+const WEIGHT_FADE_MS = 300;
+
+function WeightCrossfade({
+  active,
+  base,
+  over,
+  baseWeight,
+  hoverWeight,
+  className = '',
+  onMouseEnter,
+  onMouseLeave,
+}: {
+  active: boolean;
+  // Two renders of the same text; both stay mounted so they line up exactly.
+  base: ReactNode;
+  over: ReactNode;
+  baseWeight: number;
+  hoverWeight: number;
+  className?: string;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
+}) {
+  return (
+    <span
+      className={`relative inline-block ${className}`}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+    >
+      <span
+        className="transition-opacity ease-in-out"
+        style={{ opacity: active ? 0 : 1, transitionDuration: `${WEIGHT_FADE_MS}ms`, fontWeight: baseWeight }}
+      >
+        {base}
+      </span>
+      <span
+        aria-hidden
+        className="absolute left-0 top-0 whitespace-nowrap transition-opacity ease-in-out"
+        style={{ opacity: active ? 1 : 0, transitionDuration: `${WEIGHT_FADE_MS}ms`, fontWeight: hoverWeight }}
+      >
+        {over}
+      </span>
+    </span>
+  );
+}
+
 export default function HomePanel({
   showContent = true,
   instant = false,
@@ -86,6 +140,9 @@ export default function HomePanel({
   // Which element (name / "stockholm" / "newly") is currently hovered, driving
   // the image that pops up in the blank left space (desktop only).
   const [hovered, setHovered] = useState<HoverKey | null>(null);
+  // Hover only becomes active once the intro has finished playing, so nothing
+  // pops up mid-animation while the page is still loading in.
+  const [introDone, setIntroDone] = useState(instant);
   const currentTime = useCurrentTime(language);
   const t = translations[language];
   const fromT = translations[prevLanguage];
@@ -104,7 +161,9 @@ export default function HomePanel({
 
       if (headerRef.current && containerRef.current) {
         const containerWidth = containerRef.current.offsetWidth;
-        const text = headerRef.current.textContent || '';
+        // Use the known name rather than textContent: the hover crossfade keeps
+        // a second copy of the name in the heading, which would double it.
+        const text = t.name;
 
         // Create a temporary element to measure text width
         const measureEl = document.createElement('span');
@@ -146,7 +205,7 @@ export default function HomePanel({
     updateFontSize();
     window.addEventListener('resize', updateFontSize);
     return () => window.removeEventListener('resize', updateFontSize);
-  }, [hasShrunk]);
+  }, [hasShrunk, t.name]);
 
   // Scale the shrunk header up on screens larger than a 16" MacBook (1728px),
   // keeping 128px as the floor for normal laptop sizes.
@@ -230,6 +289,19 @@ export default function HomePanel({
   const languagesDelay = contentBaseDelay + 0.1;
   const footerDelay = rolesDelay + 0.1;
 
+  // Enable hover once every intro animation has settled. Content animates
+  // relative to the shrink (shrinkDelay after load); the last reveal is the
+  // time/roles clip (~timeDelay + 0.5s reveal + 0.5s delay), plus a buffer.
+  // (When instant, introDone already starts true, so no timer is needed.)
+  useEffect(() => {
+    if (instant || !showContent) return;
+    const timer = setTimeout(
+      () => setIntroDone(true),
+      (shrinkDelay + timeDelay + 1.1) * 1000,
+    );
+    return () => clearTimeout(timer);
+  }, [showContent, instant, shrinkDelay, timeDelay]);
+
   const shrinkTransition = {
     duration: instant ? 0 : shrinkDuration,
     ease: [0.76, 0, 0.15, 1] as const,
@@ -270,18 +342,24 @@ export default function HomePanel({
     if (!config || !word || !line.includes(word)) return plain();
 
     const key = config.key;
+    const isZh = language === 'zh';
     const [before, after] = line.split(word);
-    const wrap = (content: ReactNode) => (
-      <span
-        className="cursor-pointer transition-[font-weight] duration-300 ease-in-out"
-        style={{
-          fontWeight: hovered === key ? (language === 'zh' ? 100 : 400) : language === 'zh' ? 300 : 500,
+    // Crossfade the keyword between its normal and lighter weight on hover.
+    // `make` is called twice so both stacked copies are byte-identical and line
+    // up exactly. Hover is inert until the intro has finished.
+    const wrap = (make: () => ReactNode) => (
+      <WeightCrossfade
+        active={hovered === key}
+        baseWeight={isZh ? WEIGHT_NORMAL_ZH : WEIGHT_NORMAL}
+        hoverWeight={isZh ? WEIGHT_HOVER_ZH : WEIGHT_HOVER}
+        className={introDone ? 'cursor-pointer' : ''}
+        onMouseEnter={() => {
+          if (introDone) setHovered(key);
         }}
-        onMouseEnter={() => setHovered(key)}
         onMouseLeave={() => setHovered((h) => (h === key ? null : h))}
-      >
-        {content}
-      </span>
+        base={make()}
+        over={make()}
+      />
     );
 
     if (langSwitched) {
@@ -293,7 +371,7 @@ export default function HomePanel({
           <ScrambleText from={beforeFrom} charDelay={switchCharDelay}>
             {before}
           </ScrambleText>
-          {wrap(
+          {wrap(() => (
             <ScrambleText
               from={fromWord ?? word}
               baseDelay={before.length * switchCharDelay}
@@ -301,7 +379,7 @@ export default function HomePanel({
             >
               {word}
             </ScrambleText>
-          )}
+          ))}
           {after && (
             <ScrambleText
               from={afterFrom}
@@ -324,7 +402,7 @@ export default function HomePanel({
           <AnimatedText baseDelay={bioIntroDelays[index]} staggerDelay={0.03} instant={instant}>
             {before}
           </AnimatedText>
-          {wrap(
+          {wrap(() => (
             <AnimatedText
               baseDelay={bioIntroDelays[index] + beforeWords * 0.03}
               staggerDelay={0.03}
@@ -332,7 +410,7 @@ export default function HomePanel({
             >
               {word}
             </AnimatedText>
-          )}
+          ))}
           {after && (
             <AnimatedText
               baseDelay={bioIntroDelays[index] + (beforeWords + wordWords) * 0.03}
@@ -349,7 +427,7 @@ export default function HomePanel({
     return (
       <span className="opacity-0">
         {before}
-        {wrap(word)}
+        {wrap(() => word)}
         {after}
       </span>
     );
@@ -465,16 +543,17 @@ export default function HomePanel({
                   position and scale can trail the first name's together. */}
               <h1
                 ref={headerRef}
-                onMouseEnter={() => setHovered('name')}
+                onMouseEnter={() => {
+                  if (introDone) setHovered('name');
+                }}
                 onMouseLeave={() => setHovered((h) => (h === 'name' ? null : h))}
-                className="text-[#1E1E1E] dark:text-white whitespace-nowrap leading-none cursor-pointer transition-[font-weight] duration-300 ease-in-out"
+                className={`font-medium text-[#1E1E1E] dark:text-white whitespace-nowrap leading-none ${introDone ? 'cursor-pointer' : ''}`}
                 style={{
                   letterSpacing: '-0.05em',
                   marginTop: '-0.15em',
                   marginBottom: '-0.1em',
                   fontSize: hasShrunk ? shrunkFontSize : fontSize,
                   paddingTop: hasShrunk ? '8px' : '0px',
-                  fontWeight: hovered === 'name' ? 400 : 500,
                 }}
               >
                 <motion.span
@@ -482,7 +561,13 @@ export default function HomePanel({
                   className="inline-block align-top"
                   transition={shrinkTransition}
                 >
-                  {namePart(firstName, fromFirstName, 0)}
+                  <WeightCrossfade
+                    active={hovered === 'name'}
+                    baseWeight={WEIGHT_NORMAL}
+                    hoverWeight={WEIGHT_HOVER}
+                    base={namePart(firstName, fromFirstName, 0)}
+                    over={namePart(firstName, fromFirstName, 0)}
+                  />
                 </motion.span>
                 {lastName && (
                   <>
@@ -492,7 +577,13 @@ export default function HomePanel({
                       className="inline-block align-top"
                       transition={lastNameShrinkTransition}
                     >
-                      {namePart(lastName, fromLastName, 1)}
+                      <WeightCrossfade
+                        active={hovered === 'name'}
+                        baseWeight={WEIGHT_NORMAL}
+                        hoverWeight={WEIGHT_HOVER}
+                        base={namePart(lastName, fromLastName, 1)}
+                        over={namePart(lastName, fromLastName, 1)}
+                      />
                     </motion.span>
                   </>
                 )}
