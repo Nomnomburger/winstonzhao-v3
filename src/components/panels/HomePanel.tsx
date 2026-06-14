@@ -273,7 +273,10 @@ export default function HomePanel({
     const [before, after] = line.split(word);
     const wrap = (content: ReactNode) => (
       <span
-        className="cursor-pointer"
+        className="cursor-pointer transition-[font-weight] duration-300 ease-in-out"
+        style={{
+          fontWeight: hovered === key ? (language === 'zh' ? 100 : 400) : language === 'zh' ? 300 : 500,
+        }}
         onMouseEnter={() => setHovered(key)}
         onMouseLeave={() => setHovered((h) => (h === key ? null : h))}
       >
@@ -414,20 +417,23 @@ export default function HomePanel({
       )}
 
       {/* Hover images - desktop only (lg+). The name and the highlighted bio
-          words ("stockholm", "newly") reveal an image in the blank left space,
-          popping in with the same scale + fade as the mobile profile photo.
+          words ("stockholm", "newly") reveal an image in the blank left space.
           All three stay mounted (with priority) so they're preloaded on page
-          load and appear instantly on hover instead of fetching mid-reveal.
-          Hidden below lg so they never collide with the narrower bio layout. */}
+          load and appear instantly on hover; visibility toggles with no
+          transition. Hidden below lg so they never collide with the narrower
+          bio layout. */}
       <div className="hidden lg:block absolute inset-0 pointer-events-none z-0" aria-hidden="true">
         {HOVER_IMAGES.map((img) => (
-          <motion.div
+          <div
             key={img.key}
             className="absolute"
-            style={{ left: img.left, top: img.top, width: img.width, height: img.height }}
-            initial={false}
-            animate={hovered === img.key ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
-            transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1] }}
+            style={{
+              left: img.left,
+              top: img.top,
+              width: img.width,
+              height: img.height,
+              opacity: hovered === img.key ? 1 : 0,
+            }}
           >
             <Image
               src={img.src}
@@ -437,7 +443,7 @@ export default function HomePanel({
               priority
               className="w-full h-full object-cover"
             />
-          </motion.div>
+          </div>
         ))}
       </div>
 
@@ -461,13 +467,14 @@ export default function HomePanel({
                 ref={headerRef}
                 onMouseEnter={() => setHovered('name')}
                 onMouseLeave={() => setHovered((h) => (h === 'name' ? null : h))}
-                className="font-medium text-[#1E1E1E] dark:text-white whitespace-nowrap leading-none cursor-pointer"
+                className="text-[#1E1E1E] dark:text-white whitespace-nowrap leading-none cursor-pointer transition-[font-weight] duration-300 ease-in-out"
                 style={{
                   letterSpacing: '-0.05em',
                   marginTop: '-0.15em',
                   marginBottom: '-0.1em',
                   fontSize: hasShrunk ? shrunkFontSize : fontSize,
                   paddingTop: hasShrunk ? '8px' : '0px',
+                  fontWeight: hovered === 'name' ? 400 : 500,
                 }}
               >
                 <motion.span
