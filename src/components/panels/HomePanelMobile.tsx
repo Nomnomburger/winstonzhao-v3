@@ -346,7 +346,7 @@ export default function HomePanelMobile({
             <div ref={containerRef} className="relative w-full py-1">
               <motion.h1
                 ref={headerRef}
-                className="font-medium leading-none w-full"
+                className="font-medium leading-none w-full cursor-default"
                 initial={instant ? false : undefined}
                 animate={{
                   fontSize: hasShrunk ? `${shrunkFontSize}px` : fontSize,
@@ -489,7 +489,7 @@ export default function HomePanelMobile({
                 >
                   <div className="flex flex-col gap-12 w-full">
                     {/* Bio */}
-                    <div className={`${bigTextWeight} leading-none text-[32px] ${bigTextTracking} transition-[font-weight,letter-spacing] duration-700 ease-in-out`}>
+                    <div className={`${bigTextWeight} leading-none text-[32px] ${bigTextTracking} transition-[font-weight,letter-spacing] duration-700 ease-in-out cursor-default`}>
                       {t.bioLines.map((line, index) => (
                         <p key={index} className={index < t.bioLines.length - 1 ? 'mb-0' : undefined}>
                           {langSwitched ? (

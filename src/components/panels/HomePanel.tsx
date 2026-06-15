@@ -357,7 +357,6 @@ export default function HomePanel({
       <>
         {seg(before)}
         <span
-          className="cursor-pointer"
           onMouseEnter={(e) => beginHover(key, e)}
           onMouseMove={moveHover}
           onMouseLeave={() => endHover(key)}
@@ -486,7 +485,7 @@ export default function HomePanel({
                 }}
                 onMouseMove={moveHover}
                 onMouseLeave={() => endHover('name')}
-                className={`font-medium whitespace-nowrap leading-none ${interactive ? 'cursor-pointer' : ''}`}
+                className="font-medium whitespace-nowrap leading-none cursor-default"
                 style={{
                   letterSpacing: '-0.05em',
                   marginTop: '-0.15em',
@@ -648,7 +647,7 @@ export default function HomePanel({
 
                   {/* Columns 3-5: Bio */}
                   <div className="col-span-4 lg:col-span-3 flex items-start justify-between">
-                    <div className={`${bigTextWeight} leading-none text-[40px] lg:text-[52px] xl:text-[64px] whitespace-nowrap ${bigTextTracking} transition-[font-weight,letter-spacing] duration-700 ease-in-out`}>
+                    <div className={`${bigTextWeight} leading-none text-[40px] lg:text-[52px] xl:text-[64px] whitespace-nowrap ${bigTextTracking} transition-[font-weight,letter-spacing] duration-700 ease-in-out cursor-default`}>
                       {t.bioLines.map((line, index) => (
                         <p key={index} className={index < t.bioLines.length - 1 ? 'mb-0' : undefined}>
                           {renderBioLine(line, index, fromT.bioLines[index])}
