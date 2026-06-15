@@ -460,7 +460,7 @@ export default function HomePanelMobile({
               <AnimatePresence>
                 {hasShrunk && showContent && (
                   <motion.div
-                    className="absolute top-1 right-0 w-5 h-5"
+                    className="absolute top-1 right-0 w-4 h-4"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{

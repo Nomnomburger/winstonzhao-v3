@@ -1,5 +1,6 @@
 'use client';
 
+import { useRef } from 'react';
 import { motion, useAnimationControls } from 'framer-motion';
 import { cycleTheme } from './theme';
 
@@ -23,9 +24,19 @@ interface ThemeToggleProps {
 export default function ThemeToggle({ className = '', spin = true }: ThemeToggleProps) {
   const arms = useAnimationControls();
   const pop = useAnimationControls();
+  const spinRef = useRef<HTMLDivElement>(null);
 
   const handleClick = () => {
     cycleTheme();
+
+    if (spin && spinRef.current) {
+      const el = spinRef.current;
+      el.style.animation = 'none';
+      void el.offsetHeight;
+      el.style.animation = '';
+    }
+
+    void arms.set({ pathLength: 0 });
     pop.start({
       scale: [0.7, 1.12, 1],
       transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
@@ -43,7 +54,7 @@ export default function ThemeToggle({ className = '', spin = true }: ThemeToggle
       aria-label="Change colour theme"
       className={`block cursor-pointer ${className}`}
     >
-      <div className={`w-full h-full ${spin ? 'animate-spin-slow' : ''}`}>
+      <div ref={spinRef} className={`w-full h-full ${spin ? 'animate-spin-slow' : ''}`}>
         <motion.svg
           viewBox="0 0 36 36"
           fill="none"
