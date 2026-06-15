@@ -16,7 +16,7 @@ function LoadingScreen({ onComplete }: { onComplete: () => void }) {
     >
       <div className="w-full h-[2px] relative">
         <motion.div
-          className="absolute top-0 left-0 h-full bg-[#1E1E1E] dark:bg-white"
+          className="absolute top-0 left-0 h-full bg-foreground"
           initial={{ width: '0%' }}
           animate={{ width: '100%' }}
           transition={{

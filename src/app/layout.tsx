@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import ThemeController from "@/components/ThemeController";
 
 const ppNeueMontreal = localFont({
   src: [
@@ -69,6 +70,7 @@ export default function RootLayout({
       <body
         className={`${ppNeueMontreal.variable} antialiased`}
       >
+        <ThemeController />
         {children}
       </body>
     </html>

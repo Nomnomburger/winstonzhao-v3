@@ -12,11 +12,13 @@ import {
   NewlyRole,
   FigmaRole,
   TextQLRole,
+  WZLogo,
   LINKEDIN_URL,
   OLD_SITE_URL,
   RESUME_URL,
   EMAIL,
 } from './shared';
+import ThemeToggle from '@/components/ThemeToggle';
 import { Language, translations } from './translations';
 
 interface HomePanelProps {
@@ -409,7 +411,7 @@ export default function HomePanel({
     : 'tracking-[-1.6px] lg:tracking-[-2.08px] xl:tracking-[-2.56px]';
 
   return (
-    <div className="bg-background flex flex-col gap-9 h-screen w-full relative overflow-hidden">
+    <div className="theme-root bg-background flex flex-col gap-9 h-screen w-full relative overflow-hidden">
       {/* Background column guides - same grid as the page content (currently hidden) */}
       {SHOW_COLUMN_GUIDES && (
         <div
@@ -419,7 +421,7 @@ export default function HomePanel({
           {Array.from({ length: 5 }).map((_, i) => (
             <motion.div
               key={i}
-              className="border-x border-[#1E1E1E]/8 dark:border-white/8 origin-top"
+              className="border-x border-foreground/8 origin-top"
               initial={{ scaleY: 0 }}
               animate={{ scaleY: showContent ? 1 : 0 }}
               transition={{ duration: 1.2, delay: headerAnimationDelay + i * 0.15, ease: [0.22, 1, 0.36, 1] }}
@@ -484,7 +486,7 @@ export default function HomePanel({
                 }}
                 onMouseMove={moveHover}
                 onMouseLeave={() => endHover('name')}
-                className={`font-medium text-[#1E1E1E] dark:text-white whitespace-nowrap leading-none ${interactive ? 'cursor-pointer' : ''}`}
+                className={`font-medium whitespace-nowrap leading-none ${interactive ? 'cursor-pointer' : ''}`}
                 style={{
                   letterSpacing: '-0.05em',
                   marginTop: '-0.15em',
@@ -534,7 +536,7 @@ export default function HomePanel({
             <AnimatePresence>
               {hasShrunk && showContent && (
                 <motion.div
-                  className="flex gap-1.5 items-center justify-center font-normal text-[12px] tracking-[-0.24px] text-[#1E1E1E] dark:text-white whitespace-nowrap leading-normal"
+                  className="flex gap-1.5 items-center justify-center font-normal text-[12px] tracking-[-0.24px] whitespace-nowrap leading-normal"
                   initial={instant ? false : { opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{
@@ -574,7 +576,7 @@ export default function HomePanel({
                       href={LINKEDIN_URL}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`flex gap-2 items-start ${bigTextWeight} text-[#1E1E1E] dark:text-white whitespace-nowrap cursor-pointer transition-[font-weight] duration-700 ease-in-out`}
+                      className={`flex gap-2 items-start ${bigTextWeight} whitespace-nowrap cursor-pointer transition-[font-weight] duration-700 ease-in-out`}
                     >
                       <motion.span
                         className={`text-[40px] lg:text-[52px] xl:text-[64px] leading-none ${bigTextTracking} transition-[letter-spacing] duration-700 ease-in-out`}
@@ -646,7 +648,7 @@ export default function HomePanel({
 
                   {/* Columns 3-5: Bio */}
                   <div className="col-span-4 lg:col-span-3 flex items-start justify-between">
-                    <div className={`${bigTextWeight} leading-none text-[40px] lg:text-[52px] xl:text-[64px] text-[#1E1E1E] dark:text-white whitespace-nowrap ${bigTextTracking} transition-[font-weight,letter-spacing] duration-700 ease-in-out`}>
+                    <div className={`${bigTextWeight} leading-none text-[40px] lg:text-[52px] xl:text-[64px] whitespace-nowrap ${bigTextTracking} transition-[font-weight,letter-spacing] duration-700 ease-in-out`}>
                       {t.bioLines.map((line, index) => (
                         <p key={index} className={index < t.bioLines.length - 1 ? 'mb-0' : undefined}>
                           {renderBioLine(line, index, fromT.bioLines[index])}
@@ -655,7 +657,7 @@ export default function HomePanel({
                     </div>
                     {showContent ? (
                       <motion.div
-                        className="w-9 h-9 shrink-0 text-[#1E1E1E] dark:text-white"
+                        className="w-9 h-9 shrink-0"
                         initial={instant ? false : { opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{
@@ -664,10 +666,7 @@ export default function HomePanel({
                           ease: [0.4, 0, 0.2, 1],
                         }}
                       >
-                        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" className="animate-spin-slow">
-                          <path d="M0 18L36 18" stroke="currentColor" strokeWidth="2"/>
-                          <path d="M18 0V36" stroke="currentColor" strokeWidth="2"/>
-                        </svg>
+                        <ThemeToggle className="w-full h-full" />
                       </motion.div>
                     ) : (
                       <div className="w-9 h-9 shrink-0 opacity-0">
@@ -681,7 +680,7 @@ export default function HomePanel({
                 </div>
 
                 {/* Roles and Time - 5 Column Grid */}
-                <div className="grid grid-cols-5 gap-x-6 items-center w-full text-[#1E1E1E] dark:text-white">
+                <div className="grid grid-cols-5 gap-x-6 items-center w-full">
                   {/* Columns 1-2: Empty (collapses below lg to left-align roles) */}
                   <div className="hidden lg:block lg:col-span-2" />
 
@@ -749,12 +748,12 @@ export default function HomePanel({
                             currentTime
                           )}
                         </span>
-                        <span className="w-2.5 h-2.5 rounded-full bg-[#1E1E1E] dark:bg-white shrink-0 self-center" />
+                        <span className="w-2.5 h-2.5 rounded-full bg-foreground shrink-0 self-center" />
                       </motion.div>
                     ) : (
                       <div className="flex items-center gap-1.5 opacity-0">
                         <span className="font-medium text-[12px] tracking-[-0.24px] leading-normal">{currentTime}</span>
-                        <span className="w-2.5 h-2.5 rounded-full bg-[#1E1E1E] dark:bg-white shrink-0 self-center" />
+                        <span className="w-2.5 h-2.5 rounded-full bg-foreground shrink-0 self-center" />
                       </div>
                     )}
                   </motion.div>
@@ -769,7 +768,7 @@ export default function HomePanel({
       <AnimatePresence>
         {hasShrunk && showContent && (
           <motion.div
-            className="relative flex flex-1 items-end justify-between p-9 w-full text-[#1E1E1E] dark:text-white"
+            className="relative flex flex-1 items-end justify-between p-9 w-full"
             initial={instant ? false : { opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
@@ -780,13 +779,7 @@ export default function HomePanel({
           >
             <div className="flex gap-6 items-center">
               <div className="w-[45px] h-[28px] shrink-0">
-                <Image
-                  src="/wz-logo.svg"
-                  alt="WZ"
-                  width={45}
-                  height={28}
-                  className="w-full h-full object-contain dark:invert"
-                />
+                <WZLogo className="w-full h-full" />
               </div>
               <div className="w-[354px] font-normal text-[12px] tracking-[-0.24px] leading-normal">
                 <p className="mb-0">
