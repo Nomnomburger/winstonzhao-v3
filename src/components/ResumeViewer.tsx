@@ -146,7 +146,7 @@ function FixedResPage({
 
   return (
     <div
-      className="relative overflow-hidden border-[0.5px] border-black"
+      className="relative overflow-hidden border-[0.5px] border-foreground"
       style={{
         width: displayWidth,
         height: displayWidth * (aspect ?? LETTER_ASPECT),
@@ -456,7 +456,7 @@ export default function ResumeViewer() {
   return (
     <div
       ref={containerRef}
-      className="fixed inset-0 overflow-auto bg-background no-scrollbar"
+      className="theme-root fixed inset-0 overflow-auto bg-background no-scrollbar"
       style={{ touchAction: 'pan-x pan-y' }}
     >
       <div className="flex h-fit w-fit min-h-full min-w-full">
@@ -468,7 +468,7 @@ export default function ResumeViewer() {
                 onLoadSuccess={({ numPages }) => setNumPages(numPages)}
                 loading={null}
                 error={
-                  <p className="font-normal text-[12px] tracking-[-0.24px] leading-normal text-[#1E1E1E] dark:text-white">
+                  <p className="font-normal text-[12px] tracking-[-0.24px] leading-normal">
                     failed to load resume
                   </p>
                 }
@@ -492,10 +492,9 @@ export default function ResumeViewer() {
 
       <ProgressiveBlur />
 
-      {/* Actions - fixed so they stay put while the pdf zooms underneath;
-          white + difference blending flips them dark over the light pdf
-          and light over the dark page background */}
-      <div className="fixed bottom-9 left-1/2 -translate-x-1/2 z-20 flex items-center gap-3 font-normal text-[12px] tracking-[-0.24px] leading-normal text-white mix-blend-difference whitespace-nowrap">
+      {/* Actions - fixed so they stay put while the pdf zooms underneath.
+          They take the theme foreground colour like the rest of the page. */}
+      <div className="fixed bottom-9 left-1/2 -translate-x-1/2 z-20 flex items-center gap-3 font-normal text-[12px] tracking-[-0.24px] leading-normal whitespace-nowrap">
         <button
           type="button"
           onClick={() => router.push('/')}

@@ -2,7 +2,9 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #1E1E1E;
+  --foreground: #000000;
+  /* How long a theme change takes to cross-fade (the + / bloom button) */
+  --theme-duration: 5000ms;
 }
 
 @theme inline {
@@ -28,6 +30,32 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-pp-neue-montreal), Arial, Helvetica, sans-serif;
+}
+
+/* Theme cross-fade. The four colour themes (and the default) override
+   --background / --foreground at runtime; everything eases to the new palette
+   over ~5s instead of snapping. Colour is inherited from .theme-root so all
+   text and currentColor icons fade together; elements that set their own
+   background, border, fill or stroke get their own transition below. */
+.theme-root {
+  color: var(--foreground);
+  background-color: var(--background);
+  transition: color var(--theme-duration) ease,
+    background-color var(--theme-duration) ease;
+}
+
+/* Text and currentColor SVGs inherit colour from .theme-root, so they all
+   follow that single colour transition. Descendants only need their own
+   transition for background/border/fill/stroke they set directly (the time
+   dot, the masked WZ logo, page borders). Kept in @layer base so per-element
+   Tailwind transition utilities (e.g. transition-[font-weight]) still win. */
+@layer base {
+  .theme-root * {
+    transition: background-color var(--theme-duration) ease,
+      border-color var(--theme-duration) ease,
+      fill var(--theme-duration) ease,
+      stroke var(--theme-duration) ease;
+  }
 }
 
 @keyframes spin-slow {

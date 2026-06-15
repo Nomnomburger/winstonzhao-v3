@@ -10,6 +10,31 @@ export const OLD_SITE_URL = 'https://winstonzhao.ca';
 export const RESUME_URL = '/resume';
 export const EMAIL = 'hello@winstonzhao.ca';
 
+// The WZ initials in the footer. The logo file is a black PNG glyph with a
+// transparent background, so we paint it with the theme foreground colour by
+// using it as a mask over a bg-foreground box (rather than an <img>, which
+// can't be recoloured). This makes the initials follow the theme like every
+// other element, fading with the global colour transition.
+export function WZLogo({ className = '' }: { className?: string }) {
+  return (
+    <span
+      role="img"
+      aria-label="WZ"
+      className={`block bg-foreground ${className}`}
+      style={{
+        maskImage: 'url(/wz-logo.svg)',
+        WebkitMaskImage: 'url(/wz-logo.svg)',
+        maskRepeat: 'no-repeat',
+        WebkitMaskRepeat: 'no-repeat',
+        maskPosition: 'center',
+        WebkitMaskPosition: 'center',
+        maskSize: 'contain',
+        WebkitMaskSize: 'contain',
+      }}
+    />
+  );
+}
+
 interface AnimatedWordProps {
   children: string;
   delay: number;

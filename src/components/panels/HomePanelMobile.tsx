@@ -12,11 +12,13 @@ import {
   NewlyRole,
   FigmaRole,
   TextQLRole,
+  WZLogo,
   LINKEDIN_URL,
   OLD_SITE_URL,
   RESUME_URL,
   EMAIL,
 } from './shared';
+import ThemeToggle from '@/components/ThemeToggle';
 import { Language, translations } from './translations';
 
 // "Zhao" sits in the second of the two mobile grid columns: half the
@@ -302,7 +304,7 @@ export default function HomePanelMobile({
 
   return (
     <div
-      className="bg-background h-dvh w-full relative overflow-hidden"
+      className="theme-root bg-background h-dvh w-full relative overflow-hidden"
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
@@ -315,7 +317,7 @@ export default function HomePanelMobile({
           {Array.from({ length: 2 }).map((_, i) => (
             <motion.div
               key={i}
-              className="border-x border-[#1E1E1E]/8 dark:border-white/8 origin-top"
+              className="border-x border-foreground/8 origin-top"
               initial={{ scaleY: 0 }}
               animate={{ scaleY: showContent ? 1 : 0 }}
               transition={{ duration: 1.2, delay: headerAnimationDelay + i * 0.15, ease: [0.22, 1, 0.36, 1] }}
@@ -337,7 +339,7 @@ export default function HomePanelMobile({
             <div ref={containerRef} className="relative w-full py-1">
               <motion.h1
                 ref={headerRef}
-                className="font-medium text-[#1E1E1E] dark:text-white leading-none w-full"
+                className="font-medium leading-none w-full"
                 initial={instant ? false : undefined}
                 animate={{
                   fontSize: hasShrunk ? `${shrunkFontSize}px` : fontSize,
@@ -451,7 +453,7 @@ export default function HomePanelMobile({
               <AnimatePresence>
                 {hasShrunk && showContent && (
                   <motion.div
-                    className="absolute top-1 right-0 w-4 h-4 text-[#1E1E1E] dark:text-white"
+                    className="absolute top-1 right-0 w-4 h-4"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{
@@ -488,7 +490,7 @@ export default function HomePanelMobile({
                 >
                   <div className="flex flex-col gap-12 w-full">
                     {/* Bio */}
-                    <div className={`${bigTextWeight} leading-none text-[32px] text-[#1E1E1E] dark:text-white ${bigTextTracking} transition-[font-weight,letter-spacing] duration-700 ease-in-out`}>
+                    <div className={`${bigTextWeight} leading-none text-[32px] ${bigTextTracking} transition-[font-weight,letter-spacing] duration-700 ease-in-out`}>
                       {t.bioLines.map((line, index) => (
                         <p key={index} className={index < t.bioLines.length - 1 ? 'mb-0' : undefined}>
                           {langSwitched ? (
@@ -516,7 +518,7 @@ export default function HomePanelMobile({
                         href={LINKEDIN_URL}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className={`flex gap-2 items-start ${bigTextWeight} text-[#1E1E1E] dark:text-white whitespace-nowrap cursor-pointer transition-[font-weight] duration-700 ease-in-out`}
+                        className={`flex gap-2 items-start ${bigTextWeight} whitespace-nowrap cursor-pointer transition-[font-weight] duration-700 ease-in-out`}
                       >
                         <motion.span
                           className={`text-[32px] leading-none ${bigTextTracking} transition-[letter-spacing] duration-700 ease-in-out`}
@@ -583,7 +585,7 @@ export default function HomePanelMobile({
                       </a>
                       {showContent ? (
                         <motion.div
-                          className="w-8 h-8 shrink-0 text-[#1E1E1E] dark:text-white"
+                          className="w-8 h-8 shrink-0"
                           initial={{ opacity: 0, scale: 0.8 }}
                           animate={{ opacity: 1, scale: 1 }}
                           transition={{
@@ -592,10 +594,7 @@ export default function HomePanelMobile({
                             ease: [0.4, 0, 0.2, 1],
                           }}
                         >
-                          <svg width="32" height="32" viewBox="0 0 36 36" fill="none" className="w-full h-full animate-spin-slow">
-                            <path d="M0 18L36 18" stroke="currentColor" strokeWidth="2"/>
-                            <path d="M18 0V36" stroke="currentColor" strokeWidth="2"/>
-                          </svg>
+                          <ThemeToggle className="w-full h-full" />
                         </motion.div>
                       ) : (
                         <div className="w-8 h-8 shrink-0 opacity-0">
@@ -609,7 +608,7 @@ export default function HomePanelMobile({
                   </div>
 
                   {/* Roles and Time - pinned to the bottom of the viewport */}
-                  <div className="flex items-start justify-between mt-auto pt-12 w-full text-[#1E1E1E] dark:text-white">
+                  <div className="flex items-start justify-between mt-auto pt-12 w-full">
                     <motion.div
                       initial={{ clipPath: 'inset(-10% -10% 0 -10%)' }}
                       animate={{ clipPath: 'inset(-10% -10% -20% -10%)' }}
@@ -673,12 +672,12 @@ export default function HomePanelMobile({
                                 currentTime
                               )}
                             </span>
-                            <span className="w-2.5 h-2.5 rounded-full bg-[#1E1E1E] dark:bg-white shrink-0 self-center" />
+                            <span className="w-2.5 h-2.5 rounded-full bg-foreground shrink-0 self-center" />
                           </motion.div>
                         ) : (
                           <div className="flex items-center gap-1.5 opacity-0">
                             <span className="font-medium text-[12px] tracking-[-0.24px] leading-normal">{currentTime}</span>
-                            <span className="w-2.5 h-2.5 rounded-full bg-[#1E1E1E] dark:bg-white shrink-0 self-center" />
+                            <span className="w-2.5 h-2.5 rounded-full bg-foreground shrink-0 self-center" />
                           </div>
                         )}
                       </motion.div>
@@ -733,7 +732,7 @@ export default function HomePanelMobile({
         {/* Footer Section - lives below the fold, revealed by the arrows */}
         <div
           ref={footerRef}
-          className="relative flex flex-col gap-12 p-6 w-full text-[#1E1E1E] dark:text-white"
+          className="relative flex flex-col gap-12 p-6 w-full"
         >
           <div className="max-w-[354px] font-normal text-[12px] tracking-[-0.24px] leading-normal">
             <p className="mb-0">
@@ -778,13 +777,7 @@ export default function HomePanelMobile({
           </div>
           <div className="flex items-end justify-between w-full">
             <div className="w-[45px] h-[28px] shrink-0">
-              <Image
-                src="/wz-logo.svg"
-                alt="WZ"
-                width={45}
-                height={28}
-                className="w-full h-full object-contain dark:invert"
-              />
+              <WZLogo className="w-full h-full" />
             </div>
             <div className="flex gap-3 items-center justify-end font-normal text-[12px] tracking-[-0.24px] leading-normal whitespace-nowrap">
               <a href={`mailto:${EMAIL}`}>hello [at] winstonzhao.ca</a>
