@@ -13,6 +13,7 @@ import {
   FigmaRole,
   TextQLRole,
   WZLogo,
+  LanguageGlobe,
   LINKEDIN_URL,
   OLD_SITE_URL,
   RESUME_URL,
@@ -459,7 +460,7 @@ export default function HomePanelMobile({
               <AnimatePresence>
                 {hasShrunk && showContent && (
                   <motion.div
-                    className="absolute top-1 right-0 w-4 h-4"
+                    className="absolute top-1 right-0 w-5 h-5"
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{
@@ -468,18 +469,10 @@ export default function HomePanelMobile({
                       ease: [0.4, 0, 0.2, 1],
                     }}
                   >
-                    <button
-                      type="button"
+                    <LanguageGlobe
                       onClick={toggleLanguage}
-                      aria-label="Switch language"
                       className="block w-full h-full cursor-pointer"
-                    >
-                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                        <circle cx="8" cy="8" r="6.5" stroke="currentColor" />
-                        <path d="M1.5 8H14.5" stroke="currentColor" />
-                        <path d="M8 1.5C9.8 3.3 10.75 5.55 10.75 8C10.75 10.45 9.8 12.7 8 14.5C6.2 12.7 5.25 10.45 5.25 8C5.25 5.55 6.2 3.3 8 1.5Z" stroke="currentColor" />
-                      </svg>
-                    </button>
+                    />
                   </motion.div>
                 )}
               </AnimatePresence>

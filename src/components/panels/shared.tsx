@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, useMotionValue, useTransform, useAnimationControls, animate } from 'framer-motion';
 import { ReactNode, useEffect, useRef, useState } from 'react';
 import { Language } from './translations';
 
@@ -32,6 +32,80 @@ export function WZLogo({ className = '' }: { className?: string }) {
         WebkitMaskSize: 'contain',
       }}
     />
+  );
+}
+
+// Globe button that cycles the language. The outer ring and the equator stay
+// fixed so the icon always reads as a circle — only the meridian (the inner
+// vertical oval) spins. The spin is a horizontal squash of that oval: its
+// width follows cos(angle), so it collapses to the pole-to-pole line when
+// edge-on and opens back up, the way a longitude line looks as a sphere turns.
+// A click adds a whole number of sweeps and eases out, so it spins up and
+// coasts to a stop, always landing fully open.
+const GLOBE_SPIN_SWEEPS = 5; // edge-on passes per switch (integer ⇒ lands open)
+const GLOBE_SPIN_DURATION = 1.2; // seconds
+const GLOBE_SPIN_EASE = [0.22, 1, 0.36, 1] as const; // decelerate to a stop
+// Tactile feedback, mirroring the plus toggle: a press shrinks the whole mark,
+// and while it spins the mark grows a little and settles back to its size.
+const GLOBE_POP_SCALE = 1.12;
+const GLOBE_PRESS_SCALE = 0.9;
+
+export function LanguageGlobe({
+  onClick,
+  className = '',
+}: {
+  onClick?: () => void;
+  className?: string;
+}) {
+  // Spin progress measured in half-turns; the meridian width is cos() of it,
+  // so whole-number targets always settle on a fully open oval.
+  const sweeps = useMotionValue(0);
+  const meridianScaleX = useTransform(sweeps, (s) => Math.cos(s * Math.PI));
+  // Whole-icon "grow then settle" pop, run alongside the spin.
+  const pop = useAnimationControls();
+
+  const handleClick = () => {
+    onClick?.();
+    animate(sweeps, sweeps.get() + GLOBE_SPIN_SWEEPS, {
+      duration: GLOBE_SPIN_DURATION,
+      ease: GLOBE_SPIN_EASE,
+    });
+    pop.start({
+      scale: [1, GLOBE_POP_SCALE, 1],
+      transition: { duration: GLOBE_SPIN_DURATION, ease: GLOBE_SPIN_EASE },
+    });
+  };
+
+  return (
+    <motion.button
+      type="button"
+      onClick={handleClick}
+      aria-label="Switch language"
+      className={className}
+      whileTap={{ scale: GLOBE_PRESS_SCALE }}
+    >
+      <motion.svg
+        viewBox="0 0 20 20"
+        fill="none"
+        className="w-full h-full"
+        aria-hidden="true"
+        animate={pop}
+        style={{ transformOrigin: 'center' }}
+      >
+        <circle cx="10" cy="10" r="8.75" stroke="currentColor" strokeWidth="1.25" />
+        <line x1="1.25" y1="10" x2="18.75" y2="10" stroke="currentColor" strokeWidth="1.25" />
+        <motion.ellipse
+          cx="10"
+          cy="10"
+          rx="3.6"
+          ry="8.75"
+          stroke="currentColor"
+          strokeWidth="1.25"
+          vectorEffect="non-scaling-stroke"
+          style={{ scaleX: meridianScaleX, transformBox: 'fill-box', transformOrigin: 'center' }}
+        />
+      </motion.svg>
+    </motion.button>
   );
 }
 
