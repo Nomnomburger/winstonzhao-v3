@@ -345,18 +345,24 @@ export default function HomePanel({
 
     const key = config!.key;
     const [before, after] = line.split(word!);
+    // Match the structure of the animation we're swapping out of so the text
+    // doesn't nudge: AnimatedText wraps each word in an inline-block (which sits
+    // a touch lower than plain text), while a language switch leaves ScrambleText
+    // plain text. Rendering the split the same way keeps it pixel-stable.
+    const seg = (text: string) =>
+      langSwitched ? text : <AnimatedText instant>{text}</AnimatedText>;
     return (
       <>
-        {before}
+        {seg(before)}
         <span
           className="cursor-pointer"
           onMouseEnter={(e) => beginHover(key, e)}
           onMouseMove={moveHover}
           onMouseLeave={() => endHover(key)}
         >
-          {word}
+          {seg(word!)}
         </span>
-        {after}
+        {after && seg(after)}
       </>
     );
   };
