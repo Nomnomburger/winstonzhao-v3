@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, useMotionValue, useTransform, animate } from 'framer-motion';
+import { motion, useMotionValue, useTransform, useAnimationControls, animate } from 'framer-motion';
 import { ReactNode, useEffect, useRef, useState } from 'react';
 import { Language } from './translations';
 
@@ -45,6 +45,10 @@ export function WZLogo({ className = '' }: { className?: string }) {
 const GLOBE_SPIN_SWEEPS = 5; // edge-on passes per switch (integer ⇒ lands open)
 const GLOBE_SPIN_DURATION = 1.2; // seconds
 const GLOBE_SPIN_EASE = [0.22, 1, 0.36, 1] as const; // decelerate to a stop
+// Tactile feedback, mirroring the plus toggle: a press shrinks the whole mark,
+// and while it spins the mark grows a little and settles back to its size.
+const GLOBE_POP_SCALE = 1.12;
+const GLOBE_PRESS_SCALE = 0.9;
 
 export function LanguageGlobe({
   onClick,
@@ -57,6 +61,8 @@ export function LanguageGlobe({
   // so whole-number targets always settle on a fully open oval.
   const sweeps = useMotionValue(0);
   const meridianScaleX = useTransform(sweeps, (s) => Math.cos(s * Math.PI));
+  // Whole-icon "grow then settle" pop, run alongside the spin.
+  const pop = useAnimationControls();
 
   const handleClick = () => {
     onClick?.();
@@ -64,11 +70,28 @@ export function LanguageGlobe({
       duration: GLOBE_SPIN_DURATION,
       ease: GLOBE_SPIN_EASE,
     });
+    pop.start({
+      scale: [1, GLOBE_POP_SCALE, 1],
+      transition: { duration: GLOBE_SPIN_DURATION, ease: GLOBE_SPIN_EASE },
+    });
   };
 
   return (
-    <button type="button" onClick={handleClick} aria-label="Switch language" className={className}>
-      <svg viewBox="0 0 20 20" fill="none" className="w-full h-full" aria-hidden="true">
+    <motion.button
+      type="button"
+      onClick={handleClick}
+      aria-label="Switch language"
+      className={className}
+      whileTap={{ scale: GLOBE_PRESS_SCALE }}
+    >
+      <motion.svg
+        viewBox="0 0 20 20"
+        fill="none"
+        className="w-full h-full"
+        aria-hidden="true"
+        animate={pop}
+        style={{ transformOrigin: 'center' }}
+      >
         <circle cx="10" cy="10" r="8.75" stroke="currentColor" strokeWidth="1.25" />
         <line x1="1.25" y1="10" x2="18.75" y2="10" stroke="currentColor" strokeWidth="1.25" />
         <motion.ellipse
@@ -81,8 +104,8 @@ export function LanguageGlobe({
           vectorEffect="non-scaling-stroke"
           style={{ scaleX: meridianScaleX, transformBox: 'fill-box', transformOrigin: 'center' }}
         />
-      </svg>
-    </button>
+      </motion.svg>
+    </motion.button>
   );
 }
 
