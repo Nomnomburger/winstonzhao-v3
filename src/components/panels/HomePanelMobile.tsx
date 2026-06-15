@@ -236,8 +236,14 @@ export default function HomePanelMobile({
   const arrowsDelay = timeDelay + 0.05;
   const globeDelay = contentBaseDelay + 0.1;
 
+  // `instant` collapses the intro shrink to zero duration when the page is
+  // re-mounted after visiting /resume (the intro is skipped on the way back).
+  // It must NOT also flatten the language-switch reposition — the profile photo
+  // sliding across and the last-name line re-anchoring — which happens long
+  // after mount. So once the user actually switches language, keep the normal
+  // slide duration even when the intro was skipped.
   const shrinkTransition = {
-    duration: instant ? 0 : shrinkDuration,
+    duration: instant && !langSwitched ? 0 : shrinkDuration,
     ease: [0.76, 0, 0.15, 1] as const,
   };
 
