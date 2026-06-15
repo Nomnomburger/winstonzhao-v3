@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -38,6 +38,43 @@ const splitName = (name: string): [string, string] => {
   return i === -1 ? [name, ''] : [name.slice(0, i), name.slice(i + 1)];
 };
 
+type HoverKey = 'name' | 'stockholm' | 'newly';
+
+// Desktop-only feature: hovering the name or a highlighted bio word reveals an
+// image in the blank space on the left. Positions/sizes mirror the Figma
+// frames (1280×832 reference) — `left` hugs the page's left padding and `top`
+// is a percentage of viewport height so the images track the blank band as the
+// window resizes.
+const HOVER_IMAGES: ReadonlyArray<{
+  key: HoverKey;
+  src: string;
+  alt: string;
+  left: string;
+  top: string;
+  width: number;
+  height: number;
+}> = [
+  { key: 'name', src: '/profile.png', alt: 'Winston Zhao', left: '36px', top: '44.5%', width: 154, height: 154 },
+  { key: 'stockholm', src: '/stockholm.jpeg', alt: 'Stockholm', left: '188px', top: '38.3%', width: 237, height: 316 },
+  { key: 'newly', src: '/newlygraphic.png', alt: 'Newly', left: '36px', top: '48.7%', width: 390, height: 230 },
+];
+
+// Bio lines (by index) that carry a hover word, with the matching word per
+// language so the highlight follows a language switch.
+const HOVER_BIO_WORDS: Record<number, { key: HoverKey; word: Record<Language, string> }> = {
+  2: { key: 'stockholm', word: { en: 'stockholm', sv: 'stockholm', zh: '斯德哥尔摩' } },
+  3: { key: 'newly', word: { en: 'newly', sv: 'newly', zh: 'Newly' } },
+};
+
+// After a language switch the keyword lines render as one unit so the full-line
+// scramble plays; once it settles they swap to their static, hoverable form.
+const SCRAMBLE_SETTLE_MS = 1100;
+
+// While hovering a text trigger, the image trails the pointer at a fraction of
+// its movement, eased by a spring so it glides to rest when the pointer stops.
+const FOLLOW_FACTOR = 0.12;
+const FOLLOW_SPRING = { stiffness: 110, damping: 18, mass: 0.6 } as const;
+
 export default function HomePanel({
   showContent = true,
   instant = false,
@@ -55,16 +92,68 @@ export default function HomePanel({
   // Language shown before the switch, so the outgoing copy stays on screen
   // until the scramble replaces it.
   const [prevLanguage, setPrevLanguage] = useState<Language>(language);
+  // Which element (name / "stockholm" / "newly") is currently hovered, driving
+  // the image that pops up in the blank left space (desktop only).
+  const [hovered, setHovered] = useState<HoverKey | null>(null);
+  // Hover only becomes active once the intro has finished playing, so nothing
+  // pops up mid-animation while the page is still loading in.
+  const [introDone, setIntroDone] = useState(instant);
+  // False while a language-switch scramble is playing, so the keyword bio lines
+  // stay rendered as one scrambling unit until it settles.
+  const [scrambleSettled, setScrambleSettled] = useState(true);
   const currentTime = useCurrentTime(language);
   const t = translations[language];
   const fromT = translations[prevLanguage];
+
+  // Hover (and the weight crossfade) turns on once the intro has played; after a
+  // language switch it waits for the full-line scramble to settle first.
+  const interactive = introDone && (!langSwitched || scrambleSettled);
+
+  // Pointer-follow for the hover image: the target tracks a damped fraction of
+  // the pointer's movement since hover started; a spring eases the image toward
+  // it so it lags and glides to rest.
+  const followX = useMotionValue(0);
+  const followY = useMotionValue(0);
+  const imageX = useSpring(followX, FOLLOW_SPRING);
+  const imageY = useSpring(followY, FOLLOW_SPRING);
+  const hoverOrigin = useRef<{ x: number; y: number } | null>(null);
+
+  const beginHover = (key: HoverKey, e: React.MouseEvent) => {
+    setHovered(key);
+    hoverOrigin.current = { x: e.clientX, y: e.clientY };
+    // Snap the offset back to zero so the image starts at its anchor point.
+    followX.set(0);
+    followY.set(0);
+    imageX.jump(0);
+    imageY.jump(0);
+  };
+
+  const moveHover = (e: React.MouseEvent) => {
+    if (!hoverOrigin.current) return;
+    followX.set((e.clientX - hoverOrigin.current.x) * FOLLOW_FACTOR);
+    followY.set((e.clientY - hoverOrigin.current.y) * FOLLOW_FACTOR);
+  };
+
+  const endHover = (key: HoverKey) => {
+    setHovered((h) => (h === key ? null : h));
+    hoverOrigin.current = null;
+  };
 
   const handleLanguageChange = (lang: Language) => {
     if (lang === language) return;
     setPrevLanguage(language);
     setLangSwitched(true);
+    setScrambleSettled(false);
     onLanguageChange?.(lang);
   };
+
+  // Re-arm the "scramble settled" flag after each language change so the
+  // keyword lines return to their hoverable split form once the sweep ends.
+  useEffect(() => {
+    if (!langSwitched) return;
+    const timer = setTimeout(() => setScrambleSettled(true), SCRAMBLE_SETTLE_MS);
+    return () => clearTimeout(timer);
+  }, [language, langSwitched]);
 
   useEffect(() => {
     const updateFontSize = () => {
@@ -199,6 +288,19 @@ export default function HomePanel({
   const languagesDelay = contentBaseDelay + 0.1;
   const footerDelay = rolesDelay + 0.1;
 
+  // Enable hover once every intro animation has settled. Content animates
+  // relative to the shrink (shrinkDelay after load); the last reveal is the
+  // time/roles clip (~timeDelay + 0.5s reveal + 0.5s delay), plus a buffer.
+  // (When instant, introDone already starts true, so no timer is needed.)
+  useEffect(() => {
+    if (instant || !showContent) return;
+    const timer = setTimeout(
+      () => setIntroDone(true),
+      (shrinkDelay + timeDelay + 1.1) * 1000,
+    );
+    return () => clearTimeout(timer);
+  }, [showContent, instant, shrinkDelay, timeDelay]);
+
   const shrinkTransition = {
     duration: instant ? 0 : shrinkDuration,
     ease: [0.76, 0, 0.15, 1] as const,
@@ -216,6 +318,54 @@ export default function HomePanel({
   // sweeping through its own characters left to right.
   const switchCharDelay = 0.02;
   const bioIntroDelays = [bio1Delay, bio2Delay, bio3Delay, bio4Delay];
+
+  // Renders one bio line. While the intro / language-switch animation is still
+  // playing, the whole line renders as one unit so the original word stagger
+  // and full-line scramble are untouched. Once it settles, keyword lines swap
+  // to a static split so the keyword can carry its own hover handlers (the swap
+  // is seamless — identical glyphs).
+  const renderBioLine = (line: string, index: number, fromLine: string) => {
+    const config = HOVER_BIO_WORDS[index];
+    const word = config ? config.word[language] : undefined;
+    const hasWord = !!config && !!word && line.includes(word);
+
+    if (!hasWord || !interactive) {
+      return langSwitched ? (
+        <ScrambleText from={fromLine} charDelay={switchCharDelay}>
+          {line}
+        </ScrambleText>
+      ) : showContent ? (
+        <AnimatedText baseDelay={bioIntroDelays[index]} staggerDelay={0.03} instant={instant}>
+          {line}
+        </AnimatedText>
+      ) : (
+        <span className="opacity-0">{line}</span>
+      );
+    }
+
+    const key = config!.key;
+    const [before, after] = line.split(word!);
+    // Match the structure of the animation we're swapping out of so the text
+    // doesn't nudge: AnimatedText wraps each word in an inline-block (which sits
+    // a touch lower than plain text), while a language switch leaves ScrambleText
+    // plain text. Rendering the split the same way keeps it pixel-stable.
+    const seg = (text: string) =>
+      langSwitched ? text : <AnimatedText instant>{text}</AnimatedText>;
+    return (
+      <>
+        {seg(before)}
+        <span
+          className="cursor-pointer"
+          onMouseEnter={(e) => beginHover(key, e)}
+          onMouseMove={moveHover}
+          onMouseLeave={() => endHover(key)}
+        >
+          {seg(word!)}
+        </span>
+        {after && seg(after)}
+      </>
+    );
+  };
 
   const [firstName, lastName] = splitName(t.name);
   const [fromFirstName, fromLastName] = splitName(fromT.name);
@@ -278,6 +428,39 @@ export default function HomePanel({
         </div>
       )}
 
+      {/* Hover images - desktop only (lg+). The name and the highlighted bio
+          words ("stockholm", "newly") reveal an image in the blank left space.
+          All three stay mounted (with priority) so they're preloaded on page
+          load and appear instantly on hover; visibility toggles with no
+          transition. Hidden below lg so they never collide with the narrower
+          bio layout. */}
+      <div className="hidden lg:block absolute inset-0 pointer-events-none z-0" aria-hidden="true">
+        {HOVER_IMAGES.map((img) => (
+          <motion.div
+            key={img.key}
+            className="absolute"
+            style={{
+              left: img.left,
+              top: img.top,
+              width: img.width,
+              height: img.height,
+              opacity: hovered === img.key ? 1 : 0,
+              x: imageX,
+              y: imageY,
+            }}
+          >
+            <Image
+              src={img.src}
+              alt={img.alt}
+              width={img.width}
+              height={img.height}
+              priority
+              className="w-full h-full object-cover"
+            />
+          </motion.div>
+        ))}
+      </div>
+
       {/* Header Section */}
       <div className="relative flex flex-col items-start p-9 w-full">
         <div className="flex flex-col gap-9 items-start w-full">
@@ -296,7 +479,12 @@ export default function HomePanel({
                   position and scale can trail the first name's together. */}
               <h1
                 ref={headerRef}
-                className="font-medium text-[#1E1E1E] dark:text-white whitespace-nowrap leading-none"
+                onMouseEnter={(e) => {
+                  if (interactive) beginHover('name', e);
+                }}
+                onMouseMove={moveHover}
+                onMouseLeave={() => endHover('name')}
+                className={`font-medium text-[#1E1E1E] dark:text-white whitespace-nowrap leading-none ${interactive ? 'cursor-pointer' : ''}`}
                 style={{
                   letterSpacing: '-0.05em',
                   marginTop: '-0.15em',
@@ -461,17 +649,7 @@ export default function HomePanel({
                     <div className={`${bigTextWeight} leading-none text-[40px] lg:text-[52px] xl:text-[64px] text-[#1E1E1E] dark:text-white whitespace-nowrap ${bigTextTracking} transition-[font-weight,letter-spacing] duration-700 ease-in-out`}>
                       {t.bioLines.map((line, index) => (
                         <p key={index} className={index < t.bioLines.length - 1 ? 'mb-0' : undefined}>
-                          {langSwitched ? (
-                            <ScrambleText from={fromT.bioLines[index]} charDelay={switchCharDelay}>
-                              {line}
-                            </ScrambleText>
-                          ) : showContent ? (
-                            <AnimatedText baseDelay={bioIntroDelays[index]} staggerDelay={0.03} instant={instant}>
-                              {line}
-                            </AnimatedText>
-                          ) : (
-                            <span className="opacity-0">{line}</span>
-                          )}
+                          {renderBioLine(line, index, fromT.bioLines[index])}
                         </p>
                       ))}
                     </div>
