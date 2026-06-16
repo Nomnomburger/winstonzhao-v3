@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Resume — Winston Zhao",
     description: "Resume of Winston Zhao, product designer based in Stockholm.",
-    url: "https://winstonzhao.ca/resume",
+    url: "https://winston.studio/resume",
   },
 };
 

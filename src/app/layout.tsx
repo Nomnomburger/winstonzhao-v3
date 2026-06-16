@@ -55,7 +55,7 @@ const ppNeueMontreal = localFont({
   fallback: ["Arial", "Helvetica", "sans-serif"],
 });
 
-const SITE_URL = "https://winstonzhao.ca";
+const SITE_URL = "https://winston.studio";
 const SITE_DESCRIPTION =
   "Hej! I'm Winston, a product designer currently working at Newly in Stockholm Sweden. I'm pursuing a degree in Industrial Design at OCAD University in Toronto Canada.";
 
