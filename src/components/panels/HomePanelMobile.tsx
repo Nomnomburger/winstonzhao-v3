@@ -445,7 +445,7 @@ export default function HomePanelMobile({
                     }}
                   >
                     <Image
-                      src="/profile.png"
+                      src="/profile.webp"
                       alt="Winston Zhao"
                       width={128}
                       height={128}

@@ -56,9 +56,9 @@ const HOVER_IMAGES: ReadonlyArray<{
   width: number;
   height: number;
 }> = [
-  { key: 'name', src: '/profile.png', alt: 'Winston Zhao', left: '36px', top: '44.5%', width: 154, height: 154 },
-  { key: 'stockholm', src: '/stockholm.jpeg', alt: 'Stockholm', left: '188px', top: '38.3%', width: 237, height: 316 },
-  { key: 'newly', src: '/newlygraphic.png', alt: 'Newly', left: '36px', top: '48.7%', width: 390, height: 230 },
+  { key: 'name', src: '/profile.webp', alt: 'Winston Zhao', left: '36px', top: '44.5%', width: 154, height: 154 },
+  { key: 'stockholm', src: '/stockholm.webp', alt: 'Stockholm', left: '188px', top: '38.3%', width: 237, height: 316 },
+  { key: 'newly', src: '/newlygraphic.avif', alt: 'Newly', left: '36px', top: '48.7%', width: 390, height: 230 },
 ];
 
 // Bio lines (by index) that carry a hover word, with the matching word per
