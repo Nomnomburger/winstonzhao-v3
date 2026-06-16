@@ -49,9 +49,9 @@ export const translations = {
     sayHiLabel: '领英',
     bioLines: [
       '产品设计师',
-      '兼顾形式与功能',
+      '连接美感与功能',
       '现居斯德哥尔摩',
-      '正参与 Newly 的开发',
+      '正在 Newly 打造体验',
     ],
     designAt: '产品设计在',
     campusLeaderAt: '校园大使',
