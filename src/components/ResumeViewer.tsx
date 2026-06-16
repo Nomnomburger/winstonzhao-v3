@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { themes, useThemeIndex } from './theme';
 import { Document, Page, pdfjs } from 'react-pdf';
 import type { PDFPageProxy } from 'pdfjs-dist';
 import 'react-pdf/dist/Page/TextLayer.css';
@@ -191,8 +192,15 @@ interface GestureState {
 
 export default function ResumeViewer() {
   const router = useRouter();
+  const themeIndex = useThemeIndex();
   const [numPages, setNumPages] = useState(0);
   const [baseWidth, setBaseWidth] = useState<number | null>(null);
+  // The action buttons take the theme foreground colour, but on the default
+  // black & white theme that colour can collide with the white PDF behind them
+  // (white-on-white in dark mode). Track whether a page currently sits behind
+  // the buttons so they can flip to the contrasting colour when it does.
+  const actionsRef = useRef<HTMLDivElement>(null);
+  const [actionsOverPage, setActionsOverPage] = useState(false);
   // Committed zoom level: only updates when a gesture ends, so React never
   // re-renders mid-pinch. While a gesture is active the content is scaled
   // with a plain CSS transform — pure compositor work, like native pinch.
@@ -451,7 +459,60 @@ export default function ResumeViewer() {
     return () => window.removeEventListener('keydown', onKeyDown);
   }, [startGesture, updateGesture, endGesture, router]);
 
+  // Whether the buttons overlap a white PDF page (vs. the page background).
+  // Both are horizontally centred, so a vertical overlap of the buttons'
+  // midpoint with the content bounds is enough.
+  const updateActionsContrast = useCallback(() => {
+    const actions = actionsRef.current;
+    const content = contentRef.current;
+    if (!actions || !content) {
+      setActionsOverPage(false);
+      return;
+    }
+    const a = actions.getBoundingClientRect();
+    const c = content.getBoundingClientRect();
+    const cx = a.left + a.width / 2;
+    const cy = a.top + a.height / 2;
+    setActionsOverPage(
+      cx >= c.left && cx <= c.right && cy >= c.top && cy <= c.bottom
+    );
+  }, []);
+
+  // Recompute as the page scrolls, resizes, or grows in as pages render
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+    updateActionsContrast();
+    container.addEventListener('scroll', updateActionsContrast, {
+      passive: true,
+    });
+    window.addEventListener('resize', updateActionsContrast);
+    const content = contentRef.current;
+    const observer =
+      content && 'ResizeObserver' in window
+        ? new ResizeObserver(updateActionsContrast)
+        : null;
+    observer?.observe(content!);
+    return () => {
+      container.removeEventListener('scroll', updateActionsContrast);
+      window.removeEventListener('resize', updateActionsContrast);
+      observer?.disconnect();
+    };
+  }, [updateActionsContrast, baseWidth, numPages]);
+
+  // Also recompute after a zoom commits, since the content bounds change
+  useEffect(() => {
+    updateActionsContrast();
+  }, [scale, updateActionsContrast]);
+
   const displayWidth = baseWidth !== null ? baseWidth * scale : null;
+  // Only the default theme (index 0) collides with the white PDF; its
+  // contrasting colour is the light-variant foreground (black). Other themes
+  // use a mid-tone foreground that reads fine over both, so leave them alone.
+  const actionsColor =
+    themeIndex === 0 && actionsOverPage
+      ? themes[0].light.foreground
+      : undefined;
 
   return (
     <div
@@ -493,8 +554,17 @@ export default function ResumeViewer() {
       <ProgressiveBlur />
 
       {/* Actions - fixed so they stay put while the pdf zooms underneath.
-          They take the theme foreground colour like the rest of the page. */}
-      <div className="fixed bottom-9 left-1/2 -translate-x-1/2 z-20 flex items-center gap-3 font-normal text-[12px] tracking-[-0.24px] leading-normal whitespace-nowrap">
+          They take the theme foreground colour like the rest of the page,
+          except on the default theme where they flip to a contrasting colour
+          when a white PDF page would otherwise hide them. */}
+      <div
+        ref={actionsRef}
+        className="fixed bottom-9 left-1/2 -translate-x-1/2 z-20 flex items-center gap-3 font-normal text-[12px] tracking-[-0.24px] leading-normal whitespace-nowrap"
+        style={{
+          color: actionsColor,
+          transition: themeIndex === 0 ? 'color 200ms ease' : undefined,
+        }}
+      >
         <button
           type="button"
           onClick={() => router.push('/')}
