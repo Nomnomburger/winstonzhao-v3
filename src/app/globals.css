@@ -2,7 +2,9 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #1E1E1E;
+  --foreground: #000000;
+  /* How long a theme change takes to cross-fade (the + / bloom button) */
+  --theme-duration: 5000ms;
 }
 
 @theme inline {
@@ -13,7 +15,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #1E1E1E;
+    --background: #111111;
     --foreground: #ffffff;
   }
 }
@@ -30,14 +32,30 @@ body {
   font-family: var(--font-pp-neue-montreal), Arial, Helvetica, sans-serif;
 }
 
-/* Hide scrollbars */
-.scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+/* Theme cross-fade. The four colour themes (and the default) override
+   --background / --foreground at runtime; everything eases to the new palette
+   over ~5s instead of snapping. Colour is inherited from .theme-root so all
+   text and currentColor icons fade together; elements that set their own
+   background, border, fill or stroke get their own transition below. */
+.theme-root {
+  color: var(--foreground);
+  background-color: var(--background);
+  transition: color var(--theme-duration) ease,
+    background-color var(--theme-duration) ease;
 }
 
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
+/* Text and currentColor SVGs inherit colour from .theme-root, so they all
+   follow that single colour transition. Descendants only need their own
+   transition for background/border/fill/stroke they set directly (the time
+   dot, the masked WZ logo, page borders). Kept in @layer base so per-element
+   Tailwind transition utilities (e.g. transition-[font-weight]) still win. */
+@layer base {
+  .theme-root * {
+    transition: background-color var(--theme-duration) ease,
+      border-color var(--theme-duration) ease,
+      fill var(--theme-duration) ease,
+      stroke var(--theme-duration) ease;
+  }
 }
 
 @keyframes spin-slow {
@@ -54,4 +72,28 @@ body {
 
 .animate-spin-slow {
   animation: spin-slow 6s cubic-bezier(0.85, 0, 0.15, 1) infinite;
+}
+
+.underline,
+.hover\:underline:hover {
+  text-decoration-thickness: 0.5px;
+  text-underline-offset: 0.15em;
+}
+
+/* Scrollable but without visible scrollbars (resume viewer) */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* While pinch-zooming the resume, hide the pdf.js DOM layers so the
+   browser only scales the canvas texture instead of re-rasterizing
+   hundreds of text spans every frame */
+.pdf-gesturing .react-pdf__Page__textContent,
+.pdf-gesturing .react-pdf__Page__annotations {
+  visibility: hidden;
 }
