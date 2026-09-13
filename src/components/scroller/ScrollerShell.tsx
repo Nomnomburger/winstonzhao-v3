@@ -8,6 +8,7 @@ import BottomNav from '../nav/BottomNav';
 import HomePanel from '../panels/HomePanel';
 import AboutPanel from '../panels/AboutPanel';
 import ContactPanel from '../panels/ContactPanel';
+import type { ProjectSummary } from '../../../sanity/lib/projects';
 
 // Lazy load heavy panels
 const ProjectsPanel = dynamic(() => import('../panels/ProjectsPanel'), {
@@ -67,7 +68,11 @@ function LoadingScreen({ onComplete }: { onComplete: () => void }) {
   );
 }
 
-export default function ScrollerShell() {
+interface ScrollerShellProps {
+  projects?: ProjectSummary[];
+}
+
+export default function ScrollerShell({ projects = [] }: ScrollerShellProps) {
   const router = useRouter();
   const pathname = usePathname();
   const containerRef = useRef<HTMLDivElement>(null);
@@ -474,7 +479,7 @@ export default function ScrollerShell() {
             ref={(el) => { panelScrollRefs.current[0] = el; }}
             className="h-screen overflow-y-auto overscroll-contain"
           >
-            <HomePanel showContent={showContent} />
+            <HomePanel showContent={showContent} projects={projects} />
           </div>
         </motion.div>
 

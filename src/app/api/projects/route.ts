@@ -1,20 +1,9 @@
 import { NextResponse } from 'next/server';
-import { client } from '../../../../sanity/lib/client';
+import { getProjects } from '../../../../sanity/lib/projects';
 
 export async function GET() {
   try {
-    const query = `*[_type == "project"] | order(year desc) {
-      _id,
-      title,
-      year,
-      description,
-      coverImage,
-      tags,
-      slug
-    }`;
-    
-    const projects = await client.fetch(query);
-    
+    const projects = await getProjects();
     return NextResponse.json(projects);
   } catch (error) {
     console.error('Error fetching projects:', error);
@@ -24,4 +13,3 @@ export async function GET() {
     );
   }
 }
-

@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import ClientLayout from "./ClientLayout";
 
 const ppNeueMontreal = localFont({
   src: [
@@ -70,7 +69,7 @@ export default function RootLayout({
       <body
         className={`${ppNeueMontreal.variable} antialiased`}
       >
-        <ClientLayout>{children}</ClientLayout>
+        {children}
       </body>
     </html>
   );
