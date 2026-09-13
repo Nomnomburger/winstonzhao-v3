@@ -18,26 +18,14 @@
   }
 }
 
-html,
-body {
-  height: 100%;
-  overflow: hidden;
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-pp-neue-montreal), Arial, Helvetica, sans-serif;
-}
-
-/* Hide scrollbars */
-.scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
 }
 
 @keyframes spin-slow {

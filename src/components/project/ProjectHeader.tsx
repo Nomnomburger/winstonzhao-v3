@@ -41,12 +41,12 @@ export default function ProjectHeader() {
               transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
               aria-label="Site navigation"
             >
-              <Link href="/projects" className="hover:opacity-70 transition-opacity">
+              <Link href="/#work" className="hover:opacity-70 transition-opacity">
                 Work
               </Link>
-              <Link href="/contact" className="hover:opacity-70 transition-opacity">
+              <a href={`mailto:${SITE.email}`} className="hover:opacity-70 transition-opacity">
                 Contact
-              </Link>
+              </a>
               <a
                 href={SITE.resume}
                 target="_blank"

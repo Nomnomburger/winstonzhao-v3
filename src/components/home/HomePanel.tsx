@@ -1,7 +1,6 @@
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
-import { useRouter } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -176,7 +175,6 @@ interface HomePanelProps {
 }
 
 export default function HomePanel({ showContent = true, projects = [] }: HomePanelProps) {
-  const router = useRouter();
   const headerRef = useRef<HTMLHeadingElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [fontSize, setFontSize] = useState('220.84px');
@@ -334,20 +332,12 @@ export default function HomePanel({ showContent = true, projects = [] }: HomePan
                   }}
                   aria-label="Header navigation"
                 >
-                  <button
-                    type="button"
-                    onClick={() => router.push('/projects')}
-                    className="cursor-pointer hover:opacity-70 transition-opacity"
-                  >
+                  <a href="#work" className="hover:opacity-70 transition-opacity">
                     Work
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => router.push('/contact')}
-                    className="cursor-pointer hover:opacity-70 transition-opacity"
-                  >
+                  </a>
+                  <a href={`mailto:${SITE.email}`} className="hover:opacity-70 transition-opacity">
                     Contact
-                  </button>
+                  </a>
                   <a
                     href={SITE.resume}
                     target="_blank"
@@ -400,11 +390,9 @@ export default function HomePanel({ showContent = true, projects = [] }: HomePan
                         </p>
                       ))}
                     </div>
-                    <motion.button
-                      type="button"
-                      onClick={() => router.push('/about')}
-                      className="w-9 h-9 shrink-0 cursor-pointer"
-                      aria-label="About"
+                    <motion.span
+                      className="block w-9 h-9 shrink-0"
+                      aria-hidden="true"
                       initial={{ opacity: 0, scale: 0.8 }}
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{
@@ -424,7 +412,7 @@ export default function HomePanel({ showContent = true, projects = [] }: HomePan
                         <path d="M0 18L36 18" stroke="currentColor" strokeWidth="2" />
                         <path d="M18 0V36" stroke="currentColor" strokeWidth="2" />
                       </svg>
-                    </motion.button>
+                    </motion.span>
                   </div>
                 </div>
 
@@ -471,7 +459,7 @@ export default function HomePanel({ showContent = true, projects = [] }: HomePan
       >
         {/* Featured projects - 3 column grid */}
         {featuredProjects.length > 0 && (
-          <section className="grid grid-cols-3 gap-6 p-9 w-full" aria-label="Featured projects">
+          <section id="work" className="grid grid-cols-3 gap-6 p-9 w-full scroll-mt-9" aria-label="Featured projects">
             {featuredProjects.map((project, index) => {
               const { gridRow, gridColumn, wide } = featuredPlacement(index);
               const imageUrl = cardImageUrl(project, wide);
@@ -547,7 +535,7 @@ export default function HomePanel({ showContent = true, projects = [] }: HomePan
         )}
 
         {/* Footer */}
-        <footer className="flex h-[239px] items-end justify-between p-9 w-full">
+        <footer id="contact" className="flex h-[239px] items-end justify-between p-9 w-full">
           <div className="flex gap-6 items-center w-[717px] max-w-full">
             <Image
               src="/images/logo.png"

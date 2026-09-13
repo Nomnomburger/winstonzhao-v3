@@ -20,6 +20,34 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Content (Sanity)
+
+Projects are managed in the Sanity Studio in [`studio/`](studio). The `project` document
+holds everything the home page and the project page need: title, slug, tagline,
+description, year, client, live link, cover image, tags, and the case-study fields
+(statement, role, timeline, skills, overview, impact and sections).
+
+```bash
+cd studio
+npm install
+npm run dev      # local Studio
+npm run deploy   # publish the Studio
+```
+
+To wipe the dataset and start from the template project used in the design:
+
+```bash
+cd studio
+npx sanity exec scripts/seed-template.ts --with-user-token
+```
+
+The site reads from Sanity with these environment variables:
+
+```
+NEXT_PUBLIC_SANITY_PROJECT_ID=7k8ajlip
+NEXT_PUBLIC_SANITY_DATASET=production
+```
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

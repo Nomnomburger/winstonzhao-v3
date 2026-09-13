@@ -8,6 +8,18 @@ export default defineType({
     { name: "overview", title: "Overview", default: true },
     { name: "caseStudy", title: "Case Study" },
   ],
+  // New projects start from the case-study skeleton used in the design so the
+  // side navigation is ready to fill in.
+  initialValue: {
+    featured: false,
+    sections: [
+      { _type: "section", _key: "problem-statement", title: "Problem Statement" },
+      { _type: "section", _key: "research", title: "Research" },
+      { _type: "section", _key: "design-process", title: "Design Process" },
+      { _type: "section", _key: "design-solutions", title: "Design Solutions" },
+      { _type: "section", _key: "next-steps", title: "Next Steps" },
+    ],
+  },
   fields: [
     // ---------------------------------------------------------------------
     // Overview — used by the home page cards/list and the top of the project page

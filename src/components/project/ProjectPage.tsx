@@ -125,7 +125,7 @@ export default function ProjectPage({ project }: ProjectPageProps) {
   const hasDetails = Boolean(project.role || project.timeline || project.skills?.length);
 
   return (
-    <main className="h-screen w-full overflow-y-auto bg-white dark:bg-[#1E1E1E] text-[#1E1E1E] dark:text-white">
+    <main className="min-h-screen w-full bg-white dark:bg-[#1E1E1E] text-[#1E1E1E] dark:text-white">
       <div className="flex flex-col items-start w-full pb-24">
         <ProjectHeader />
 
