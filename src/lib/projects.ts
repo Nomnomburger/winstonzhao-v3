@@ -133,12 +133,15 @@ const PROJECT_QUERY = groq`*[_type == "project" && slug.current == $slug][0]{
 const REVALIDATE_SECONDS = 60;
 
 // ---------------------------------------------------------------------------
-// Mock fallback: in development (or with USE_MOCK_PROJECTS=1), the mock
-// projects stand in when the dataset has none or can't be reached, so the
-// layout can be tested before any real content exists.
+// Mock fallback: in development, on Vercel preview deployments (or with
+// USE_MOCK_PROJECTS=1), the mock projects stand in when the dataset has none
+// or can't be reached, so the layout can be tested before any real content
+// exists. The live site (Vercel production) never shows them.
 
 const mockFallbackEnabled = () =>
-  process.env.NODE_ENV !== 'production' || process.env.USE_MOCK_PROJECTS === '1';
+  process.env.NODE_ENV !== 'production' ||
+  process.env.VERCEL_ENV === 'preview' ||
+  process.env.USE_MOCK_PROJECTS === '1';
 
 const isMockAsset = (value: unknown): value is MockAsset =>
   typeof value === 'object' && value !== null && '_mock' in value;
@@ -185,7 +188,7 @@ export async function getProjects(): Promise<ProjectSummary[]> {
     console.error('Could not load projects from Sanity:', error);
   }
   if (projects.length === 0 && mockFallbackEnabled()) {
-    console.warn('No projects in Sanity: showing mock projects (development only).');
+    console.warn('No projects in Sanity: showing mock projects (not shown on the live site).');
     projects = mockProjects();
   }
   return sortProjects(projects);
