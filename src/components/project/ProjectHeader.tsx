@@ -2,8 +2,8 @@
 
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useEffect, useState } from 'react';
-import { EMAIL, RESUME_URL } from '@/components/panels/shared';
+import { useEffect, useRef, useState } from 'react';
+import { EMAIL, RESUME_URL } from '@/lib/site';
 
 const LINKS = [
   { label: 'Home', href: '/' },
@@ -16,12 +16,27 @@ const LINKS = [
 // button opens a small list of links (the lines fold into an X).
 export default function ProjectHeader() {
   const [open, setOpen] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
+  // The menu closes on Escape (focus goes back to the button), on a click or
+  // tap anywhere else, and when keyboard focus moves out of it.
   useEffect(() => {
     if (!open) return;
-    const close = (e: KeyboardEvent) => e.key === 'Escape' && setOpen(false);
-    window.addEventListener('keydown', close);
-    return () => window.removeEventListener('keydown', close);
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== 'Escape') return;
+      setOpen(false);
+      buttonRef.current?.focus();
+    };
+    const onPointer = (e: PointerEvent) => {
+      if (!menuRef.current?.contains(e.target as Node)) setOpen(false);
+    };
+    window.addEventListener('keydown', onKey);
+    document.addEventListener('pointerdown', onPointer);
+    return () => {
+      window.removeEventListener('keydown', onKey);
+      document.removeEventListener('pointerdown', onPointer);
+    };
   }, [open]);
 
   return (
@@ -30,8 +45,15 @@ export default function ProjectHeader() {
         Winston Zhao
       </Link>
 
-      <div className="relative">
+      <div
+        ref={menuRef}
+        className="relative"
+        onBlur={(e) => {
+          if (e.relatedTarget && !e.currentTarget.contains(e.relatedTarget as Node)) setOpen(false);
+        }}
+      >
         <button
+          ref={buttonRef}
           type="button"
           onClick={() => setOpen((o) => !o)}
           aria-expanded={open}
@@ -53,7 +75,7 @@ export default function ProjectHeader() {
         <AnimatePresence>
           {open && (
             <motion.nav
-              className="absolute right-0 top-9 flex flex-col items-end gap-2 font-normal text-[14px] tracking-[-0.28px] leading-[1.2] whitespace-nowrap"
+              className="absolute -right-3 top-6 flex flex-col items-end gap-2 p-3 bg-background font-normal text-[14px] tracking-[-0.28px] leading-[1.2] whitespace-nowrap"
               initial={{ opacity: 0, y: -6 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -6 }}

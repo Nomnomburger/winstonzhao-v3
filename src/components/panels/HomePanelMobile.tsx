@@ -324,8 +324,11 @@ export default function HomePanelMobile({
 
       {/* Page: the intro fills the first screen; work and footer scroll below */}
       <div className="flex flex-col gap-9 w-full">
-        {/* Header Section - exactly one viewport tall */}
-        <div className="relative flex flex-col h-dvh shrink-0 items-start p-6 w-full">
+        {/* Header Section - fills the first screen. svh (the height with the
+            browser toolbars showing) stays fixed while scrolling, so the work
+            list below doesn't jump when the toolbars collapse; min- lets it
+            grow on short or landscape screens instead of overflowing. */}
+        <div className="relative flex flex-col min-h-svh shrink-0 items-start p-6 w-full">
           <div className="flex flex-col flex-1 gap-12 items-start w-full">
             {/* Header Content */}
             <div ref={containerRef} className="relative w-full py-1">
@@ -712,73 +715,76 @@ export default function HomePanelMobile({
           </div>
         </div>
 
-        {/* Below the fold: work, then the footer */}
-        <div ref={belowFoldRef} className="flex flex-col gap-9 w-full">
-          {hasShrunk && projects.length > 0 && (
-            <HomeProjects projects={projects} learnMoreLabel={t.learnMore} className="pt-6" />
-          )}
+        {/* Below the fold: work, then the footer. Rendered once the intro
+            has played, so the page can't be scrolled mid-intro. */}
+        {hasShrunk && (
+          <div ref={belowFoldRef} className="flex flex-col gap-9 w-full">
+            {projects.length > 0 && (
+              <HomeProjects projects={projects} learnMoreLabel={t.learnMore} className="pt-6" />
+            )}
 
-          <div className="relative flex flex-col gap-12 p-6 w-full">
-            <div className="max-w-[354px] font-normal text-[12px] tracking-[-0.24px] leading-normal">
-              <p className="mb-0">
-                {langSwitched ? (
-                  <ScrambleText from={fromT.newPortfolio} charDelay={switchCharDelay}>
-                    {t.newPortfolio}
-                  </ScrambleText>
-                ) : (
-                  t.newPortfolio
-                )}
-              </p>
-              <p>
-                {langSwitched ? (
-                  <ScrambleText from={fromT.checkBackPrefix} charDelay={switchCharDelay}>
-                    {t.checkBackPrefix}
-                  </ScrambleText>
-                ) : (
-                  t.checkBackPrefix
-                )}
-                <a
-                  href={OLD_SITE_URL}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="underline"
-                >
+            <div className="relative flex flex-col gap-12 p-6 w-full">
+              <div className="max-w-[354px] font-normal text-[12px] tracking-[-0.24px] leading-normal">
+                <p className="mb-0">
                   {langSwitched ? (
-                    <ScrambleText from={fromT.oldSiteLink} charDelay={switchCharDelay}>
-                      {t.oldSiteLink}
+                    <ScrambleText from={fromT.newPortfolio} charDelay={switchCharDelay}>
+                      {t.newPortfolio}
                     </ScrambleText>
                   ) : (
-                    t.oldSiteLink
+                    t.newPortfolio
                   )}
-                </a>
-                {langSwitched ? (
-                  <ScrambleText from={fromT.period} charDelay={switchCharDelay}>
-                    {t.period}
-                  </ScrambleText>
-                ) : (
-                  t.period
-                )}
-              </p>
-            </div>
-            <div className="flex items-end justify-between w-full">
-              <div className="w-[45px] h-[28px] shrink-0">
-                <WZLogo className="w-full h-full" />
+                </p>
+                <p>
+                  {langSwitched ? (
+                    <ScrambleText from={fromT.checkBackPrefix} charDelay={switchCharDelay}>
+                      {t.checkBackPrefix}
+                    </ScrambleText>
+                  ) : (
+                    t.checkBackPrefix
+                  )}
+                  <a
+                    href={OLD_SITE_URL}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="underline"
+                  >
+                    {langSwitched ? (
+                      <ScrambleText from={fromT.oldSiteLink} charDelay={switchCharDelay}>
+                        {t.oldSiteLink}
+                      </ScrambleText>
+                    ) : (
+                      t.oldSiteLink
+                    )}
+                  </a>
+                  {langSwitched ? (
+                    <ScrambleText from={fromT.period} charDelay={switchCharDelay}>
+                      {t.period}
+                    </ScrambleText>
+                  ) : (
+                    t.period
+                  )}
+                </p>
               </div>
-              <div className="flex gap-3 items-center justify-end font-normal text-[12px] tracking-[-0.24px] leading-normal whitespace-nowrap">
-                <a href={`mailto:${EMAIL}`}>hello [at] winstonzhao.ca</a>
-                <Link href={RESUME_URL}>
-                  {langSwitched ? (
-                    <ScrambleText from={fromT.resume} charDelay={switchCharDelay}>
-                      {t.resume}
-                    </ScrambleText>
-                  ) : (
-                    t.resume
-                  )}
-                </Link>
+              <div className="flex items-end justify-between w-full">
+                <div className="w-[45px] h-[28px] shrink-0">
+                  <WZLogo className="w-full h-full" />
+                </div>
+                <div className="flex gap-3 items-center justify-end font-normal text-[12px] tracking-[-0.24px] leading-normal whitespace-nowrap">
+                  <a href={`mailto:${EMAIL}`}>hello [at] winstonzhao.ca</a>
+                  <Link href={RESUME_URL}>
+                    {langSwitched ? (
+                      <ScrambleText from={fromT.resume} charDelay={switchCharDelay}>
+                        {t.resume}
+                      </ScrambleText>
+                    ) : (
+                      t.resume
+                    )}
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );

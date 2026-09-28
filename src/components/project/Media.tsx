@@ -1,3 +1,8 @@
+'use client';
+
+// A client module on purpose: images rendered by a server component are sent
+// as preload hints in the page's RSC payload, so prefetching a project link on
+// the home page would start downloading its full-size hero.
 import { imageUrl, imageAspect, type ImageSource } from '@/lib/image';
 import AutoplayVideo from './AutoplayVideo';
 
@@ -89,8 +94,8 @@ export function VideoFigure({ video }: { video: VideoData }) {
       <AutoplayVideo
         src={src}
         poster={imageUrl(video.poster, 2000)}
+        aspect={video.poster?.asset ? imageAspect(video.poster) : undefined}
         autoplay={video.autoplay !== false}
-        className="w-full h-auto block bg-foreground/5"
       />
       <Caption>{video.caption}</Caption>
     </figure>

@@ -12,6 +12,8 @@ import type { ProjectCardData } from './types';
 // eases after it with a spring so it lags a little behind.
 const THUMB_WIDTH = 280;
 const CURSOR_GAP = 24;
+// Closest the thumbnail gets to the window's edges
+const EDGE_MARGIN = 16;
 const FOLLOW_SPRING = { stiffness: 350, damping: 35, mass: 0.6 } as const;
 
 function useCanHover() {
@@ -41,12 +43,17 @@ export default function ProjectList({ projects, learnMoreLabel }: ProjectListPro
   const placed = useRef(false);
 
   const hoveredProject = projects.find((p) => p._id === hovered);
-  const thumbHeight = THUMB_WIDTH / imageAspect(hoveredProject?.coverImage);
+  const heightOf = (project?: ProjectCardData) => THUMB_WIDTH / imageAspect(project?.coverImage);
+  const thumbHeight = heightOf(hoveredProject);
 
-  const moveTo = (clientX: number, clientY: number) => {
-    const flip = clientX + CURSOR_GAP + THUMB_WIDTH > window.innerWidth - 16;
+  const moveTo = (clientX: number, clientY: number, height = thumbHeight) => {
+    const flip = clientX + CURSOR_GAP + THUMB_WIDTH > window.innerWidth - EDGE_MARGIN;
     const nextX = flip ? clientX - CURSOR_GAP - THUMB_WIDTH : clientX + CURSOR_GAP;
-    const nextY = clientY - thumbHeight / 2;
+    // Centred on the cursor, but kept fully on screen near the top or bottom
+    const nextY = Math.max(
+      EDGE_MARGIN,
+      Math.min(clientY - height / 2, window.innerHeight - height - EDGE_MARGIN),
+    );
     x.set(nextX);
     y.set(nextY);
     // On the first hover, start at the cursor instead of gliding in from 0,0
@@ -74,7 +81,7 @@ export default function ProjectList({ projects, learnMoreLabel }: ProjectListPro
             <Link
               href={`/projects/${project.slug}`}
               onMouseEnter={(e) => {
-                moveTo(e.clientX, e.clientY);
+                moveTo(e.clientX, e.clientY, heightOf(project));
                 setHovered(project._id);
               }}
               className={`grid grid-cols-1 md:grid-cols-2 gap-x-24 w-full transition-opacity duration-300 ${

@@ -1,14 +1,10 @@
 'use client';
 
 import { motion, useMotionValue, useTransform, useAnimationControls, animate } from 'framer-motion';
-import { ReactNode, useEffect, useRef, useState } from 'react';
+import { ReactNode, useCallback, useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { Language } from './translations';
 
-// Placeholder targets — update with the real URLs
-export const LINKEDIN_URL = 'https://www.linkedin.com/in/zhaowinston/?skipRedirect=true';
-export const OLD_SITE_URL = 'https://winstonzhao.ca';
-export const RESUME_URL = '/resume';
-export const EMAIL = 'hello@winstonzhao.ca';
+export { LINKEDIN_URL, OLD_SITE_URL, RESUME_URL, EMAIL } from '@/lib/site';
 
 // The WZ initials in the footer. The logo file is a black PNG glyph with a
 // transparent background, so we paint it with the theme foreground colour by
@@ -347,25 +343,31 @@ export function useCurrentTime(language: Language = 'en') {
   return time;
 }
 
+// Reads the media query during render on client navigations (e.g. going Back
+// to the home page), so the right layout paints first and the browser restores
+// the scroll position against the right page height. Server renders and
+// hydration start from the desktop layout, as before.
 export function useIsMobile(breakpoint = 768) {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia(`(max-width: ${breakpoint - 1}px)`);
-    const update = () => setIsMobile(mediaQuery.matches);
-
-    update();
-    mediaQuery.addEventListener('change', update);
-    return () => mediaQuery.removeEventListener('change', update);
-  }, [breakpoint]);
-
-  return isMobile;
+  const query = `(max-width: ${breakpoint - 1}px)`;
+  const subscribe = useCallback(
+    (onChange: () => void) => {
+      const mediaQuery = window.matchMedia(query);
+      mediaQuery.addEventListener('change', onChange);
+      return () => mediaQuery.removeEventListener('change', onChange);
+    },
+    [query],
+  );
+  return useSyncExternalStore(
+    subscribe,
+    () => window.matchMedia(query).matches,
+    () => false,
+  );
 }
 
 // Role lines ("Design at Newly"). The desktop home page sets them at 14px
 // (`large`); mobile keeps the original 12px.
 const roleTextClass = (large?: boolean) =>
-  `font-normal ${large ? 'text-[14px] tracking-[-0.28px]' : 'text-[12px] tracking-[-0.24px]'} leading-normal whitespace-nowrap`;
+  `font-normal ${large ? 'text-[14px] tracking-[-0.28px] leading-[1.2]' : 'text-[12px] tracking-[-0.24px] leading-normal'} whitespace-nowrap`;
 
 const roleIconClass = (large?: boolean) =>
   `${large ? 'w-[18px] h-[17px]' : 'w-3.5 h-3.5'} shrink-0 flex items-center justify-center relative -top-[1px]`;

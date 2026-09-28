@@ -15,5 +15,16 @@ export default defineConfig({
 
   schema: {
     types: schemaTypes,
+    // Used by the "Featured projects" list, so a project created there is
+    // featured from the start
+    templates: (prev) => [
+      ...prev,
+      {
+        id: 'project-featured',
+        title: 'Featured project',
+        schemaType: 'project',
+        value: {featured: true},
+      },
+    ],
   },
 })

@@ -8,7 +8,8 @@
  * needed). Placeholder photos are downloaded from picsum.photos and uploaded
  * as real image assets. Re-running replaces the mock projects in place.
  *
- * To remove every mock project again:
+ * To remove every mock project again (with any unpublished edits to them and
+ * the placeholder photos this script uploaded):
  *
  *   npx sanity exec scripts/seed-mock-projects.ts --with-user-token -- --delete
  */
@@ -16,6 +17,9 @@ import {getCliClient} from 'sanity/cli'
 import {buildMockProjects, type MockAsset} from '../../sanity/mock/projects'
 
 const client = getCliClient({apiVersion: '2025-01-01'})
+
+// Marks the photos this script uploads, so --delete can find them again
+const ASSET_SOURCE = 'mock-projects'
 
 const uploaded = new Map<string, string>()
 
@@ -26,7 +30,10 @@ async function uploadImage(url: string): Promise<string> {
   if (!res.ok) throw new Error(`Could not download ${url}: ${res.status}`)
   const buffer = Buffer.from(await res.arrayBuffer())
   const filename = `${url.split('/seed/')[1]?.split('/')[0] ?? 'mock'}.jpg`
-  const asset = await client.assets.upload('image', buffer, {filename})
+  const asset = await client.assets.upload('image', buffer, {
+    filename,
+    source: {name: ASSET_SOURCE, id: filename, url},
+  })
   uploaded.set(url, asset._id)
   return asset._id
 }
@@ -56,9 +63,25 @@ async function run() {
 
   if (process.argv.includes('--delete')) {
     const tx = client.transaction()
-    projects.forEach((p) => tx.delete(p._id))
+    projects.forEach((p) => tx.delete(p._id).delete(`drafts.${p._id}`))
     await tx.commit()
     console.log(`Deleted ${projects.length} mock projects.`)
+
+    const assetIds = await client.fetch<string[]>(
+      '*[_type == "sanity.imageAsset" && source.name == $source]._id',
+      {source: ASSET_SOURCE},
+    )
+    if (assetIds.length) {
+      const assetTx = client.transaction()
+      assetIds.forEach((id) => assetTx.delete(id))
+      try {
+        await assetTx.commit()
+        console.log(`Deleted ${assetIds.length} placeholder photos.`)
+      } catch (err) {
+        // Happens if a real project still uses one of the photos
+        console.warn('Some placeholder photos are still in use and were kept:', err)
+      }
+    }
     return
   }
 

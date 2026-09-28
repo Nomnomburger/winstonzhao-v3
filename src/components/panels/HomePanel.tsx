@@ -47,23 +47,28 @@ const splitName = (name: string): [string, string] => {
 type HoverKey = 'name' | 'stockholm' | 'newly';
 
 // Desktop-only feature: hovering the name or a highlighted bio word reveals an
-// image in the blank space on the left. Positions/sizes mirror the Figma
-// frames (1280×832 reference) — `left` hugs the page's left padding and `top`
-// is a percentage of viewport height so the images track the blank band as the
-// window resizes.
+// image in the blank space of the first column. Positions and sizes mirror the
+// Figma frames (1280×832 reference, where that column is 386.67px wide):
+// `left` is a fraction of the column, the width shrinks with the column but
+// never grows past the Figma size, and `top` is a fraction of the viewport
+// height, pulled up on hover if it would run into the work section below.
+const HOVER_COLUMN_WIDTH = 386.67;
 const HOVER_IMAGES: ReadonlyArray<{
   key: HoverKey;
   src: string;
   alt: string;
-  left: string;
-  top: string;
+  left: number;
+  top: number;
   width: number;
   height: number;
 }> = [
-  { key: 'name', src: '/profile.webp', alt: 'Winston Zhao', left: '36px', top: '44.5%', width: 154, height: 154 },
-  { key: 'stockholm', src: '/stockholm.webp', alt: 'Stockholm', left: '188px', top: '38.3%', width: 237, height: 316 },
-  { key: 'newly', src: '/newlygraphic.avif', alt: 'Newly', left: '36px', top: '48.7%', width: 390, height: 230 },
+  { key: 'name', src: '/profile.webp', alt: 'Winston Zhao', left: 0, top: 0.445, width: 154, height: 154 },
+  { key: 'stockholm', src: '/stockholm.webp', alt: 'Stockholm', left: 0.393, top: 0.383, width: 237, height: 316 },
+  { key: 'newly', src: '/newlygraphic.avif', alt: 'Newly', left: 0, top: 0.487, width: 390, height: 230 },
 ];
+
+// Keep a hover image this far above the work section
+const HOVER_IMAGE_WORK_GAP = 24;
 
 // Bio lines (by index) that carry a hover word, with the matching word per
 // language so the highlight follows a language switch.
@@ -124,8 +129,17 @@ export default function HomePanel({
   const imageX = useSpring(followX, FOLLOW_SPRING);
   const imageY = useSpring(followY, FOLLOW_SPRING);
   const hoverOrigin = useRef<{ x: number; y: number } | null>(null);
+  const hoverImageRefs = useRef<Partial<Record<HoverKey, HTMLDivElement | null>>>({});
+  // Page-relative top of the hovered image, measured when the hover starts
+  const [hoverTop, setHoverTop] = useState<number | null>(null);
 
   const beginHover = (key: HoverKey, e: React.MouseEvent) => {
+    const config = HOVER_IMAGES.find((img) => img.key === key)!;
+    const imageHeight = hoverImageRefs.current[key]?.offsetHeight ?? config.height;
+    const work = document.getElementById('work');
+    const containerTop = containerRef.current?.closest('.theme-root')?.getBoundingClientRect().top ?? 0;
+    const workTop = work ? work.getBoundingClientRect().top - containerTop : Infinity;
+    setHoverTop(Math.min(config.top * window.innerHeight, workTop - imageHeight - HOVER_IMAGE_WORK_GAP));
     setHovered(key);
     hoverOrigin.current = { x: e.clientX, y: e.clientY };
     // Snap the offset back to zero so the image starts at its anchor point.
@@ -165,6 +179,9 @@ export default function HomePanel({
     if (!work) return;
     e.preventDefault();
     work.scrollIntoView({ behavior: 'smooth' });
+    // Move keyboard focus along too, so the next Tab continues in the work
+    // section instead of jumping back up to the header.
+    work.focus({ preventScroll: true });
   };
 
   // Re-arm the "scramble settled" flag after each language change so the
@@ -449,21 +466,27 @@ export default function HomePanel({
       )}
 
       {/* Hover images - desktop only (lg+). The name and the highlighted bio
-          words ("stockholm", "newly") reveal an image in the blank left space.
-          All three stay mounted (with priority) so they're preloaded on page
-          load and appear instantly on hover; visibility toggles with no
-          transition. Hidden below lg so they never collide with the narrower
-          bio layout. */}
-      <div className="hidden lg:block absolute inset-x-0 top-0 h-screen pointer-events-none z-0" aria-hidden="true">
+          words ("stockholm", "newly") reveal an image in the blank first
+          column. All three stay mounted (with priority) so they're preloaded
+          on page load and appear instantly on hover; visibility toggles with
+          no transition. Hidden below lg, where the bio starts in the first
+          column. */}
+      <div
+        className="hidden lg:block absolute left-9 top-0 w-[calc((100%-120px)/3)] pointer-events-none z-0"
+        aria-hidden="true"
+      >
         {HOVER_IMAGES.map((img) => (
           <motion.div
             key={img.key}
+            ref={(el) => {
+              hoverImageRefs.current[img.key] = el;
+            }}
             className="absolute"
             style={{
-              left: img.left,
-              top: img.top,
-              width: img.width,
-              height: img.height,
+              left: `${img.left * 100}%`,
+              top: hovered === img.key && hoverTop !== null ? hoverTop : `${img.top * 100}vh`,
+              width: `min(${Math.min(img.width / HOVER_COLUMN_WIDTH, 1 - img.left) * 100}%, ${img.width}px)`,
+              aspectRatio: `${img.width} / ${img.height}`,
               opacity: hovered === img.key ? 1 : 0,
               x: imageX,
               y: imageY,
@@ -554,7 +577,7 @@ export default function HomePanel({
             <AnimatePresence>
               {hasShrunk && showContent && (
                 <motion.nav
-                  className="flex gap-4 items-center justify-center font-normal text-[14px] tracking-[-0.28px] whitespace-nowrap leading-normal"
+                  className="flex gap-4 items-center justify-center font-normal text-[14px] tracking-[-0.28px] whitespace-nowrap leading-[1.2]"
                   initial={instant ? false : { opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{
@@ -730,7 +753,7 @@ export default function HomePanel({
                       </motion.div>
                     ) : (
                       <div className="opacity-0 flex gap-3 items-center">
-                        <p className="font-normal text-[14px] tracking-[-0.28px] leading-normal whitespace-nowrap">Design at Newly</p>
+                        <p className="font-normal text-[14px] tracking-[-0.28px] leading-[1.2] whitespace-nowrap">Design at Newly</p>
                       </div>
                     )}
                   </motion.div>
@@ -757,7 +780,7 @@ export default function HomePanel({
                           ease: [0.4, 0, 0.2, 1],
                         }}
                       >
-                        <span className="font-normal text-[14px] tracking-[-0.28px] leading-normal">
+                        <span className="font-normal text-[14px] tracking-[-0.28px] leading-[1.2]">
                           {langSwitched ? (
                             <ScrambleText from={formatStockholmTime(prevLanguage)} charDelay={switchCharDelay}>
                               {currentTime}
@@ -773,7 +796,7 @@ export default function HomePanel({
                       </motion.div>
                     ) : (
                       <div className="flex items-center gap-1.5 opacity-0">
-                        <span className="font-normal text-[14px] tracking-[-0.28px] leading-normal">{currentTime}</span>
+                        <span className="font-normal text-[14px] tracking-[-0.28px] leading-[1.2]">{currentTime}</span>
                         <span className="w-3 h-3 shrink-0" />
                       </div>
                     )}
@@ -798,7 +821,7 @@ export default function HomePanel({
               ease: [0.4, 0, 0.2, 1],
             }}
           >
-            <HomeProjects projects={projects} learnMoreLabel={t.learnMore} />
+            <HomeProjects projects={projects} learnMoreLabel={t.learnMore} ready={introDone} />
           </motion.div>
         )}
       </AnimatePresence>
@@ -820,7 +843,7 @@ export default function HomePanel({
               <div className="w-[45px] h-[28px] shrink-0">
                 <WZLogo className="w-full h-full" />
               </div>
-              <div className="w-[354px] font-normal text-[14px] tracking-[-0.28px] leading-normal">
+              <div className="w-[354px] font-normal text-[14px] tracking-[-0.28px] leading-[1.2]">
                 <p className="mb-0">
                   {langSwitched ? (
                     <ScrambleText from={fromT.newPortfolio} charDelay={switchCharDelay}>

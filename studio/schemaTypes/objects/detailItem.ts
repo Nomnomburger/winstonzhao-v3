@@ -18,8 +18,7 @@ export default defineType({
       title: 'Value',
       type: 'text',
       rows: 3,
-      description: 'Put each item on its own line to list several.',
-      validation: (Rule) => Rule.required(),
+      description: 'Put each item on its own line to list several. Left empty, the detail is not shown.',
     }),
   ],
   preview: {

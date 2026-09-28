@@ -6,7 +6,8 @@ import { imageUrl } from '@/lib/image';
 import ProjectHeader from '@/components/project/ProjectHeader';
 import ProjectSections from '@/components/project/ProjectSections';
 import { ImageFigure, VideoFigure } from '@/components/project/Media';
-import { WZLogo, EMAIL, RESUME_URL } from '@/components/panels/shared';
+import { WZLogo } from '@/components/panels/shared';
+import { EMAIL, RESUME_URL } from '@/lib/site';
 
 // Pages are built ahead of time and refreshed from Sanity at most once a
 // minute; projects published later are rendered on first visit.
@@ -25,15 +26,27 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
   if (!project) return {};
   const description = project.description || project.intro;
   const image = imageUrl(project.coverImage, 1200, 630);
+  const title = `${project.title} — Winston Zhao`;
+  // These replace the site-wide openGraph and twitter blocks entirely, so
+  // they repeat the shared fields.
   return {
     title: project.title,
     description,
     alternates: { canonical: `/projects/${project.slug}` },
     openGraph: {
-      title: `${project.title} — Winston Zhao`,
+      type: 'article',
+      siteName: 'Winston Zhao',
+      locale: 'en_US',
+      title,
       description,
       url: `/projects/${project.slug}`,
       images: image ? [{ url: image, width: 1200, height: 630, alt: project.title }] : undefined,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: image ? [image] : undefined,
     },
   };
 }
@@ -44,7 +57,9 @@ export default async function ProjectPage({ params }: { params: Params }) {
   if (!project) notFound();
 
   const hero = project.hero?.[0];
-  const details = project.details?.filter((d) => d.label || d.value) ?? [];
+  // Details left empty in the studio (e.g. a pre-filled label with no value)
+  // are skipped.
+  const details = project.details?.filter((d) => d.value?.trim()) ?? [];
   const sections = project.sections ?? [];
   const hasMeta = project.client || project.discipline || project.year || project.link?.url;
 
@@ -134,7 +149,7 @@ export default async function ProjectPage({ params }: { params: Params }) {
 
       {sections.length > 0 && (
         <>
-          <hr className="border-0 border-t border-foreground w-full" />
+          <hr className="border-0 border-t border-foreground/[0.04] w-full" />
           <ProjectSections sections={sections} showSideMenu={project.showSideMenu !== false} />
         </>
       )}

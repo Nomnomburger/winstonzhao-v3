@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { imageUrl } from '@/lib/image';
+import { imageUrl, imageObjectPosition } from '@/lib/image';
 import type { ProjectCardData } from './types';
 
 // Featured projects are laid out on the 3-column grid in a repeating
@@ -23,17 +23,23 @@ const SLOTS: Slot[] = [
 // Which cards share a row within each group of four.
 const ROWS = [[0], [1], [2, 3]];
 
-function FeaturedCard({ project, slot }: { project: ProjectCardData; slot: Slot }) {
+// In a row of two, the wide card's photo takes its height from the regular
+// card beside it (instead of its own aspect ratio) so the captions line up at
+// every width, not just the 1280px reference.
+function FeaturedCard({ project, slot, paired }: { project: ProjectCardData; slot: Slot; paired: boolean }) {
   const src = imageUrl(project.coverImage, slot.wide ? 1400 : 1000);
+  const shape = !slot.wide
+    ? 'md:aspect-[387/398]'
+    : paired
+      ? 'md:aspect-auto md:flex-1'
+      : 'md:aspect-[586/416]';
   return (
     <Link
       href={`/projects/${project.slug}`}
       className={`group flex flex-col gap-4 w-full ${slot.className}`}
     >
       <div
-        className={`relative w-full overflow-hidden bg-foreground/5 aspect-[4/3] ${
-          slot.wide ? 'md:aspect-[586/416]' : 'md:aspect-[387/398]'
-        }`}
+        className={`relative w-full overflow-hidden bg-foreground/5 aspect-[4/3] ${shape}`}
       >
         {src && (
           // eslint-disable-next-line @next/next/no-img-element
@@ -41,6 +47,7 @@ function FeaturedCard({ project, slot }: { project: ProjectCardData; slot: Slot 
             src={src}
             alt={project.coverImage?.alt || project.title}
             loading="lazy"
+            style={{ objectPosition: imageObjectPosition(project.coverImage) }}
             className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.02]"
           />
         )}
@@ -72,7 +79,7 @@ export default function FeaturedProjects({ projects }: { projects: ProjectCardDa
       {rows.map((cards, r) => (
         <div key={r} className="grid grid-cols-1 md:grid-cols-3 gap-9 md:gap-6 w-full">
           {cards.map(({ project, slot }) => (
-            <FeaturedCard key={project._id} project={project} slot={slot} />
+            <FeaturedCard key={project._id} project={project} slot={slot} paired={cards.length > 1} />
           ))}
         </div>
       ))}

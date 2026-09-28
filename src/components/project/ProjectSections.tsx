@@ -91,52 +91,59 @@ export default function ProjectSections({ sections, showSideMenu }: ProjectSecti
       )}
 
       <div className={`flex flex-col gap-24 md:gap-36 ${showSideMenu ? 'md:col-span-2' : 'md:col-span-3'}`}>
-        {sections.map((section, i) => (
-          <section
-            key={section._key}
-            id={sectionId(section.title, i)}
-            className="flex flex-col gap-9 scroll-mt-9"
-          >
-            <div className={`flex flex-col gap-3 ${textColumn}`}>
-              <p className="text-[12px] md:text-[14px] text-justify leading-[1.2]">{section.title}</p>
-              {section.heading && (
-                <h2 className="text-[28px] md:text-[40px] tracking-[-0.02em] leading-[1.2] whitespace-pre-line">
-                  {section.heading}
-                </h2>
-              )}
-            </div>
+        {sections.map((section, i) => {
+          const chunks = chunk(section.content ?? []);
+          return (
+            // Text follows the section title 12px down (as in Figma); media
+            // gets 36px around it.
+            <section
+              key={section._key}
+              id={sectionId(section.title, i)}
+              tabIndex={-1}
+              className="flex flex-col gap-3 scroll-mt-9 focus:outline-none"
+            >
+              <div className={`flex flex-col gap-3 ${textColumn}`}>
+                <p className="text-[12px] md:text-[14px] text-justify leading-[1.2]">{section.title}</p>
+                {section.heading && (
+                  <h2 className="text-[28px] md:text-[40px] tracking-[-0.02em] leading-[1.2] whitespace-pre-line">
+                    {section.heading}
+                  </h2>
+                )}
+              </div>
 
-            {chunk(section.content ?? []).map((c, j) =>
-              c.kind === 'text' ? (
-                <div
-                  key={j}
-                  className={`flex flex-col gap-4 font-[450] text-[15px] md:text-[16px] leading-[1.2] ${textColumn}`}
-                >
-                  <PortableText value={c.blocks} components={textComponents} />
-                </div>
-              ) : (
-                <div
-                  key={c.block._key}
-                  className={
-                    c.block._type !== 'mediaGallery' && c.block.size === 'content' ? textColumn : 'w-full'
-                  }
-                >
-                  {c.block._type === 'mediaImage' && (
-                    <ImageFigure
-                      image={c.block}
-                      caption={c.block.caption}
-                      sizes={c.block.size === 'content' ? contentSizes : fullSizes}
-                    />
-                  )}
-                  {c.block._type === 'mediaVideo' && <VideoFigure video={c.block} />}
-                  {c.block._type === 'mediaGallery' && (
-                    <GalleryFigure images={c.block.images ?? []} caption={c.block.caption} />
-                  )}
-                </div>
-              ),
-            )}
-          </section>
-        ))}
+              {chunks.map((c, j) => {
+                const spaced = c.kind === 'media' || chunks[j - 1]?.kind === 'media' ? 'mt-6' : '';
+                return c.kind === 'text' ? (
+                  <div
+                    key={j}
+                    className={`flex flex-col gap-[1.2em] font-[450] text-[15px] md:text-[16px] leading-[1.2] ${spaced} ${textColumn}`}
+                  >
+                    <PortableText value={c.blocks} components={textComponents} />
+                  </div>
+                ) : (
+                  <div
+                    key={c.block._key}
+                    className={`${spaced} ${
+                      c.block._type !== 'mediaGallery' && c.block.size === 'content' ? textColumn : 'w-full'
+                    }`}
+                  >
+                    {c.block._type === 'mediaImage' && (
+                      <ImageFigure
+                        image={c.block}
+                        caption={c.block.caption}
+                        sizes={c.block.size === 'content' ? contentSizes : fullSizes}
+                      />
+                    )}
+                    {c.block._type === 'mediaVideo' && <VideoFigure video={c.block} />}
+                    {c.block._type === 'mediaGallery' && (
+                      <GalleryFigure images={c.block.images ?? []} caption={c.block.caption} />
+                    )}
+                  </div>
+                );
+              })}
+            </section>
+          );
+        })}
       </div>
     </div>
   );

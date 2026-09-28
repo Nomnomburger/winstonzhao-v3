@@ -2,6 +2,7 @@ import 'server-only';
 import { groq } from 'next-sanity';
 import { client } from '../../sanity/lib/client';
 import { buildMockProjects, type MockAsset } from '../../sanity/mock/projects';
+import type { ImageCrop, ImageHotspot } from './image';
 
 // ---------------------------------------------------------------------------
 // Types (the shapes returned by the queries below)
@@ -14,8 +15,8 @@ export interface SanityImage {
     url: string;
     metadata?: { dimensions?: { width: number; height: number }; lqip?: string };
   };
-  crop?: unknown;
-  hotspot?: unknown;
+  crop?: ImageCrop;
+  hotspot?: ImageHotspot;
   alt?: string;
 }
 
@@ -77,7 +78,7 @@ export interface Project extends ProjectSummary {
   intro?: string;
   hero?: (MediaImage | MediaVideo)[];
   summary?: string;
-  details?: { _key: string; label: string; value: string }[];
+  details?: { _key: string; label: string; value?: string }[];
   overview?: string;
   impact?: string;
   showSideMenu?: boolean;

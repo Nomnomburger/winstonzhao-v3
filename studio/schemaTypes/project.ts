@@ -83,7 +83,7 @@ export default defineType({
       rows: 2,
       group: 'listing',
       description: 'One line shown next to the project in the home page list, and in search results.',
-      validation: (Rule) => Rule.required().max(160).warning('Keep it to one short line'),
+      validation: (Rule) => [Rule.required(), Rule.max(160).warning('Keep it to one short line')],
     }),
     defineField({
       name: 'order',
@@ -92,11 +92,14 @@ export default defineType({
       group: 'listing',
       description: 'Lower numbers show first. Projects without a number follow, newest year first.',
     }),
+    // Older projects have tags. They aren't shown on the site, so the field is
+    // hidden unless it has data.
     defineField({
       name: 'tags',
-      title: 'Tags (optional)',
+      title: 'Tags (not shown on the site)',
       type: 'array',
       group: 'listing',
+      hidden: ({value}) => !value?.length,
       of: [
         defineArrayMember({
           type: 'string',
@@ -158,7 +161,7 @@ export default defineType({
       title: 'Hero image or video',
       type: 'array',
       group: 'header',
-      description: 'The large image or video under the title. Add one.',
+      description: 'The large image or video under the title, always full width. Add one.',
       of: [defineArrayMember({type: 'mediaImage'}), defineArrayMember({type: 'mediaVideo'})],
       validation: (Rule) => Rule.max(1),
     }),

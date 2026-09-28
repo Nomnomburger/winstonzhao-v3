@@ -52,6 +52,10 @@ export default defineType({
         layout: 'radio',
         direction: 'horizontal',
       },
+      // The hero is always full width, so the option is hidden there
+      hidden: ({document, parent}) =>
+        Array.isArray(document?.hero) &&
+        document.hero.some((item: {_key?: string}) => item._key === (parent as {_key?: string})?._key),
       initialValue: 'full',
     }),
   ],
