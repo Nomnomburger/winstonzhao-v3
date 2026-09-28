@@ -36,8 +36,9 @@ export default function HomeProjects({
   // to this page later restores its scroll position instead of jumping here.
   useEffect(() => {
     if (window.location.hash !== '#work') return;
+    // (null state: Next fills in its own and updates its router's URL too)
     const dropHash = () =>
-      history.replaceState(history.state, '', window.location.pathname + window.location.search);
+      history.replaceState(null, '', window.location.pathname + window.location.search);
     if (introSkipped) {
       dropHash();
       return;

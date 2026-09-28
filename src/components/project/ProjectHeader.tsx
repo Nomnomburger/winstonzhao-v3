@@ -20,7 +20,9 @@ export default function ProjectHeader() {
   const buttonRef = useRef<HTMLButtonElement>(null);
 
   // The menu closes on Escape (focus goes back to the button), on a click or
-  // tap anywhere else, and when keyboard focus moves out of it.
+  // tap anywhere else, and when keyboard focus moves out of it. Outside
+  // presses close it on click rather than pointerdown: on phones the page
+  // moves up as the menu closes, and a tap on a link must still land on it.
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
@@ -28,14 +30,14 @@ export default function ProjectHeader() {
       setOpen(false);
       buttonRef.current?.focus();
     };
-    const onPointer = (e: PointerEvent) => {
+    const onClick = (e: MouseEvent) => {
       if (!menuRef.current?.contains(e.target as Node)) setOpen(false);
     };
     window.addEventListener('keydown', onKey);
-    document.addEventListener('pointerdown', onPointer);
+    document.addEventListener('click', onClick);
     return () => {
       window.removeEventListener('keydown', onKey);
-      document.removeEventListener('pointerdown', onPointer);
+      document.removeEventListener('click', onClick);
     };
   }, [open]);
 
