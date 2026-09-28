@@ -145,7 +145,7 @@ export default function HomePanelMobile({
   // back from a project) paints at its final size and the browser restores
   // the scroll position against the right layout.
   useLayoutEffect(() => {
-    const updateShrunkFontSize = () => {
+    const updateShrunkFontSize = (firstPaint = false) => {
       if (!headerRef.current || !containerRef.current) return;
 
       const containerWidth = containerRef.current.offsetWidth;
@@ -193,12 +193,24 @@ export default function HomePanelMobile({
       document.body.removeChild(measureEl);
       setShrunkFontSize(bestSize);
       setLineOffsetRatio(Math.max(0, (containerWidth - lastNameWidth) / containerWidth));
+
+      // framer-motion only applies the new size a frame later (and resets its
+      // mount value in a microtask), so when the page is shown already shrunk
+      // the size is also written straight to the element.
+      if (firstPaint && instant) {
+        const header = headerRef.current;
+        header.style.fontSize = `${bestSize}px`;
+        queueMicrotask(() => {
+          header.style.fontSize = `${bestSize}px`;
+        });
+      }
     };
 
-    updateShrunkFontSize();
-    window.addEventListener('resize', updateShrunkFontSize);
-    return () => window.removeEventListener('resize', updateShrunkFontSize);
-  }, [lastName]);
+    const onResize = () => updateShrunkFontSize();
+    updateShrunkFontSize(true);
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
+  }, [lastName, instant]);
 
   const photoSize = shrunkFontSize * PHOTO_TO_FONT_RATIO;
 
@@ -733,6 +745,7 @@ export default function HomePanelMobile({
                 projects={projects}
                 learnMoreLabel={t.learnMore}
                 className="pt-6"
+                introSkipped={instant}
                 scrollToHashWhenReady={!instant}
               />
             )}

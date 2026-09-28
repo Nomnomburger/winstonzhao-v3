@@ -44,6 +44,22 @@ const splitName = (name: string): [string, string] => {
   return i === -1 ? [name, ''] : [name.slice(0, i), name.slice(i + 1)];
 };
 
+// Size of the shrunk header name: 128px on normal laptop sizes, much smaller
+// in the cramped range between mobile and lg, and growing past a 16" MacBook
+// (1728px).
+const shrunkHeaderSize = (width: number) => {
+  const breakpoint = 1728;
+  const baseSize = 128;
+  // How aggressively the header grows past the breakpoint (1 = linear with
+  // width; higher = grows faster on large displays).
+  const growthFactor = 2;
+  if (width < 1024) return '72px';
+  if (width > breakpoint) {
+    return `${baseSize + ((width - breakpoint) / breakpoint) * baseSize * growthFactor}px`;
+  }
+  return `${baseSize}px`;
+};
+
 type HoverKey = 'name' | 'stockholm' | 'newly';
 
 // Desktop-only feature: hovering the name or a highlighted bio word reveals an
@@ -99,7 +115,13 @@ export default function HomePanel({
   const headerRef = useRef<HTMLHeadingElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [fontSize, setFontSize] = useState('220.84px');
-  const [shrunkFontSize, setShrunkFontSize] = useState('128px');
+  // A page shown already shrunk (`instant`) only ever mounts on the client
+  // (coming back from another page), so it can start at the final size and
+  // paint the right layout first; the browser then lands on #work or restores
+  // the scroll position against it.
+  const [shrunkFontSize, setShrunkFontSize] = useState(() =>
+    instant && typeof window !== 'undefined' ? shrunkHeaderSize(window.innerWidth) : '128px',
+  );
   const [hasShrunk, setHasShrunk] = useState(instant);
   // True once the user has changed language: changed copy then re-animates
   // with the scramble effect instead of the intro animations.
@@ -255,25 +277,7 @@ export default function HomePanel({
   // Scale the shrunk header up on screens larger than a 16" MacBook (1728px),
   // keeping 128px as the floor for normal laptop sizes.
   useEffect(() => {
-    const updateShrunkFontSize = () => {
-      const breakpoint = 1728;
-      const baseSize = 128;
-      // How aggressively the header grows past the breakpoint (1 = linear with
-      // width; higher = grows faster on large displays).
-      const growthFactor = 2;
-      const width = window.innerWidth;
-      let size;
-      if (width < 1024) {
-        // Cramped layouts between mobile and lg: shrink the header a lot.
-        size = 72;
-      } else if (width > breakpoint) {
-        size = baseSize + ((width - breakpoint) / breakpoint) * baseSize * growthFactor;
-      } else {
-        size = baseSize;
-      }
-      setShrunkFontSize(`${size}px`);
-    };
-
+    const updateShrunkFontSize = () => setShrunkFontSize(shrunkHeaderSize(window.innerWidth));
     updateShrunkFontSize();
     window.addEventListener('resize', updateShrunkFontSize);
     return () => window.removeEventListener('resize', updateShrunkFontSize);
@@ -520,6 +524,7 @@ export default function HomePanel({
           <motion.div
             ref={containerRef}
             className="flex items-start justify-between w-full"
+            initial={instant ? false : undefined}
             animate={{
               height: hasShrunk ? shrunkFontSize : 'auto',
             }}
@@ -833,6 +838,7 @@ export default function HomePanel({
             <HomeProjects
               projects={projects}
               learnMoreLabel={t.learnMore}
+              introSkipped={instant}
               scrollToHashWhenReady={introDone && !instant}
             />
           </motion.div>

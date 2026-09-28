@@ -9,9 +9,10 @@ interface HomeProjectsProps {
   projects: ProjectCardData[];
   learnMoreLabel: string;
   className?: string;
-  // Set once the intro has played and the layout above has settled. Arriving
-  // at /#work (the "Work" link on project pages) then scrolls here. Leave
-  // unset when the intro was skipped: the browser's own hash jump works then.
+  // Arriving at /#work (the "Work" link on project pages): when the intro was
+  // skipped the browser's own jump to the hash already landed here; otherwise
+  // this scrolls here once `scrollToHashWhenReady` is set (after the intro).
+  introSkipped?: boolean;
   scrollToHashWhenReady?: boolean;
 }
 
@@ -21,6 +22,7 @@ export default function HomeProjects({
   projects,
   learnMoreLabel,
   className = '',
+  introSkipped = false,
   scrollToHashWhenReady = false,
 }: HomeProjectsProps) {
   const ref = useRef<HTMLElement>(null);
@@ -33,9 +35,14 @@ export default function HomeProjects({
   // has already scrolled. The hash is then dropped from the URL, so going Back
   // to this page later restores its scroll position instead of jumping here.
   useEffect(() => {
-    if (!scrollToHashWhenReady || window.location.hash !== '#work') return;
+    if (window.location.hash !== '#work') return;
     const dropHash = () =>
       history.replaceState(history.state, '', window.location.pathname + window.location.search);
+    if (introSkipped) {
+      dropHash();
+      return;
+    }
+    if (!scrollToHashWhenReady) return;
     if (window.scrollY > 0) {
       dropHash();
       return;
@@ -47,7 +54,7 @@ export default function HomeProjects({
       });
     });
     return () => cancelAnimationFrame(frame);
-  }, [scrollToHashWhenReady]);
+  }, [introSkipped, scrollToHashWhenReady]);
 
   if (projects.length === 0) return null;
 
