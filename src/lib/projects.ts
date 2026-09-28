@@ -134,15 +134,18 @@ const PROJECT_QUERY = groq`*[_type == "project" && slug.current == $slug][0]{
 const REVALIDATE_SECONDS = 60;
 
 // ---------------------------------------------------------------------------
-// Mock fallback: in development, on Vercel preview deployments (or with
-// USE_MOCK_PROJECTS=1), the mock projects stand in when the dataset has none
-// or can't be reached, so the layout can be tested before any real content
-// exists. The live site (Vercel production) never shows them.
+// Mock projects: Vercel preview deployments (or any build with
+// USE_MOCK_PROJECTS=1) show only the mock projects, so the layout can be
+// tested with full case studies whatever the dataset holds. Set
+// USE_MOCK_PROJECTS=0 on a preview to see the Sanity projects instead. In
+// development the mocks stand in when the dataset has none or can't be
+// reached. The live site (Vercel production) never shows them.
 
-const mockFallbackEnabled = () =>
-  process.env.NODE_ENV !== 'production' ||
-  process.env.VERCEL_ENV === 'preview' ||
-  process.env.USE_MOCK_PROJECTS === '1';
+const mocksOnly = () =>
+  process.env.USE_MOCK_PROJECTS === '1' ||
+  (process.env.VERCEL_ENV === 'preview' && process.env.USE_MOCK_PROJECTS !== '0');
+
+const mockFallbackEnabled = () => process.env.NODE_ENV !== 'production';
 
 const isMockAsset = (value: unknown): value is MockAsset =>
   typeof value === 'object' && value !== null && '_mock' in value;
@@ -166,6 +169,19 @@ function resolveMock(value: unknown): unknown {
 
 const mockProjects = () => resolveMock(buildMockProjects()) as Project[];
 
+// The home page only needs what the list query returns, not whole case studies.
+const mockSummaries = (): ProjectSummary[] =>
+  mockProjects().map(({ _id, title, slug, year, featured, order, description, coverImage }) => ({
+    _id,
+    title,
+    slug,
+    year,
+    featured,
+    order,
+    description,
+    coverImage,
+  }));
+
 // Home page order: the "Sort order" field (lowest first), then newest year.
 function sortProjects<T extends ProjectSummary>(projects: T[]): T[] {
   return [...projects].sort(
@@ -175,6 +191,7 @@ function sortProjects<T extends ProjectSummary>(projects: T[]): T[] {
 }
 
 export async function getProjects(): Promise<ProjectSummary[]> {
+  if (mocksOnly()) return sortProjects(mockSummaries());
   let projects: ProjectSummary[] = [];
   try {
     projects = await client.fetch<ProjectSummary[]>(
@@ -190,7 +207,7 @@ export async function getProjects(): Promise<ProjectSummary[]> {
   }
   if (projects.length === 0 && mockFallbackEnabled()) {
     console.warn('No projects in Sanity: showing mock projects (not shown on the live site).');
-    projects = mockProjects();
+    projects = mockSummaries();
   }
   return sortProjects(projects);
 }
@@ -198,6 +215,7 @@ export async function getProjects(): Promise<ProjectSummary[]> {
 export async function getProject(slug: string): Promise<Project | null> {
   // Slugs arrive URL-encoded (e.g. a space as %20); match the stored value.
   const decoded = decodeURIComponent(slug);
+  if (mocksOnly()) return mockProjects().find((p) => p.slug === decoded) ?? null;
   let project: Project | null = null;
   let reachable = true;
   try {
