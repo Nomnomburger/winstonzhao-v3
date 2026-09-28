@@ -47,7 +47,7 @@ export default function ProjectHeader() {
 
       <div
         ref={menuRef}
-        className="relative"
+        className="relative flex flex-col items-end"
         onBlur={(e) => {
           if (e.relatedTarget && !e.currentTarget.contains(e.relatedTarget as Node)) setOpen(false);
         }}
@@ -74,18 +74,24 @@ export default function ProjectHeader() {
 
         <AnimatePresence>
           {open && (
+            // On phones the links open below the button and push the page
+            // down, so they never cover the title. From md up they drop down
+            // over the page.
             <motion.nav
-              className="absolute -right-3 top-6 flex flex-col items-end gap-2 p-3 bg-background font-normal text-[14px] tracking-[-0.28px] leading-[1.2] whitespace-nowrap"
-              initial={{ opacity: 0, y: -6 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -6 }}
+              aria-label="Menu"
+              className="overflow-hidden md:absolute md:-right-3 md:top-6 md:bg-background"
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
             >
-              {LINKS.map((link) => (
-                <Link key={link.label} href={link.href} onClick={() => setOpen(false)} className="hover:underline">
-                  {link.label}
-                </Link>
-              ))}
+              <div className="flex flex-col items-end gap-2 pt-4 md:p-3 font-normal text-[14px] tracking-[-0.28px] leading-[1.2] whitespace-nowrap">
+                {LINKS.map((link) => (
+                  <Link key={link.label} href={link.href} onClick={() => setOpen(false)} className="hover:underline">
+                    {link.label}
+                  </Link>
+                ))}
+              </div>
             </motion.nav>
           )}
         </AnimatePresence>

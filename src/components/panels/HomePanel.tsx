@@ -69,6 +69,9 @@ const HOVER_IMAGES: ReadonlyArray<{
 
 // Keep a hover image this far above the work section
 const HOVER_IMAGE_WORK_GAP = 24;
+// How far a hover image may drift past its column into the 24px gutter
+// before the bio text, while following the pointer
+const HOVER_IMAGE_MAX_OVERHANG = 16;
 
 // Bio lines (by index) that carry a hover word, with the matching word per
 // language so the highlight follows a language switch.
@@ -129,13 +132,19 @@ export default function HomePanel({
   const imageX = useSpring(followX, FOLLOW_SPRING);
   const imageY = useSpring(followY, FOLLOW_SPRING);
   const hoverOrigin = useRef<{ x: number; y: number } | null>(null);
+  // Furthest the hovered image may drift right without reaching the bio text
+  const hoverMaxDriftX = useRef(Infinity);
   const hoverImageRefs = useRef<Partial<Record<HoverKey, HTMLDivElement | null>>>({});
   // Page-relative top of the hovered image, measured when the hover starts
   const [hoverTop, setHoverTop] = useState<number | null>(null);
 
   const beginHover = (key: HoverKey, e: React.MouseEvent) => {
     const config = HOVER_IMAGES.find((img) => img.key === key)!;
-    const imageHeight = hoverImageRefs.current[key]?.offsetHeight ?? config.height;
+    const image = hoverImageRefs.current[key];
+    const imageHeight = image?.offsetHeight ?? config.height;
+    hoverMaxDriftX.current = image?.parentElement
+      ? image.parentElement.clientWidth - (image.offsetLeft + image.offsetWidth) + HOVER_IMAGE_MAX_OVERHANG
+      : Infinity;
     const work = document.getElementById('work');
     const containerTop = containerRef.current?.closest('.theme-root')?.getBoundingClientRect().top ?? 0;
     const workTop = work ? work.getBoundingClientRect().top - containerTop : Infinity;
@@ -151,7 +160,7 @@ export default function HomePanel({
 
   const moveHover = (e: React.MouseEvent) => {
     if (!hoverOrigin.current) return;
-    followX.set((e.clientX - hoverOrigin.current.x) * FOLLOW_FACTOR);
+    followX.set(Math.min((e.clientX - hoverOrigin.current.x) * FOLLOW_FACTOR, hoverMaxDriftX.current));
     followY.set((e.clientY - hoverOrigin.current.y) * FOLLOW_FACTOR);
   };
 
@@ -821,7 +830,11 @@ export default function HomePanel({
               ease: [0.4, 0, 0.2, 1],
             }}
           >
-            <HomeProjects projects={projects} learnMoreLabel={t.learnMore} ready={introDone} />
+            <HomeProjects
+              projects={projects}
+              learnMoreLabel={t.learnMore}
+              scrollToHashWhenReady={introDone && !instant}
+            />
           </motion.div>
         )}
       </AnimatePresence>

@@ -23,20 +23,23 @@ const SLOTS: Slot[] = [
 // Which cards share a row within each group of four.
 const ROWS = [[0], [1], [2, 3]];
 
-// In a row of two, the wide card's photo takes its height from the regular
-// card beside it (instead of its own aspect ratio) so the captions line up at
-// every width, not just the 1280px reference.
+// In a row of two, both cards share the row's grid tracks (subgrid): the wide
+// card's photo takes its height from the regular card beside it, instead of
+// its own aspect ratio, and the captions start on the same line at every
+// width, even when one title wraps.
 function FeaturedCard({ project, slot, paired }: { project: ProjectCardData; slot: Slot; paired: boolean }) {
   const src = imageUrl(project.coverImage, slot.wide ? 1400 : 1000);
   const shape = !slot.wide
     ? 'md:aspect-[387/398]'
     : paired
-      ? 'md:aspect-auto md:flex-1'
+      ? 'md:aspect-auto'
       : 'md:aspect-[586/416]';
   return (
     <Link
       href={`/projects/${project.slug}`}
-      className={`group flex flex-col gap-4 w-full ${slot.className}`}
+      className={`group flex flex-col gap-4 w-full ${slot.className} ${
+        paired ? 'md:row-span-2 md:grid md:grid-rows-subgrid' : ''
+      }`}
     >
       <div
         className={`relative w-full overflow-hidden bg-foreground/5 aspect-[4/3] ${shape}`}

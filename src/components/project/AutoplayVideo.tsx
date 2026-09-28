@@ -32,11 +32,25 @@ interface AutoplayVideoProps {
 // browsers, so playback starts here once `muted` is set on the element.
 export default function AutoplayVideo({ src, poster, aspect, autoplay }: AutoplayVideoProps) {
   const ref = useRef<HTMLVideoElement>(null);
-  const [ratio, setRatio] = useState(aspect ?? 16 / 9);
+  const boxRef = useRef<HTMLDivElement>(null);
   const reducedMotion = usePrefersReducedMotion();
   const [blocked, setBlocked] = useState(false);
   const [playing, setPlaying] = useState(false);
   const manual = !autoplay || reducedMotion || blocked;
+
+  // The box starts at the poster's shape (or 16:9) and takes the video's own
+  // shape once its metadata is in, whether that happened before hydration
+  // (no event reaches React then) or after.
+  const fitToVideo = (video: HTMLVideoElement) => {
+    if (video.videoWidth && video.videoHeight && boxRef.current) {
+      boxRef.current.style.aspectRatio = `${video.videoWidth} / ${video.videoHeight}`;
+    }
+  };
+
+  useEffect(() => {
+    const video = ref.current;
+    if (video && video.readyState >= HTMLMediaElement.HAVE_METADATA) fitToVideo(video);
+  }, [src]);
 
   useEffect(() => {
     const video = ref.current;
@@ -59,7 +73,11 @@ export default function AutoplayVideo({ src, poster, aspect, autoplay }: Autopla
   };
 
   return (
-    <div className="relative w-full overflow-hidden bg-foreground/5" style={{ aspectRatio: ratio }}>
+    <div
+      ref={boxRef}
+      className="relative w-full overflow-hidden bg-foreground/5"
+      style={{ aspectRatio: aspect ?? 16 / 9 }}
+    >
       <video
         ref={ref}
         src={src}
@@ -67,10 +85,7 @@ export default function AutoplayVideo({ src, poster, aspect, autoplay }: Autopla
         className="absolute inset-0 w-full h-full object-cover"
         playsInline
         preload="metadata"
-        onLoadedMetadata={(e) => {
-          const { videoWidth, videoHeight } = e.currentTarget;
-          if (videoWidth && videoHeight) setRatio(videoWidth / videoHeight);
-        }}
+        onLoadedMetadata={(e) => fitToVideo(e.currentTarget)}
         onPlay={() => setPlaying(true)}
         onPause={() => setPlaying(false)}
         controls={manual}

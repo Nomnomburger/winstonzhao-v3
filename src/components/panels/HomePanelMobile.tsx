@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, AnimatePresence } from 'framer-motion';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
@@ -141,7 +141,10 @@ export default function HomePanelMobile({
   // the page. The size is always fitted to the English name so switching
   // language never changes it; longer last names (e.g. "Sizhong") keep the
   // size and right-align by shrinking the second line's offset instead.
-  useEffect(() => {
+  // Measured before the first paint, so a page shown already shrunk (coming
+  // back from a project) paints at its final size and the browser restores
+  // the scroll position against the right layout.
+  useLayoutEffect(() => {
     const updateShrunkFontSize = () => {
       if (!headerRef.current || !containerRef.current) return;
 
@@ -326,9 +329,15 @@ export default function HomePanelMobile({
       <div className="flex flex-col gap-9 w-full">
         {/* Header Section - fills the first screen. svh (the height with the
             browser toolbars showing) stays fixed while scrolling, so the work
-            list below doesn't jump when the toolbars collapse; min- lets it
-            grow on short or landscape screens instead of overflowing. */}
-        <div className="relative flex flex-col min-h-svh shrink-0 items-start p-6 w-full">
+            list below doesn't jump when the toolbars collapse. During the
+            intro it's exactly one screen and clips the large name, as before;
+            afterwards it can grow on short or landscape screens instead of
+            overflowing onto the work list. */}
+        <div
+          className={`relative flex flex-col ${
+            hasShrunk ? 'min-h-svh' : 'h-svh overflow-hidden'
+          } shrink-0 items-start p-6 w-full`}
+        >
           <div className="flex flex-col flex-1 gap-12 items-start w-full">
             {/* Header Content */}
             <div ref={containerRef} className="relative w-full py-1">
@@ -720,7 +729,12 @@ export default function HomePanelMobile({
         {hasShrunk && (
           <div ref={belowFoldRef} className="flex flex-col gap-9 w-full">
             {projects.length > 0 && (
-              <HomeProjects projects={projects} learnMoreLabel={t.learnMore} className="pt-6" />
+              <HomeProjects
+                projects={projects}
+                learnMoreLabel={t.learnMore}
+                className="pt-6"
+                scrollToHashWhenReady={!instant}
+              />
             )}
 
             <div className="relative flex flex-col gap-12 p-6 w-full">

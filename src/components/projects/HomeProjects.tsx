@@ -9,29 +9,45 @@ interface HomeProjectsProps {
   projects: ProjectCardData[];
   learnMoreLabel: string;
   className?: string;
-  // False while the layout above is still animating in. Arriving at /#work
-  // (the "Work" link on project pages) scrolls here once it's true.
-  ready?: boolean;
+  // Set once the intro has played and the layout above has settled. Arriving
+  // at /#work (the "Work" link on project pages) then scrolls here. Leave
+  // unset when the intro was skipped: the browser's own hash jump works then.
+  scrollToHashWhenReady?: boolean;
 }
 
 // The home page's work section: projects marked "featured" in Sanity show as
 // photo cards, and everything else goes in the list below them.
-export default function HomeProjects({ projects, learnMoreLabel, className = '', ready = true }: HomeProjectsProps) {
+export default function HomeProjects({
+  projects,
+  learnMoreLabel,
+  className = '',
+  scrollToHashWhenReady = false,
+}: HomeProjectsProps) {
   const ref = useRef<HTMLElement>(null);
   const featured = projects.filter((p) => p.featured);
   const rest = projects.filter((p) => !p.featured);
 
   // The section only exists once the intro has played, so the browser's own
-  // jump to #work finds nothing on a fresh load. Scroll once the layout has
-  // settled; waiting two frames lets late size updates (e.g. the header's
-  // shrunk font size) land first.
+  // jump to #work finds nothing on a fresh load. Scroll once the intro is done
+  // (two frames later, so late size updates land first), unless the visitor
+  // has already scrolled. The hash is then dropped from the URL, so going Back
+  // to this page later restores its scroll position instead of jumping here.
   useEffect(() => {
-    if (!ready || window.location.hash !== '#work') return;
+    if (!scrollToHashWhenReady || window.location.hash !== '#work') return;
+    const dropHash = () =>
+      history.replaceState(history.state, '', window.location.pathname + window.location.search);
+    if (window.scrollY > 0) {
+      dropHash();
+      return;
+    }
     let frame = requestAnimationFrame(() => {
-      frame = requestAnimationFrame(() => ref.current?.scrollIntoView());
+      frame = requestAnimationFrame(() => {
+        ref.current?.scrollIntoView();
+        dropHash();
+      });
     });
     return () => cancelAnimationFrame(frame);
-  }, [ready]);
+  }, [scrollToHashWhenReady]);
 
   if (projects.length === 0) return null;
 

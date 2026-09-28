@@ -30,11 +30,12 @@ export const structure: StructureResolver = (S) =>
             .schemaType('project')
             .filter('_type == "project" && featured == true')
             .apiVersion(API_VERSION)
-            .initialValueTemplates([S.initialValueTemplateItem('project-featured')])
             .defaultOrdering([
               {field: 'order', direction: 'asc'},
               {field: 'year', direction: 'desc'},
-            ]),
+            ])
+            // Last: a later builder call would reset it to every template
+            .initialValueTemplates([S.initialValueTemplateItem('project-featured')]),
         ),
       S.listItem()
         .title('Listed projects')
@@ -48,7 +49,8 @@ export const structure: StructureResolver = (S) =>
             .defaultOrdering([
               {field: 'order', direction: 'asc'},
               {field: 'year', direction: 'desc'},
-            ]),
+            ])
+            .initialValueTemplates([S.initialValueTemplateItem('project')]),
         ),
       S.divider(),
       S.documentTypeListItem('playground').title('Playground').icon(ImagesIcon),

@@ -71,17 +71,14 @@ async function run() {
       '*[_type == "sanity.imageAsset" && source.name == $source]._id',
       {source: ASSET_SOURCE},
     )
-    if (assetIds.length) {
-      const assetTx = client.transaction()
-      assetIds.forEach((id) => assetTx.delete(id))
-      try {
-        await assetTx.commit()
-        console.log(`Deleted ${assetIds.length} placeholder photos.`)
-      } catch (err) {
-        // Happens if a real project still uses one of the photos
-        console.warn('Some placeholder photos are still in use and were kept:', err)
-      }
+    // One at a time (not one transaction): deleting a photo a real project
+    // still uses is refused, and that shouldn't keep the others.
+    let kept = 0
+    for (const id of assetIds) {
+      await client.delete(id).catch(() => kept++)
     }
+    console.log(`Deleted ${assetIds.length - kept} placeholder photos.`)
+    if (kept) console.warn(`Kept ${kept} placeholder photos that are still used by other documents.`)
     return
   }
 
