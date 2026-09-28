@@ -21,6 +21,10 @@ export const translations = {
     oldSiteLink: 'visit the old site',
     period: '.',
     resume: 'resume',
+    navWork: 'Work',
+    navContact: 'Contact',
+    navResume: 'Resume',
+    learnMore: 'Learn More ↗',
   },
   sv: {
     name: 'Winston Zhao',
@@ -41,6 +45,10 @@ export const translations = {
     oldSiteLink: 'besök den gamla sajten',
     period: '.',
     resume: 'CV (EN)',
+    navWork: 'Arbete',
+    navContact: 'Kontakt',
+    navResume: 'CV',
+    learnMore: 'Läs mer ↗',
   },
   zh: {
     name: 'Zhao Sizhong',
@@ -61,5 +69,9 @@ export const translations = {
     oldSiteLink: '访问旧网站',
     period: '。',
     resume: '简历 (英文)',
+    navWork: '作品',
+    navContact: '联系',
+    navResume: '简历',
+    learnMore: '了解更多 ↗',
   },
 } as const satisfies Record<Language, unknown>;

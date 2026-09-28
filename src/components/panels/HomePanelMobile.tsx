@@ -21,6 +21,8 @@ import {
 } from './shared';
 import ThemeToggle from '@/components/ThemeToggle';
 import { Language, translations } from './translations';
+import HomeProjects from '@/components/projects/HomeProjects';
+import type { ProjectCardData } from '@/components/projects/types';
 
 // "Zhao" sits in the second of the two mobile grid columns: half the
 // container width plus half the 12px column gap (~51.7% of the row).
@@ -34,16 +36,13 @@ const PHOTO_TO_FONT_RATIO = 46 / 64;
 // Flip this back to true to restore them.
 const SHOW_COLUMN_GUIDES = false;
 
-// Fallback page shift for the footer reveal (footer height + 36px gap),
-// replaced by a live measurement when the arrows are tapped.
-const FOOTER_OFFSET_FALLBACK = 188;
-
 interface HomePanelMobileProps {
   showContent?: boolean;
   // Render everything in its final state with no entrance animations
   instant?: boolean;
   language?: Language;
   onLanguageChange?: (language: Language) => void;
+  projects?: ProjectCardData[];
 }
 
 export default function HomePanelMobile({
@@ -51,15 +50,16 @@ export default function HomePanelMobile({
   instant = false,
   language = 'en',
   onLanguageChange,
+  projects = [],
 }: HomePanelMobileProps) {
   const headerRef = useRef<HTMLHeadingElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const footerRef = useRef<HTMLDivElement>(null);
+  const belowFoldRef = useRef<HTMLDivElement>(null);
   const [fontSize, setFontSize] = useState('96px');
   const [shrunkFontSize, setShrunkFontSize] = useState(64);
   const [hasShrunk, setHasShrunk] = useState(instant);
-  const [footerOpen, setFooterOpen] = useState(false);
-  const [footerOffset, setFooterOffset] = useState(FOOTER_OFFSET_FALLBACK);
+  // True once the page is scrolled past the first screen; flips the arrows.
+  const [scrolledDown, setScrolledDown] = useState(false);
   // True once the user has changed language: changed copy then re-animates
   // with the scramble effect instead of the intro animations.
   const [langSwitched, setLangSwitched] = useState(false);
@@ -285,36 +285,25 @@ export default function HomePanelMobile({
     ? 'calc(0% + 0px)'
     : `calc(${lineOffsetRatio * 100}% + ${-(photoSize + 12)}px)`;
 
-  const setFooterRevealed = (open: boolean) => {
-    if (open && footerRef.current) {
-      setFooterOffset(footerRef.current.offsetHeight + 36);
+  useEffect(() => {
+    const update = () => setScrolledDown(window.scrollY > window.innerHeight / 3);
+    update();
+    window.addEventListener('scroll', update, { passive: true });
+    return () => window.removeEventListener('scroll', update);
+  }, []);
+
+  // The arrows scroll down to the work (or footer) below the first screen,
+  // and back to the top once scrolled.
+  const toggleScroll = () => {
+    if (scrolledDown) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      belowFoldRef.current?.scrollIntoView({ behavior: 'smooth' });
     }
-    setFooterOpen(open);
-  };
-
-  const toggleFooter = () => setFooterRevealed(!footerOpen);
-
-  // Swiping up reveals the footer, swiping down hides it
-  const touchStartY = useRef<number | null>(null);
-
-  const handleTouchStart = (e: React.TouchEvent) => {
-    touchStartY.current = e.touches[0].clientY;
-  };
-
-  const handleTouchEnd = (e: React.TouchEvent) => {
-    if (touchStartY.current === null || !hasShrunk) return;
-    const deltaY = touchStartY.current - e.changedTouches[0].clientY;
-    touchStartY.current = null;
-    if (Math.abs(deltaY) < 50) return;
-    setFooterRevealed(deltaY > 0);
   };
 
   return (
-    <div
-      className="theme-root bg-background h-dvh w-full relative overflow-hidden"
-      onTouchStart={handleTouchStart}
-      onTouchEnd={handleTouchEnd}
-    >
+    <div className="theme-root bg-background min-h-dvh w-full relative overflow-x-clip">
       {/* Background column guides - 2 column mobile grid (currently hidden) */}
       {SHOW_COLUMN_GUIDES && (
         <div
@@ -333,12 +322,8 @@ export default function HomePanelMobile({
         </div>
       )}
 
-      {/* Sliding page - shifts up to reveal the footer below the fold */}
-      <motion.div
-        className="flex flex-col gap-9 w-full"
-        animate={{ y: footerOpen ? -footerOffset : 0 }}
-        transition={{ duration: 0.8, ease: [0.76, 0, 0.15, 1] }}
-      >
+      {/* Page: the intro fills the first screen; work and footer scroll below */}
+      <div className="flex flex-col gap-9 w-full">
         {/* Header Section - exactly one viewport tall */}
         <div className="relative flex flex-col h-dvh shrink-0 items-start p-6 w-full">
           <div className="flex flex-col flex-1 gap-12 items-start w-full">
@@ -693,9 +678,8 @@ export default function HomePanelMobile({
                         {showContent ? (
                           <motion.button
                             type="button"
-                            onClick={toggleFooter}
-                            aria-expanded={footerOpen}
-                            aria-label={footerOpen ? 'Hide footer' : 'Show footer'}
+                            onClick={toggleScroll}
+                            aria-label={scrolledDown ? 'Back to top' : 'Scroll down'}
                             className="font-medium text-[12px] tracking-[-0.24px] leading-normal cursor-pointer p-0"
                             initial={{ y: '40%', opacity: 0 }}
                             animate={{ y: '0%', opacity: 1 }}
@@ -709,7 +693,7 @@ export default function HomePanelMobile({
                               <motion.span
                                 key={i}
                                 className="inline-block"
-                                animate={{ rotate: footerOpen ? 180 : 0 }}
+                                animate={{ rotate: scrolledDown ? 180 : 0 }}
                                 transition={{ duration: 0.4, delay: i * 0.08, ease: [0.4, 0, 0.2, 1] }}
                               >
                                 ↑
@@ -728,71 +712,74 @@ export default function HomePanelMobile({
           </div>
         </div>
 
-        {/* Footer Section - lives below the fold, revealed by the arrows */}
-        <div
-          ref={footerRef}
-          className="relative flex flex-col gap-12 p-6 w-full"
-        >
-          <div className="max-w-[354px] font-normal text-[12px] tracking-[-0.24px] leading-normal">
-            <p className="mb-0">
-              {langSwitched ? (
-                <ScrambleText from={fromT.newPortfolio} charDelay={switchCharDelay}>
-                  {t.newPortfolio}
-                </ScrambleText>
-              ) : (
-                t.newPortfolio
-              )}
-            </p>
-            <p>
-              {langSwitched ? (
-                <ScrambleText from={fromT.checkBackPrefix} charDelay={switchCharDelay}>
-                  {t.checkBackPrefix}
-                </ScrambleText>
-              ) : (
-                t.checkBackPrefix
-              )}
-              <a
-                href={OLD_SITE_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline"
-              >
+        {/* Below the fold: work, then the footer */}
+        <div ref={belowFoldRef} className="flex flex-col gap-9 w-full">
+          {hasShrunk && projects.length > 0 && (
+            <HomeProjects projects={projects} learnMoreLabel={t.learnMore} className="pt-6" />
+          )}
+
+          <div className="relative flex flex-col gap-12 p-6 w-full">
+            <div className="max-w-[354px] font-normal text-[12px] tracking-[-0.24px] leading-normal">
+              <p className="mb-0">
                 {langSwitched ? (
-                  <ScrambleText from={fromT.oldSiteLink} charDelay={switchCharDelay}>
-                    {t.oldSiteLink}
+                  <ScrambleText from={fromT.newPortfolio} charDelay={switchCharDelay}>
+                    {t.newPortfolio}
                   </ScrambleText>
                 ) : (
-                  t.oldSiteLink
+                  t.newPortfolio
                 )}
-              </a>
-              {langSwitched ? (
-                <ScrambleText from={fromT.period} charDelay={switchCharDelay}>
-                  {t.period}
-                </ScrambleText>
-              ) : (
-                t.period
-              )}
-            </p>
-          </div>
-          <div className="flex items-end justify-between w-full">
-            <div className="w-[45px] h-[28px] shrink-0">
-              <WZLogo className="w-full h-full" />
+              </p>
+              <p>
+                {langSwitched ? (
+                  <ScrambleText from={fromT.checkBackPrefix} charDelay={switchCharDelay}>
+                    {t.checkBackPrefix}
+                  </ScrambleText>
+                ) : (
+                  t.checkBackPrefix
+                )}
+                <a
+                  href={OLD_SITE_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline"
+                >
+                  {langSwitched ? (
+                    <ScrambleText from={fromT.oldSiteLink} charDelay={switchCharDelay}>
+                      {t.oldSiteLink}
+                    </ScrambleText>
+                  ) : (
+                    t.oldSiteLink
+                  )}
+                </a>
+                {langSwitched ? (
+                  <ScrambleText from={fromT.period} charDelay={switchCharDelay}>
+                    {t.period}
+                  </ScrambleText>
+                ) : (
+                  t.period
+                )}
+              </p>
             </div>
-            <div className="flex gap-3 items-center justify-end font-normal text-[12px] tracking-[-0.24px] leading-normal whitespace-nowrap">
-              <a href={`mailto:${EMAIL}`}>hello [at] winstonzhao.ca</a>
-              <Link href={RESUME_URL}>
-                {langSwitched ? (
-                  <ScrambleText from={fromT.resume} charDelay={switchCharDelay}>
-                    {t.resume}
-                  </ScrambleText>
-                ) : (
-                  t.resume
-                )}
-              </Link>
+            <div className="flex items-end justify-between w-full">
+              <div className="w-[45px] h-[28px] shrink-0">
+                <WZLogo className="w-full h-full" />
+              </div>
+              <div className="flex gap-3 items-center justify-end font-normal text-[12px] tracking-[-0.24px] leading-normal whitespace-nowrap">
+                <a href={`mailto:${EMAIL}`}>hello [at] winstonzhao.ca</a>
+                <Link href={RESUME_URL}>
+                  {langSwitched ? (
+                    <ScrambleText from={fromT.resume} charDelay={switchCharDelay}>
+                      {t.resume}
+                    </ScrambleText>
+                  ) : (
+                    t.resume
+                  )}
+                </Link>
+              </div>
             </div>
           </div>
         </div>
-      </motion.div>
+      </div>
     </div>
   );
 }
