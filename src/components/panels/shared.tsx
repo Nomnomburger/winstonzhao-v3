@@ -1,22 +1,43 @@
 'use client';
 
-import { motion, useMotionValue, useTransform, useAnimationControls, animate } from 'framer-motion';
-import { ReactNode, useCallback, useEffect, useRef, useState, useSyncExternalStore } from 'react';
+import { motion, useMotionValue, useTransform, useAnimationControls, useReducedMotion, animate } from 'framer-motion';
+import { ReactNode, useCallback, useContext, useEffect, useId, useRef, useState, useSyncExternalStore } from 'react';
 import { Language } from './translations';
+import { HeroBioExitContext, HeroBioExitWord } from './HeroBioLine';
 
 export { LINKEDIN_URL, OLD_SITE_URL, RESUME_URL, EMAIL } from '@/lib/site';
 
-// The WZ initials in the footer. The logo file is a black PNG glyph with a
-// transparent background, so we paint it with the theme foreground colour by
-// using it as a mask over a bg-foreground box (rather than an <img>, which
-// can't be recoloured). This makes the initials follow the theme like every
-// other element, fading with the global colour transition.
-export function WZLogo({ className = '' }: { className?: string }) {
+// Reveal the original mark along its pen strokes: W, Z, crossbar, then dot.
+// The asset mask preserves the logo's exact outline and theme colour.
+const WZ_STROKES = [
+  { path: 'M1.7 1.1 C2.9 6.5 3.1 14.1 4.6 25.1 C4.7 20.1 5.2 11.2 7.5 9.1 C9.5 9.2 10.9 26.5 12.1 27 C12.2 15 17.5 5 28.1 0.8', start: 0, duration: 0.65 },
+  { path: 'M21.7 8.3 C26.9 6.8 33.5 6.2 37.6 6.8 C41.4 7.4 25.6 15.1 18.1 23.8 C25.8 20.4 33.7 18.5 40.7 22.4', start: 0.64, duration: 0.46 },
+  { path: 'M25.2 14.1 C27.9 13.3 30.3 13.1 34.4 13.3', start: 1.09, duration: 0.12 },
+  { path: 'M43 24.4 L43.2 24.4', start: 1.21, duration: 0.08 },
+];
+
+export function WZLogo({
+  className = '',
+  draw = false,
+  show = true,
+  instant = false,
+  delay = 0,
+}: {
+  className?: string;
+  draw?: boolean;
+  show?: boolean;
+  instant?: boolean;
+  delay?: number;
+}) {
+  const maskId = `wz-writing-${useId().replaceAll(':', '')}`;
+  const reducedMotion = useReducedMotion();
+  const still = instant || reducedMotion;
+
   return (
     <span
       role="img"
       aria-label="WZ"
-      className={`block bg-foreground ${className}`}
+      className={`block ${draw ? '' : 'bg-foreground'} ${className}`}
       style={{
         maskImage: 'url(/wz-logo.svg)',
         WebkitMaskImage: 'url(/wz-logo.svg)',
@@ -27,7 +48,43 @@ export function WZLogo({ className = '' }: { className?: string }) {
         maskSize: 'contain',
         WebkitMaskSize: 'contain',
       }}
-    />
+    >
+      {draw && (
+        <svg viewBox="0 0 45 28" className="block w-full h-full" aria-hidden="true">
+          <defs>
+            <mask id={maskId} maskUnits="userSpaceOnUse" x="0" y="0" width="45" height="28">
+              {WZ_STROKES.map(({ path, start, duration }, index) => (
+                <motion.path
+                  key={index}
+                  data-wz-stroke={index}
+                  d={path}
+                  fill="none"
+                  stroke="white"
+                  strokeWidth="4.2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  initial={{ pathLength: still && show ? 1 : 0, opacity: still && show ? 1 : 0 }}
+                  animate={{ pathLength: show ? 1 : 0, opacity: show ? 1 : 0 }}
+                  transition={{
+                    pathLength: { duration: still ? 0 : duration, delay: show && !still ? delay + start : 0, ease: 'linear' },
+                    opacity: { duration: 0, delay: show && !still ? delay + start : 0 },
+                  }}
+                />
+              ))}
+              <motion.rect
+                width="45"
+                height="28"
+                fill="white"
+                initial={{ opacity: still && show ? 1 : 0 }}
+                animate={{ opacity: show ? 1 : 0 }}
+                transition={{ duration: 0, delay: show && !still ? delay + 1.32 : 0 }}
+              />
+            </mask>
+          </defs>
+          <rect width="45" height="28" fill="currentColor" mask={`url(#${maskId})`} />
+        </svg>
+      )}
+    </span>
   );
 }
 
@@ -154,18 +211,32 @@ interface AnimatedTextProps {
   className?: string;
   movement?: string;
   instant?: boolean;
+  wordOffset?: number;
 }
 
-export function AnimatedText({ children, baseDelay = 0, staggerDelay = 0.08, className = '', movement = '40%', instant = false }: AnimatedTextProps) {
+export function AnimatedText({ children, baseDelay = 0, staggerDelay = 0.08, className = '', movement = '40%', instant = false, wordOffset = 0 }: AnimatedTextProps) {
+  const bioExit = useContext(HeroBioExitContext);
   const words = children.split(' ');
 
   return (
     <span className={className}>
       {words.map((word, index) => (
         <span key={index}>
-          <AnimatedWord delay={baseDelay + index * staggerDelay} movement={movement} instant={instant}>
-            {word}
-          </AnimatedWord>
+          {bioExit && word ? (
+            <HeroBioExitWord
+              progress={bioExit.progress}
+              order={bioExit.wordOffset + wordOffset + words.slice(0, index).filter(Boolean).length}
+              wordCount={bioExit.wordCount}
+            >
+              <AnimatedWord delay={baseDelay + index * staggerDelay} movement={movement} instant={instant}>
+                {word}
+              </AnimatedWord>
+            </HeroBioExitWord>
+          ) : (
+            <AnimatedWord delay={baseDelay + index * staggerDelay} movement={movement} instant={instant}>
+              {word}
+            </AnimatedWord>
+          )}
           {index < words.length - 1 && ' '}
         </span>
       ))}
@@ -210,6 +281,7 @@ export function ScrambleText({
   align = 'left',
   className = '',
 }: ScrambleTextProps) {
+  const bioExit = useContext(HeroBioExitContext);
   const [display, setDisplay] = useState(from ?? children);
   const displayRef = useRef(from ?? children);
 
@@ -306,7 +378,9 @@ export function ScrambleText({
     return () => cancelAnimationFrame(frame);
   }, [children, baseDelay, charDelay, scrambleDuration, align]);
 
-  return <span className={className}>{display}</span>;
+  return bioExit
+    ? <AnimatedText className={className} instant>{display}</AnimatedText>
+    : <span className={className}>{display}</span>;
 }
 
 // English uses the 12-hour clock; Swedish and Chinese use 24-hour time
@@ -440,4 +514,3 @@ export function TextQLRole({ label = 'Prev. Design at', large = false }: RolePro
     </div>
   );
 }
-

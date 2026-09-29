@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useMotionValueEvent, useTransform } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -23,6 +23,9 @@ import { Language, translations } from './translations';
 import HomeProjects from '@/components/projects/HomeProjects';
 import CursorPreview, { useCursorPreview } from '@/components/projects/CursorPreview';
 import type { ProjectCardData } from '@/components/projects/types';
+import { useHeroScroll } from './useHeroScroll';
+import HomeNavigationBackdrop from './HomeNavigationBackdrop';
+import HeroBioLine from './HeroBioLine';
 
 interface HomePanelProps {
   showContent?: boolean;
@@ -91,6 +94,8 @@ export default function HomePanel({
 }: HomePanelProps) {
   const headerRef = useRef<HTMLHeadingElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const heroRef = useRef<HTMLDivElement>(null);
+  const headingRef = useRef<HTMLDivElement>(null);
   const [fontSize, setFontSize] = useState('220.84px');
   // A page shown already shrunk (`instant`) only ever mounts on the client
   // (coming back from another page), so it can start at the final size and
@@ -116,6 +121,19 @@ export default function HomePanel({
   const t = translations[language];
   const fromT = translations[prevLanguage];
   const projectCount = String(projects.length);
+  const { progress, headingY, scrollToProjects } = useHeroScroll({
+    heroRef,
+    headingRef,
+    enabled: hasShrunk && showContent && projects.length > 0,
+    ready: introDone,
+  });
+  const nameScale = useTransform(progress, [0, 1], [1, 24 / parseFloat(shrunkFontSize)]);
+  const navigationBlend = useTransform(progress, (value) => value >= 0.7 ? 'difference' : 'normal');
+  const navigationColor = useTransform(progress, (value) => value >= 0.7 ? '#ffffff' : 'var(--foreground)');
+  const heroOpacity = useTransform(progress, [0, 0.65, 1], [1, 0, 0]);
+  const heroVisibility = useTransform(progress, (value) => value >= 0.65 ? 'hidden' : 'visible');
+  const bioVisibility = useTransform(progress, (value) => value >= 1 ? 'hidden' : 'visible');
+  const bioPointerEvents = useTransform(progress, (value) => value > 0 ? 'none' : 'auto');
 
   // Hover (and the weight crossfade) turns on once the intro has played; after a
   // language switch it waits for the full-line scramble to settle first.
@@ -123,6 +141,10 @@ export default function HomePanel({
 
   // The photo that follows the cursor while the name or a bio word is hovered
   const preview = useCursorPreview();
+
+  useMotionValueEvent(progress, 'change', (value) => {
+    if (value > 0) preview.hide();
+  });
 
   const beginHover = (key: HoverKey, e: React.MouseEvent) => {
     const { width, height } = HOVER_IMAGES.find((img) => img.key === key)!;
@@ -149,13 +171,8 @@ export default function HomePanel({
   };
 
   const scrollToWork = (e: React.MouseEvent) => {
-    const work = document.getElementById('work');
-    if (!work) return;
     e.preventDefault();
-    work.scrollIntoView({ behavior: 'smooth' });
-    // Move keyboard focus along too, so the next Tab continues in the work
-    // section instead of jumping back up to the header.
-    work.focus({ preventScroll: true });
+    scrollToProjects(true);
   };
 
   // Re-arm the "scramble settled" flag after each language change so the
@@ -347,12 +364,11 @@ export default function HomePanel({
 
     const key = config!.key;
     const [before, after] = line.split(word!);
-    // Match the structure of the animation we're swapping out of so the text
-    // doesn't nudge: AnimatedText wraps each word in an inline-block (which sits
-    // a touch lower than plain text), while a language switch leaves ScrambleText
-    // plain text. Rendering the split the same way keeps it pixel-stable.
-    const seg = (text: string) =>
-      langSwitched ? text : <AnimatedText instant>{text}</AnimatedText>;
+    // Keep the word indices continuous across the hoverable keyword, so its
+    // scroll exit stays in sequence with the rest of the line.
+    const keywordOffset = before.split(' ').length - 1;
+    const seg = (text: string, wordOffset = 0) =>
+      <AnimatedText instant wordOffset={wordOffset}>{text}</AnimatedText>;
     return (
       <>
         {seg(before)}
@@ -361,9 +377,9 @@ export default function HomePanel({
           onMouseMove={moveHover}
           onMouseLeave={endHover}
         >
-          {seg(word!)}
+          {seg(word!, keywordOffset)}
         </span>
-        {after && seg(after)}
+        {after && seg(after, keywordOffset + 1)}
       </>
     );
   };
@@ -411,7 +427,7 @@ export default function HomePanel({
     : 'tracking-[-1.6px] lg:tracking-[-2.08px] xl:tracking-[-2.56px]';
 
   return (
-    <div className="theme-root bg-background flex flex-col gap-9 min-h-screen w-full relative overflow-x-clip">
+    <div className="theme-root bg-background flex flex-col min-h-screen w-full relative overflow-x-clip">
       {/* Background column guides - same grid as the page content (currently hidden) */}
       {SHOW_COLUMN_GUIDES && (
         <div
@@ -440,20 +456,30 @@ export default function HomePanel({
         }))}
       />
 
-      {/* Header Section */}
-      <div className="relative flex flex-col items-start p-9 w-full">
-        <div className="flex flex-col gap-9 items-start w-full">
+      <HomeNavigationBackdrop progress={progress} />
+
+      {/* A stable viewport keeps the scroll target independent of name scaling. */}
+      <div ref={heroRef} className="relative flex flex-col items-start p-9 min-h-svh w-full">
+        <div className="flex flex-1 flex-col gap-9 items-start w-full">
+          <motion.div
+            aria-hidden="true"
+            className="w-full shrink-0"
+            initial={instant ? false : undefined}
+            animate={{ height: hasShrunk ? shrunkFontSize : fontSize }}
+            transition={shrinkTransition}
+          />
           {/* Header Content */}
           <motion.div
             ref={containerRef}
-            className="flex items-start justify-between w-full"
+            className="fixed top-9 left-9 right-9 z-40 flex items-start justify-between pointer-events-none"
+            style={{ mixBlendMode: navigationBlend, color: navigationColor }}
             initial={instant ? false : undefined}
             animate={{
               height: hasShrunk ? shrunkFontSize : 'auto',
             }}
             transition={shrinkTransition}
           >
-            <div className="flex gap-4 items-start">
+            <motion.div className="flex gap-4 items-start pointer-events-auto" style={{ scale: nameScale, transformOrigin: 'top left' }}>
               {/* The font size snaps to its target and each word FLIPs from
                   its previous box via the layout prop, so the last name's
                   position and scale can trail the first name's together. */}
@@ -508,13 +534,14 @@ export default function HomePanel({
                   </ScrambleText>
                 </span>
               )}
-            </div>
+            </motion.div>
 
-            {/* Navigation - appears after shrink */}
+            {/* Navigation remains in the corner throughout the scroll. */}
             <AnimatePresence>
               {hasShrunk && showContent && (
                 <motion.nav
-                  className="flex gap-4 items-center justify-center font-normal text-[14px] tracking-[-0.28px] whitespace-nowrap leading-[1.2]"
+                  aria-label="Main navigation"
+                  className="flex gap-4 items-center justify-center font-normal text-[14px] tracking-[-0.28px] whitespace-nowrap leading-[1.2] pointer-events-auto"
                   initial={instant ? false : { opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{
@@ -538,7 +565,7 @@ export default function HomePanel({
           <AnimatePresence>
             {hasShrunk && (
               <motion.div
-                className="flex flex-col gap-12 w-full"
+                className="flex flex-1 flex-col justify-between gap-12 w-full"
                 initial={instant ? false : { opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.3 }}
@@ -546,7 +573,8 @@ export default function HomePanel({
                 {/* Work and Bio - 3 column grid (5 columns below lg) */}
                 <div className="grid grid-cols-5 lg:grid-cols-3 gap-x-6 w-full">
                   {/* Column 1: Work Link */}
-                  <div className="col-span-1">
+                  <motion.div ref={headingRef} className="relative z-20 col-span-1 self-start" style={{ y: headingY }}>
+                    <h2>
                     <a
                       href="#work"
                       onClick={scrollToWork}
@@ -615,50 +643,57 @@ export default function HomePanel({
                         )}
                       </motion.span>
                     </a>
-                  </div>
+                    </h2>
+                  </motion.div>
 
                   {/* Columns 2-3: Bio */}
                   <div className="col-span-4 lg:col-span-2 flex items-start justify-between">
-                    <div className={`${bigTextWeight} leading-none text-[40px] lg:text-[52px] xl:text-[64px] whitespace-nowrap ${bigTextTracking} transition-[font-weight,letter-spacing] duration-700 ease-in-out cursor-default`}>
+                    <motion.div
+                      style={{ y: headingY, visibility: bioVisibility, pointerEvents: bioPointerEvents }}
+                      className={`${bigTextWeight} leading-none text-[40px] lg:text-[52px] xl:text-[64px] whitespace-nowrap ${bigTextTracking} transition-[font-weight,letter-spacing] duration-700 ease-in-out cursor-default`}
+                    >
                       {t.bioLines.map((line, index) => (
-                        <p key={index} className={index < t.bioLines.length - 1 ? 'mb-0' : undefined}>
+                        <HeroBioLine key={index} progress={progress} index={index} lines={t.bioLines}>
                           {renderBioLine(line, index, fromT.bioLines[index])}
-                        </p>
+                        </HeroBioLine>
                       ))}
-                    </div>
-                    {showContent ? (
-                      <motion.div
-                        className="w-9 h-9 shrink-0"
-                        initial={instant ? false : { opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{
-                          duration: 0.8,
-                          delay: iconDelay,
-                          ease: [0.4, 0, 0.2, 1],
-                        }}
-                      >
-                        <ThemeToggle className="w-full h-full" />
-                      </motion.div>
-                    ) : (
-                      <div className="w-9 h-9 shrink-0 opacity-0">
-                        <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
-                          <path d="M0 18L36 18" stroke="currentColor" strokeWidth="2"/>
-                          <path d="M18 0V36" stroke="currentColor" strokeWidth="2"/>
-                        </svg>
-                      </div>
-                    )}
+                    </motion.div>
+                    <motion.div style={{ opacity: heroOpacity, visibility: heroVisibility }}>
+                      {showContent ? (
+                        <motion.div
+                          className="w-9 h-9 shrink-0"
+                          initial={instant ? false : { opacity: 0, scale: 0.8 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          transition={{
+                            duration: 0.8,
+                            delay: iconDelay,
+                            ease: [0.4, 0, 0.2, 1],
+                          }}
+                        >
+                          <ThemeToggle className="w-full h-full" />
+                        </motion.div>
+                      ) : (
+                        <div className="w-9 h-9 shrink-0 opacity-0">
+                          <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+                            <path d="M0 18L36 18" stroke="currentColor" strokeWidth="2"/>
+                            <path d="M18 0V36" stroke="currentColor" strokeWidth="2"/>
+                          </svg>
+                        </div>
+                      )}
+                    </motion.div>
                   </div>
                 </div>
 
                 {/* Roles and Time - 3 column grid (5 columns below lg) */}
-                <div className="grid grid-cols-5 lg:grid-cols-3 gap-x-6 items-center w-full">
-                  {/* Column 1: Empty (collapses below lg to left-align roles) */}
-                  <div className="hidden lg:block lg:col-span-1" />
+                <motion.div className="grid grid-cols-5 lg:grid-cols-3 gap-x-6 items-end pt-12 w-full" style={{ opacity: heroOpacity, visibility: heroVisibility }}>
+                  <div className="col-span-1">
+                    <WZLogo className="w-[27px] h-[17px]" draw show={showContent} instant={instant} delay={rolesDelay} />
+                  </div>
 
                   {/* Column 2: Roles (allowed to run on into column 3, so the
                       reveal clip leaves the right side open) */}
                   <motion.div
-                    className="col-span-4 lg:col-span-1"
+                    className="col-span-3 lg:col-span-1"
                     initial={{ clipPath: 'inset(-10% -200% 0 -10%)' }}
                     animate={{ clipPath: 'inset(-10% -200% -20% -10%)' }}
                     transition={{
@@ -676,7 +711,7 @@ export default function HomePanel({
                           delay: rolesDelay,
                           ease: [0.4, 0, 0.2, 1],
                         }}
-                        className="flex gap-3 items-center"
+                        className="flex flex-wrap gap-x-3 gap-y-1 items-center"
                       >
                         <NewlyRole large label={roleLabel(t.designAt, fromT.designAt)} />
                         <FigmaRole large label={roleLabel(t.campusLeaderAt, fromT.campusLeaderAt)} />
@@ -732,7 +767,7 @@ export default function HomePanel({
                       </div>
                     )}
                   </motion.div>
-                </div>
+                </motion.div>
               </motion.div>
             )}
           </AnimatePresence>
@@ -747,7 +782,8 @@ export default function HomePanel({
           projects={projects}
           introSkipped={instant}
           revealReady={workRevealReady}
-          scrollToHashWhenReady={introDone && !instant}
+          scrollToHashWhenReady={introDone}
+          onScrollToWork={scrollToProjects}
         />
       )}
 

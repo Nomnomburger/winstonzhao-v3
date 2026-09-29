@@ -12,11 +12,10 @@ interface HomeProjectsProps {
   // Scroll reveals wait for this (the end of the page's intro). When the
   // intro was skipped they're skipped too, and everything simply shows.
   revealReady?: boolean;
-  // Arriving at /#work (the "Work" link on project pages): when the intro was
-  // skipped the browser's own jump to the hash already landed here; otherwise
-  // this scrolls here once `scrollToHashWhenReady` is set (after the intro).
+  // Arriving at /#work uses the hero's docking position when provided.
   introSkipped?: boolean;
   scrollToHashWhenReady?: boolean;
+  onScrollToWork?: () => void;
 }
 
 // The home page's work section: projects marked "featured" in Sanity show as
@@ -27,38 +26,40 @@ export default function HomeProjects({
   revealReady = true,
   introSkipped = false,
   scrollToHashWhenReady = false,
+  onScrollToWork,
 }: HomeProjectsProps) {
   const ref = useRef<HTMLElement>(null);
   const featured = projects.filter((p) => p.featured);
   const rest = projects.filter((p) => !p.featured);
 
-  // The section only exists once the intro has played, so the browser's own
-  // jump to #work finds nothing on a fresh load. Scroll once the intro is done
-  // (two frames later, so late size updates land first), unless the visitor
-  // has already scrolled. The hash is then dropped from the URL, so going Back
-  // to this page later restores its scroll position instead of jumping here.
+  // Wait for the intro and final layout. A native hash jump on a client
+  // navigation needs the same heading clearance as a click from the hero.
+  // Dropping the hash lets Back restore the visitor's later scroll position.
   useEffect(() => {
     if (window.location.hash !== '#work') return;
     // (null state: Next fills in its own and updates its router's URL too)
     const dropHash = () =>
       history.replaceState(null, '', window.location.pathname + window.location.search);
-    if (introSkipped) {
+    if (introSkipped && !onScrollToWork) {
       dropHash();
       return;
     }
     if (!scrollToHashWhenReady) return;
-    if (window.scrollY > 0) {
+    const nativeHashJump = introSkipped && ref.current &&
+      Math.abs(ref.current.getBoundingClientRect().top) < 2;
+    if (window.scrollY > 0 && !nativeHashJump) {
       dropHash();
       return;
     }
     let frame = requestAnimationFrame(() => {
       frame = requestAnimationFrame(() => {
-        ref.current?.scrollIntoView();
+        if (onScrollToWork) onScrollToWork();
+        else ref.current?.scrollIntoView();
         dropHash();
       });
     });
     return () => cancelAnimationFrame(frame);
-  }, [introSkipped, scrollToHashWhenReady]);
+  }, [introSkipped, scrollToHashWhenReady, onScrollToWork]);
 
   if (projects.length === 0) return null;
 

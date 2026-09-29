@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useMotionValueEvent, useTransform } from 'framer-motion';
 import { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -22,6 +22,9 @@ import ThemeToggle from '@/components/ThemeToggle';
 import { Language, translations } from './translations';
 import HomeProjects from '@/components/projects/HomeProjects';
 import type { ProjectCardData } from '@/components/projects/types';
+import HomeNavigationBackdrop from './HomeNavigationBackdrop';
+import { useHeroScroll } from './useHeroScroll';
+import HeroBioLine from './HeroBioLine';
 
 // "Zhao" sits in the second of the two mobile grid columns: half the
 // container width plus half the 12px column gap (~51.7% of the row).
@@ -53,10 +56,16 @@ export default function HomePanelMobile({
 }: HomePanelMobileProps) {
   const headerRef = useRef<HTMLHeadingElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const belowFoldRef = useRef<HTMLDivElement>(null);
+  const titleSpaceRef = useRef<HTMLDivElement>(null);
+  const heroRef = useRef<HTMLDivElement>(null);
+  const headingRef = useRef<HTMLAnchorElement>(null);
   const [fontSize, setFontSize] = useState('96px');
   const [shrunkFontSize, setShrunkFontSize] = useState(64);
+  const [containerWidth, setContainerWidth] = useState(0);
+  const [firstNameWidth, setFirstNameWidth] = useState(0);
   const [hasShrunk, setHasShrunk] = useState(instant);
+  const [introDone, setIntroDone] = useState(instant);
+  const [navigationVisible, setNavigationVisible] = useState(false);
   // True once the page is scrolled past the first screen; flips the arrows.
   const [scrolledDown, setScrolledDown] = useState(false);
   // True once the user has changed language: changed copy then re-animates
@@ -72,13 +81,33 @@ export default function HomePanelMobile({
   const t = translations[language];
   const fromT = translations[prevLanguage];
   const projectCount = String(projects.length);
+  const { progress, headingY, scrollToProjects } = useHeroScroll({
+    heroRef,
+    headingRef,
+    enabled: hasShrunk && showContent && projects.length > 0,
+    ready: introDone,
+  });
+  const heroOpacity = useTransform(progress, [0, 0.7], [1, 0]);
+  const heroVisibility = useTransform(progress, (value) => value >= 0.7 ? 'hidden' : 'visible');
+  const bioVisibility = useTransform(progress, (value) => value >= 1 ? 'hidden' : 'visible');
+  const navigationOpacity = useTransform(progress, [0.55, 1], [0, 1]);
+  const nameBlend = useTransform(progress, (value) => value >= 0.7 ? 'difference' : 'normal');
+  const nameColor = useTransform(progress, (value) => value >= 0.7 ? '#ffffff' : 'var(--foreground)');
+  const compactScale = 20 / shrunkFontSize;
+  const titleScale = useTransform(progress, [0, 1], [1, compactScale]);
+  const lastNameY = useTransform(progress, [0, 1], [0, -shrunkFontSize]);
+  const lastNameX = useTransform(progress, [0, 1], [
+    0,
+    firstNameWidth + 6 / compactScale - lineOffsetRatio * containerWidth,
+  ]);
+
+  useMotionValueEvent(progress, 'change', (value) => {
+    setNavigationVisible(value > 0.55);
+  });
 
   const scrollToWork = (e: React.MouseEvent) => {
-    const work = document.getElementById('work');
-    if (!work) return;
     e.preventDefault();
-    work.scrollIntoView({ behavior: 'smooth' });
-    work.focus({ preventScroll: true });
+    scrollToProjects(true);
   };
 
   // The globe cycles English → Swedish → Chinese
@@ -100,7 +129,7 @@ export default function HomePanelMobile({
       if (hasShrunk) return;
 
       if (headerRef.current && containerRef.current) {
-        const containerWidth = containerRef.current.offsetWidth;
+        const containerWidth = titleSpaceRef.current?.offsetWidth ?? containerRef.current.offsetWidth;
 
         // Create a temporary element to measure text width.
         // On mobile the name stacks in two lines, so fit the longest word.
@@ -156,7 +185,7 @@ export default function HomePanelMobile({
     const updateShrunkFontSize = (firstPaint = false) => {
       if (!headerRef.current || !containerRef.current) return;
 
-      const containerWidth = containerRef.current.offsetWidth;
+      const containerWidth = titleSpaceRef.current?.offsetWidth ?? containerRef.current.offsetWidth;
       // Not laid out yet — keep the previous size and offset
       if (containerWidth === 0) return;
 
@@ -197,9 +226,13 @@ export default function HomePanelMobile({
       measureEl.style.fontSize = `${bestSize}px`;
       measureEl.textContent = lastName;
       const lastNameWidth = measureEl.offsetWidth;
+      measureEl.textContent = firstName;
+      const firstWordWidth = measureEl.offsetWidth;
 
       document.body.removeChild(measureEl);
       setShrunkFontSize(bestSize);
+      setContainerWidth(containerWidth);
+      setFirstNameWidth(firstWordWidth);
       setLineOffsetRatio(Math.max(0, (containerWidth - lastNameWidth) / containerWidth));
 
       // framer-motion only applies the new size a frame later (and resets its
@@ -218,7 +251,7 @@ export default function HomePanelMobile({
     updateShrunkFontSize(true);
     window.addEventListener('resize', onResize);
     return () => window.removeEventListener('resize', onResize);
-  }, [lastName, instant]);
+  }, [firstName, lastName, instant]);
 
   const photoSize = shrunkFontSize * PHOTO_TO_FONT_RATIO;
 
@@ -261,6 +294,15 @@ export default function HomePanelMobile({
   const timeDelay = rolesDelay + 0.05;
   const arrowsDelay = timeDelay + 0.05;
   const globeDelay = contentBaseDelay + 0.1;
+
+  useEffect(() => {
+    if (instant || !showContent) return;
+    const timer = setTimeout(
+      () => setIntroDone(true),
+      (shrinkDelay + arrowsDelay + 1.1) * 1000,
+    );
+    return () => clearTimeout(timer);
+  }, [showContent, instant, shrinkDelay, arrowsDelay]);
 
   // `instant` collapses the intro shrink to zero duration when the page is
   // re-mounted after visiting /resume (the intro is skipped on the way back).
@@ -321,12 +363,31 @@ export default function HomePanelMobile({
     if (scrolledDown) {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
-      belowFoldRef.current?.scrollIntoView({ behavior: 'smooth' });
+      scrollToProjects();
     }
   };
 
   return (
     <div className="theme-root bg-background min-h-dvh w-full relative overflow-x-clip">
+      <HomeNavigationBackdrop progress={progress} />
+      <motion.nav
+        aria-label="Main navigation"
+        aria-hidden={!navigationVisible}
+        className="fixed top-6 right-6 z-50 flex items-center gap-4 font-normal text-[12px] tracking-[-0.24px] leading-normal"
+        style={{
+          opacity: navigationOpacity,
+          pointerEvents: navigationVisible ? 'auto' : 'none',
+          color: '#ffffff',
+          mixBlendMode: 'difference',
+        }}
+      >
+        <a href={`mailto:${EMAIL}`} tabIndex={navigationVisible ? 0 : -1}>
+          {t.navContact}
+        </a>
+        <Link href={RESUME_URL} tabIndex={navigationVisible ? 0 : -1}>
+          {t.navResume}
+        </Link>
+      </motion.nav>
       {/* Background column guides - 2 column mobile grid (currently hidden) */}
       {SHOW_COLUMN_GUIDES && (
         <div
@@ -354,13 +415,26 @@ export default function HomePanelMobile({
             afterwards it can grow on short or landscape screens instead of
             overflowing onto the work list. */}
         <div
+          ref={heroRef}
           className={`relative flex flex-col ${
             hasShrunk ? 'min-h-svh' : 'h-svh overflow-hidden'
           } shrink-0 items-start p-6 w-full`}
         >
           <div className="flex flex-col flex-1 gap-12 items-start w-full">
             {/* Header Content */}
-            <div ref={containerRef} className="relative w-full py-1">
+            <motion.div
+              ref={titleSpaceRef}
+              aria-hidden="true"
+              className="w-full shrink-0"
+              initial={instant ? false : undefined}
+              animate={{ height: (hasShrunk ? shrunkFontSize : parseFloat(fontSize)) * 1.75 + 8 }}
+              transition={shrinkTransition}
+            />
+            <motion.div
+              ref={containerRef}
+              className="fixed top-6 left-6 right-6 z-40 py-1 origin-top-left"
+              style={{ scale: titleScale, color: nameColor, mixBlendMode: nameBlend }}
+            >
               <motion.h1
                 ref={headerRef}
                 className="font-medium leading-none w-full cursor-default"
@@ -394,9 +468,9 @@ export default function HomePanelMobile({
                       two texts align. Also rendered without a live switch when
                       the session restored Chinese. */}
                   {(langSwitched || (t.nativeName !== '' && hasShrunk && showContent)) && (
-                    <span
+                    <motion.span
                       className="font-light text-[12px] leading-none ml-auto"
-                      style={{ letterSpacing: '-0.02em' }}
+                      style={{ letterSpacing: '-0.02em', opacity: heroOpacity }}
                     >
                       {langSwitched ? (
                         <ScrambleText from={fromT.nativeName} charDelay={switchCharDelay}>
@@ -407,7 +481,7 @@ export default function HomePanelMobile({
                           {t.nativeName}
                         </AnimatedText>
                       )}
-                    </span>
+                    </motion.span>
                   )}
                 </span>
                 {/* After a language switch the line becomes a right-anchored
@@ -420,6 +494,7 @@ export default function HomePanelMobile({
                     paddingLeft: hasShrunk ? `${lineOffsetRatio * 100}%` : '0%',
                   }}
                   transition={shrinkTransition}
+                  style={{ x: lastNameX, y: lastNameY }}
                 >
                   {langSwitched ? (
                     <ScrambleText
@@ -441,34 +516,36 @@ export default function HomePanelMobile({
                   {/* Profile picture - appears beside "Zhao" once the name settles.
                       Always mounted (with priority) so the image is preloaded
                       while the loading line runs, instead of popping in late. */}
-                  <motion.span
-                    className="block absolute top-1/2"
-                    style={{
-                      width: photoSize,
-                      height: photoSize,
-                      marginTop: -photoSize / 2,
-                    }}
-                    initial={{ opacity: 0, scale: 0.8, left: photoLeft }}
-                    animate={
-                      hasShrunk && showContent
-                        ? { opacity: 1, scale: 1, left: photoLeft }
-                        : { opacity: 0, scale: 0.8, left: photoLeft }
-                    }
-                    transition={{
-                      opacity: { duration: 0.6, delay: shrinkDuration, ease: [0.4, 0, 0.2, 1] },
-                      scale: { duration: 0.6, delay: shrinkDuration, ease: [0.4, 0, 0.2, 1] },
-                      // Slide in step with the name line's offset change
-                      left: shrinkTransition,
-                    }}
-                  >
-                    <Image
-                      src="/profile.webp"
-                      alt="Winston Zhao"
-                      width={128}
-                      height={128}
-                      priority
-                      className="w-full h-full object-cover"
-                    />
+                  <motion.span style={{ opacity: heroOpacity }}>
+                    <motion.span
+                      className="block absolute top-1/2"
+                      style={{
+                        width: photoSize,
+                        height: photoSize,
+                        marginTop: -photoSize / 2,
+                      }}
+                      initial={{ opacity: 0, scale: 0.8, left: photoLeft }}
+                      animate={
+                        hasShrunk && showContent
+                          ? { opacity: 1, scale: 1, left: photoLeft }
+                          : { opacity: 0, scale: 0.8, left: photoLeft }
+                      }
+                      transition={{
+                        opacity: { duration: 0.6, delay: shrinkDuration, ease: [0.4, 0, 0.2, 1] },
+                        scale: { duration: 0.6, delay: shrinkDuration, ease: [0.4, 0, 0.2, 1] },
+                        // Slide in step with the name line's offset change
+                        left: shrinkTransition,
+                      }}
+                    >
+                      <Image
+                        src="/profile.webp"
+                        alt="Winston Zhao"
+                        width={128}
+                        height={128}
+                        priority
+                        className="w-full h-full object-cover"
+                      />
+                    </motion.span>
                   </motion.span>
                 </motion.span>
               </motion.h1>
@@ -476,24 +553,26 @@ export default function HomePanelMobile({
               {/* Globe - appears after shrink */}
               <AnimatePresence>
                 {hasShrunk && showContent && (
-                  <motion.div
-                    className="absolute top-1 right-0 w-4 h-4"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{
-                      duration: 0.6,
-                      delay: globeDelay,
-                      ease: [0.4, 0, 0.2, 1],
-                    }}
-                  >
-                    <LanguageGlobe
-                      onClick={toggleLanguage}
-                      className="block w-full h-full cursor-pointer"
-                    />
+                  <motion.div style={{ opacity: heroOpacity, visibility: heroVisibility }}>
+                    <motion.div
+                      className="absolute top-1 right-0 w-4 h-4"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{
+                        duration: 0.6,
+                        delay: globeDelay,
+                        ease: [0.4, 0, 0.2, 1],
+                      }}
+                    >
+                      <LanguageGlobe
+                        onClick={toggleLanguage}
+                        className="block w-full h-full cursor-pointer"
+                      />
+                    </motion.div>
                   </motion.div>
                 )}
               </AnimatePresence>
-            </div>
+            </motion.div>
 
             {/* Bio Section */}
             <AnimatePresence>
@@ -506,9 +585,12 @@ export default function HomePanelMobile({
                 >
                   <div className="flex flex-col gap-12 w-full">
                     {/* Bio */}
-                    <div className={`${bigTextWeight} leading-none text-[32px] ${bigTextTracking} transition-[font-weight,letter-spacing] duration-700 ease-in-out cursor-default`}>
+                    <motion.div
+                      style={{ y: headingY, visibility: bioVisibility }}
+                      className={`${bigTextWeight} leading-none text-[32px] ${bigTextTracking} transition-[font-weight,letter-spacing] duration-700 ease-in-out cursor-default`}
+                    >
                       {t.bioLines.map((line, index) => (
-                        <p key={index} className={index < t.bioLines.length - 1 ? 'mb-0' : undefined}>
+                        <HeroBioLine key={index} progress={progress} index={index} lines={t.bioLines}>
                           {langSwitched ? (
                             <ScrambleText
                               from={fromT.bioLines[index]}
@@ -524,92 +606,100 @@ export default function HomePanelMobile({
                           ) : (
                             <span className="opacity-0">{line}</span>
                           )}
-                        </p>
+                        </HeroBioLine>
                       ))}
-                    </div>
+                    </motion.div>
 
                     {/* Work + Icon */}
-                    <div className="flex gap-9 items-center justify-between w-full">
-                      <a
-                        href="#work"
-                        onClick={scrollToWork}
-                        className={`flex gap-2 items-start ${bigTextWeight} whitespace-nowrap cursor-pointer transition-[font-weight] duration-700 ease-in-out`}
-                      >
-                        <motion.span
-                          className={`text-[32px] leading-none ${bigTextTracking} transition-[letter-spacing] duration-700 ease-in-out`}
-                          initial={{ clipPath: 'inset(-10% -10% 0 -10%)' }}
-                          animate={{ clipPath: 'inset(-10% -10% -20% -10%)' }}
-                          transition={{
-                            duration: 0.5,
-                            delay: workDelay + 0.5,
-                            ease: [0.4, 0, 0.2, 1],
-                          }}
+                    <motion.div
+                      className="relative z-30 flex gap-9 items-center justify-between w-full"
+                      style={{ y: headingY }}
+                    >
+                      <h2>
+                        <a
+                          ref={headingRef}
+                          href="#work"
+                          onClick={scrollToWork}
+                          className={`flex gap-2 items-start ${bigTextWeight} whitespace-nowrap cursor-pointer transition-[font-weight] duration-700 ease-in-out`}
                         >
-                          {langSwitched ? (
-                            <ScrambleText from={fromT.workLabel} charDelay={switchCharDelay}>
-                              {t.workLabel}
-                            </ScrambleText>
-                          ) : showContent ? (
-                            <motion.span
-                              className="inline-block"
-                              initial={{ y: '40%', opacity: 0 }}
-                              animate={{ y: '0%', opacity: 1 }}
-                              transition={{
-                                duration: 0.9,
-                                delay: workDelay,
-                                ease: [0.4, 0, 0.2, 1],
-                              }}
-                            >
-                              {t.workLabel}
-                            </motion.span>
-                          ) : (
-                            <span className="opacity-0">{t.workLabel}</span>
-                          )}
-                        </motion.span>
-                        <motion.span
-                          className="text-[12px] leading-normal tracking-[-0.24px]"
-                          initial={{ clipPath: 'inset(-10% -10% 0 -10%)' }}
-                          animate={{ clipPath: 'inset(-10% -10% -20% -10%)' }}
-                          transition={{
-                            duration: 0.5,
-                            delay: workDelay + stagger + 0.5,
-                            ease: [0.4, 0, 0.2, 1],
-                          }}
-                        >
-                          {langSwitched ? (
-                            <ScrambleText from={projectCount} charDelay={switchCharDelay}>
-                              {projectCount}
-                            </ScrambleText>
-                          ) : showContent ? (
-                            <motion.span
-                              className="inline-block"
-                              initial={{ y: '40%', opacity: 0 }}
-                              animate={{ y: '0%', opacity: 1 }}
-                              transition={{
-                                duration: 0.9,
-                                delay: workDelay + stagger,
-                                ease: [0.4, 0, 0.2, 1],
-                              }}
-                            >
-                              {projectCount}
-                            </motion.span>
-                          ) : (
-                            <span className="opacity-0">{projectCount}</span>
-                          )}
-                        </motion.span>
-                      </a>
+                          <motion.span
+                            className={`text-[32px] leading-none ${bigTextTracking} transition-[letter-spacing] duration-700 ease-in-out`}
+                            initial={{ clipPath: 'inset(-10% -10% 0 -10%)' }}
+                            animate={{ clipPath: 'inset(-10% -10% -20% -10%)' }}
+                            transition={{
+                              duration: 0.5,
+                              delay: workDelay + 0.5,
+                              ease: [0.4, 0, 0.2, 1],
+                            }}
+                          >
+                            {langSwitched ? (
+                              <ScrambleText from={fromT.workLabel} charDelay={switchCharDelay}>
+                                {t.workLabel}
+                              </ScrambleText>
+                            ) : showContent ? (
+                              <motion.span
+                                className="inline-block"
+                                initial={{ y: '40%', opacity: 0 }}
+                                animate={{ y: '0%', opacity: 1 }}
+                                transition={{
+                                  duration: 0.9,
+                                  delay: workDelay,
+                                  ease: [0.4, 0, 0.2, 1],
+                                }}
+                              >
+                                {t.workLabel}
+                              </motion.span>
+                            ) : (
+                              <span className="opacity-0">{t.workLabel}</span>
+                            )}
+                          </motion.span>
+                          <motion.span
+                            className="text-[12px] leading-normal tracking-[-0.24px]"
+                            initial={{ clipPath: 'inset(-10% -10% 0 -10%)' }}
+                            animate={{ clipPath: 'inset(-10% -10% -20% -10%)' }}
+                            transition={{
+                              duration: 0.5,
+                              delay: workDelay + stagger + 0.5,
+                              ease: [0.4, 0, 0.2, 1],
+                            }}
+                          >
+                            {langSwitched ? (
+                              <ScrambleText from={projectCount} charDelay={switchCharDelay}>
+                                {projectCount}
+                              </ScrambleText>
+                            ) : showContent ? (
+                              <motion.span
+                                className="inline-block"
+                                initial={{ y: '40%', opacity: 0 }}
+                                animate={{ y: '0%', opacity: 1 }}
+                                transition={{
+                                  duration: 0.9,
+                                  delay: workDelay + stagger,
+                                  ease: [0.4, 0, 0.2, 1],
+                                }}
+                              >
+                                {projectCount}
+                              </motion.span>
+                            ) : (
+                              <span className="opacity-0">{projectCount}</span>
+                            )}
+                          </motion.span>
+                        </a>
+                      </h2>
                       {showContent ? (
-                        <motion.div
-                          className="w-8 h-8 shrink-0"
-                          initial={{ opacity: 0, scale: 0.8 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          transition={{
-                            duration: 0.8,
-                            delay: iconDelay,
-                            ease: [0.4, 0, 0.2, 1],
-                          }}
-                        >
-                          <ThemeToggle className="w-full h-full" />
+                        <motion.div style={{ opacity: heroOpacity, visibility: heroVisibility }}>
+                          <motion.div
+                            className="w-8 h-8 shrink-0"
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{
+                              duration: 0.8,
+                              delay: iconDelay,
+                              ease: [0.4, 0, 0.2, 1],
+                            }}
+                          >
+                            <ThemeToggle className="w-full h-full" />
+                          </motion.div>
                         </motion.div>
                       ) : (
                         <div className="w-8 h-8 shrink-0 opacity-0">
@@ -619,124 +709,132 @@ export default function HomePanelMobile({
                           </svg>
                         </div>
                       )}
-                    </div>
+                    </motion.div>
                   </div>
 
                   {/* Roles and Time - pinned to the bottom of the viewport */}
-                  <div className="flex items-start justify-between mt-auto pt-12 w-full">
-                    <motion.div
-                      initial={{ clipPath: 'inset(-10% -10% 0 -10%)' }}
-                      animate={{ clipPath: 'inset(-10% -10% -20% -10%)' }}
-                      transition={{
-                        duration: 0.5,
-                        delay: rolesDelay + 0.5,
-                        ease: [0.4, 0, 0.2, 1],
-                      }}
-                    >
-                      {showContent ? (
-                        <motion.div
-                          initial={{ y: '40%', opacity: 0 }}
-                          animate={{ y: '0%', opacity: 1 }}
-                          transition={{
-                            duration: 0.9,
-                            delay: rolesDelay,
-                            ease: [0.4, 0, 0.2, 1],
-                          }}
-                          className="flex flex-col gap-1 items-start"
-                        >
-                          <NewlyRole label={roleLabel(t.designAt, fromT.designAt)} />
-                          <FigmaRole label={roleLabel(t.campusLeaderAt, fromT.campusLeaderAt)} />
-                          <TextQLRole label={roleLabel(t.prevDesignAt, fromT.prevDesignAt)} />
-                        </motion.div>
-                      ) : (
-                        <div className="opacity-0 flex flex-col gap-1 items-start">
-                          <p className="font-normal text-[12px] tracking-[-0.24px] leading-normal whitespace-nowrap">Design at Newly</p>
-                        </div>
-                      )}
-                    </motion.div>
-
-                    {/* Time + footer toggle arrows */}
-                    <div className="flex flex-col items-end justify-between self-stretch">
+                  <motion.div
+                    className="grid grid-cols-[27px_1fr] gap-x-5 items-start mt-auto pt-12 w-full"
+                    style={{ opacity: heroOpacity, visibility: heroVisibility }}
+                  >
+                    <div className="w-[27px] h-[17px] shrink-0 self-end">
+                      <WZLogo className="w-full h-full" draw show={showContent} instant={instant} delay={rolesDelay} />
+                    </div>
+                    <div className="flex flex-wrap gap-x-3 gap-y-3 items-start justify-between">
                       <motion.div
-                        className="flex items-center justify-end gap-1.5 whitespace-nowrap"
                         initial={{ clipPath: 'inset(-10% -10% 0 -10%)' }}
                         animate={{ clipPath: 'inset(-10% -10% -20% -10%)' }}
                         transition={{
                           duration: 0.5,
-                          delay: timeDelay + 0.5,
+                          delay: rolesDelay + 0.5,
                           ease: [0.4, 0, 0.2, 1],
                         }}
                       >
                         {showContent ? (
                           <motion.div
-                            className="flex items-center gap-1.5"
                             initial={{ y: '40%', opacity: 0 }}
                             animate={{ y: '0%', opacity: 1 }}
                             transition={{
                               duration: 0.9,
-                              delay: timeDelay,
+                              delay: rolesDelay,
                               ease: [0.4, 0, 0.2, 1],
                             }}
+                            className="flex flex-col gap-1 items-start"
                           >
-                            <span className="font-medium text-[12px] tracking-[-0.24px] leading-normal">
-                              {langSwitched ? (
-                                <ScrambleText from={formatStockholmTime(prevLanguage)} charDelay={switchCharDelay}>
-                                  {currentTime}
-                                </ScrambleText>
-                              ) : (
-                                currentTime
-                              )}
-                            </span>
-                            <span className="w-2.5 h-2.5 rounded-full bg-foreground shrink-0 self-center" />
+                            <NewlyRole label={roleLabel(t.designAt, fromT.designAt)} />
+                            <FigmaRole label={roleLabel(t.campusLeaderAt, fromT.campusLeaderAt)} />
+                            <TextQLRole label={roleLabel(t.prevDesignAt, fromT.prevDesignAt)} />
                           </motion.div>
                         ) : (
-                          <div className="flex items-center gap-1.5 opacity-0">
-                            <span className="font-medium text-[12px] tracking-[-0.24px] leading-normal">{currentTime}</span>
-                            <span className="w-2.5 h-2.5 rounded-full bg-foreground shrink-0 self-center" />
+                          <div className="opacity-0 flex flex-col gap-1 items-start">
+                            <p className="font-normal text-[12px] tracking-[-0.24px] leading-normal whitespace-nowrap">Design at Newly</p>
                           </div>
                         )}
                       </motion.div>
 
-                      <motion.div
-                        initial={{ clipPath: 'inset(-10% -10% 0 -10%)' }}
-                        animate={{ clipPath: 'inset(-10% -10% -20% -10%)' }}
-                        transition={{
-                          duration: 0.5,
-                          delay: arrowsDelay + 0.5,
-                          ease: [0.4, 0, 0.2, 1],
-                        }}
-                      >
-                        {showContent ? (
-                          <motion.button
-                            type="button"
-                            onClick={toggleScroll}
-                            aria-label={scrolledDown ? 'Back to top' : 'Scroll down'}
-                            className="font-medium text-[12px] tracking-[-0.24px] leading-normal cursor-pointer p-0"
-                            initial={{ y: '40%', opacity: 0 }}
-                            animate={{ y: '0%', opacity: 1 }}
-                            transition={{
-                              duration: 0.9,
-                              delay: arrowsDelay,
-                              ease: [0.4, 0, 0.2, 1],
-                            }}
-                          >
-                            {[0, 1].map((i) => (
-                              <motion.span
-                                key={i}
-                                className="inline-block"
-                                animate={{ rotate: scrolledDown ? 180 : 0 }}
-                                transition={{ duration: 0.4, delay: i * 0.08, ease: [0.4, 0, 0.2, 1] }}
-                              >
-                                ↑
-                              </motion.span>
-                            ))}
-                          </motion.button>
-                        ) : (
-                          <span className="opacity-0 font-medium text-[12px] tracking-[-0.24px] leading-normal">↑↑</span>
-                        )}
-                      </motion.div>
+                      {/* Time + footer toggle arrows */}
+                      <div className="flex flex-col items-end justify-between self-stretch ml-auto">
+                        <motion.div
+                          className="flex items-center justify-end gap-1.5 whitespace-nowrap"
+                          initial={{ clipPath: 'inset(-10% -10% 0 -10%)' }}
+                          animate={{ clipPath: 'inset(-10% -10% -20% -10%)' }}
+                          transition={{
+                            duration: 0.5,
+                            delay: timeDelay + 0.5,
+                            ease: [0.4, 0, 0.2, 1],
+                          }}
+                        >
+                          {showContent ? (
+                            <motion.div
+                              className="flex items-center gap-1.5"
+                              initial={{ y: '40%', opacity: 0 }}
+                              animate={{ y: '0%', opacity: 1 }}
+                              transition={{
+                                duration: 0.9,
+                                delay: timeDelay,
+                                ease: [0.4, 0, 0.2, 1],
+                              }}
+                            >
+                              <span className="font-medium text-[12px] tracking-[-0.24px] leading-normal">
+                                {langSwitched ? (
+                                  <ScrambleText from={formatStockholmTime(prevLanguage)} charDelay={switchCharDelay}>
+                                    {currentTime}
+                                  </ScrambleText>
+                                ) : (
+                                  currentTime
+                                )}
+                              </span>
+                              <span className="w-2.5 h-2.5 rounded-full bg-foreground shrink-0 self-center" />
+                            </motion.div>
+                          ) : (
+                            <div className="flex items-center gap-1.5 opacity-0">
+                              <span className="font-medium text-[12px] tracking-[-0.24px] leading-normal">{currentTime}</span>
+                              <span className="w-2.5 h-2.5 rounded-full bg-foreground shrink-0 self-center" />
+                            </div>
+                          )}
+                        </motion.div>
+
+                        <motion.div
+                          initial={{ clipPath: 'inset(-10% -10% 0 -10%)' }}
+                          animate={{ clipPath: 'inset(-10% -10% -20% -10%)' }}
+                          transition={{
+                            duration: 0.5,
+                            delay: arrowsDelay + 0.5,
+                            ease: [0.4, 0, 0.2, 1],
+                          }}
+                        >
+                          {showContent ? (
+                            <motion.button
+                              type="button"
+                              onClick={toggleScroll}
+                              aria-label={scrolledDown ? 'Back to top' : 'Scroll down'}
+                              className="font-medium text-[12px] tracking-[-0.24px] leading-normal cursor-pointer p-0"
+                              initial={{ y: '40%', opacity: 0 }}
+                              animate={{ y: '0%', opacity: 1 }}
+                              transition={{
+                                duration: 0.9,
+                                delay: arrowsDelay,
+                                ease: [0.4, 0, 0.2, 1],
+                              }}
+                            >
+                              {[0, 1].map((i) => (
+                                <motion.span
+                                  key={i}
+                                  className="inline-block"
+                                  animate={{ rotate: scrolledDown ? 180 : 0 }}
+                                  transition={{ duration: 0.4, delay: i * 0.08, ease: [0.4, 0, 0.2, 1] }}
+                                >
+                                  ↑
+                                </motion.span>
+                              ))}
+                            </motion.button>
+                          ) : (
+                            <span className="opacity-0 font-medium text-[12px] tracking-[-0.24px] leading-normal">↑↑</span>
+                          )}
+                        </motion.div>
+                      </div>
                     </div>
-                  </div>
+                  </motion.div>
                 </motion.div>
               )}
             </AnimatePresence>
@@ -746,13 +844,14 @@ export default function HomePanelMobile({
         {/* Below the fold: work, then the footer. Rendered once the intro
             has played, so the page can't be scrolled mid-intro. */}
         {hasShrunk && (
-          <div ref={belowFoldRef} className="flex flex-col gap-9 w-full">
+          <div className="flex flex-col gap-9 w-full">
             {projects.length > 0 && (
               <HomeProjects
                 projects={projects}
                 className="pt-6"
                 introSkipped={instant}
-                scrollToHashWhenReady={!instant}
+                scrollToHashWhenReady={introDone}
+                onScrollToWork={scrollToProjects}
               />
             )}
 
