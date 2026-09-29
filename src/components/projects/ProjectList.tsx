@@ -19,6 +19,7 @@ const BATCH_MS = 100;
 
 interface ProjectRowProps {
   project: ProjectCardData;
+  active: boolean;
   dimmed: boolean;
   onMouseEnter: (e: React.MouseEvent) => void;
   // Delay for this row within the batch of rows being revealed right now
@@ -26,7 +27,7 @@ interface ProjectRowProps {
 }
 
 // Each row slides up from behind its own bottom edge as it scrolls into view.
-function ProjectRow({ project, dimmed, onMouseEnter, nextDelay }: ProjectRowProps) {
+function ProjectRow({ project, active, dimmed, onMouseEnter, nextDelay }: ProjectRowProps) {
   const { ref, shown, still } = useReveal<HTMLLIElement>('some', '0px 0px -5% 0px');
   const [scope, animate] = useAnimate<HTMLSpanElement>();
   const [shownAtMount] = useState(shown);
@@ -59,7 +60,10 @@ function ProjectRow({ project, dimmed, onMouseEnter, nextDelay }: ProjectRowProp
             </span>
             <span className="hidden md:flex items-start justify-between gap-4">
               <span className="flex-1 min-w-0 font-[450] truncate">{project.description}</span>
-              <span aria-hidden="true" className="shrink-0 text-right font-normal">
+              <span
+                aria-hidden="true"
+                className={`shrink-0 text-right font-normal transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none ${active ? 'rotate-45' : 'rotate-0'}`}
+              >
                 ↗
               </span>
             </span>
@@ -89,6 +93,7 @@ export default function ProjectList({ projects }: { projects: ProjectCardData[] 
           <ProjectRow
             key={project._id}
             project={project}
+            active={preview.active === project._id}
             dimmed={!!preview.active && preview.active !== project._id}
             onMouseEnter={(e) =>
               preview.show(project._id, e, {
