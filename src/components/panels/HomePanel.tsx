@@ -749,14 +749,12 @@ export default function HomePanel({
           Each piece reveals as it scrolls into view, from when the footer
           would appear. */}
       {hasShrunk && showContent && projects.length > 0 && (
-        <div className="relative w-full">
-          <HomeProjects
-            projects={projects}
-            introSkipped={instant}
-            revealReady={workRevealReady}
-            scrollToHashWhenReady={introDone && !instant}
-          />
-        </div>
+        <HomeProjects
+          projects={projects}
+          introSkipped={instant}
+          revealReady={workRevealReady}
+          scrollToHashWhenReady={introDone && !instant}
+        />
       )}
 
       {/* Footer Section */}

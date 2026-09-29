@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { imageUrl, imageObjectPosition } from '@/lib/image';
-import { MaskLine, REVEAL_EASE, useReveal } from './reveal';
+import { MaskLine, revealTransition, useReveal } from './reveal';
 import type { ProjectCardData } from './types';
 
 // Featured projects are laid out on the 3-column grid in a repeating
@@ -49,7 +49,7 @@ function FeaturedCard({
   paired: boolean;
   delay: number;
 }) {
-  const { ref, shown } = useReveal<HTMLAnchorElement>();
+  const { ref, shown, still } = useReveal<HTMLAnchorElement>();
   const src = imageUrl(project.coverImage, slot.wide ? 1400 : 1000);
   const shape = !slot.wide
     ? 'md:aspect-[387/398]'
@@ -68,13 +68,13 @@ function FeaturedCard({
         className={`relative w-full overflow-hidden bg-foreground/5 aspect-[4/3] ${shape}`}
         initial={false}
         animate={{ clipPath: shown ? 'inset(0% 0% 0% 0%)' : 'inset(100% 0% 0% 0%)' }}
-        transition={{ duration: 1.1, delay, ease: REVEAL_EASE }}
+        transition={revealTransition(still, 1.1, delay)}
       >
         <motion.div
           className="absolute inset-0"
           initial={false}
           animate={{ scale: shown ? 1 : 1.15 }}
-          transition={{ duration: 1.4, delay, ease: REVEAL_EASE }}
+          transition={revealTransition(still, 1.4, delay)}
         >
           {src && (
             // eslint-disable-next-line @next/next/no-img-element
@@ -90,13 +90,13 @@ function FeaturedCard({
       </motion.div>
       <div className="flex gap-4 items-start w-full text-[12px] md:text-[14px] tracking-[-0.24px] md:tracking-[-0.28px] leading-[1.2]">
         <div className="flex-1 min-w-0">
-          <MaskLine shown={shown} delay={delay + 0.3}>
+          <MaskLine shown={shown} still={still} delay={delay + 0.3}>
             {project.title}
           </MaskLine>
         </div>
         {project.year && (
           <div className="shrink-0 text-right whitespace-nowrap">
-            <MaskLine shown={shown} delay={delay + 0.35}>
+            <MaskLine shown={shown} still={still} delay={delay + 0.35}>
               {project.year}
             </MaskLine>
           </div>

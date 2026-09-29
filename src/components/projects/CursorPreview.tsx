@@ -3,6 +3,7 @@
 import { motion, useMotionValue, useSpring, type MotionValue } from 'framer-motion';
 import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { createPortal } from 'react-dom';
+import { REVEAL_EASE } from './reveal';
 
 // An image that pops up beside the cursor while something is hovered and
 // trails it on a spring, so it lags a little behind. Used by the project list
@@ -12,9 +13,9 @@ const CURSOR_GAP = 24;
 // Closest the image gets to the window's edges
 const EDGE_MARGIN = 16;
 const FOLLOW_SPRING = { stiffness: 350, damping: 35, mass: 0.6 } as const;
-const REVEAL_TRANSITION = { duration: 0.25, ease: [0.22, 1, 0.36, 1] } as const;
+const REVEAL_TRANSITION = { duration: 0.25, ease: REVEAL_EASE };
 
-export interface PreviewSize {
+interface PreviewSize {
   width: number;
   height: number;
 }
@@ -38,7 +39,7 @@ export interface CursorPreviewState {
 }
 
 // True on devices with a mouse or trackpad (no previews on touch screens)
-export function useCanHover() {
+function useCanHover() {
   const [canHover, setCanHover] = useState(false);
   useEffect(() => {
     const media = window.matchMedia('(hover: hover) and (pointer: fine)');
@@ -58,24 +59,29 @@ export function useCursorPreview(): CursorPreviewState {
   const x = useSpring(targetX, FOLLOW_SPRING);
   const y = useSpring(targetY, FOLLOW_SPRING);
   const sizeRef = useRef<PreviewSize>(size);
-  const placed = useRef(false);
+  // What's showing right now, and when the last one was let go (it stays on
+  // screen while it fades out)
+  const activeRef = useRef<string | null>(null);
+  const hiddenAt = useRef(-Infinity);
 
-  const place = (clientX: number, clientY: number) => {
+  const place = (clientX: number, clientY: number, jump: boolean) => {
     const { width, height } = sizeRef.current;
     const flip = clientX + CURSOR_GAP + width > window.innerWidth - EDGE_MARGIN;
-    const nextX = flip ? clientX - CURSOR_GAP - width : clientX + CURSOR_GAP;
-    // Centred on the cursor, but kept fully on screen near the top or bottom
+    // Kept fully on screen: beside the cursor where it fits, and centred on
+    // it vertically, but never past the window's edges
+    const nextX = Math.max(
+      EDGE_MARGIN,
+      Math.min(flip ? clientX - CURSOR_GAP - width : clientX + CURSOR_GAP, window.innerWidth - width - EDGE_MARGIN),
+    );
     const nextY = Math.max(
       EDGE_MARGIN,
       Math.min(clientY - height / 2, window.innerHeight - height - EDGE_MARGIN),
     );
     targetX.set(nextX);
     targetY.set(nextY);
-    // On the first hover, start at the cursor instead of gliding in from 0,0
-    if (!placed.current) {
+    if (jump) {
       x.jump(nextX);
       y.jump(nextY);
-      placed.current = true;
     }
   };
 
@@ -85,17 +91,24 @@ export function useCursorPreview(): CursorPreviewState {
     y,
     size,
     show: (key, e, nextSize) => {
+      // A preview that appears from hidden starts right at the cursor at its
+      // own size; one that's still on screen (showing, or fading out after
+      // the pointer moved straight from one word to the next) glides there.
+      const onScreen =
+        activeRef.current !== null || performance.now() - hiddenAt.current < REVEAL_TRANSITION.duration * 1000;
       sizeRef.current = nextSize;
-      setSize({ ...nextSize, jump: active === null });
-      place(e.clientX, e.clientY);
+      setSize({ ...nextSize, jump: !onScreen });
+      place(e.clientX, e.clientY, !onScreen);
+      activeRef.current = key;
       setActive(key);
     },
     move: (e) => {
-      if (placed.current) place(e.clientX, e.clientY);
+      if (activeRef.current) place(e.clientX, e.clientY, false);
     },
     hide: () => {
+      if (activeRef.current) hiddenAt.current = performance.now();
+      activeRef.current = null;
       setActive(null);
-      placed.current = false;
     },
   };
 }

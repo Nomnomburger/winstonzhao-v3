@@ -69,7 +69,7 @@ export default function HomeProjects({
         id="work"
         aria-label="Work"
         tabIndex={-1}
-        className={`flex flex-col gap-12 md:gap-9 w-full focus:outline-none ${className}`}
+        className={`relative flex flex-col gap-12 md:gap-9 w-full focus:outline-none ${className}`}
       >
         {featured.length > 0 && (
           <div className="w-full px-6 md:p-9">
