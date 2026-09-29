@@ -743,7 +743,6 @@ export default function HomePanelMobile({
             {projects.length > 0 && (
               <HomeProjects
                 projects={projects}
-                learnMoreLabel={t.learnMore}
                 className="pt-6"
                 introSkipped={instant}
                 scrollToHashWhenReady={!instant}

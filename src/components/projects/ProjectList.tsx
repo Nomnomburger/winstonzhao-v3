@@ -1,147 +1,85 @@
 'use client';
 
 import Link from 'next/link';
-import { motion, useMotionValue, useSpring } from 'framer-motion';
-import { useEffect, useRef, useState } from 'react';
-import { createPortal } from 'react-dom';
+import { motion } from 'framer-motion';
 import { imageUrl, imageAspect } from '@/lib/image';
+import CursorPreview, { useCursorPreview } from './CursorPreview';
+import { REVEAL_EASE, useReveal } from './reveal';
 import type { ProjectCardData } from './types';
 
-// The thumbnail that trails the cursor while hovering a row. It sits just to
-// the right of the pointer (or to the left near the window's right edge) and
-// eases after it with a spring so it lags a little behind.
+// Width of the thumbnail that trails the cursor while hovering a row
 const THUMB_WIDTH = 280;
-const CURSOR_GAP = 24;
-// Closest the thumbnail gets to the window's edges
-const EDGE_MARGIN = 16;
-const FOLLOW_SPRING = { stiffness: 350, damping: 35, mass: 0.6 } as const;
 
-function useCanHover() {
-  const [canHover, setCanHover] = useState(false);
-  useEffect(() => {
-    const media = window.matchMedia('(hover: hover) and (pointer: fine)');
-    const update = () => setCanHover(media.matches);
-    update();
-    media.addEventListener('change', update);
-    return () => media.removeEventListener('change', update);
-  }, []);
-  return canHover;
-}
+// Rows slide up into view one after another once the list scrolls in
+const ROW_STAGGER = 0.06;
+const MAX_ROW_DELAY = 0.6;
 
-interface ProjectListProps {
-  projects: ProjectCardData[];
-  learnMoreLabel: string;
-}
-
-export default function ProjectList({ projects, learnMoreLabel }: ProjectListProps) {
-  const canHover = useCanHover();
-  const [hovered, setHovered] = useState<string | null>(null);
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-  const springX = useSpring(x, FOLLOW_SPRING);
-  const springY = useSpring(y, FOLLOW_SPRING);
-  const placed = useRef(false);
-
-  const hoveredProject = projects.find((p) => p._id === hovered);
-  const heightOf = (project?: ProjectCardData) => THUMB_WIDTH / imageAspect(project?.coverImage);
-  const thumbHeight = heightOf(hoveredProject);
-
-  const moveTo = (clientX: number, clientY: number, height = thumbHeight) => {
-    const flip = clientX + CURSOR_GAP + THUMB_WIDTH > window.innerWidth - EDGE_MARGIN;
-    const nextX = flip ? clientX - CURSOR_GAP - THUMB_WIDTH : clientX + CURSOR_GAP;
-    // Centred on the cursor, but kept fully on screen near the top or bottom
-    const nextY = Math.max(
-      EDGE_MARGIN,
-      Math.min(clientY - height / 2, window.innerHeight - height - EDGE_MARGIN),
-    );
-    x.set(nextX);
-    y.set(nextY);
-    // On the first hover, start at the cursor instead of gliding in from 0,0
-    if (!placed.current) {
-      springX.jump(nextX);
-      springY.jump(nextY);
-      placed.current = true;
-    }
-  };
+export default function ProjectList({ projects }: { projects: ProjectCardData[] }) {
+  const preview = useCursorPreview();
+  const { ref, shown } = useReveal<HTMLUListElement>(0.15);
 
   if (projects.length === 0) return null;
 
   return (
-    <div
-      className="relative w-full"
-      onMouseMove={(e) => moveTo(e.clientX, e.clientY)}
-      onMouseLeave={() => {
-        setHovered(null);
-        placed.current = false;
-      }}
-    >
-      <ul className="flex flex-col gap-2 w-full text-[12px] md:text-[14px] leading-[1.2]">
-        {projects.map((project) => (
+    <div className="relative w-full" onMouseMove={preview.move} onMouseLeave={preview.hide}>
+      <ul ref={ref} className="flex flex-col gap-2 w-full text-[12px] md:text-[14px] leading-[1.2]">
+        {projects.map((project, i) => (
           <li key={project._id}>
             <Link
               href={`/projects/${project.slug}`}
-              onMouseEnter={(e) => {
-                moveTo(e.clientX, e.clientY, heightOf(project));
-                setHovered(project._id);
-              }}
-              className={`grid grid-cols-1 md:grid-cols-2 gap-x-24 w-full transition-opacity duration-300 ${
-                hovered && hovered !== project._id ? 'md:opacity-40' : 'opacity-100'
+              onMouseEnter={(e) =>
+                preview.show(project._id, e, {
+                  width: THUMB_WIDTH,
+                  height: THUMB_WIDTH / imageAspect(project.coverImage),
+                })
+              }
+              className={`block w-full transition-opacity duration-300 ${
+                preview.active && preview.active !== project._id ? 'md:opacity-40' : 'opacity-100'
               }`}
             >
-              <span className="flex items-start justify-between gap-4">
-                <span className="flex-1 min-w-0 font-normal">{project.title}</span>
-                {project.year && (
-                  <span className="shrink-0 text-right whitespace-nowrap font-[450]">{project.year}</span>
-                )}
-              </span>
-              <span className="hidden md:flex items-start justify-between gap-4">
-                <span className="flex-1 min-w-0 font-[450] truncate">{project.description}</span>
-                <span className="shrink-0 text-right whitespace-nowrap font-normal">{learnMoreLabel}</span>
+              {/* The row slides up from behind its own bottom edge (the mask
+                  is a touch taller so descenders aren't clipped) */}
+              <span className="block overflow-hidden pb-[0.15em] -mb-[0.15em]">
+                <motion.span
+                  className="grid grid-cols-1 md:grid-cols-2 gap-x-24 w-full"
+                  initial={false}
+                  animate={{ y: shown ? '0%' : '115%' }}
+                  transition={{
+                    duration: 0.9,
+                    delay: Math.min(i * ROW_STAGGER, MAX_ROW_DELAY),
+                    ease: REVEAL_EASE,
+                  }}
+                >
+                  <span className="flex items-start justify-between gap-4">
+                    <span className="flex-1 min-w-0 font-normal">{project.title}</span>
+                    {project.year && (
+                      <span className="shrink-0 text-right whitespace-nowrap font-[450]">{project.year}</span>
+                    )}
+                  </span>
+                  <span className="hidden md:flex items-start justify-between gap-4">
+                    <span className="flex-1 min-w-0 font-[450] truncate">{project.description}</span>
+                    <span aria-hidden="true" className="shrink-0 text-right font-normal">
+                      ↗
+                    </span>
+                  </span>
+                </motion.span>
               </span>
             </Link>
           </li>
         ))}
       </ul>
 
-      {/* Cursor-following thumbnail, portalled to <body> so no transformed
-          ancestor (entrance animations) can offset its fixed position. Every
-          thumbnail stays mounted (hidden) so they're loaded before the first
-          hover and swap instantly. */}
-      {canHover && createPortal(
-        <motion.div
-          className="fixed top-0 left-0 z-40 pointer-events-none"
-          style={{ x: springX, y: springY, width: THUMB_WIDTH }}
-          aria-hidden="true"
-        >
-          <motion.div
-            className="relative w-full overflow-hidden"
-            initial={false}
-            animate={{
-              opacity: hoveredProject ? 1 : 0,
-              scale: hoveredProject ? 1 : 0.92,
-              height: thumbHeight,
-            }}
-            transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-          >
-            {projects.map((project) => {
-              const src = imageUrl(project.coverImage, THUMB_WIDTH * 2);
-              return (
-                src && (
-                  // eslint-disable-next-line @next/next/no-img-element
-                  <img
-                    key={project._id}
-                    src={src}
-                    alt=""
-                    className="absolute inset-0 w-full h-full object-cover"
-                    style={{ opacity: project._id === hovered ? 1 : 0 }}
-                  />
-                )
-              );
-            })}
-          </motion.div>
-        </motion.div>,
-        document.body,
-      )}
+      <CursorPreview
+        preview={preview}
+        images={projects.map((project) => {
+          const src = imageUrl(project.coverImage, THUMB_WIDTH * 2);
+          return {
+            key: project._id,
+            // eslint-disable-next-line @next/next/no-img-element
+            content: src && <img src={src} alt="" />,
+          };
+        })}
+      />
     </div>
   );
 }

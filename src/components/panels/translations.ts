@@ -24,7 +24,6 @@ export const translations = {
     navWork: 'Work',
     navContact: 'Contact',
     navResume: 'Resume',
-    learnMore: 'Learn More ↗',
   },
   sv: {
     name: 'Winston Zhao',
@@ -48,7 +47,6 @@ export const translations = {
     navWork: 'Arbete',
     navContact: 'Kontakt',
     navResume: 'CV',
-    learnMore: 'Läs mer ↗',
   },
   zh: {
     name: 'Zhao Sizhong',
@@ -72,6 +70,5 @@ export const translations = {
     navWork: '作品',
     navContact: '联系',
     navResume: '简历',
-    learnMore: '了解更多 ↗',
   },
 } as const satisfies Record<Language, unknown>;

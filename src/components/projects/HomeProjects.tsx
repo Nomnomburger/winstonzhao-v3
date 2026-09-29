@@ -3,12 +3,15 @@
 import { useEffect, useRef } from 'react';
 import FeaturedProjects from './FeaturedProjects';
 import ProjectList from './ProjectList';
+import { RevealContext } from './reveal';
 import type { ProjectCardData } from './types';
 
 interface HomeProjectsProps {
   projects: ProjectCardData[];
-  learnMoreLabel: string;
   className?: string;
+  // Scroll reveals wait for this (the end of the page's intro). When the
+  // intro was skipped they're skipped too, and everything simply shows.
+  revealReady?: boolean;
   // Arriving at /#work (the "Work" link on project pages): when the intro was
   // skipped the browser's own jump to the hash already landed here; otherwise
   // this scrolls here once `scrollToHashWhenReady` is set (after the intro).
@@ -20,8 +23,8 @@ interface HomeProjectsProps {
 // photo cards, and everything else goes in the list below them.
 export default function HomeProjects({
   projects,
-  learnMoreLabel,
   className = '',
+  revealReady = true,
   introSkipped = false,
   scrollToHashWhenReady = false,
 }: HomeProjectsProps) {
@@ -60,23 +63,25 @@ export default function HomeProjects({
   if (projects.length === 0) return null;
 
   return (
-    <section
-      ref={ref}
-      id="work"
-      aria-label="Work"
-      tabIndex={-1}
-      className={`flex flex-col gap-12 md:gap-9 w-full focus:outline-none ${className}`}
-    >
-      {featured.length > 0 && (
-        <div className="w-full px-6 md:p-9">
-          <FeaturedProjects projects={featured} />
-        </div>
-      )}
-      {rest.length > 0 && (
-        <div className="w-full px-6 md:p-9">
-          <ProjectList projects={rest} learnMoreLabel={learnMoreLabel} />
-        </div>
-      )}
-    </section>
+    <RevealContext.Provider value={{ ready: revealReady, skip: introSkipped }}>
+      <section
+        ref={ref}
+        id="work"
+        aria-label="Work"
+        tabIndex={-1}
+        className={`flex flex-col gap-12 md:gap-9 w-full focus:outline-none ${className}`}
+      >
+        {featured.length > 0 && (
+          <div className="w-full px-6 md:p-9">
+            <FeaturedProjects projects={featured} />
+          </div>
+        )}
+        {rest.length > 0 && (
+          <div className="w-full px-6 md:p-9">
+            <ProjectList projects={rest} />
+          </div>
+        )}
+      </section>
+    </RevealContext.Provider>
   );
 }

@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -22,6 +22,7 @@ import {
 import ThemeToggle from '@/components/ThemeToggle';
 import { Language, translations } from './translations';
 import HomeProjects from '@/components/projects/HomeProjects';
+import CursorPreview, { useCursorPreview } from '@/components/projects/CursorPreview';
 import type { ProjectCardData } from '@/components/projects/types';
 
 interface HomePanelProps {
@@ -62,32 +63,14 @@ const shrunkHeaderSize = (width: number) => {
 
 type HoverKey = 'name' | 'stockholm' | 'newly';
 
-// Desktop-only feature: hovering the name or a highlighted bio word reveals an
-// image in the blank space of the first column. Positions and sizes mirror the
-// Figma frames (1280×832 reference, where that column is 386.67px wide):
-// `left` is a fraction of the column, the width shrinks with the column but
-// never grows past the Figma size, and `top` is a fraction of the viewport
-// height, pulled up on hover if it would run into the work section below.
-const HOVER_COLUMN_WIDTH = 386.67;
-const HOVER_IMAGES: ReadonlyArray<{
-  key: HoverKey;
-  src: string;
-  alt: string;
-  left: number;
-  top: number;
-  width: number;
-  height: number;
-}> = [
-  { key: 'name', src: '/profile.webp', alt: 'Winston Zhao', left: 0, top: 0.445, width: 154, height: 154 },
-  { key: 'stockholm', src: '/stockholm.webp', alt: 'Stockholm', left: 0.393, top: 0.383, width: 237, height: 316 },
-  { key: 'newly', src: '/newlygraphic.avif', alt: 'Newly', left: 0, top: 0.487, width: 390, height: 230 },
+// Hovering the name or a highlighted bio word shows a photo beside the cursor
+// that trails it, the same way hovering a row of the project list does (on
+// devices with a mouse or trackpad). Sizes are the Figma frames'.
+const HOVER_IMAGES: ReadonlyArray<{ key: HoverKey; src: string; width: number; height: number }> = [
+  { key: 'name', src: '/profile.webp', width: 154, height: 154 },
+  { key: 'stockholm', src: '/stockholm.webp', width: 237, height: 316 },
+  { key: 'newly', src: '/newlygraphic.avif', width: 390, height: 230 },
 ];
-
-// Keep a hover image this far above the work section
-const HOVER_IMAGE_WORK_GAP = 24;
-// How far a hover image may drift past its column into the 24px gutter
-// before the bio text, while following the pointer
-const HOVER_IMAGE_MAX_OVERHANG = 16;
 
 // Bio lines (by index) that carry a hover word, with the matching word per
 // language so the highlight follows a language switch.
@@ -99,11 +82,6 @@ const HOVER_BIO_WORDS: Record<number, { key: HoverKey; word: Record<Language, st
 // After a language switch the keyword lines render as one unit so the full-line
 // scramble plays; once it settles they swap to their static, hoverable form.
 const SCRAMBLE_SETTLE_MS = 1100;
-
-// While hovering a text trigger, the image trails the pointer at a fraction of
-// its movement, eased by a spring so it glides to rest when the pointer stops.
-const FOLLOW_FACTOR = 0.12;
-const FOLLOW_SPRING = { stiffness: 110, damping: 18, mass: 0.6 } as const;
 
 export default function HomePanel({
   showContent = true,
@@ -129,9 +107,6 @@ export default function HomePanel({
   // Language shown before the switch, so the outgoing copy stays on screen
   // until the scramble replaces it.
   const [prevLanguage, setPrevLanguage] = useState<Language>(language);
-  // Which element (name / "stockholm" / "newly") is currently hovered, driving
-  // the image that pops up in the blank left space (desktop only).
-  const [hovered, setHovered] = useState<HoverKey | null>(null);
   // Hover only becomes active once the intro has finished playing, so nothing
   // pops up mid-animation while the page is still loading in.
   const [introDone, setIntroDone] = useState(instant);
@@ -146,53 +121,21 @@ export default function HomePanel({
   // language switch it waits for the full-line scramble to settle first.
   const interactive = introDone && (!langSwitched || scrambleSettled);
 
-  // Pointer-follow for the hover image: the target tracks a damped fraction of
-  // the pointer's movement since hover started; a spring eases the image toward
-  // it so it lags and glides to rest.
-  const followX = useMotionValue(0);
-  const followY = useMotionValue(0);
-  const imageX = useSpring(followX, FOLLOW_SPRING);
-  const imageY = useSpring(followY, FOLLOW_SPRING);
-  const hoverOrigin = useRef<{ x: number; y: number } | null>(null);
-  // Furthest the hovered image may drift right without reaching the bio text
-  const hoverMaxDriftX = useRef(Infinity);
-  const hoverImageRefs = useRef<Partial<Record<HoverKey, HTMLDivElement | null>>>({});
-  // Page-relative top of the hovered image, measured when the hover starts
-  const [hoverTop, setHoverTop] = useState<number | null>(null);
+  // The photo that follows the cursor while the name or a bio word is hovered
+  const preview = useCursorPreview();
 
   const beginHover = (key: HoverKey, e: React.MouseEvent) => {
-    const config = HOVER_IMAGES.find((img) => img.key === key)!;
-    const image = hoverImageRefs.current[key];
-    const imageHeight = image?.offsetHeight ?? config.height;
-    hoverMaxDriftX.current = image?.parentElement
-      ? image.parentElement.clientWidth - (image.offsetLeft + image.offsetWidth) + HOVER_IMAGE_MAX_OVERHANG
-      : Infinity;
-    const work = document.getElementById('work');
-    const containerTop = containerRef.current?.closest('.theme-root')?.getBoundingClientRect().top ?? 0;
-    const workTop = work ? work.getBoundingClientRect().top - containerTop : Infinity;
-    setHoverTop(Math.min(config.top * window.innerHeight, workTop - imageHeight - HOVER_IMAGE_WORK_GAP));
-    setHovered(key);
-    hoverOrigin.current = { x: e.clientX, y: e.clientY };
-    // Snap the offset back to zero so the image starts at its anchor point.
-    followX.set(0);
-    followY.set(0);
-    imageX.jump(0);
-    imageY.jump(0);
+    const { width, height } = HOVER_IMAGES.find((img) => img.key === key)!;
+    preview.show(key, e, { width, height });
   };
 
-  const moveHover = (e: React.MouseEvent) => {
-    if (!hoverOrigin.current) return;
-    followX.set(Math.min((e.clientX - hoverOrigin.current.x) * FOLLOW_FACTOR, hoverMaxDriftX.current));
-    followY.set((e.clientY - hoverOrigin.current.y) * FOLLOW_FACTOR);
-  };
-
-  const endHover = (key: HoverKey) => {
-    setHovered((h) => (h === key ? null : h));
-    hoverOrigin.current = null;
-  };
+  const moveHover = preview.move;
+  const endHover = preview.hide;
 
   const handleLanguageChange = (lang: Language) => {
     if (lang === language) return;
+    // (the hovered word re-renders mid-switch and can't report the leave)
+    preview.hide();
     setPrevLanguage(language);
     setLangSwitched(true);
     setScrambleSettled(false);
@@ -351,6 +294,15 @@ export default function HomePanel({
     return () => clearTimeout(timer);
   }, [showContent, instant, shrinkDelay, timeDelay]);
 
+  // The work section's scroll reveals start when the footer fades in, so a
+  // project already on screen doesn't appear before the bio has finished.
+  const [workRevealReady, setWorkRevealReady] = useState(instant);
+  useEffect(() => {
+    if (instant || !hasShrunk) return;
+    const timer = setTimeout(() => setWorkRevealReady(true), footerDelay * 1000);
+    return () => clearTimeout(timer);
+  }, [instant, hasShrunk, footerDelay]);
+
   const shrinkTransition = {
     duration: instant ? 0 : shrinkDuration,
     ease: [0.76, 0, 0.15, 1] as const,
@@ -407,7 +359,7 @@ export default function HomePanel({
         <span
           onMouseEnter={(e) => beginHover(key, e)}
           onMouseMove={moveHover}
-          onMouseLeave={() => endHover(key)}
+          onMouseLeave={endHover}
         >
           {seg(word!)}
         </span>
@@ -478,44 +430,15 @@ export default function HomePanel({
         </div>
       )}
 
-      {/* Hover images - desktop only (lg+). The name and the highlighted bio
-          words ("stockholm", "newly") reveal an image in the blank first
-          column. All three stay mounted (with priority) so they're preloaded
-          on page load and appear instantly on hover; visibility toggles with
-          no transition. Hidden below lg, where the bio starts in the first
-          column. */}
-      <div
-        className="hidden lg:block absolute left-9 top-0 w-[calc((100%-120px)/3)] pointer-events-none z-0"
-        aria-hidden="true"
-      >
-        {HOVER_IMAGES.map((img) => (
-          <motion.div
-            key={img.key}
-            ref={(el) => {
-              hoverImageRefs.current[img.key] = el;
-            }}
-            className="absolute"
-            style={{
-              left: `${img.left * 100}%`,
-              top: hovered === img.key && hoverTop !== null ? hoverTop : `${img.top * 100}vh`,
-              width: `min(${Math.min(img.width / HOVER_COLUMN_WIDTH, 1 - img.left) * 100}%, ${img.width}px)`,
-              aspectRatio: `${img.width} / ${img.height}`,
-              opacity: hovered === img.key ? 1 : 0,
-              x: imageX,
-              y: imageY,
-            }}
-          >
-            <Image
-              src={img.src}
-              alt={img.alt}
-              width={img.width}
-              height={img.height}
-              priority
-              className="w-full h-full object-cover"
-            />
-          </motion.div>
-        ))}
-      </div>
+      {/* Photos for the name and the highlighted bio words, shown beside
+          the cursor while they're hovered */}
+      <CursorPreview
+        preview={preview}
+        images={HOVER_IMAGES.map((img) => ({
+          key: img.key,
+          content: <Image src={img.src} alt="" width={img.width} height={img.height} loading="eager" />,
+        }))}
+      />
 
       {/* Header Section */}
       <div className="relative flex flex-col items-start p-9 w-full">
@@ -540,7 +463,7 @@ export default function HomePanel({
                   if (interactive) beginHover('name', e);
                 }}
                 onMouseMove={moveHover}
-                onMouseLeave={() => endHover('name')}
+                onMouseLeave={endHover}
                 className="font-medium whitespace-nowrap leading-none cursor-default"
                 style={{
                   letterSpacing: '-0.05em',
@@ -822,28 +745,19 @@ export default function HomePanel({
         </div>
       </div>
 
-      {/* Work - featured projects with photos, then the list of the rest */}
-      <AnimatePresence>
-        {hasShrunk && showContent && projects.length > 0 && (
-          <motion.div
-            className="relative w-full"
-            initial={instant ? false : { opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.6,
-              delay: footerDelay,
-              ease: [0.4, 0, 0.2, 1],
-            }}
-          >
-            <HomeProjects
-              projects={projects}
-              learnMoreLabel={t.learnMore}
-              introSkipped={instant}
-              scrollToHashWhenReady={introDone && !instant}
-            />
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* Work - featured projects with photos, then the list of the rest.
+          Each piece reveals as it scrolls into view, from when the footer
+          would appear. */}
+      {hasShrunk && showContent && projects.length > 0 && (
+        <div className="relative w-full">
+          <HomeProjects
+            projects={projects}
+            introSkipped={instant}
+            revealReady={workRevealReady}
+            scrollToHashWhenReady={introDone && !instant}
+          />
+        </div>
+      )}
 
       {/* Footer Section */}
       <AnimatePresence>
