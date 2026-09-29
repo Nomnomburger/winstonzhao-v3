@@ -14,7 +14,6 @@ import {
   TextQLRole,
   WZLogo,
   LanguageGlobe,
-  LINKEDIN_URL,
   OLD_SITE_URL,
   RESUME_URL,
   EMAIL,
@@ -75,8 +74,8 @@ const HOVER_IMAGES: ReadonlyArray<{ key: HoverKey; src: string; width: number; h
 // Bio lines (by index) that carry a hover word, with the matching word per
 // language so the highlight follows a language switch.
 const HOVER_BIO_WORDS: Record<number, { key: HoverKey; word: Record<Language, string> }> = {
-  2: { key: 'stockholm', word: { en: 'stockholm', sv: 'stockholm', zh: '斯德哥尔摩' } },
-  3: { key: 'newly', word: { en: 'newly', sv: 'newly', zh: 'Newly' } },
+  2: { key: 'stockholm', word: { en: 'toronto', sv: 'toronto', zh: '多伦多' } },
+  3: { key: 'newly', word: { en: 'ocad', sv: 'ocad', zh: 'OCAD' } },
 };
 
 // After a language switch the keyword lines render as one unit so the full-line
@@ -116,6 +115,7 @@ export default function HomePanel({
   const currentTime = useCurrentTime(language);
   const t = translations[language];
   const fromT = translations[prevLanguage];
+  const projectCount = String(projects.length);
 
   // Hover (and the weight crossfade) turns on once the intro has played; after a
   // language switch it waits for the full-line scramble to settle first.
@@ -262,11 +262,11 @@ export default function HomePanel({
   const headerDelay = headerAnimationDelay;
 
   // Everything else animates relative to when shrink happens
-  const sayHiDelay = contentBaseDelay;
+  const workDelay = contentBaseDelay;
 
   // Bio section - starts after a pause, then flows continuously
   const bioPause = 0.5;
-  const bioStartDelay = sayHiDelay + 2 * stagger + bioPause;
+  const bioStartDelay = workDelay + 2 * stagger + bioPause;
 
   // Bio lines flow continuously with tight timing
   const bio1Delay = bioStartDelay;
@@ -523,11 +523,6 @@ export default function HomePanel({
                     ease: [0.4, 0, 0.2, 1],
                   }}
                 >
-                  {projects.length > 0 && (
-                    <a href="#work" onClick={scrollToWork} className="hover:underline">
-                      {roleLabel(t.navWork, fromT.navWork)}
-                    </a>
-                  )}
                   <a href={`mailto:${EMAIL}`} className="hover:underline">
                     {roleLabel(t.navContact, fromT.navContact)}
                   </a>
@@ -548,14 +543,13 @@ export default function HomePanel({
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.3 }}
               >
-                {/* Say Hi and Bio - 3 column grid (5 columns below lg) */}
+                {/* Work and Bio - 3 column grid (5 columns below lg) */}
                 <div className="grid grid-cols-5 lg:grid-cols-3 gap-x-6 w-full">
-                  {/* Column 1: Say Hi Link */}
+                  {/* Column 1: Work Link */}
                   <div className="col-span-1">
                     <a
-                      href={LINKEDIN_URL}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      href="#work"
+                      onClick={scrollToWork}
                       className={`flex gap-2 items-start ${bigTextWeight} whitespace-nowrap cursor-pointer transition-[font-weight] duration-700 ease-in-out`}
                     >
                       <motion.span
@@ -564,13 +558,13 @@ export default function HomePanel({
                         animate={{ clipPath: 'inset(-10% -10% -20% -10%)' }}
                         transition={{
                           duration: 0.5,
-                          delay: sayHiDelay + 0.5,
+                          delay: workDelay + 0.5,
                           ease: [0.4, 0, 0.2, 1],
                         }}
                       >
                         {langSwitched ? (
-                          <ScrambleText from={fromT.sayHi} charDelay={switchCharDelay}>
-                            {t.sayHi}
+                          <ScrambleText from={fromT.workLabel} charDelay={switchCharDelay}>
+                            {t.workLabel}
                           </ScrambleText>
                         ) : showContent ? (
                           <motion.span
@@ -579,14 +573,14 @@ export default function HomePanel({
                             animate={{ y: '0%', opacity: 1 }}
                             transition={{
                               duration: 0.9,
-                              delay: sayHiDelay,
+                              delay: workDelay,
                               ease: [0.4, 0, 0.2, 1],
                             }}
                           >
-                            {t.sayHi}
+                            {t.workLabel}
                           </motion.span>
                         ) : (
-                          <span className="opacity-0">{t.sayHi}</span>
+                          <span className="opacity-0">{t.workLabel}</span>
                         )}
                       </motion.span>
                       <motion.span
@@ -595,13 +589,13 @@ export default function HomePanel({
                         animate={{ clipPath: 'inset(-10% -10% -20% -10%)' }}
                         transition={{
                           duration: 0.5,
-                          delay: sayHiDelay + stagger + 0.5,
+                          delay: workDelay + stagger + 0.5,
                           ease: [0.4, 0, 0.2, 1],
                         }}
                       >
                         {langSwitched ? (
-                          <ScrambleText from={fromT.sayHiLabel} charDelay={switchCharDelay}>
-                            {t.sayHiLabel}
+                          <ScrambleText from={projectCount} charDelay={switchCharDelay}>
+                            {projectCount}
                           </ScrambleText>
                         ) : showContent ? (
                           <motion.span
@@ -610,14 +604,14 @@ export default function HomePanel({
                             animate={{ y: '0%', opacity: 1 }}
                             transition={{
                               duration: 0.9,
-                              delay: sayHiDelay + stagger,
+                              delay: workDelay + stagger,
                               ease: [0.4, 0, 0.2, 1],
                             }}
                           >
-                            {t.sayHiLabel}
+                            {projectCount}
                           </motion.span>
                         ) : (
-                          <span className="opacity-0">{t.sayHiLabel}</span>
+                          <span className="opacity-0">{projectCount}</span>
                         )}
                       </motion.span>
                     </a>

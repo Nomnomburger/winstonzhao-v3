@@ -14,7 +14,6 @@ import {
   TextQLRole,
   WZLogo,
   LanguageGlobe,
-  LINKEDIN_URL,
   OLD_SITE_URL,
   RESUME_URL,
   EMAIL,
@@ -72,6 +71,15 @@ export default function HomePanelMobile({
   const currentTime = useCurrentTime(language);
   const t = translations[language];
   const fromT = translations[prevLanguage];
+  const projectCount = String(projects.length);
+
+  const scrollToWork = (e: React.MouseEvent) => {
+    const work = document.getElementById('work');
+    if (!work) return;
+    e.preventDefault();
+    work.scrollIntoView({ behavior: 'smooth' });
+    work.focus({ preventScroll: true });
+  };
 
   // The globe cycles English → Swedish → Chinese
   const toggleLanguage = () => {
@@ -247,9 +255,9 @@ export default function HomePanelMobile({
   const bio4Delay = bioStartDelay + 10 * bioStagger;
 
   // Say hi and icon follow the bio
-  const sayHiDelay = bio4Delay + 4 * bioStagger;
-  const iconDelay = sayHiDelay + stagger;
-  const rolesDelay = sayHiDelay + stagger;
+  const workDelay = bio4Delay + 4 * bioStagger;
+  const iconDelay = workDelay + stagger;
+  const rolesDelay = workDelay + stagger;
   const timeDelay = rolesDelay + 0.05;
   const arrowsDelay = timeDelay + 0.05;
   const globeDelay = contentBaseDelay + 0.1;
@@ -520,12 +528,11 @@ export default function HomePanelMobile({
                       ))}
                     </div>
 
-                    {/* Say Hi + Icon */}
+                    {/* Work + Icon */}
                     <div className="flex gap-9 items-center justify-between w-full">
                       <a
-                        href={LINKEDIN_URL}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        href="#work"
+                        onClick={scrollToWork}
                         className={`flex gap-2 items-start ${bigTextWeight} whitespace-nowrap cursor-pointer transition-[font-weight] duration-700 ease-in-out`}
                       >
                         <motion.span
@@ -534,13 +541,13 @@ export default function HomePanelMobile({
                           animate={{ clipPath: 'inset(-10% -10% -20% -10%)' }}
                           transition={{
                             duration: 0.5,
-                            delay: sayHiDelay + 0.5,
+                            delay: workDelay + 0.5,
                             ease: [0.4, 0, 0.2, 1],
                           }}
                         >
                           {langSwitched ? (
-                            <ScrambleText from={fromT.sayHi} charDelay={switchCharDelay}>
-                              {t.sayHi}
+                            <ScrambleText from={fromT.workLabel} charDelay={switchCharDelay}>
+                              {t.workLabel}
                             </ScrambleText>
                           ) : showContent ? (
                             <motion.span
@@ -549,14 +556,14 @@ export default function HomePanelMobile({
                               animate={{ y: '0%', opacity: 1 }}
                               transition={{
                                 duration: 0.9,
-                                delay: sayHiDelay,
+                                delay: workDelay,
                                 ease: [0.4, 0, 0.2, 1],
                               }}
                             >
-                              {t.sayHi}
+                              {t.workLabel}
                             </motion.span>
                           ) : (
-                            <span className="opacity-0">{t.sayHi}</span>
+                            <span className="opacity-0">{t.workLabel}</span>
                           )}
                         </motion.span>
                         <motion.span
@@ -565,13 +572,13 @@ export default function HomePanelMobile({
                           animate={{ clipPath: 'inset(-10% -10% -20% -10%)' }}
                           transition={{
                             duration: 0.5,
-                            delay: sayHiDelay + stagger + 0.5,
+                            delay: workDelay + stagger + 0.5,
                             ease: [0.4, 0, 0.2, 1],
                           }}
                         >
                           {langSwitched ? (
-                            <ScrambleText from={fromT.sayHiLabel} charDelay={switchCharDelay}>
-                              {t.sayHiLabel}
+                            <ScrambleText from={projectCount} charDelay={switchCharDelay}>
+                              {projectCount}
                             </ScrambleText>
                           ) : showContent ? (
                             <motion.span
@@ -580,14 +587,14 @@ export default function HomePanelMobile({
                               animate={{ y: '0%', opacity: 1 }}
                               transition={{
                                 duration: 0.9,
-                                delay: sayHiDelay + stagger,
+                                delay: workDelay + stagger,
                                 ease: [0.4, 0, 0.2, 1],
                               }}
                             >
-                              {t.sayHiLabel}
+                              {projectCount}
                             </motion.span>
                           ) : (
-                            <span className="opacity-0">{t.sayHiLabel}</span>
+                            <span className="opacity-0">{projectCount}</span>
                           )}
                         </motion.span>
                       </a>
