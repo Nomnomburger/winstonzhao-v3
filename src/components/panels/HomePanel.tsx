@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -13,6 +13,7 @@ import {
   FigmaRole,
   TextQLRole,
   WZLogo,
+  LanguageGlobe,
   LINKEDIN_URL,
   OLD_SITE_URL,
   RESUME_URL,
@@ -20,6 +21,9 @@ import {
 } from './shared';
 import ThemeToggle from '@/components/ThemeToggle';
 import { Language, translations } from './translations';
+import HomeProjects from '@/components/projects/HomeProjects';
+import CursorPreview, { useCursorPreview } from '@/components/projects/CursorPreview';
+import type { ProjectCardData } from '@/components/projects/types';
 
 interface HomePanelProps {
   showContent?: boolean;
@@ -27,6 +31,7 @@ interface HomePanelProps {
   instant?: boolean;
   language?: Language;
   onLanguageChange?: (language: Language) => void;
+  projects?: ProjectCardData[];
 }
 
 // Vertical column guides are hidden in the current design.
@@ -40,25 +45,31 @@ const splitName = (name: string): [string, string] => {
   return i === -1 ? [name, ''] : [name.slice(0, i), name.slice(i + 1)];
 };
 
+// Size of the shrunk header name: 128px on normal laptop sizes, much smaller
+// in the cramped range between mobile and lg, and growing past a 16" MacBook
+// (1728px).
+const shrunkHeaderSize = (width: number) => {
+  const breakpoint = 1728;
+  const baseSize = 128;
+  // How aggressively the header grows past the breakpoint (1 = linear with
+  // width; higher = grows faster on large displays).
+  const growthFactor = 2;
+  if (width < 1024) return '72px';
+  if (width > breakpoint) {
+    return `${baseSize + ((width - breakpoint) / breakpoint) * baseSize * growthFactor}px`;
+  }
+  return `${baseSize}px`;
+};
+
 type HoverKey = 'name' | 'stockholm' | 'newly';
 
-// Desktop-only feature: hovering the name or a highlighted bio word reveals an
-// image in the blank space on the left. Positions/sizes mirror the Figma
-// frames (1280×832 reference) — `left` hugs the page's left padding and `top`
-// is a percentage of viewport height so the images track the blank band as the
-// window resizes.
-const HOVER_IMAGES: ReadonlyArray<{
-  key: HoverKey;
-  src: string;
-  alt: string;
-  left: string;
-  top: string;
-  width: number;
-  height: number;
-}> = [
-  { key: 'name', src: '/profile.webp', alt: 'Winston Zhao', left: '36px', top: '44.5%', width: 154, height: 154 },
-  { key: 'stockholm', src: '/stockholm.webp', alt: 'Stockholm', left: '188px', top: '38.3%', width: 237, height: 316 },
-  { key: 'newly', src: '/newlygraphic.avif', alt: 'Newly', left: '36px', top: '48.7%', width: 390, height: 230 },
+// Hovering the name or a highlighted bio word shows a photo beside the cursor
+// that trails it, the same way hovering a row of the project list does (on
+// devices with a mouse or trackpad). Sizes are the Figma frames'.
+const HOVER_IMAGES: ReadonlyArray<{ key: HoverKey; src: string; width: number; height: number }> = [
+  { key: 'name', src: '/profile.webp', width: 154, height: 154 },
+  { key: 'stockholm', src: '/stockholm.webp', width: 237, height: 316 },
+  { key: 'newly', src: '/newlygraphic.avif', width: 390, height: 230 },
 ];
 
 // Bio lines (by index) that carry a hover word, with the matching word per
@@ -72,21 +83,23 @@ const HOVER_BIO_WORDS: Record<number, { key: HoverKey; word: Record<Language, st
 // scramble plays; once it settles they swap to their static, hoverable form.
 const SCRAMBLE_SETTLE_MS = 1100;
 
-// While hovering a text trigger, the image trails the pointer at a fraction of
-// its movement, eased by a spring so it glides to rest when the pointer stops.
-const FOLLOW_FACTOR = 0.12;
-const FOLLOW_SPRING = { stiffness: 110, damping: 18, mass: 0.6 } as const;
-
 export default function HomePanel({
   showContent = true,
   instant = false,
   language = 'en',
   onLanguageChange,
+  projects = [],
 }: HomePanelProps) {
   const headerRef = useRef<HTMLHeadingElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [fontSize, setFontSize] = useState('220.84px');
-  const [shrunkFontSize, setShrunkFontSize] = useState('128px');
+  // A page shown already shrunk (`instant`) only ever mounts on the client
+  // (coming back from another page), so it can start at the final size and
+  // paint the right layout first; the browser then lands on #work or restores
+  // the scroll position against it.
+  const [shrunkFontSize, setShrunkFontSize] = useState(() =>
+    instant && typeof window !== 'undefined' ? shrunkHeaderSize(window.innerWidth) : '128px',
+  );
   const [hasShrunk, setHasShrunk] = useState(instant);
   // True once the user has changed language: changed copy then re-animates
   // with the scramble effect instead of the intro animations.
@@ -94,9 +107,6 @@ export default function HomePanel({
   // Language shown before the switch, so the outgoing copy stays on screen
   // until the scramble replaces it.
   const [prevLanguage, setPrevLanguage] = useState<Language>(language);
-  // Which element (name / "stockholm" / "newly") is currently hovered, driving
-  // the image that pops up in the blank left space (desktop only).
-  const [hovered, setHovered] = useState<HoverKey | null>(null);
   // Hover only becomes active once the intro has finished playing, so nothing
   // pops up mid-animation while the page is still loading in.
   const [introDone, setIntroDone] = useState(instant);
@@ -111,42 +121,41 @@ export default function HomePanel({
   // language switch it waits for the full-line scramble to settle first.
   const interactive = introDone && (!langSwitched || scrambleSettled);
 
-  // Pointer-follow for the hover image: the target tracks a damped fraction of
-  // the pointer's movement since hover started; a spring eases the image toward
-  // it so it lags and glides to rest.
-  const followX = useMotionValue(0);
-  const followY = useMotionValue(0);
-  const imageX = useSpring(followX, FOLLOW_SPRING);
-  const imageY = useSpring(followY, FOLLOW_SPRING);
-  const hoverOrigin = useRef<{ x: number; y: number } | null>(null);
+  // The photo that follows the cursor while the name or a bio word is hovered
+  const preview = useCursorPreview();
 
   const beginHover = (key: HoverKey, e: React.MouseEvent) => {
-    setHovered(key);
-    hoverOrigin.current = { x: e.clientX, y: e.clientY };
-    // Snap the offset back to zero so the image starts at its anchor point.
-    followX.set(0);
-    followY.set(0);
-    imageX.jump(0);
-    imageY.jump(0);
+    const { width, height } = HOVER_IMAGES.find((img) => img.key === key)!;
+    preview.show(key, e, { width, height });
   };
 
-  const moveHover = (e: React.MouseEvent) => {
-    if (!hoverOrigin.current) return;
-    followX.set((e.clientX - hoverOrigin.current.x) * FOLLOW_FACTOR);
-    followY.set((e.clientY - hoverOrigin.current.y) * FOLLOW_FACTOR);
-  };
-
-  const endHover = (key: HoverKey) => {
-    setHovered((h) => (h === key ? null : h));
-    hoverOrigin.current = null;
-  };
+  const moveHover = preview.move;
+  const endHover = preview.hide;
 
   const handleLanguageChange = (lang: Language) => {
     if (lang === language) return;
+    // (the hovered word re-renders mid-switch and can't report the leave)
+    preview.hide();
     setPrevLanguage(language);
     setLangSwitched(true);
     setScrambleSettled(false);
     onLanguageChange?.(lang);
+  };
+
+  // The globe beside the time cycles English → Swedish → Chinese
+  const cycleLanguage = () => {
+    const next: Record<Language, Language> = { en: 'sv', sv: 'zh', zh: 'en' };
+    handleLanguageChange(next[language]);
+  };
+
+  const scrollToWork = (e: React.MouseEvent) => {
+    const work = document.getElementById('work');
+    if (!work) return;
+    e.preventDefault();
+    work.scrollIntoView({ behavior: 'smooth' });
+    // Move keyboard focus along too, so the next Tab continues in the work
+    // section instead of jumping back up to the header.
+    work.focus({ preventScroll: true });
   };
 
   // Re-arm the "scramble settled" flag after each language change so the
@@ -211,25 +220,7 @@ export default function HomePanel({
   // Scale the shrunk header up on screens larger than a 16" MacBook (1728px),
   // keeping 128px as the floor for normal laptop sizes.
   useEffect(() => {
-    const updateShrunkFontSize = () => {
-      const breakpoint = 1728;
-      const baseSize = 128;
-      // How aggressively the header grows past the breakpoint (1 = linear with
-      // width; higher = grows faster on large displays).
-      const growthFactor = 2;
-      const width = window.innerWidth;
-      let size;
-      if (width < 1024) {
-        // Cramped layouts between mobile and lg: shrink the header a lot.
-        size = 72;
-      } else if (width > breakpoint) {
-        size = baseSize + ((width - breakpoint) / breakpoint) * baseSize * growthFactor;
-      } else {
-        size = baseSize;
-      }
-      setShrunkFontSize(`${size}px`);
-    };
-
+    const updateShrunkFontSize = () => setShrunkFontSize(shrunkHeaderSize(window.innerWidth));
     updateShrunkFontSize();
     window.addEventListener('resize', updateShrunkFontSize);
     return () => window.removeEventListener('resize', updateShrunkFontSize);
@@ -303,6 +294,15 @@ export default function HomePanel({
     return () => clearTimeout(timer);
   }, [showContent, instant, shrinkDelay, timeDelay]);
 
+  // The work section's scroll reveals start when the footer fades in, so a
+  // project already on screen doesn't appear before the bio has finished.
+  const [workRevealReady, setWorkRevealReady] = useState(instant);
+  useEffect(() => {
+    if (instant || !hasShrunk) return;
+    const timer = setTimeout(() => setWorkRevealReady(true), footerDelay * 1000);
+    return () => clearTimeout(timer);
+  }, [instant, hasShrunk, footerDelay]);
+
   const shrinkTransition = {
     duration: instant ? 0 : shrinkDuration,
     ease: [0.76, 0, 0.15, 1] as const,
@@ -359,7 +359,7 @@ export default function HomePanel({
         <span
           onMouseEnter={(e) => beginHover(key, e)}
           onMouseMove={moveHover}
-          onMouseLeave={() => endHover(key)}
+          onMouseLeave={endHover}
         >
           {seg(word!)}
         </span>
@@ -391,7 +391,8 @@ export default function HomePanel({
       <span className="opacity-0">{text}</span>
     );
 
-  // Role labels render as plain text until a language switch, then scramble.
+  // Short labels (roles, nav) render as plain text until a language switch,
+  // then scramble.
   const roleLabel = (text: string, fromText: string) =>
     langSwitched ? (
       <ScrambleText from={fromText} charDelay={switchCharDelay}>
@@ -410,7 +411,7 @@ export default function HomePanel({
     : 'tracking-[-1.6px] lg:tracking-[-2.08px] xl:tracking-[-2.56px]';
 
   return (
-    <div className="theme-root bg-background flex flex-col gap-9 h-screen w-full relative overflow-hidden">
+    <div className="theme-root bg-background flex flex-col gap-9 min-h-screen w-full relative overflow-x-clip">
       {/* Background column guides - same grid as the page content (currently hidden) */}
       {SHOW_COLUMN_GUIDES && (
         <div
@@ -429,38 +430,15 @@ export default function HomePanel({
         </div>
       )}
 
-      {/* Hover images - desktop only (lg+). The name and the highlighted bio
-          words ("stockholm", "newly") reveal an image in the blank left space.
-          All three stay mounted (with priority) so they're preloaded on page
-          load and appear instantly on hover; visibility toggles with no
-          transition. Hidden below lg so they never collide with the narrower
-          bio layout. */}
-      <div className="hidden lg:block absolute inset-0 pointer-events-none z-0" aria-hidden="true">
-        {HOVER_IMAGES.map((img) => (
-          <motion.div
-            key={img.key}
-            className="absolute"
-            style={{
-              left: img.left,
-              top: img.top,
-              width: img.width,
-              height: img.height,
-              opacity: hovered === img.key ? 1 : 0,
-              x: imageX,
-              y: imageY,
-            }}
-          >
-            <Image
-              src={img.src}
-              alt={img.alt}
-              width={img.width}
-              height={img.height}
-              priority
-              className="w-full h-full object-cover"
-            />
-          </motion.div>
-        ))}
-      </div>
+      {/* Photos for the name and the highlighted bio words, shown beside
+          the cursor while they're hovered */}
+      <CursorPreview
+        preview={preview}
+        images={HOVER_IMAGES.map((img) => ({
+          key: img.key,
+          content: <Image src={img.src} alt="" width={img.width} height={img.height} loading="eager" />,
+        }))}
+      />
 
       {/* Header Section */}
       <div className="relative flex flex-col items-start p-9 w-full">
@@ -469,6 +447,7 @@ export default function HomePanel({
           <motion.div
             ref={containerRef}
             className="flex items-start justify-between w-full"
+            initial={instant ? false : undefined}
             animate={{
               height: hasShrunk ? shrunkFontSize : 'auto',
             }}
@@ -484,7 +463,7 @@ export default function HomePanel({
                   if (interactive) beginHover('name', e);
                 }}
                 onMouseMove={moveHover}
-                onMouseLeave={() => endHover('name')}
+                onMouseLeave={endHover}
                 className="font-medium whitespace-nowrap leading-none cursor-default"
                 style={{
                   letterSpacing: '-0.05em',
@@ -531,11 +510,11 @@ export default function HomePanel({
               )}
             </div>
 
-            {/* Language Switcher - appears after shrink */}
+            {/* Navigation - appears after shrink */}
             <AnimatePresence>
               {hasShrunk && showContent && (
-                <motion.div
-                  className="flex gap-1.5 items-center justify-center font-normal text-[12px] tracking-[-0.24px] whitespace-nowrap leading-normal"
+                <motion.nav
+                  className="flex gap-4 items-center justify-center font-normal text-[14px] tracking-[-0.28px] whitespace-nowrap leading-[1.2]"
                   initial={instant ? false : { opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{
@@ -544,16 +523,18 @@ export default function HomePanel({
                     ease: [0.4, 0, 0.2, 1],
                   }}
                 >
-                  <button type="button" onClick={() => handleLanguageChange('en')} className="cursor-pointer">
-                    EN
-                  </button>
-                  <button type="button" onClick={() => handleLanguageChange('sv')} className="cursor-pointer">
-                    SV
-                  </button>
-                  <button type="button" onClick={() => handleLanguageChange('zh')} className="cursor-pointer">
-                    中文
-                  </button>
-                </motion.div>
+                  {projects.length > 0 && (
+                    <a href="#work" onClick={scrollToWork} className="hover:underline">
+                      {roleLabel(t.navWork, fromT.navWork)}
+                    </a>
+                  )}
+                  <a href={`mailto:${EMAIL}`} className="hover:underline">
+                    {roleLabel(t.navContact, fromT.navContact)}
+                  </a>
+                  <Link href={RESUME_URL} className="hover:underline">
+                    {roleLabel(t.navResume, fromT.navResume)}
+                  </Link>
+                </motion.nav>
               )}
             </AnimatePresence>
           </motion.div>
@@ -567,8 +548,8 @@ export default function HomePanel({
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.3 }}
               >
-                {/* Say Hi and Bio - 5 Column Grid */}
-                <div className="grid grid-cols-5 gap-x-6 w-full">
+                {/* Say Hi and Bio - 3 column grid (5 columns below lg) */}
+                <div className="grid grid-cols-5 lg:grid-cols-3 gap-x-6 w-full">
                   {/* Column 1: Say Hi Link */}
                   <div className="col-span-1">
                     <a
@@ -642,11 +623,8 @@ export default function HomePanel({
                     </a>
                   </div>
 
-                  {/* Column 2: Empty spacer (collapses below lg to tighten the gap) */}
-                  <div className="hidden lg:block lg:col-span-1" />
-
-                  {/* Columns 3-5: Bio */}
-                  <div className="col-span-4 lg:col-span-3 flex items-start justify-between">
+                  {/* Columns 2-3: Bio */}
+                  <div className="col-span-4 lg:col-span-2 flex items-start justify-between">
                     <div className={`${bigTextWeight} leading-none text-[40px] lg:text-[52px] xl:text-[64px] whitespace-nowrap ${bigTextTracking} transition-[font-weight,letter-spacing] duration-700 ease-in-out cursor-default`}>
                       {t.bioLines.map((line, index) => (
                         <p key={index} className={index < t.bioLines.length - 1 ? 'mb-0' : undefined}>
@@ -678,16 +656,17 @@ export default function HomePanel({
                   </div>
                 </div>
 
-                {/* Roles and Time - 5 Column Grid */}
-                <div className="grid grid-cols-5 gap-x-6 items-center w-full">
-                  {/* Columns 1-2: Empty (collapses below lg to left-align roles) */}
-                  <div className="hidden lg:block lg:col-span-2" />
+                {/* Roles and Time - 3 column grid (5 columns below lg) */}
+                <div className="grid grid-cols-5 lg:grid-cols-3 gap-x-6 items-center w-full">
+                  {/* Column 1: Empty (collapses below lg to left-align roles) */}
+                  <div className="hidden lg:block lg:col-span-1" />
 
-                  {/* Columns 3-4: Roles */}
+                  {/* Column 2: Roles (allowed to run on into column 3, so the
+                      reveal clip leaves the right side open) */}
                   <motion.div
-                    className="col-span-4 lg:col-span-2"
-                    initial={{ clipPath: 'inset(-10% -10% 0 -10%)' }}
-                    animate={{ clipPath: 'inset(-10% -10% -20% -10%)' }}
+                    className="col-span-4 lg:col-span-1"
+                    initial={{ clipPath: 'inset(-10% -200% 0 -10%)' }}
+                    animate={{ clipPath: 'inset(-10% -200% -20% -10%)' }}
                     transition={{
                       duration: 0.5,
                       delay: rolesDelay + 0.5,
@@ -705,18 +684,18 @@ export default function HomePanel({
                         }}
                         className="flex gap-3 items-center"
                       >
-                        <NewlyRole label={roleLabel(t.designAt, fromT.designAt)} />
-                        <FigmaRole label={roleLabel(t.campusLeaderAt, fromT.campusLeaderAt)} />
-                        <TextQLRole label={roleLabel(t.prevDesignAt, fromT.prevDesignAt)} />
+                        <NewlyRole large label={roleLabel(t.designAt, fromT.designAt)} />
+                        <FigmaRole large label={roleLabel(t.campusLeaderAt, fromT.campusLeaderAt)} />
+                        <TextQLRole large label={roleLabel(t.prevDesignAt, fromT.prevDesignAt)} />
                       </motion.div>
                     ) : (
                       <div className="opacity-0 flex gap-3 items-center">
-                        <p className="font-normal text-[12px] tracking-[-0.24px] leading-normal whitespace-nowrap">Design at Newly</p>
+                        <p className="font-normal text-[14px] tracking-[-0.28px] leading-[1.2] whitespace-nowrap">Design at Newly</p>
                       </div>
                     )}
                   </motion.div>
 
-                  {/* Column 5: Time */}
+                  {/* Last column: Time and language globe */}
                   <motion.div
                     className="col-span-1 flex items-center justify-end gap-1.5 whitespace-nowrap"
                     initial={instant ? false : { clipPath: 'inset(-10% -10% 0 -10%)' }}
@@ -738,7 +717,7 @@ export default function HomePanel({
                           ease: [0.4, 0, 0.2, 1],
                         }}
                       >
-                        <span className="font-medium text-[12px] tracking-[-0.24px] leading-normal">
+                        <span className="font-normal text-[14px] tracking-[-0.28px] leading-[1.2]">
                           {langSwitched ? (
                             <ScrambleText from={formatStockholmTime(prevLanguage)} charDelay={switchCharDelay}>
                               {currentTime}
@@ -747,12 +726,15 @@ export default function HomePanel({
                             currentTime
                           )}
                         </span>
-                        <span className="w-2.5 h-2.5 rounded-full bg-foreground shrink-0 self-center" />
+                        <LanguageGlobe
+                          onClick={cycleLanguage}
+                          className="block w-3 h-3 shrink-0 cursor-pointer"
+                        />
                       </motion.div>
                     ) : (
                       <div className="flex items-center gap-1.5 opacity-0">
-                        <span className="font-medium text-[12px] tracking-[-0.24px] leading-normal">{currentTime}</span>
-                        <span className="w-2.5 h-2.5 rounded-full bg-foreground shrink-0 self-center" />
+                        <span className="font-normal text-[14px] tracking-[-0.28px] leading-[1.2]">{currentTime}</span>
+                        <span className="w-3 h-3 shrink-0" />
                       </div>
                     )}
                   </motion.div>
@@ -763,11 +745,23 @@ export default function HomePanel({
         </div>
       </div>
 
+      {/* Work - featured projects with photos, then the list of the rest.
+          Each piece reveals as it scrolls into view, from when the footer
+          would appear. */}
+      {hasShrunk && showContent && projects.length > 0 && (
+        <HomeProjects
+          projects={projects}
+          introSkipped={instant}
+          revealReady={workRevealReady}
+          scrollToHashWhenReady={introDone && !instant}
+        />
+      )}
+
       {/* Footer Section */}
       <AnimatePresence>
         {hasShrunk && showContent && (
           <motion.div
-            className="relative flex flex-1 items-end justify-between p-9 w-full"
+            className="relative flex flex-1 min-h-[239px] items-end justify-between p-9 w-full"
             initial={instant ? false : { opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
@@ -780,7 +774,7 @@ export default function HomePanel({
               <div className="w-[45px] h-[28px] shrink-0">
                 <WZLogo className="w-full h-full" />
               </div>
-              <div className="w-[354px] font-normal text-[12px] tracking-[-0.24px] leading-normal">
+              <div className="w-[354px] font-normal text-[14px] tracking-[-0.28px] leading-[1.2]">
                 <p className="mb-0">
                   {langSwitched ? (
                     <ScrambleText from={fromT.newPortfolio} charDelay={switchCharDelay}>
