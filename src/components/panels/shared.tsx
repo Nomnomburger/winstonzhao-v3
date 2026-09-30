@@ -391,14 +391,14 @@ const TIME_LOCALES: Record<Language, string> = {
   zh: 'zh-CN',
 };
 
-export function formatStockholmTime(language: Language, date = new Date()) {
+export function formatTorontoTime(language: Language, date = new Date()) {
   const formatter = new Intl.DateTimeFormat(TIME_LOCALES[language], {
     hour: language === 'en' ? 'numeric' : '2-digit',
     minute: '2-digit',
     hour12: language === 'en',
-    timeZone: 'Europe/Stockholm',
+    timeZone: 'America/Toronto',
   });
-  return `STHLM ${formatter.format(date)}`;
+  return `Toronto ${formatter.format(date)}`;
 }
 
 export function useCurrentTime(language: Language = 'en') {
@@ -406,7 +406,7 @@ export function useCurrentTime(language: Language = 'en') {
 
   useEffect(() => {
     const updateTime = () => {
-      setTime(formatStockholmTime(language));
+      setTime(formatTorontoTime(language));
     };
 
     updateTime();

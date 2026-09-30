@@ -13,6 +13,15 @@ interface HeroScrollOptions {
 type SnapDirection = -1 | 1;
 const DOCK_TOLERANCE = 48;
 const UPWARD_INTENT_MS = 1500;
+const WHEEL_GESTURE_IDLE_MS = 180;
+
+interface WheelGesture {
+  direction: SnapDirection;
+  lastEventAt: number;
+  lastDelta: number;
+  previousDelta: number;
+  consumed: boolean;
+}
 
 // offsetTop excludes the heading's scroll-driven transform. Its visual box
 // must not become the next measurement's starting position as it moves.
@@ -49,6 +58,7 @@ export function useHeroScroll({ heroRef, headingRef, enabled, ready }: HeroScrol
   const snapDirectionRef = useRef<SnapDirection | null>(null);
   const snappedRef = useRef(false);
   const upwardIntentUntilRef = useRef(0);
+  const wheelGestureRef = useRef<WheelGesture | null>(null);
 
   const syncScroll = useCallback((scrollY = window.scrollY) => {
     const y = Math.max(0, scrollY);
@@ -90,6 +100,13 @@ export function useHeroScroll({ heroRef, headingRef, enabled, ready }: HeroScrol
 
     cancelSnap();
     snappedRef.current = direction === 1;
+    // A return snap can also start from onScroll after a large native wheel
+    // delta crosses the dock. Consume that gesture's remaining momentum too.
+    const wheelGesture = wheelGestureRef.current;
+    if (wheelGesture?.direction === direction &&
+        performance.now() - wheelGesture.lastEventAt < WHEEL_GESTURE_IDLE_MS) {
+      wheelGesture.consumed = true;
+    }
     const finish = () => {
       animationRef.current = null;
       snapDirectionRef.current = null;
@@ -218,7 +235,45 @@ export function useHeroScroll({ heroRef, headingRef, enabled, ready }: HeroScrol
       if (event.defaultPrevented || event.ctrlKey || event.metaKey || event.altKey ||
           event.shiftKey || isEditable(event.target) ||
           Math.abs(event.deltaY) <= Math.abs(event.deltaX)) return;
-      handleDirection(event.deltaY < 0 ? -1 : 1, event);
+      const direction = event.deltaY < 0 ? -1 : 1;
+      const now = performance.now();
+      const delta = Math.abs(event.deltaY) * (
+        event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? window.innerHeight : 1
+      );
+      let gesture = wheelGestureRef.current;
+      const recentPeak = gesture ? Math.max(gesture.lastDelta, gesture.previousDelta) : 0;
+      // A fresh push accelerates again, unlike the fading momentum from the
+      // snap. Accept a clear increase immediately, or a gentler two-event ramp.
+      const renewedPush = gesture?.consumed && snapDirectionRef.current === null && (
+        (delta > recentPeak * 1.25 && delta - recentPeak >= 3) ||
+        (delta >= 6 && gesture.lastDelta > gesture.previousDelta && delta > gesture.lastDelta &&
+          delta > gesture.previousDelta * 1.25 && delta - gesture.previousDelta >= 2)
+      );
+      if (!gesture || gesture.direction !== direction ||
+          now - gesture.lastEventAt >= WHEEL_GESTURE_IDLE_MS || renewedPush) {
+        gesture = {
+          direction,
+          lastEventAt: now,
+          lastDelta: delta,
+          previousDelta: delta,
+          consumed: false,
+        };
+        wheelGestureRef.current = gesture;
+      }
+      gesture.lastEventAt = now;
+      gesture.previousDelta = gesture.lastDelta;
+      gesture.lastDelta = delta;
+
+      // Trackpad momentum can outlast the snap animation. Keep consuming the
+      // fading tail; a renewed push, pause, or reversal starts a fresh gesture.
+      if (gesture.consumed && snapDirectionRef.current === null) {
+        if (event.cancelable) event.preventDefault();
+        return;
+      }
+      handleDirection(direction, event);
+      if (snapDirectionRef.current !== null || event.defaultPrevented) {
+        gesture.consumed = true;
+      }
     };
 
     let touch: { x: number; y: number } | null = null;
@@ -281,6 +336,7 @@ export function useHeroScroll({ heroRef, headingRef, enabled, ready }: HeroScrol
       window.removeEventListener('touchend', clearTouch);
       window.removeEventListener('touchcancel', cancelTouch);
       window.removeEventListener('keydown', onKey);
+      wheelGestureRef.current = null;
     };
   }, [enabled, ready, snapTo, cancelSnap]);
 

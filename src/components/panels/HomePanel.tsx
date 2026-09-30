@@ -7,7 +7,7 @@ import Link from 'next/link';
 import {
   AnimatedText,
   ScrambleText,
-  formatStockholmTime,
+  formatTorontoTime,
   useCurrentTime,
   NewlyRole,
   FigmaRole,
@@ -748,7 +748,7 @@ export default function HomePanel({
                       >
                         <span className="font-normal text-[14px] tracking-[-0.28px] leading-[1.2]">
                           {langSwitched ? (
-                            <ScrambleText from={formatStockholmTime(prevLanguage)} charDelay={switchCharDelay}>
+                            <ScrambleText from={formatTorontoTime(prevLanguage)} charDelay={switchCharDelay}>
                               {currentTime}
                             </ScrambleText>
                           ) : (
