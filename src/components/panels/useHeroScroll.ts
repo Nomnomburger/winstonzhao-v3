@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useLayoutEffect, useRef, useState, type RefObject } from 'react';
 import { animate, useMotionValue, useReducedMotion, type AnimationPlaybackControls } from 'framer-motion';
+import { getSmoothScroll, scrollInstantly } from '@/lib/smooth-scroll';
 
 interface HeroScrollOptions {
   heroRef: RefObject<HTMLElement | null>;
@@ -16,13 +17,26 @@ type SnapDirection = -1 | 1;
 const DOCK_TOLERANCE = 48;
 const UPWARD_INTENT_MS = 1500;
 const WHEEL_GESTURE_IDLE_MS = 180;
+const WHEEL_MOMENTUM_DECAY_EVENTS = 3;
+const WHEEL_MOMENTUM_DECAY_RATIO = 0.8;
 
 interface WheelGesture {
   direction: SnapDirection;
   lastEventAt: number;
   lastDelta: number;
   previousDelta: number;
+  decayStartDelta: number;
+  decayingEvents: number;
+  momentum: boolean;
   consumed: boolean;
+}
+
+interface HeadingTransition {
+  from: number;
+  to: number;
+  fromHeadingY: number;
+  toHeadingY: number;
+  previous: HeadingTransition | null;
 }
 
 // offsetTop excludes the heading's scroll-driven transform. Its visual box
@@ -53,6 +67,7 @@ function isKeyboardControl(target: EventTarget | null) {
 export function useHeroScroll({ heroRef, headingRef, enabled, ready, headingDockTop }: HeroScrollOptions) {
   const progress = useMotionValue(0);
   const headingY = useMotionValue(0);
+  const projectsHeadingY = useMotionValue(0);
   const headingLift = useMotionValue(0);
   const [isAtHero, setIsAtHero] = useState(true);
   const reducedMotion = useReducedMotion();
@@ -62,7 +77,9 @@ export function useHeroScroll({ heroRef, headingRef, enabled, ready, headingDock
   const snapDirectionRef = useRef<SnapDirection | null>(null);
   const snappedRef = useRef(false);
   const upwardIntentUntilRef = useRef(0);
+  const upwardMomentumRef = useRef(false);
   const wheelGestureRef = useRef<WheelGesture | null>(null);
+  const headingTransitionRef = useRef<HeadingTransition | null>(null);
 
   const syncScroll = useCallback((scrollY = window.scrollY) => {
     const y = Math.max(0, scrollY);
@@ -70,23 +87,48 @@ export function useHeroScroll({ heroRef, headingRef, enabled, ready, headingDock
     const atHero = y <= heroTopRef.current + 1;
     setIsAtHero(atHero);
     headingY.set(Math.min(y, target));
+    let titleY = Math.min(y, target);
+    // Returning to hero settles the title over the same scroll animation as
+    // the photos. Keep this mapping on interruption so the title cannot jump.
+    if (reducedMotion) headingTransitionRef.current = null;
+    let transition = headingTransitionRef.current;
+    while (transition) {
+      const fraction = (y - transition.from) / (transition.to - transition.from);
+      if (fraction >= 1) {
+        headingTransitionRef.current = null;
+        break;
+      }
+      if (fraction < 0) {
+        transition = transition.previous;
+        headingTransitionRef.current = transition;
+        continue;
+      }
+      titleY = transition.fromHeadingY + (transition.toHeadingY - transition.fromHeadingY) * fraction;
+      break;
+    }
+    projectsHeadingY.set(titleY);
     progress.set(target > 0 ? Math.min(y / target, 1) : 0);
     // Returning all the way to the hero starts a new visit. Scroll restoration
     // itself never starts a snap; only the input handlers below can do that.
     if (atHero && snapDirectionRef.current === null) {
       snappedRef.current = false;
     }
-  }, [headingY, progress]);
+  }, [headingY, projectsHeadingY, progress, reducedMotion]);
 
   const measure = useCallback(() => {
     const heading = headingRef.current;
     const work = document.getElementById('work');
+    const previousHeroTop = heroTopRef.current;
+    const previousTarget = targetRef.current;
     heroTopRef.current = heroRef.current ? documentTop(heroRef.current) : 0;
     const headingTop = heading ? documentTop(heading) : 0;
     headingLift.set(headingDockTop === undefined ? 0 : Math.max(0, headingTop - headingDockTop));
     targetRef.current = heading && work
       ? Math.max(0, documentTop(work) - headingTop - heading.offsetHeight + headingLift.get())
       : 0;
+    if (previousHeroTop !== heroTopRef.current || previousTarget !== targetRef.current) {
+      headingTransitionRef.current = null;
+    }
     syncScroll();
     return targetRef.current;
   }, [heroRef, headingRef, headingDockTop, headingLift, syncScroll]);
@@ -96,7 +138,29 @@ export function useHeroScroll({ heroRef, headingRef, enabled, ready, headingDock
     animationRef.current = null;
     snapDirectionRef.current = null;
     upwardIntentUntilRef.current = 0;
+    upwardMomentumRef.current = false;
+    scrollInstantly(window.scrollY);
     syncScroll();
+  }, [syncScroll]);
+
+  const stopAtProjects = useCallback((smooth = false) => {
+    const target = targetRef.current;
+    snappedRef.current = true;
+    if (wheelGestureRef.current?.direction === -1) {
+      wheelGestureRef.current.consumed = true;
+    }
+    const smoothScroll = smooth ? getSmoothScroll() : null;
+    if (smoothScroll) {
+      // Clamp the destination before arriving, so Lenis slows to this edge
+      // using the same easing as the top and bottom of the document.
+      smoothScroll.scrollTo(target, {
+        programmatic: false,
+        lerp: smoothScroll.options.lerp,
+      });
+      return;
+    }
+    scrollInstantly(target);
+    syncScroll(target);
   }, [syncScroll]);
 
   const snapTo = useCallback((direction: SnapDirection, focus = false) => {
@@ -108,8 +172,8 @@ export function useHeroScroll({ heroRef, headingRef, enabled, ready, headingDock
 
     cancelSnap();
     snappedRef.current = direction === 1;
-    // A return snap can also start from onScroll after a large native wheel
-    // delta crosses the dock. Consume that gesture's remaining momentum too.
+    // A return snap can also start from onScroll after deliberate input
+    // crosses the dock. Consume that gesture's remaining momentum too.
     const wheelGesture = wheelGestureRef.current;
     if (wheelGesture?.direction === direction &&
         performance.now() - wheelGesture.lastEventAt < WHEEL_GESTURE_IDLE_MS) {
@@ -118,7 +182,8 @@ export function useHeroScroll({ heroRef, headingRef, enabled, ready, headingDock
     const finish = () => {
       animationRef.current = null;
       snapDirectionRef.current = null;
-      window.scrollTo({ top: target, behavior: 'instant' });
+      headingTransitionRef.current = null;
+      scrollInstantly(target);
       syncScroll(target);
       if (focus && direction === 1) work?.focus({ preventScroll: true });
     };
@@ -129,16 +194,25 @@ export function useHeroScroll({ heroRef, headingRef, enabled, ready, headingDock
     }
 
     snapDirectionRef.current = direction;
+    if (direction === -1 || headingTransitionRef.current) {
+      headingTransitionRef.current = {
+        from: window.scrollY,
+        to: target,
+        fromHeadingY: projectsHeadingY.get(),
+        toHeadingY: Math.min(target, projectsTarget),
+        previous: headingTransitionRef.current,
+      };
+    }
     animationRef.current = animate(window.scrollY, target, {
       duration: direction === -1 ? 1.1 : 0.8,
       ease: [0.2, 0.8, 0.2, 1],
       onUpdate: (y) => {
-        window.scrollTo({ top: y, behavior: 'instant' });
+        scrollInstantly(y);
         syncScroll(y);
       },
       onComplete: finish,
     });
-  }, [enabled, measure, cancelSnap, reducedMotion, syncScroll]);
+  }, [enabled, measure, cancelSnap, projectsHeadingY, reducedMotion, syncScroll]);
 
   const scrollToProjects = useCallback((focus = false) => {
     snapTo(1, focus);
@@ -173,18 +247,31 @@ export function useHeroScroll({ heroRef, headingRef, enabled, ready, headingDock
       const y = window.scrollY;
       const movingUp = y < lastScrollY;
       lastScrollY = y;
-      syncScroll(y);
       const hasUpwardIntent = performance.now() < upwardIntentUntilRef.current;
-      if (hasUpwardIntent && movingUp && snapDirectionRef.current === null) {
-        // Touch momentum can outlive the last touchmove event. Keep that
-        // intent alive while the page continues moving upward naturally.
+      if (hasUpwardIntent && upwardMomentumRef.current && movingUp && snapDirectionRef.current === null) {
+        // Native touch momentum can outlive touchend. Keep its boundary guard
+        // alive while it moves, without granting permission to return to hero.
         upwardIntentUntilRef.current = performance.now() + UPWARD_INTENT_MS;
       }
-      // Deep project browsing stays native. A large wheel delta, Page Up, or
-      // touch momentum can cross the dock in one frame, so start the return
-      // only after that user-driven movement actually reaches the boundary.
       if (enabled && ready && snapDirectionRef.current === null && movingUp &&
-          hasUpwardIntent &&
+          hasUpwardIntent && upwardMomentumRef.current && targetRef.current > 0 &&
+          y <= targetRef.current) {
+        if (getSmoothScroll()?.targetScroll === targetRef.current && y >= targetRef.current - 1) {
+          // A rounded final Lenis frame can reach the edge before its easing
+          // completes. Leave that last frame under the scroll engine's control.
+          syncScroll(y);
+          return;
+        }
+        // Catch overshoots, including a fling that reaches hero in one frame
+        // or a wheel event the browser would not let us cancel.
+        stopAtProjects();
+        lastScrollY = targetRef.current;
+        return;
+      }
+      syncScroll(y);
+      // Deliberate input may still cross the dock in a single native frame.
+      if (enabled && ready && snapDirectionRef.current === null && movingUp &&
+          hasUpwardIntent && !upwardMomentumRef.current &&
           y > heroTopRef.current + 1 && targetRef.current > 0 &&
           y <= targetRef.current + DOCK_TOLERANCE) {
         snapTo(-1);
@@ -213,12 +300,12 @@ export function useHeroScroll({ heroRef, headingRef, enabled, ready, headingDock
       window.removeEventListener('resize', onResize);
       cancelSnap();
     };
-  }, [heroRef, headingRef, enabled, ready, measure, syncScroll, cancelSnap, snapTo]);
+  }, [heroRef, headingRef, enabled, ready, measure, syncScroll, cancelSnap, snapTo, stopAtProjects]);
 
   useEffect(() => {
     if (!enabled) return;
 
-    const handleDirection = (direction: SnapDirection, event: Event) => {
+    const handleDirection = (direction: SnapDirection, event: Event, momentum = false) => {
       const activeDirection = snapDirectionRef.current;
       if (activeDirection !== null) {
         if (event.cancelable) event.preventDefault();
@@ -230,12 +317,14 @@ export function useHeroScroll({ heroRef, headingRef, enabled, ready, headingDock
       const target = targetRef.current;
       if (direction === -1) {
         upwardIntentUntilRef.current = performance.now() + UPWARD_INTENT_MS;
-        if (target > 0 && y > heroTopRef.current + 1 && y <= target + DOCK_TOLERANCE) {
+        upwardMomentumRef.current = momentum;
+        if (!momentum && target > 0 && y > heroTopRef.current + 1 && y <= target + DOCK_TOLERANCE) {
           if (event.cancelable) event.preventDefault();
           snapTo(-1);
         }
       } else {
         upwardIntentUntilRef.current = 0;
+        upwardMomentumRef.current = false;
         if (!snappedRef.current && target > 0 && y >= heroTopRef.current - 1 && y < target - 1) {
           if (event.cancelable) event.preventDefault();
           snapTo(1);
@@ -249,28 +338,51 @@ export function useHeroScroll({ heroRef, headingRef, enabled, ready, headingDock
           Math.abs(event.deltaY) <= Math.abs(event.deltaX)) return;
       const direction = event.deltaY < 0 ? -1 : 1;
       const now = performance.now();
+      const smoothScroll = getSmoothScroll();
       const delta = Math.abs(event.deltaY) * (
-        event.deltaMode === 1 ? 16 : event.deltaMode === 2 ? window.innerHeight : 1
+        event.deltaMode === 1 ? (smoothScroll ? 100 / 6 : 16) :
+          event.deltaMode === 2 ? window.innerHeight : 1
       );
       let gesture = wheelGestureRef.current;
       const recentPeak = gesture ? Math.max(gesture.lastDelta, gesture.previousDelta) : 0;
       // A fresh push accelerates again, unlike the fading momentum from the
       // snap. Accept a clear increase immediately, or a gentler two-event ramp.
-      const renewedPush = gesture?.consumed && snapDirectionRef.current === null && (
+      const renewedPush = (gesture?.consumed || gesture?.momentum) && snapDirectionRef.current === null && (
         (delta > recentPeak * 1.25 && delta - recentPeak >= 3) ||
         (delta >= 6 && gesture.lastDelta > gesture.previousDelta && delta > gesture.lastDelta &&
           delta > gesture.previousDelta * 1.25 && delta - gesture.previousDelta >= 2)
       );
       if (!gesture || gesture.direction !== direction ||
           now - gesture.lastEventAt >= WHEEL_GESTURE_IDLE_MS || renewedPush) {
+        if (gesture?.consumed && gesture.momentum && snapDirectionRef.current === null &&
+            smoothScroll?.isScrolling === 'smooth') {
+          // A fresh gesture takes over from the visible position, so reversing
+          // cannot keep drifting toward the old Projects destination.
+          scrollInstantly(window.scrollY);
+        }
         gesture = {
           direction,
           lastEventAt: now,
           lastDelta: delta,
           previousDelta: delta,
+          decayStartDelta: delta,
+          decayingEvents: 0,
+          momentum: false,
           consumed: false,
         };
         wheelGestureRef.current = gesture;
+      }
+      // WheelEvent has no momentum phase. Infer a fading tail from sustained
+      // decay, allowing steady input and small fluctuations to keep snapping.
+      if (delta < gesture.lastDelta) {
+        gesture.decayingEvents += 1;
+        if (gesture.decayingEvents >= WHEEL_MOMENTUM_DECAY_EVENTS &&
+            delta <= gesture.decayStartDelta * WHEEL_MOMENTUM_DECAY_RATIO) {
+          gesture.momentum = true;
+        }
+      } else if (delta > gesture.lastDelta) {
+        gesture.decayStartDelta = delta;
+        gesture.decayingEvents = 0;
       }
       gesture.lastEventAt = now;
       gesture.previousDelta = gesture.lastDelta;
@@ -282,7 +394,15 @@ export function useHeroScroll({ heroRef, headingRef, enabled, ready, headingDock
         if (event.cancelable) event.preventDefault();
         return;
       }
-      handleDirection(direction, event);
+      handleDirection(direction, event, gesture.momentum);
+      if (direction === -1 && gesture.momentum && ready &&
+          snapDirectionRef.current === null && targetRef.current > 0 &&
+          window.scrollY >= targetRef.current &&
+          (smoothScroll ? smoothScroll.targetScroll - delta * smoothScroll.options.wheelMultiplier :
+            window.scrollY - delta) <= targetRef.current) {
+        if (event.cancelable) event.preventDefault();
+        stopAtProjects(!!smoothScroll);
+      }
       if (snapDirectionRef.current !== null || event.defaultPrevented) {
         gesture.consumed = true;
       }
@@ -296,6 +416,8 @@ export function useHeroScroll({ heroRef, headingRef, enabled, ready, headingDock
         if (snapDirectionRef.current !== null) cancelSnap();
         return;
       }
+      upwardIntentUntilRef.current = 0;
+      upwardMomentumRef.current = false;
       touch = { x: event.touches[0].clientX, y: event.touches[0].clientY };
     };
     const onTouchMove = (event: TouchEvent) => {
@@ -310,7 +432,13 @@ export function useHeroScroll({ heroRef, headingRef, enabled, ready, headingDock
       if (Math.abs(dy) <= Math.abs(dx)) return;
       handleDirection(dy < 0 ? -1 : 1, event);
     };
-    const clearTouch = () => { touch = null; };
+    const clearTouch = () => {
+      if (touch && performance.now() < upwardIntentUntilRef.current) {
+        upwardMomentumRef.current = true;
+        upwardIntentUntilRef.current = performance.now() + UPWARD_INTENT_MS;
+      }
+      touch = null;
+    };
     const cancelTouch = () => {
       touch = null;
       upwardIntentUntilRef.current = 0;
@@ -335,14 +463,14 @@ export function useHeroScroll({ heroRef, headingRef, enabled, ready, headingDock
       if (downward) handleDirection(1, event);
     };
 
-    window.addEventListener('wheel', onWheel, { passive: false });
+    window.addEventListener('wheel', onWheel, { passive: false, capture: true });
     window.addEventListener('touchstart', onTouchStart, { passive: true });
     window.addEventListener('touchmove', onTouchMove, { passive: false });
     window.addEventListener('touchend', clearTouch, { passive: true });
     window.addEventListener('touchcancel', cancelTouch, { passive: true });
     window.addEventListener('keydown', onKey);
     return () => {
-      window.removeEventListener('wheel', onWheel);
+      window.removeEventListener('wheel', onWheel, { capture: true });
       window.removeEventListener('touchstart', onTouchStart);
       window.removeEventListener('touchmove', onTouchMove);
       window.removeEventListener('touchend', clearTouch);
@@ -350,7 +478,7 @@ export function useHeroScroll({ heroRef, headingRef, enabled, ready, headingDock
       window.removeEventListener('keydown', onKey);
       wheelGestureRef.current = null;
     };
-  }, [enabled, ready, snapTo, cancelSnap]);
+  }, [enabled, ready, snapTo, cancelSnap, stopAtProjects]);
 
-  return { progress, headingY, headingLift, isAtHero, scrollToProjects, scrollToHero };
+  return { progress, headingY, projectsHeadingY, headingLift, isAtHero, scrollToProjects, scrollToHero };
 }

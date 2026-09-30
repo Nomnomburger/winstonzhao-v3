@@ -116,6 +116,7 @@ function MobileMenuDialog({
       aria-label={ariaLabel}
       aria-hidden={!isPresent}
       inert={!isPresent}
+      data-lenis-prevent
       className="theme-root fixed inset-0 z-[1000] overflow-y-auto overscroll-contain bg-background text-foreground"
       style={{ pointerEvents: isPresent ? 'auto' : 'none' }}
       initial={{ opacity: reducedMotion ? 1 : 0 }}

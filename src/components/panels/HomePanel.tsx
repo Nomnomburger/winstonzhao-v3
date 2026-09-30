@@ -133,7 +133,7 @@ export default function HomePanel({
   const t = translations[language];
   const fromT = translations[prevLanguage];
   const projectCount = String(projects.length);
-  const { progress, headingY, isAtHero, scrollToProjects, scrollToHero } = useHeroScroll({
+  const { progress, headingY, projectsHeadingY, isAtHero, scrollToProjects, scrollToHero } = useHeroScroll({
     heroRef,
     headingRef,
     enabled: hasShrunk && showContent && projects.length > 0,
@@ -662,7 +662,7 @@ export default function HomePanel({
                 {/* Work and Bio - 3 column grid (5 columns below lg) */}
                 <div className="grid grid-cols-5 lg:grid-cols-3 gap-x-6 w-full">
                   {/* Column 1: Work Link */}
-                  <motion.div ref={headingRef} className="relative z-20 col-span-1 self-start" style={{ y: headingY }}>
+                  <motion.div ref={headingRef} className="relative z-20 col-span-1 self-start" style={{ y: projectsHeadingY }}>
                     <h2>
                     <a
                       href="#work"

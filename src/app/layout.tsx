@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import ThemeController from "@/components/ThemeController";
+import SmoothScroll from "@/components/SmoothScroll";
 
 const ppNeueMontreal = localFont({
   src: [
@@ -159,6 +160,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
         />
         <ThemeController />
+        <SmoothScroll />
         {children}
       </body>
     </html>

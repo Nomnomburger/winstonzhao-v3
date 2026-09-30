@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { getSmoothScroll } from '@/lib/smooth-scroll';
 
 interface SectionNavProps {
   items: { id: string; title: string }[];
@@ -54,7 +55,9 @@ export default function SectionNav({ items }: SectionNavProps) {
             const section = document.getElementById(item.id);
             if (!section) return;
             e.preventDefault();
-            section.scrollIntoView({ behavior: 'smooth' });
+            const smoothScroll = getSmoothScroll();
+            if (smoothScroll) smoothScroll.scrollTo(section);
+            else section.scrollIntoView({ behavior: 'smooth' });
             // Keyboard focus follows, so Tab continues inside the section
             section.focus({ preventScroll: true });
             history.replaceState(null, '', `#${item.id}`);

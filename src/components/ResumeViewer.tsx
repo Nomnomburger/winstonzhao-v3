@@ -517,6 +517,7 @@ export default function ResumeViewer() {
   return (
     <div
       ref={containerRef}
+      data-lenis-prevent
       className="theme-root fixed inset-0 overflow-auto bg-background no-scrollbar"
       style={{ touchAction: 'pan-x pan-y' }}
     >
