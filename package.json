@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "postinstall": "node scripts/copy-pdf-worker.mjs",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test:hero-touch-scroll": "node --test tests/hero-touch-scroll.test.mjs"
   },
   "dependencies": {
     "@sanity/image-url": "^1.2.0",
