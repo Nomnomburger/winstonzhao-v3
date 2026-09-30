@@ -1,6 +1,7 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { useMotionValueEvent, type MotionValue } from 'framer-motion';
 import FeaturedProjects from './FeaturedProjects';
 import ProjectList from './ProjectList';
 import { RevealContext } from './reveal';
@@ -8,9 +9,11 @@ import type { ProjectCardData } from './types';
 
 interface HomeProjectsProps {
   projects: ProjectCardData[];
+  heroScrollProgress: MotionValue<number>;
+  skipFirstImageReveals?: boolean;
   className?: string;
   // Scroll reveals wait for this (the end of the page's intro). When the
-  // intro was skipped they're skipped too, and everything simply shows.
+  // intro was skipped the once-only reveals are skipped too. Captions replay.
   revealReady?: boolean;
   // Arriving at /#work uses the hero's docking position when provided.
   introSkipped?: boolean;
@@ -22,6 +25,8 @@ interface HomeProjectsProps {
 // photo cards, and everything else goes in the list below them.
 export default function HomeProjects({
   projects,
+  heroScrollProgress,
+  skipFirstImageReveals = false,
   className = '',
   revealReady = true,
   introSkipped = false,
@@ -29,6 +34,12 @@ export default function HomeProjects({
   onScrollToWork,
 }: HomeProjectsProps) {
   const ref = useRef<HTMLElement>(null);
+  const [captionsActive, setCaptionsActive] = useState(() => heroScrollProgress.get() >= 0.7);
+  // Replay the captions after the hero clears, and fade them out on return
+  // even when the first photo is still partly visible below the hero.
+  useMotionValueEvent(heroScrollProgress, 'change', (value) => {
+    setCaptionsActive(value >= 0.7);
+  });
   const featured = projects.filter((p) => p.featured);
   const rest = projects.filter((p) => !p.featured);
 
@@ -64,7 +75,7 @@ export default function HomeProjects({
   if (projects.length === 0) return null;
 
   return (
-    <RevealContext.Provider value={{ ready: revealReady, skip: introSkipped }}>
+    <RevealContext.Provider value={{ ready: revealReady, skip: introSkipped, captionsActive }}>
       <section
         ref={ref}
         id="work"
@@ -74,7 +85,7 @@ export default function HomeProjects({
       >
         {featured.length > 0 && (
           <div className="w-full px-6 md:p-9">
-            <FeaturedProjects projects={featured} />
+            <FeaturedProjects projects={featured} skipFirstImageReveals={skipFirstImageReveals} />
           </div>
         )}
         {rest.length > 0 && (

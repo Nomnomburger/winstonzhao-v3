@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, useMotionValue, useTransform, useAnimationControls, useReducedMotion, animate } from 'framer-motion';
+import { motion, useMotionValue, useTransform, useAnimationControls, useReducedMotion, animate, type AnimationPlaybackControls, type MotionValue } from 'framer-motion';
 import { ReactNode, useCallback, useContext, useEffect, useId, useRef, useState, useSyncExternalStore } from 'react';
 import { Language } from './translations';
 import { HeroBioExitContext, HeroBioExitWord } from './HeroBioLine';
@@ -15,6 +15,45 @@ const WZ_STROKES = [
   { path: 'M25.2 14.1 C27.9 13.3 30.3 13.1 34.4 13.3', start: 1.09, duration: 0.12 },
   { path: 'M43 24.4 L43.2 24.4', start: 1.21, duration: 0.08 },
 ];
+const WZ_DRAW_DURATION = 1.32;
+const WZ_ERASE_DURATION = 0.66;
+
+function WZStroke({
+  stroke,
+  index,
+  progress,
+}: {
+  stroke: (typeof WZ_STROKES)[number];
+  index: number;
+  progress: MotionValue<number>;
+}) {
+  // After the intro, advance through a forward erase and then a fresh draw.
+  const strokeProgress = (value: number) => {
+    const phaseStart = value <= WZ_DRAW_DURATION ? 0
+      : value <= WZ_DRAW_DURATION * 2 ? WZ_DRAW_DURATION
+      : WZ_DRAW_DURATION * 2;
+    return Math.min(1, Math.max(0, (value - phaseStart - stroke.start) / stroke.duration));
+  };
+  const isErasing = (value: number) => value > WZ_DRAW_DURATION && value <= WZ_DRAW_DURATION * 2;
+  const pathLength = useTransform(progress, (value) =>
+    isErasing(value) ? 1 - strokeProgress(value) : strokeProgress(value),
+  );
+  const pathOffset = useTransform(progress, (value) => isErasing(value) ? strokeProgress(value) : 0);
+  const opacity = useTransform(pathLength, (value) => value > 0 ? 1 : 0);
+
+  return (
+    <motion.path
+      data-wz-stroke={index}
+      d={stroke.path}
+      fill="none"
+      stroke="white"
+      strokeWidth="4.2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      style={{ pathLength, pathOffset, opacity }}
+    />
+  );
+}
 
 export function WZLogo({
   className = '',
@@ -31,12 +70,51 @@ export function WZLogo({
 }) {
   const maskId = `wz-writing-${useId().replaceAll(':', '')}`;
   const reducedMotion = useReducedMotion();
-  const still = instant || reducedMotion;
+  const still = Boolean(instant || reducedMotion);
+  const progress = useMotionValue(still && show ? WZ_DRAW_DURATION : 0);
+  const fullMaskOpacity = useTransform(progress, (value) =>
+    value === WZ_DRAW_DURATION || value >= WZ_DRAW_DURATION * 3 ? 1 : 0,
+  );
+  const animationRef = useRef<AnimationPlaybackControls | null>(null);
+  const replayingRef = useRef(false);
+
+  useEffect(() => {
+    if (!draw) return;
+
+    replayingRef.current = false;
+    if (!show || still) {
+      progress.set(show ? WZ_DRAW_DURATION : 0);
+    } else {
+      animationRef.current = animate(progress, WZ_DRAW_DURATION, {
+        duration: WZ_DRAW_DURATION,
+        delay,
+        ease: 'linear',
+      });
+    }
+
+    return () => animationRef.current?.stop();
+  }, [draw, show, still, delay, progress]);
+
+  const replay = () => {
+    if (!draw || !show || reducedMotion || replayingRef.current || progress.get() < WZ_DRAW_DURATION) return;
+
+    replayingRef.current = true;
+    animationRef.current = animate(progress, [WZ_DRAW_DURATION, WZ_DRAW_DURATION * 2, WZ_DRAW_DURATION * 3], {
+      duration: WZ_ERASE_DURATION + WZ_DRAW_DURATION,
+      times: [0, WZ_ERASE_DURATION / (WZ_ERASE_DURATION + WZ_DRAW_DURATION), 1],
+      ease: 'linear',
+      onComplete: () => {
+        progress.set(WZ_DRAW_DURATION);
+        replayingRef.current = false;
+      },
+    });
+  };
 
   return (
     <span
       role="img"
       aria-label="WZ"
+      onMouseEnter={replay}
       className={`block ${draw ? '' : 'bg-foreground'} ${className}`}
       style={{
         maskImage: 'url(/wz-logo.svg)',
@@ -53,31 +131,19 @@ export function WZLogo({
         <svg viewBox="0 0 45 28" className="block w-full h-full" aria-hidden="true">
           <defs>
             <mask id={maskId} maskUnits="userSpaceOnUse" x="0" y="0" width="45" height="28">
-              {WZ_STROKES.map(({ path, start, duration }, index) => (
-                <motion.path
+              {WZ_STROKES.map((stroke, index) => (
+                <WZStroke
                   key={index}
-                  data-wz-stroke={index}
-                  d={path}
-                  fill="none"
-                  stroke="white"
-                  strokeWidth="4.2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  initial={{ pathLength: still && show ? 1 : 0, opacity: still && show ? 1 : 0 }}
-                  animate={{ pathLength: show ? 1 : 0, opacity: show ? 1 : 0 }}
-                  transition={{
-                    pathLength: { duration: still ? 0 : duration, delay: show && !still ? delay + start : 0, ease: 'linear' },
-                    opacity: { duration: 0, delay: show && !still ? delay + start : 0 },
-                  }}
+                  stroke={stroke}
+                  index={index}
+                  progress={progress}
                 />
               ))}
               <motion.rect
                 width="45"
                 height="28"
                 fill="white"
-                initial={{ opacity: still && show ? 1 : 0 }}
-                animate={{ opacity: show ? 1 : 0 }}
-                transition={{ duration: 0, delay: show && !still ? delay + 1.32 : 0 }}
+                style={{ opacity: fullMaskOpacity }}
               />
             </mask>
           </defs>

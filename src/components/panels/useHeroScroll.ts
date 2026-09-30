@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect, useLayoutEffect, useRef, type RefObject } from 'react';
+import { useCallback, useEffect, useLayoutEffect, useRef, useState, type RefObject } from 'react';
 import { animate, useMotionValue, useReducedMotion, type AnimationPlaybackControls } from 'framer-motion';
 
 interface HeroScrollOptions {
@@ -54,6 +54,7 @@ export function useHeroScroll({ heroRef, headingRef, enabled, ready, headingDock
   const progress = useMotionValue(0);
   const headingY = useMotionValue(0);
   const headingLift = useMotionValue(0);
+  const [isAtHero, setIsAtHero] = useState(true);
   const reducedMotion = useReducedMotion();
   const targetRef = useRef(0);
   const heroTopRef = useRef(0);
@@ -66,11 +67,13 @@ export function useHeroScroll({ heroRef, headingRef, enabled, ready, headingDock
   const syncScroll = useCallback((scrollY = window.scrollY) => {
     const y = Math.max(0, scrollY);
     const target = targetRef.current;
+    const atHero = y <= heroTopRef.current + 1;
+    setIsAtHero(atHero);
     headingY.set(Math.min(y, target));
     progress.set(target > 0 ? Math.min(y / target, 1) : 0);
     // Returning all the way to the hero starts a new visit. Scroll restoration
     // itself never starts a snap; only the input handlers below can do that.
-    if (y <= heroTopRef.current + 1 && snapDirectionRef.current === null) {
+    if (atHero && snapDirectionRef.current === null) {
       snappedRef.current = false;
     }
   }, [headingY, progress]);
@@ -97,10 +100,10 @@ export function useHeroScroll({ heroRef, headingRef, enabled, ready, headingDock
   }, [syncScroll]);
 
   const snapTo = useCallback((direction: SnapDirection, focus = false) => {
-    if (!enabled) return;
+    if (direction === 1 && !enabled) return;
     const projectsTarget = measure();
     const work = document.getElementById('work');
-    if (!work || projectsTarget <= 0) return;
+    if (direction === 1 && (!work || projectsTarget <= 0)) return;
     const target = direction === 1 ? projectsTarget : heroTopRef.current;
 
     cancelSnap();
@@ -117,7 +120,7 @@ export function useHeroScroll({ heroRef, headingRef, enabled, ready, headingDock
       snapDirectionRef.current = null;
       window.scrollTo({ top: target, behavior: 'instant' });
       syncScroll(target);
-      if (focus && direction === 1) work.focus({ preventScroll: true });
+      if (focus && direction === 1) work?.focus({ preventScroll: true });
     };
 
     if (reducedMotion || Math.abs(window.scrollY - target) < 1) {
@@ -139,6 +142,10 @@ export function useHeroScroll({ heroRef, headingRef, enabled, ready, headingDock
 
   const scrollToProjects = useCallback((focus = false) => {
     snapTo(1, focus);
+  }, [snapTo]);
+
+  const scrollToHero = useCallback(() => {
+    snapTo(-1);
   }, [snapTo]);
 
   useLayoutEffect(() => {
@@ -345,5 +352,5 @@ export function useHeroScroll({ heroRef, headingRef, enabled, ready, headingDock
     };
   }, [enabled, ready, snapTo, cancelSnap]);
 
-  return { progress, headingY, headingLift, scrollToProjects };
+  return { progress, headingY, headingLift, isAtHero, scrollToProjects, scrollToHero };
 }

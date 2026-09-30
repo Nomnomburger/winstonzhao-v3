@@ -1,7 +1,7 @@
 'use client';
 
-import { motion, AnimatePresence, useMotionValueEvent, useTransform } from 'framer-motion';
-import { useEffect, useRef, useState } from 'react';
+import { motion, AnimatePresence, cubicBezier, useMotionValue, useReducedMotion, useSpring, useTransform } from 'framer-motion';
+import { useEffect, useEffectEvent, useLayoutEffect, useRef, useState, useSyncExternalStore } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
@@ -26,6 +26,7 @@ import type { ProjectCardData } from '@/components/projects/types';
 import { useHeroScroll } from './useHeroScroll';
 import HomeNavigationBackdrop from './HomeNavigationBackdrop';
 import HeroBioLine from './HeroBioLine';
+import HeaderMenu from '@/components/HeaderMenu';
 
 interface HomePanelProps {
   showContent?: boolean;
@@ -39,6 +40,14 @@ interface HomePanelProps {
 // Vertical column guides are hidden in the current design.
 // Flip this back to true to restore them.
 const SHOW_COLUMN_GUIDES = false;
+
+const NAME_SHRINK_DURATION = 0.8;
+const NAME_SHRINK_STAGGER = 0.06;
+const NAME_SHRINK_EASE = [0.76, 0, 0.15, 1] as const;
+const NAME_SCROLL_STAGGER = NAME_SHRINK_STAGGER / (NAME_SHRINK_DURATION + NAME_SHRINK_STAGGER);
+const nameShrinkEase = cubicBezier(...NAME_SHRINK_EASE);
+// Begin contracting immediately while retaining the intro's easing shape.
+const nameScrollEase = (value: number) => 0.25 * value + 0.75 * nameShrinkEase(value);
 
 // Split the display name into its leading word and the rest so the two can
 // shrink on a stagger. A single-word name keeps everything in the first slot.
@@ -96,6 +105,9 @@ export default function HomePanel({
   const containerRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLDivElement>(null);
+  const nameButtonRef = useRef<HTMLButtonElement>(null);
+  const lastNameRef = useRef<HTMLSpanElement>(null);
+  const lastNameOffset = useMotionValue(0);
   const [fontSize, setFontSize] = useState('220.84px');
   // A page shown already shrunk (`instant`) only ever mounts on the client
   // (coming back from another page), so it can start at the final size and
@@ -121,15 +133,59 @@ export default function HomePanel({
   const t = translations[language];
   const fromT = translations[prevLanguage];
   const projectCount = String(projects.length);
-  const { progress, headingY, scrollToProjects } = useHeroScroll({
+  const { progress, headingY, isAtHero, scrollToProjects, scrollToHero } = useHeroScroll({
     heroRef,
     headingRef,
     enabled: hasShrunk && showContent && projects.length > 0,
     ready: introDone,
   });
-  const nameScale = useTransform(progress, [0, 1], [1, 24 / parseFloat(shrunkFontSize)]);
+  const reducedMotion = useReducedMotion();
+  // Give the name time to follow the scroll instead of compressing its
+  // stagger into the scroll snap's fast opening movement.
+  const smoothNameProgress = useSpring(progress, {
+    stiffness: 60,
+    damping: 22,
+    mass: 1,
+    restDelta: 0.001,
+    restSpeed: 0.01,
+  });
+  const nameProgress = reducedMotion ? progress : smoothNameProgress;
+  useLayoutEffect(() => {
+    const syncName = () => smoothNameProgress.jump(progress.get());
+    syncName();
+    if (!instant) return;
+    // Browser Back can restore scrolling after mount. Seed the final size
+    // during the same follow-up frames that measure the restored layout.
+    let followupFrame = 0;
+    const frame = requestAnimationFrame(() => {
+      syncName();
+      followupFrame = requestAnimationFrame(syncName);
+    });
+    return () => {
+      cancelAnimationFrame(frame);
+      cancelAnimationFrame(followupFrame);
+    };
+  }, [progress, smoothNameProgress, reducedMotion, instant]);
+  const compactNameScale = 24 / parseFloat(shrunkFontSize);
+  // Reuse the intro's word stagger within the scroll range. Both
+  // words land exactly at either endpoint, including restored scroll positions.
+  const nameScale = useTransform(nameProgress, [0, 1 - NAME_SCROLL_STAGGER], [1, compactNameScale], {
+    ease: nameScrollEase,
+  });
+  const lastNameScale = useTransform(nameProgress, [NAME_SCROLL_STAGGER, 1], [1, compactNameScale], {
+    ease: nameScrollEase,
+  });
+  const lastNameRelativeScale = useTransform(() => lastNameScale.get() / nameScale.get());
+  // Compensate for the parent's leading scale so Zhao's position trails its
+  // size, just as both do during the initial layout animation.
+  const lastNameX = useTransform(() => lastNameOffset.get() * (lastNameRelativeScale.get() - 1));
   const navigationBlend = useTransform(progress, (value) => value >= 0.7 ? 'difference' : 'normal');
   const navigationColor = useTransform(progress, (value) => value >= 0.7 ? '#ffffff' : 'var(--foreground)');
+  const compactNavigation = useSyncExternalStore(
+    (onChange) => progress.on('change', onChange),
+    () => progress.get() >= 0.7,
+    () => false,
+  );
   const heroOpacity = useTransform(progress, [0, 0.65, 1], [1, 0, 0]);
   const heroVisibility = useTransform(progress, (value) => value >= 0.65 ? 'hidden' : 'visible');
   const bioVisibility = useTransform(progress, (value) => value >= 1 ? 'hidden' : 'visible');
@@ -142,17 +198,30 @@ export default function HomePanel({
   // The photo that follows the cursor while the name or a bio word is hovered
   const preview = useCursorPreview();
 
-  useMotionValueEvent(progress, 'change', (value) => {
-    if (value > 0) preview.hide();
-  });
+  const hidePreview = useEffectEvent(() => preview.hide());
+  useEffect(() => {
+    if (!isAtHero) hidePreview();
+  }, [isAtHero]);
 
   const beginHover = (key: HoverKey, e: React.MouseEvent) => {
+    if (!isAtHero) return;
     const { width, height } = HOVER_IMAGES.find((img) => img.key === key)!;
     preview.show(key, e, { width, height });
   };
 
   const moveHover = preview.move;
   const endHover = preview.hide;
+
+  useLayoutEffect(() => {
+    const button = nameButtonRef.current;
+    if (!button) return;
+    const measureName = () => lastNameOffset.set(lastNameRef.current?.offsetLeft ?? 0);
+    measureName();
+    const observer = new ResizeObserver(measureName);
+    observer.observe(button);
+    if (button.firstElementChild) observer.observe(button.firstElementChild);
+    return () => observer.disconnect();
+  }, [lastNameOffset]);
 
   const handleLanguageChange = (lang: Language) => {
     if (lang === language) return;
@@ -246,8 +315,8 @@ export default function HomePanel({
   // Timing configuration
   const headerAnimationDelay = 0.2; // When header starts appearing
   const shrinkDelay = 1.3; // Seconds after page load to start shrinking
-  const shrinkDuration = 0.8; // Duration of shrink animation
-  const nameStagger = 0.06; // How far the last name trails the first during shrink
+  const shrinkDuration = NAME_SHRINK_DURATION;
+  const nameStagger = NAME_SHRINK_STAGGER;
 
   // True once the staggered name shrink has fully played out. The name words
   // use framer layout (FLIP) animations so position and scale stagger
@@ -268,7 +337,7 @@ export default function HomePanel({
       clearTimeout(timer);
       clearTimeout(doneTimer);
     };
-  }, [showContent, instant]);
+  }, [showContent, instant, shrinkDuration, nameStagger]);
 
   // Animation configuration - content appears during/after shrink
   const contentBaseDelay = 0.4; // Delay after shrink before content animates
@@ -322,7 +391,7 @@ export default function HomePanel({
 
   const shrinkTransition = {
     duration: instant ? 0 : shrinkDuration,
-    ease: [0.76, 0, 0.15, 1] as const,
+    ease: NAME_SHRINK_EASE,
   };
 
   // The name shrinks in two pieces: the first name leads and the last name
@@ -485,12 +554,7 @@ export default function HomePanel({
                   position and scale can trail the first name's together. */}
               <h1
                 ref={headerRef}
-                onMouseEnter={(e) => {
-                  if (interactive) beginHover('name', e);
-                }}
-                onMouseMove={moveHover}
-                onMouseLeave={endHover}
-                className="font-medium whitespace-nowrap leading-none cursor-default"
+                className="font-medium whitespace-nowrap leading-none"
                 style={{
                   letterSpacing: '-0.05em',
                   marginTop: '-0.15em',
@@ -499,25 +563,50 @@ export default function HomePanel({
                   paddingTop: hasShrunk ? '8px' : '0px',
                 }}
               >
-                <motion.span
-                  layout={!nameShrinkDone}
-                  className="inline-block align-top"
-                  transition={shrinkTransition}
+                <button
+                  ref={nameButtonRef}
+                  type="button"
+                  tabIndex={isAtHero ? -1 : 0}
+                  aria-disabled={isAtHero}
+                  aria-label={isAtHero ? undefined : `${t.name} — Back to top`}
+                  onClick={() => {
+                    if (isAtHero) return;
+                    preview.hide();
+                    scrollToHero();
+                  }}
+                  onMouseEnter={(e) => {
+                    if (interactive) beginHover('name', e);
+                  }}
+                  onMouseMove={moveHover}
+                  onMouseLeave={endHover}
+                  className={`relative text-left ${isAtHero ? 'cursor-default' : 'cursor-pointer'}`}
                 >
-                  {namePart(firstName, fromFirstName, 0)}
-                </motion.span>
-                {lastName && (
-                  <>
-                    {' '}
-                    <motion.span
-                      layout={!nameShrinkDone}
-                      className="inline-block align-top"
-                      transition={lastNameShrinkTransition}
-                    >
-                      {namePart(lastName, fromLastName, 1)}
-                    </motion.span>
-                  </>
-                )}
+                  <motion.span
+                    layout={!nameShrinkDone}
+                    className="inline-block align-top"
+                    transition={shrinkTransition}
+                  >
+                    {namePart(firstName, fromFirstName, 0)}
+                  </motion.span>
+                  {lastName && (
+                    <>
+                      {' '}
+                      <motion.span
+                        ref={lastNameRef}
+                        className="inline-block align-top"
+                        style={{ x: lastNameX, scale: lastNameRelativeScale, transformOrigin: 'top left' }}
+                      >
+                        <motion.span
+                          layout={!nameShrinkDone}
+                          className="inline-block align-top"
+                          transition={lastNameShrinkTransition}
+                        >
+                          {namePart(lastName, fromLastName, 1)}
+                        </motion.span>
+                      </motion.span>
+                    </>
+                  )}
+                </button>
               </h1>
 
               {/* Chinese name beside the header (zh only). Also rendered
@@ -539,9 +628,8 @@ export default function HomePanel({
             {/* Navigation remains in the corner throughout the scroll. */}
             <AnimatePresence>
               {hasShrunk && showContent && (
-                <motion.nav
-                  aria-label="Main navigation"
-                  className="flex gap-4 items-center justify-center font-normal text-[14px] tracking-[-0.28px] whitespace-nowrap leading-[1.2] pointer-events-auto"
+                <motion.div
+                  className="font-normal text-[14px] tracking-[-0.28px] whitespace-nowrap leading-[1.2] pointer-events-auto"
                   initial={instant ? false : { opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{
@@ -550,13 +638,14 @@ export default function HomePanel({
                     ease: [0.4, 0, 0.2, 1],
                   }}
                 >
-                  <a href={`mailto:${EMAIL}`} className="hover:underline">
-                    {roleLabel(t.navContact, fromT.navContact)}
-                  </a>
-                  <Link href={RESUME_URL} className="hover:underline">
-                    {roleLabel(t.navResume, fromT.navResume)}
-                  </Link>
-                </motion.nav>
+                  <HeaderMenu
+                    collapsed={compactNavigation}
+                    links={[
+                      { id: 'contact', href: `mailto:${EMAIL}`, label: roleLabel(t.navContact, fromT.navContact) },
+                      { id: 'resume', href: RESUME_URL, label: roleLabel(t.navResume, fromT.navResume) },
+                    ]}
+                  />
+                </motion.div>
               )}
             </AnimatePresence>
           </motion.div>
@@ -780,6 +869,9 @@ export default function HomePanel({
       {hasShrunk && showContent && projects.length > 0 && (
         <HomeProjects
           projects={projects}
+          heroScrollProgress={progress}
+          skipFirstImageReveals
+          className="pt-6"
           introSkipped={instant}
           revealReady={workRevealReady}
           scrollToHashWhenReady={introDone}
