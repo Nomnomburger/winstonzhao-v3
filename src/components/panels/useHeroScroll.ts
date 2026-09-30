@@ -8,6 +8,8 @@ interface HeroScrollOptions {
   headingRef: RefObject<HTMLElement | null>;
   enabled: boolean;
   ready: boolean;
+  // Omit to keep the heading at its original viewport height.
+  headingDockTop?: number;
 }
 
 type SnapDirection = -1 | 1;
@@ -48,9 +50,10 @@ function isKeyboardControl(target: EventTarget | null) {
   ));
 }
 
-export function useHeroScroll({ heroRef, headingRef, enabled, ready }: HeroScrollOptions) {
+export function useHeroScroll({ heroRef, headingRef, enabled, ready, headingDockTop }: HeroScrollOptions) {
   const progress = useMotionValue(0);
   const headingY = useMotionValue(0);
+  const headingLift = useMotionValue(0);
   const reducedMotion = useReducedMotion();
   const targetRef = useRef(0);
   const heroTopRef = useRef(0);
@@ -76,12 +79,14 @@ export function useHeroScroll({ heroRef, headingRef, enabled, ready }: HeroScrol
     const heading = headingRef.current;
     const work = document.getElementById('work');
     heroTopRef.current = heroRef.current ? documentTop(heroRef.current) : 0;
+    const headingTop = heading ? documentTop(heading) : 0;
+    headingLift.set(headingDockTop === undefined ? 0 : Math.max(0, headingTop - headingDockTop));
     targetRef.current = heading && work
-      ? Math.max(0, documentTop(work) - documentTop(heading) - heading.offsetHeight)
+      ? Math.max(0, documentTop(work) - headingTop - heading.offsetHeight + headingLift.get())
       : 0;
     syncScroll();
     return targetRef.current;
-  }, [heroRef, headingRef, syncScroll]);
+  }, [heroRef, headingRef, headingDockTop, headingLift, syncScroll]);
 
   const cancelSnap = useCallback(() => {
     animationRef.current?.stop();
@@ -122,7 +127,7 @@ export function useHeroScroll({ heroRef, headingRef, enabled, ready }: HeroScrol
 
     snapDirectionRef.current = direction;
     animationRef.current = animate(window.scrollY, target, {
-      duration: 0.7,
+      duration: direction === -1 ? 1.1 : 0.8,
       ease: [0.2, 0.8, 0.2, 1],
       onUpdate: (y) => {
         window.scrollTo({ top: y, behavior: 'instant' });
@@ -340,5 +345,5 @@ export function useHeroScroll({ heroRef, headingRef, enabled, ready }: HeroScrol
     };
   }, [enabled, ready, snapTo, cancelSnap]);
 
-  return { progress, headingY, scrollToProjects };
+  return { progress, headingY, headingLift, scrollToProjects };
 }

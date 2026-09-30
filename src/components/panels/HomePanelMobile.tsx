@@ -38,6 +38,10 @@ const PHOTO_TO_FONT_RATIO = 46 / 64;
 // Flip this back to true to restore them.
 const SHOW_COLUMN_GUIDES = false;
 
+const PROJECTS_DOCK_TOP = 96;
+const PROJECTS_RISE_START = 0.05;
+const PROJECTS_RISE_EASE_END = 0.6;
+
 interface HomePanelMobileProps {
   showContent?: boolean;
   // Render everything in its final state with no entrance animations
@@ -81,15 +85,26 @@ export default function HomePanelMobile({
   const t = translations[language];
   const fromT = translations[prevLanguage];
   const projectCount = String(projects.length);
-  const { progress, headingY, scrollToProjects } = useHeroScroll({
+  const { progress, headingY, headingLift, scrollToProjects } = useHeroScroll({
     heroRef,
     headingRef,
     enabled: hasShrunk && showContent && projects.length > 0,
     ready: introDone,
+    headingDockTop: PROJECTS_DOCK_TOP,
   });
+  const bioExitProgress = useTransform(progress, [0, 0.4], [0, 1]);
+  // Give the return a long slowdown before its early stop. Match the slope
+  // into the remaining lift so Projects still docks with the images.
+  const projectsRise = useTransform(
+    progress,
+    [PROJECTS_RISE_START, PROJECTS_RISE_EASE_END, 1],
+    [0, (PROJECTS_RISE_EASE_END - PROJECTS_RISE_START) / (1 - PROJECTS_RISE_START), 1],
+    { ease: [(value) => value * value * (3 - 3 * value + value * value), (value) => value] },
+  );
+  const projectsHeadingY = useTransform(() => headingY.get() - headingLift.get() * projectsRise.get());
   const heroOpacity = useTransform(progress, [0, 0.7], [1, 0]);
   const heroVisibility = useTransform(progress, (value) => value >= 0.7 ? 'hidden' : 'visible');
-  const bioVisibility = useTransform(progress, (value) => value >= 1 ? 'hidden' : 'visible');
+  const bioVisibility = useTransform(bioExitProgress, (value) => value >= 1 ? 'hidden' : 'visible');
   const navigationOpacity = useTransform(progress, [0.55, 1], [0, 1]);
   const nameBlend = useTransform(progress, (value) => value >= 0.7 ? 'difference' : 'normal');
   const nameColor = useTransform(progress, (value) => value >= 0.7 ? '#ffffff' : 'var(--foreground)');
@@ -515,7 +530,7 @@ export default function HomePanelMobile({
 
                   {/* Profile picture - appears beside "Zhao" once the name settles.
                       Always mounted (with priority) so the image is preloaded
-                      while the loading line runs, instead of popping in late. */}
+                      during the intro, instead of popping in late. */}
                   <motion.span style={{ opacity: heroOpacity }}>
                     <motion.span
                       className="block absolute top-1/2"
@@ -590,7 +605,7 @@ export default function HomePanelMobile({
                       className={`${bigTextWeight} leading-none text-[32px] ${bigTextTracking} transition-[font-weight,letter-spacing] duration-700 ease-in-out cursor-default`}
                     >
                       {t.bioLines.map((line, index) => (
-                        <HeroBioLine key={index} progress={progress} index={index} lines={t.bioLines}>
+                        <HeroBioLine key={index} progress={bioExitProgress} index={index} lines={t.bioLines}>
                           {langSwitched ? (
                             <ScrambleText
                               from={fromT.bioLines[index]}
@@ -613,7 +628,7 @@ export default function HomePanelMobile({
                     {/* Work + Icon */}
                     <motion.div
                       className="relative z-30 flex gap-9 items-center justify-between w-full"
-                      style={{ y: headingY }}
+                      style={{ y: projectsHeadingY }}
                     >
                       <h2>
                         <a

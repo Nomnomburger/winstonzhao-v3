@@ -1,11 +1,11 @@
 'use client';
 
-import { motion, useTransform, type MotionValue } from 'framer-motion';
+import { cubicBezier, motion, useTransform, type MotionValue } from 'framer-motion';
 import { createContext, type ReactNode } from 'react';
 
 // Bio exit tuning — shared by desktop and mobile.
 // Lower = tighter word stagger; higher = more separation between words.
-// Fraction of exit progress, not seconds. Keep between 0 and 0.68.
+// Fraction of exit progress, not seconds. Keep between 0 and 0.48.
 const BIO_EXIT_STAGGER = 0.44;
 
 interface HeroBioExit {
@@ -41,8 +41,8 @@ export default function HeroBioLine({ children, progress, index, lines }: HeroBi
   );
 }
 
-// An independent mask per word mirrors the entrance reveal. The last words
-// leave first, clearing the lower lines before project images reach them.
+// The last words leave first, clearing the lower lines before project images
+// reach them. A short, unmasked slide keeps the fade visible like the intro.
 export function HeroBioExitWord({ children, progress, order, wordCount }: {
   children: ReactNode;
   progress: MotionValue<number>;
@@ -50,20 +50,14 @@ export function HeroBioExitWord({ children, progress, order, wordCount }: {
   wordCount: number;
 }) {
   const start = (wordCount - 1 - order) / Math.max(1, wordCount - 1) * BIO_EXIT_STAGGER;
-  const phase = useTransform(progress, [start, start + 0.32], [0, 1]);
-  const y = useTransform(phase, (value) => `${-110 * value * value * (3 - 2 * value)}%`);
-  const opacity = useTransform(phase, [0, 0.45, 1], [1, 1, 0]);
-  const clipPath = useTransform(phase, [0, 0.05, 1], [
-    'inset(-10% -10% -20% -10%)',
-    'inset(0% -10% -20% -10%)',
-    'inset(0% -10% -20% -10%)',
-  ]);
+  const phase = useTransform(progress, [start, start + 0.52], [0, 1]);
+  const y = useTransform(phase, (value) => `${-40 * value * value * (3 - 2 * value)}%`);
+  // Give the first-load reveal's fade time to read before each word leaves.
+  const opacity = useTransform(phase, [0, 1], [1, 0], { ease: cubicBezier(0.4, 0, 0.2, 1) });
 
   return (
-    <motion.span className="inline-block align-bottom" style={{ clipPath }}>
-      <motion.span className="inline-block align-bottom" style={{ y, opacity }}>
-        {children}
-      </motion.span>
+    <motion.span className="inline-block align-bottom" style={{ y, opacity }}>
+      {children}
     </motion.span>
   );
 }
