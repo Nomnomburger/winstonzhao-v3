@@ -88,7 +88,10 @@ export default function HomePanelMobile({
     headingRef,
     enabled: hasShrunk && showContent && projects.length > 0,
     ready: introDone,
+    touchEnabled: showContent && projects.length > 0,
+    trackHeroState: false,
     headingDockTop: PROJECTS_DOCK_TOP,
+    fitHeroToViewport: true,
   });
   const bioExitProgress = useTransform(progress, [0, 0.4], [0, 1]);
   // Give the return a long slowdown before its early stop. Match the slope
@@ -132,6 +135,7 @@ export default function HomePanelMobile({
   const [fromFirstName, fromLastName] = fromT.name.split(' ');
 
   useEffect(() => {
+    let lastViewportWidth = window.innerWidth;
     const updateFontSize = () => {
       // Don't update if already shrunk
       if (hasShrunk) return;
@@ -177,9 +181,14 @@ export default function HomePanelMobile({
       }
     };
 
+    const onResize = () => {
+      if (window.innerWidth === lastViewportWidth) return;
+      lastViewportWidth = window.innerWidth;
+      updateFontSize();
+    };
     updateFontSize();
-    window.addEventListener('resize', updateFontSize);
-    return () => window.removeEventListener('resize', updateFontSize);
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
   }, [hasShrunk]);
 
   // Shrunk size: "Zhao" fills from its column offset to the right edge of
@@ -190,6 +199,7 @@ export default function HomePanelMobile({
   // back from a project) paints at its final size and the browser restores
   // the scroll position against the right layout.
   useLayoutEffect(() => {
+    let lastViewportWidth = window.innerWidth;
     const updateShrunkFontSize = (firstPaint = false) => {
       if (!headerRef.current || !containerRef.current) return;
 
@@ -255,7 +265,13 @@ export default function HomePanelMobile({
       }
     };
 
-    const onResize = () => updateShrunkFontSize();
+    const onResize = () => {
+      // Safari's toolbar changes height while scrolling. Text fitting only
+      // depends on width; avoid its repeated style writes and layout reads.
+      if (window.innerWidth === lastViewportWidth) return;
+      lastViewportWidth = window.innerWidth;
+      updateShrunkFontSize();
+    };
     updateShrunkFontSize(true);
     window.addEventListener('resize', onResize);
     return () => window.removeEventListener('resize', onResize);
@@ -349,7 +365,7 @@ export default function HomePanelMobile({
 
   return (
     <div className="theme-root bg-background min-h-dvh w-full relative overflow-x-clip">
-      <HomeNavigationBackdrop progress={progress} />
+      <HomeNavigationBackdrop progress={progress} mobile />
       <AnimatePresence>
         {hasShrunk && showContent && (
           <motion.div
@@ -395,17 +411,18 @@ export default function HomePanelMobile({
 
       {/* Page: the intro fills the first screen; work and footer scroll below */}
       <div className="flex flex-col gap-9 w-full">
-        {/* Header Section - fills the first screen. svh (the height with the
-            browser toolbars showing) stays fixed while scrolling, so the work
-            list below doesn't jump when the toolbars collapse. During the
-            intro it's exactly one screen and clips the large name, as before;
-            afterwards it can grow on short or landscape screens instead of
-            overflowing onto the work list. */}
+        {/* Fit the content to the visible viewport, with blank clearance below
+            Safari's floating controls. Freeze both during scrolling so work
+            moves fully off screen on return without shifting the footer. */}
         <div
           ref={heroRef}
           className={`relative flex flex-col ${
             hasShrunk ? 'min-h-svh' : 'h-svh overflow-hidden'
           } shrink-0 items-start p-6 w-full`}
+          style={hasShrunk ? {
+            minHeight: 'var(--hero-viewport-height, 100svh)',
+            marginBottom: 'var(--hero-bottom-clearance, 0px)',
+          } : undefined}
         >
           <div className="flex flex-col flex-1 gap-12 items-start w-full">
             {/* Header Content */}
@@ -735,8 +752,8 @@ export default function HomePanelMobile({
           </div>
         </div>
 
-        {/* Below the fold: work, then the footer. Rendered once the intro
-            has played, so the page can't be scrolled mid-intro. */}
+        {/* Work remains visible throughout the snap; the hero's clearance
+            carries it fully below the screen before the return settles. */}
         {hasShrunk && (
           <div className="flex flex-col gap-9 w-full">
             {projects.length > 0 && (

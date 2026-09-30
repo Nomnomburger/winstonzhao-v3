@@ -68,7 +68,10 @@ export default function HomePage({ projects }: { projects: ProjectCardData[] }) 
   }, []);
 
   return (
-    <div className="relative w-full min-h-dvh">
+    <div
+      className="relative w-full min-h-dvh"
+      style={projects.length > 0 ? { touchAction: 'var(--hero-touch-action, pan-x pinch-zoom)' } : undefined}
+    >
       {isMobile ? (
         <HomePanelMobile
           instant={skipIntro}

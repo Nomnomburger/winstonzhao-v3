@@ -13,11 +13,13 @@ const compiled = ts.transpileModule(fs.readFileSync(sourcePath, 'utf8'), {
 
 // Exercise the real event handlers with controlled browser time and display
 // frames, including browsers that round scrollY after a subpixel scroll write.
-function harness({ y = 0, frameMs = 16, reducedMotion = false, roundScroll = false, zoom = 1 } = {}) {
+function harness({ y = 0, frameMs = 16, reducedMotion = false, roundScroll = false, zoom = 1, touchActionSupported = true, ready = true } = {}) {
   let now = 0;
   let frameID = 0;
   let touchStarts = 0;
   let snapCancels = 0;
+  let layoutReads = 0;
+  let styleWrites = 0;
   const frames = new Map();
   const listeners = new Map();
   const scrolls = [];
@@ -36,13 +38,31 @@ function harness({ y = 0, frameMs = 16, reducedMotion = false, roundScroll = fal
     }
   }
   class HTMLElement extends Element {}
-  const html = new HTMLElement({ tagName: 'HTML', scrollHeight: 6900 });
+  let touchAction = '';
+  const properties = new Map();
+  const style = {
+    get touchAction() { return touchAction; },
+    set touchAction(value) { styleWrites++; if (touchActionSupported) touchAction = value; },
+    getPropertyValue(name) { return properties.get(name) || ''; },
+    setProperty(name, value) { styleWrites++; properties.set(name, value); },
+    removeProperty(name) { properties.delete(name); },
+  };
+  const html = new HTMLElement({ tagName: 'HTML', scrollHeight: 6900, style });
+  let contentHeight = html.scrollHeight;
+  Object.defineProperty(html, 'scrollHeight', {
+    get() { layoutReads++; return contentHeight; },
+    set(value) { contentHeight = value; },
+  });
   const body = new HTMLElement({ tagName: 'BODY', parentElement: html });
   const target = new HTMLElement({ parentElement: body });
   const requestFrame = fn => { frames.set(++frameID, { fn, at: now + frameMs }); return frameID; };
   const cancelFrame = id => frames.delete(id);
   const win = {
-    scrollY: y, innerHeight: 900, visualViewport: { scale: zoom },
+    scrollY: y, innerHeight: 900, visualViewport: {
+      scale: zoom,
+      addEventListener(name, fn) { listeners.set(`viewport:${name}`, { fn }); },
+      removeEventListener(name) { listeners.delete(`viewport:${name}`); },
+    },
     addEventListener(name, fn, options) { listeners.set(name, { fn, options }); },
     removeEventListener(name) { listeners.delete(name); },
   };
@@ -53,6 +73,7 @@ function harness({ y = 0, frameMs = 16, reducedMotion = false, roundScroll = fal
     performance: { now: () => now }, requestAnimationFrame: requestFrame, cancelAnimationFrame: cancelFrame,
   }, { filename: sourcePath });
   const controller = compiledModule.exports.createHeroTouchScroll({
+    canSnap: () => ready,
     getBounds: () => ({ heroTop: 0, projectsTop: 1000 }),
     scrollTo(top) { assert.ok(Number.isFinite(top)); scrolls.push(top); win.scrollY = roundScroll ? Math.round(top) : top; },
     snapTo(direction) { snaps.push({ direction, from: win.scrollY }); },
@@ -63,6 +84,7 @@ function harness({ y = 0, frameMs = 16, reducedMotion = false, roundScroll = fal
     const event = {
       target, touches: name === 'touchend' ? [] : [finger(touchY)],
       changedTouches: [finger(touchY)], cancelable: true, defaultPrevented: false,
+      pointerType: 'touch', isPrimary: true, clientX: 100, clientY: touchY,
       preventDefault() { if (this.cancelable) this.defaultPrevented = true; }, ...overrides,
     };
     listeners.get(name)?.fn(event);
@@ -83,18 +105,179 @@ function harness({ y = 0, frameMs = 16, reducedMotion = false, roundScroll = fal
     for (const position of positions) { advance(16); dispatch('touchmove', position); }
     dispatch('touchend', positions.at(-1));
   }
-  return { win, body, Element: HTMLElement, SVGElement: Element, frames, listeners, scrolls, snaps, controller, finger, dispatch, advance, fling, get touchStarts() { return touchStarts; }, get snapCancels() { return snapCancels; } };
+  return { win, body, style, Element: HTMLElement, SVGElement: Element, frames, listeners, scrolls, snaps, controller, finger, dispatch, advance, fling, setReady(value) { ready = value; controller.refresh(); }, get touchStarts() { return touchStarts; }, get snapCancels() { return snapCancels; }, get layoutReads() { return layoutReads; }, get styleWrites() { return styleWrites; } };
 }
 
-test('first vertical movement prevents native scrolling before the snap threshold', () => {
-  const h = harness();
-  assert.equal(h.listeners.get('touchmove').options.passive, false);
-  assert.equal(h.listeners.get('touchmove').options.capture, true);
+test('an early held swipe waits for the intro and snaps once without native scrolling', () => {
+  const h = harness({ ready: false });
   h.dispatch('touchstart', 400);
-  assert.equal(h.dispatch('touchmove', 399).defaultPrevented, true);
+  h.dispatch('pointermove', 399);
+  for (const y of [370, 340, 300]) assert.equal(h.dispatch('touchmove', y).defaultPrevented, true);
+  h.advance(1000);
+  assert.equal(h.win.scrollY, 0);
   assert.equal(h.snaps.length, 0);
-  assert.equal(h.dispatch('touchmove', 360).defaultPrevented, true);
+  h.setReady(true);
+  assert.equal(h.snaps.length, 1);
   assert.equal(h.snaps[0].direction, 1);
+  h.controller.refresh();
+  h.win.scrollY = 1000;
+  h.advance(1000);
+  h.dispatch('pointermove', 250);
+  h.dispatch('touchmove', 200);
+  assert.equal(h.win.scrollY, 1000);
+  assert.equal(h.snaps.length, 1);
+});
+
+test('an early released swipe retains its snap intent but cancellation discards it', () => {
+  const h = harness({ ready: false });
+  h.dispatch('touchstart', 400);
+  h.dispatch('pointermove', 399);
+  assert.equal(h.dispatch('touchend', 399).defaultPrevented, true);
+  h.advance(1000);
+  h.setReady(true);
+  assert.equal(h.snaps.length, 1);
+  for (const cancel of [h => h.controller.cancel(), h => h.dispatch('touchcancel', 399)]) {
+    const canceled = harness({ ready: false });
+    canceled.dispatch('touchstart', 400);
+    canceled.dispatch('pointermove', 399);
+    cancel(canceled);
+    canceled.setReady(true);
+    assert.equal(canceled.snaps.length, 0);
+  }
+});
+
+test('first pixel of vertical touch movement snaps in either direction while held', () => {
+  for (const [y, next, direction] of [[0, 399, 1], [1000, 401, -1]]) {
+    const h = harness({ y });
+    assert.equal(h.style.touchAction, 'pan-x pinch-zoom');
+    assert.equal(h.listeners.get('touchmove').options.passive, false);
+    assert.equal(h.listeners.get('touchmove').options.capture, true);
+    h.dispatch('touchstart', 400);
+    assert.equal(h.dispatch('touchmove', next).defaultPrevented, true);
+    assert.equal(h.snaps.length, 1);
+    assert.equal(h.snaps[0].direction, direction);
+  }
+});
+
+test('touch pointer movement starts snapping before the browser delivers touchmove', () => {
+  for (const [y, next, direction] of [[0, 399, 1], [1000, 401, -1]]) {
+    const h = harness({ y });
+    h.dispatch('touchstart', 400);
+    h.dispatch('pointermove', next);
+    assert.equal(h.snaps.length, 1);
+    assert.equal(h.snaps[0].direction, direction);
+    h.win.scrollY = direction === 1 ? 1000 : 0;
+    h.advance(1200);
+    h.dispatch('pointermove', next - 50);
+    assert.equal(h.dispatch('touchmove', next - 50).defaultPrevented, true);
+    assert.equal(h.snaps.length, 1);
+  }
+});
+
+test('mouse, pen, and secondary touch pointers never start a section snap', () => {
+  const h = harness();
+  h.dispatch('touchstart', 400);
+  for (const properties of [{ pointerType: 'mouse' }, { pointerType: 'pen' }, { isPrimary: false }]) {
+    h.dispatch('pointermove', 360, properties);
+  }
+  assert.equal(h.snaps.length, 0);
+  h.dispatch('touchmove', 399);
+  assert.equal(h.snaps.length, 1);
+});
+
+test('releasing a tiny vertical swipe suppresses a tap while stationary contacts retain clicks', () => {
+  const swipe = harness();
+  swipe.dispatch('touchstart', 400);
+  swipe.dispatch('pointermove', 399);
+  assert.equal(swipe.dispatch('touchend', 399).defaultPrevented, true);
+  const tap = harness();
+  tap.dispatch('touchstart', 400);
+  assert.equal(tap.dispatch('touchend', 400).defaultPrevented, false);
+  const horizontal = harness();
+  horizontal.dispatch('touchstart', 400);
+  horizontal.dispatch('pointermove', 400, { clientX: 150 });
+  assert.equal(horizontal.dispatch('touchend', 400).defaultPrevented, false);
+});
+
+test('pointer and touch deliveries of the same position never double a drag', () => {
+  const h = harness({ y: 1600 });
+  h.dispatch('touchstart', 400);
+  h.advance(16);
+  h.dispatch('pointermove', 399);
+  h.dispatch('touchmove', 399);
+  h.advance(16);
+  assert.equal(h.win.scrollY, 1601);
+  h.dispatch('pointermove', 370);
+  h.dispatch('touchmove', 370);
+  h.advance(16);
+  assert.equal(h.win.scrollY, 1630);
+});
+
+test('a gesture uses one coordinate stream even when the other delivers older positions', () => {
+  for (const [owner, delayed] of [['pointermove', 'touchmove'], ['touchmove', 'pointermove']]) {
+    const h = harness({ y: 1000 });
+    h.dispatch('touchstart', 400);
+    h.advance(16);
+    h.dispatch(owner, 370);
+    h.dispatch(delayed, 390);
+    h.advance(16);
+    assert.equal(h.win.scrollY, 1030);
+    assert.equal(h.snaps.length, 0);
+    h.dispatch(owner, 350);
+    h.dispatch(delayed, 370);
+    h.advance(16);
+    assert.equal(h.win.scrollY, 1050);
+    assert.equal(h.snaps.length, 0);
+    h.dispatch('touchend', 350);
+    h.advance(160);
+    assert.ok(h.win.scrollY > 1050, 'Release momentum follows the authoritative movement');
+  }
+});
+
+test('small corrections during a downward gesture cannot snap back to hero', () => {
+  for (const event of ['pointermove', 'touchmove']) {
+    const h = harness({ y: 1000 });
+    h.dispatch('touchstart', 400);
+    for (const y of [399, 400, 399, 402, 400, 403]) {
+      h.advance(16);
+      h.dispatch(event, y);
+      h.advance(16);
+      assert.equal(h.snaps.length, 0);
+      assert.ok(h.win.scrollY >= 1000, 'Corrections stay at the Projects dock');
+    }
+    h.dispatch('touchend', 403);
+    h.advance(3000);
+    assert.equal(h.snaps.length, 0);
+    assert.ok(h.win.scrollY >= 1000);
+  }
+});
+
+test('a deliberate reversal can return to hero during the same held gesture', () => {
+  const h = harness({ y: 1000 });
+  h.dispatch('touchstart', 400);
+  h.dispatch('pointermove', 370);
+  h.advance(16);
+  h.dispatch('pointermove', 375);
+  h.advance(16);
+  assert.equal(h.snaps.length, 0);
+  h.dispatch('pointermove', 382);
+  assert.equal(h.snaps.length, 1);
+  assert.equal(h.snaps[0].direction, -1);
+  h.dispatch('pointermove', 360);
+  assert.equal(h.snaps.length, 1, 'The snap remains latched while held');
+});
+
+test('a new upward contact still returns immediately after a corrected downward gesture', () => {
+  const h = harness({ y: 1000 });
+  h.dispatch('touchstart', 400);
+  h.dispatch('pointermove', 399);
+  h.dispatch('pointermove', 400);
+  h.advance(160);
+  h.dispatch('touchend', 400);
+  h.dispatch('touchstart', 400);
+  h.dispatch('pointermove', 401);
+  assert.equal(h.snaps.length, 1);
+  assert.equal(h.snaps[0].direction, -1);
 });
 
 test('small sideways jitter before vertical intent cannot bypass snapping', () => {
@@ -140,6 +323,41 @@ test('drag writes are batched per frame and preserve subpixels across rounded sc
   assert.equal(h.win.scrollY, 1620);
   h.dispatch('touchmove', 379.75); h.advance(16);
   assert.equal(h.scrolls[1], 1620.25);
+});
+
+test('layout refresh expands the scroll range without dropping a held project drag', () => {
+  const h = harness({ y: 5900 });
+  h.dispatch('touchstart', 400);
+  h.dispatch('pointermove', 100);
+  h.advance(16);
+  assert.equal(h.win.scrollY, 6000);
+  h.body.parentElement.scrollHeight = 7900;
+  h.controller.refresh();
+  h.dispatch('pointermove', 50);
+  h.advance(16);
+  assert.equal(h.win.scrollY, 6050);
+  assert.equal(h.snaps.length, 0);
+});
+
+test('toolbar height changes update the scroll range without layout reads or redundant styles', () => {
+  const h = harness({ y: 5900 });
+  h.dispatch('touchstart', 400);
+  h.dispatch('pointermove', 200);
+  h.advance(16);
+  assert.equal(h.win.scrollY, 6000);
+  const reads = h.layoutReads;
+  const writes = h.styleWrites;
+  for (let i = 1; i <= 20; i++) {
+    h.win.innerHeight = 900 - i * 5;
+    h.dispatch('viewport:resize');
+    h.controller.resizeViewport();
+  }
+  h.dispatch('pointermove', 100);
+  h.advance(16);
+  assert.equal(h.win.scrollY, 6100);
+  assert.equal(h.layoutReads, reads);
+  assert.equal(h.styleWrites, writes);
+  assert.equal(h.snaps.length, 0);
 });
 
 test('release momentum decays monotonically and is independent of refresh rate', () => {
@@ -199,7 +417,7 @@ test('editable, nested-scroll, opt-out, and zoomed gestures remain native', () =
   assert.equal(zoomed.dispatch('touchmove', 360).defaultPrevented, false);
 });
 
-test('horizontal, pinch, and noncancelable gestures never gain a second scroll owner', () => {
+test('horizontal, pinch, and unsupported noncancelable gestures remain native', () => {
   const horizontal = harness();
   horizontal.dispatch('touchstart', 400);
   assert.equal(horizontal.dispatch('touchmove', 390, { touches: [horizontal.finger(390, 180)] }).defaultPrevented, false);
@@ -212,11 +430,42 @@ test('horizontal, pinch, and noncancelable gestures never gain a second scroll o
   assert.equal(pinch.dispatch('touchmove', 320, { touches }).defaultPrevented, false);
   pinch.dispatch('touchend', 320); pinch.advance(3000);
   assert.equal(pinch.win.scrollY, stoppedY);
-  const native = harness();
+  const native = harness({ touchActionSupported: false });
   native.dispatch('touchstart', 400);
   assert.equal(native.dispatch('touchmove', 360, { cancelable: false }).defaultPrevented, false);
   assert.equal(native.dispatch('touchmove', 320).defaultPrevented, false);
   assert.equal(native.snaps.length, 0);
+});
+
+test('declared vertical ownership keeps held snaps running through noncancelable events', () => {
+  const h = harness();
+  h.dispatch('touchstart', 400);
+  h.dispatch('pointermove', 399);
+  h.dispatch('touchmove', 360, { cancelable: false });
+  assert.equal(h.snaps.length, 1);
+  assert.equal(h.snapCancels, 0);
+  h.dispatch('touchend', 360);
+});
+
+test('zooming restores native pan and destroy restores the original touch policy', () => {
+  const h = harness();
+  h.dispatch('touchstart', 400);
+  h.dispatch('pointermove', 399);
+  h.win.visualViewport.scale = 2;
+  h.dispatch('viewport:resize');
+  assert.equal(h.style.touchAction, '');
+  assert.equal(h.style.getPropertyValue('--hero-touch-action'), 'auto');
+  assert.equal(h.snapCancels, 1);
+  h.dispatch('touchstart', 400);
+  h.dispatch('pointermove', 360);
+  assert.equal(h.dispatch('touchmove', 360).defaultPrevented, false);
+  assert.equal(h.snaps.length, 1);
+  h.win.visualViewport.scale = 1;
+  h.dispatch('viewport:resize');
+  assert.equal(h.style.touchAction, 'pan-x pinch-zoom');
+  h.controller.destroy();
+  assert.equal(h.style.touchAction, '');
+  assert.equal(h.style.getPropertyValue('--hero-touch-action'), '');
 });
 
 test('new touches and explicit cancellation stop release momentum', () => {
@@ -270,8 +519,8 @@ test('release momentum follows the latest real direction after reversal', () => 
 test('relinquishing a consumed touch cancels its section snap', () => {
   for (const relinquish of [
     h => h.dispatch('touchcancel', 360),
+    h => h.dispatch('pointercancel', 360),
     h => h.dispatch('touchmove', 340, { touches: [h.finger(340), h.finger(340, 200, 2)] }),
-    h => h.dispatch('touchmove', 340, { cancelable: false }),
     h => h.dispatch('touchmove', 340, { defaultPrevented: true }),
   ]) {
     const h = harness();

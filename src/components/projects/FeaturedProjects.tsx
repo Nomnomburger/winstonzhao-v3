@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { useIsMobile } from '@/components/panels/shared';
 import { imageUrl, imageObjectPosition } from '@/lib/image';
 import { FadeLine, MaskLine, revealTransition, useCaptionReveal, useReveal } from './reveal';
 import type { ProjectCardData } from './types';
@@ -41,7 +42,8 @@ const ROWS = [
 //
 // Photos wipe up from the bottom while settling from a slight zoom as they
 // scroll into view, except the first two on desktop. The first two captions
-// fade in with a small lift on each visit; the remaining captions slide up once.
+// fade in with a small lift on each visit on desktop; all mobile captions and
+// the remaining desktop captions slide up once.
 function FeaturedCard({
   project,
   slot,
@@ -134,6 +136,7 @@ export default function FeaturedProjects({
   projects: ProjectCardData[];
   skipFirstImageReveals?: boolean;
 }) {
+  const isMobile = useIsMobile();
   if (projects.length === 0) return null;
 
   // Chunk into groups of four, then into the rows of the rhythm above.
@@ -157,7 +160,7 @@ export default function FeaturedProjects({
               project={project}
               slot={slot}
               paired={paired}
-              captionPlacement={r === 0 ? (i === 0 ? 'right' : 'top') : 'bottom'}
+              captionPlacement={!isMobile && r === 0 ? (i === 0 ? 'right' : 'top') : 'bottom'}
               skipImageReveal={skipFirstImageReveals && r === 0}
               // The second card of a pair follows the first a beat later
               delay={paired ? i * 0.12 : 0}

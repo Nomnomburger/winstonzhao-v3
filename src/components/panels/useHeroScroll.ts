@@ -10,8 +10,11 @@ interface HeroScrollOptions {
   headingRef: RefObject<HTMLElement | null>;
   enabled: boolean;
   ready: boolean;
+  touchEnabled?: boolean;
+  trackHeroState?: boolean;
   // Omit to keep the heading at its original viewport height.
   headingDockTop?: number;
+  fitHeroToViewport?: boolean;
 }
 
 type SnapDirection = -1 | 1;
@@ -65,12 +68,14 @@ function isKeyboardControl(target: EventTarget | null) {
   ));
 }
 
-export function useHeroScroll({ heroRef, headingRef, enabled, ready, headingDockTop }: HeroScrollOptions) {
+export function useHeroScroll({ heroRef, headingRef, enabled, ready, touchEnabled = true, trackHeroState = true, headingDockTop, fitHeroToViewport = false }: HeroScrollOptions) {
   const progress = useMotionValue(0);
   const headingY = useMotionValue(0);
   const projectsHeadingY = useMotionValue(0);
   const headingLift = useMotionValue(0);
   const [isAtHero, setIsAtHero] = useState(true);
+  const atHeroRef = useRef(true);
+  const lastSyncedYRef = useRef(0);
   const reducedMotion = useReducedMotion();
   const targetRef = useRef(0);
   const heroTopRef = useRef(0);
@@ -83,12 +88,61 @@ export function useHeroScroll({ heroRef, headingRef, enabled, ready, headingDock
   const touchInputRef = useRef(false);
   const touchScrollRef = useRef<ReturnType<typeof createHeroTouchScroll> | null>(null);
   const headingTransitionRef = useRef<HeadingTransition | null>(null);
+  const viewportProbeRef = useRef<HTMLDivElement | null>(null);
+
+  const fitHeroViewport = useCallback((preservePosition = false) => {
+    const hero = heroRef.current;
+    const viewport = window.visualViewport;
+    if (!fitHeroToViewport || !hero || (viewport && viewport.scale !== 1)) return;
+    const height = Math.ceil(viewport?.height ?? window.innerHeight);
+    if (height <= 0) return;
+    const work = document.getElementById('work');
+    const previousWorkTop = work ? documentTop(work) : 0;
+    const previousY = window.scrollY;
+
+    let probe = viewportProbeRef.current;
+    if (!probe) {
+      probe = document.createElement('div');
+      probe.setAttribute('aria-hidden', 'true');
+      probe.style.cssText = 'position:fixed;top:0;left:0;width:0;height:100lvh;visibility:hidden;pointer-events:none';
+      document.body.appendChild(probe);
+      viewportProbeRef.current = probe;
+    }
+    // Safari can paint beneath its floating controls even when every viewport
+    // height excludes that area. The touch device's screen is a conservative
+    // bound; keep this blank space separate from the visible hero and footer.
+    const paintedHeight = Math.ceil(Math.max(
+      height + (viewport?.offsetTop ?? 0),
+      window.innerHeight,
+      document.documentElement.clientHeight,
+      probe.getBoundingClientRect().height,
+      window.matchMedia('(pointer: coarse)').matches ? window.screen.height : 0,
+    ));
+    if (hero.style.getPropertyValue('--hero-viewport-height') !== `${height}px`) {
+      hero.style.setProperty('--hero-viewport-height', `${height}px`);
+    }
+    const clearance = Math.max(0, paintedHeight - hero.offsetHeight);
+    if (hero.style.getPropertyValue('--hero-bottom-clearance') !== `${clearance}px`) {
+      hero.style.setProperty('--hero-bottom-clearance', `${clearance}px`);
+    }
+    const shift = work ? documentTop(work) - previousWorkTop : 0;
+    // Hero height and blank clearance can change in opposite directions.
+    // Preserve Projects using the total section movement before returning.
+    if (preservePosition && shift !== 0 && previousY > heroTopRef.current + 1 &&
+        previousY >= targetRef.current - 1) {
+      scrollInstantly(previousY + shift);
+    }
+  }, [heroRef, fitHeroToViewport]);
 
   const syncScroll = useCallback((scrollY = window.scrollY) => {
     const y = Math.max(0, scrollY);
     const target = targetRef.current;
     const atHero = y <= heroTopRef.current + 1;
-    setIsAtHero(atHero);
+    lastSyncedYRef.current = y;
+    if (atHero !== atHeroRef.current) {
+      atHeroRef.current = atHero;
+      if (trackHeroState) setIsAtHero(atHero);
+    }
     headingY.set(Math.min(y, target));
     let titleY = Math.min(y, target);
     // Returning to hero settles the title over the same scroll animation as
@@ -116,9 +170,12 @@ export function useHeroScroll({ heroRef, headingRef, enabled, ready, headingDock
     if (atHero && snapDirectionRef.current === null) {
       snappedRef.current = false;
     }
-  }, [headingY, projectsHeadingY, progress, reducedMotion]);
+  }, [headingY, projectsHeadingY, progress, reducedMotion, trackHeroState]);
 
   const measure = useCallback(() => {
+    // Freeze the hero while browsing Projects or animating. Safari's toolbar
+    // changes must not move a snap destination in the middle of a gesture.
+    if (snapDirectionRef.current === null && window.scrollY <= heroTopRef.current + 1) fitHeroViewport();
     const heading = headingRef.current;
     const work = document.getElementById('work');
     const previousHeroTop = heroTopRef.current;
@@ -134,7 +191,7 @@ export function useHeroScroll({ heroRef, headingRef, enabled, ready, headingDock
     }
     syncScroll();
     return targetRef.current;
-  }, [heroRef, headingRef, headingDockTop, headingLift, syncScroll]);
+  }, [heroRef, headingRef, headingDockTop, headingLift, syncScroll, fitHeroViewport]);
 
   const cancelSnap = useCallback(() => {
     animationRef.current?.stop();
@@ -168,6 +225,7 @@ export function useHeroScroll({ heroRef, headingRef, enabled, ready, headingDock
 
   const snapTo = useCallback((direction: SnapDirection, focus = false) => {
     if (direction === 1 && !enabled) return;
+    if (direction === -1) fitHeroViewport(true);
     const projectsTarget = measure();
     const work = document.getElementById('work');
     if (direction === 1 && (!work || projectsTarget <= 0)) return;
@@ -187,7 +245,8 @@ export function useHeroScroll({ heroRef, headingRef, enabled, ready, headingDock
       snapDirectionRef.current = null;
       headingTransitionRef.current = null;
       scrollInstantly(target);
-      syncScroll(target);
+      if (direction === -1 && fitHeroToViewport) measure();
+      else syncScroll(target);
       if (focus && direction === 1) work?.focus({ preventScroll: true });
     };
 
@@ -215,7 +274,7 @@ export function useHeroScroll({ heroRef, headingRef, enabled, ready, headingDock
       },
       onComplete: finish,
     });
-  }, [enabled, measure, cancelSnap, projectsHeadingY, reducedMotion, syncScroll]);
+  }, [enabled, measure, cancelSnap, projectsHeadingY, reducedMotion, syncScroll, fitHeroToViewport, fitHeroViewport]);
 
   const scrollToProjects = useCallback((focus = false) => {
     snapTo(1, focus);
@@ -225,16 +284,53 @@ export function useHeroScroll({ heroRef, headingRef, enabled, ready, headingDock
     snapTo(-1);
   }, [snapTo]);
 
+  const touchCallbacksRef = useRef({ enabled, ready, snapTo, cancelSnap, syncScroll, reducedMotion });
+  useLayoutEffect(() => {
+    touchCallbacksRef.current = { enabled, ready, snapTo, cancelSnap, syncScroll, reducedMotion };
+  }, [enabled, ready, snapTo, cancelSnap, syncScroll, reducedMotion]);
+
+  // Reserve touch scrolling from mount, before the intro exposes any scroll
+  // range. Read current callbacks without replacing a held gesture at ready.
+  useLayoutEffect(() => {
+    if (!touchEnabled) return;
+    const touchScroll = createHeroTouchScroll({
+      canSnap: () => touchCallbacksRef.current.enabled && touchCallbacksRef.current.ready,
+      getBounds: () => ({ heroTop: heroTopRef.current, projectsTop: targetRef.current }),
+      scrollTo: (top) => {
+        scrollInstantly(top);
+        touchCallbacksRef.current.syncScroll(top);
+      },
+      snapTo: (direction) => touchCallbacksRef.current.snapTo(direction),
+      cancelSnap: () => touchCallbacksRef.current.cancelSnap(),
+      onTouchStart: () => {
+        touchInputRef.current = true;
+        upwardIntentUntilRef.current = 0;
+        upwardMomentumRef.current = false;
+        wheelGestureRef.current = null;
+        if (snapDirectionRef.current !== null || getSmoothScroll()?.isScrolling === 'smooth') {
+          touchCallbacksRef.current.cancelSnap();
+        }
+      },
+      get reducedMotion() { return !!touchCallbacksRef.current.reducedMotion; },
+    });
+    touchScrollRef.current = touchScroll;
+    return () => {
+      touchScroll.destroy();
+      if (touchScrollRef.current === touchScroll) touchScrollRef.current = null;
+    };
+  }, [touchEnabled]);
+
   useLayoutEffect(() => {
     let frame = 0;
     let followupFrame = 0;
     let resizeFrame = 0;
     let disposed = false;
+    let pendingLayoutResize = false;
     let lastScrollY = window.scrollY;
     let lastViewportWidth = window.innerWidth;
     const observer = new ResizeObserver(() => {
       cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(measure);
+      frame = requestAnimationFrame(observeLayout);
     });
     const observeLayout = () => {
       const work = document.getElementById('work');
@@ -242,6 +338,7 @@ export function useHeroScroll({ heroRef, headingRef, enabled, ready, headingDock
       if (headingRef.current) observer.observe(headingRef.current);
       if (work) observer.observe(work);
       measure();
+      touchScrollRef.current?.refresh();
     };
     const onResize = () => {
       const touchHeightResize = touchInputRef.current && window.innerWidth === lastViewportWidth;
@@ -249,15 +346,32 @@ export function useHeroScroll({ heroRef, headingRef, enabled, ready, headingDock
       const previousTarget = targetRef.current;
       lastViewportWidth = window.innerWidth;
       if (!touchHeightResize) {
+        pendingLayoutResize = true;
         touchScrollRef.current?.cancel();
         cancelSnap();
       }
       cancelAnimationFrame(resizeFrame);
       resizeFrame = requestAnimationFrame(() => {
+        const measureLayout = pendingLayoutResize;
+        pendingLayoutResize = false;
+        // Safari animates its controls with repeated viewport height events.
+        // Projects and active snaps keep their geometry frozen; update the
+        // cached scroll range without reading section layout on each frame.
+        if (fitHeroToViewport && touchHeightResize && !measureLayout &&
+            (snapDirectionRef.current !== null || window.scrollY > heroTopRef.current + 1)) {
+          touchScrollRef.current?.resizeViewport();
+          return;
+        }
         observeLayout();
-        // Mobile toolbars resize the viewport during a swipe, but the svh
-        // hero keeps its layout. Only cancel if a snap destination changed.
-        if (touchHeightResize && (previousHeroTop !== heroTopRef.current || previousTarget !== targetRef.current)) {
+        // A settled mobile hero can safely grow to fill the visible viewport
+        // without releasing a finger still held after its return snap.
+        const fittedAtHero = fitHeroToViewport && snapDirectionRef.current === null &&
+          window.scrollY <= heroTopRef.current + 1;
+        // A return may recalibrate the height between the resize event and
+        // this frame. Its destination is still the unchanged top of the hero.
+        const returningToFittedHero = fitHeroToViewport && snapDirectionRef.current === -1;
+        if (touchHeightResize && (previousHeroTop !== heroTopRef.current ||
+            (previousTarget !== targetRef.current && !fittedAtHero && !returningToFittedHero))) {
           touchScrollRef.current?.cancel();
           cancelSnap();
         }
@@ -267,6 +381,10 @@ export function useHeroScroll({ heroRef, headingRef, enabled, ready, headingDock
       const y = window.scrollY;
       const movingUp = y < lastScrollY;
       lastScrollY = y;
+      // Touch animations already synchronized the precise scroll write. A
+      // second update from the browser's rounded scroll event adds work and
+      // can move the heading back by a pixel within the same display frame.
+      if (touchInputRef.current && Math.abs(y - lastSyncedYRef.current) <= 1) return;
       const hasUpwardIntent = performance.now() < upwardIntentUntilRef.current;
       if (hasUpwardIntent && upwardMomentumRef.current && movingUp && snapDirectionRef.current === null) {
         // Uncancelable wheel momentum can keep scrolling after input ends.
@@ -310,6 +428,7 @@ export function useHeroScroll({ heroRef, headingRef, enabled, ready, headingDock
     });
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', onResize);
+    if (fitHeroToViewport) window.visualViewport?.addEventListener('resize', onResize);
 
     return () => {
       disposed = true;
@@ -319,31 +438,12 @@ export function useHeroScroll({ heroRef, headingRef, enabled, ready, headingDock
       cancelAnimationFrame(resizeFrame);
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('resize', onResize);
-      cancelSnap();
+      if (fitHeroToViewport) window.visualViewport?.removeEventListener('resize', onResize);
     };
-  }, [heroRef, headingRef, enabled, ready, measure, syncScroll, cancelSnap, snapTo, stopAtProjects]);
+  }, [heroRef, headingRef, enabled, ready, measure, syncScroll, cancelSnap, snapTo, stopAtProjects, fitHeroToViewport]);
 
   useEffect(() => {
     if (!enabled) return;
-
-    const touchScroll = ready ? createHeroTouchScroll({
-      getBounds: () => ({ heroTop: heroTopRef.current, projectsTop: targetRef.current }),
-      scrollTo: (top) => {
-        scrollInstantly(top);
-        syncScroll(top);
-      },
-      snapTo,
-      cancelSnap,
-      onTouchStart: () => {
-        touchInputRef.current = true;
-        upwardIntentUntilRef.current = 0;
-        upwardMomentumRef.current = false;
-        wheelGestureRef.current = null;
-        if (snapDirectionRef.current !== null || getSmoothScroll()?.isScrolling === 'smooth') cancelSnap();
-      },
-      reducedMotion: !!reducedMotion,
-    }) : null;
-    touchScrollRef.current = touchScroll;
 
     const handleDirection = (direction: SnapDirection, event: Event, momentum = false) => {
       const activeDirection = snapDirectionRef.current;
@@ -377,7 +477,7 @@ export function useHeroScroll({ heroRef, headingRef, enabled, ready, headingDock
           event.shiftKey || isEditable(event.target) ||
           Math.abs(event.deltaY) <= Math.abs(event.deltaX)) return;
       touchInputRef.current = false;
-      touchScroll?.cancel();
+      touchScrollRef.current?.cancel();
       const direction = event.deltaY < 0 ? -1 : 1;
       const now = performance.now();
       const smoothScroll = getSmoothScroll();
@@ -454,7 +554,7 @@ export function useHeroScroll({ heroRef, headingRef, enabled, ready, headingDock
       if (event.defaultPrevented || event.ctrlKey || event.metaKey || event.altKey ||
           isKeyboardControl(event.target)) return;
       touchInputRef.current = false;
-      touchScroll?.cancel();
+      touchScrollRef.current?.cancel();
       if (event.key === 'Home' || event.key === 'End' || event.key === 'Escape') {
         upwardIntentUntilRef.current = 0;
         if (snapDirectionRef.current !== null) cancelSnap();
@@ -476,11 +576,15 @@ export function useHeroScroll({ heroRef, headingRef, enabled, ready, headingDock
     return () => {
       window.removeEventListener('wheel', onWheel, { capture: true });
       window.removeEventListener('keydown', onKey);
-      touchScroll?.destroy();
-      if (touchScrollRef.current === touchScroll) touchScrollRef.current = null;
       wheelGestureRef.current = null;
     };
   }, [enabled, ready, snapTo, cancelSnap, stopAtProjects, reducedMotion, syncScroll]);
+
+  useLayoutEffect(() => () => {
+    animationRef.current?.stop();
+    viewportProbeRef.current?.remove();
+    viewportProbeRef.current = null;
+  }, []);
 
   return { progress, headingY, projectsHeadingY, headingLift, isAtHero, scrollToProjects, scrollToHero };
 }

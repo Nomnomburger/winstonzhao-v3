@@ -138,6 +138,7 @@ export default function HomePanel({
     headingRef,
     enabled: hasShrunk && showContent && projects.length > 0,
     ready: introDone,
+    touchEnabled: showContent && projects.length > 0,
   });
   const reducedMotion = useReducedMotion();
   // Give the name time to follow the scroll instead of compressing its
