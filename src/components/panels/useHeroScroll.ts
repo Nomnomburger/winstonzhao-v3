@@ -19,6 +19,8 @@ const UPWARD_INTENT_MS = 1500;
 const WHEEL_GESTURE_IDLE_MS = 180;
 const WHEEL_MOMENTUM_DECAY_EVENTS = 3;
 const WHEEL_MOMENTUM_DECAY_RATIO = 0.8;
+const TOUCH_DIRECTION_THRESHOLD = 6;
+const TOUCH_SCROLL_IDLE_MS = 120;
 
 interface WheelGesture {
   direction: SnapDirection;
@@ -79,6 +81,7 @@ export function useHeroScroll({ heroRef, headingRef, enabled, ready, headingDock
   const upwardIntentUntilRef = useRef(0);
   const upwardMomentumRef = useRef(false);
   const wheelGestureRef = useRef<WheelGesture | null>(null);
+  const touchInputRef = useRef(false);
   const headingTransitionRef = useRef<HeadingTransition | null>(null);
 
   const syncScroll = useCallback((scrollY = window.scrollY) => {
@@ -225,8 +228,10 @@ export function useHeroScroll({ heroRef, headingRef, enabled, ready, headingDock
   useLayoutEffect(() => {
     let frame = 0;
     let followupFrame = 0;
+    let resizeFrame = 0;
     let disposed = false;
     let lastScrollY = window.scrollY;
+    let lastViewportWidth = window.innerWidth;
     const observer = new ResizeObserver(() => {
       cancelAnimationFrame(frame);
       frame = requestAnimationFrame(measure);
@@ -239,9 +244,20 @@ export function useHeroScroll({ heroRef, headingRef, enabled, ready, headingDock
       measure();
     };
     const onResize = () => {
-      cancelSnap();
-      cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(observeLayout);
+      const touchHeightResize = touchInputRef.current && window.innerWidth === lastViewportWidth;
+      const previousHeroTop = heroTopRef.current;
+      const previousTarget = targetRef.current;
+      lastViewportWidth = window.innerWidth;
+      if (!touchHeightResize) cancelSnap();
+      cancelAnimationFrame(resizeFrame);
+      resizeFrame = requestAnimationFrame(() => {
+        observeLayout();
+        // Mobile toolbars resize the viewport during a swipe, but the svh
+        // hero keeps its layout. Only cancel if a snap destination changed.
+        if (touchHeightResize && (previousHeroTop !== heroTopRef.current || previousTarget !== targetRef.current)) {
+          cancelSnap();
+        }
+      });
     };
     const onScroll = () => {
       const y = window.scrollY;
@@ -249,8 +265,8 @@ export function useHeroScroll({ heroRef, headingRef, enabled, ready, headingDock
       lastScrollY = y;
       const hasUpwardIntent = performance.now() < upwardIntentUntilRef.current;
       if (hasUpwardIntent && upwardMomentumRef.current && movingUp && snapDirectionRef.current === null) {
-        // Native touch momentum can outlive touchend. Keep its boundary guard
-        // alive while it moves, without granting permission to return to hero.
+        // Uncancelable wheel momentum can keep scrolling after input ends.
+        // Keep its guard alive without granting permission to return to hero.
         upwardIntentUntilRef.current = performance.now() + UPWARD_INTENT_MS;
       }
       if (enabled && ready && snapDirectionRef.current === null && movingUp &&
@@ -296,6 +312,7 @@ export function useHeroScroll({ heroRef, headingRef, enabled, ready, headingDock
       observer.disconnect();
       cancelAnimationFrame(frame);
       cancelAnimationFrame(followupFrame);
+      cancelAnimationFrame(resizeFrame);
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('resize', onResize);
       cancelSnap();
@@ -304,6 +321,12 @@ export function useHeroScroll({ heroRef, headingRef, enabled, ready, headingDock
 
   useEffect(() => {
     if (!enabled) return;
+
+    let touchSettleFrame = 0;
+    const cancelTouchSettling = () => {
+      cancelAnimationFrame(touchSettleFrame);
+      touchSettleFrame = 0;
+    };
 
     const handleDirection = (direction: SnapDirection, event: Event, momentum = false) => {
       const activeDirection = snapDirectionRef.current;
@@ -336,6 +359,8 @@ export function useHeroScroll({ heroRef, headingRef, enabled, ready, headingDock
       if (event.defaultPrevented || event.ctrlKey || event.metaKey || event.altKey ||
           event.shiftKey || isEditable(event.target) ||
           Math.abs(event.deltaY) <= Math.abs(event.deltaX)) return;
+      touchInputRef.current = false;
+      cancelTouchSettling();
       const direction = event.deltaY < 0 ? -1 : 1;
       const now = performance.now();
       const smoothScroll = getSmoothScroll();
@@ -408,45 +433,82 @@ export function useHeroScroll({ heroRef, headingRef, enabled, ready, headingDock
       }
     };
 
-    let touch: { x: number; y: number } | null = null;
-    const onTouchStart = (event: TouchEvent) => {
-      if (event.touches.length !== 1 || isEditable(event.target)) {
-        touch = null;
-        upwardIntentUntilRef.current = 0;
-        if (snapDirectionRef.current !== null) cancelSnap();
-        return;
-      }
-      upwardIntentUntilRef.current = 0;
-      upwardMomentumRef.current = false;
-      touch = { x: event.touches[0].clientX, y: event.touches[0].clientY };
-    };
-    const onTouchMove = (event: TouchEvent) => {
-      if (!touch || event.touches.length !== 1 || event.defaultPrevented) return;
-      const next = { x: event.touches[0].clientX, y: event.touches[0].clientY };
-      const dx = touch.x - next.x;
-      const dy = touch.y - next.y;
-      // Accumulate small touch movements until the direction is clear, and
-      // leave horizontal swipes and pinch gestures to the browser.
-      if (snapDirectionRef.current === null && Math.max(Math.abs(dx), Math.abs(dy)) < 6) return;
-      touch = next;
-      if (Math.abs(dy) <= Math.abs(dx)) return;
-      handleDirection(dy < 0 ? -1 : 1, event);
-    };
-    const clearTouch = () => {
-      if (touch && performance.now() < upwardIntentUntilRef.current) {
-        upwardMomentumRef.current = true;
-        upwardIntentUntilRef.current = performance.now() + UPWARD_INTENT_MS;
-      }
-      touch = null;
-    };
+    // Touch owns native scrolling until both the finger and its momentum
+    // stop. Animating from touchmove fights the browser's scrolling and lets
+    // tiny direction changes repeatedly reverse a snap.
+    let touch: {
+      identifier: number;
+      x: number;
+      y: number;
+      axis: 'horizontal' | 'vertical' | null;
+      direction: SnapDirection | null;
+    } | null = null;
     const cancelTouch = () => {
       touch = null;
       upwardIntentUntilRef.current = 0;
+      upwardMomentumRef.current = false;
+      cancelTouchSettling();
+    };
+    const onTouchStart = (event: TouchEvent) => {
+      cancelTouch();
+      touchInputRef.current = true;
+      if (snapDirectionRef.current !== null) cancelSnap();
+      if (event.touches.length !== 1 || isEditable(event.target)) return;
+      const finger = event.touches[0];
+      touch = { identifier: finger.identifier, x: finger.clientX, y: finger.clientY, axis: null, direction: null };
+    };
+    const onTouchMove = (event: TouchEvent) => {
+      if (!touch) return;
+      if (event.touches.length !== 1 || event.defaultPrevented ||
+          event.touches[0].identifier !== touch.identifier) {
+        cancelTouch();
+        return;
+      }
+      const finger = event.touches[0];
+      const dx = touch.x - finger.clientX;
+      const dy = touch.y - finger.clientY;
+      if (touch.axis === null) {
+        if (Math.max(Math.abs(dx), Math.abs(dy)) < TOUCH_DIRECTION_THRESHOLD) return;
+        touch.axis = Math.abs(dy) > Math.abs(dx) ? 'vertical' : 'horizontal';
+      }
+      if (touch.axis !== 'vertical' || Math.abs(dy) < TOUCH_DIRECTION_THRESHOLD) return;
+      touch.y = finger.clientY;
+      touch.direction = dy < 0 ? -1 : 1;
+    };
+    const onTouchEnd = (event: TouchEvent) => {
+      const direction = touch?.direction;
+      touch = null;
+      if (!direction || event.touches.length !== 0 || !ready) return;
+      let lastY = window.scrollY;
+      let idleSince = performance.now();
+      const settle = () => {
+        const y = window.scrollY;
+        const now = performance.now();
+        if (y !== lastY) {
+          lastY = y;
+          idleSince = now;
+        }
+        if (now - idleSince < TOUCH_SCROLL_IDLE_MS) {
+          touchSettleFrame = requestAnimationFrame(settle);
+          return;
+        }
+        touchSettleFrame = 0;
+        const target = targetRef.current;
+        if (target <= 0 || snapDirectionRef.current !== null) return;
+        if (direction === 1 && y >= heroTopRef.current - 1 && y < target - 1) {
+          snapTo(1);
+        } else if (direction === -1 && y > heroTopRef.current + 1 && y <= target + DOCK_TOLERANCE) {
+          snapTo(-1);
+        }
+      };
+      touchSettleFrame = requestAnimationFrame(settle);
     };
 
     const onKey = (event: KeyboardEvent) => {
       if (event.defaultPrevented || event.ctrlKey || event.metaKey || event.altKey ||
           isKeyboardControl(event.target)) return;
+      touchInputRef.current = false;
+      cancelTouchSettling();
       if (event.key === 'Home' || event.key === 'End' || event.key === 'Escape') {
         upwardIntentUntilRef.current = 0;
         if (snapDirectionRef.current !== null) cancelSnap();
@@ -465,17 +527,18 @@ export function useHeroScroll({ heroRef, headingRef, enabled, ready, headingDock
 
     window.addEventListener('wheel', onWheel, { passive: false, capture: true });
     window.addEventListener('touchstart', onTouchStart, { passive: true });
-    window.addEventListener('touchmove', onTouchMove, { passive: false });
-    window.addEventListener('touchend', clearTouch, { passive: true });
+    window.addEventListener('touchmove', onTouchMove, { passive: true });
+    window.addEventListener('touchend', onTouchEnd, { passive: true });
     window.addEventListener('touchcancel', cancelTouch, { passive: true });
     window.addEventListener('keydown', onKey);
     return () => {
       window.removeEventListener('wheel', onWheel, { capture: true });
       window.removeEventListener('touchstart', onTouchStart);
       window.removeEventListener('touchmove', onTouchMove);
-      window.removeEventListener('touchend', clearTouch);
+      window.removeEventListener('touchend', onTouchEnd);
       window.removeEventListener('touchcancel', cancelTouch);
       window.removeEventListener('keydown', onKey);
+      cancelTouchSettling();
       wheelGestureRef.current = null;
     };
   }, [enabled, ready, snapTo, cancelSnap, stopAtProjects]);
