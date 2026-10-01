@@ -589,5 +589,10 @@ export function useHeroScroll({ heroRef, headingRef, enabled, ready, touchEnable
     viewportProbeRef.current = null;
   }, []);
 
-  return { progress, headingY, projectsHeadingY, headingLift, isAtHero, scrollToProjects, scrollToHero };
+  const cancelScroll = useCallback(() => {
+    touchScrollRef.current?.cancel();
+    cancelSnap();
+  }, [cancelSnap]);
+
+  return { progress, headingY, projectsHeadingY, headingLift, isAtHero, scrollToProjects, scrollToHero, cancelScroll };
 }

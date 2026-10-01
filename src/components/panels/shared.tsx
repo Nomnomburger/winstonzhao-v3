@@ -4,6 +4,7 @@ import { motion, useMotionValue, useTransform, useAnimationControls, useReducedM
 import { ReactNode, useCallback, useContext, useEffect, useId, useRef, useState, useSyncExternalStore } from 'react';
 import { Language } from './translations';
 import { HeroBioExitContext, HeroBioExitWord } from './HeroBioLine';
+import { revealMaskAnimation } from './text-reveal';
 
 export { LINKEDIN_URL, OLD_SITE_URL, RESUME_URL, EMAIL } from '@/lib/site';
 
@@ -244,16 +245,8 @@ export function AnimatedWord({ children, delay, movement = '40%', instant = fals
     );
   }
   return (
-    <motion.span
-      className="inline-block align-bottom"
-      initial={{ clipPath: 'inset(-10% -10% 0 -10%)' }}
-      animate={{ clipPath: 'inset(-10% -10% -20% -10%)' }}
-      transition={{
-        duration: 0.5,
-        delay: delay + 0.5,
-        ease: [0.4, 0, 0.2, 1],
-      }}
-    >
+    // The word rises through a stationary mask whose lower edge opens late.
+    <motion.span className="text-reveal-mask inline-block align-bottom" {...revealMaskAnimation(delay, 0.9)}>
       <motion.span
         className="inline-block"
         initial={{ y: movement, opacity: 0 }}

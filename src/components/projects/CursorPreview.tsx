@@ -115,6 +115,7 @@ export function useCursorPreview(): CursorPreviewState {
 
 interface CursorPreviewProps {
   preview: CursorPreviewState;
+  zIndex?: number;
   // Every image stays mounted (hidden) so they're loaded before the first
   // hover and swap instantly.
   images: { key: string; content: ReactNode }[];
@@ -124,7 +125,7 @@ interface CursorPreviewProps {
 // the same way), taking each image's size as the hover moves between them.
 // Portalled to <body> so no transformed ancestor (entrance animations) can
 // offset its fixed position.
-export default function CursorPreview({ preview, images }: CursorPreviewProps) {
+export default function CursorPreview({ preview, images, zIndex = 40 }: CursorPreviewProps) {
   const canHover = useCanHover();
   // The last image shown stays visible while the preview fades away
   const [shown, setShown] = useState(preview.active);
@@ -133,8 +134,8 @@ export default function CursorPreview({ preview, images }: CursorPreviewProps) {
   if (!canHover) return null;
   return createPortal(
     <motion.div
-      className="fixed top-0 left-0 z-40 pointer-events-none"
-      style={{ x: preview.x, y: preview.y }}
+      className="fixed top-0 left-0 pointer-events-none"
+      style={{ x: preview.x, y: preview.y, zIndex }}
       aria-hidden="true"
     >
       <motion.div

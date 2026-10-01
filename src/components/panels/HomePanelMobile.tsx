@@ -1,7 +1,7 @@
 'use client';
 
-import { motion, AnimatePresence, useTransform } from 'framer-motion';
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { motion, AnimatePresence, animate, useMotionValue, useReducedMotion, useTransform } from 'framer-motion';
+import { useEffect, useId, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
@@ -9,23 +9,23 @@ import {
   ScrambleText,
   formatTorontoTime,
   useCurrentTime,
-  NewlyRole,
-  FigmaRole,
-  TextQLRole,
   WZLogo,
   LanguageGlobe,
   OLD_SITE_URL,
   RESUME_URL,
   EMAIL,
 } from './shared';
-import ThemeToggle from '@/components/ThemeToggle';
 import { Language, translations } from './translations';
 import HomeProjects from '@/components/projects/HomeProjects';
 import type { ProjectCardData } from '@/components/projects/types';
 import HomeNavigationBackdrop from './HomeNavigationBackdrop';
 import { useHeroScroll } from './useHeroScroll';
-import HeroBioLine from './HeroBioLine';
-import HeaderMenu from '@/components/HeaderMenu';
+import MorphingBio, { HERO_BIO_LAYOUT_TRANSITION, heroBioSpaceProgress } from './MorphingBio';
+import HomeMenuLinks from './HomeMenuLinks';
+import { expandedBioLines } from './bio-copy';
+import { useHomeMenu, useMenuHeaderHandoff } from './useHomeMenu';
+import { revealMaskAnimation } from './text-reveal';
+import { scrollInstantly } from '@/lib/smooth-scroll';
 
 // "Zhao" sits in the second of the two mobile grid columns: half the
 // container width plus half the 12px column gap (~51.7% of the row).
@@ -64,6 +64,27 @@ export default function HomePanelMobile({
   const titleSpaceRef = useRef<HTMLDivElement>(null);
   const heroRef = useRef<HTMLDivElement>(null);
   const headingRef = useRef<HTMLAnchorElement>(null);
+  const {
+    open: menuOpen,
+    closing: menuClosing,
+    setOpen: setMenuOpen,
+    rootRef,
+    triggerRef,
+    navigationId,
+    close: closeMenu,
+    closeImmediately: closeMenuImmediately,
+    cancelClose,
+  } = useHomeMenu();
+  const [bioExpanded, setBioExpanded] = useState(false);
+  const bioId = useId();
+  const reducedMotion = useReducedMotion();
+  const compactProgress = useMotionValue(0);
+  const bioLayoutProgress = useMotionValue(0);
+  const bioSpaceProgress = useTransform(bioLayoutProgress, heroBioSpaceProgress);
+  const titleBaseHeight = useMotionValue(instant ? 120 : 176);
+  const retainedTitleProgress = useMotionValue(0);
+  const menuSnapshotRef = useRef<{ top: number; progress: number; headingY: number } | null>(null);
+  const menuNavigationRef = useRef(false);
   const [fontSize, setFontSize] = useState('96px');
   const [shrunkFontSize, setShrunkFontSize] = useState(64);
   const [containerWidth, setContainerWidth] = useState(0);
@@ -82,18 +103,33 @@ export default function HomePanelMobile({
   const currentTime = useCurrentTime(language);
   const t = translations[language];
   const fromT = translations[prevLanguage];
+  // Mobile wraps the expanded copy to its available width instead of carrying
+  // the desktop's column-specific line breaks onto a narrow phone.
+  const fullBio = useMemo(() => [expandedBioLines[language].join(' ')], [language]);
   const projectCount = String(projects.length);
-  const { progress, headingY, headingLift, scrollToProjects } = useHeroScroll({
+  const { progress, headingY, headingLift, scrollToProjects, cancelScroll } = useHeroScroll({
     heroRef,
     headingRef,
-    enabled: hasShrunk && showContent && projects.length > 0,
+    enabled: hasShrunk && showContent && projects.length > 0 && !menuOpen,
     ready: introDone,
-    touchEnabled: showContent && projects.length > 0,
+    touchEnabled: showContent && projects.length > 0 && !menuOpen,
     trackHeroState: false,
     headingDockTop: PROJECTS_DOCK_TOP,
     fitHeroToViewport: true,
   });
   const bioExitProgress = useTransform(progress, [0, 0.4], [0, 1]);
+  const { compactProgress: navigationCompactProgress, keepCompact } = useMenuHeaderHandoff({
+    scrollProgress: progress,
+    menuProgress: compactProgress,
+    menuOpen,
+    menuClosing,
+    reducedMotion,
+  });
+  const retainedScrollProgress = useTransform(() => Math.max(progress.get(), retainedTitleProgress.get()));
+  const titleProgress = useTransform(() => Math.max(retainedScrollProgress.get(), compactProgress.get(), bioSpaceProgress.get(), navigationCompactProgress.get()));
+  // The name space contracts while the bio grows. Driving both heights with
+  // one curve keeps their combined height, and Projects below, monotonic.
+  const titleSpaceHeight = useTransform(() => titleBaseHeight.get() * (1 - bioSpaceProgress.get()) + 24 * bioSpaceProgress.get());
   // Give the return a long slowdown before its early stop. Match the slope
   // into the remaining lift so Projects still docks with the images.
   const projectsRise = useTransform(
@@ -106,19 +142,76 @@ export default function HomePanelMobile({
   const heroOpacity = useTransform(progress, [0, 0.7], [1, 0]);
   const heroVisibility = useTransform(progress, (value) => value >= 0.7 ? 'hidden' : 'visible');
   const bioVisibility = useTransform(bioExitProgress, (value) => value >= 1 ? 'hidden' : 'visible');
-  const nameBlend = useTransform(progress, (value) => value >= 0.7 ? 'difference' : 'normal');
-  const nameColor = useTransform(progress, (value) => value >= 0.7 ? '#ffffff' : 'var(--foreground)');
+  const nameBlend = useTransform(retainedScrollProgress, (value) => value >= 0.7 ? 'difference' : 'normal');
+  const nameColor = useTransform(retainedScrollProgress, (value) => value >= 0.7 ? '#ffffff' : 'var(--foreground)');
   const compactScale = 20 / shrunkFontSize;
-  const titleScale = useTransform(progress, [0, 1], [1, compactScale]);
-  const lastNameY = useTransform(progress, [0, 1], [0, -shrunkFontSize]);
-  const lastNameX = useTransform(progress, [0, 1], [
+  const titleScale = useTransform(titleProgress, [0, 1], [1, compactScale]);
+  const lastNameY = useTransform(titleProgress, [0, 1], [0, -shrunkFontSize]);
+  const lastNameX = useTransform(titleProgress, [0, 1], [
     0,
     firstNameWidth + 6 / compactScale - lineOffsetRatio * containerWidth,
   ]);
+  const profileOpacity = useTransform(() => heroOpacity.get() * (1 - Math.max(compactProgress.get(), bioSpaceProgress.get())));
+  const scrollToProjectsRef = useRef(scrollToProjects);
+
+  useLayoutEffect(() => {
+    scrollToProjectsRef.current = scrollToProjects;
+  }, [scrollToProjects]);
+
+  useLayoutEffect(() => {
+    if (menuOpen) return;
+    const snapshot = menuSnapshotRef.current;
+    if (!snapshot) return;
+    menuSnapshotRef.current = null;
+
+    if (menuNavigationRef.current) {
+      menuNavigationRef.current = false;
+      retainedTitleProgress.set(0);
+      return;
+    }
+
+    // Restore the same visual state before the first unlocked paint. Keep the
+    // compact title while the scroll observers refresh their measurements.
+    scrollInstantly(snapshot.top);
+    progress.set(snapshot.progress);
+    headingY.set(snapshot.headingY);
+    let frame = requestAnimationFrame(() => {
+      frame = requestAnimationFrame(() => retainedTitleProgress.set(0));
+    });
+    return () => cancelAnimationFrame(frame);
+  }, [menuOpen, progress, headingY, retainedTitleProgress]);
+
+  useEffect(() => {
+    const animation = animate(compactProgress, menuOpen ? 1 : 0, {
+      duration: reducedMotion ? 0 : 0.7,
+      ease: [0.76, 0, 0.15, 1],
+    });
+    return () => animation.stop();
+  }, [menuOpen, compactProgress, reducedMotion]);
+
+  useLayoutEffect(() => {
+    if (reducedMotion) {
+      bioLayoutProgress.set(bioExpanded ? 1 : 0);
+      return;
+    }
+    const animation = animate(bioLayoutProgress, bioExpanded ? 1 : 0, {
+      ...HERO_BIO_LAYOUT_TRANSITION,
+    });
+    return () => animation.stop();
+  }, [bioExpanded, bioLayoutProgress, reducedMotion]);
 
   const scrollToWork = (e: React.MouseEvent) => {
     e.preventDefault();
     scrollToProjects(true);
+  };
+
+  const navigateToProjects = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault();
+    keepCompact();
+    menuNavigationRef.current = true;
+    closeMenuImmediately();
+    // Re-enable the hero scroll handlers before starting the navigation snap.
+    requestAnimationFrame(() => scrollToProjectsRef.current(true));
   };
 
   // The globe cycles English → Swedish → Chinese
@@ -338,6 +431,19 @@ export default function HomePanelMobile({
     ease: [0.76, 0, 0.15, 1] as const,
   };
 
+  useLayoutEffect(() => {
+    const targetHeight = (hasShrunk ? shrunkFontSize : parseFloat(fontSize)) * 1.75 + 8;
+    if (reducedMotion || instant && !langSwitched) {
+      titleBaseHeight.set(targetHeight);
+      return;
+    }
+    const animation = animate(titleBaseHeight, targetHeight, {
+      duration: shrinkDuration,
+      ease: [0.76, 0, 0.15, 1],
+    });
+    return () => animation.stop();
+  }, [titleBaseHeight, hasShrunk, shrunkFontSize, fontSize, instant, langSwitched, reducedMotion, shrinkDuration]);
+
   // Scramble timing for language switches: all texts animate at once, each
   // sweeping through its own characters left to right.
   const switchCharDelay = 0.02;
@@ -364,30 +470,55 @@ export default function HomePanelMobile({
     : `calc(${lineOffsetRatio * 100}% + ${-(photoSize + 12)}px)`;
 
   return (
-    <div className="theme-root bg-background min-h-dvh w-full relative overflow-x-clip">
+    <div
+      ref={rootRef}
+      role={menuOpen ? 'dialog' : undefined}
+      aria-modal={menuOpen ? true : undefined}
+      aria-label={menuOpen ? 'Main navigation' : undefined}
+      className="theme-root bg-background min-h-dvh w-full relative overflow-x-clip"
+    >
       <HomeNavigationBackdrop progress={progress} mobile />
       <AnimatePresence>
         {hasShrunk && showContent && (
           <motion.div
             className="fixed top-6 right-6 z-50 font-normal text-[12px] tracking-[-0.24px] leading-normal"
-            style={{ color: nameColor, mixBlendMode: nameBlend }}
+            style={{ color: menuOpen ? 'var(--foreground)' : nameColor, mixBlendMode: menuOpen ? 'normal' : nameBlend }}
             initial={instant ? false : { opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: globeDelay, ease: [0.4, 0, 0.2, 1] }}
           >
-            <HeaderMenu
-              links={[
-                { id: 'contact', href: `mailto:${EMAIL}`, label: t.navContact },
-                { id: 'resume', href: RESUME_URL, label: t.navResume },
-              ]}
-              mobileFooter={
-                <div className="flex flex-col gap-1 items-start">
-                  <NewlyRole label={t.designAt} />
-                  <FigmaRole label={t.campusLeaderAt} />
-                  <TextQLRole label={t.prevDesignAt} />
-                </div>
-              }
-            />
+            <button
+              ref={triggerRef}
+              type="button"
+              onClick={() => {
+                if (menuClosing) cancelClose();
+                else if (menuOpen) closeMenu();
+                else {
+                  cancelScroll();
+                  menuSnapshotRef.current = { top: window.scrollY, progress: progress.get(), headingY: headingY.get() };
+                  retainedTitleProgress.set(progress.get());
+                  setMenuOpen(true);
+                }
+              }}
+              aria-expanded={menuOpen}
+              aria-controls={navigationId}
+              aria-haspopup="dialog"
+              aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+              className="relative block h-[17px] w-[18px] cursor-pointer"
+            >
+              <motion.span
+                aria-hidden="true"
+                className="absolute left-0 top-[5px] h-px w-full bg-current"
+                animate={menuOpen && !menuClosing ? { y: 3, rotate: 45 } : { y: 0, rotate: 0 }}
+                transition={{ duration: reducedMotion ? 0 : 0.35, ease: [0.4, 0, 0.2, 1] }}
+              />
+              <motion.span
+                aria-hidden="true"
+                className="absolute left-0 top-[11px] h-px w-full bg-current"
+                animate={menuOpen && !menuClosing ? { y: -3, rotate: -45 } : { y: 0, rotate: 0 }}
+                transition={{ duration: reducedMotion ? 0 : 0.35, ease: [0.4, 0, 0.2, 1] }}
+              />
+            </button>
           </motion.div>
         )}
       </AnimatePresence>
@@ -430,14 +561,12 @@ export default function HomePanelMobile({
               ref={titleSpaceRef}
               aria-hidden="true"
               className="w-full shrink-0"
-              initial={instant ? false : undefined}
-              animate={{ height: (hasShrunk ? shrunkFontSize : parseFloat(fontSize)) * 1.75 + 8 }}
-              transition={shrinkTransition}
+              style={{ height: titleSpaceHeight }}
             />
             <motion.div
               ref={containerRef}
               className="fixed top-6 left-6 right-6 z-40 py-1 origin-top-left"
-              style={{ scale: titleScale, color: nameColor, mixBlendMode: nameBlend }}
+              style={{ scale: titleScale, color: menuOpen ? 'var(--foreground)' : nameColor, mixBlendMode: menuOpen ? 'normal' : nameBlend }}
             >
               <motion.h1
                 ref={headerRef}
@@ -474,7 +603,7 @@ export default function HomePanelMobile({
                   {(langSwitched || (t.nativeName !== '' && hasShrunk && showContent)) && (
                     <motion.span
                       className="font-light text-[12px] leading-none ml-auto"
-                      style={{ letterSpacing: '-0.02em', opacity: heroOpacity }}
+                      style={{ letterSpacing: '-0.02em', opacity: profileOpacity }}
                     >
                       {langSwitched ? (
                         <ScrambleText from={fromT.nativeName} charDelay={switchCharDelay}>
@@ -520,7 +649,7 @@ export default function HomePanelMobile({
                   {/* Profile picture - appears beside "Zhao" once the name settles.
                       Always mounted (with priority) so the image is preloaded
                       during the intro, instead of popping in late. */}
-                  <motion.span style={{ opacity: heroOpacity }}>
+                  <motion.span style={{ opacity: profileOpacity }}>
                     <motion.span
                       className="block absolute top-1/2"
                       style={{
@@ -560,19 +689,28 @@ export default function HomePanelMobile({
               {hasShrunk && (
                 <motion.div
                   className="flex flex-col flex-1 w-full"
+                  aria-hidden={menuOpen}
+                  inert={menuOpen}
                   initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ duration: 0.3 }}
+                  animate={{ opacity: menuOpen ? 0 : 1 }}
+                  transition={{ duration: reducedMotion ? 0 : 0.3 }}
                 >
                   <div className="flex flex-col gap-12 w-full">
                     {/* Bio */}
                     <motion.div
+                      id={bioId}
                       style={{ y: headingY, visibility: bioVisibility }}
                       className={`${bigTextWeight} leading-none text-[32px] ${bigTextTracking} transition-[font-weight,letter-spacing] duration-700 ease-in-out cursor-default`}
                     >
-                      {t.bioLines.map((line, index) => (
-                        <HeroBioLine key={index} progress={bioExitProgress} index={index} lines={t.bioLines}>
-                          {langSwitched ? (
+                      <MorphingBio
+                        lines={t.bioLines}
+                        expandedLines={fullBio}
+                        expanded={bioExpanded}
+                        freezeExit={false}
+                        animateHeight
+                        layoutProgress={bioLayoutProgress}
+                        progress={bioExitProgress}
+                        renderLine={(line, index) => langSwitched ? (
                             <ScrambleText
                               from={fromT.bioLines[index]}
                               charDelay={switchCharDelay}
@@ -587,8 +725,7 @@ export default function HomePanelMobile({
                           ) : (
                             <span className="opacity-0">{line}</span>
                           )}
-                        </HeroBioLine>
-                      ))}
+                      />
                     </motion.div>
 
                     {/* Work + Icon */}
@@ -604,14 +741,8 @@ export default function HomePanelMobile({
                           className={`flex gap-2 items-start ${bigTextWeight} whitespace-nowrap cursor-pointer transition-[font-weight] duration-700 ease-in-out`}
                         >
                           <motion.span
-                            className={`text-[32px] leading-none ${bigTextTracking} transition-[letter-spacing] duration-700 ease-in-out`}
-                            initial={{ clipPath: 'inset(-10% -10% 0 -10%)' }}
-                            animate={{ clipPath: 'inset(-10% -10% -20% -10%)' }}
-                            transition={{
-                              duration: 0.5,
-                              delay: workDelay + 0.5,
-                              ease: [0.4, 0, 0.2, 1],
-                            }}
+                            className={`text-reveal-mask text-[32px] leading-none ${bigTextTracking} transition-[letter-spacing] duration-700 ease-in-out`}
+                            {...revealMaskAnimation(workDelay, 0.9)}
                           >
                             {langSwitched ? (
                               <ScrambleText from={fromT.workLabel} charDelay={switchCharDelay}>
@@ -635,14 +766,8 @@ export default function HomePanelMobile({
                             )}
                           </motion.span>
                           <motion.span
-                            className="text-[12px] leading-normal tracking-[-0.24px]"
-                            initial={{ clipPath: 'inset(-10% -10% 0 -10%)' }}
-                            animate={{ clipPath: 'inset(-10% -10% -20% -10%)' }}
-                            transition={{
-                              duration: 0.5,
-                              delay: workDelay + stagger + 0.5,
-                              ease: [0.4, 0, 0.2, 1],
-                            }}
+                            className="text-reveal-mask text-[12px] leading-normal tracking-[-0.24px]"
+                            {...revealMaskAnimation(workDelay + stagger, 0.9)}
                           >
                             {langSwitched ? (
                               <ScrambleText from={projectCount} charDelay={switchCharDelay}>
@@ -679,7 +804,27 @@ export default function HomePanelMobile({
                               ease: [0.4, 0, 0.2, 1],
                             }}
                           >
-                            <ThemeToggle className="w-full h-full" />
+                            <button
+                              type="button"
+                              onClick={() => setBioExpanded((value) => !value)}
+                              aria-expanded={bioExpanded}
+                              aria-controls={bioId}
+                              aria-label={bioExpanded ? 'Collapse biography' : 'Expand biography'}
+                              className="block h-full w-full cursor-pointer"
+                            >
+                              <motion.svg
+                                viewBox="0 0 36 36"
+                                fill="none"
+                                className="h-full w-full"
+                                animate={{ rotate: bioExpanded ? 45 : 0 }}
+                                transition={{ duration: reducedMotion ? 0 : 0.45, ease: [0.4, 0, 0.2, 1] }}
+                                aria-hidden="true"
+                              >
+                                <g className={!bioExpanded && !reducedMotion ? 'animate-spin-slow' : undefined} style={{ transformOrigin: '18px 18px' }}>
+                                  <path d="M0 18H36M18 0V36" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                                </g>
+                              </motion.svg>
+                            </button>
                           </motion.div>
                         </motion.div>
                       ) : (
@@ -704,14 +849,8 @@ export default function HomePanelMobile({
 
                     {/* Toronto time and language globe */}
                     <motion.div
-                      className="flex items-center justify-end gap-1.5 whitespace-nowrap"
-                      initial={{ clipPath: 'inset(-10% -10% 0 -10%)' }}
-                      animate={{ clipPath: 'inset(-10% -10% -20% -10%)' }}
-                      transition={{
-                        duration: 0.5,
-                        delay: timeDelay + 0.5,
-                        ease: [0.4, 0, 0.2, 1],
-                      }}
+                      className="text-reveal-mask flex items-center justify-end gap-1.5 whitespace-nowrap"
+                      {...revealMaskAnimation(timeDelay, 0.9)}
                     >
                       {showContent ? (
                         <motion.div
@@ -755,7 +894,13 @@ export default function HomePanelMobile({
         {/* Work remains visible throughout the snap; the hero's clearance
             carries it fully below the screen before the return settles. */}
         {hasShrunk && (
-          <div className="flex flex-col gap-9 w-full">
+          <motion.div
+            className="flex flex-col gap-9 w-full"
+            aria-hidden={menuOpen}
+            inert={menuOpen}
+            animate={{ opacity: menuOpen ? 0 : 1 }}
+            transition={{ duration: reducedMotion ? 0 : 0.3, ease: [0.4, 0, 0.2, 1] }}
+          >
             {projects.length > 0 && (
               <HomeProjects
                 projects={projects}
@@ -827,9 +972,30 @@ export default function HomePanelMobile({
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         )}
       </div>
+      <motion.div
+        id={navigationId}
+        aria-hidden={!menuOpen}
+        inert={!menuOpen}
+        data-home-menu-scroll
+        data-lenis-prevent
+        className="fixed inset-0 z-[35] overflow-y-auto overscroll-contain bg-background px-6 pb-12 pt-24 text-foreground"
+        initial={false}
+        animate={{ opacity: menuOpen ? 1 : 0 }}
+        style={{ pointerEvents: menuOpen ? 'auto' : 'none' }}
+        transition={{ duration: reducedMotion ? 0 : 0.3, ease: [0.4, 0, 0.2, 1] }}
+      >
+        <HomeMenuLinks
+          language={language}
+          projectCount={projectCount}
+          open={menuOpen && !menuClosing}
+          onNavigate={closeMenu}
+          onProjects={navigateToProjects}
+          className="gap-12"
+        />
+      </motion.div>
     </div>
   );
 }

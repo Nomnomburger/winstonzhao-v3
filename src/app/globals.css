@@ -84,6 +84,23 @@ body {
   text-underline-offset: 0.15em;
 }
 
+/* Keep descenders inside a filtered word's paint surface. The negative
+   margin preserves the original line height and baseline. */
+.text-reveal-word {
+  padding-bottom: 0.12em;
+  margin-bottom: -0.12em;
+}
+
+/* A stationary window for rising text, with room for descenders and blur.
+   Negative insets preserve the original line boxes and spacing. */
+.text-reveal-mask {
+  clip-path: inset(-0.15em -0.5em -0.2em -0.5em);
+}
+
+.text-reveal-mask-open-right {
+  clip-path: inset(-0.15em -200% -0.2em -0.5em);
+}
+
 /* Scrollable but without visible scrollbars (resume viewer) */
 .no-scrollbar {
   scrollbar-width: none;

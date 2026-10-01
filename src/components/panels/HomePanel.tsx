@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, AnimatePresence, cubicBezier, useMotionValue, useReducedMotion, useSpring, useTransform } from 'framer-motion';
+import { animate, motion, AnimatePresence, cubicBezier, useAnimationControls, useMotionValue, useReducedMotion, useSpring, useTransform } from 'framer-motion';
 import { useEffect, useEffectEvent, useLayoutEffect, useRef, useState, useSyncExternalStore } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -18,15 +18,18 @@ import {
   RESUME_URL,
   EMAIL,
 } from './shared';
-import ThemeToggle from '@/components/ThemeToggle';
 import { Language, translations } from './translations';
 import HomeProjects from '@/components/projects/HomeProjects';
 import CursorPreview, { useCursorPreview } from '@/components/projects/CursorPreview';
 import type { ProjectCardData } from '@/components/projects/types';
 import { useHeroScroll } from './useHeroScroll';
 import HomeNavigationBackdrop from './HomeNavigationBackdrop';
-import HeroBioLine from './HeroBioLine';
-import HeaderMenu from '@/components/HeaderMenu';
+import MorphingBio, { HERO_BIO_LAYOUT_TRANSITION } from './MorphingBio';
+import { expandedBioLines } from './bio-copy';
+import HomeMenuLinks from './HomeMenuLinks';
+import DesktopNavigationToggle from './DesktopNavigationToggle';
+import { useHomeMenu, useMenuHeaderHandoff } from './useHomeMenu';
+import { revealMaskAnimation } from './text-reveal';
 
 interface HomePanelProps {
   showContent?: boolean;
@@ -133,14 +136,90 @@ export default function HomePanel({
   const t = translations[language];
   const fromT = translations[prevLanguage];
   const projectCount = String(projects.length);
-  const { progress, headingY, projectsHeadingY, isAtHero, scrollToProjects, scrollToHero } = useHeroScroll({
+  const [menuFromHero, setMenuFromHero] = useState(true);
+  const { open: menuOpen, closing: menuClosing, setOpen: setMenuOpen, rootRef, triggerRef, navigationId, close: closeMenu, closeImmediately, cancelClose } = useHomeMenu({ exitDuration: menuFromHero ? HERO_BIO_LAYOUT_TRANSITION.duration * 1000 : 700 });
+  const [carryProjects, setCarryProjects] = useState(true);
+  const projectsReveal = useAnimationControls();
+  const closingProgress = useMotionValue(0);
+  const menuProgress = useMotionValue(0);
+  const menuActive = useSyncExternalStore(
+    (listener) => menuProgress.on('change', listener),
+    () => menuProgress.get() > 0.001,
+    () => false,
+  );
+  const menuScrollY = useMotionValue(0);
+  const menuBioScaleTarget = useMotionValue(1);
+  const menuBioScale = useTransform(() => menuOpen && !menuFromHero
+    ? menuBioScaleTarget.get() : 1 + (menuBioScaleTarget.get() - 1) * menuProgress.get());
+  const bioRef = useRef<HTMLDivElement>(null);
+  const menuFooterY = useMotionValue(0);
+  const rolesY = useTransform(() => menuOpen ? menuFooterY.get() : 0);
+  const rolesRef = useRef<HTMLDivElement>(null);
+  const { progress, headingY, projectsHeadingY, isAtHero, scrollToProjects, scrollToHero, cancelScroll } = useHeroScroll({
     heroRef,
     headingRef,
-    enabled: hasShrunk && showContent && projects.length > 0,
+    enabled: hasShrunk && showContent && projects.length > 0 && !menuOpen,
     ready: introDone,
-    touchEnabled: showContent && projects.length > 0,
+    touchEnabled: showContent && projects.length > 0 && !menuOpen,
   });
   const reducedMotion = useReducedMotion();
+  useEffect(() => {
+    const returningToHero = menuFromHero && menuClosing;
+    const transition = menuFromHero && menuOpen ? HERO_BIO_LAYOUT_TRANSITION : { duration: 0.8, ease: NAME_SHRINK_EASE };
+    const animation = animate(menuProgress, menuOpen && !returningToHero ? 1 : 0, {
+      ...transition,
+      duration: reducedMotion ? 0 : transition.duration,
+    });
+    return () => animation.stop();
+  }, [menuOpen, menuClosing, menuFromHero, menuProgress, reducedMotion]);
+  useLayoutEffect(() => {
+    if (!menuOpen) {
+      projectsReveal.set({ opacity: 1, y: 0, filter: 'blur(0px)' });
+      return;
+    }
+    if (menuClosing) {
+      if (!carryProjects) void projectsReveal.start({ opacity: 0, y: -16, filter: 'blur(5px)', transition: { duration: reducedMotion ? 0 : 0.32 } });
+      const exit = animate(closingProgress, 1, { duration: reducedMotion ? 0 : 0.32 });
+      return () => exit.stop();
+    }
+    closingProgress.set(0);
+    if (!carryProjects) {
+      projectsReveal.set({ opacity: 0, y: 16, filter: 'blur(5px)' });
+      void projectsReveal.start({ opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: reducedMotion ? 0 : 0.9, ease: [0.4, 0, 0.2, 1] } });
+    } else projectsReveal.set({ opacity: 1, y: 0, filter: 'blur(0px)' });
+  }, [menuOpen, menuClosing, carryProjects, projectsReveal, closingProgress, reducedMotion]);
+  useLayoutEffect(() => {
+    if (!menuOpen) return;
+    const fitBio = () => {
+      const fontSize = bioRef.current ? parseFloat(getComputedStyle(bioRef.current).fontSize) : 64;
+      const available = window.innerHeight - parseFloat(shrunkFontSize) - 72 - 112;
+      menuBioScaleTarget.set(Math.min(1, Math.max(24, available / 8) / fontSize));
+    };
+    fitBio();
+    window.addEventListener('resize', fitBio);
+    return () => window.removeEventListener('resize', fitBio);
+  }, [menuOpen, shrunkFontSize, menuBioScaleTarget]);
+  const toggleMenu = () => {
+    if (menuClosing) { cancelClose(); return; }
+    if (menuOpen) { closeMenu(); return; }
+    cancelScroll();
+    preview.hide();
+    menuScrollY.set(window.scrollY);
+    setMenuFromHero(isAtHero);
+    const projectsAtMenuPosition = Math.abs((headingRef.current?.getBoundingClientRect().top ?? 0) - parseFloat(shrunkFontSize) - 72) < 2;
+    setCarryProjects(projectsAtMenuPosition);
+    if (!projectsAtMenuPosition) projectsReveal.set({ opacity: 0, y: 16, filter: 'blur(5px)' });
+    if (rolesRef.current) {
+      const rect = rolesRef.current.getBoundingClientRect();
+      const currentY = new DOMMatrixReadOnly(getComputedStyle(rolesRef.current).transform).m42;
+      menuFooterY.set(currentY + window.innerHeight - 36 - rect.bottom);
+    }
+    setMenuOpen(true);
+  };
+  const currentScrollToProjects = useRef(scrollToProjects);
+  useLayoutEffect(() => { currentScrollToProjects.current = scrollToProjects; }, [scrollToProjects]);
+  const menuHeadingY = useTransform(() => menuOpen && !menuFromHero ? menuScrollY.get() : projectsHeadingY.get());
+  const menuBioY = useTransform(() => menuOpen && !menuFromHero ? menuScrollY.get() : headingY.get());
   // Give the name time to follow the scroll instead of compressing its
   // stagger into the scroll snap's fast opening movement.
   const smoothNameProgress = useSpring(progress, {
@@ -151,6 +230,14 @@ export default function HomePanel({
     restSpeed: 0.01,
   });
   const nameProgress = reducedMotion ? progress : smoothNameProgress;
+  const { compactProgress: navigationCompactProgress, keepCompact } = useMenuHeaderHandoff({
+    scrollProgress: progress,
+    nameProgress,
+    menuProgress,
+    menuOpen,
+    menuClosing,
+    reducedMotion,
+  });
   useLayoutEffect(() => {
     const syncName = () => smoothNameProgress.jump(progress.get());
     syncName();
@@ -170,27 +257,35 @@ export default function HomePanel({
   const compactNameScale = 24 / parseFloat(shrunkFontSize);
   // Reuse the intro's word stagger within the scroll range. Both
   // words land exactly at either endpoint, including restored scroll positions.
-  const nameScale = useTransform(nameProgress, [0, 1 - NAME_SCROLL_STAGGER], [1, compactNameScale], {
+  const scrollNameScale = useTransform(nameProgress, [0, 1 - NAME_SCROLL_STAGGER], [1, compactNameScale], {
     ease: nameScrollEase,
   });
-  const lastNameScale = useTransform(nameProgress, [NAME_SCROLL_STAGGER, 1], [1, compactNameScale], {
+  const scrollLastNameScale = useTransform(nameProgress, [NAME_SCROLL_STAGGER, 1], [1, compactNameScale], {
     ease: nameScrollEase,
+  });
+  const nameScale = useTransform(() => {
+    const compact = Math.max(menuProgress.get(), navigationCompactProgress.get());
+    return scrollNameScale.get() * (1 - compact) + compactNameScale * compact;
+  });
+  const lastNameScale = useTransform(() => {
+    const compact = Math.max(menuProgress.get(), navigationCompactProgress.get());
+    return scrollLastNameScale.get() * (1 - compact) + compactNameScale * compact;
   });
   const lastNameRelativeScale = useTransform(() => lastNameScale.get() / nameScale.get());
   // Compensate for the parent's leading scale so Zhao's position trails its
   // size, just as both do during the initial layout animation.
   const lastNameX = useTransform(() => lastNameOffset.get() * (lastNameRelativeScale.get() - 1));
-  const navigationBlend = useTransform(progress, (value) => value >= 0.7 ? 'difference' : 'normal');
-  const navigationColor = useTransform(progress, (value) => value >= 0.7 ? '#ffffff' : 'var(--foreground)');
-  const compactNavigation = useSyncExternalStore(
-    (onChange) => progress.on('change', onChange),
-    () => progress.get() >= 0.7,
-    () => false,
-  );
+  const navigationBlend = useTransform(() => !menuOpen && progress.get() >= 0.7 ? 'difference' : 'normal');
+  const navigationColor = useTransform(() => !menuOpen && progress.get() >= 0.7 ? '#ffffff' : 'var(--foreground)');
   const heroOpacity = useTransform(progress, [0, 0.65, 1], [1, 0, 0]);
   const heroVisibility = useTransform(progress, (value) => value >= 0.65 ? 'hidden' : 'visible');
   const bioVisibility = useTransform(progress, (value) => value >= 1 ? 'hidden' : 'visible');
   const bioPointerEvents = useTransform(progress, (value) => value > 0 ? 'none' : 'auto');
+  const cornerLinksOpacity = useTransform(() => heroOpacity.get() * (1 - menuProgress.get()));
+  const menuRolesOpacity = useTransform(() => menuOpen
+    ? menuClosing ? 1 - closingProgress.get() : menuProgress.get()
+    : heroOpacity.get());
+  const menuRolesBlur = useTransform(() => menuOpen && menuClosing ? `blur(${closingProgress.get() * 5}px)` : 'blur(0px)');
 
   // Hover (and the weight crossfade) turns on once the intro has played; after a
   // language switch it waits for the full-line scramble to settle first.
@@ -242,6 +337,12 @@ export default function HomePanel({
 
   const scrollToWork = (e: React.MouseEvent) => {
     e.preventDefault();
+    if (menuOpen) {
+      keepCompact();
+      closeImmediately();
+      requestAnimationFrame(() => currentScrollToProjects.current(true));
+      return;
+    }
     scrollToProjects(true);
   };
 
@@ -497,7 +598,15 @@ export default function HomePanel({
     : 'tracking-[-1.6px] lg:tracking-[-2.08px] xl:tracking-[-2.56px]';
 
   return (
-    <div className="theme-root bg-background flex flex-col min-h-screen w-full relative overflow-x-clip">
+    <div ref={rootRef} role={menuOpen ? 'dialog' : undefined} aria-modal={menuOpen ? true : undefined} aria-label={menuOpen ? 'Main navigation' : undefined} className="theme-root bg-background flex flex-col min-h-screen w-full relative overflow-x-clip">
+      <motion.div
+        aria-hidden="true"
+        className="fixed inset-0 z-10 bg-background"
+        initial={false}
+        animate={{ opacity: menuOpen ? 1 : 0 }}
+        transition={{ duration: reducedMotion ? 0 : 0.4 }}
+        style={{ pointerEvents: menuOpen ? 'auto' : 'none' }}
+      />
       {/* Background column guides - same grid as the page content (currently hidden) */}
       {SHOW_COLUMN_GUIDES && (
         <div
@@ -520,13 +629,17 @@ export default function HomePanel({
           the cursor while they're hovered */}
       <CursorPreview
         preview={preview}
+        zIndex={70}
         images={HOVER_IMAGES.map((img) => ({
           key: img.key,
           content: <Image src={img.src} alt="" width={img.width} height={img.height} loading="eager" />,
         }))}
       />
 
-      <HomeNavigationBackdrop progress={progress} />
+      {!menuOpen && <HomeNavigationBackdrop progress={progress} />}
+      {hasShrunk && showContent && (
+        <DesktopNavigationToggle progress={progress} menuProgress={menuProgress} heroTop={parseFloat(shrunkFontSize) + 72} triggerRef={triggerRef} open={menuOpen} navigationId={navigationId} onClick={toggleMenu} instant={instant} delay={iconDelay} />
+      )}
 
       {/* A stable viewport keeps the scroll target independent of name scaling. */}
       <div ref={heroRef} className="relative flex flex-col items-start p-9 min-h-svh w-full">
@@ -541,7 +654,7 @@ export default function HomePanel({
           {/* Header Content */}
           <motion.div
             ref={containerRef}
-            className="fixed top-9 left-9 right-9 z-40 flex items-start justify-between pointer-events-none"
+            className="fixed top-9 left-9 right-9 z-50 flex items-start justify-between pointer-events-none"
             style={{ mixBlendMode: navigationBlend, color: navigationColor }}
             initial={instant ? false : undefined}
             animate={{
@@ -567,11 +680,11 @@ export default function HomePanel({
                 <button
                   ref={nameButtonRef}
                   type="button"
-                  tabIndex={isAtHero ? -1 : 0}
-                  aria-disabled={isAtHero}
+                  tabIndex={isAtHero || menuOpen ? -1 : 0}
+                  aria-disabled={isAtHero || menuOpen}
                   aria-label={isAtHero ? undefined : `${t.name} — Back to top`}
                   onClick={() => {
-                    if (isAtHero) return;
+                    if (isAtHero || menuOpen) return;
                     preview.hide();
                     scrollToHero();
                   }}
@@ -639,13 +752,10 @@ export default function HomePanel({
                     ease: [0.4, 0, 0.2, 1],
                   }}
                 >
-                  <HeaderMenu
-                    collapsed={compactNavigation}
-                    links={[
-                      { id: 'contact', href: `mailto:${EMAIL}`, label: roleLabel(t.navContact, fromT.navContact) },
-                      { id: 'resume', href: RESUME_URL, label: roleLabel(t.navResume, fromT.navResume) },
-                    ]}
-                  />
+                  <motion.nav aria-label="Contact and resume" aria-hidden={menuOpen} inert={menuOpen} className="flex items-center gap-4" style={{ opacity: cornerLinksOpacity, visibility: heroVisibility }}>
+                    <a href={`mailto:${EMAIL}`} className="hover:underline">{roleLabel(t.navContact, fromT.navContact)}</a>
+                    <Link href={RESUME_URL} className="hover:underline">{roleLabel(t.navResume, fromT.navResume)}</Link>
+                  </motion.nav>
                 </motion.div>
               )}
             </AnimatePresence>
@@ -663,22 +773,17 @@ export default function HomePanel({
                 {/* Work and Bio - 3 column grid (5 columns below lg) */}
                 <div className="grid grid-cols-5 lg:grid-cols-3 gap-x-6 w-full">
                   {/* Column 1: Work Link */}
-                  <motion.div ref={headingRef} className="relative z-20 col-span-1 self-start" style={{ y: projectsHeadingY }}>
-                    <h2>
+                  <motion.div ref={headingRef} className="relative z-20 col-span-1 self-start" style={{ y: menuHeadingY }}>
+                    <motion.h2 initial={false} animate={projectsReveal}>
                     <a
                       href="#work"
+                      data-home-menu-link={menuOpen ? '' : undefined}
                       onClick={scrollToWork}
                       className={`flex gap-2 items-start ${bigTextWeight} whitespace-nowrap cursor-pointer transition-[font-weight] duration-700 ease-in-out`}
                     >
                       <motion.span
-                        className={`text-[40px] lg:text-[52px] xl:text-[64px] leading-none ${bigTextTracking} transition-[letter-spacing] duration-700 ease-in-out`}
-                        initial={{ clipPath: 'inset(-10% -10% 0 -10%)' }}
-                        animate={{ clipPath: 'inset(-10% -10% -20% -10%)' }}
-                        transition={{
-                          duration: 0.5,
-                          delay: workDelay + 0.5,
-                          ease: [0.4, 0, 0.2, 1],
-                        }}
+                        className={`text-reveal-mask text-[40px] lg:text-[52px] xl:text-[64px] leading-none ${bigTextTracking} transition-[letter-spacing] duration-700 ease-in-out`}
+                        {...revealMaskAnimation(workDelay, 0.9, instant)}
                       >
                         {langSwitched ? (
                           <ScrambleText from={fromT.workLabel} charDelay={switchCharDelay}>
@@ -702,14 +807,8 @@ export default function HomePanel({
                         )}
                       </motion.span>
                       <motion.span
-                        className="text-[13px] lg:text-[16px] xl:text-[20px] leading-normal tracking-[-0.26px] lg:tracking-[-0.32px] xl:tracking-[-0.4px]"
-                        initial={{ clipPath: 'inset(-10% -10% 0 -10%)' }}
-                        animate={{ clipPath: 'inset(-10% -10% -20% -10%)' }}
-                        transition={{
-                          duration: 0.5,
-                          delay: workDelay + stagger + 0.5,
-                          ease: [0.4, 0, 0.2, 1],
-                        }}
+                        className="text-reveal-mask text-[13px] lg:text-[16px] xl:text-[20px] leading-normal tracking-[-0.26px] lg:tracking-[-0.32px] xl:tracking-[-0.4px]"
+                        {...revealMaskAnimation(workDelay + stagger, 0.9, instant)}
                       >
                         {langSwitched ? (
                           <ScrambleText from={projectCount} charDelay={switchCharDelay}>
@@ -733,64 +832,54 @@ export default function HomePanel({
                         )}
                       </motion.span>
                     </a>
-                    </h2>
+                    </motion.h2>
+                    <div id={navigationId} className="absolute left-0 top-[calc(100%+64px)]">
+                      <HomeMenuLinks language={language} projectCount={projectCount} open={menuOpen && !menuClosing} onNavigate={closeImmediately} onProjects={scrollToWork} showProjects={false} />
+                    </div>
                   </motion.div>
 
                   {/* Columns 2-3: Bio */}
-                  <div className="col-span-4 lg:col-span-2 flex items-start justify-between">
+                  <div className="relative col-span-4 lg:col-span-2 flex items-start justify-between">
                     <motion.div
-                      style={{ y: headingY, visibility: bioVisibility, pointerEvents: bioPointerEvents }}
-                      className={`${bigTextWeight} leading-none text-[40px] lg:text-[52px] xl:text-[64px] whitespace-nowrap ${bigTextTracking} transition-[font-weight,letter-spacing] duration-700 ease-in-out cursor-default`}
+                      ref={bioRef}
+                      style={{ y: menuBioY, scale: menuBioScale, transformOrigin: 'top left', visibility: menuOpen || (menuFromHero && menuActive) ? 'visible' : bioVisibility, pointerEvents: menuOpen && !menuClosing ? 'auto' : bioPointerEvents, position: menuOpen || menuActive ? 'absolute' : 'relative' }}
+                      className={`z-20 ${bigTextWeight} leading-none text-[40px] lg:text-[52px] xl:text-[64px] whitespace-nowrap ${bigTextTracking} transition-[font-weight,letter-spacing] duration-700 ease-in-out cursor-default`}
                     >
-                      {t.bioLines.map((line, index) => (
-                        <HeroBioLine key={index} progress={progress} index={index} lines={t.bioLines}>
-                          {renderBioLine(line, index, fromT.bioLines[index])}
-                        </HeroBioLine>
-                      ))}
+                      <MorphingBio
+                        lines={t.bioLines}
+                        expandedLines={expandedBioLines[language]}
+                        expanded={menuOpen}
+                        closing={menuClosing}
+                        revealAll={!menuFromHero}
+                        progress={progress}
+                        renderLine={(line, index) => renderBioLine(line, index, fromT.bioLines[index])}
+                        renderWord={(word) => {
+                          const key: HoverKey | undefined = word.toLowerCase() === 'toronto'
+                            ? 'stockholm' : word.toLowerCase() === 'ocad' ? 'newly' : undefined;
+                          return key ? (
+                            <span onMouseEnter={(event) => beginHover(key, event)} onMouseMove={moveHover} onMouseLeave={endHover}>
+                              {word}
+                            </span>
+                          ) : word;
+                        }}
+                      />
                     </motion.div>
-                    <motion.div style={{ opacity: heroOpacity, visibility: heroVisibility }}>
-                      {showContent ? (
-                        <motion.div
-                          className="w-9 h-9 shrink-0"
-                          initial={instant ? false : { opacity: 0, scale: 0.8 }}
-                          animate={{ opacity: 1, scale: 1 }}
-                          transition={{
-                            duration: 0.8,
-                            delay: iconDelay,
-                            ease: [0.4, 0, 0.2, 1],
-                          }}
-                        >
-                          <ThemeToggle className="w-full h-full" />
-                        </motion.div>
-                      ) : (
-                        <div className="w-9 h-9 shrink-0 opacity-0">
-                          <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
-                            <path d="M0 18L36 18" stroke="currentColor" strokeWidth="2"/>
-                            <path d="M18 0V36" stroke="currentColor" strokeWidth="2"/>
-                          </svg>
-                        </div>
-                      )}
-                    </motion.div>
+                    {(menuOpen || menuActive) && <div aria-hidden="true" className={`invisible ${bigTextWeight} leading-none text-[40px] lg:text-[52px] xl:text-[64px]`}>
+                      {t.bioLines.map((line, index) => <p key={index}>{line}</p>)}
+                    </div>}
                   </div>
                 </div>
 
                 {/* Roles and Time - 3 column grid (5 columns below lg) */}
-                <motion.div className="grid grid-cols-5 lg:grid-cols-3 gap-x-6 items-end pt-12 w-full" style={{ opacity: heroOpacity, visibility: heroVisibility }}>
+                <motion.div ref={rolesRef} className="relative z-20 grid grid-cols-5 lg:grid-cols-3 gap-x-6 items-end pt-12 w-full" style={{ y: rolesY, opacity: menuRolesOpacity, filter: menuRolesBlur, visibility: menuOpen ? 'visible' : heroVisibility }}>
                   <div className="col-span-1">
                     <WZLogo className="w-[27px] h-[17px]" draw show={showContent} instant={instant} delay={rolesDelay} />
                   </div>
 
-                  {/* Column 2: Roles (allowed to run on into column 3, so the
-                      reveal clip leaves the right side open) */}
+                  {/* Column 2: Roles, allowed to run into the next column */}
                   <motion.div
-                    className="col-span-3 lg:col-span-1"
-                    initial={{ clipPath: 'inset(-10% -200% 0 -10%)' }}
-                    animate={{ clipPath: 'inset(-10% -200% -20% -10%)' }}
-                    transition={{
-                      duration: 0.5,
-                      delay: rolesDelay + 0.5,
-                      ease: [0.4, 0, 0.2, 1],
-                    }}
+                    className="text-reveal-mask-open-right col-span-3 lg:col-span-1"
+                    {...revealMaskAnimation(rolesDelay, 0.9, instant, true)}
                   >
                     {showContent ? (
                       <motion.div
@@ -816,14 +905,8 @@ export default function HomePanel({
 
                   {/* Last column: Time and language globe */}
                   <motion.div
-                    className="col-span-1 flex items-center justify-end gap-1.5 whitespace-nowrap"
-                    initial={instant ? false : { clipPath: 'inset(-10% -10% 0 -10%)' }}
-                    animate={{ clipPath: 'inset(-10% -10% -20% -10%)' }}
-                    transition={{
-                      duration: 0.5,
-                      delay: timeDelay + 0.5,
-                      ease: [0.4, 0, 0.2, 1],
-                    }}
+                    className="text-reveal-mask col-span-1 flex items-center justify-end gap-1.5 whitespace-nowrap"
+                    {...revealMaskAnimation(timeDelay, 0.9, instant)}
                   >
                     {showContent ? (
                       <motion.div
@@ -867,6 +950,7 @@ export default function HomePanel({
       {/* Work - featured projects with photos, then the list of the rest.
           Each piece reveals as it scrolls into view, from when the footer
           would appear. */}
+      <motion.div aria-hidden={menuOpen} inert={menuOpen} initial={false} animate={{ opacity: menuOpen ? 0 : 1 }} transition={{ duration: reducedMotion ? 0 : 0.35 }}>
       {hasShrunk && showContent && projects.length > 0 && (
         <HomeProjects
           projects={projects}
@@ -879,14 +963,17 @@ export default function HomePanel({
           onScrollToWork={scrollToProjects}
         />
       )}
+      </motion.div>
 
       {/* Footer Section */}
       <AnimatePresence>
         {hasShrunk && showContent && (
           <motion.div
             className="relative flex flex-1 min-h-[239px] items-end justify-between p-9 w-full"
+            aria-hidden={menuOpen}
+            inert={menuOpen}
             initial={instant ? false : { opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            animate={{ opacity: menuOpen ? 0 : 1, y: 0 }}
             transition={{
               duration: 0.6,
               delay: footerDelay,
