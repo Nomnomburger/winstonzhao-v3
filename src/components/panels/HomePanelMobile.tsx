@@ -11,6 +11,8 @@ import {
   useCurrentTime,
   WZLogo,
   LanguageGlobe,
+  NewlyRole,
+  FigmaRole,
   OLD_SITE_URL,
   RESUME_URL,
   EMAIL,
@@ -77,6 +79,7 @@ export default function HomePanelMobile({
   } = useHomeMenu();
   const [bioExpanded, setBioExpanded] = useState(false);
   const bioId = useId();
+  const rolesId = useId();
   const reducedMotion = useReducedMotion();
   const compactProgress = useMotionValue(0);
   const bioLayoutProgress = useMotionValue(0);
@@ -730,114 +733,145 @@ export default function HomePanelMobile({
                       />
                     </motion.div>
 
-                    {/* Work + Icon */}
-                    <motion.div
-                      className="relative z-30 flex gap-9 items-center justify-between w-full"
-                      style={{ y: projectsHeadingY }}
-                    >
-                      <h2>
-                        <a
-                          ref={headingRef}
-                          href="#work"
-                          onClick={scrollToWork}
-                          className={`flex gap-2 items-start ${bigTextWeight} whitespace-nowrap cursor-pointer transition-[font-weight] duration-700 ease-in-out`}
-                        >
-                          <motion.span
-                            className={`text-reveal-mask text-[32px] leading-none ${bigTextTracking} transition-[letter-spacing] duration-700 ease-in-out`}
-                            {...revealMaskAnimation(workDelay, 0.9)}
+                    <div className="w-full">
+                      {/* Work + Icon */}
+                      <motion.div
+                        className="relative z-30 flex gap-9 items-center justify-between w-full"
+                        style={{ y: projectsHeadingY }}
+                      >
+                        <h2>
+                          <a
+                            ref={headingRef}
+                            href="#work"
+                            onClick={scrollToWork}
+                            className={`flex gap-2 items-start ${bigTextWeight} whitespace-nowrap cursor-pointer transition-[font-weight] duration-700 ease-in-out`}
                           >
-                            {langSwitched ? (
-                              <ScrambleText from={fromT.workLabel} charDelay={switchCharDelay}>
-                                {t.workLabel}
-                              </ScrambleText>
-                            ) : showContent ? (
-                              <motion.span
-                                className="inline-block"
-                                initial={{ y: '40%', opacity: 0 }}
-                                animate={{ y: '0%', opacity: 1 }}
-                                transition={{
-                                  duration: 0.9,
-                                  delay: workDelay,
-                                  ease: [0.4, 0, 0.2, 1],
-                                }}
-                              >
-                                {t.workLabel}
-                              </motion.span>
-                            ) : (
-                              <span className="opacity-0">{t.workLabel}</span>
-                            )}
-                          </motion.span>
-                          <motion.span
-                            className="text-reveal-mask text-[12px] leading-normal tracking-[-0.24px]"
-                            {...revealMaskAnimation(workDelay + stagger, 0.9)}
-                          >
-                            {langSwitched ? (
-                              <ScrambleText from={projectCount} charDelay={switchCharDelay}>
-                                {projectCount}
-                              </ScrambleText>
-                            ) : showContent ? (
-                              <motion.span
-                                className="inline-block"
-                                initial={{ y: '40%', opacity: 0 }}
-                                animate={{ y: '0%', opacity: 1 }}
-                                transition={{
-                                  duration: 0.9,
-                                  delay: workDelay + stagger,
-                                  ease: [0.4, 0, 0.2, 1],
-                                }}
-                              >
-                                {projectCount}
-                              </motion.span>
-                            ) : (
-                              <span className="opacity-0">{projectCount}</span>
-                            )}
-                          </motion.span>
-                        </a>
-                      </h2>
-                      {showContent ? (
-                        <motion.div style={{ opacity: heroOpacity, visibility: heroVisibility }}>
-                          <motion.div
-                            className="w-8 h-8 shrink-0"
-                            initial={{ opacity: 0, scale: 0.8 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{
-                              duration: 0.8,
-                              delay: iconDelay,
-                              ease: [0.4, 0, 0.2, 1],
-                            }}
-                          >
-                            <button
-                              type="button"
-                              onClick={() => setBioExpanded((value) => !value)}
-                              aria-expanded={bioExpanded}
-                              aria-controls={bioId}
-                              aria-label={bioExpanded ? 'Collapse biography' : 'Expand biography'}
-                              className="block h-full w-full cursor-pointer"
+                            <motion.span
+                              className={`text-reveal-mask text-[32px] leading-none ${bigTextTracking} transition-[letter-spacing] duration-700 ease-in-out`}
+                              {...revealMaskAnimation(workDelay, 0.9)}
                             >
-                              <motion.svg
-                                viewBox="0 0 36 36"
-                                fill="none"
-                                className="h-full w-full"
-                                animate={{ rotate: bioExpanded ? 45 : 0 }}
-                                transition={{ duration: reducedMotion ? 0 : 0.45, ease: [0.4, 0, 0.2, 1] }}
-                                aria-hidden="true"
+                              {langSwitched ? (
+                                <ScrambleText from={fromT.workLabel} charDelay={switchCharDelay}>
+                                  {t.workLabel}
+                                </ScrambleText>
+                              ) : showContent ? (
+                                <motion.span
+                                  className="inline-block"
+                                  initial={{ y: '40%', opacity: 0 }}
+                                  animate={{ y: '0%', opacity: 1 }}
+                                  transition={{
+                                    duration: 0.9,
+                                    delay: workDelay,
+                                    ease: [0.4, 0, 0.2, 1],
+                                  }}
+                                >
+                                  {t.workLabel}
+                                </motion.span>
+                              ) : (
+                                <span className="opacity-0">{t.workLabel}</span>
+                              )}
+                            </motion.span>
+                            <motion.span
+                              className="text-reveal-mask text-[12px] leading-normal tracking-[-0.24px]"
+                              {...revealMaskAnimation(workDelay + stagger, 0.9)}
+                            >
+                              {langSwitched ? (
+                                <ScrambleText from={projectCount} charDelay={switchCharDelay}>
+                                  {projectCount}
+                                </ScrambleText>
+                              ) : showContent ? (
+                                <motion.span
+                                  className="inline-block"
+                                  initial={{ y: '40%', opacity: 0 }}
+                                  animate={{ y: '0%', opacity: 1 }}
+                                  transition={{
+                                    duration: 0.9,
+                                    delay: workDelay + stagger,
+                                    ease: [0.4, 0, 0.2, 1],
+                                  }}
+                                >
+                                  {projectCount}
+                                </motion.span>
+                              ) : (
+                                <span className="opacity-0">{projectCount}</span>
+                              )}
+                            </motion.span>
+                          </a>
+                        </h2>
+                        {showContent ? (
+                          <motion.div style={{ opacity: heroOpacity, visibility: heroVisibility }}>
+                            <motion.div
+                              className="w-8 h-8 shrink-0"
+                              initial={{ opacity: 0, scale: 0.8 }}
+                              animate={{ opacity: 1, scale: 1 }}
+                              transition={{
+                                duration: 0.8,
+                                delay: iconDelay,
+                                ease: [0.4, 0, 0.2, 1],
+                              }}
+                            >
+                              <button
+                                type="button"
+                                onClick={() => setBioExpanded((value) => !value)}
+                                aria-expanded={bioExpanded}
+                                aria-controls={`${bioId} ${rolesId}`}
+                                aria-label={bioExpanded ? 'Collapse biography' : 'Expand biography'}
+                                className="block h-full w-full cursor-pointer"
                               >
-                                <g className={!bioExpanded && !reducedMotion ? 'animate-spin-slow' : undefined} style={{ transformOrigin: '18px 18px' }}>
-                                  <path d="M0 18H36M18 0V36" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                                </g>
-                              </motion.svg>
-                            </button>
+                                <motion.svg
+                                  viewBox="0 0 36 36"
+                                  fill="none"
+                                  className="h-full w-full"
+                                  animate={{ rotate: bioExpanded ? 45 : 0 }}
+                                  transition={{ duration: reducedMotion ? 0 : 0.45, ease: [0.4, 0, 0.2, 1] }}
+                                  aria-hidden="true"
+                                >
+                                  <g className={!bioExpanded && !reducedMotion ? 'animate-spin-slow' : undefined} style={{ transformOrigin: '18px 18px' }}>
+                                    <path d="M0 18H36M18 0V36" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                                  </g>
+                                </motion.svg>
+                              </button>
+                            </motion.div>
                           </motion.div>
+                        ) : (
+                          <div className="w-8 h-8 shrink-0 opacity-0">
+                            <svg width="32" height="32" viewBox="0 0 36 36" fill="none" className="w-full h-full">
+                              <path d="M0 18L36 18" stroke="currentColor" strokeWidth="2"/>
+                              <path d="M18 0V36" stroke="currentColor" strokeWidth="2"/>
+                            </svg>
+                          </div>
+                        )}
+                      </motion.div>
+
+                      <motion.div
+                        id={rolesId}
+                        aria-hidden={!bioExpanded}
+                        inert={!bioExpanded}
+                        className="overflow-hidden w-full"
+                        style={{ y: headingY, opacity: heroOpacity, visibility: heroVisibility }}
+                        initial={false}
+                        animate={{ height: bioExpanded ? 'auto' : 0, marginTop: bioExpanded ? 48 : 0 }}
+                        transition={{ duration: reducedMotion ? 0 : 0.45, ease: [0.4, 0, 0.2, 1] }}
+                      >
+                        <motion.div
+                          className="flex flex-col items-start gap-1.5"
+                          initial={false}
+                          animate={{ opacity: bioExpanded ? 1 : 0 }}
+                          transition={{ duration: reducedMotion ? 0 : 0.3 }}
+                        >
+                          <NewlyRole label={langSwitched ? (
+                            <ScrambleText from={fromT.designAt} charDelay={switchCharDelay}>
+                              {t.designAt}
+                            </ScrambleText>
+                          ) : t.designAt} />
+                          <FigmaRole label={langSwitched ? (
+                            <ScrambleText from={fromT.campusLeaderAt} charDelay={switchCharDelay}>
+                              {t.campusLeaderAt}
+                            </ScrambleText>
+                          ) : t.campusLeaderAt} />
                         </motion.div>
-                      ) : (
-                        <div className="w-8 h-8 shrink-0 opacity-0">
-                          <svg width="32" height="32" viewBox="0 0 36 36" fill="none" className="w-full h-full">
-                            <path d="M0 18L36 18" stroke="currentColor" strokeWidth="2"/>
-                            <path d="M18 0V36" stroke="currentColor" strokeWidth="2"/>
-                          </svg>
-                        </div>
-                      )}
-                    </motion.div>
+                      </motion.div>
+                    </div>
                   </div>
 
                   {/* Initials and time - aligned along the bottom of the hero */}

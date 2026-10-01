@@ -11,7 +11,6 @@ import {
   useCurrentTime,
   NewlyRole,
   FigmaRole,
-  TextQLRole,
   WZLogo,
   LanguageGlobe,
   OLD_SITE_URL,
@@ -909,7 +908,6 @@ export default function HomePanel({
                       >
                         <NewlyRole large label={roleLabel(t.designAt, fromT.designAt)} />
                         <FigmaRole large label={roleLabel(t.campusLeaderAt, fromT.campusLeaderAt)} />
-                        <TextQLRole large label={roleLabel(t.prevDesignAt, fromT.prevDesignAt)} />
                       </motion.div>
                     ) : (
                       <div className="opacity-0 flex gap-3 items-center">
