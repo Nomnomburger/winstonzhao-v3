@@ -267,6 +267,8 @@ export default function HomePanel({
     const compact = Math.max(menuProgress.get(), navigationCompactProgress.get());
     return scrollNameScale.get() * (1 - compact) + compactNameScale * compact;
   });
+  const nativeNameOpacity = useTransform(nameScale, [1, compactNameScale], [1, 0]);
+  const nativeNameVisibility = useTransform(nativeNameOpacity, (value) => value <= 0.001 ? 'hidden' : 'visible');
   const lastNameScale = useTransform(() => {
     const compact = Math.max(menuProgress.get(), navigationCompactProgress.get());
     return scrollLastNameScale.get() * (1 - compact) + compactNameScale * compact;
@@ -730,14 +732,14 @@ export default function HomePanel({
                   Sits outside the h1 so its top lines up with the language
                   switcher rather than the name's overshooting line box. */}
               {(langSwitched || (t.nativeName !== '' && hasShrunk && showContent)) && (
-                <span
+                <motion.span
                   className="font-light text-[20px] leading-none"
-                  style={{ letterSpacing: '-0.02em' }}
+                  style={{ letterSpacing: '-0.02em', opacity: nativeNameOpacity, visibility: nativeNameVisibility }}
                 >
                   <ScrambleText from={fromT.nativeName} charDelay={switchCharDelay}>
                     {t.nativeName}
                   </ScrambleText>
-                </span>
+                </motion.span>
               )}
             </motion.div>
 
@@ -988,56 +990,26 @@ export default function HomePanel({
               </div>
               <div className="w-[354px] font-normal text-[14px] tracking-[-0.28px] leading-[1.2]">
                 <p className="mb-0">
-                  {langSwitched ? (
-                    <ScrambleText from={fromT.newPortfolio} charDelay={switchCharDelay}>
-                      {t.newPortfolio}
-                    </ScrambleText>
-                  ) : (
-                    t.newPortfolio
-                  )}
+                  {translations.en.newPortfolio}
                 </p>
                 <p>
-                  {langSwitched ? (
-                    <ScrambleText from={fromT.checkBackPrefix} charDelay={switchCharDelay}>
-                      {t.checkBackPrefix}
-                    </ScrambleText>
-                  ) : (
-                    t.checkBackPrefix
-                  )}
+                  {translations.en.checkBackPrefix}
                   <a
                     href={OLD_SITE_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="underline"
                   >
-                    {langSwitched ? (
-                      <ScrambleText from={fromT.oldSiteLink} charDelay={switchCharDelay}>
-                        {t.oldSiteLink}
-                      </ScrambleText>
-                    ) : (
-                      t.oldSiteLink
-                    )}
+                    {translations.en.oldSiteLink}
                   </a>
-                  {langSwitched ? (
-                    <ScrambleText from={fromT.period} charDelay={switchCharDelay}>
-                      {t.period}
-                    </ScrambleText>
-                  ) : (
-                    t.period
-                  )}
+                  {translations.en.period}
                 </p>
               </div>
             </div>
             <div className="flex gap-3 items-center justify-end font-normal text-[12px] tracking-[-0.24px] leading-normal whitespace-nowrap">
               <a href={`mailto:${EMAIL}`}>hello [at] winstonzhao.ca</a>
               <Link href={RESUME_URL}>
-                {langSwitched ? (
-                  <ScrambleText from={fromT.resume} charDelay={switchCharDelay}>
-                    {t.resume}
-                  </ScrambleText>
-                ) : (
-                  t.resume
-                )}
+                {translations.en.resume}
               </Link>
             </div>
           </motion.div>

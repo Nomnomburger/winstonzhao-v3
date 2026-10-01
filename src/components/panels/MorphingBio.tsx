@@ -1,8 +1,9 @@
 'use client';
 
 import { animate, motion, useAnimationControls, useMotionValue, useReducedMotion, useTransform, type MotionValue } from 'framer-motion';
-import { Fragment, useLayoutEffect, useMemo, useRef, useState, type ReactNode } from 'react';
+import { Fragment, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore, type ReactNode } from 'react';
 import HeroBioLine, { HeroBioExitWord } from './HeroBioLine';
+import { ScrambleText } from './shared';
 
 interface MorphingBioProps {
   lines: readonly string[];
@@ -249,7 +250,7 @@ function ContinuationWord({ word, preserved, active, initialActive, activated, p
   );
 }
 
-function ContinuationBio({ words, preserved, active, initialActive, visible, activated, closing, progress, renderWord, reducedMotion }: {
+function ContinuationBio({ words, preserved, active, initialActive, visible, activated, closing, progress, renderWord, reducedMotion, instantCopy }: {
   words: BioWord[][];
   preserved: ReadonlySet<string>;
   active: boolean;
@@ -260,6 +261,7 @@ function ContinuationBio({ words, preserved, active, initialActive, visible, act
   progress: MotionValue<number>;
   renderWord?: (word: string) => ReactNode;
   reducedMotion: boolean | null;
+  instantCopy: boolean;
 }) {
   const wordCount = words.flat().length;
   return (
@@ -268,32 +270,34 @@ function ContinuationBio({ words, preserved, active, initialActive, visible, act
         <p data-bio-line={0}>
           {words[0].map((word) => (
             <Fragment key={word.id}>
-              <ContinuationWord word={word} preserved={preserved.has(word.id)} active={active} initialActive={initialActive}
+              <ContinuationWord word={word} preserved={preserved.has(word.id)} active={active} initialActive={instantCopy ? active : initialActive}
                 activated={activated} progress={progress} wordCount={wordCount} renderWord={renderWord} reducedMotion={reducedMotion} />
               {word.spaceAfter && ' '}
             </Fragment>
           ))}
         </p>
       ) : words.map((line, index) => (
-        <ContinuationLine key={index} words={line} preserved={preserved} active={active} initialActive={initialActive}
+        <ContinuationLine key={index} words={line} preserved={preserved} active={active} initialActive={instantCopy ? active : initialActive}
           activated={activated} index={index} progress={progress} wordCount={wordCount} renderWord={renderWord} reducedMotion={reducedMotion} />
       ))}
     </div>
   );
 }
 
-function DirectBio({ words, active, closing, reducedMotion, renderWord }: {
+function DirectBio({ words, active, visible, closing, reducedMotion, renderWord, instantCopy }: {
   words: BioWord[][];
   active: boolean;
+  visible: boolean;
   closing: boolean;
   reducedMotion: boolean | null;
   renderWord?: (word: string) => ReactNode;
+  instantCopy: boolean;
 }) {
   return (
     <div
       aria-hidden
-      inert={!active || closing || undefined}
-      className={`absolute inset-0 ${active ? '' : 'invisible'} pointer-events-none`}
+      inert={!visible || !active || closing || undefined}
+      className={`absolute inset-0 ${visible && active ? '' : 'invisible'} pointer-events-none`}
     >
       {words.map((line, index) => (
         <p key={index}>
@@ -309,7 +313,7 @@ function DirectBio({ words, active, closing, reducedMotion, renderWord }: {
               <Fragment key={word.id}>
                 <motion.span
                   className="text-reveal-word inline-block align-bottom pointer-events-auto"
-                  initial={{ y: '0.4em', opacity: 0, filter: 'blur(5px)' }}
+                  initial={instantCopy ? false : { y: '0.4em', opacity: 0, filter: 'blur(5px)' }}
                   animate={{
                     y: active ? closing ? '-0.4em' : '0em' : '0.4em',
                     opacity: active && !closing ? 1 : 0,
@@ -355,6 +359,11 @@ export default function MorphingBio({
   const measurementAnimations = useRef<ReturnType<typeof animate>[]>([]);
   const internalLayoutProgress = useMotionValue(expanded ? 1 : 0);
   const heightProgress = layoutProgress ?? internalLayoutProgress;
+  const layoutAtStart = useSyncExternalStore(
+    (listener) => heightProgress.on('change', listener),
+    () => heightProgress.get() <= 0.001,
+    () => !expanded,
+  );
   const height = useTransform(() => shortHeight.get() + (longHeight.get() - shortHeight.get()) * heroBioSpaceProgress(heightProgress.get()));
   const stationaryProgress = useMotionValue(0);
   const exitProgress = useTransform(progress, [0, 0.2, 0.45, 0.65, 0.8, 0.9, 1], [0, 0.08, 0.2, 0.35, 0.5, 0.65, 1]);
@@ -370,6 +379,21 @@ export default function MorphingBio({
     };
   }, [lines, expandedLines]);
   const signature = `${lines.join('\n')}\u0000${expandedLines.join('\n')}`;
+  const [copyState, setCopyState] = useState({ signature, expandedLines, pending: [] as number[] });
+  if (copyState.signature !== signature || (!expanded || closing) && copyState.pending.length > 0) {
+    setCopyState({
+      signature,
+      expandedLines,
+      pending: expanded && !closing ? expandedLines.flatMap((line, index) => line !== copyState.expandedLines[index] ? [index] : []) : [],
+    });
+  }
+  const scramblingExpanded = expanded && !closing && copyState.pending.length > 0;
+  const finishLine = (index: number, text: string) => {
+    setCopyState((current) => current.expandedLines[index] === text && current.pending.includes(index)
+      ? { ...current, pending: current.pending.filter((pending) => pending !== index) }
+      : current);
+  };
+  const languageOpacity = useTransform(wordProgress, [0, 1], [1, 0]);
 
   useLayoutEffect(() => {
     if (layoutProgress) return;
@@ -493,13 +517,16 @@ export default function MorphingBio({
   useLayoutEffect(() => () => {
     measurementAnimations.current.forEach((control) => control.stop());
   }, []);
-  const heroVisible = activated && !directExpanded;
+  // Return to the original full-line renderer once the collapse has finished.
+  // Keeping the morph planes mounted preserves their next expansion/reversal.
+  const introVisible = !activated || !heroExpanded && !closing && layoutAtStart;
+  const heroVisible = activated && !directExpanded && !introVisible && !scramblingExpanded;
   const prefixCount = (heroExpanded ? model.longLines : model.shortLines).flat().length;
 
   return (
     <motion.div ref={rootRef} className={`relative ${className}`} style={{ height: animateHeight && activated ? height : undefined }}>
-      <div data-bio-plane="intro" aria-hidden={activated || undefined} inert={activated || undefined}
-        className={activated ? 'absolute inset-x-0 top-0 invisible pointer-events-none' : undefined}>
+      <div data-bio-plane="intro" aria-hidden={!introVisible || undefined} inert={!introVisible || undefined}
+        className={activated ? `absolute inset-x-0 top-0 ${introVisible ? '' : 'invisible pointer-events-none'}` : undefined}>
         {lines.map((line, index) => (
           <HeroBioLine key={index} progress={progress} index={index} lines={lines}>{renderLine(line, index)}</HeroBioLine>
         ))}
@@ -507,9 +534,9 @@ export default function MorphingBio({
       <MeasurementLines words={model.shortLines} elementRef={shortRef} inFlow={activated && !expanded} />
       <MeasurementLines words={model.longLines} elementRef={longRef} inFlow={activated && expanded} />
       <ContinuationBio words={model.shortLines} preserved={model.shortPreserved} active={!heroExpanded} initialActive
-        visible={heroVisible} activated={activated} closing={closing} progress={wordProgress} renderWord={renderWord} reducedMotion={reducedMotion} />
+        visible={heroVisible} activated={activated} closing={closing} progress={wordProgress} renderWord={renderWord} reducedMotion={reducedMotion} instantCopy={scramblingExpanded} />
       <ContinuationBio words={model.longLines} preserved={model.longPreserved} active={heroExpanded} initialActive={false}
-        visible={heroVisible} activated={activated} closing={closing} progress={wordProgress} renderWord={renderWord} reducedMotion={reducedMotion} />
+        visible={heroVisible} activated={activated} closing={closing} progress={wordProgress} renderWord={renderWord} reducedMotion={reducedMotion} instantCopy={scramblingExpanded} />
       <div data-bio-plane="prefix" aria-hidden inert={!heroVisible || closing || undefined} className={`absolute inset-0 ${heroVisible ? '' : 'invisible'} pointer-events-none`}>
         {model.shared.map((word) => {
           const activeWord = heroExpanded ? word.long : word.short;
@@ -525,9 +552,19 @@ export default function MorphingBio({
           );
         })}
       </div>
-      <DirectBio key={directState.cycle} words={model.longLines} active={directExpanded} closing={closing}
-        reducedMotion={reducedMotion} renderWord={renderWord} />
-      {activated && <span className="sr-only">{(expanded ? expandedLines : lines).join(' ')}</span>}
+      <DirectBio key={directState.cycle} words={model.longLines} active={directExpanded} visible={!scramblingExpanded} closing={closing}
+        reducedMotion={reducedMotion} renderWord={renderWord} instantCopy={scramblingExpanded} />
+      {/* Stable line keys let rapid switches continue from the displayed copy.
+          Plain inline text also keeps the expanded mobile paragraph wrapping. */}
+      <motion.div data-bio-plane="language" aria-hidden inert={!scramblingExpanded || closing || undefined}
+        className={`absolute inset-0 ${scramblingExpanded ? '' : 'invisible'} pointer-events-none`} style={{ opacity: languageOpacity }}>
+        {expandedLines.map((line, index) => (
+          <p key={index}>
+            <ScrambleText onComplete={(text) => finishLine(index, text)}>{line}</ScrambleText>
+          </p>
+        ))}
+      </motion.div>
+      {activated && !introVisible && <span className="sr-only">{(expanded ? expandedLines : lines).join(' ')}</span>}
     </motion.div>
   );
 }

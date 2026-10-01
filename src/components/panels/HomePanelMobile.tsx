@@ -146,6 +146,8 @@ export default function HomePanelMobile({
   const nameColor = useTransform(retainedScrollProgress, (value) => value >= 0.7 ? '#ffffff' : 'var(--foreground)');
   const compactScale = 20 / shrunkFontSize;
   const titleScale = useTransform(titleProgress, [0, 1], [1, compactScale]);
+  const nativeNameOpacity = useTransform(titleProgress, [0, 1], [1, 0]);
+  const nativeNameVisibility = useTransform(nativeNameOpacity, (value) => value <= 0.001 ? 'hidden' : 'visible');
   const lastNameY = useTransform(titleProgress, [0, 1], [0, -shrunkFontSize]);
   const lastNameX = useTransform(titleProgress, [0, 1], [
     0,
@@ -603,7 +605,7 @@ export default function HomePanelMobile({
                   {(langSwitched || (t.nativeName !== '' && hasShrunk && showContent)) && (
                     <motion.span
                       className="font-light text-[12px] leading-none ml-auto"
-                      style={{ letterSpacing: '-0.02em', opacity: profileOpacity }}
+                      style={{ letterSpacing: '-0.02em', opacity: nativeNameOpacity, visibility: nativeNameVisibility }}
                     >
                       {langSwitched ? (
                         <ScrambleText from={fromT.nativeName} charDelay={switchCharDelay}>
@@ -915,43 +917,19 @@ export default function HomePanelMobile({
             <div className="relative flex flex-col gap-12 p-6 w-full">
               <div className="max-w-[354px] font-normal text-[12px] tracking-[-0.24px] leading-normal">
                 <p className="mb-0">
-                  {langSwitched ? (
-                    <ScrambleText from={fromT.newPortfolio} charDelay={switchCharDelay}>
-                      {t.newPortfolio}
-                    </ScrambleText>
-                  ) : (
-                    t.newPortfolio
-                  )}
+                  {translations.en.newPortfolio}
                 </p>
                 <p>
-                  {langSwitched ? (
-                    <ScrambleText from={fromT.checkBackPrefix} charDelay={switchCharDelay}>
-                      {t.checkBackPrefix}
-                    </ScrambleText>
-                  ) : (
-                    t.checkBackPrefix
-                  )}
+                  {translations.en.checkBackPrefix}
                   <a
                     href={OLD_SITE_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="underline"
                   >
-                    {langSwitched ? (
-                      <ScrambleText from={fromT.oldSiteLink} charDelay={switchCharDelay}>
-                        {t.oldSiteLink}
-                      </ScrambleText>
-                    ) : (
-                      t.oldSiteLink
-                    )}
+                    {translations.en.oldSiteLink}
                   </a>
-                  {langSwitched ? (
-                    <ScrambleText from={fromT.period} charDelay={switchCharDelay}>
-                      {t.period}
-                    </ScrambleText>
-                  ) : (
-                    t.period
-                  )}
+                  {translations.en.period}
                 </p>
               </div>
               <div className="flex items-end justify-between w-full">
@@ -961,13 +939,7 @@ export default function HomePanelMobile({
                 <div className="flex gap-3 items-center justify-end font-normal text-[12px] tracking-[-0.24px] leading-normal whitespace-nowrap">
                   <a href={`mailto:${EMAIL}`}>hello [at] winstonzhao.ca</a>
                   <Link href={RESUME_URL}>
-                    {langSwitched ? (
-                      <ScrambleText from={fromT.resume} charDelay={switchCharDelay}>
-                        {t.resume}
-                      </ScrambleText>
-                    ) : (
-                      t.resume
-                    )}
+                    {translations.en.resume}
                   </Link>
                 </div>
               </div>

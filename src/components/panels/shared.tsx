@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, useMotionValue, useTransform, useAnimationControls, useReducedMotion, animate, type AnimationPlaybackControls, type MotionValue } from 'framer-motion';
-import { ReactNode, useCallback, useContext, useEffect, useId, useRef, useState, useSyncExternalStore } from 'react';
+import { ReactNode, useCallback, useContext, useEffect, useEffectEvent, useId, useRef, useState, useSyncExternalStore } from 'react';
 import { Language } from './translations';
 import { HeroBioExitContext, HeroBioExitWord } from './HeroBioLine';
 import { revealMaskAnimation } from './text-reveal';
@@ -326,6 +326,8 @@ interface ScrambleTextProps {
   // the anchored side outward, so insertions appear last, furthest left.
   align?: 'left' | 'right';
   className?: string;
+  onComplete?: (text: string) => void;
+  renderDisplay?: (text: string) => ReactNode;
 }
 
 // Typewriter-style scramble: the current text stays on screen and each
@@ -339,13 +341,19 @@ export function ScrambleText({
   scrambleDuration = 0.5,
   align = 'left',
   className = '',
+  onComplete,
+  renderDisplay,
 }: ScrambleTextProps) {
   const bioExit = useContext(HeroBioExitContext);
   const [display, setDisplay] = useState(from ?? children);
   const displayRef = useRef(from ?? children);
+  const complete = useEffectEvent((text: string) => onComplete?.(text));
 
   useEffect(() => {
-    if (displayRef.current === children) return;
+    if (displayRef.current === children) {
+      complete(children);
+      return;
+    }
 
     // Right-aligned mode runs the whole animation on reversed strings (and
     // reverses each frame back on the way out), which lines the texts up
@@ -431,11 +439,14 @@ export function ScrambleText({
       displayRef.current = text;
       setDisplay(text);
       if (!settled) frame = requestAnimationFrame(tick);
+      else complete(children);
     };
 
     frame = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(frame);
   }, [children, baseDelay, charDelay, scrambleDuration, align]);
+
+  if (renderDisplay) return renderDisplay(display);
 
   return bioExit
     ? <AnimatedText className={className} instant>{display}</AnimatedText>

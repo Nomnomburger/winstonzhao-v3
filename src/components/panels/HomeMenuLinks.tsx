@@ -5,6 +5,7 @@ import { motion, useReducedMotion } from 'framer-motion';
 import type { MouseEvent } from 'react';
 import { LINKEDIN_URL, RESUME_URL } from '@/lib/site';
 import { translations, type Language } from './translations';
+import { ScrambleText } from './shared';
 import TextRevealMask from './TextRevealMask';
 import { TEXT_BLUR_EASE, TEXT_BLUR_REVEAL, TEXT_BLUR_TIMES } from './text-blur';
 
@@ -53,6 +54,7 @@ function MenuRevealText({ text, open, reducedMotion, distance, enterDelay, exitD
 
 export default function HomeMenuLinks({ language, projectCount, open, onNavigate, onProjects, className = '', showProjects = true }: HomeMenuLinksProps) {
   const reducedMotion = useReducedMotion();
+  const labelWeight = language === 'zh' ? 'font-light' : 'font-medium';
   const labels = {
     en: { contact: 'say hi', resume: 'resume' },
     sv: { contact: 'säg hej', resume: 'cv' },
@@ -74,23 +76,36 @@ export default function HomeMenuLinks({ language, projectCount, open, onNavigate
           onClick={link.id === 'projects' ? onProjects : onNavigate}
           target={link.id === 'contact' ? '_blank' : undefined}
           rel={link.id === 'contact' ? 'noopener noreferrer' : undefined}
-          className="flex items-start gap-2 whitespace-nowrap font-medium leading-none tracking-[-0.04em] text-[40px] md:text-[40px] lg:text-[52px] xl:text-[64px]"
+          className={`flex items-start gap-2 whitespace-nowrap ${labelWeight} leading-none tracking-[-0.04em] text-[40px] md:text-[40px] lg:text-[52px] xl:text-[64px] transition-[font-weight] duration-700 ease-in-out`}
         >
-          <span className="flex gap-[0.18em]">
-            {link.label.split(' ').map((word, wordIndex) => (
-              <TextRevealMask key={wordIndex} active={open} delay={0.1 + index * 0.09 + wordIndex * 0.03} duration={0.9} instant={!!reducedMotion}>
-                <MenuRevealText
-                  text={word}
-                  open={open}
-                  reducedMotion={!!reducedMotion}
-                  distance="0.4em"
-                  enterDelay={0.1 + index * 0.09 + wordIndex * 0.03}
-                  exitDelay={index * 0.04 + wordIndex * 0.02}
-                  className="text-reveal-word inline-block"
-                />
-              </TextRevealMask>
-            ))}
-          </span>
+          <ScrambleText
+            charDelay={0.02}
+            renderDisplay={(display) => {
+              const words = display.split(' ');
+              // Keep both contact word slots mounted when Chinese uses one,
+              // so language changes preserve the menu's reveal animations.
+              const wordCount = link.id === 'contact' ? 2 : 1;
+              return (
+                <span className={`flex ${words[1] ? 'gap-[0.18em]' : 'gap-0'}`}>
+                  {Array.from({ length: wordCount }, (_, wordIndex) => (
+                    <TextRevealMask key={wordIndex} active={open} delay={0.1 + index * 0.09 + wordIndex * 0.03} duration={0.9} instant={!!reducedMotion}>
+                      <MenuRevealText
+                        text={words[wordIndex] ?? ''}
+                        open={open}
+                        reducedMotion={!!reducedMotion}
+                        distance="0.4em"
+                        enterDelay={0.1 + index * 0.09 + wordIndex * 0.03}
+                        exitDelay={index * 0.04 + wordIndex * 0.02}
+                        className="text-reveal-word inline-block"
+                      />
+                    </TextRevealMask>
+                  ))}
+                </span>
+              );
+            }}
+          >
+            {link.label}
+          </ScrambleText>
           <TextRevealMask active={open} delay={0.16 + index * 0.09} duration={0.9} instant={!!reducedMotion}
             className="text-[13px] lg:text-[16px] xl:text-[20px] leading-[1.5] tracking-[-0.02em]">
             <MenuRevealText
