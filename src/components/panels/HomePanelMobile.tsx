@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, AnimatePresence, animate, useMotionValue, useReducedMotion, useTransform } from 'framer-motion';
-import { useEffect, useId, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useId, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore, type ReactNode } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
@@ -21,9 +21,11 @@ import { Language, translations } from './translations';
 import HomeProjects from '@/components/projects/HomeProjects';
 import type { ProjectCardData } from '@/components/projects/types';
 import HomeNavigationBackdrop from './HomeNavigationBackdrop';
-import { useHeroScroll } from './useHeroScroll';
+import { documentTop, useHeroScroll } from './useHeroScroll';
 import MorphingBio, { HERO_BIO_LAYOUT_TRANSITION, heroBioSpaceProgress } from './MorphingBio';
-import HomeMenuLinks from './HomeMenuLinks';
+import HomeMenuLinks, { MENU_BLUR_TRANSITION, MenuRevealText } from './HomeMenuLinks';
+import { HeroBioWordRevealContext } from './HeroBioLine';
+import TextRevealMask from './TextRevealMask';
 import { expandedBioLines } from './bio-copy';
 import { useHomeMenu, useMenuHeaderHandoff } from './useHomeMenu';
 import { revealMaskAnimation } from './text-reveal';
@@ -44,6 +46,35 @@ const SHOW_COLUMN_GUIDES = false;
 const PROJECTS_DOCK_TOP = 96;
 const PROJECTS_RISE_START = 0.05;
 const PROJECTS_RISE_EASE_END = 0.6;
+
+type BioReturnPhase = 'idle' | 'hidden' | 'revealing';
+
+function MobileBioMenuRevealWord({ children, order, phase, reducedMotion }: {
+  children: ReactNode;
+  order: number;
+  phase: BioReturnPhase;
+  reducedMotion: boolean;
+}) {
+  const enabled = phase !== 'idle';
+  const open = phase === 'revealing';
+  const delay = order * 0.03;
+
+  return (
+    <TextRevealMask active={enabled && open} delay={delay} duration={MENU_BLUR_TRANSITION.duration} instant={!enabled || reducedMotion}>
+      <MenuRevealText
+        open={open}
+        enabled={enabled}
+        reducedMotion={reducedMotion}
+        distance="0.4em"
+        enterDelay={delay}
+        exitDelay={0}
+        className="bio-menu-reveal-word text-reveal-word inline-block"
+      >
+        {children}
+      </MenuRevealText>
+    </TextRevealMask>
+  );
+}
 
 interface HomePanelMobileProps {
   showContent?: boolean;
@@ -77,11 +108,25 @@ export default function HomePanelMobile({
     closeImmediately: closeMenuImmediately,
     cancelClose,
   } = useHomeMenu();
+  const menuExpanded = menuOpen && !menuClosing;
+  const [carryProjects, setCarryProjects] = useState(true);
   const [bioExpanded, setBioExpanded] = useState(false);
   const bioId = useId();
   const rolesId = useId();
   const reducedMotion = useReducedMotion();
   const compactProgress = useMotionValue(0);
+  const menuHeadingOffset = useMotionValue(0);
+  const menuHeadingDocumentTop = useMotionValue(0);
+  const menuScrollY = useMotionValue(0);
+  const menuScrollTop = useMotionValue(0);
+  const menuContentOpacity = useMotionValue(1);
+  const menuBioReveal = useMotionValue<BioReturnPhase>('idle');
+  const bioReturnPhase = useSyncExternalStore(
+    (listener) => menuBioReveal.on('change', listener),
+    () => menuBioReveal.get(),
+    () => 'idle' as const,
+  );
+  const revealBioAfterReturnRef = useRef(false);
   const bioLayoutProgress = useMotionValue(0);
   const bioSpaceProgress = useTransform(bioLayoutProgress, heroBioSpaceProgress);
   const titleBaseHeight = useMotionValue(instant ? 120 : 176);
@@ -142,7 +187,20 @@ export default function HomePanelMobile({
     { ease: [(value) => value * value * (3 - 3 * value + value * value), (value) => value] },
   );
   const projectsHeadingY = useTransform(() => headingY.get() - headingLift.get() * projectsRise.get());
+  const menuProjectsHeadingY = useTransform(() => {
+    const localReveal = !carryProjects && (menuOpen || compactProgress.get() > 0);
+    const carriedY = localReveal
+      ? menuScrollY.get() + PROJECTS_DOCK_TOP - menuHeadingDocumentTop.get() - menuScrollTop.get()
+      : projectsHeadingY.get() + (menuHeadingOffset.get() - menuScrollTop.get()) * compactProgress.get();
+    // Hold the carried label at the dock while Projects navigation catches up,
+    // using the same handoff that keeps the compact name in place.
+    const dockedY = headingY.get() + PROJECTS_DOCK_TOP - menuHeadingDocumentTop.get() - menuScrollTop.get() * compactProgress.get();
+    return carriedY + (dockedY - carriedY) * navigationCompactProgress.get();
+  });
+  const projectsHeadingLayer = useTransform(() => menuOpen || compactProgress.get() > 0 ? 40 : 30);
   const heroOpacity = useTransform(progress, [0, 0.7], [1, 0]);
+  const menuHeroOpacity = useTransform(() => heroOpacity.get() * menuContentOpacity.get());
+  const menuBioOpacity = useTransform(() => menuBioReveal.get() === 'hidden' ? 0 : menuContentOpacity.get());
   const heroVisibility = useTransform(progress, (value) => value >= 0.7 ? 'hidden' : 'visible');
   const bioVisibility = useTransform(bioExitProgress, (value) => value >= 1 ? 'hidden' : 'visible');
   const nameBlend = useTransform(retainedScrollProgress, (value) => value >= 0.7 ? 'difference' : 'normal');
@@ -187,12 +245,42 @@ export default function HomePanelMobile({
   }, [menuOpen, progress, headingY, retainedTitleProgress]);
 
   useEffect(() => {
-    const animation = animate(compactProgress, menuOpen ? 1 : 0, {
+    const revealAfterReturn = !menuExpanded && revealBioAfterReturnRef.current && !reducedMotion;
+    // Keep the bio clear of the carried Projects label until the name and
+    // heading have finished their shared return to the hero.
+    if (revealAfterReturn) {
+      menuBioReveal.set('hidden');
+    } else if (!menuExpanded) {
+      menuBioReveal.set('idle');
+      revealBioAfterReturnRef.current = false;
+    }
+
+    const animation = animate(compactProgress, menuExpanded ? 1 : 0, {
       duration: reducedMotion ? 0 : 0.7,
+      delay: revealAfterReturn ? 0.15 : 0,
       ease: [0.76, 0, 0.15, 1],
     });
+    let cancelled = false;
+    void animation.then(() => {
+      if (cancelled || menuExpanded) return;
+      setCarryProjects(true);
+      if (revealAfterReturn) {
+        revealBioAfterReturnRef.current = false;
+        menuBioReveal.set('revealing');
+      }
+    });
+    return () => {
+      cancelled = true;
+      animation.stop();
+    };
+  }, [menuExpanded, compactProgress, menuBioReveal, reducedMotion]);
+
+  useEffect(() => {
+    const animation = animate(menuContentOpacity, menuOpen ? 0 : 1, {
+      duration: reducedMotion ? 0 : 0.3,
+    });
     return () => animation.stop();
-  }, [menuOpen, compactProgress, reducedMotion]);
+  }, [menuOpen, menuContentOpacity, reducedMotion]);
 
   useLayoutEffect(() => {
     if (reducedMotion) {
@@ -212,6 +300,7 @@ export default function HomePanelMobile({
 
   const navigateToProjects = (event: React.MouseEvent<HTMLAnchorElement>) => {
     event.preventDefault();
+    revealBioAfterReturnRef.current = false;
     keepCompact();
     menuNavigationRef.current = true;
     closeMenuImmediately();
@@ -502,6 +591,15 @@ export default function HomePanelMobile({
                   cancelScroll();
                   menuSnapshotRef.current = { top: window.scrollY, progress: progress.get(), headingY: headingY.get() };
                   retainedTitleProgress.set(progress.get());
+                  revealBioAfterReturnRef.current = progress.get() < 1;
+                  // Carry this heading from its current visual position, including
+                  // an interrupted return, into the menu's existing first row.
+                  const headingTop = headingRef.current?.getBoundingClientRect().top ?? PROJECTS_DOCK_TOP;
+                  const headingDocumentTop = headingRef.current ? documentTop(headingRef.current) : PROJECTS_DOCK_TOP;
+                  setCarryProjects(progress.get() < 1 || (carryProjects && Math.abs(headingTop - PROJECTS_DOCK_TOP) < 2));
+                  menuScrollY.set(window.scrollY);
+                  menuHeadingDocumentTop.set(headingDocumentTop);
+                  menuHeadingOffset.set(window.scrollY + PROJECTS_DOCK_TOP - headingDocumentTop - projectsHeadingY.get());
                   setMenuOpen(true);
                 }
               }}
@@ -694,28 +792,33 @@ export default function HomePanelMobile({
               {hasShrunk && (
                 <motion.div
                   className="flex flex-col flex-1 w-full"
-                  aria-hidden={menuOpen}
-                  inert={menuOpen}
                   initial={{ opacity: 0 }}
-                  animate={{ opacity: menuOpen ? 0 : 1 }}
+                  animate={{ opacity: 1 }}
                   transition={{ duration: reducedMotion ? 0 : 0.3 }}
                 >
                   <div className="flex flex-col gap-12 w-full">
                     {/* Bio */}
                     <motion.div
                       id={bioId}
-                      style={{ y: headingY, visibility: bioVisibility }}
+                      aria-hidden={menuOpen}
+                      inert={menuOpen}
+                      style={{ y: headingY, visibility: bioVisibility, opacity: menuBioOpacity }}
                       className={`${bigTextWeight} leading-none text-[32px] ${bigTextTracking} transition-[font-weight,letter-spacing] duration-700 ease-in-out cursor-default`}
                     >
-                      <MorphingBio
-                        lines={t.bioLines}
-                        expandedLines={fullBio}
-                        expanded={bioExpanded}
-                        freezeExit={false}
-                        animateHeight
-                        layoutProgress={bioLayoutProgress}
-                        progress={bioExitProgress}
-                        renderLine={(line, index) => langSwitched ? (
+                      <HeroBioWordRevealContext.Provider value={(children, order) => (
+                        <MobileBioMenuRevealWord order={order} phase={bioReturnPhase} reducedMotion={!!reducedMotion}>
+                          {children}
+                        </MobileBioMenuRevealWord>
+                      )}>
+                        <MorphingBio
+                          lines={t.bioLines}
+                          expandedLines={fullBio}
+                          expanded={bioExpanded}
+                          freezeExit={false}
+                          animateHeight
+                          layoutProgress={bioLayoutProgress}
+                          progress={bioExitProgress}
+                          renderLine={(line, index) => langSwitched ? (
                             <ScrambleText
                               from={fromT.bioLines[index]}
                               charDelay={switchCharDelay}
@@ -730,26 +833,32 @@ export default function HomePanelMobile({
                           ) : (
                             <span className="opacity-0">{line}</span>
                           )}
-                      />
+                        />
+                      </HeroBioWordRevealContext.Provider>
                     </motion.div>
 
                     <div className="w-full">
                       {/* Work + Icon */}
                       <motion.div
                         className="relative z-30 flex gap-9 items-center justify-between w-full"
-                        style={{ y: projectsHeadingY }}
+                        style={{ y: menuProjectsHeadingY, zIndex: projectsHeadingLayer }}
                       >
                         <h2>
                           <a
                             ref={headingRef}
                             href="#work"
-                            onClick={scrollToWork}
-                            className={`flex gap-2 items-start ${bigTextWeight} whitespace-nowrap cursor-pointer transition-[font-weight] duration-700 ease-in-out`}
+                            data-home-menu-link={menuOpen ? '' : undefined}
+                            aria-hidden={menuClosing}
+                            inert={menuClosing}
+                            onClick={menuOpen ? navigateToProjects : scrollToWork}
+                            className={`flex h-8 gap-2 items-start ${bigTextWeight} whitespace-nowrap cursor-pointer transition-[font-weight] duration-700 ease-in-out`}
                           >
                             <motion.span
                               className={`text-reveal-mask text-[32px] leading-none ${bigTextTracking} transition-[letter-spacing] duration-700 ease-in-out`}
                               {...revealMaskAnimation(workDelay, 0.9)}
                             >
+                              <TextRevealMask active={carryProjects || menuExpanded} delay={0.1} duration={0.9} instant={carryProjects || !!reducedMotion}>
+                                <MenuRevealText enabled={!carryProjects} open={menuExpanded} reducedMotion={!!reducedMotion} distance="0.4em" enterDelay={0.1} exitDelay={0} className="text-reveal-word inline-block">
                               {langSwitched ? (
                                 <ScrambleText from={fromT.workLabel} charDelay={switchCharDelay}>
                                   {t.workLabel}
@@ -770,11 +879,15 @@ export default function HomePanelMobile({
                               ) : (
                                 <span className="opacity-0">{t.workLabel}</span>
                               )}
+                                </MenuRevealText>
+                              </TextRevealMask>
                             </motion.span>
                             <motion.span
                               className="text-reveal-mask text-[12px] leading-normal tracking-[-0.24px]"
                               {...revealMaskAnimation(workDelay + stagger, 0.9)}
                             >
+                              <TextRevealMask active={carryProjects || menuExpanded} delay={0.16} duration={0.9} instant={carryProjects || !!reducedMotion}>
+                                <MenuRevealText enabled={!carryProjects} open={menuExpanded} reducedMotion={!!reducedMotion} distance="0.6em" enterDelay={0.16} exitDelay={0.03} className="text-reveal-word inline-block align-bottom">
                               {langSwitched ? (
                                 <ScrambleText from={projectCount} charDelay={switchCharDelay}>
                                   {projectCount}
@@ -795,11 +908,13 @@ export default function HomePanelMobile({
                               ) : (
                                 <span className="opacity-0">{projectCount}</span>
                               )}
+                                </MenuRevealText>
+                              </TextRevealMask>
                             </motion.span>
                           </a>
                         </h2>
                         {showContent ? (
-                          <motion.div style={{ opacity: heroOpacity, visibility: heroVisibility }}>
+                          <motion.div aria-hidden={menuOpen} inert={menuOpen} style={{ opacity: menuHeroOpacity, visibility: heroVisibility }}>
                             <motion.div
                               className="w-8 h-8 shrink-0"
                               initial={{ opacity: 0, scale: 0.8 }}
@@ -845,10 +960,10 @@ export default function HomePanelMobile({
 
                       <motion.div
                         id={rolesId}
-                        aria-hidden={!bioExpanded}
-                        inert={!bioExpanded}
+                        aria-hidden={!bioExpanded || menuOpen}
+                        inert={!bioExpanded || menuOpen}
                         className="overflow-hidden w-full"
-                        style={{ y: headingY, opacity: heroOpacity, visibility: heroVisibility }}
+                        style={{ y: headingY, opacity: menuHeroOpacity, visibility: heroVisibility }}
                         initial={false}
                         animate={{ height: bioExpanded ? 'auto' : 0, marginTop: bioExpanded ? 48 : 0 }}
                         transition={{ duration: reducedMotion ? 0 : 0.45, ease: [0.4, 0, 0.2, 1] }}
@@ -877,7 +992,9 @@ export default function HomePanelMobile({
                   {/* Initials and time - aligned along the bottom of the hero */}
                   <motion.div
                     className="flex items-end justify-between gap-5 mt-auto pt-12 w-full"
-                    style={{ opacity: heroOpacity, visibility: heroVisibility }}
+                    aria-hidden={menuOpen}
+                    inert={menuOpen}
+                    style={{ opacity: menuHeroOpacity, visibility: heroVisibility }}
                   >
                     <div className="w-[27px] h-[17px] shrink-0">
                       <WZLogo className="w-full h-full" draw show={showContent} instant={instant} delay={initialsDelay} />
@@ -987,7 +1104,8 @@ export default function HomePanelMobile({
         inert={!menuOpen}
         data-home-menu-scroll
         data-lenis-prevent
-        className="fixed inset-0 z-[35] overflow-y-auto overscroll-contain bg-background px-6 pb-12 pt-24 text-foreground"
+        onScroll={(event) => menuScrollTop.set(event.currentTarget.scrollTop)}
+        className="fixed inset-0 z-[35] overflow-y-auto overscroll-contain bg-background px-6 pb-12 pt-44 text-foreground"
         initial={false}
         animate={{ opacity: menuOpen ? 1 : 0 }}
         style={{ pointerEvents: menuOpen ? 'auto' : 'none' }}
@@ -1000,6 +1118,8 @@ export default function HomePanelMobile({
           onNavigate={closeMenu}
           onProjects={navigateToProjects}
           className="gap-12"
+          showProjects={false}
+          revealIndexOffset={1}
         />
       </motion.div>
     </div>

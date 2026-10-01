@@ -45,7 +45,7 @@ interface HeadingTransition {
 
 // offsetTop excludes the heading's scroll-driven transform. Its visual box
 // must not become the next measurement's starting position as it moves.
-function documentTop(element: HTMLElement) {
+export function documentTop(element: HTMLElement) {
   let top = 0;
   let current: HTMLElement | null = element;
   while (current) {

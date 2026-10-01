@@ -9,7 +9,12 @@ import { ScrambleText } from './shared';
 import TextRevealMask from './TextRevealMask';
 import { TEXT_BLUR_EASE, TEXT_BLUR_REVEAL, TEXT_BLUR_TIMES } from './text-blur';
 
-const MENU_BLUR_REVEAL = TEXT_BLUR_REVEAL.map((radius) => `blur(${radius * 0.8}px)`);
+export const MENU_BLUR_REVEAL = TEXT_BLUR_REVEAL.map((radius) => `blur(${radius * 0.8}px)`);
+export const MENU_BLUR_TRANSITION = {
+  duration: 0.9,
+  ease: TEXT_BLUR_EASE,
+  times: [...TEXT_BLUR_TIMES],
+};
 
 type HomeMenuLinksProps = {
   language: Language;
@@ -19,6 +24,7 @@ type HomeMenuLinksProps = {
   onProjects: (event: MouseEvent<HTMLAnchorElement>) => void;
   className?: string;
   showProjects?: boolean;
+  revealIndexOffset?: number;
 };
 
 export function MenuRevealText({ text, children, open, reducedMotion, distance, enterDelay, exitDelay, className, enabled = true }: {
@@ -32,7 +38,7 @@ export function MenuRevealText({ text, children, open, reducedMotion, distance, 
   className: string;
   enabled?: boolean;
 }) {
-  const duration = !enabled || reducedMotion ? 0 : open ? 0.9 : 0.32;
+  const duration = !enabled || reducedMotion ? 0 : open ? MENU_BLUR_TRANSITION.duration : 0.32;
   const delay = !enabled || reducedMotion ? 0 : open ? enterDelay : exitDelay;
 
   return (
@@ -46,7 +52,7 @@ export function MenuRevealText({ text, children, open, reducedMotion, distance, 
         duration,
         delay,
         ease: [0.4, 0, 0.2, 1],
-        ...(enabled && open ? { filter: { duration, delay, ease: TEXT_BLUR_EASE, times: [...TEXT_BLUR_TIMES] } } : {}),
+        ...(enabled && open ? { filter: { ...MENU_BLUR_TRANSITION, duration, delay } } : {}),
       }}
     >
       {children ?? text}
@@ -54,7 +60,7 @@ export function MenuRevealText({ text, children, open, reducedMotion, distance, 
   );
 }
 
-export default function HomeMenuLinks({ language, projectCount, open, onNavigate, onProjects, className = '', showProjects = true }: HomeMenuLinksProps) {
+export default function HomeMenuLinks({ language, projectCount, open, onNavigate, onProjects, className = '', showProjects = true, revealIndexOffset = 0 }: HomeMenuLinksProps) {
   const reducedMotion = useReducedMotion();
   const labelWeight = language === 'zh' ? 'font-light' : 'font-medium';
   const labels = {
@@ -70,7 +76,9 @@ export default function HomeMenuLinks({ language, projectCount, open, onNavigate
 
   return (
     <nav aria-label="Main navigation" aria-hidden={!open} inert={!open} className={`flex flex-col items-start gap-10 md:gap-16 ${className}`}>
-      {links.map((link, index) => (
+      {links.map((link, linkIndex) => {
+        const index = linkIndex + revealIndexOffset;
+        return (
         <Link
           key={link.id}
           href={link.href}
@@ -78,7 +86,7 @@ export default function HomeMenuLinks({ language, projectCount, open, onNavigate
           onClick={link.id === 'projects' ? onProjects : onNavigate}
           target={link.id === 'contact' ? '_blank' : undefined}
           rel={link.id === 'contact' ? 'noopener noreferrer' : undefined}
-          className={`flex items-start gap-2 whitespace-nowrap ${labelWeight} leading-none tracking-[-0.04em] text-[40px] md:text-[40px] lg:text-[52px] xl:text-[64px] transition-[font-weight] duration-700 ease-in-out`}
+          className={`flex items-start gap-2 whitespace-nowrap ${labelWeight} leading-none tracking-[-0.04em] text-[32px] md:text-[40px] lg:text-[52px] xl:text-[64px] transition-[font-weight] duration-700 ease-in-out`}
         >
           <ScrambleText
             charDelay={0.02}
@@ -109,7 +117,7 @@ export default function HomeMenuLinks({ language, projectCount, open, onNavigate
             {link.label}
           </ScrambleText>
           <TextRevealMask active={open} delay={0.16 + index * 0.09} duration={0.9} instant={!!reducedMotion}
-            className="text-[13px] lg:text-[16px] xl:text-[20px] leading-[1.5] tracking-[-0.02em]">
+            className="text-[12px] md:text-[13px] lg:text-[16px] xl:text-[20px] leading-[1.5] tracking-[-0.02em]">
             <MenuRevealText
               text={link.detail}
               open={open}
@@ -121,7 +129,8 @@ export default function HomeMenuLinks({ language, projectCount, open, onNavigate
             />
           </TextRevealMask>
         </Link>
-      ))}
+        );
+      })}
     </nav>
   );
 }

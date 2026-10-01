@@ -1,7 +1,7 @@
 'use client';
 
 import { cubicBezier, motion, useTransform, type MotionValue } from 'framer-motion';
-import { createContext, type ReactNode } from 'react';
+import { createContext, useContext, type ReactNode } from 'react';
 
 // Bio exit tuning — shared by desktop and mobile.
 // Lower = tighter word stagger; higher = more separation between words.
@@ -15,6 +15,10 @@ interface HeroBioExit {
 }
 
 export const HeroBioExitContext = createContext<HeroBioExit | null>(null);
+
+// An optional word reveal keeps the intro and both morph planes on the same
+// animation without replacing their text or measured layout.
+export const HeroBioWordRevealContext = createContext<((children: ReactNode, order: number) => ReactNode) | null>(null);
 
 interface HeroBioLineProps {
   children: ReactNode;
@@ -49,6 +53,7 @@ export function HeroBioExitWord({ children, progress, order, wordCount }: {
   order: number;
   wordCount: number;
 }) {
+  const renderReveal = useContext(HeroBioWordRevealContext);
   const start = (wordCount - 1 - order) / Math.max(1, wordCount - 1) * BIO_EXIT_STAGGER;
   const phase = useTransform(progress, [start, start + 0.52], [0, 1]);
   const y = useTransform(phase, (value) => `${-40 * value * value * (3 - 2 * value)}%`);
@@ -57,7 +62,7 @@ export function HeroBioExitWord({ children, progress, order, wordCount }: {
 
   return (
     <motion.span className="inline-block align-bottom" style={{ y, opacity }}>
-      {children}
+      {renderReveal ? renderReveal(children, order) : children}
     </motion.span>
   );
 }
