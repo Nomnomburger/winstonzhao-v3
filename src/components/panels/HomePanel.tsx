@@ -26,7 +26,8 @@ import { useHeroScroll } from './useHeroScroll';
 import HomeNavigationBackdrop from './HomeNavigationBackdrop';
 import MorphingBio, { HERO_BIO_LAYOUT_TRANSITION } from './MorphingBio';
 import { expandedBioLines } from './bio-copy';
-import HomeMenuLinks from './HomeMenuLinks';
+import HomeMenuLinks, { MenuRevealText } from './HomeMenuLinks';
+import TextRevealMask from './TextRevealMask';
 import DesktopNavigationToggle from './DesktopNavigationToggle';
 import { useHomeMenu, useMenuHeaderHandoff } from './useHomeMenu';
 import { revealMaskAnimation } from './text-reveal';
@@ -139,6 +140,7 @@ export default function HomePanel({
   const [menuFromHero, setMenuFromHero] = useState(true);
   const { open: menuOpen, closing: menuClosing, setOpen: setMenuOpen, rootRef, triggerRef, navigationId, close: closeMenu, closeImmediately, cancelClose } = useHomeMenu({ exitDuration: menuFromHero ? HERO_BIO_LAYOUT_TRANSITION.duration * 1000 : 700 });
   const [carryProjects, setCarryProjects] = useState(true);
+  const revealMenuProjects = menuOpen && !menuFromHero && !carryProjects;
   const projectsReveal = useAnimationControls();
   const closingProgress = useMotionValue(0);
   const menuProgress = useMotionValue(0);
@@ -178,16 +180,16 @@ export default function HomePanel({
       return;
     }
     if (menuClosing) {
-      if (!carryProjects) void projectsReveal.start({ opacity: 0, y: -16, filter: 'blur(5px)', transition: { duration: reducedMotion ? 0 : 0.32 } });
+      if (!carryProjects && menuFromHero) void projectsReveal.start({ opacity: 0, y: -16, filter: 'blur(5px)', transition: { duration: reducedMotion ? 0 : 0.32 } });
       const exit = animate(closingProgress, 1, { duration: reducedMotion ? 0 : 0.32 });
       return () => exit.stop();
     }
     closingProgress.set(0);
-    if (!carryProjects) {
+    if (!carryProjects && menuFromHero) {
       projectsReveal.set({ opacity: 0, y: 16, filter: 'blur(5px)' });
       void projectsReveal.start({ opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: reducedMotion ? 0 : 0.9, ease: [0.4, 0, 0.2, 1] } });
     } else projectsReveal.set({ opacity: 1, y: 0, filter: 'blur(0px)' });
-  }, [menuOpen, menuClosing, carryProjects, projectsReveal, closingProgress, reducedMotion]);
+  }, [menuOpen, menuClosing, menuFromHero, carryProjects, projectsReveal, closingProgress, reducedMotion]);
   useLayoutEffect(() => {
     if (!menuOpen) return;
     const fitBio = () => {
@@ -208,7 +210,8 @@ export default function HomePanel({
     setMenuFromHero(isAtHero);
     const projectsAtMenuPosition = Math.abs((headingRef.current?.getBoundingClientRect().top ?? 0) - parseFloat(shrunkFontSize) - 72) < 2;
     setCarryProjects(projectsAtMenuPosition);
-    if (!projectsAtMenuPosition) projectsReveal.set({ opacity: 0, y: 16, filter: 'blur(5px)' });
+    if (!projectsAtMenuPosition && isAtHero) projectsReveal.set({ opacity: 0, y: 16, filter: 'blur(5px)' });
+    else projectsReveal.set({ opacity: 1, y: 0, filter: 'blur(0px)' });
     if (rolesRef.current) {
       const rect = rolesRef.current.getBoundingClientRect();
       const currentY = new DOMMatrixReadOnly(getComputedStyle(rolesRef.current).transform).m42;
@@ -789,51 +792,59 @@ export default function HomePanel({
                         className={`text-reveal-mask text-[40px] lg:text-[52px] xl:text-[64px] leading-none ${bigTextTracking} transition-[letter-spacing] duration-700 ease-in-out`}
                         {...revealMaskAnimation(workDelay, 0.9, instant)}
                       >
-                        {langSwitched ? (
-                          <ScrambleText from={fromT.workLabel} charDelay={switchCharDelay}>
-                            {t.workLabel}
-                          </ScrambleText>
-                        ) : showContent ? (
-                          <motion.span
-                            className="inline-block"
-                            initial={instant ? false : { y: '40%', opacity: 0 }}
-                            animate={{ y: '0%', opacity: 1 }}
-                            transition={{
-                              duration: 0.9,
-                              delay: workDelay,
-                              ease: [0.4, 0, 0.2, 1],
-                            }}
-                          >
-                            {t.workLabel}
-                          </motion.span>
-                        ) : (
-                          <span className="opacity-0">{t.workLabel}</span>
-                        )}
+                        <TextRevealMask active={!revealMenuProjects || !menuClosing} delay={0.1} duration={0.9} instant={!revealMenuProjects || !!reducedMotion}>
+                          <MenuRevealText enabled={revealMenuProjects} open={!menuClosing} reducedMotion={!!reducedMotion} distance="0.4em" enterDelay={0.1} exitDelay={0} className="text-reveal-word inline-block">
+                            {langSwitched ? (
+                              <ScrambleText from={fromT.workLabel} charDelay={switchCharDelay}>
+                                {t.workLabel}
+                              </ScrambleText>
+                            ) : showContent ? (
+                              <motion.span
+                                className="inline-block"
+                                initial={instant ? false : { y: '40%', opacity: 0 }}
+                                animate={{ y: '0%', opacity: 1 }}
+                                transition={{
+                                  duration: 0.9,
+                                  delay: workDelay,
+                                  ease: [0.4, 0, 0.2, 1],
+                                }}
+                              >
+                                {t.workLabel}
+                              </motion.span>
+                            ) : (
+                              <span className="opacity-0">{t.workLabel}</span>
+                            )}
+                          </MenuRevealText>
+                        </TextRevealMask>
                       </motion.span>
                       <motion.span
                         className="text-reveal-mask text-[13px] lg:text-[16px] xl:text-[20px] leading-normal tracking-[-0.26px] lg:tracking-[-0.32px] xl:tracking-[-0.4px]"
                         {...revealMaskAnimation(workDelay + stagger, 0.9, instant)}
                       >
-                        {langSwitched ? (
-                          <ScrambleText from={projectCount} charDelay={switchCharDelay}>
-                            {projectCount}
-                          </ScrambleText>
-                        ) : showContent ? (
-                          <motion.span
-                            className="inline-block"
-                            initial={instant ? false : { y: '40%', opacity: 0 }}
-                            animate={{ y: '0%', opacity: 1 }}
-                            transition={{
-                              duration: 0.9,
-                              delay: workDelay + stagger,
-                              ease: [0.4, 0, 0.2, 1],
-                            }}
-                          >
-                            {projectCount}
-                          </motion.span>
-                        ) : (
-                          <span className="opacity-0">{projectCount}</span>
-                        )}
+                        <TextRevealMask active={!revealMenuProjects || !menuClosing} delay={0.16} duration={0.9} instant={!revealMenuProjects || !!reducedMotion}>
+                          <MenuRevealText enabled={revealMenuProjects} open={!menuClosing} reducedMotion={!!reducedMotion} distance="0.6em" enterDelay={0.16} exitDelay={0.03} className="text-reveal-word inline-block">
+                            {langSwitched ? (
+                              <ScrambleText from={projectCount} charDelay={switchCharDelay}>
+                                {projectCount}
+                              </ScrambleText>
+                            ) : showContent ? (
+                              <motion.span
+                                className="inline-block"
+                                initial={instant ? false : { y: '40%', opacity: 0 }}
+                                animate={{ y: '0%', opacity: 1 }}
+                                transition={{
+                                  duration: 0.9,
+                                  delay: workDelay + stagger,
+                                  ease: [0.4, 0, 0.2, 1],
+                                }}
+                              >
+                                {projectCount}
+                              </motion.span>
+                            ) : (
+                              <span className="opacity-0">{projectCount}</span>
+                            )}
+                          </MenuRevealText>
+                        </TextRevealMask>
                       </motion.span>
                     </a>
                     </motion.h2>

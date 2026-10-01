@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { motion, useReducedMotion } from 'framer-motion';
-import type { MouseEvent } from 'react';
+import type { MouseEvent, ReactNode } from 'react';
 import { LINKEDIN_URL, RESUME_URL } from '@/lib/site';
 import { translations, type Language } from './translations';
 import { ScrambleText } from './shared';
@@ -21,33 +21,35 @@ type HomeMenuLinksProps = {
   showProjects?: boolean;
 };
 
-function MenuRevealText({ text, open, reducedMotion, distance, enterDelay, exitDelay, className }: {
-  text: string;
+export function MenuRevealText({ text, children, open, reducedMotion, distance, enterDelay, exitDelay, className, enabled = true }: {
+  text?: string;
+  children?: ReactNode;
   open: boolean;
   reducedMotion: boolean;
   distance: '0.4em' | '0.6em';
   enterDelay: number;
   exitDelay: number;
   className: string;
+  enabled?: boolean;
 }) {
-  const duration = reducedMotion ? 0 : open ? 0.9 : 0.32;
-  const delay = reducedMotion ? 0 : open ? enterDelay : exitDelay;
+  const duration = !enabled || reducedMotion ? 0 : open ? 0.9 : 0.32;
+  const delay = !enabled || reducedMotion ? 0 : open ? enterDelay : exitDelay;
 
   return (
     <motion.span
       className={className}
-      initial={{ y: distance, opacity: 0, filter: 'blur(4px)' }}
-      animate={open
+      initial={enabled ? { y: distance, opacity: 0, filter: 'blur(4px)' } : false}
+      animate={!enabled ? { y: '0em', opacity: 1, filter: 'blur(0px)' } : open
         ? { y: [distance, '0em'], opacity: [0, 1], filter: MENU_BLUR_REVEAL }
         : { y: `-${distance}`, opacity: 0, filter: 'blur(5px)' }}
       transition={{
         duration,
         delay,
         ease: [0.4, 0, 0.2, 1],
-        ...(open ? { filter: { duration, delay, ease: TEXT_BLUR_EASE, times: [...TEXT_BLUR_TIMES] } } : {}),
+        ...(enabled && open ? { filter: { duration, delay, ease: TEXT_BLUR_EASE, times: [...TEXT_BLUR_TIMES] } } : {}),
       }}
     >
-      {text}
+      {children ?? text}
     </motion.span>
   );
 }
