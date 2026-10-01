@@ -10,6 +10,7 @@ const MAX_VELOCITY = 3;
 
 interface TouchScrollOptions {
   canSnap?: () => boolean;
+  getSnapDirection?: () => Direction | null;
   getBounds: () => { heroTop: number; projectsTop: number };
   scrollTo: (top: number) => void;
   snapTo: (direction: Direction) => void;
@@ -28,6 +29,8 @@ interface Gesture {
   claimed: boolean;
   axis: 'vertical' | 'horizontal' | null;
   consumed: boolean;
+  startedDuringSnap: boolean;
+  continueAfterSnap: boolean;
   direction: Direction | null;
   movedDown: boolean;
   upwardTravel: number;
@@ -88,8 +91,10 @@ export function createHeroTouchScroll(options: TouchScrollOptions) {
   };
   const abandonGesture = () => {
     const consumed = gesture?.consumed;
+    const retainedSnap = gesture?.startedDuringSnap && gesture.axis !== 'horizontal' &&
+      (options.getSnapDirection?.() ?? null) !== null;
     cancel();
-    if (consumed) options.cancelSnap();
+    if (consumed || retainedSnap) options.cancelSnap();
   };
   const updateTouchAction = () => {
     // Declare ownership before contact: preventing a later touchmove cannot
@@ -102,16 +107,26 @@ export function createHeroTouchScroll(options: TouchScrollOptions) {
       rootStyle.setProperty('--hero-touch-action', pageAction);
     }
     ownsVerticalTouch = !zoomed && rootStyle.touchAction === 'pan-x pinch-zoom';
-    if (zoomed) abandonGesture();
+    if (zoomed) {
+      abandonGesture();
+      // Zoom can begin while a CTA snap is running without a page gesture.
+      if ((options.getSnapDirection?.() ?? null) !== null) options.cancelSnap();
+    }
   };
   const flushDrag = () => {
     cancelAnimationFrame(dragFrame);
     dragFrame = 0;
     if (gesture?.axis === 'vertical' && !gesture.consumed) options.scrollTo(gesture.position);
   };
-  const snap = (direction: Direction) => {
+  const snap = (direction: Direction, takeover = false) => {
     stopFrames();
-    if (gesture) gesture.consumed = true;
+    if (gesture) {
+      gesture.consumed = true;
+      gesture.continueAfterSnap = takeover && direction === 1;
+    }
+    // A renewed swipe toward the same section keeps the existing animation
+    // and its timing. Reversing redirects it with the usual snap animation.
+    if (takeover && options.getSnapDirection?.() === direction) return;
     options.snapTo(direction);
   };
   const refresh = () => {
@@ -126,7 +141,11 @@ export function createHeroTouchScroll(options: TouchScrollOptions) {
   const onStart = (event: TouchEvent) => {
     cancel();
     options.onTouchStart();
-    if (event.touches.length !== 1 || event.defaultPrevented || needsNativeTouch(event.target)) return;
+    if (event.touches.length !== 1 || event.defaultPrevented || needsNativeTouch(event.target)) {
+      // A pinch or nested native control keeps the browser's scroll owner.
+      if ((options.getSnapDirection?.() ?? null) !== null) options.cancelSnap();
+      return;
+    }
     updateLimit();
     const finger = event.touches[0];
     gesture = {
@@ -139,6 +158,8 @@ export function createHeroTouchScroll(options: TouchScrollOptions) {
       claimed: false,
       axis: null,
       consumed: false,
+      startedDuringSnap: (options.getSnapDirection?.() ?? null) !== null,
+      continueAfterSnap: false,
       direction: null,
       movedDown: false,
       upwardTravel: 0,
@@ -147,8 +168,28 @@ export function createHeroTouchScroll(options: TouchScrollOptions) {
   };
   const moveFinger = (clientX: number, clientY: number) => {
     if (!gesture) return false;
-    // Consume even after the snap has completed while the finger is held.
-    if (gesture.consumed) return true;
+    let resumedAfterSnap = false;
+    if (gesture.consumed) {
+      const { heroTop, projectsTop } = options.getBounds();
+      if (gesture.continueAfterSnap && (options.getSnapDirection?.() ?? null) === null &&
+          projectsTop > heroTop && window.scrollY >= projectsTop - 1) {
+        // Only a new contact that took over an animation can keep dragging
+        // into Projects. Discard travel and release speed used by that snap.
+        gesture.consumed = false;
+        resumedAfterSnap = true;
+        gesture.continueAfterSnap = false;
+        gesture.position = clamp(window.scrollY);
+        gesture.direction = null;
+        gesture.movedDown = true;
+        gesture.upwardTravel = 0;
+        gesture.samples = [{ at: performance.now(), position: gesture.position }];
+      } else {
+        // Track the authoritative finger even while snapping, so a later
+        // handoff cannot replay all the movement made during the animation.
+        gesture.lastY = clientY;
+        return true;
+      }
+    }
     if (gesture.axis === null) {
       const dx = Math.abs(gesture.startX - clientX);
       const dy = Math.abs(gesture.startY - clientY);
@@ -161,6 +202,8 @@ export function createHeroTouchScroll(options: TouchScrollOptions) {
       if (dy <= dx) return true;
       gesture.axis = 'vertical';
       gesture.claimed = true;
+      // The existing animation can advance between contact and movement.
+      if (gesture.startedDuringSnap) gesture.position = clamp(window.scrollY);
     }
     if (gesture.axis !== 'vertical') return false;
 
@@ -175,6 +218,18 @@ export function createHeroTouchScroll(options: TouchScrollOptions) {
       return true;
     }
     const { heroTop, projectsTop } = options.getBounds();
+    const takingOver = gesture.startedDuringSnap && (options.getSnapDirection?.() ?? null) !== null;
+    gesture.startedDuringSnap = false;
+    if (takingOver) {
+      if (delta > 0 && gesture.position >= projectsTop && projectsTop > heroTop) {
+        // A return may start just above the dock. Forward input is already
+        // in Projects here, so it can immediately resume ordinary dragging.
+        options.cancelSnap();
+      } else {
+        snap(delta > 0 ? 1 : -1, true);
+        return true;
+      }
+    }
     let next = clamp(gesture.position + delta);
     if (delta > 0) {
       gesture.movedDown = true;
@@ -215,7 +270,13 @@ export function createHeroTouchScroll(options: TouchScrollOptions) {
     if (movement !== 0) gesture.direction = direction;
     gesture.position = next;
     const now = performance.now();
-    gesture.samples.push({ at: now, position: next });
+    if (resumedAfterSnap) {
+      // The first resumed delta has no timed drag baseline. Seed at its
+      // resulting position so it cannot inflate the next release velocity.
+      gesture.samples = [{ at: now, position: next }];
+    } else {
+      gesture.samples.push({ at: now, position: next });
+    }
     while (gesture.samples.length > 2 && gesture.samples[1].at < now - VELOCITY_WINDOW_MS) {
       gesture.samples.shift();
     }

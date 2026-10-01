@@ -295,6 +295,7 @@ export function useHeroScroll({ heroRef, headingRef, enabled, ready, touchEnable
     if (!touchEnabled) return;
     const touchScroll = createHeroTouchScroll({
       canSnap: () => touchCallbacksRef.current.enabled && touchCallbacksRef.current.ready,
+      getSnapDirection: () => snapDirectionRef.current,
       getBounds: () => ({ heroTop: heroTopRef.current, projectsTop: targetRef.current }),
       scrollTo: (top) => {
         scrollInstantly(top);
@@ -307,7 +308,9 @@ export function useHeroScroll({ heroRef, headingRef, enabled, ready, touchEnable
         upwardIntentUntilRef.current = 0;
         upwardMomentumRef.current = false;
         wheelGestureRef.current = null;
-        if (snapDirectionRef.current !== null || getSmoothScroll()?.isScrolling === 'smooth') {
+        // Contact alone must not strand the page between sections. A new
+        // vertical movement takes over the snap through the callback above.
+        if (snapDirectionRef.current === null && getSmoothScroll()?.isScrolling === 'smooth') {
           touchCallbacksRef.current.cancelSnap();
         }
       },
