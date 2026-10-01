@@ -153,7 +153,7 @@ export default function HomePanel({
     ? menuBioScaleTarget.get() : 1 + (menuBioScaleTarget.get() - 1) * menuProgress.get());
   const bioRef = useRef<HTMLDivElement>(null);
   const menuFooterY = useMotionValue(0);
-  const rolesY = useTransform(() => menuOpen ? menuFooterY.get() : 0);
+  const rolesY = useTransform(() => menuOpen && !menuFromHero ? menuFooterY.get() : 0);
   const rolesRef = useRef<HTMLDivElement>(null);
   const { progress, headingY, projectsHeadingY, isAtHero, scrollToProjects, scrollToHero, cancelScroll } = useHeroScroll({
     heroRef,
@@ -282,10 +282,12 @@ export default function HomePanel({
   const bioVisibility = useTransform(progress, (value) => value >= 1 ? 'hidden' : 'visible');
   const bioPointerEvents = useTransform(progress, (value) => value > 0 ? 'none' : 'auto');
   const cornerLinksOpacity = useTransform(() => heroOpacity.get() * (1 - menuProgress.get()));
-  const menuRolesOpacity = useTransform(() => menuOpen
+  // Keep the hero footer in place throughout its bio expansion and return.
+  // The menu only reveals and dismisses this row when opened after scrolling.
+  const menuRolesOpacity = useTransform(() => menuOpen && !menuFromHero
     ? menuClosing ? 1 - closingProgress.get() : menuProgress.get()
     : heroOpacity.get());
-  const menuRolesBlur = useTransform(() => menuOpen && menuClosing ? `blur(${closingProgress.get() * 5}px)` : 'blur(0px)');
+  const menuRolesBlur = useTransform(() => menuOpen && !menuFromHero && menuClosing ? `blur(${closingProgress.get() * 5}px)` : 'blur(0px)');
 
   // Hover (and the weight crossfade) turns on once the intro has played; after a
   // language switch it waits for the full-line scramble to settle first.

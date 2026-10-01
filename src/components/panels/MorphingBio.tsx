@@ -1,6 +1,6 @@
 'use client';
 
-import { animate, motion, useMotionValue, useReducedMotion, useTransform, type MotionValue } from 'framer-motion';
+import { animate, motion, useAnimationControls, useMotionValue, useReducedMotion, useTransform, type MotionValue } from 'framer-motion';
 import { Fragment, useLayoutEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import HeroBioLine, { HeroBioExitWord } from './HeroBioLine';
 
@@ -26,6 +26,16 @@ export const HERO_BIO_LAYOUT_TRANSITION = {
 
 // Sharpen independently of the quicker spatial ease, with a gradual finish.
 const BIO_BLUR_EASE = [0.25, 0.1, 0.25, 1] as const;
+
+// Animate the named CSS filter in both bios so Motion uses the browser's
+// native filter animation. The hero keeps its own row delays and movement.
+function bioBlurTransition(revealing: boolean, reducedMotion: boolean | null, delay: number, enabled = true) {
+  return {
+    duration: !enabled || reducedMotion ? 0 : revealing ? 1.08 : 0.38,
+    delay: !enabled || reducedMotion ? 0 : delay,
+    ease: BIO_BLUR_EASE,
+  };
+}
 
 interface BioWord {
   id: string;
@@ -153,16 +163,14 @@ function useContinuationReveal({ active, initialActive, activated, index, reduce
 }) {
   const y = useMotionValue(initialActive ? '0em' : '0.26em');
   const opacity = useMotionValue(initialActive ? 1 : 0);
-  const blur = useMotionValue(initialActive ? 0 : 5);
-  const filter = useTransform(blur, (radius) => `blur(${radius}px)`);
+  const filterAnimation = useAnimationControls();
   const controls = useRef<ReturnType<typeof animate>[]>([]);
   useLayoutEffect(() => {
     controls.current.forEach((control) => control.stop());
+    filterAnimation.stop();
     if (!activated) return;
-    if (active && opacity.get() <= 0.001) {
-      y.set('0.26em');
-      blur.set(5);
-    }
+    const restart = active && opacity.get() <= 0.001;
+    if (restart) y.set('0.26em');
     const element = elementRef?.current;
     const lineHeight = element ? parseFloat(getComputedStyle(element).lineHeight) : 0;
     const row = element ? Math.max(0, Math.round(element.offsetTop / (lineHeight || element.offsetHeight || 1))) : index;
@@ -174,11 +182,17 @@ function useContinuationReveal({ active, initialActive, activated, index, reduce
     controls.current = [
       animate(y, active ? '0em' : '-0.16em', transition),
       animate(opacity, active ? 1 : 0, transition),
-      animate(blur, active ? 0 : 5, { ...transition, ease: BIO_BLUR_EASE }),
     ];
-    return () => controls.current.forEach((control) => control.stop());
-  }, [activated, active, blur, elementRef, index, opacity, reducedMotion, y]);
-  return { y, opacity, filter };
+    void filterAnimation.start({
+      filter: restart ? ['blur(5px)', 'blur(0px)'] : active ? 'blur(0px)' : 'blur(5px)',
+      transition: bioBlurTransition(active, reducedMotion, transition.delay),
+    });
+    return () => {
+      controls.current.forEach((control) => control.stop());
+      filterAnimation.stop();
+    };
+  }, [activated, active, elementRef, filterAnimation, index, opacity, reducedMotion, y]);
+  return { style: { y, opacity }, filterAnimation };
 }
 
 function ContinuationLine({ words, preserved, active, initialActive, activated, index, progress, wordCount, renderWord, reducedMotion }: {
@@ -193,9 +207,10 @@ function ContinuationLine({ words, preserved, active, initialActive, activated, 
   renderWord?: (word: string) => ReactNode;
   reducedMotion: boolean | null;
 }) {
-  const style = useContinuationReveal({ active, initialActive, activated, index, reducedMotion });
+  const { style, filterAnimation } = useContinuationReveal({ active, initialActive, activated, index, reducedMotion });
   return (
-    <motion.p data-bio-line={index} className="text-reveal-word" style={style}>
+    <motion.p data-bio-line={index} className="text-reveal-word" style={style}
+      initial={{ filter: initialActive ? 'blur(0px)' : 'blur(5px)' }} animate={filterAnimation}>
       {words.map((word) => (
         <Fragment key={word.id}>
           <span className={preserved.has(word.id) ? 'invisible' : undefined}>
@@ -222,10 +237,11 @@ function ContinuationWord({ word, preserved, active, initialActive, activated, p
   reducedMotion: boolean | null;
 }) {
   const elementRef = useRef<HTMLSpanElement>(null);
-  const style = useContinuationReveal({ active, initialActive, activated, index: 0, reducedMotion, elementRef });
+  const { style, filterAnimation } = useContinuationReveal({ active, initialActive, activated, index: 0, reducedMotion, elementRef });
   return (
     <motion.span ref={elementRef} data-bio-continuation-word={word.id}
-      className={`text-reveal-word inline-block align-bottom ${preserved ? 'invisible' : ''}`} style={style}>
+      className={`text-reveal-word inline-block align-bottom ${preserved ? 'invisible' : ''}`} style={style}
+      initial={{ filter: initialActive ? 'blur(0px)' : 'blur(5px)' }} animate={filterAnimation}>
       <HeroBioExitWord progress={progress} order={word.order} wordCount={wordCount}>
         {renderWord ? renderWord(word.text) : word.text}
       </HeroBioExitWord>
@@ -299,7 +315,7 @@ function DirectBio({ words, active, closing, reducedMotion, renderWord }: {
                     opacity: active && !closing ? 1 : 0,
                     filter: active && !closing ? 'blur(0px)' : 'blur(5px)',
                   }}
-                  transition={{ ...transition, filter: { ...transition, ease: BIO_BLUR_EASE } }}
+                  transition={{ ...transition, filter: bioBlurTransition(!closing, reducedMotion, transition.delay, active) }}
                 >
                   {renderWord ? renderWord(word.text) : word.text}
                 </motion.span>
