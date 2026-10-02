@@ -27,7 +27,7 @@ import MorphingBio, { HERO_BIO_LAYOUT_TRANSITION } from './MorphingBio';
 import { expandedBioLines } from './bio-copy';
 import HomeMenuLinks, { MenuRevealText } from './HomeMenuLinks';
 import TextRevealMask from './TextRevealMask';
-import { useNavigationNameHandoff, useNavigationToggle } from '@/components/NavigationProvider';
+import { useNavigationNameHandoff, useNavigationNameHoverBlock, useNavigationToggle } from '@/components/NavigationProvider';
 import { useHomeMenu, useMenuHeaderHandoff } from './useHomeMenu';
 import { revealMaskAnimation } from './text-reveal';
 
@@ -285,8 +285,7 @@ export default function HomePanel({
   // Compensate for the parent's leading scale so Zhao's position trails its
   // size, just as both do during the initial layout animation.
   const lastNameX = useTransform(() => lastNameOffset.get() * (lastNameRelativeScale.get() - 1));
-  const navigationBlend = useTransform(() => !menuOpen && progress.get() >= 0.7 ? 'difference' : 'normal');
-  const navigationColor = useTransform(() => !menuOpen && progress.get() >= 0.7 ? '#ffffff' : 'var(--foreground)');
+  const navigationColor = useTransform(() => menuOpen || progress.get() >= 0.7 ? 'var(--navigation-name-color, var(--navigation-foreground))' : 'var(--foreground)');
   const heroOpacity = useTransform(progress, [0, 0.65, 1], [1, 0, 0]);
   const heroVisibility = useTransform(progress, (value) => value >= 0.65 ? 'hidden' : 'visible');
   const bioVisibility = useTransform(progress, (value) => value >= 1 ? 'hidden' : 'visible');
@@ -305,6 +304,7 @@ export default function HomePanel({
 
   // The photo that follows the cursor while the name or a bio word is hovered
   const preview = useCursorPreview();
+  const nameHoverBlockedRef = useNavigationNameHoverBlock();
 
   const hidePreview = useEffectEvent(() => preview.hide());
   useEffect(() => {
@@ -312,7 +312,7 @@ export default function HomePanel({
   }, [isAtHero]);
 
   const beginHover = (key: HoverKey, e: React.MouseEvent) => {
-    if (!isAtHero) return;
+    if (!isAtHero || (key === 'name' && nameHoverBlockedRef?.current)) return;
     const { width, height } = HOVER_IMAGES.find((img) => img.key === key)!;
     preview.show(key, e, { width, height });
   };
@@ -680,14 +680,13 @@ export default function HomePanel({
           <motion.div
             ref={containerRef}
             className="fixed top-9 left-9 right-9 z-50 flex items-start justify-between pointer-events-none"
-            style={{ mixBlendMode: navigationBlend, color: navigationColor }}
             initial={instant ? false : undefined}
             animate={{
               height: hasShrunk ? shrunkFontSize : 'auto',
             }}
             transition={shrinkTransition}
           >
-            <motion.div className="flex gap-4 items-start pointer-events-auto" style={{ scale: nameScale, transformOrigin: 'top left' }}>
+            <motion.div data-navigation-contrast="name" className="flex gap-4 items-start pointer-events-auto" style={{ scale: nameScale, transformOrigin: 'top left', color: navigationColor }}>
               {/* The font size snaps to its target and each word FLIPs from
                   its previous box via the layout prop, so the last name's
                   position and scale can trail the first name's together. */}
@@ -706,6 +705,7 @@ export default function HomePanel({
                 <button
                   ref={nameButtonRef}
                   type="button"
+                  data-navigation-name-trigger
                   tabIndex={isAtHero || menuOpen ? -1 : 0}
                   aria-disabled={isAtHero || menuOpen}
                   aria-label={isAtHero ? t.name : `${t.name} — Back to top`}

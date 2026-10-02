@@ -208,8 +208,7 @@ export default function HomePanelMobile({
   const menuBioOpacity = useTransform(() => menuBioReveal.get() === 'hidden' ? 0 : menuContentOpacity.get());
   const heroVisibility = useTransform(progress, (value) => value >= 0.7 ? 'hidden' : 'visible');
   const bioVisibility = useTransform(bioExitProgress, (value) => value >= 1 ? 'hidden' : 'visible');
-  const nameBlend = useTransform(retainedScrollProgress, (value) => value >= 0.7 ? 'difference' : 'normal');
-  const nameColor = useTransform(retainedScrollProgress, (value) => value >= 0.7 ? '#ffffff' : 'var(--foreground)');
+  const nameColor = useTransform(retainedScrollProgress, (value) => value >= 0.7 ? 'var(--navigation-name-color, var(--navigation-foreground))' : 'var(--foreground)');
   const compactScale = 20 / shrunkFontSize;
   const titleScale = useTransform(titleProgress, [0, 1], [1, compactScale]);
   const nativeNameOpacity = useTransform(titleProgress, [0, 1], [1, 0]);
@@ -667,8 +666,9 @@ export default function HomePanelMobile({
             />
             <motion.div
               ref={containerRef}
+              data-navigation-contrast="name"
               className="fixed top-6 left-6 right-6 z-40 py-1 origin-top-left"
-              style={{ scale: titleScale, color: menuOpen ? 'var(--foreground)' : nameColor, mixBlendMode: menuOpen ? 'normal' : nameBlend }}
+              style={{ scale: titleScale, color: menuOpen ? 'var(--navigation-name-color, var(--navigation-foreground))' : nameColor }}
             >
               <motion.h1
                 ref={headerRef}

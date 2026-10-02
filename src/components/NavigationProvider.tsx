@@ -9,6 +9,7 @@ import MobileNavigationToggle from '@/components/panels/MobileNavigationToggle';
 import { ScrambleText, useIsMobile } from '@/components/panels/shared';
 import { translations } from '@/components/panels/translations';
 import { useLanguage } from '@/components/panels/useLanguage';
+import useNavigationContrast from '@/components/useNavigationContrast';
 
 export type NavigationToggleConfig = {
   enabled: boolean;
@@ -30,6 +31,7 @@ type NavigationBinding = {
   release: (owner: string) => void;
   hasSource: boolean;
   prepareName: () => void;
+  nameHoverBlockedRef: RefObject<boolean>;
 };
 
 const NavigationContext = createContext<NavigationBinding | null>(null);
@@ -55,6 +57,10 @@ export function useNavigationToggle(config: NavigationToggleConfig) {
 // source distinguishes that navigation from a fresh home-page load.
 export function useHasNavigationSource() {
   return useContext(NavigationContext)?.hasSource ?? false;
+}
+
+export function useNavigationNameHoverBlock() {
+  return useContext(NavigationContext)?.nameHoverBlockedRef;
 }
 
 // Hide the incoming home words before its first paint. Their original hero
@@ -320,6 +326,7 @@ export default function NavigationProvider({ children }: { children: ReactNode }
   const lastSourceRef = useRef<NavigationToggleConfig | null>(null);
   const revisionRef = useRef(0);
   const initializedRef = useRef(false);
+  const nameHoverBlockedRef = useRef(false);
   const reducedMotionRef = useRef(reducedMotion);
   const subscriptionsRef = useRef<Array<() => void>>([]);
   const handoffAnimationRef = useRef<ReturnType<typeof animate> | null>(null);
@@ -399,13 +406,39 @@ export default function NavigationProvider({ children }: { children: ReactNode }
   }, [disconnect]);
 
   useLayoutEffect(() => disconnect, [disconnect]);
+  useLayoutEffect(() => {
+    // The home name can appear beneath a stationary pointer during handoff.
+    // Only actual mouse movement outside the name re-enables its preview.
+    const unblockNameHover = (event: MouseEvent) => {
+      if (!nameHoverBlockedRef.current) return;
+      const names = document.querySelectorAll<HTMLElement>('[data-navigation-name-trigger]');
+      const insideName = Array.from(names).some((name) => {
+        const rect = name.getBoundingClientRect();
+        return event.clientX >= rect.left && event.clientX <= rect.right &&
+          event.clientY >= rect.top && event.clientY <= rect.bottom;
+      });
+      if (!insideName) nameHoverBlockedRef.current = false;
+    };
+    const leaveDocument = () => { nameHoverBlockedRef.current = false; };
+    window.addEventListener('mousemove', unblockNameHover);
+    document.addEventListener('mouseleave', leaveDocument);
+    return () => {
+      window.removeEventListener('mousemove', unblockNameHover);
+      document.removeEventListener('mouseleave', leaveDocument);
+    };
+  }, []);
   const hasSource = settings !== null;
-  const binding = useMemo(() => ({ bind, release, hasSource, prepareName }), [bind, release, hasSource, prepareName]);
+  const binding = useMemo(() => ({ bind, release, hasSource, prepareName, nameHoverBlockedRef }), [bind, release, hasSource, prepareName]);
   const onClick = useCallback(() => configRef.current?.onClick(), []);
-  const onHomeNavigate = useCallback(() => configRef.current?.onHomeNavigate?.(), []);
+  const onHomeNavigate = useCallback((event: React.MouseEvent<HTMLAnchorElement>) => {
+    if (event.detail > 0 && event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) {
+      nameHoverBlockedRef.current = true;
+    }
+    configRef.current?.onHomeNavigate?.();
+  }, []);
   const open = settings?.open ?? false;
-  const color = useTransform(() => !open && progress.get() >= 0.7 ? '#ffffff' : 'var(--foreground)');
-  const blend = useTransform(() => !open && progress.get() >= 0.7 ? 'difference' : 'normal');
+  useNavigationContrast(pathname, open);
+  const menuColor = useTransform(() => isMobile || open || progress.get() >= 0.7 ? 'var(--navigation-menu-color, var(--navigation-foreground))' : 'var(--foreground)');
   const resume = pathname === '/resume';
   // Keep server and hydration markup identical even when a static deployment
   // renders with a different pathname, so the transition copy never leaks.
@@ -425,11 +458,12 @@ export default function NavigationProvider({ children }: { children: ReactNode }
           aria-hidden={!showName}
           inert={!showName}
           className="fixed left-6 top-6 z-50 md:left-9 md:top-9"
-          style={{ color, mixBlendMode: blend, visibility: showName || nameAnimating && !resume ? 'visible' : 'hidden' }}
+          style={{ color: 'var(--navigation-name-color, var(--navigation-foreground))', visibility: showName || nameAnimating && !resume ? 'visible' : 'hidden' }}
         >
           <Link
             href="/"
             aria-label="Home"
+            data-navigation-name-trigger
             onClick={onHomeNavigate}
             className="block font-medium text-[20px] md:text-[24px] tracking-[-0.05em] leading-none whitespace-nowrap"
             style={{ marginTop: '-0.1em' }}
@@ -451,7 +485,7 @@ export default function NavigationProvider({ children }: { children: ReactNode }
           initial={false}
           animate={{ opacity: enabled ? 1 : 0, y: isMobile && !enabled ? 20 : 0, scale: !isMobile && !enabled ? 0.8 : 1 }}
           transition={{ duration: reducedMotion || instant ? 0 : isMobile ? 0.6 : 0.8, delay: enabled && !instant ? settings?.delay ?? 0 : 0, ease: [0.4, 0, 0.2, 1] }}
-          style={{ color, mixBlendMode: blend, visibility: enabled ? 'visible' : 'hidden' }}
+          style={{ color: menuColor, visibility: enabled ? 'visible' : 'hidden' }}
         >
           {isMobile ? <MobileNavigationToggle
             triggerRef={triggerRef}
