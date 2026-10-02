@@ -108,9 +108,12 @@ const mediaFields = groq`
   _type == "mediaGallery" => {images[]{${imageFields}}}
 `;
 
-const LIST_QUERY = groq`*[_type == "project" && defined(slug.current)]{${summaryFields}}`;
+// Keep seeded mocks and temporary test projects out of every public query.
+const publicProjectFilter = groq`_type == "project" && !(_id match "mock-project-*") && !(lower(coalesce(title, "")) match "test project*")`;
 
-const PROJECT_QUERY = groq`*[_type == "project" && slug.current == $slug][0]{
+const LIST_QUERY = groq`*[${publicProjectFilter} && defined(slug.current)]{${summaryFields}}`;
+
+const PROJECT_QUERY = groq`*[${publicProjectFilter} && slug.current == $slug][0]{
   ${summaryFields},
   client,
   discipline,
@@ -134,18 +137,10 @@ const PROJECT_QUERY = groq`*[_type == "project" && slug.current == $slug][0]{
 const REVALIDATE_SECONDS = 60;
 
 // ---------------------------------------------------------------------------
-// Mock projects: Vercel preview deployments (or any build with
-// USE_MOCK_PROJECTS=1) show only the mock projects, so the layout can be
-// tested with full case studies whatever the dataset holds. Set
-// USE_MOCK_PROJECTS=0 on a preview to see the Sanity projects instead. In
-// development the mocks stand in when the dataset has none or can't be
-// reached. The live site (Vercel production) never shows them.
+// Mock projects stay hidden unless explicitly enabled with USE_MOCK_PROJECTS=1.
+// This also applies in development and Vercel preview deployments.
 
-const mocksOnly = () =>
-  process.env.USE_MOCK_PROJECTS === '1' ||
-  (process.env.VERCEL_ENV === 'preview' && process.env.USE_MOCK_PROJECTS !== '0');
-
-const mockFallbackEnabled = () => process.env.NODE_ENV !== 'production';
+const mocksOnly = () => process.env.USE_MOCK_PROJECTS === '1';
 
 const isMockAsset = (value: unknown): value is MockAsset =>
   typeof value === 'object' && value !== null && '_mock' in value;
@@ -202,12 +197,8 @@ export async function getProjects(): Promise<ProjectSummary[]> {
   } catch (error) {
     // In production, fail loudly: during a revalidation this keeps the last
     // good page instead of caching one with no projects.
-    if (!mockFallbackEnabled()) throw error;
+    if (process.env.NODE_ENV === 'production') throw error;
     console.error('Could not load projects from Sanity:', error);
-  }
-  if (projects.length === 0 && mockFallbackEnabled()) {
-    console.warn('No projects in Sanity: showing mock projects (not shown on the live site).');
-    projects = mockSummaries();
   }
   return sortProjects(projects);
 }
@@ -217,7 +208,6 @@ export async function getProject(slug: string): Promise<Project | null> {
   const decoded = decodeURIComponent(slug);
   if (mocksOnly()) return mockProjects().find((p) => p.slug === decoded) ?? null;
   let project: Project | null = null;
-  let reachable = true;
   try {
     project = await client.fetch<Project | null>(
       PROJECT_QUERY,
@@ -226,19 +216,8 @@ export async function getProject(slug: string): Promise<Project | null> {
     );
   } catch (error) {
     // Same as above: never turn a network error into a cached 404.
-    if (!mockFallbackEnabled()) throw error;
-    reachable = false;
+    if (process.env.NODE_ENV === 'production') throw error;
     console.error(`Could not load project "${decoded}" from Sanity:`, error);
-  }
-  if (!project && mockFallbackEnabled()) {
-    // Only fall back when the dataset is empty or unreachable, so a real
-    // dataset never mixes with mock pages.
-    const hasRealProjects =
-      reachable &&
-      (await client
-        .fetch<number>('count(*[_type == "project"])', {}, { next: { revalidate: REVALIDATE_SECONDS } })
-        .catch(() => 0)) > 0;
-    if (!hasRealProjects) project = mockProjects().find((p) => p.slug === decoded) ?? null;
   }
   return project;
 }

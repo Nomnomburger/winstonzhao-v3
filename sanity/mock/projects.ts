@@ -1,7 +1,6 @@
 // Mock projects for testing the portfolio. Used in two places:
 // - studio/scripts/seed-mock-projects.ts uploads them to the Sanity dataset
-// - src/lib/projects.ts falls back to them in development when the dataset
-//   has no projects (or can't be reached)
+// - src/lib/projects.ts shows them only when USE_MOCK_PROJECTS=1
 //
 // Content is written in a compact shorthand and expanded into Sanity's
 // document shape by `buildMockProjects`. Images are placeholder photos from
@@ -3128,7 +3127,7 @@ export const mockImageUrl = ({seed, w = 1600, h = 1200}: MockImage) =>
   `https://picsum.photos/seed/${seed}/${w}/${h}`
 
 // Placeholder for an image that still needs uploading. The seed script swaps
-// it for a real asset reference; the dev fallback resolves it to its URL.
+// it for a real asset reference; the opt-in preview resolves it to its URL.
 export type MockAsset = {_mock: {url: string; width: number; height: number}}
 
 const mockAsset = (img: MockImage): MockAsset => ({
