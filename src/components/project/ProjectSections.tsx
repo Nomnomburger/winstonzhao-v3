@@ -100,7 +100,7 @@ export default function ProjectSections({ sections, showSideMenu }: ProjectSecti
               key={section._key}
               id={sectionId(section.title, i)}
               tabIndex={-1}
-              className="flex flex-col gap-3 scroll-mt-9 focus:outline-none"
+              className="flex flex-col gap-3 scroll-mt-[104px] focus:outline-none"
             >
               <div className={`flex flex-col gap-3 ${textColumn}`}>
                 <p className="text-[12px] md:text-[14px] text-justify leading-[1.2]">{section.title}</p>

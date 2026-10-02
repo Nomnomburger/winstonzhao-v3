@@ -25,6 +25,7 @@ type HomeMenuLinksProps = {
   className?: string;
   showProjects?: boolean;
   revealIndexOffset?: number;
+  projectsHref?: string;
 };
 
 export function MenuRevealText({ text, children, open, reducedMotion, distance, enterDelay, exitDelay, className, enabled = true }: {
@@ -60,7 +61,7 @@ export function MenuRevealText({ text, children, open, reducedMotion, distance, 
   );
 }
 
-export default function HomeMenuLinks({ language, projectCount, open, onNavigate, onProjects, className = '', showProjects = true, revealIndexOffset = 0 }: HomeMenuLinksProps) {
+export default function HomeMenuLinks({ language, projectCount, open, onNavigate, onProjects, className = '', showProjects = true, revealIndexOffset = 0, projectsHref = '#work' }: HomeMenuLinksProps) {
   const reducedMotion = useReducedMotion();
   const labelWeight = language === 'zh' ? 'font-light' : 'font-medium';
   const labels = {
@@ -69,7 +70,7 @@ export default function HomeMenuLinks({ language, projectCount, open, onNavigate
     zh: { contact: '打个招呼', resume: '简历' },
   }[language];
   const links = [
-    ...(showProjects ? [{ id: 'projects', label: translations[language].workLabel, detail: projectCount, href: '#work' }] : []),
+    ...(showProjects ? [{ id: 'projects', label: translations[language].workLabel, detail: projectCount, href: projectsHref }] : []),
     { id: 'contact', label: labels.contact, detail: 'LNKD', href: LINKEDIN_URL },
     { id: 'resume', label: labels.resume, detail: 'PDF', href: RESUME_URL },
   ];

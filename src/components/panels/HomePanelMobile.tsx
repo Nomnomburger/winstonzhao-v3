@@ -21,6 +21,7 @@ import { Language, translations } from './translations';
 import HomeProjects from '@/components/projects/HomeProjects';
 import type { ProjectCardData } from '@/components/projects/types';
 import HomeNavigationBackdrop from './HomeNavigationBackdrop';
+import { useNavigationNameHandoff, useNavigationToggle } from '@/components/NavigationProvider';
 import { documentTop, useHeroScroll } from './useHeroScroll';
 import MorphingBio, { HERO_BIO_LAYOUT_TRANSITION, heroBioSpaceProgress } from './MorphingBio';
 import HomeMenuLinks, { MENU_BLUR_TRANSITION, MenuRevealText } from './HomeMenuLinks';
@@ -581,68 +582,48 @@ export default function HomePanelMobile({
     ? 'calc(0% + 0px)'
     : `calc(${lineOffsetRatio * 100}% + ${-(photoSize + 12)}px)`;
 
+  useNavigationToggle({
+    enabled: hasShrunk && showContent,
+    progress: retainedScrollProgress,
+    menuProgress: compactProgress,
+    heroTop: 36,
+    triggerRef,
+    open: menuOpen,
+    closing: menuClosing,
+    navigationId,
+    onClick: () => {
+      if (menuClosing) cancelClose();
+      else if (menuOpen) closeMenu();
+      else {
+        cancelScroll();
+        menuSnapshotRef.current = { top: window.scrollY, progress: progress.get(), headingY: headingY.get() };
+        retainedTitleProgress.set(progress.get());
+        revealBioAfterReturnRef.current = progress.get() < 1;
+        const headingTop = headingRef.current?.getBoundingClientRect().top ?? PROJECTS_DOCK_TOP;
+        const headingDocumentTop = headingRef.current ? documentTop(headingRef.current) : PROJECTS_DOCK_TOP;
+        setCarryProjects(progress.get() < 1 || (carryProjects && Math.abs(headingTop - PROJECTS_DOCK_TOP) < 2));
+        menuScrollY.set(window.scrollY);
+        menuHeadingDocumentTop.set(headingDocumentTop);
+        menuHeadingOffset.set(window.scrollY + PROJECTS_DOCK_TOP - headingDocumentTop - projectsHeadingY.get());
+        setMenuOpen(true);
+      }
+    },
+    onHomeNavigate: closeMenuImmediately,
+    instant,
+    delay: globeDelay,
+  });
+  useNavigationNameHandoff();
+
   return (
     <div
       ref={rootRef}
       role={menuOpen ? 'dialog' : undefined}
       aria-modal={menuOpen ? true : undefined}
       aria-label={menuOpen ? 'Main navigation' : undefined}
+      aria-owns={menuOpen ? 'site-navigation-toggle' : undefined}
       className="theme-root bg-background min-h-dvh w-full relative overflow-x-clip"
     >
       <HomeNavigationBackdrop progress={progress} mobile />
-      <AnimatePresence>
-        {hasShrunk && showContent && (
-          <motion.div
-            className="fixed top-6 right-6 z-50 font-normal text-[12px] tracking-[-0.24px] leading-normal"
-            style={{ color: menuOpen ? 'var(--foreground)' : nameColor, mixBlendMode: menuOpen ? 'normal' : nameBlend }}
-            initial={instant ? false : { opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: globeDelay, ease: [0.4, 0, 0.2, 1] }}
-          >
-            <button
-              ref={triggerRef}
-              type="button"
-              onClick={() => {
-                if (menuClosing) cancelClose();
-                else if (menuOpen) closeMenu();
-                else {
-                  cancelScroll();
-                  menuSnapshotRef.current = { top: window.scrollY, progress: progress.get(), headingY: headingY.get() };
-                  retainedTitleProgress.set(progress.get());
-                  revealBioAfterReturnRef.current = progress.get() < 1;
-                  // Carry this heading from its current visual position, including
-                  // an interrupted return, into the menu's existing first row.
-                  const headingTop = headingRef.current?.getBoundingClientRect().top ?? PROJECTS_DOCK_TOP;
-                  const headingDocumentTop = headingRef.current ? documentTop(headingRef.current) : PROJECTS_DOCK_TOP;
-                  setCarryProjects(progress.get() < 1 || (carryProjects && Math.abs(headingTop - PROJECTS_DOCK_TOP) < 2));
-                  menuScrollY.set(window.scrollY);
-                  menuHeadingDocumentTop.set(headingDocumentTop);
-                  menuHeadingOffset.set(window.scrollY + PROJECTS_DOCK_TOP - headingDocumentTop - projectsHeadingY.get());
-                  setMenuOpen(true);
-                }
-              }}
-              aria-expanded={menuOpen}
-              aria-controls={navigationId}
-              aria-haspopup="dialog"
-              aria-label={menuOpen ? 'Close menu' : 'Open menu'}
-              className="relative block h-[17px] w-[18px] cursor-pointer"
-            >
-              <motion.span
-                aria-hidden="true"
-                className="absolute left-0 top-[5px] h-px w-full bg-current"
-                animate={menuOpen && !menuClosing ? { y: 3, rotate: 45 } : { y: 0, rotate: 0 }}
-                transition={{ duration: reducedMotion ? 0 : 0.35, ease: [0.4, 0, 0.2, 1] }}
-              />
-              <motion.span
-                aria-hidden="true"
-                className="absolute left-0 top-[11px] h-px w-full bg-current"
-                animate={menuOpen && !menuClosing ? { y: -3, rotate: -45 } : { y: 0, rotate: 0 }}
-                transition={{ duration: reducedMotion ? 0 : 0.35, ease: [0.4, 0, 0.2, 1] }}
-              />
-            </button>
-          </motion.div>
-        )}
-      </AnimatePresence>
       {/* Background column guides - 2 column mobile grid (currently hidden) */}
       {SHOW_COLUMN_GUIDES && (
         <div
@@ -691,6 +672,7 @@ export default function HomePanelMobile({
             >
               <motion.h1
                 ref={headerRef}
+                aria-label={t.name}
                 className="font-medium leading-none w-full cursor-default"
                 initial={instant ? false : undefined}
                 animate={{
@@ -704,13 +686,13 @@ export default function HomePanelMobile({
                 }}
               >
                 <span className="flex items-baseline whitespace-nowrap">
-                  <span>
+                  <span data-navigation-name="first">
                     {langSwitched ? (
                       <ScrambleText from={fromFirstName} charDelay={switchCharDelay}>
                         {firstName}
                       </ScrambleText>
                     ) : showContent ? (
-                      <AnimatedText baseDelay={headerDelay} staggerDelay={stagger}>
+                      <AnimatedText baseDelay={headerDelay} staggerDelay={stagger} instant={instant}>
                         {firstName}
                       </AnimatedText>
                     ) : (
@@ -744,28 +726,31 @@ export default function HomePanelMobile({
                     never goes off screen while the padding tween catches up. */}
                 <motion.span
                   className={`${langSwitched ? 'flex justify-end' : 'block'} whitespace-nowrap relative`}
+                  initial={instant ? false : undefined}
                   animate={{
                     paddingLeft: hasShrunk ? `${lineOffsetRatio * 100}%` : '0%',
                   }}
                   transition={shrinkTransition}
                   style={{ x: lastNameX, y: lastNameY }}
                 >
-                  {langSwitched ? (
-                    <ScrambleText
-                      from={fromLastName}
-                      align="right"
-                      baseDelay={lastNameSwitchDelay}
-                      charDelay={lastNameSwitchCharDelay}
-                    >
-                      {lastName}
-                    </ScrambleText>
-                  ) : showContent ? (
-                    <AnimatedText baseDelay={headerDelay + stagger} staggerDelay={stagger}>
-                      {lastName}
-                    </AnimatedText>
-                  ) : (
-                    <span className="opacity-0">{lastName}</span>
-                  )}
+                  <span data-navigation-name="last" className="inline-block">
+                    {langSwitched ? (
+                      <ScrambleText
+                        from={fromLastName}
+                        align="right"
+                        baseDelay={lastNameSwitchDelay}
+                        charDelay={lastNameSwitchCharDelay}
+                      >
+                        {lastName}
+                      </ScrambleText>
+                    ) : showContent ? (
+                      <AnimatedText baseDelay={headerDelay + stagger} staggerDelay={stagger} instant={instant}>
+                        {lastName}
+                      </AnimatedText>
+                    ) : (
+                      <span className="opacity-0">{lastName}</span>
+                    )}
+                  </span>
 
                   {/* Profile picture - appears beside "Zhao" once the name settles.
                       Always mounted (with priority) so the image is preloaded

@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import ThemeController from "@/components/ThemeController";
 import SmoothScroll from "@/components/SmoothScroll";
+import NavigationProvider from "@/components/NavigationProvider";
 
 const ppNeueMontreal = localFont({
   src: [
@@ -161,7 +162,7 @@ export default function RootLayout({
         />
         <ThemeController />
         <SmoothScroll />
-        {children}
+        <NavigationProvider>{children}</NavigationProvider>
       </body>
     </html>
   );

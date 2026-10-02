@@ -6,16 +6,17 @@ import { useEffect, useSyncExternalStore, type RefObject } from 'react';
 type Props = {
   progress: MotionValue<number>;
   menuProgress: MotionValue<number>;
-  heroTop: number;
+  heroTop: number | MotionValue<number>;
   triggerRef: RefObject<HTMLButtonElement | null>;
   open: boolean;
   navigationId: string;
   onClick: () => void;
   instant: boolean;
   delay: number;
+  embedded?: boolean;
 };
 
-export default function DesktopNavigationToggle({ progress, menuProgress, heroTop, triggerRef, open, navigationId, onClick, instant, delay }: Props) {
+export default function DesktopNavigationToggle({ progress, menuProgress, heroTop, triggerRef, open, navigationId, onClick, instant, delay, embedded = false }: Props) {
   const reducedMotion = useReducedMotion();
   const rotation = useMotionValue(0);
   const atHero = useSyncExternalStore(
@@ -23,7 +24,7 @@ export default function DesktopNavigationToggle({ progress, menuProgress, heroTo
     () => progress.get() < 0.01,
     () => true,
   );
-  const y = useTransform(() => (heroTop - 36) * (1 - progress.get()) * (1 - menuProgress.get()));
+  const y = useTransform(() => ((typeof heroTop === 'number' ? heroTop : heroTop.get()) - 36) * (1 - progress.get()) * (1 - menuProgress.get()));
   const color = useTransform(() => !open && progress.get() >= 0.7 ? '#ffffff' : 'var(--foreground)');
   const blend = useTransform(() => !open && progress.get() >= 0.7 ? 'difference' : 'normal');
   const line1Y = useTransform(() => (18 - 7 * progress.get()) * (1 - menuProgress.get()) + 18 * menuProgress.get());
@@ -56,8 +57,8 @@ export default function DesktopNavigationToggle({ progress, menuProgress, heroTo
       aria-expanded={open}
       aria-controls={navigationId}
       onClick={onClick}
-      className="fixed right-9 top-9 z-[60] h-9 w-9 cursor-pointer"
-      style={{ y, color, mixBlendMode: blend }}
+      className={`${embedded ? 'relative block' : 'fixed right-9 top-9 z-[60]'} h-9 w-9 cursor-pointer`}
+      style={{ y, color, mixBlendMode: embedded ? 'normal' : blend }}
       initial={instant || reducedMotion ? false : { opacity: 0, scale: 0.8 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: reducedMotion ? 0 : 0.8, delay: instant ? 0 : delay, ease: [0.4, 0, 0.2, 1] }}

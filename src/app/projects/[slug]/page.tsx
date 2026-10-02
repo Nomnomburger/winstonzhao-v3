@@ -53,7 +53,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 
 export default async function ProjectPage({ params }: { params: Params }) {
   const { slug } = await params;
-  const [project, next] = await Promise.all([getProject(slug), getNextProject(slug)]);
+  const [project, next, projects] = await Promise.all([getProject(slug), getNextProject(slug), getProjects()]);
   if (!project) notFound();
 
   const hero = project.hero?.[0];
@@ -65,7 +65,7 @@ export default async function ProjectPage({ params }: { params: Params }) {
 
   return (
     <main className="theme-root bg-background min-h-screen w-full overflow-x-clip">
-      <ProjectHeader />
+      <ProjectHeader projectCount={projects.length} />
 
       {/* Title and intro */}
       <section className="grid grid-cols-1 md:grid-cols-3 gap-x-6 gap-y-6 px-6 md:px-9 pt-16 md:pt-24 pb-6 md:pb-9">

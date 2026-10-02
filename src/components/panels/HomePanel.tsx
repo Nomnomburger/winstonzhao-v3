@@ -27,7 +27,7 @@ import MorphingBio, { HERO_BIO_LAYOUT_TRANSITION } from './MorphingBio';
 import { expandedBioLines } from './bio-copy';
 import HomeMenuLinks, { MenuRevealText } from './HomeMenuLinks';
 import TextRevealMask from './TextRevealMask';
-import DesktopNavigationToggle from './DesktopNavigationToggle';
+import { useNavigationNameHandoff, useNavigationToggle } from '@/components/NavigationProvider';
 import { useHomeMenu, useMenuHeaderHandoff } from './useHomeMenu';
 import { revealMaskAnimation } from './text-reveal';
 
@@ -609,8 +609,24 @@ export default function HomePanel({
     ? 'tracking-[-0.8px] lg:tracking-[-1.04px] xl:tracking-[-1.28px]'
     : 'tracking-[-1.6px] lg:tracking-[-2.08px] xl:tracking-[-2.56px]';
 
+  useNavigationToggle({
+    enabled: hasShrunk && showContent,
+    progress,
+    menuProgress,
+    heroTop: parseFloat(shrunkFontSize) + 72,
+    triggerRef,
+    open: menuOpen,
+    closing: menuClosing,
+    navigationId,
+    onClick: toggleMenu,
+    onHomeNavigate: closeImmediately,
+    instant,
+    delay: iconDelay,
+  });
+  useNavigationNameHandoff();
+
   return (
-    <div ref={rootRef} role={menuOpen ? 'dialog' : undefined} aria-modal={menuOpen ? true : undefined} aria-label={menuOpen ? 'Main navigation' : undefined} className="theme-root bg-background flex flex-col min-h-screen w-full relative overflow-x-clip">
+    <div ref={rootRef} role={menuOpen ? 'dialog' : undefined} aria-modal={menuOpen ? true : undefined} aria-label={menuOpen ? 'Main navigation' : undefined} aria-owns={menuOpen ? 'site-navigation-toggle' : undefined} className="theme-root bg-background flex flex-col min-h-screen w-full relative overflow-x-clip">
       <motion.div
         aria-hidden="true"
         className="fixed inset-0 z-10 bg-background"
@@ -649,9 +665,6 @@ export default function HomePanel({
       />
 
       {!menuOpen && <HomeNavigationBackdrop progress={progress} />}
-      {hasShrunk && showContent && (
-        <DesktopNavigationToggle progress={progress} menuProgress={menuProgress} heroTop={parseFloat(shrunkFontSize) + 72} triggerRef={triggerRef} open={menuOpen} navigationId={navigationId} onClick={toggleMenu} instant={instant} delay={iconDelay} />
-      )}
 
       {/* A stable viewport keeps the scroll target independent of name scaling. */}
       <div ref={heroRef} className="relative flex flex-col items-start p-9 min-h-svh w-full">
@@ -680,6 +693,7 @@ export default function HomePanel({
                   position and scale can trail the first name's together. */}
               <h1
                 ref={headerRef}
+                aria-label={t.name}
                 className="font-medium whitespace-nowrap leading-none"
                 style={{
                   letterSpacing: '-0.05em',
@@ -694,7 +708,7 @@ export default function HomePanel({
                   type="button"
                   tabIndex={isAtHero || menuOpen ? -1 : 0}
                   aria-disabled={isAtHero || menuOpen}
-                  aria-label={isAtHero ? undefined : `${t.name} — Back to top`}
+                  aria-label={isAtHero ? t.name : `${t.name} — Back to top`}
                   onClick={() => {
                     if (isAtHero || menuOpen) return;
                     preview.hide();
@@ -709,6 +723,7 @@ export default function HomePanel({
                 >
                   <motion.span
                     layout={!nameShrinkDone}
+                    data-navigation-name="first"
                     className="inline-block align-top"
                     transition={shrinkTransition}
                   >
@@ -724,6 +739,7 @@ export default function HomePanel({
                       >
                         <motion.span
                           layout={!nameShrinkDone}
+                          data-navigation-name="last"
                           className="inline-block align-top"
                           transition={lastNameShrinkTransition}
                         >

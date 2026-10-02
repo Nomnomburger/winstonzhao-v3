@@ -157,7 +157,10 @@ export function useHomeMenu({ exitDuration = 450 }: { exitDuration?: number } = 
         }
         return;
       }
-      const controls = Array.from(rootRef.current?.querySelectorAll<HTMLElement>('button, a[href]') ?? [])
+      const controls = Array.from(new Set([
+        ...document.querySelectorAll<HTMLElement>('[data-site-navigation] button, [data-site-navigation] a[href]'),
+        ...(rootRef.current?.querySelectorAll<HTMLElement>('button, a[href]') ?? []),
+      ]))
         .filter((element) => element.tabIndex >= 0 && !element.closest('[inert], [aria-hidden="true"]') &&
           getComputedStyle(element).visibility !== 'hidden' && element.getBoundingClientRect().height > 0);
       const index = controls.indexOf(document.activeElement as HTMLElement);

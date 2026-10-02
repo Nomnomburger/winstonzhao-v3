@@ -44,7 +44,7 @@ export default function SectionNav({ items }: SectionNavProps) {
   return (
     <nav
       aria-label="Sections"
-      className="sticky top-9 flex flex-col gap-3 items-start font-[450] text-[14px] leading-[1.2]"
+      className="sticky top-[104px] flex flex-col gap-3 items-start font-[450] text-[14px] leading-[1.2]"
     >
       {items.map((item) => (
         <a
