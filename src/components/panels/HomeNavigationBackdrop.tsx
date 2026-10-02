@@ -4,7 +4,7 @@ import { motion, useTransform, type MotionValue } from 'framer-motion';
 
 // Mobile uses one fading blur to avoid repeatedly filtering the same moving
 // backdrop in Safari. Desktop retains its gradual reduction in blur radius.
-// No tint is needed: the navigation inverts against the content underneath.
+// Keep the content visible beneath the navigation without adding a tint.
 export default function HomeNavigationBackdrop({ progress, mobile = false }: { progress: MotionValue<number>; mobile?: boolean }) {
   const opacity = useTransform(progress, [0, 0.4, 1], [0, 0, 1]);
   const layers = mobile ? [18] : [16, 8, 4, 2];

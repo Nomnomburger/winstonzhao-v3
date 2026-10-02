@@ -25,8 +25,6 @@ export default function DesktopNavigationToggle({ progress, menuProgress, heroTo
     () => true,
   );
   const y = useTransform(() => ((typeof heroTop === 'number' ? heroTop : heroTop.get()) - 36) * (1 - progress.get()) * (1 - menuProgress.get()));
-  const color = useTransform(() => !open && progress.get() >= 0.7 ? '#ffffff' : 'var(--foreground)');
-  const blend = useTransform(() => !open && progress.get() >= 0.7 ? 'difference' : 'normal');
   const line1Y = useTransform(() => (18 - 7 * progress.get()) * (1 - menuProgress.get()) + 18 * menuProgress.get());
   const line2X1 = useTransform(() => 18 * (1 - progress.get()) * (1 - menuProgress.get()));
   const line2X2 = useTransform(() => 18 + 18 * (progress.get() + (1 - progress.get()) * menuProgress.get()));
@@ -58,7 +56,7 @@ export default function DesktopNavigationToggle({ progress, menuProgress, heroTo
       aria-controls={navigationId}
       onClick={onClick}
       className={`${embedded ? 'relative block' : 'fixed right-9 top-9 z-[60]'} h-9 w-9 cursor-pointer`}
-      style={{ y, color, mixBlendMode: embedded ? 'normal' : blend }}
+      style={{ y, color: embedded ? 'inherit' : 'var(--navigation-menu-color, var(--navigation-foreground))' }}
       initial={instant || reducedMotion ? false : { opacity: 0, scale: 0.8 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: reducedMotion ? 0 : 0.8, delay: instant ? 0 : delay, ease: [0.4, 0, 0.2, 1] }}
