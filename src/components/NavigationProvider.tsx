@@ -34,6 +34,7 @@ type NavigationBinding = {
 
 const NavigationContext = createContext<NavigationBinding | null>(null);
 const NAVIGATION_EASE = [0.76, 0, 0.15, 1] as const;
+const subscribeToHydration = () => () => {};
 
 // Route panels supply their existing scroll/menu state. The actual controls
 // remain in the root layout, retaining their motion values during navigation.
@@ -305,6 +306,7 @@ function sameSettings(previous: NavigationToggleConfig | null, next: NavigationT
 
 export default function NavigationProvider({ children }: { children: ReactNode }) {
   const pathname = usePathname();
+  const hydrated = useSyncExternalStore(subscribeToHydration, () => true, () => false);
   const isMobile = useIsMobile();
   const reducedMotion = useReducedMotion();
   const { language } = useLanguage();
@@ -405,7 +407,9 @@ export default function NavigationProvider({ children }: { children: ReactNode }
   const color = useTransform(() => !open && progress.get() >= 0.7 ? '#ffffff' : 'var(--foreground)');
   const blend = useTransform(() => !open && progress.get() >= 0.7 ? 'difference' : 'normal');
   const resume = pathname === '/resume';
-  const showName = pathname !== '/' && !resume;
+  // Keep server and hydration markup identical even when a static deployment
+  // renders with a different pathname, so the transition copy never leaks.
+  const showName = hydrated && pathname !== '/' && !resume;
   const enabled = !resume && (settings?.enabled ?? pathname.startsWith('/projects/'));
   const triggerRef = settings?.triggerRef ?? fallbackTriggerRef;
   const instant = settings?.instant ?? true;
