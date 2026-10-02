@@ -1,26 +1,122 @@
 'use client';
 
-import { motion, useMotionValue, useTransform, useAnimationControls, animate } from 'framer-motion';
-import { ReactNode, useEffect, useRef, useState } from 'react';
+import { motion, useMotionValue, useTransform, useAnimationControls, useReducedMotion, animate, type AnimationPlaybackControls, type MotionValue } from 'framer-motion';
+import { ReactNode, useCallback, useContext, useEffect, useEffectEvent, useId, useRef, useState, useSyncExternalStore } from 'react';
 import { Language } from './translations';
+import { HeroBioExitContext, HeroBioExitWord } from './HeroBioLine';
+import { revealMaskAnimation } from './text-reveal';
 
-// Placeholder targets — update with the real URLs
-export const LINKEDIN_URL = 'https://www.linkedin.com/in/zhaowinston/?skipRedirect=true';
-export const OLD_SITE_URL = 'https://winstonzhao.ca';
-export const RESUME_URL = '/resume';
-export const EMAIL = 'hello@winstonzhao.ca';
+export { LINKEDIN_URL, OLD_SITE_URL, RESUME_URL, EMAIL } from '@/lib/site';
 
-// The WZ initials in the footer. The logo file is a black PNG glyph with a
-// transparent background, so we paint it with the theme foreground colour by
-// using it as a mask over a bg-foreground box (rather than an <img>, which
-// can't be recoloured). This makes the initials follow the theme like every
-// other element, fading with the global colour transition.
-export function WZLogo({ className = '' }: { className?: string }) {
+// Reveal the original mark along its pen strokes: W, Z, crossbar, then dot.
+// The asset mask preserves the logo's exact outline and theme colour.
+const WZ_STROKES = [
+  { path: 'M1.7 1.1 C2.9 6.5 3.1 14.1 4.6 25.1 C4.7 20.1 5.2 11.2 7.5 9.1 C9.5 9.2 10.9 26.5 12.1 27 C12.2 15 17.5 5 28.1 0.8', start: 0, duration: 0.65 },
+  { path: 'M21.7 8.3 C26.9 6.8 33.5 6.2 37.6 6.8 C41.4 7.4 25.6 15.1 18.1 23.8 C25.8 20.4 33.7 18.5 40.7 22.4', start: 0.64, duration: 0.46 },
+  { path: 'M25.2 14.1 C27.9 13.3 30.3 13.1 34.4 13.3', start: 1.09, duration: 0.12 },
+  { path: 'M43 24.4 L43.2 24.4', start: 1.21, duration: 0.08 },
+];
+const WZ_DRAW_DURATION = 1.32;
+const WZ_ERASE_DURATION = 0.66;
+
+function WZStroke({
+  stroke,
+  index,
+  progress,
+}: {
+  stroke: (typeof WZ_STROKES)[number];
+  index: number;
+  progress: MotionValue<number>;
+}) {
+  // After the intro, advance through a forward erase and then a fresh draw.
+  const strokeProgress = (value: number) => {
+    const phaseStart = value <= WZ_DRAW_DURATION ? 0
+      : value <= WZ_DRAW_DURATION * 2 ? WZ_DRAW_DURATION
+      : WZ_DRAW_DURATION * 2;
+    return Math.min(1, Math.max(0, (value - phaseStart - stroke.start) / stroke.duration));
+  };
+  const isErasing = (value: number) => value > WZ_DRAW_DURATION && value <= WZ_DRAW_DURATION * 2;
+  const pathLength = useTransform(progress, (value) =>
+    isErasing(value) ? 1 - strokeProgress(value) : strokeProgress(value),
+  );
+  const pathOffset = useTransform(progress, (value) => isErasing(value) ? strokeProgress(value) : 0);
+  const opacity = useTransform(pathLength, (value) => value > 0 ? 1 : 0);
+
+  return (
+    <motion.path
+      data-wz-stroke={index}
+      d={stroke.path}
+      fill="none"
+      stroke="white"
+      strokeWidth="4.2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      style={{ pathLength, pathOffset, opacity }}
+    />
+  );
+}
+
+export function WZLogo({
+  className = '',
+  draw = false,
+  show = true,
+  instant = false,
+  delay = 0,
+}: {
+  className?: string;
+  draw?: boolean;
+  show?: boolean;
+  instant?: boolean;
+  delay?: number;
+}) {
+  const maskId = `wz-writing-${useId().replaceAll(':', '')}`;
+  const reducedMotion = useReducedMotion();
+  const still = Boolean(instant || reducedMotion);
+  const progress = useMotionValue(still && show ? WZ_DRAW_DURATION : 0);
+  const fullMaskOpacity = useTransform(progress, (value) =>
+    value === WZ_DRAW_DURATION || value >= WZ_DRAW_DURATION * 3 ? 1 : 0,
+  );
+  const animationRef = useRef<AnimationPlaybackControls | null>(null);
+  const replayingRef = useRef(false);
+
+  useEffect(() => {
+    if (!draw) return;
+
+    replayingRef.current = false;
+    if (!show || still) {
+      progress.set(show ? WZ_DRAW_DURATION : 0);
+    } else {
+      animationRef.current = animate(progress, WZ_DRAW_DURATION, {
+        duration: WZ_DRAW_DURATION,
+        delay,
+        ease: 'linear',
+      });
+    }
+
+    return () => animationRef.current?.stop();
+  }, [draw, show, still, delay, progress]);
+
+  const replay = () => {
+    if (!draw || !show || reducedMotion || replayingRef.current || progress.get() < WZ_DRAW_DURATION) return;
+
+    replayingRef.current = true;
+    animationRef.current = animate(progress, [WZ_DRAW_DURATION, WZ_DRAW_DURATION * 2, WZ_DRAW_DURATION * 3], {
+      duration: WZ_ERASE_DURATION + WZ_DRAW_DURATION,
+      times: [0, WZ_ERASE_DURATION / (WZ_ERASE_DURATION + WZ_DRAW_DURATION), 1],
+      ease: 'linear',
+      onComplete: () => {
+        progress.set(WZ_DRAW_DURATION);
+        replayingRef.current = false;
+      },
+    });
+  };
+
   return (
     <span
       role="img"
       aria-label="WZ"
-      className={`block bg-foreground ${className}`}
+      onMouseEnter={replay}
+      className={`block ${draw ? '' : 'bg-foreground'} ${className}`}
       style={{
         maskImage: 'url(/wz-logo.svg)',
         WebkitMaskImage: 'url(/wz-logo.svg)',
@@ -31,7 +127,31 @@ export function WZLogo({ className = '' }: { className?: string }) {
         maskSize: 'contain',
         WebkitMaskSize: 'contain',
       }}
-    />
+    >
+      {draw && (
+        <svg viewBox="0 0 45 28" className="block w-full h-full" aria-hidden="true">
+          <defs>
+            <mask id={maskId} maskUnits="userSpaceOnUse" x="0" y="0" width="45" height="28">
+              {WZ_STROKES.map((stroke, index) => (
+                <WZStroke
+                  key={index}
+                  stroke={stroke}
+                  index={index}
+                  progress={progress}
+                />
+              ))}
+              <motion.rect
+                width="45"
+                height="28"
+                fill="white"
+                style={{ opacity: fullMaskOpacity }}
+              />
+            </mask>
+          </defs>
+          <rect width="45" height="28" fill="currentColor" mask={`url(#${maskId})`} />
+        </svg>
+      )}
+    </span>
   );
 }
 
@@ -125,16 +245,8 @@ export function AnimatedWord({ children, delay, movement = '40%', instant = fals
     );
   }
   return (
-    <motion.span
-      className="inline-block align-bottom"
-      initial={{ clipPath: 'inset(-10% -10% 0 -10%)' }}
-      animate={{ clipPath: 'inset(-10% -10% -20% -10%)' }}
-      transition={{
-        duration: 0.5,
-        delay: delay + 0.5,
-        ease: [0.4, 0, 0.2, 1],
-      }}
-    >
+    // The word rises through a stationary mask whose lower edge opens late.
+    <motion.span className="text-reveal-mask inline-block align-bottom" {...revealMaskAnimation(delay, 0.9)}>
       <motion.span
         className="inline-block"
         initial={{ y: movement, opacity: 0 }}
@@ -158,18 +270,32 @@ interface AnimatedTextProps {
   className?: string;
   movement?: string;
   instant?: boolean;
+  wordOffset?: number;
 }
 
-export function AnimatedText({ children, baseDelay = 0, staggerDelay = 0.08, className = '', movement = '40%', instant = false }: AnimatedTextProps) {
+export function AnimatedText({ children, baseDelay = 0, staggerDelay = 0.08, className = '', movement = '40%', instant = false, wordOffset = 0 }: AnimatedTextProps) {
+  const bioExit = useContext(HeroBioExitContext);
   const words = children.split(' ');
 
   return (
     <span className={className}>
       {words.map((word, index) => (
         <span key={index}>
-          <AnimatedWord delay={baseDelay + index * staggerDelay} movement={movement} instant={instant}>
-            {word}
-          </AnimatedWord>
+          {bioExit && word ? (
+            <HeroBioExitWord
+              progress={bioExit.progress}
+              order={bioExit.wordOffset + wordOffset + words.slice(0, index).filter(Boolean).length}
+              wordCount={bioExit.wordCount}
+            >
+              <AnimatedWord delay={baseDelay + index * staggerDelay} movement={movement} instant={instant}>
+                {word}
+              </AnimatedWord>
+            </HeroBioExitWord>
+          ) : (
+            <AnimatedWord delay={baseDelay + index * staggerDelay} movement={movement} instant={instant}>
+              {word}
+            </AnimatedWord>
+          )}
           {index < words.length - 1 && ' '}
         </span>
       ))}
@@ -200,6 +326,8 @@ interface ScrambleTextProps {
   // the anchored side outward, so insertions appear last, furthest left.
   align?: 'left' | 'right';
   className?: string;
+  onComplete?: (text: string) => void;
+  renderDisplay?: (text: string) => ReactNode;
 }
 
 // Typewriter-style scramble: the current text stays on screen and each
@@ -213,12 +341,19 @@ export function ScrambleText({
   scrambleDuration = 0.5,
   align = 'left',
   className = '',
+  onComplete,
+  renderDisplay,
 }: ScrambleTextProps) {
+  const bioExit = useContext(HeroBioExitContext);
   const [display, setDisplay] = useState(from ?? children);
   const displayRef = useRef(from ?? children);
+  const complete = useEffectEvent((text: string) => onComplete?.(text));
 
   useEffect(() => {
-    if (displayRef.current === children) return;
+    if (displayRef.current === children) {
+      complete(children);
+      return;
+    }
 
     // Right-aligned mode runs the whole animation on reversed strings (and
     // reverses each frame back on the way out), which lines the texts up
@@ -304,13 +439,18 @@ export function ScrambleText({
       displayRef.current = text;
       setDisplay(text);
       if (!settled) frame = requestAnimationFrame(tick);
+      else complete(children);
     };
 
     frame = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(frame);
   }, [children, baseDelay, charDelay, scrambleDuration, align]);
 
-  return <span className={className}>{display}</span>;
+  if (renderDisplay) return renderDisplay(display);
+
+  return bioExit
+    ? <AnimatedText className={className} instant>{display}</AnimatedText>
+    : <span className={className}>{display}</span>;
 }
 
 // English uses the 12-hour clock; Swedish and Chinese use 24-hour time
@@ -321,14 +461,14 @@ const TIME_LOCALES: Record<Language, string> = {
   zh: 'zh-CN',
 };
 
-export function formatStockholmTime(language: Language, date = new Date()) {
+export function formatTorontoTime(language: Language, date = new Date()) {
   const formatter = new Intl.DateTimeFormat(TIME_LOCALES[language], {
     hour: language === 'en' ? 'numeric' : '2-digit',
     minute: '2-digit',
     hour12: language === 'en',
-    timeZone: 'Europe/Stockholm',
+    timeZone: 'America/Toronto',
   });
-  return `STHLM ${formatter.format(date)}`;
+  return `Toronto ${formatter.format(date)}`;
 }
 
 export function useCurrentTime(language: Language = 'en') {
@@ -336,7 +476,7 @@ export function useCurrentTime(language: Language = 'en') {
 
   useEffect(() => {
     const updateTime = () => {
-      setTime(formatStockholmTime(language));
+      setTime(formatTorontoTime(language));
     };
 
     updateTime();
@@ -347,47 +487,66 @@ export function useCurrentTime(language: Language = 'en') {
   return time;
 }
 
+// Reads the media query during render on client navigations (e.g. going Back
+// to the home page), so the right layout paints first and the browser restores
+// the scroll position against the right page height. Server renders and
+// hydration start from the desktop layout, as before.
 export function useIsMobile(breakpoint = 768) {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia(`(max-width: ${breakpoint - 1}px)`);
-    const update = () => setIsMobile(mediaQuery.matches);
-
-    update();
-    mediaQuery.addEventListener('change', update);
-    return () => mediaQuery.removeEventListener('change', update);
-  }, [breakpoint]);
-
-  return isMobile;
+  const query = `(max-width: ${breakpoint - 1}px)`;
+  const subscribe = useCallback(
+    (onChange: () => void) => {
+      const mediaQuery = window.matchMedia(query);
+      mediaQuery.addEventListener('change', onChange);
+      return () => mediaQuery.removeEventListener('change', onChange);
+    },
+    [query],
+  );
+  return useSyncExternalStore(
+    subscribe,
+    () => window.matchMedia(query).matches,
+    () => false,
+  );
 }
 
-export function NewlyRole({ label = 'Design at' }: { label?: ReactNode }) {
+// Role lines ("Design at Newly"). The desktop home page sets them at 14px
+// (`large`); mobile keeps the original 12px.
+const roleTextClass = (large?: boolean) =>
+  `font-normal ${large ? 'text-[14px] tracking-[-0.28px] leading-[1.2]' : 'text-[12px] tracking-[-0.24px] leading-normal'} whitespace-nowrap`;
+
+const roleIconClass = (large?: boolean) =>
+  `${large ? 'w-[18px] h-[17px]' : 'w-3.5 h-3.5'} shrink-0 flex items-center justify-center relative -top-[1px]`;
+
+interface RoleProps {
+  label?: ReactNode;
+  large?: boolean;
+}
+
+export function NewlyRole({ label = 'Design at', large = false }: RoleProps) {
   return (
     <div className="flex gap-[2px] items-center">
-      <p className="font-normal text-[12px] tracking-[-0.24px] leading-normal whitespace-nowrap">{label}</p>
-      <div className="w-3.5 h-3.5 shrink-0 flex items-center justify-center relative -top-[1px]">
-        <svg viewBox="0 0 12 9.15607" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Newly" role="img" className="w-[12px] h-[9.156px] overflow-visible">
+      <p className={roleTextClass(large)}>{label}</p>
+      <div className={roleIconClass(large)}>
+        <svg viewBox="0 0 12 9.15607" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Newly" role="img" className={`${large ? 'w-[14px] h-[10.682px]' : 'w-[12px] h-[9.156px]'} overflow-visible`}>
           <path d="M9.15638 1.89468C9.15638 2.41779 9.58039 2.84181 10.1035 2.84181H11.0509C11.574 2.84181 11.9981 3.26583 11.9981 3.78896V8.20937C11.9981 8.73249 11.574 9.15652 11.0509 9.15652H9.78796C9.26483 9.15652 8.84083 8.73249 8.84083 8.20937V4.10476C8.84083 3.58163 8.4168 3.15761 7.89368 3.15761H4.10438C3.58125 3.15761 3.15723 3.58163 3.15723 4.10476V8.20937C3.15723 8.73249 2.73321 9.15652 2.21008 9.15652H0.947145C0.42402 9.15652 0 8.73249 0 8.20937V3.7892C0 3.26608 0.42402 2.84205 0.947145 2.84205H1.89428C2.41741 2.84205 2.84143 2.41803 2.84143 1.8949V0.947766C2.84143 0.424641 3.26546 0.000620978 3.78858 0.000620978H8.20899C8.73212 0.000620978 9.15614 0.424641 9.15614 0.947766V1.89468H9.15638Z" fill="currentColor"/>
           <path d="M4.89574 5.08094C5.33176 5.08094 5.68498 5.66405 5.68498 6.38346C5.68498 6.39858 5.68474 6.4137 5.68451 6.42882C5.68115 6.58503 5.54604 6.69926 5.38982 6.69926H4.40141C4.24519 6.69926 4.11008 6.58479 4.10674 6.42882C4.10649 6.4137 4.10625 6.39882 4.10625 6.38346C4.10649 5.66429 4.45996 5.08094 4.89574 5.08094Z" fill="currentColor"/>
           <path d="M7.10355 5.08094C7.53955 5.08094 7.89279 5.66405 7.89279 6.38346C7.89279 6.39858 7.89255 6.4137 7.89231 6.42882C7.88894 6.58503 7.75385 6.69926 7.59763 6.69926H6.60921C6.453 6.69926 6.3179 6.58479 6.31453 6.42882C6.31429 6.4137 6.31406 6.39882 6.31406 6.38346C6.31429 5.66429 6.66753 5.08094 7.10355 5.08094Z" fill="currentColor"/>
         </svg>
       </div>
-      <p className="font-normal text-[12px] tracking-[-0.24px] leading-normal whitespace-nowrap"><a href="https://newly.app" target="_blank" rel="noopener noreferrer" className="hover:underline">Newly</a></p>
+      <p className={roleTextClass(large)}><a href="https://newly.app" target="_blank" rel="noopener noreferrer" className="hover:underline">Newly</a></p>
     </div>
   );
 }
 
-export function FigmaRole({ label = 'Campus Leader at' }: { label?: ReactNode }) {
+export function FigmaRole({ label = 'Campus Leader at', large = false }: RoleProps) {
   return (
     <div className="flex gap-px items-center">
-      <p className="font-normal text-[12px] tracking-[-0.24px] leading-normal whitespace-nowrap">{label}</p>
-      <div className="w-3.5 h-3.5 shrink-0 flex items-center justify-center relative -top-[1px]">
-        <svg viewBox="0 0 8 11" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Figma" role="img" className="w-[8px] h-[11px] overflow-visible">
+      <p className={roleTextClass(large)}>{label}</p>
+      <div className={roleIconClass(large)}>
+        <svg viewBox="0 0 8 11" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Figma" role="img" className={`${large ? 'w-[8.727px] h-[12.583px]' : 'w-[8px] h-[11px]'} overflow-visible`}>
           <path fillRule="evenodd" clipRule="evenodd" d="M0.979804 3.77733C0.389945 3.41078 0 2.77614 0 2.05464C0 0.919893 0.96456 0 2.15441 0H5.84559C7.03543 0 8 0.919893 8 2.05464C8 2.77614 7.61002 3.41078 7.02018 3.77733C7.61002 4.14388 8 4.77852 8 5.50002C8 6.63477 7.03543 7.55468 5.84559 7.55468H5.80632C5.24387 7.55468 4.73176 7.3491 4.34807 7.01244V8.92662C4.34807 10.074 3.36241 11 2.16417 11C0.976767 11 0 10.0824 0 8.94538C0 8.22391 0.38993 7.58927 0.979772 7.22266C0.38993 6.85612 0 6.22148 0 5.50002C0 4.77852 0.389945 4.14388 0.979804 3.77733ZM4.34807 5.50002C4.34807 6.26811 5.00096 6.89071 5.80632 6.89071H5.84559C6.65096 6.89071 7.30385 6.26811 7.30385 5.50002C7.30385 4.73195 6.65096 4.10931 5.84559 4.10931H5.80632C5.00096 4.10931 4.34807 4.73195 4.34807 5.50002ZM3.65191 4.10931H2.15441C1.34904 4.10931 0.696161 4.73195 0.696161 5.50002C0.696161 6.26652 1.34639 6.8882 2.1495 6.89071H2.15179H3.65191V4.10931ZM2.15441 7.55468C2.15277 7.55468 2.15114 7.55468 2.1495 7.55468C1.3464 7.55718 0.696161 8.17887 0.696161 8.94538C0.696161 9.71111 1.35635 10.3361 2.16417 10.3361C2.98283 10.3361 3.65191 9.70273 3.65191 8.92662V7.55468H2.15441ZM3.65191 3.44535H2.15441C1.34904 3.44535 0.696161 2.82271 0.696161 2.05464C0.696161 1.28657 1.34904 0.663923 2.15441 0.663923H3.65191V3.44535ZM5.84559 3.44535H4.34807V0.663923H5.84559C6.65096 0.663923 7.30385 1.28657 7.30385 2.05464C7.30385 2.82271 6.65096 3.44535 5.84559 3.44535Z" fill="currentColor"/>
         </svg>
       </div>
-      <p className="font-normal text-[12px] tracking-[-0.24px] leading-normal whitespace-nowrap"><a href="https://figma.com" target="_blank" rel="noopener noreferrer" className="hover:underline">Figma</a></p>
+      <p className={roleTextClass(large)}><a href="https://figma.com" target="_blank" rel="noopener noreferrer" className="hover:underline">Figma</a></p>
     </div>
   );
 }
@@ -414,15 +573,14 @@ export function TextQLMark({ className = '', ariaLabel }: TextQLMarkProps) {
   );
 }
 
-export function TextQLRole({ label = 'Prev. Design at' }: { label?: ReactNode }) {
+export function TextQLRole({ label = 'Prev. Design at', large = false }: RoleProps) {
   return (
     <div className="flex gap-[2px] items-center">
-      <p className="font-normal text-[12px] tracking-[-0.24px] leading-normal whitespace-nowrap">{label}</p>
-      <div className="w-3.5 h-3.5 shrink-0 flex items-center justify-center relative -top-[1px]">
-        <TextQLMark className="w-[12px] h-[8.578px] overflow-visible" ariaLabel="TextQL" />
+      <p className={roleTextClass(large)}>{label}</p>
+      <div className={roleIconClass(large)}>
+        <TextQLMark className={`${large ? 'w-[14px] h-[10px]' : 'w-[12px] h-[8.578px]'} overflow-visible`} ariaLabel="TextQL" />
       </div>
-      <p className="font-normal text-[12px] tracking-[-0.24px] leading-normal whitespace-nowrap"><a href="https://textql.com" target="_blank" rel="noopener noreferrer" className="hover:underline">TextQL</a></p>
+      <p className={roleTextClass(large)}><a href="https://textql.com" target="_blank" rel="noopener noreferrer" className="hover:underline">TextQL</a></p>
     </div>
   );
 }
-

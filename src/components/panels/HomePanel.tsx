@@ -1,25 +1,35 @@
 'use client';
 
-import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
-import { useEffect, useRef, useState } from 'react';
+import { animate, motion, AnimatePresence, cubicBezier, useAnimationControls, useMotionValue, useReducedMotion, useSpring, useTransform } from 'framer-motion';
+import { useEffect, useEffectEvent, useLayoutEffect, useRef, useState, useSyncExternalStore } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import {
   AnimatedText,
   ScrambleText,
-  formatStockholmTime,
+  formatTorontoTime,
   useCurrentTime,
   NewlyRole,
   FigmaRole,
-  TextQLRole,
   WZLogo,
-  LINKEDIN_URL,
+  LanguageGlobe,
   OLD_SITE_URL,
   RESUME_URL,
   EMAIL,
 } from './shared';
-import ThemeToggle from '@/components/ThemeToggle';
 import { Language, translations } from './translations';
+import HomeProjects from '@/components/projects/HomeProjects';
+import CursorPreview, { useCursorPreview } from '@/components/projects/CursorPreview';
+import type { ProjectCardData } from '@/components/projects/types';
+import { useHeroScroll } from './useHeroScroll';
+import HomeNavigationBackdrop from './HomeNavigationBackdrop';
+import MorphingBio, { HERO_BIO_LAYOUT_TRANSITION } from './MorphingBio';
+import { expandedBioLines } from './bio-copy';
+import HomeMenuLinks, { MenuRevealText } from './HomeMenuLinks';
+import TextRevealMask from './TextRevealMask';
+import { useNavigationNameHandoff, useNavigationToggle } from '@/components/NavigationProvider';
+import { useHomeMenu, useMenuHeaderHandoff } from './useHomeMenu';
+import { revealMaskAnimation } from './text-reveal';
 
 interface HomePanelProps {
   showContent?: boolean;
@@ -27,11 +37,27 @@ interface HomePanelProps {
   instant?: boolean;
   language?: Language;
   onLanguageChange?: (language: Language) => void;
+  projects?: ProjectCardData[];
 }
 
 // Vertical column guides are hidden in the current design.
 // Flip this back to true to restore them.
 const SHOW_COLUMN_GUIDES = false;
+
+const NAME_SHRINK_DURATION = 0.8;
+const NAME_SHRINK_STAGGER = 0.06;
+const NAME_SHRINK_EASE = [0.76, 0, 0.15, 1] as const;
+const NAME_SCROLL_SPRING = {
+  stiffness: 60,
+  damping: 22,
+  mass: 1,
+  restDelta: 0.001,
+  restSpeed: 0.01,
+};
+const NAME_SCROLL_STAGGER = NAME_SHRINK_STAGGER / (NAME_SHRINK_DURATION + NAME_SHRINK_STAGGER);
+const nameShrinkEase = cubicBezier(...NAME_SHRINK_EASE);
+// Begin contracting immediately while retaining the intro's easing shape.
+const nameScrollEase = (value: number) => 0.25 * value + 0.75 * nameShrinkEase(value);
 
 // Split the display name into its leading word and the rest so the two can
 // shrink on a stagger. A single-word name keeps everything in the first slot.
@@ -40,53 +66,66 @@ const splitName = (name: string): [string, string] => {
   return i === -1 ? [name, ''] : [name.slice(0, i), name.slice(i + 1)];
 };
 
+// Size of the shrunk header name: 128px on normal laptop sizes, much smaller
+// in the cramped range between mobile and lg, and growing past a 16" MacBook
+// (1728px).
+const shrunkHeaderSize = (width: number) => {
+  const breakpoint = 1728;
+  const baseSize = 128;
+  // How aggressively the header grows past the breakpoint (1 = linear with
+  // width; higher = grows faster on large displays).
+  const growthFactor = 2;
+  if (width < 1024) return '72px';
+  if (width > breakpoint) {
+    return `${baseSize + ((width - breakpoint) / breakpoint) * baseSize * growthFactor}px`;
+  }
+  return `${baseSize}px`;
+};
+
 type HoverKey = 'name' | 'stockholm' | 'newly';
 
-// Desktop-only feature: hovering the name or a highlighted bio word reveals an
-// image in the blank space on the left. Positions/sizes mirror the Figma
-// frames (1280×832 reference) — `left` hugs the page's left padding and `top`
-// is a percentage of viewport height so the images track the blank band as the
-// window resizes.
-const HOVER_IMAGES: ReadonlyArray<{
-  key: HoverKey;
-  src: string;
-  alt: string;
-  left: string;
-  top: string;
-  width: number;
-  height: number;
-}> = [
-  { key: 'name', src: '/profile.webp', alt: 'Winston Zhao', left: '36px', top: '44.5%', width: 154, height: 154 },
-  { key: 'stockholm', src: '/stockholm.webp', alt: 'Stockholm', left: '188px', top: '38.3%', width: 237, height: 316 },
-  { key: 'newly', src: '/newlygraphic.avif', alt: 'Newly', left: '36px', top: '48.7%', width: 390, height: 230 },
+// Hovering the name or a highlighted bio word shows a photo beside the cursor
+// that trails it, the same way hovering a row of the project list does (on
+// devices with a mouse or trackpad). Sizes are the Figma frames'.
+const HOVER_IMAGES: ReadonlyArray<{ key: HoverKey; src: string; width: number; height: number }> = [
+  { key: 'name', src: '/profile.webp', width: 154, height: 154 },
+  { key: 'stockholm', src: '/stockholm.webp', width: 237, height: 316 },
+  { key: 'newly', src: '/newlygraphic.avif', width: 390, height: 230 },
 ];
 
 // Bio lines (by index) that carry a hover word, with the matching word per
 // language so the highlight follows a language switch.
 const HOVER_BIO_WORDS: Record<number, { key: HoverKey; word: Record<Language, string> }> = {
-  2: { key: 'stockholm', word: { en: 'stockholm', sv: 'stockholm', zh: '斯德哥尔摩' } },
-  3: { key: 'newly', word: { en: 'newly', sv: 'newly', zh: 'Newly' } },
+  2: { key: 'stockholm', word: { en: 'toronto', sv: 'toronto', zh: '多伦多' } },
+  3: { key: 'newly', word: { en: 'ocad', sv: 'ocad', zh: 'OCAD' } },
 };
 
 // After a language switch the keyword lines render as one unit so the full-line
 // scramble plays; once it settles they swap to their static, hoverable form.
 const SCRAMBLE_SETTLE_MS = 1100;
 
-// While hovering a text trigger, the image trails the pointer at a fraction of
-// its movement, eased by a spring so it glides to rest when the pointer stops.
-const FOLLOW_FACTOR = 0.12;
-const FOLLOW_SPRING = { stiffness: 110, damping: 18, mass: 0.6 } as const;
-
 export default function HomePanel({
   showContent = true,
   instant = false,
   language = 'en',
   onLanguageChange,
+  projects = [],
 }: HomePanelProps) {
   const headerRef = useRef<HTMLHeadingElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const heroRef = useRef<HTMLDivElement>(null);
+  const headingRef = useRef<HTMLDivElement>(null);
+  const nameButtonRef = useRef<HTMLButtonElement>(null);
+  const lastNameRef = useRef<HTMLSpanElement>(null);
+  const lastNameOffset = useMotionValue(0);
   const [fontSize, setFontSize] = useState('220.84px');
-  const [shrunkFontSize, setShrunkFontSize] = useState('128px');
+  // A page shown already shrunk (`instant`) only ever mounts on the client
+  // (coming back from another page), so it can start at the final size and
+  // paint the right layout first; the browser then lands on #work or restores
+  // the scroll position against it.
+  const [shrunkFontSize, setShrunkFontSize] = useState(() =>
+    instant && typeof window !== 'undefined' ? shrunkHeaderSize(window.innerWidth) : '128px',
+  );
   const [hasShrunk, setHasShrunk] = useState(instant);
   // True once the user has changed language: changed copy then re-animates
   // with the scramble effect instead of the intro animations.
@@ -94,9 +133,6 @@ export default function HomePanel({
   // Language shown before the switch, so the outgoing copy stays on screen
   // until the scramble replaces it.
   const [prevLanguage, setPrevLanguage] = useState<Language>(language);
-  // Which element (name / "stockholm" / "newly") is currently hovered, driving
-  // the image that pops up in the blank left space (desktop only).
-  const [hovered, setHovered] = useState<HoverKey | null>(null);
   // Hover only becomes active once the intro has finished playing, so nothing
   // pops up mid-animation while the page is still loading in.
   const [introDone, setIntroDone] = useState(instant);
@@ -106,47 +142,220 @@ export default function HomePanel({
   const currentTime = useCurrentTime(language);
   const t = translations[language];
   const fromT = translations[prevLanguage];
+  const projectCount = String(projects.length);
+  const [menuFromHero, setMenuFromHero] = useState(true);
+  const { open: menuOpen, closing: menuClosing, setOpen: setMenuOpen, rootRef, triggerRef, navigationId, close: closeMenu, closeImmediately, cancelClose } = useHomeMenu({ exitDuration: menuFromHero ? HERO_BIO_LAYOUT_TRANSITION.duration * 1000 : 700 });
+  const [carryProjects, setCarryProjects] = useState(true);
+  const revealMenuProjects = menuOpen && !menuFromHero && !carryProjects;
+  const projectsReveal = useAnimationControls();
+  const closingProgress = useMotionValue(0);
+  const menuProgress = useMotionValue(0);
+  const menuNameProgress = useMotionValue(0);
+  const menuActive = useSyncExternalStore(
+    (listener) => menuProgress.on('change', listener),
+    () => menuProgress.get() > 0.001,
+    () => false,
+  );
+  const menuScrollY = useMotionValue(0);
+  const menuBioScaleTarget = useMotionValue(1);
+  const menuBioScale = useTransform(() => menuOpen && !menuFromHero
+    ? menuBioScaleTarget.get() : 1 + (menuBioScaleTarget.get() - 1) * menuProgress.get());
+  const bioRef = useRef<HTMLDivElement>(null);
+  const menuFooterY = useMotionValue(0);
+  const rolesY = useTransform(() => menuOpen && !menuFromHero ? menuFooterY.get() : 0);
+  const rolesRef = useRef<HTMLDivElement>(null);
+  const { progress, headingY, projectsHeadingY, isAtHero, scrollToProjects, scrollToHero, cancelScroll } = useHeroScroll({
+    heroRef,
+    headingRef,
+    enabled: hasShrunk && showContent && projects.length > 0 && !menuOpen,
+    ready: introDone,
+    touchEnabled: showContent && projects.length > 0 && !menuOpen,
+  });
+  const reducedMotion = useReducedMotion();
+  useEffect(() => {
+    const returningToHero = menuFromHero && menuClosing;
+    const transition = menuFromHero && menuOpen ? HERO_BIO_LAYOUT_TRANSITION : { duration: 0.8, ease: NAME_SHRINK_EASE };
+    const animation = animate(menuProgress, menuOpen && !returningToHero ? 1 : 0, {
+      ...transition,
+      duration: reducedMotion ? 0 : transition.duration,
+    });
+    return () => animation.stop();
+  }, [menuOpen, menuClosing, menuFromHero, menuProgress, reducedMotion]);
+  const menuNameExpanded = menuOpen && !(menuFromHero && menuClosing);
+  useEffect(() => {
+    // Follow the same timing as the scroll snap, independently of the bio.
+    const animation = animate(menuNameProgress, menuNameExpanded ? 1 : 0, {
+      duration: reducedMotion ? 0 : menuNameExpanded ? 0.8 : 1.1,
+      ease: [0.2, 0.8, 0.2, 1],
+    });
+    return () => animation.stop();
+  }, [menuNameExpanded, menuNameProgress, reducedMotion]);
+  useLayoutEffect(() => {
+    if (!menuOpen) {
+      projectsReveal.set({ opacity: 1, y: 0, filter: 'blur(0px)' });
+      return;
+    }
+    if (menuClosing) {
+      if (!carryProjects && menuFromHero) void projectsReveal.start({ opacity: 0, y: -16, filter: 'blur(5px)', transition: { duration: reducedMotion ? 0 : 0.32 } });
+      const exit = animate(closingProgress, 1, { duration: reducedMotion ? 0 : 0.32 });
+      return () => exit.stop();
+    }
+    closingProgress.set(0);
+    if (!carryProjects && menuFromHero) {
+      projectsReveal.set({ opacity: 0, y: 16, filter: 'blur(5px)' });
+      void projectsReveal.start({ opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: reducedMotion ? 0 : 0.9, ease: [0.4, 0, 0.2, 1] } });
+    } else projectsReveal.set({ opacity: 1, y: 0, filter: 'blur(0px)' });
+  }, [menuOpen, menuClosing, menuFromHero, carryProjects, projectsReveal, closingProgress, reducedMotion]);
+  useLayoutEffect(() => {
+    if (!menuOpen) return;
+    const fitBio = () => {
+      const fontSize = bioRef.current ? parseFloat(getComputedStyle(bioRef.current).fontSize) : 64;
+      const available = window.innerHeight - parseFloat(shrunkFontSize) - 72 - 112;
+      menuBioScaleTarget.set(Math.min(1, Math.max(24, available / 8) / fontSize));
+    };
+    fitBio();
+    window.addEventListener('resize', fitBio);
+    return () => window.removeEventListener('resize', fitBio);
+  }, [menuOpen, shrunkFontSize, menuBioScaleTarget]);
+  const toggleMenu = () => {
+    if (menuClosing) { cancelClose(); return; }
+    if (menuOpen) { closeMenu(); return; }
+    cancelScroll();
+    preview.hide();
+    menuScrollY.set(window.scrollY);
+    setMenuFromHero(isAtHero);
+    const projectsAtMenuPosition = Math.abs((headingRef.current?.getBoundingClientRect().top ?? 0) - parseFloat(shrunkFontSize) - 72) < 2;
+    setCarryProjects(projectsAtMenuPosition);
+    if (!projectsAtMenuPosition && isAtHero) projectsReveal.set({ opacity: 0, y: 16, filter: 'blur(5px)' });
+    else projectsReveal.set({ opacity: 1, y: 0, filter: 'blur(0px)' });
+    if (rolesRef.current) {
+      const rect = rolesRef.current.getBoundingClientRect();
+      const currentY = new DOMMatrixReadOnly(getComputedStyle(rolesRef.current).transform).m42;
+      menuFooterY.set(currentY + window.innerHeight - 36 - rect.bottom);
+    }
+    setMenuOpen(true);
+  };
+  const currentScrollToProjects = useRef(scrollToProjects);
+  useLayoutEffect(() => { currentScrollToProjects.current = scrollToProjects; }, [scrollToProjects]);
+  const menuHeadingY = useTransform(() => menuOpen && !menuFromHero ? menuScrollY.get() : projectsHeadingY.get());
+  const menuBioY = useTransform(() => menuOpen && !menuFromHero ? menuScrollY.get() : headingY.get());
+  // Give the name time to follow the scroll instead of compressing its
+  // stagger into the scroll snap's fast opening movement.
+  const smoothNameProgress = useSpring(progress, NAME_SCROLL_SPRING);
+  const smoothMenuNameProgress = useSpring(menuNameProgress, NAME_SCROLL_SPRING);
+  const nameProgress = reducedMotion ? progress : smoothNameProgress;
+  const menuHeaderProgress = reducedMotion ? menuNameProgress : smoothMenuNameProgress;
+  const { compactProgress: navigationCompactProgress, keepCompact } = useMenuHeaderHandoff({
+    scrollProgress: progress,
+    nameProgress,
+    menuProgress: menuHeaderProgress,
+    menuOpen,
+    menuClosing,
+    reducedMotion,
+  });
+  useLayoutEffect(() => {
+    const syncName = () => smoothNameProgress.jump(progress.get());
+    syncName();
+    if (!instant) return;
+    // Browser Back can restore scrolling after mount. Seed the final size
+    // during the same follow-up frames that measure the restored layout.
+    let followupFrame = 0;
+    const frame = requestAnimationFrame(() => {
+      syncName();
+      followupFrame = requestAnimationFrame(syncName);
+    });
+    return () => {
+      cancelAnimationFrame(frame);
+      cancelAnimationFrame(followupFrame);
+    };
+  }, [progress, smoothNameProgress, reducedMotion, instant]);
+  const compactNameScale = 24 / parseFloat(shrunkFontSize);
+  // Reuse the intro's word stagger within the scroll range. Both
+  // words land exactly at either endpoint, including restored scroll positions.
+  const compactProgress = useTransform(() => Math.max(nameProgress.get(), menuHeaderProgress.get(), navigationCompactProgress.get()));
+  const nameScale = useTransform(compactProgress, [0, 1 - NAME_SCROLL_STAGGER], [1, compactNameScale], {
+    ease: nameScrollEase,
+  });
+  const lastNameScale = useTransform(compactProgress, [NAME_SCROLL_STAGGER, 1], [1, compactNameScale], {
+    ease: nameScrollEase,
+  });
+  const nativeNameOpacity = useTransform(nameScale, [1, compactNameScale], [1, 0]);
+  const nativeNameVisibility = useTransform(nativeNameOpacity, (value) => value <= 0.001 ? 'hidden' : 'visible');
+  const lastNameRelativeScale = useTransform(() => lastNameScale.get() / nameScale.get());
+  // Compensate for the parent's leading scale so Zhao's position trails its
+  // size, just as both do during the initial layout animation.
+  const lastNameX = useTransform(() => lastNameOffset.get() * (lastNameRelativeScale.get() - 1));
+  const navigationBlend = useTransform(() => !menuOpen && progress.get() >= 0.7 ? 'difference' : 'normal');
+  const navigationColor = useTransform(() => !menuOpen && progress.get() >= 0.7 ? '#ffffff' : 'var(--foreground)');
+  const heroOpacity = useTransform(progress, [0, 0.65, 1], [1, 0, 0]);
+  const heroVisibility = useTransform(progress, (value) => value >= 0.65 ? 'hidden' : 'visible');
+  const bioVisibility = useTransform(progress, (value) => value >= 1 ? 'hidden' : 'visible');
+  const bioPointerEvents = useTransform(progress, (value) => value > 0 ? 'none' : 'auto');
+  const cornerLinksOpacity = useTransform(() => heroOpacity.get() * (1 - menuProgress.get()));
+  // Keep the hero footer in place throughout its bio expansion and return.
+  // The menu only reveals and dismisses this row when opened after scrolling.
+  const menuRolesOpacity = useTransform(() => menuOpen && !menuFromHero
+    ? menuClosing ? 1 - closingProgress.get() : menuProgress.get()
+    : heroOpacity.get());
+  const menuRolesBlur = useTransform(() => menuOpen && !menuFromHero && menuClosing ? `blur(${closingProgress.get() * 5}px)` : 'blur(0px)');
 
   // Hover (and the weight crossfade) turns on once the intro has played; after a
   // language switch it waits for the full-line scramble to settle first.
   const interactive = introDone && (!langSwitched || scrambleSettled);
 
-  // Pointer-follow for the hover image: the target tracks a damped fraction of
-  // the pointer's movement since hover started; a spring eases the image toward
-  // it so it lags and glides to rest.
-  const followX = useMotionValue(0);
-  const followY = useMotionValue(0);
-  const imageX = useSpring(followX, FOLLOW_SPRING);
-  const imageY = useSpring(followY, FOLLOW_SPRING);
-  const hoverOrigin = useRef<{ x: number; y: number } | null>(null);
+  // The photo that follows the cursor while the name or a bio word is hovered
+  const preview = useCursorPreview();
+
+  const hidePreview = useEffectEvent(() => preview.hide());
+  useEffect(() => {
+    if (!isAtHero) hidePreview();
+  }, [isAtHero]);
 
   const beginHover = (key: HoverKey, e: React.MouseEvent) => {
-    setHovered(key);
-    hoverOrigin.current = { x: e.clientX, y: e.clientY };
-    // Snap the offset back to zero so the image starts at its anchor point.
-    followX.set(0);
-    followY.set(0);
-    imageX.jump(0);
-    imageY.jump(0);
+    if (!isAtHero) return;
+    const { width, height } = HOVER_IMAGES.find((img) => img.key === key)!;
+    preview.show(key, e, { width, height });
   };
 
-  const moveHover = (e: React.MouseEvent) => {
-    if (!hoverOrigin.current) return;
-    followX.set((e.clientX - hoverOrigin.current.x) * FOLLOW_FACTOR);
-    followY.set((e.clientY - hoverOrigin.current.y) * FOLLOW_FACTOR);
-  };
+  const moveHover = preview.move;
+  const endHover = preview.hide;
 
-  const endHover = (key: HoverKey) => {
-    setHovered((h) => (h === key ? null : h));
-    hoverOrigin.current = null;
-  };
+  useLayoutEffect(() => {
+    const button = nameButtonRef.current;
+    if (!button) return;
+    const measureName = () => lastNameOffset.set(lastNameRef.current?.offsetLeft ?? 0);
+    measureName();
+    const observer = new ResizeObserver(measureName);
+    observer.observe(button);
+    if (button.firstElementChild) observer.observe(button.firstElementChild);
+    return () => observer.disconnect();
+  }, [lastNameOffset]);
 
   const handleLanguageChange = (lang: Language) => {
     if (lang === language) return;
+    // (the hovered word re-renders mid-switch and can't report the leave)
+    preview.hide();
     setPrevLanguage(language);
     setLangSwitched(true);
     setScrambleSettled(false);
     onLanguageChange?.(lang);
+  };
+
+  // The globe beside the time cycles English → Swedish → Chinese
+  const cycleLanguage = () => {
+    const next: Record<Language, Language> = { en: 'sv', sv: 'zh', zh: 'en' };
+    handleLanguageChange(next[language]);
+  };
+
+  const scrollToWork = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (menuOpen) {
+      keepCompact();
+      closeImmediately();
+      requestAnimationFrame(() => currentScrollToProjects.current(true));
+      return;
+    }
+    scrollToProjects(true);
   };
 
   // Re-arm the "scramble settled" flag after each language change so the
@@ -211,25 +420,7 @@ export default function HomePanel({
   // Scale the shrunk header up on screens larger than a 16" MacBook (1728px),
   // keeping 128px as the floor for normal laptop sizes.
   useEffect(() => {
-    const updateShrunkFontSize = () => {
-      const breakpoint = 1728;
-      const baseSize = 128;
-      // How aggressively the header grows past the breakpoint (1 = linear with
-      // width; higher = grows faster on large displays).
-      const growthFactor = 2;
-      const width = window.innerWidth;
-      let size;
-      if (width < 1024) {
-        // Cramped layouts between mobile and lg: shrink the header a lot.
-        size = 72;
-      } else if (width > breakpoint) {
-        size = baseSize + ((width - breakpoint) / breakpoint) * baseSize * growthFactor;
-      } else {
-        size = baseSize;
-      }
-      setShrunkFontSize(`${size}px`);
-    };
-
+    const updateShrunkFontSize = () => setShrunkFontSize(shrunkHeaderSize(window.innerWidth));
     updateShrunkFontSize();
     window.addEventListener('resize', updateShrunkFontSize);
     return () => window.removeEventListener('resize', updateShrunkFontSize);
@@ -238,8 +429,8 @@ export default function HomePanel({
   // Timing configuration
   const headerAnimationDelay = 0.2; // When header starts appearing
   const shrinkDelay = 1.3; // Seconds after page load to start shrinking
-  const shrinkDuration = 0.8; // Duration of shrink animation
-  const nameStagger = 0.06; // How far the last name trails the first during shrink
+  const shrinkDuration = NAME_SHRINK_DURATION;
+  const nameStagger = NAME_SHRINK_STAGGER;
 
   // True once the staggered name shrink has fully played out. The name words
   // use framer layout (FLIP) animations so position and scale stagger
@@ -260,7 +451,7 @@ export default function HomePanel({
       clearTimeout(timer);
       clearTimeout(doneTimer);
     };
-  }, [showContent, instant]);
+  }, [showContent, instant, shrinkDuration, nameStagger]);
 
   // Animation configuration - content appears during/after shrink
   const contentBaseDelay = 0.4; // Delay after shrink before content animates
@@ -271,11 +462,11 @@ export default function HomePanel({
   const headerDelay = headerAnimationDelay;
 
   // Everything else animates relative to when shrink happens
-  const sayHiDelay = contentBaseDelay;
+  const workDelay = contentBaseDelay;
 
   // Bio section - starts after a pause, then flows continuously
   const bioPause = 0.5;
-  const bioStartDelay = sayHiDelay + 2 * stagger + bioPause;
+  const bioStartDelay = workDelay + 2 * stagger + bioPause;
 
   // Bio lines flow continuously with tight timing
   const bio1Delay = bioStartDelay;
@@ -303,9 +494,18 @@ export default function HomePanel({
     return () => clearTimeout(timer);
   }, [showContent, instant, shrinkDelay, timeDelay]);
 
+  // The work section's scroll reveals start when the footer fades in, so a
+  // project already on screen doesn't appear before the bio has finished.
+  const [workRevealReady, setWorkRevealReady] = useState(instant);
+  useEffect(() => {
+    if (instant || !hasShrunk) return;
+    const timer = setTimeout(() => setWorkRevealReady(true), footerDelay * 1000);
+    return () => clearTimeout(timer);
+  }, [instant, hasShrunk, footerDelay]);
+
   const shrinkTransition = {
     duration: instant ? 0 : shrinkDuration,
-    ease: [0.76, 0, 0.15, 1] as const,
+    ease: NAME_SHRINK_EASE,
   };
 
   // The name shrinks in two pieces: the first name leads and the last name
@@ -347,23 +547,22 @@ export default function HomePanel({
 
     const key = config!.key;
     const [before, after] = line.split(word!);
-    // Match the structure of the animation we're swapping out of so the text
-    // doesn't nudge: AnimatedText wraps each word in an inline-block (which sits
-    // a touch lower than plain text), while a language switch leaves ScrambleText
-    // plain text. Rendering the split the same way keeps it pixel-stable.
-    const seg = (text: string) =>
-      langSwitched ? text : <AnimatedText instant>{text}</AnimatedText>;
+    // Keep the word indices continuous across the hoverable keyword, so its
+    // scroll exit stays in sequence with the rest of the line.
+    const keywordOffset = before.split(' ').length - 1;
+    const seg = (text: string, wordOffset = 0) =>
+      <AnimatedText instant wordOffset={wordOffset}>{text}</AnimatedText>;
     return (
       <>
         {seg(before)}
         <span
           onMouseEnter={(e) => beginHover(key, e)}
           onMouseMove={moveHover}
-          onMouseLeave={() => endHover(key)}
+          onMouseLeave={endHover}
         >
-          {seg(word!)}
+          {seg(word!, keywordOffset)}
         </span>
-        {after && seg(after)}
+        {after && seg(after, keywordOffset + 1)}
       </>
     );
   };
@@ -391,7 +590,8 @@ export default function HomePanel({
       <span className="opacity-0">{text}</span>
     );
 
-  // Role labels render as plain text until a language switch, then scramble.
+  // Short labels (roles, nav) render as plain text until a language switch,
+  // then scramble.
   const roleLabel = (text: string, fromText: string) =>
     langSwitched ? (
       <ScrambleText from={fromText} charDelay={switchCharDelay}>
@@ -409,8 +609,32 @@ export default function HomePanel({
     ? 'tracking-[-0.8px] lg:tracking-[-1.04px] xl:tracking-[-1.28px]'
     : 'tracking-[-1.6px] lg:tracking-[-2.08px] xl:tracking-[-2.56px]';
 
+  useNavigationToggle({
+    enabled: hasShrunk && showContent,
+    progress,
+    menuProgress,
+    heroTop: parseFloat(shrunkFontSize) + 72,
+    triggerRef,
+    open: menuOpen,
+    closing: menuClosing,
+    navigationId,
+    onClick: toggleMenu,
+    onHomeNavigate: closeImmediately,
+    instant,
+    delay: iconDelay,
+  });
+  useNavigationNameHandoff();
+
   return (
-    <div className="theme-root bg-background flex flex-col gap-9 h-screen w-full relative overflow-hidden">
+    <div ref={rootRef} role={menuOpen ? 'dialog' : undefined} aria-modal={menuOpen ? true : undefined} aria-label={menuOpen ? 'Main navigation' : undefined} aria-owns={menuOpen ? 'site-navigation-toggle' : undefined} className="theme-root bg-background flex flex-col min-h-screen w-full relative overflow-x-clip">
+      <motion.div
+        aria-hidden="true"
+        className="fixed inset-0 z-10 bg-background"
+        initial={false}
+        animate={{ opacity: menuOpen ? 1 : 0 }}
+        transition={{ duration: reducedMotion ? 0 : 0.4 }}
+        style={{ pointerEvents: menuOpen ? 'auto' : 'none' }}
+      />
       {/* Background column guides - same grid as the page content (currently hidden) */}
       {SHOW_COLUMN_GUIDES && (
         <div
@@ -429,63 +653,48 @@ export default function HomePanel({
         </div>
       )}
 
-      {/* Hover images - desktop only (lg+). The name and the highlighted bio
-          words ("stockholm", "newly") reveal an image in the blank left space.
-          All three stay mounted (with priority) so they're preloaded on page
-          load and appear instantly on hover; visibility toggles with no
-          transition. Hidden below lg so they never collide with the narrower
-          bio layout. */}
-      <div className="hidden lg:block absolute inset-0 pointer-events-none z-0" aria-hidden="true">
-        {HOVER_IMAGES.map((img) => (
-          <motion.div
-            key={img.key}
-            className="absolute"
-            style={{
-              left: img.left,
-              top: img.top,
-              width: img.width,
-              height: img.height,
-              opacity: hovered === img.key ? 1 : 0,
-              x: imageX,
-              y: imageY,
-            }}
-          >
-            <Image
-              src={img.src}
-              alt={img.alt}
-              width={img.width}
-              height={img.height}
-              priority
-              className="w-full h-full object-cover"
-            />
-          </motion.div>
-        ))}
-      </div>
+      {/* Photos for the name and the highlighted bio words, shown beside
+          the cursor while they're hovered */}
+      <CursorPreview
+        preview={preview}
+        zIndex={70}
+        images={HOVER_IMAGES.map((img) => ({
+          key: img.key,
+          content: <Image src={img.src} alt="" width={img.width} height={img.height} loading="eager" />,
+        }))}
+      />
 
-      {/* Header Section */}
-      <div className="relative flex flex-col items-start p-9 w-full">
-        <div className="flex flex-col gap-9 items-start w-full">
+      {!menuOpen && <HomeNavigationBackdrop progress={progress} />}
+
+      {/* A stable viewport keeps the scroll target independent of name scaling. */}
+      <div ref={heroRef} className="relative flex flex-col items-start p-9 min-h-svh w-full">
+        <div className="flex flex-1 flex-col gap-9 items-start w-full">
+          <motion.div
+            aria-hidden="true"
+            className="w-full shrink-0"
+            initial={instant ? false : undefined}
+            animate={{ height: hasShrunk ? shrunkFontSize : fontSize }}
+            transition={shrinkTransition}
+          />
           {/* Header Content */}
           <motion.div
             ref={containerRef}
-            className="flex items-start justify-between w-full"
+            className="fixed top-9 left-9 right-9 z-50 flex items-start justify-between pointer-events-none"
+            style={{ mixBlendMode: navigationBlend, color: navigationColor }}
+            initial={instant ? false : undefined}
             animate={{
               height: hasShrunk ? shrunkFontSize : 'auto',
             }}
             transition={shrinkTransition}
           >
-            <div className="flex gap-4 items-start">
+            <motion.div className="flex gap-4 items-start pointer-events-auto" style={{ scale: nameScale, transformOrigin: 'top left' }}>
               {/* The font size snaps to its target and each word FLIPs from
                   its previous box via the layout prop, so the last name's
                   position and scale can trail the first name's together. */}
               <h1
                 ref={headerRef}
-                onMouseEnter={(e) => {
-                  if (interactive) beginHover('name', e);
-                }}
-                onMouseMove={moveHover}
-                onMouseLeave={() => endHover('name')}
-                className="font-medium whitespace-nowrap leading-none cursor-default"
+                aria-label={t.name}
+                className="font-medium whitespace-nowrap leading-none"
                 style={{
                   letterSpacing: '-0.05em',
                   marginTop: '-0.15em',
@@ -494,25 +703,52 @@ export default function HomePanel({
                   paddingTop: hasShrunk ? '8px' : '0px',
                 }}
               >
-                <motion.span
-                  layout={!nameShrinkDone}
-                  className="inline-block align-top"
-                  transition={shrinkTransition}
+                <button
+                  ref={nameButtonRef}
+                  type="button"
+                  tabIndex={isAtHero || menuOpen ? -1 : 0}
+                  aria-disabled={isAtHero || menuOpen}
+                  aria-label={isAtHero ? t.name : `${t.name} — Back to top`}
+                  onClick={() => {
+                    if (isAtHero || menuOpen) return;
+                    preview.hide();
+                    scrollToHero();
+                  }}
+                  onMouseEnter={(e) => {
+                    if (interactive) beginHover('name', e);
+                  }}
+                  onMouseMove={moveHover}
+                  onMouseLeave={endHover}
+                  className={`relative text-left ${isAtHero ? 'cursor-default' : 'cursor-pointer'}`}
                 >
-                  {namePart(firstName, fromFirstName, 0)}
-                </motion.span>
-                {lastName && (
-                  <>
-                    {' '}
-                    <motion.span
-                      layout={!nameShrinkDone}
-                      className="inline-block align-top"
-                      transition={lastNameShrinkTransition}
-                    >
-                      {namePart(lastName, fromLastName, 1)}
-                    </motion.span>
-                  </>
-                )}
+                  <motion.span
+                    layout={!nameShrinkDone}
+                    data-navigation-name="first"
+                    className="inline-block align-top"
+                    transition={shrinkTransition}
+                  >
+                    {namePart(firstName, fromFirstName, 0)}
+                  </motion.span>
+                  {lastName && (
+                    <>
+                      {' '}
+                      <motion.span
+                        ref={lastNameRef}
+                        className="inline-block align-top"
+                        style={{ x: lastNameX, scale: lastNameRelativeScale, transformOrigin: 'top left' }}
+                      >
+                        <motion.span
+                          layout={!nameShrinkDone}
+                          data-navigation-name="last"
+                          className="inline-block align-top"
+                          transition={lastNameShrinkTransition}
+                        >
+                          {namePart(lastName, fromLastName, 1)}
+                        </motion.span>
+                      </motion.span>
+                    </>
+                  )}
+                </button>
               </h1>
 
               {/* Chinese name beside the header (zh only). Also rendered
@@ -520,22 +756,22 @@ export default function HomePanel({
                   Sits outside the h1 so its top lines up with the language
                   switcher rather than the name's overshooting line box. */}
               {(langSwitched || (t.nativeName !== '' && hasShrunk && showContent)) && (
-                <span
+                <motion.span
                   className="font-light text-[20px] leading-none"
-                  style={{ letterSpacing: '-0.02em' }}
+                  style={{ letterSpacing: '-0.02em', opacity: nativeNameOpacity, visibility: nativeNameVisibility }}
                 >
                   <ScrambleText from={fromT.nativeName} charDelay={switchCharDelay}>
                     {t.nativeName}
                   </ScrambleText>
-                </span>
+                </motion.span>
               )}
-            </div>
+            </motion.div>
 
-            {/* Language Switcher - appears after shrink */}
+            {/* Navigation remains in the corner throughout the scroll. */}
             <AnimatePresence>
               {hasShrunk && showContent && (
                 <motion.div
-                  className="flex gap-1.5 items-center justify-center font-normal text-[12px] tracking-[-0.24px] whitespace-nowrap leading-normal"
+                  className="font-normal text-[14px] tracking-[-0.28px] whitespace-nowrap leading-[1.2] pointer-events-auto"
                   initial={instant ? false : { opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{
@@ -544,15 +780,10 @@ export default function HomePanel({
                     ease: [0.4, 0, 0.2, 1],
                   }}
                 >
-                  <button type="button" onClick={() => handleLanguageChange('en')} className="cursor-pointer">
-                    EN
-                  </button>
-                  <button type="button" onClick={() => handleLanguageChange('sv')} className="cursor-pointer">
-                    SV
-                  </button>
-                  <button type="button" onClick={() => handleLanguageChange('zh')} className="cursor-pointer">
-                    中文
-                  </button>
+                  <motion.nav aria-label="Contact and resume" aria-hidden={menuOpen} inert={menuOpen} className="flex items-center gap-4" style={{ opacity: cornerLinksOpacity, visibility: heroVisibility }}>
+                    <a href={`mailto:${EMAIL}`} className="hover:underline">{roleLabel(t.navContact, fromT.navContact)}</a>
+                    <Link href={RESUME_URL} className="hover:underline">{roleLabel(t.navResume, fromT.navResume)}</Link>
+                  </motion.nav>
                 </motion.div>
               )}
             </AnimatePresence>
@@ -562,137 +793,129 @@ export default function HomePanel({
           <AnimatePresence>
             {hasShrunk && (
               <motion.div
-                className="flex flex-col gap-12 w-full"
+                className="flex flex-1 flex-col justify-between gap-12 w-full"
                 initial={instant ? false : { opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.3 }}
               >
-                {/* Say Hi and Bio - 5 Column Grid */}
-                <div className="grid grid-cols-5 gap-x-6 w-full">
-                  {/* Column 1: Say Hi Link */}
-                  <div className="col-span-1">
+                {/* Work and Bio - 3 column grid (5 columns below lg) */}
+                <div className="grid grid-cols-5 lg:grid-cols-3 gap-x-6 w-full">
+                  {/* Column 1: Work Link */}
+                  <motion.div ref={headingRef} className="relative z-20 col-span-1 self-start" style={{ y: menuHeadingY }}>
+                    <motion.h2 initial={false} animate={projectsReveal}>
                     <a
-                      href={LINKEDIN_URL}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      href="#work"
+                      data-home-menu-link={menuOpen ? '' : undefined}
+                      onClick={scrollToWork}
                       className={`flex gap-2 items-start ${bigTextWeight} whitespace-nowrap cursor-pointer transition-[font-weight] duration-700 ease-in-out`}
                     >
                       <motion.span
-                        className={`text-[40px] lg:text-[52px] xl:text-[64px] leading-none ${bigTextTracking} transition-[letter-spacing] duration-700 ease-in-out`}
-                        initial={{ clipPath: 'inset(-10% -10% 0 -10%)' }}
-                        animate={{ clipPath: 'inset(-10% -10% -20% -10%)' }}
-                        transition={{
-                          duration: 0.5,
-                          delay: sayHiDelay + 0.5,
-                          ease: [0.4, 0, 0.2, 1],
-                        }}
+                        className={`text-reveal-mask text-[40px] lg:text-[52px] xl:text-[64px] leading-none ${bigTextTracking} transition-[letter-spacing] duration-700 ease-in-out`}
+                        {...revealMaskAnimation(workDelay, 0.9, instant)}
                       >
-                        {langSwitched ? (
-                          <ScrambleText from={fromT.sayHi} charDelay={switchCharDelay}>
-                            {t.sayHi}
-                          </ScrambleText>
-                        ) : showContent ? (
-                          <motion.span
-                            className="inline-block"
-                            initial={instant ? false : { y: '40%', opacity: 0 }}
-                            animate={{ y: '0%', opacity: 1 }}
-                            transition={{
-                              duration: 0.9,
-                              delay: sayHiDelay,
-                              ease: [0.4, 0, 0.2, 1],
-                            }}
-                          >
-                            {t.sayHi}
-                          </motion.span>
-                        ) : (
-                          <span className="opacity-0">{t.sayHi}</span>
-                        )}
+                        <TextRevealMask active={!revealMenuProjects || !menuClosing} delay={0.1} duration={0.9} instant={!revealMenuProjects || !!reducedMotion}>
+                          <MenuRevealText enabled={revealMenuProjects} open={!menuClosing} reducedMotion={!!reducedMotion} distance="0.4em" enterDelay={0.1} exitDelay={0} className="text-reveal-word inline-block">
+                            {langSwitched ? (
+                              <ScrambleText from={fromT.workLabel} charDelay={switchCharDelay}>
+                                {t.workLabel}
+                              </ScrambleText>
+                            ) : showContent ? (
+                              <motion.span
+                                className="inline-block"
+                                initial={instant ? false : { y: '40%', opacity: 0 }}
+                                animate={{ y: '0%', opacity: 1 }}
+                                transition={{
+                                  duration: 0.9,
+                                  delay: workDelay,
+                                  ease: [0.4, 0, 0.2, 1],
+                                }}
+                              >
+                                {t.workLabel}
+                              </motion.span>
+                            ) : (
+                              <span className="opacity-0">{t.workLabel}</span>
+                            )}
+                          </MenuRevealText>
+                        </TextRevealMask>
                       </motion.span>
                       <motion.span
-                        className="text-[13px] lg:text-[16px] xl:text-[20px] leading-normal tracking-[-0.26px] lg:tracking-[-0.32px] xl:tracking-[-0.4px]"
-                        initial={{ clipPath: 'inset(-10% -10% 0 -10%)' }}
-                        animate={{ clipPath: 'inset(-10% -10% -20% -10%)' }}
-                        transition={{
-                          duration: 0.5,
-                          delay: sayHiDelay + stagger + 0.5,
-                          ease: [0.4, 0, 0.2, 1],
-                        }}
+                        className="text-reveal-mask text-[13px] lg:text-[16px] xl:text-[20px] leading-normal tracking-[-0.26px] lg:tracking-[-0.32px] xl:tracking-[-0.4px]"
+                        {...revealMaskAnimation(workDelay + stagger, 0.9, instant)}
                       >
-                        {langSwitched ? (
-                          <ScrambleText from={fromT.sayHiLabel} charDelay={switchCharDelay}>
-                            {t.sayHiLabel}
-                          </ScrambleText>
-                        ) : showContent ? (
-                          <motion.span
-                            className="inline-block"
-                            initial={instant ? false : { y: '40%', opacity: 0 }}
-                            animate={{ y: '0%', opacity: 1 }}
-                            transition={{
-                              duration: 0.9,
-                              delay: sayHiDelay + stagger,
-                              ease: [0.4, 0, 0.2, 1],
-                            }}
-                          >
-                            {t.sayHiLabel}
-                          </motion.span>
-                        ) : (
-                          <span className="opacity-0">{t.sayHiLabel}</span>
-                        )}
+                        <TextRevealMask active={!revealMenuProjects || !menuClosing} delay={0.16} duration={0.9} instant={!revealMenuProjects || !!reducedMotion}>
+                          <MenuRevealText enabled={revealMenuProjects} open={!menuClosing} reducedMotion={!!reducedMotion} distance="0.6em" enterDelay={0.16} exitDelay={0.03} className="text-reveal-word inline-block">
+                            {langSwitched ? (
+                              <ScrambleText from={projectCount} charDelay={switchCharDelay}>
+                                {projectCount}
+                              </ScrambleText>
+                            ) : showContent ? (
+                              <motion.span
+                                className="inline-block"
+                                initial={instant ? false : { y: '40%', opacity: 0 }}
+                                animate={{ y: '0%', opacity: 1 }}
+                                transition={{
+                                  duration: 0.9,
+                                  delay: workDelay + stagger,
+                                  ease: [0.4, 0, 0.2, 1],
+                                }}
+                              >
+                                {projectCount}
+                              </motion.span>
+                            ) : (
+                              <span className="opacity-0">{projectCount}</span>
+                            )}
+                          </MenuRevealText>
+                        </TextRevealMask>
                       </motion.span>
                     </a>
-                  </div>
-
-                  {/* Column 2: Empty spacer (collapses below lg to tighten the gap) */}
-                  <div className="hidden lg:block lg:col-span-1" />
-
-                  {/* Columns 3-5: Bio */}
-                  <div className="col-span-4 lg:col-span-3 flex items-start justify-between">
-                    <div className={`${bigTextWeight} leading-none text-[40px] lg:text-[52px] xl:text-[64px] whitespace-nowrap ${bigTextTracking} transition-[font-weight,letter-spacing] duration-700 ease-in-out cursor-default`}>
-                      {t.bioLines.map((line, index) => (
-                        <p key={index} className={index < t.bioLines.length - 1 ? 'mb-0' : undefined}>
-                          {renderBioLine(line, index, fromT.bioLines[index])}
-                        </p>
-                      ))}
+                    </motion.h2>
+                    <div id={navigationId} className="absolute left-0 top-[calc(100%+64px)]">
+                      <HomeMenuLinks language={language} projectCount={projectCount} open={menuOpen && !menuClosing} onNavigate={closeImmediately} onProjects={scrollToWork} showProjects={false} />
                     </div>
-                    {showContent ? (
-                      <motion.div
-                        className="w-9 h-9 shrink-0"
-                        initial={instant ? false : { opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{
-                          duration: 0.8,
-                          delay: iconDelay,
-                          ease: [0.4, 0, 0.2, 1],
+                  </motion.div>
+
+                  {/* Columns 2-3: Bio */}
+                  <div className="relative col-span-4 lg:col-span-2 flex items-start justify-between">
+                    <motion.div
+                      ref={bioRef}
+                      style={{ y: menuBioY, scale: menuBioScale, transformOrigin: 'top left', visibility: menuOpen || (menuFromHero && menuActive) ? 'visible' : bioVisibility, pointerEvents: menuOpen && !menuClosing ? 'auto' : bioPointerEvents, position: menuOpen || menuActive ? 'absolute' : 'relative' }}
+                      className={`z-20 ${bigTextWeight} leading-none text-[40px] lg:text-[52px] xl:text-[64px] whitespace-nowrap ${bigTextTracking} transition-[font-weight,letter-spacing] duration-700 ease-in-out cursor-default`}
+                    >
+                      <MorphingBio
+                        lines={t.bioLines}
+                        expandedLines={expandedBioLines[language]}
+                        expanded={menuOpen}
+                        closing={menuClosing}
+                        revealAll={!menuFromHero}
+                        progress={progress}
+                        renderLine={(line, index) => renderBioLine(line, index, fromT.bioLines[index])}
+                        renderWord={(word) => {
+                          const key: HoverKey | undefined = word.toLowerCase() === 'toronto'
+                            ? 'stockholm' : word.toLowerCase() === 'ocad' ? 'newly' : undefined;
+                          return key ? (
+                            <span onMouseEnter={(event) => beginHover(key, event)} onMouseMove={moveHover} onMouseLeave={endHover}>
+                              {word}
+                            </span>
+                          ) : word;
                         }}
-                      >
-                        <ThemeToggle className="w-full h-full" />
-                      </motion.div>
-                    ) : (
-                      <div className="w-9 h-9 shrink-0 opacity-0">
-                        <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
-                          <path d="M0 18L36 18" stroke="currentColor" strokeWidth="2"/>
-                          <path d="M18 0V36" stroke="currentColor" strokeWidth="2"/>
-                        </svg>
-                      </div>
-                    )}
+                      />
+                    </motion.div>
+                    {(menuOpen || menuActive) && <div aria-hidden="true" className={`invisible ${bigTextWeight} leading-none text-[40px] lg:text-[52px] xl:text-[64px]`}>
+                      {t.bioLines.map((line, index) => <p key={index}>{line}</p>)}
+                    </div>}
                   </div>
                 </div>
 
-                {/* Roles and Time - 5 Column Grid */}
-                <div className="grid grid-cols-5 gap-x-6 items-center w-full">
-                  {/* Columns 1-2: Empty (collapses below lg to left-align roles) */}
-                  <div className="hidden lg:block lg:col-span-2" />
+                {/* Roles and Time - 3 column grid (5 columns below lg) */}
+                <motion.div ref={rolesRef} className="relative z-20 grid grid-cols-5 lg:grid-cols-3 gap-x-6 items-end pt-12 w-full" style={{ y: rolesY, opacity: menuRolesOpacity, filter: menuRolesBlur, visibility: menuOpen ? 'visible' : heroVisibility }}>
+                  <div className="col-span-1">
+                    <WZLogo className="w-[27px] h-[17px]" draw show={showContent} instant={instant} delay={rolesDelay} />
+                  </div>
 
-                  {/* Columns 3-4: Roles */}
+                  {/* Column 2: Roles, allowed to run into the next column */}
                   <motion.div
-                    className="col-span-4 lg:col-span-2"
-                    initial={{ clipPath: 'inset(-10% -10% 0 -10%)' }}
-                    animate={{ clipPath: 'inset(-10% -10% -20% -10%)' }}
-                    transition={{
-                      duration: 0.5,
-                      delay: rolesDelay + 0.5,
-                      ease: [0.4, 0, 0.2, 1],
-                    }}
+                    className="text-reveal-mask-open-right col-span-3 lg:col-span-1"
+                    {...revealMaskAnimation(rolesDelay, 0.9, instant, true)}
                   >
                     {showContent ? (
                       <motion.div
@@ -703,29 +926,22 @@ export default function HomePanel({
                           delay: rolesDelay,
                           ease: [0.4, 0, 0.2, 1],
                         }}
-                        className="flex gap-3 items-center"
+                        className="flex flex-wrap gap-x-3 gap-y-1 items-center"
                       >
-                        <NewlyRole label={roleLabel(t.designAt, fromT.designAt)} />
-                        <FigmaRole label={roleLabel(t.campusLeaderAt, fromT.campusLeaderAt)} />
-                        <TextQLRole label={roleLabel(t.prevDesignAt, fromT.prevDesignAt)} />
+                        <NewlyRole large label={roleLabel(t.designAt, fromT.designAt)} />
+                        <FigmaRole large label={roleLabel(t.campusLeaderAt, fromT.campusLeaderAt)} />
                       </motion.div>
                     ) : (
                       <div className="opacity-0 flex gap-3 items-center">
-                        <p className="font-normal text-[12px] tracking-[-0.24px] leading-normal whitespace-nowrap">Design at Newly</p>
+                        <p className="font-normal text-[14px] tracking-[-0.28px] leading-[1.2] whitespace-nowrap">Design at Newly</p>
                       </div>
                     )}
                   </motion.div>
 
-                  {/* Column 5: Time */}
+                  {/* Last column: Time and language globe */}
                   <motion.div
-                    className="col-span-1 flex items-center justify-end gap-1.5 whitespace-nowrap"
-                    initial={instant ? false : { clipPath: 'inset(-10% -10% 0 -10%)' }}
-                    animate={{ clipPath: 'inset(-10% -10% -20% -10%)' }}
-                    transition={{
-                      duration: 0.5,
-                      delay: timeDelay + 0.5,
-                      ease: [0.4, 0, 0.2, 1],
-                    }}
+                    className="text-reveal-mask col-span-1 flex items-center justify-end gap-1.5 whitespace-nowrap"
+                    {...revealMaskAnimation(timeDelay, 0.9, instant)}
                   >
                     {showContent ? (
                       <motion.div
@@ -738,38 +954,61 @@ export default function HomePanel({
                           ease: [0.4, 0, 0.2, 1],
                         }}
                       >
-                        <span className="font-medium text-[12px] tracking-[-0.24px] leading-normal">
+                        <span className="font-normal text-[14px] tracking-[-0.28px] leading-[1.2]">
                           {langSwitched ? (
-                            <ScrambleText from={formatStockholmTime(prevLanguage)} charDelay={switchCharDelay}>
+                            <ScrambleText from={formatTorontoTime(prevLanguage)} charDelay={switchCharDelay}>
                               {currentTime}
                             </ScrambleText>
                           ) : (
                             currentTime
                           )}
                         </span>
-                        <span className="w-2.5 h-2.5 rounded-full bg-foreground shrink-0 self-center" />
+                        <LanguageGlobe
+                          onClick={cycleLanguage}
+                          className="block w-3 h-3 shrink-0 cursor-pointer"
+                        />
                       </motion.div>
                     ) : (
                       <div className="flex items-center gap-1.5 opacity-0">
-                        <span className="font-medium text-[12px] tracking-[-0.24px] leading-normal">{currentTime}</span>
-                        <span className="w-2.5 h-2.5 rounded-full bg-foreground shrink-0 self-center" />
+                        <span className="font-normal text-[14px] tracking-[-0.28px] leading-[1.2]">{currentTime}</span>
+                        <span className="w-3 h-3 shrink-0" />
                       </div>
                     )}
                   </motion.div>
-                </div>
+                </motion.div>
               </motion.div>
             )}
           </AnimatePresence>
         </div>
       </div>
 
+      {/* Work - featured projects with photos, then the list of the rest.
+          Each piece reveals as it scrolls into view, from when the footer
+          would appear. */}
+      <motion.div aria-hidden={menuOpen} inert={menuOpen} initial={false} animate={{ opacity: menuOpen ? 0 : 1 }} transition={{ duration: reducedMotion ? 0 : 0.35 }}>
+      {hasShrunk && showContent && projects.length > 0 && (
+        <HomeProjects
+          projects={projects}
+          heroScrollProgress={progress}
+          skipFirstImageReveals
+          className="pt-6"
+          introSkipped={instant}
+          revealReady={workRevealReady}
+          scrollToHashWhenReady={introDone}
+          onScrollToWork={scrollToProjects}
+        />
+      )}
+      </motion.div>
+
       {/* Footer Section */}
       <AnimatePresence>
         {hasShrunk && showContent && (
           <motion.div
-            className="relative flex flex-1 items-end justify-between p-9 w-full"
+            className="relative flex flex-1 min-h-[239px] items-end justify-between p-9 w-full"
+            aria-hidden={menuOpen}
+            inert={menuOpen}
             initial={instant ? false : { opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            animate={{ opacity: menuOpen ? 0 : 1, y: 0 }}
             transition={{
               duration: 0.6,
               delay: footerDelay,
@@ -780,58 +1019,28 @@ export default function HomePanel({
               <div className="w-[45px] h-[28px] shrink-0">
                 <WZLogo className="w-full h-full" />
               </div>
-              <div className="w-[354px] font-normal text-[12px] tracking-[-0.24px] leading-normal">
+              <div className="w-[354px] font-normal text-[14px] tracking-[-0.28px] leading-[1.2]">
                 <p className="mb-0">
-                  {langSwitched ? (
-                    <ScrambleText from={fromT.newPortfolio} charDelay={switchCharDelay}>
-                      {t.newPortfolio}
-                    </ScrambleText>
-                  ) : (
-                    t.newPortfolio
-                  )}
+                  {translations.en.newPortfolio}
                 </p>
                 <p>
-                  {langSwitched ? (
-                    <ScrambleText from={fromT.checkBackPrefix} charDelay={switchCharDelay}>
-                      {t.checkBackPrefix}
-                    </ScrambleText>
-                  ) : (
-                    t.checkBackPrefix
-                  )}
+                  {translations.en.checkBackPrefix}
                   <a
                     href={OLD_SITE_URL}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="underline"
                   >
-                    {langSwitched ? (
-                      <ScrambleText from={fromT.oldSiteLink} charDelay={switchCharDelay}>
-                        {t.oldSiteLink}
-                      </ScrambleText>
-                    ) : (
-                      t.oldSiteLink
-                    )}
+                    {translations.en.oldSiteLink}
                   </a>
-                  {langSwitched ? (
-                    <ScrambleText from={fromT.period} charDelay={switchCharDelay}>
-                      {t.period}
-                    </ScrambleText>
-                  ) : (
-                    t.period
-                  )}
+                  {translations.en.period}
                 </p>
               </div>
             </div>
             <div className="flex gap-3 items-center justify-end font-normal text-[12px] tracking-[-0.24px] leading-normal whitespace-nowrap">
               <a href={`mailto:${EMAIL}`}>hello [at] winstonzhao.ca</a>
               <Link href={RESUME_URL}>
-                {langSwitched ? (
-                  <ScrambleText from={fromT.resume} charDelay={switchCharDelay}>
-                    {t.resume}
-                  </ScrambleText>
-                ) : (
-                  t.resume
-                )}
+                {translations.en.resume}
               </Link>
             </div>
           </motion.div>
