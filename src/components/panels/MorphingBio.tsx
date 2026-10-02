@@ -18,6 +18,8 @@ interface MorphingBioProps {
   animateHeight?: boolean;
   closing?: boolean;
   layoutProgress?: MotionValue<number>;
+  // The ancestor's full collapsed-to-expanded vertical offset.
+  expandedParentOffset?: MotionValue<number>;
 }
 
 export const HERO_BIO_LAYOUT_TRANSITION = {
@@ -335,7 +337,7 @@ function DirectBio({ words, active, visible, closing, reducedMotion, renderWord,
 
 export default function MorphingBio({
   lines, expandedLines, expanded, progress, renderLine, renderWord, className = '',
-  revealAll = false, freezeExit = true, animateHeight = false, closing = false, layoutProgress,
+  revealAll = false, freezeExit = true, animateHeight = false, closing = false, layoutProgress, expandedParentOffset,
 }: MorphingBioProps) {
   const [activated, setActivated] = useState(expanded);
   if (expanded && !activated) setActivated(true);
@@ -436,6 +438,24 @@ export default function MorphingBio({
     let longPositions = measureWords(longRef.current);
     const placeSharedWords = () => {
       const blend = Math.max(0, Math.min(1, heightProgress.get()));
+      const screenLeaders = expandedParentOffset ? model.shared.flatMap((word) => {
+        const short = shortPositions.get(word.short.id);
+        const long = longPositions.get(word.long.id);
+        if (!short || !long) return [];
+        const leads = model.shared.some((other) => {
+          const otherShort = shortPositions.get(other.short.id);
+          const otherLong = longPositions.get(other.long.id);
+          if (!otherShort || !otherLong) return false;
+          const sameSourceRow = Math.abs(otherShort.y - short.y) < 0.5;
+          const sameTargetRow = Math.abs(otherLong.y - long.y) < 0.5;
+          const otherWaitsForHeight = animateHeight && otherLong.y + otherLong.height >= longHeight.get() - 0.5;
+          return sameSourceRow && (long.y < otherLong.y - 0.5 && !otherWaitsForHeight || sameTargetRow
+              && other.short.order < word.short.order && other.long.order > word.long.order)
+            || sameTargetRow && short.y < otherShort.y - 0.5
+              && short.x > otherShort.x && long.x < otherLong.x;
+        });
+        return leads ? [{ id: word.short.id, y: short.y }] : [];
+      }) : [];
       model.shared.forEach((word) => {
         const element = sharedElements.current.get(word.short.id);
         const short = shortPositions.get(word.short.id);
@@ -470,9 +490,32 @@ export default function MorphingBio({
         const finalVertical = coordinatePhase(blend, 0.75, 1);
         const intermediateY = mergesAcrossRows ? Math.max(short.y, long.y - short.height * 2) : long.y;
         const x = short.x + (long.x - short.x) * horizontal;
-        const y = passesAfterRowmates
+        let y = passesAfterRowmates
           ? short.y + (long.y - short.y) * finalVertical
           : short.y + (intermediateY - short.y) * vertical + (long.y - intermediateY) * finalVertical;
+        if (expandedParentOffset) {
+          // Mobile's shrinking title space also shifts this paragraph upward.
+          // Move between screen positions, then compensate for that parent
+          // shift so words keep their row clearance without reversing course.
+          const offset = expandedParentOffset.get();
+          // Upper rows clear the lane for a lower leading row. A word whose
+          // lane reverses or merges behind a leader keeps its trailing path.
+          const mustTrailLeader = model.shared.some((other) => {
+            if (!screenLeaders.some((leader) => leader.id === other.short.id)) return false;
+            const otherShort = shortPositions.get(other.short.id);
+            const otherLong = longPositions.get(other.long.id);
+            if (!otherShort || !otherLong || Math.abs(otherLong.y - long.y) >= 0.5) return false;
+            return Math.abs(otherShort.y - short.y) < 0.5
+              && word.short.order < other.short.order && word.long.order > other.long.order
+              || otherShort.y < short.y - 0.5 && otherShort.x > short.x && otherLong.x < long.x;
+          });
+          const leadsVertically = !mustTrailLeader && (screenLeaders.some((leader) => leader.id === word.short.id)
+            || screenLeaders.some((leader) => leader.y > short.y + 0.5));
+          const screenPhase = leadsVertically
+            ? coordinatePhase(blend, 0, 0.3)
+            : coordinatePhase(blend, 0.55, 0.85);
+          y = short.y + (long.y + offset - short.y) * screenPhase - offset * heroBioSpaceProgress(blend);
+        }
         element.style.transform = `translateX(${x}px) translateY(${y}px)`;
       });
     };
@@ -480,6 +523,7 @@ export default function MorphingBio({
     // Every shared word follows this same eased scalar, including reversals.
     // Its opacity and blur never participate in the continuation reveals.
     const unsubscribe = heightProgress.on('change', placeSharedWords);
+    const unsubscribeParentOffset = expandedParentOffset?.on('change', placeSharedWords);
     const resize = () => {
       shortPositions = measureWords(shortRef.current);
       longPositions = measureWords(longRef.current);
@@ -511,8 +555,9 @@ export default function MorphingBio({
     return () => {
       observer.disconnect();
       unsubscribe();
+      unsubscribeParentOffset?.();
     };
-  }, [activated, animateHeight, heightProgress, longHeight, model, signature]);
+  }, [activated, animateHeight, expandedParentOffset, heightProgress, longHeight, model, signature]);
 
   useLayoutEffect(() => () => {
     measurementAnimations.current.forEach((control) => control.stop());
@@ -555,12 +600,14 @@ export default function MorphingBio({
       <DirectBio key={directState.cycle} words={model.longLines} active={directExpanded} visible={!scramblingExpanded} closing={closing}
         reducedMotion={reducedMotion} renderWord={renderWord} instantCopy={scramblingExpanded} />
       {/* Stable line keys let rapid switches continue from the displayed copy.
-          Plain inline text also keeps the expanded mobile paragraph wrapping. */}
+          A single wrapping paragraph scrambles together, so mobile doesn't
+          sweep through the entire expanded bio before its last words change. */}
       <motion.div data-bio-plane="language" aria-hidden inert={!scramblingExpanded || closing || undefined}
         className={`absolute inset-0 ${scramblingExpanded ? '' : 'invisible'} pointer-events-none`} style={{ opacity: languageOpacity }}>
         {expandedLines.map((line, index) => (
           <p key={index}>
-            <ScrambleText onComplete={(text) => finishLine(index, text)}>{line}</ScrambleText>
+            <ScrambleText charDelay={expandedLines.length === 1 ? 0 : undefined}
+              onComplete={(text) => finishLine(index, text)}>{line}</ScrambleText>
           </p>
         ))}
       </motion.div>

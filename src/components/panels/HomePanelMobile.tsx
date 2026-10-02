@@ -46,6 +46,8 @@ const SHOW_COLUMN_GUIDES = false;
 const PROJECTS_DOCK_TOP = 96;
 const PROJECTS_RISE_START = 0.05;
 const PROJECTS_RISE_EASE_END = 0.6;
+const BIO_NAME_LEAD = 0.18;
+const BIO_NAME_RETURN_DELAY = 0.3;
 
 type BioReturnPhase = 'idle' | 'hidden' | 'revealing';
 
@@ -128,6 +130,7 @@ export default function HomePanelMobile({
   );
   const revealBioAfterReturnRef = useRef(false);
   const bioLayoutProgress = useMotionValue(0);
+  const bioNameProgress = useMotionValue(0);
   const bioSpaceProgress = useTransform(bioLayoutProgress, heroBioSpaceProgress);
   const titleBaseHeight = useMotionValue(instant ? 120 : 176);
   const retainedTitleProgress = useMotionValue(0);
@@ -174,10 +177,11 @@ export default function HomePanelMobile({
     reducedMotion,
   });
   const retainedScrollProgress = useTransform(() => Math.max(progress.get(), retainedTitleProgress.get()));
-  const titleProgress = useTransform(() => Math.max(retainedScrollProgress.get(), compactProgress.get(), bioSpaceProgress.get(), navigationCompactProgress.get()));
+  const titleProgress = useTransform(() => Math.max(retainedScrollProgress.get(), compactProgress.get(), bioNameProgress.get(), navigationCompactProgress.get()));
   // The name space contracts while the bio grows. Driving both heights with
   // one curve keeps their combined height, and Projects below, monotonic.
   const titleSpaceHeight = useTransform(() => titleBaseHeight.get() * (1 - bioSpaceProgress.get()) + 24 * bioSpaceProgress.get());
+  const expandedBioTopOffset = useTransform(titleBaseHeight, (height) => 24 - height);
   // Give the return a long slowdown before its early stop. Match the slope
   // into the remaining lift so Projects still docks with the images.
   const projectsRise = useTransform(
@@ -214,7 +218,7 @@ export default function HomePanelMobile({
     0,
     firstNameWidth + 6 / compactScale - lineOffsetRatio * containerWidth,
   ]);
-  const profileOpacity = useTransform(() => heroOpacity.get() * (1 - Math.max(compactProgress.get(), bioSpaceProgress.get())));
+  const profileOpacity = useTransform(() => heroOpacity.get() * (1 - Math.max(compactProgress.get(), bioNameProgress.get())));
   const scrollToProjectsRef = useRef(scrollToProjects);
 
   useLayoutEffect(() => {
@@ -283,12 +287,26 @@ export default function HomePanelMobile({
   }, [menuOpen, menuContentOpacity, reducedMotion]);
 
   useLayoutEffect(() => {
+    // The name follows the scroll snap's complete ease. The earlier spatial
+    // phase belongs to the bio layout and would rush the name's contraction.
+    const animation = animate(bioNameProgress, bioExpanded ? 1 : 0, {
+      duration: reducedMotion ? 0 : bioExpanded ? 0.8 : 1.1,
+      // On collapse, the bio clears the name's growing footprint first.
+      delay: reducedMotion || bioExpanded ? 0 : BIO_NAME_RETURN_DELAY * bioLayoutProgress.get(),
+      ease: [0.2, 0.8, 0.2, 1],
+    });
+    return () => animation.stop();
+  }, [bioExpanded, bioLayoutProgress, bioNameProgress, reducedMotion]);
+
+  useLayoutEffect(() => {
     if (reducedMotion) {
       bioLayoutProgress.set(bioExpanded ? 1 : 0);
       return;
     }
     const animation = animate(bioLayoutProgress, bioExpanded ? 1 : 0, {
       ...HERO_BIO_LAYOUT_TRANSITION,
+      duration: 1.45,
+      delay: bioExpanded ? BIO_NAME_LEAD : 0,
     });
     return () => animation.stop();
   }, [bioExpanded, bioLayoutProgress, reducedMotion]);
@@ -817,6 +835,7 @@ export default function HomePanelMobile({
                           freezeExit={false}
                           animateHeight
                           layoutProgress={bioLayoutProgress}
+                          expandedParentOffset={expandedBioTopOffset}
                           progress={bioExitProgress}
                           renderLine={(line, index) => langSwitched ? (
                             <ScrambleText

@@ -47,6 +47,13 @@ const SHOW_COLUMN_GUIDES = false;
 const NAME_SHRINK_DURATION = 0.8;
 const NAME_SHRINK_STAGGER = 0.06;
 const NAME_SHRINK_EASE = [0.76, 0, 0.15, 1] as const;
+const NAME_SCROLL_SPRING = {
+  stiffness: 60,
+  damping: 22,
+  mass: 1,
+  restDelta: 0.001,
+  restSpeed: 0.01,
+};
 const NAME_SCROLL_STAGGER = NAME_SHRINK_STAGGER / (NAME_SHRINK_DURATION + NAME_SHRINK_STAGGER);
 const nameShrinkEase = cubicBezier(...NAME_SHRINK_EASE);
 // Begin contracting immediately while retaining the intro's easing shape.
@@ -143,6 +150,7 @@ export default function HomePanel({
   const projectsReveal = useAnimationControls();
   const closingProgress = useMotionValue(0);
   const menuProgress = useMotionValue(0);
+  const menuNameProgress = useMotionValue(0);
   const menuActive = useSyncExternalStore(
     (listener) => menuProgress.on('change', listener),
     () => menuProgress.get() > 0.001,
@@ -173,6 +181,15 @@ export default function HomePanel({
     });
     return () => animation.stop();
   }, [menuOpen, menuClosing, menuFromHero, menuProgress, reducedMotion]);
+  const menuNameExpanded = menuOpen && !(menuFromHero && menuClosing);
+  useEffect(() => {
+    // Follow the same timing as the scroll snap, independently of the bio.
+    const animation = animate(menuNameProgress, menuNameExpanded ? 1 : 0, {
+      duration: reducedMotion ? 0 : menuNameExpanded ? 0.8 : 1.1,
+      ease: [0.2, 0.8, 0.2, 1],
+    });
+    return () => animation.stop();
+  }, [menuNameExpanded, menuNameProgress, reducedMotion]);
   useLayoutEffect(() => {
     if (!menuOpen) {
       projectsReveal.set({ opacity: 1, y: 0, filter: 'blur(0px)' });
@@ -224,18 +241,14 @@ export default function HomePanel({
   const menuBioY = useTransform(() => menuOpen && !menuFromHero ? menuScrollY.get() : headingY.get());
   // Give the name time to follow the scroll instead of compressing its
   // stagger into the scroll snap's fast opening movement.
-  const smoothNameProgress = useSpring(progress, {
-    stiffness: 60,
-    damping: 22,
-    mass: 1,
-    restDelta: 0.001,
-    restSpeed: 0.01,
-  });
+  const smoothNameProgress = useSpring(progress, NAME_SCROLL_SPRING);
+  const smoothMenuNameProgress = useSpring(menuNameProgress, NAME_SCROLL_SPRING);
   const nameProgress = reducedMotion ? progress : smoothNameProgress;
+  const menuHeaderProgress = reducedMotion ? menuNameProgress : smoothMenuNameProgress;
   const { compactProgress: navigationCompactProgress, keepCompact } = useMenuHeaderHandoff({
     scrollProgress: progress,
     nameProgress,
-    menuProgress,
+    menuProgress: menuHeaderProgress,
     menuOpen,
     menuClosing,
     reducedMotion,
@@ -259,22 +272,15 @@ export default function HomePanel({
   const compactNameScale = 24 / parseFloat(shrunkFontSize);
   // Reuse the intro's word stagger within the scroll range. Both
   // words land exactly at either endpoint, including restored scroll positions.
-  const scrollNameScale = useTransform(nameProgress, [0, 1 - NAME_SCROLL_STAGGER], [1, compactNameScale], {
+  const compactProgress = useTransform(() => Math.max(nameProgress.get(), menuHeaderProgress.get(), navigationCompactProgress.get()));
+  const nameScale = useTransform(compactProgress, [0, 1 - NAME_SCROLL_STAGGER], [1, compactNameScale], {
     ease: nameScrollEase,
   });
-  const scrollLastNameScale = useTransform(nameProgress, [NAME_SCROLL_STAGGER, 1], [1, compactNameScale], {
+  const lastNameScale = useTransform(compactProgress, [NAME_SCROLL_STAGGER, 1], [1, compactNameScale], {
     ease: nameScrollEase,
-  });
-  const nameScale = useTransform(() => {
-    const compact = Math.max(menuProgress.get(), navigationCompactProgress.get());
-    return scrollNameScale.get() * (1 - compact) + compactNameScale * compact;
   });
   const nativeNameOpacity = useTransform(nameScale, [1, compactNameScale], [1, 0]);
   const nativeNameVisibility = useTransform(nativeNameOpacity, (value) => value <= 0.001 ? 'hidden' : 'visible');
-  const lastNameScale = useTransform(() => {
-    const compact = Math.max(menuProgress.get(), navigationCompactProgress.get());
-    return scrollLastNameScale.get() * (1 - compact) + compactNameScale * compact;
-  });
   const lastNameRelativeScale = useTransform(() => lastNameScale.get() / nameScale.get());
   // Compensate for the parent's leading scale so Zhao's position trails its
   // size, just as both do during the initial layout animation.
