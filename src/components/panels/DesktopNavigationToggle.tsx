@@ -55,7 +55,7 @@ export default function DesktopNavigationToggle({ progress, menuProgress, heroTo
       aria-expanded={open}
       aria-controls={navigationId}
       onClick={onClick}
-      className={`${embedded ? 'relative block' : 'fixed right-9 top-9 z-[60]'} h-9 w-9 cursor-pointer`}
+      className={`${embedded ? 'relative block' : 'fixed right-9 top-9 z-[60]'} pointer-events-auto h-9 w-9 cursor-pointer`}
       style={{ y, color: embedded ? 'inherit' : 'var(--navigation-menu-color, var(--navigation-foreground))' }}
       initial={instant || reducedMotion ? false : { opacity: 0, scale: 0.8 }}
       animate={{ opacity: 1, scale: 1 }}
