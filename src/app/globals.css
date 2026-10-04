@@ -64,6 +64,14 @@ body {
   }
 }
 
+/* On iOS the navigation blur bleeds above the layout viewport, under the
+   status bar. WebKit clamps a fixed layer's composited bounds to the viewport
+   unless the layer itself is transformed, so the bleeding backdrop carries an
+   identity transform (HomeNavigationBackdrop's wrapper lifts the other clip). */
+.home-navigation-backdrop-bleed {
+  transform: translateZ(0);
+}
+
 @keyframes spin-slow {
   0% {
     transform: rotate(0deg);

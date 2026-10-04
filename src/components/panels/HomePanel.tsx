@@ -631,7 +631,9 @@ export default function HomePanel({
         aria-hidden="true"
         className="fixed inset-0 z-10 bg-background"
         initial={false}
-        animate={{ opacity: menuOpen ? 1 : 0 }}
+        // Hidden once closed so iPad Safari stops painting the menu colour
+        // under its bars (see HomePanelMobile).
+        animate={{ opacity: menuOpen ? 1 : 0, visibility: menuOpen ? 'visible' : 'hidden' }}
         transition={{ duration: reducedMotion ? 0 : 0.4 }}
         style={{ pointerEvents: menuOpen ? 'auto' : 'none' }}
       />
