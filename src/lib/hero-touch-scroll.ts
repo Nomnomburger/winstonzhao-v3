@@ -3,6 +3,9 @@ type Direction = -1 | 1;
 const HORIZONTAL_THRESHOLD = 6;
 const DOCK_TOLERANCE = 48;
 const REVERSAL_THRESHOLD = 12;
+// A landing finger can report a pixel or two against its eventual swipe
+// before it settles. Section snaps wait for this much deliberate travel.
+const SNAP_INTENT_THRESHOLD = 4;
 const VELOCITY_WINDOW_MS = 80;
 const RELEASE_PAUSE_MS = 100;
 const INERTIA_TIME_MS = 325;
@@ -34,6 +37,7 @@ interface Gesture {
   direction: Direction | null;
   movedDown: boolean;
   upwardTravel: number;
+  downwardTravel: number;
   samples: { at: number; position: number }[];
 }
 
@@ -163,6 +167,7 @@ export function createHeroTouchScroll(options: TouchScrollOptions) {
       direction: null,
       movedDown: false,
       upwardTravel: 0,
+      downwardTravel: 0,
       samples: [{ at: performance.now(), position: clamp(window.scrollY) }],
     };
   };
@@ -182,6 +187,7 @@ export function createHeroTouchScroll(options: TouchScrollOptions) {
         gesture.direction = null;
         gesture.movedDown = true;
         gesture.upwardTravel = 0;
+        gesture.downwardTravel = 0;
         gesture.samples = [{ at: performance.now(), position: gesture.position }];
       } else {
         // Track the authoritative finger even while snapping, so a later
@@ -202,8 +208,6 @@ export function createHeroTouchScroll(options: TouchScrollOptions) {
       if (dy <= dx) return true;
       gesture.axis = 'vertical';
       gesture.claimed = true;
-      // The existing animation can advance between contact and movement.
-      if (gesture.startedDuringSnap) gesture.position = clamp(window.scrollY);
     }
     if (gesture.axis !== 'vertical') return false;
 
@@ -217,36 +221,50 @@ export function createHeroTouchScroll(options: TouchScrollOptions) {
       gesture.consumed = true;
       return true;
     }
-    const { heroTop, projectsTop } = options.getBounds();
-    const takingOver = gesture.startedDuringSnap && (options.getSnapDirection?.() ?? null) !== null;
-    gesture.startedDuringSnap = false;
-    if (takingOver) {
-      if (delta > 0 && gesture.position >= projectsTop && projectsTop > heroTop) {
-        // A return may start just above the dock. Forward input is already
-        // in Projects here, so it can immediately resume ordinary dragging.
-        options.cancelSnap();
-      } else {
-        snap(delta > 0 ? 1 : -1, true);
-        return true;
-      }
-    }
-    let next = clamp(gesture.position + delta);
+    // Travel since the finger last changed direction. Dragging follows every
+    // pixel, but a section snap commits only once a short push confirms the
+    // direction, so landing jitter cannot send the page the wrong way.
     if (delta > 0) {
       gesture.movedDown = true;
+      gesture.downwardTravel += delta;
       gesture.upwardTravel = 0;
     } else {
       gesture.upwardTravel -= delta;
+      gesture.downwardTravel = 0;
     }
-    if (projectsTop > heroTop && delta > 0 &&
+    const intent: Direction | null = gesture.downwardTravel >= SNAP_INTENT_THRESHOLD ? 1 :
+      gesture.upwardTravel >= SNAP_INTENT_THRESHOLD ? -1 : null;
+    const { heroTop, projectsTop } = options.getBounds();
+    if (gesture.startedDuringSnap) {
+      // The existing animation can advance between contact and the decision.
+      gesture.position = clamp(window.scrollY);
+      if ((options.getSnapDirection?.() ?? null) !== null) {
+        // Undecided movement leaves the animation running and native scroll off.
+        if (intent === null) return true;
+        gesture.startedDuringSnap = false;
+        if (intent === 1 && gesture.position >= projectsTop && projectsTop > heroTop) {
+          // A return may start just above the dock. Forward input is already
+          // in Projects here, so it can immediately resume ordinary dragging.
+          options.cancelSnap();
+        } else {
+          snap(intent, true);
+          return true;
+        }
+      }
+      gesture.startedDuringSnap = false;
+    }
+    let next = clamp(gesture.position + delta);
+    if (projectsTop > heroTop && intent === 1 &&
         gesture.position >= heroTop - 1 && gesture.position < projectsTop - 1) {
       snap(1);
       return true;
     }
     if (projectsTop > heroTop && delta < 0 && gesture.position > heroTop + 1 &&
         next <= projectsTop + DOCK_TOLERANCE) {
-      // A fresh upward swipe snaps immediately. Once this contact has moved
-      // down the list, a small correction must not become a return to Hero.
-      if (!gesture.movedDown || gesture.upwardTravel >= REVERSAL_THRESHOLD) {
+      // A fresh upward swipe snaps as soon as its direction is confirmed. Once
+      // this contact has moved down the list, a small correction must not
+      // become a return to Hero.
+      if (gesture.movedDown ? gesture.upwardTravel >= REVERSAL_THRESHOLD : intent === -1) {
         // Commit a drag from the list at the dock. Inside the transition,
         // start from the visible position without jumping by the last delta.
         if (gesture.position >= projectsTop) {
