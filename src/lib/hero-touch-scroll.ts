@@ -274,18 +274,26 @@ export function createHeroTouchScroll(options: TouchScrollOptions) {
         snap(-1);
         return true;
       }
-      next = Math.max(next, projectsTop);
+      // Only a contact in the list is held at the dock. One stranded inside
+      // the transition must not be pushed down to it.
+      if (gesture.position >= projectsTop - 1) next = Math.max(next, projectsTop);
     }
     // Preserve subpixel input across events instead of accumulating the
     // browser's rounded scrollY, and write at most once per display frame.
     const movement = next - gesture.position;
     const direction = movement < 0 ? -1 : 1;
-    if (movement !== 0 && gesture.direction !== null && direction !== gesture.direction) {
+    if (movement !== 0 && gesture.direction === null) gesture.direction = direction;
+    if (movement !== 0 && direction !== gesture.direction) {
       // Estimate release speed from the latest push. Averaging across a
       // reversal can otherwise fling in the opposite direction to the finger.
-      gesture.samples = [gesture.samples[gesture.samples.length - 1]];
+      // A lifting finger reports a pixel or two against its swipe, so only a
+      // deliberate reversal restarts the estimate.
+      const travel = direction === 1 ? gesture.downwardTravel : gesture.upwardTravel;
+      if (travel >= SNAP_INTENT_THRESHOLD) {
+        gesture.samples = [gesture.samples[gesture.samples.length - 1]];
+        gesture.direction = direction;
+      }
     }
-    if (movement !== 0) gesture.direction = direction;
     gesture.position = next;
     const now = performance.now();
     if (resumedAfterSnap) {

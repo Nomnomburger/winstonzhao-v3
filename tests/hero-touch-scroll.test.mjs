@@ -804,3 +804,45 @@ test('repeated quick upward swipes through the dock return to hero and stay ther
   assert.ok(h.snaps.every((snap) => snap.direction === -1), JSON.stringify(h.snaps));
   assert.ok(h.snaps.length >= 1 && h.snaps.length >= afterFirst);
 });
+
+test('a lifting finger reporting against the swipe cannot coast the page the other way', () => {
+  for (const [reversal, frameMs] of [[1, 16], [2, 8], [3, 8]]) {
+    const h = harness({ y: 1600, frameMs });
+    h.dispatch('touchstart', 300);
+    for (const y of [340, 380, 420]) { h.advance(frameMs); h.dispatch('pointermove', y); h.dispatch('touchmove', y); }
+    h.advance(frameMs);
+    h.dispatch('pointermove', 420 - reversal);
+    h.dispatch('touchmove', 420 - reversal);
+    h.dispatch('touchend', 420 - reversal);
+    const released = h.win.scrollY;
+    h.advance(3000);
+    assert.ok(h.win.scrollY < released, `Momentum follows the swipe (reversal ${reversal}px at ${frameMs}ms)`);
+    assert.equal(h.win.scrollY, 1000, 'The upward fling still docks at Projects');
+    assert.equal(h.snaps.length, 0);
+  }
+});
+
+test('a deliberate reversal before release still flings in the new direction', () => {
+  const h = harness({ y: 1600 });
+  h.dispatch('touchstart', 300);
+  for (const y of [340, 380, 420, 400, 370]) { h.advance(16); h.dispatch('pointermove', y); h.dispatch('touchmove', y); }
+  h.dispatch('touchend', 370);
+  const released = h.win.scrollY;
+  h.advance(3000);
+  assert.ok(h.win.scrollY > released, 'Momentum follows the latest deliberate push');
+});
+
+test('an upward swipe from inside the transition is not pushed down to the dock first', () => {
+  for (const y of [500, 980]) {
+    const h = harness({ y });
+    h.dispatch('touchstart', 300);
+    h.dispatch('pointermove', 302);
+    h.advance(16);
+    assert.equal(h.win.scrollY, y - 2, 'Drags up from the visible position');
+    assert.ok(h.scrolls.every((top) => top <= y), JSON.stringify(h.scrolls));
+    h.dispatch('pointermove', 320);
+    assert.equal(h.snaps.length, 1);
+    assert.equal(h.snaps[0].direction, -1);
+    assert.ok(h.scrolls.every((top) => top <= y), 'Nothing writes a lower page position');
+  }
+});
