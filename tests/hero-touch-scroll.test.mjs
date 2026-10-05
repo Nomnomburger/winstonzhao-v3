@@ -147,8 +147,8 @@ test('an early released swipe retains its snap intent but cancellation discards 
   }
 });
 
-test('first pixel of vertical touch movement snaps in either direction while held', () => {
-  for (const [y, next, direction] of [[0, 399, 1], [1000, 401, -1]]) {
+test('the first few pixels of vertical touch movement snap in either direction while held', () => {
+  for (const [y, next, direction] of [[0, 396, 1], [1000, 404, -1]]) {
     const h = harness({ y });
     assert.equal(h.style.touchAction, 'pan-x pinch-zoom');
     assert.equal(h.listeners.get('touchmove').options.passive, false);
@@ -161,7 +161,7 @@ test('first pixel of vertical touch movement snaps in either direction while hel
 });
 
 test('touch pointer movement starts snapping before the browser delivers touchmove', () => {
-  for (const [y, next, direction] of [[0, 399, 1], [1000, 401, -1]]) {
+  for (const [y, next, direction] of [[0, 396, 1], [1000, 404, -1]]) {
     const h = harness({ y });
     h.dispatch('touchstart', 400);
     h.dispatch('pointermove', next);
@@ -182,7 +182,7 @@ test('mouse, pen, and secondary touch pointers never start a section snap', () =
     h.dispatch('pointermove', 360, properties);
   }
   assert.equal(h.snaps.length, 0);
-  h.dispatch('touchmove', 399);
+  h.dispatch('touchmove', 396);
   assert.equal(h.snaps.length, 1);
 });
 
@@ -276,7 +276,7 @@ test('a new upward contact still returns immediately after a corrected downward 
   h.advance(160);
   h.dispatch('touchend', 400);
   h.dispatch('touchstart', 400);
-  h.dispatch('pointermove', 401);
+  h.dispatch('pointermove', 404);
   assert.equal(h.snaps.length, 1);
   assert.equal(h.snaps[0].direction, -1);
 });
@@ -310,14 +310,14 @@ test('a fresh vertical contact redirects an opposite snap and keeps same-directi
         const h = harness({ y: 350, activeSnap });
         h.dispatch('touchstart', 400);
         h.win.scrollY = 550; // Animation advanced after contact, before movement.
-        h.dispatch(event, 400 - direction);
+        h.dispatch(event, 400 - direction * 4);
         assert.equal(h.snaps.length, activeSnap === direction ? 0 : 1);
         if (activeSnap !== direction) {
           assert.equal(h.snaps[0].direction, direction);
           assert.equal(h.snaps[0].from, 550);
         }
         assert.equal(h.scrolls.length, 0, 'Retargeting does not jump to a section');
-        h.dispatch('touchend', 400 - direction);
+        h.dispatch('touchend', 400 - direction * 4);
         assert.equal(h.snapCancels, 0, 'Release leaves the section animation running');
       }
     }
@@ -328,7 +328,7 @@ test('a downward continuation can drag Projects after arrival without replaying 
   for (const activeSnap of [-1, 1]) {
     const h = harness({ y: 550, activeSnap });
     h.dispatch('touchstart', 400);
-    h.dispatch('pointermove', 399);
+    h.dispatch('pointermove', 396);
     const startedSnaps = h.snaps.length;
     h.dispatch('pointermove', 300);
     h.dispatch('touchmove', 350); // Stale secondary delivery remains ignored.
@@ -369,7 +369,7 @@ test('a contact moving after the previous snap finishes uses the settled section
   const up = harness({ y: 550, activeSnap: -1 });
   up.dispatch('touchstart', 400);
   up.finishSnap(-1);
-  up.dispatch('pointermove', 399);
+  up.dispatch('pointermove', 396);
   assert.equal(up.snaps[0].direction, 1);
   assert.equal(up.snaps[0].from, 0);
 });
@@ -605,7 +605,7 @@ test('horizontal, pinch, and unsupported noncancelable gestures remain native', 
 test('declared vertical ownership keeps held snaps running through noncancelable events', () => {
   const h = harness();
   h.dispatch('touchstart', 400);
-  h.dispatch('pointermove', 399);
+  h.dispatch('pointermove', 396);
   h.dispatch('touchmove', 360, { cancelable: false });
   assert.equal(h.snaps.length, 1);
   assert.equal(h.snapCancels, 0);
@@ -615,7 +615,7 @@ test('declared vertical ownership keeps held snaps running through noncancelable
 test('zooming restores native pan and destroy restores the original touch policy', () => {
   const h = harness();
   h.dispatch('touchstart', 400);
-  h.dispatch('pointermove', 399);
+  h.dispatch('pointermove', 396);
   h.win.visualViewport.scale = 2;
   h.dispatch('viewport:resize');
   assert.equal(h.style.touchAction, '');
@@ -705,4 +705,144 @@ test('gestures originating on an SVG child can still own page scrolling', () => 
   h.dispatch('touchstart', 400, { target });
   assert.equal(h.dispatch('touchmove', 360, { target }).defaultPrevented, true);
   assert.equal(h.snaps[0].direction, 1);
+});
+
+test('landing jitter against the swipe cannot reverse a return to hero', () => {
+  for (const event of ['pointermove', 'touchmove']) {
+    for (const jitter of [0.3, 1, 3]) {
+      const h = harness({ y: 600, activeSnap: -1 });
+      h.dispatch('touchstart', 300);
+      h.dispatch(event, 300 - jitter);
+      assert.equal(h.snaps.length, 0, 'Jitter alone decides nothing');
+      assert.equal(h.dispatch('touchmove', 300 - jitter).defaultPrevented, true, 'Native scroll stays off while undecided');
+      h.win.scrollY = 500; // The return keeps animating meanwhile.
+      h.dispatch(event, 320);
+      assert.equal(h.snaps.length, 0, 'Same-direction movement keeps the return running');
+      assert.equal(h.snapCancels, 0);
+      h.dispatch('touchend', 320);
+      assert.equal(h.snapCancels, 0);
+      assert.equal(h.scrolls.length, 0);
+    }
+  }
+});
+
+test('a stationary contact whose pointer coordinates round differently cannot redirect a snap', () => {
+  for (const activeSnap of [-1, 1]) {
+    const h = harness({ y: 600, activeSnap });
+    h.dispatch('touchstart', 300);
+    h.dispatch('pointermove', 300.5);
+    h.dispatch('pointermove', 299.5);
+    h.dispatch('touchend', 299.5);
+    assert.equal(h.snaps.length, 0);
+    assert.equal(h.snapCancels, 0);
+  }
+});
+
+test('landing jitter at the hero cannot start a forward snap from an upward swipe', () => {
+  const h = harness({ y: 0 });
+  h.dispatch('touchstart', 300);
+  h.dispatch('pointermove', 299);
+  h.advance(16);
+  assert.equal(h.snaps.length, 0);
+  assert.ok(h.win.scrollY <= 1, 'At most a pixel of drag');
+  h.dispatch('pointermove', 320);
+  h.advance(16);
+  assert.equal(h.snaps.length, 0);
+  assert.equal(h.win.scrollY, 0);
+  h.dispatch('touchend', 320);
+  h.advance(1000);
+  assert.equal(h.snaps.length, 0);
+  assert.equal(h.win.scrollY, 0);
+});
+
+test('landing jitter at the dock cannot return to hero from a downward swipe', () => {
+  for (const y of [1000, 1040]) {
+    const h = harness({ y });
+    h.dispatch('touchstart', 300);
+    h.dispatch('pointermove', 301);
+    h.advance(16);
+    assert.equal(h.snaps.length, 0);
+    assert.ok(h.win.scrollY >= 1000);
+    h.dispatch('pointermove', 280);
+    h.advance(16);
+    assert.equal(h.snaps.length, 0);
+    assert.equal(h.win.scrollY, Math.max(y - 1, 1000) + 21, 'The jitter drags at most to the dock, then the swipe continues down');
+  }
+});
+
+test('a confirmed push still snaps on its first sample and a snap finishing while undecided settles the contact', () => {
+  const h = harness({ y: 600, activeSnap: -1 });
+  h.dispatch('touchstart', 300);
+  h.dispatch('pointermove', 299);
+  h.finishSnap(-1);
+  h.dispatch('pointermove', 297);
+  h.advance(16);
+  assert.equal(h.snaps.length, 0);
+  assert.equal(h.win.scrollY, 2, 'Drags from the settled hero position once the animation is over');
+  h.dispatch('pointermove', 292);
+  assert.equal(h.snaps.length, 1);
+  assert.equal(h.snaps[0].direction, 1);
+  assert.equal(h.snaps[0].from, 2);
+});
+
+test('repeated quick upward swipes through the dock return to hero and stay there', () => {
+  const h = harness({ y: 1500 });
+  const swipe = (start, positions) => {
+    h.dispatch('touchstart', start);
+    for (const y of positions) { h.advance(8); h.dispatch('pointermove', y); h.dispatch('touchmove', y); }
+    h.dispatch('touchend', positions.at(-1));
+  };
+  swipe(300, [299, 330, 400, 480]);
+  h.advance(200);
+  const afterFirst = h.snaps.length;
+  assert.ok(h.win.scrollY < 1500);
+  // Second swipe lands while the first's momentum or return runs; it jitters up first.
+  swipe(300, [299.5, 299, 320, 400, 470]);
+  h.advance(200);
+  swipe(300, [301, 340, 420]);
+  h.advance(2000);
+  assert.ok(h.snaps.every((snap) => snap.direction === -1), JSON.stringify(h.snaps));
+  assert.ok(h.snaps.length >= 1 && h.snaps.length >= afterFirst);
+});
+
+test('a lifting finger reporting against the swipe cannot coast the page the other way', () => {
+  for (const [reversal, frameMs] of [[1, 16], [2, 8], [3, 8]]) {
+    const h = harness({ y: 1600, frameMs });
+    h.dispatch('touchstart', 300);
+    for (const y of [340, 380, 420]) { h.advance(frameMs); h.dispatch('pointermove', y); h.dispatch('touchmove', y); }
+    h.advance(frameMs);
+    h.dispatch('pointermove', 420 - reversal);
+    h.dispatch('touchmove', 420 - reversal);
+    h.dispatch('touchend', 420 - reversal);
+    const released = h.win.scrollY;
+    h.advance(3000);
+    assert.ok(h.win.scrollY < released, `Momentum follows the swipe (reversal ${reversal}px at ${frameMs}ms)`);
+    assert.equal(h.win.scrollY, 1000, 'The upward fling still docks at Projects');
+    assert.equal(h.snaps.length, 0);
+  }
+});
+
+test('a deliberate reversal before release still flings in the new direction', () => {
+  const h = harness({ y: 1600 });
+  h.dispatch('touchstart', 300);
+  for (const y of [340, 380, 420, 400, 370]) { h.advance(16); h.dispatch('pointermove', y); h.dispatch('touchmove', y); }
+  h.dispatch('touchend', 370);
+  const released = h.win.scrollY;
+  h.advance(3000);
+  assert.ok(h.win.scrollY > released, 'Momentum follows the latest deliberate push');
+});
+
+test('an upward swipe from inside the transition is not pushed down to the dock first', () => {
+  for (const y of [500, 980]) {
+    const h = harness({ y });
+    h.dispatch('touchstart', 300);
+    h.dispatch('pointermove', 302);
+    h.advance(16);
+    assert.equal(h.win.scrollY, y - 2, 'Drags up from the visible position');
+    assert.ok(h.scrolls.every((top) => top <= y), JSON.stringify(h.scrolls));
+    h.dispatch('pointermove', 320);
+    assert.equal(h.snaps.length, 1);
+    assert.equal(h.snaps[0].direction, -1);
+    assert.ok(h.scrolls.every((top) => top <= y), 'Nothing writes a lower page position');
+  }
 });
