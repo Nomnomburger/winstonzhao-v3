@@ -1,0 +1,599 @@
+{
+  "documentId": "legacy-portfolio-yrconnect",
+  "fields": {
+    "client": "YR Hacks 2024",
+    "coverImage": {
+      "_type": "image",
+      "alt": "YRConnect — cover",
+      "asset": {
+        "_ref": "image-955cb0ae1d7016d6e320cbfa544ff5bd4b458118-1840x1380-png",
+        "_type": "reference"
+      }
+    },
+    "description": "A York Region resident app concept for facility bookings, service requests, community updates, and local polls.",
+    "details": [
+      {
+        "_key": "yrconnect-detail-role",
+        "_type": "detailItem",
+        "label": "Role",
+        "value": "Lead Designer"
+      },
+      {
+        "_key": "yrconnect-detail-team",
+        "_type": "detailItem",
+        "label": "Team",
+        "value": "Aubree Lianto"
+      },
+      {
+        "_key": "yrconnect-detail-timeline",
+        "_type": "detailItem",
+        "label": "Timeline",
+        "value": "April 17–18, 2024"
+      },
+      {
+        "_key": "yrconnect-detail-tools",
+        "_type": "detailItem",
+        "label": "Tools",
+        "value": "Figma"
+      },
+      {
+        "_key": "yrconnect-detail-deliverable",
+        "_type": "detailItem",
+        "label": "Deliverable",
+        "value": "Mobile app concept / Interactive prototype"
+      },
+      {
+        "_key": "yrconnect-detail-recognition",
+        "_type": "detailItem",
+        "label": "Recognition",
+        "value": "Second Place, YRHacks 2024"
+      }
+    ],
+    "discipline": "UI/UX DESIGN",
+    "featured": true,
+    "hero": [
+      {
+        "_key": "yrconnect-30",
+        "_type": "mediaImage",
+        "alt": "YRConnect — cover",
+        "asset": {
+          "_ref": "image-955cb0ae1d7016d6e320cbfa544ff5bd4b458118-1840x1380-png",
+          "_type": "reference"
+        },
+        "size": "full"
+      }
+    ],
+    "impact": "YR Hacks 2024 — 2nd Place",
+    "intro": "Booking a study room or a court should not require learning a different website each time. At YRHacks 2024, Aubree and I designed YRConnect to bring everyday York Region services into one mobile experience.",
+    "link": {
+      "label": "VIEW ON DEVPOST",
+      "url": "https://devpost.com/software/yrconnect"
+    },
+    "order": 2,
+    "overview": "YRConnect is a mobile app concept for York Region residents. It connects study-room and sports bookings with municipal service requests, local notices, events, and polls. Working with Aubree across the two-day hackathon, I designed a consistent set of mobile flows and an interactive prototype that made the idea tangible for the judges.",
+    "sections": [
+      {
+        "_key": "yrconnect-section-challenge",
+        "_type": "projectSection",
+        "content": [
+          {
+            "_key": "yrconnect-challenge-p1",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "yrconnect-challenge-p1-text",
+                "_type": "span",
+                "marks": [],
+                "text": "The idea came from a familiar frustration. Aubree and I wanted to meet for volleyball games and study sessions, but booking a court or a room at Cornell Library meant navigating a series of pages and forms. Municipal and regional services were spread across different URLs, tabs, and interfaces. We saw an opportunity to give residents one place to find a service and follow through on it."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "yrconnect-challenge-p2",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "yrconnect-challenge-p2-text",
+                "_type": "span",
+                "marks": [],
+                "text": "YRHacks was my third hackathon, and we chose to submit a design project. The event started online and continued in person the following day, so we needed a clear scope we could turn into a convincing prototype. We focused on facility bookings, service requests, and community updates: three everyday needs that could share a resident account and a familiar navigation structure."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "yrconnect-challenge-p3",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "yrconnect-challenge-p3-text",
+                "_type": "span",
+                "marks": [],
+                "text": "The audience extended beyond students like us. We wanted the concept to be readable for residents of different ages, with visible actions and clear information hierarchy. That goal shaped the interface from the first sketches through the final screens."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          }
+        ],
+        "heading": "Bring fragmented services into one place",
+        "title": "Challenge"
+      },
+      {
+        "_key": "yrconnect-section-process",
+        "_type": "projectSection",
+        "content": [
+          {
+            "_key": "yrconnect-process-p1",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "yrconnect-process-p1-text",
+                "_type": "span",
+                "marks": [],
+                "text": "We began with a feature list and divided the work around what each of us felt comfortable designing. I worked on the interface and design system, while Aubree contributed to onboarding and the pitch. Paper sketches let us explore the dashboard quickly before refining spacing and individual elements in Figma. The key question was how to fit varied information on home without turning it into a dense menu."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "yrconnect-process-p2",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "yrconnect-process-p2-text",
+                "_type": "span",
+                "marks": [],
+                "text": "Different coloured cards became the organizing device. Blue connected the visual direction to York Region, while light green, pale cyan, and darker teal gave us ways to separate content and create emphasis. We paired that palette with the Mori typeface from Pangram Pangram. Bold labels, generous type sizes, and distinct surfaces supported our aim to make different kinds of content readable at a glance."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "yrconnect-process-p3",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "yrconnect-process-p3-text",
+                "_type": "span",
+                "marks": [],
+                "text": "Reusable headers and bottom navigation kept the growing set of screens consistent. Figma components let us carry those decisions between frames, and auto-layout helped organize the dashboard grid. We then connected account setup, bookings, requests, and community screens into a prototype so the proposal could be experienced as a set of related tasks."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "yrconnect-27",
+            "_type": "mediaImage",
+            "alt": "YRConnect Figma screen overview showing dashboard, bookings, service requests, community polls, and onboarding",
+            "asset": {
+              "_ref": "image-232c2a79dde56306ae5bf225ee0b0105c3786ed1-2752x4238-png",
+              "_type": "reference"
+            },
+            "caption": "The complete screen set connects onboarding with bookings, service requests, and community updates.",
+            "size": "full"
+          }
+        ],
+        "heading": "Establish the system before building the flows",
+        "title": "Process"
+      },
+      {
+        "_key": "yrconnect-section-dashboard",
+        "_type": "projectSection",
+        "content": [
+          {
+            "_key": "yrconnect-dashboard-p1",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "yrconnect-dashboard-p1-text",
+                "_type": "span",
+                "marks": [],
+                "text": "Home combines a personal greeting with cards for bookings, a community poll, filed reports, and events. The next reservation gets the strongest hierarchy: its time is large, with the room, library, and duration grouped below. A resident can see an upcoming commitment immediately and move into the booking area from the same card."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "yrconnect-dashboard-p2",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "yrconnect-dashboard-p2-text",
+                "_type": "span",
+                "marks": [],
+                "text": "The other cards keep community activity visible around that priority. The poll includes a direct voting prompt, the report card summarizes an existing request, and the event list pairs dates with names and locations. Colour and scale give each type of information its own place without asking residents to scan a long list of equal-weight options."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "yrconnect-dashboard-p3",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "yrconnect-dashboard-p3-text",
+                "_type": "span",
+                "marks": [],
+                "text": "A persistent bottom navigation connects the main areas. The same rounded surfaces and circular controls recur across the screens, giving booking, reporting, and participation a shared visual language even when their content differs."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "yrconnect-dashboard-studyrooms",
+            "_type": "mediaImage",
+            "alt": "YRConnect home dashboard and study-room availability shown side by side in iPhone frames",
+            "asset": {
+              "_ref": "image-92ae8fbce021cdde8d5051166bbd0f254acdd02c-1600x1100-png",
+              "_type": "reference"
+            },
+            "caption": "Home prioritizes the next booking; study-room availability groups time, capacity, and amenities for comparison.",
+            "size": "full"
+          }
+        ],
+        "heading": "Put the next commitment first",
+        "title": "Dashboard"
+      },
+      {
+        "_key": "yrconnect-section-bookings",
+        "_type": "projectSection",
+        "content": [
+          {
+            "_key": "yrconnect-bookings-p1",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "yrconnect-bookings-p1-text",
+                "_type": "span",
+                "marks": [],
+                "text": "The booking area separates sports facilities from study rooms and keeps existing reservations alongside upcoming events. This makes it useful both for starting a new booking and checking plans already made. From there, the availability screens put the date, facility, and relevant filters above the results."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "yrconnect-25",
+            "_type": "mediaImage",
+            "alt": "YRConnect booking overview in an iPhone mockup, showing sports and study-room entry points, booked reservations, and events",
+            "asset": {
+              "_ref": "image-c7abc0e39835158c6efa76c71adefaf809653093-1440x1080-png",
+              "_type": "reference"
+            },
+            "caption": "The booking overview combines new reservations with existing bookings and upcoming events.",
+            "size": "full"
+          },
+          {
+            "_key": "yrconnect-bookings-p2",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "yrconnect-bookings-p2-text",
+                "_type": "span",
+                "marks": [],
+                "text": "Study-room rows pair the time slot with the room name, capacity, and amenity icons. The sports version uses the same structure to show the gym, sport, time, and price. Keeping these details together supports comparison within one view. Capacity and length controls help narrow study-room choices, while sport and length controls suit the facility flow."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "yrconnect-bookings-p3",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "yrconnect-bookings-p3-text",
+                "_type": "span",
+                "marks": [],
+                "text": "Before confirming, a focused review screen collects the selected date, time, and room or court. Photos and amenity information add context to the reservation. A swipe action marks the final commitment, and a separate success state closes the flow. The account concept was intended to carry resident information between tasks, reducing the need to enter the same details for each booking."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "yrconnect-26",
+            "_type": "mediaImage",
+            "alt": "YRConnect sports facility availability in an iPhone mockup, showing a date selector, sport and length filters, and gym time slots",
+            "asset": {
+              "_ref": "image-5ddbaea93bd2dd82a8ad5768a378705d8799b727-1440x1080-png",
+              "_type": "reference"
+            },
+            "caption": "Sports availability pairs each time slot with its gym, activity, and price.",
+            "size": "full"
+          }
+        ],
+        "heading": "Compare the options, then review the commitment",
+        "title": "Bookings"
+      },
+      {
+        "_key": "yrconnect-section-services",
+        "_type": "projectSection",
+        "content": [
+          {
+            "_key": "yrconnect-services-p1",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "yrconnect-services-p1-text",
+                "_type": "span",
+                "marks": [],
+                "text": "The service area starts with recognizable categories such as large-item pickup, streetlight maintenance, and plants and vegetation. Each is a direct entry point into a particular request. The interface identifies the service provider so residents have context for the task they are about to complete."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "yrconnect-services-p2",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "yrconnect-services-p2-text",
+                "_type": "span",
+                "marks": [],
+                "text": "For large-item pickup, the design places the date selection alongside an explanation of eligibility. Accepted and unacceptable materials are listed before the request form. That sequence gives residents the information needed to decide whether the service applies to their situation before they spend time filling it out."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "yrconnect-services-p3",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "yrconnect-services-p3-text",
+                "_type": "span",
+                "marks": [],
+                "text": "The next screen allows up to five items and then asks the resident to confirm contact and address information. Separating service rules, item details, and personal information gives the request a readable progression. Together, these screens carry a request through a series of focused decisions within the Figma prototype."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          }
+        ],
+        "heading": "Explain the service before asking for information",
+        "title": "Service requests"
+      },
+      {
+        "_key": "yrconnect-section-community",
+        "_type": "projectSection",
+        "content": [
+          {
+            "_key": "yrconnect-community-p1",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "yrconnect-community-p1-text",
+                "_type": "span",
+                "marks": [],
+                "text": "Community updates groups polls, notices, and local projects into distinct sections. Road construction and transit changes can be read as notices, while a project or poll leads into more detail. This gives informational browsing and active participation a place within the same area without treating every item as the same kind of content."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "yrconnect-community-p2",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "yrconnect-community-p2-text",
+                "_type": "span",
+                "marks": [],
+                "text": "A poll screen presents the initiative before asking for a Yes or No response. The design includes copy describing polls as anonymous. We wanted the action and its expectations to be visible at the point of participation. Keeping that explanation close to the response controls gives the resident context before submitting an opinion."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "yrconnect-community-p3",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "yrconnect-community-p3-text",
+                "_type": "span",
+                "marks": [],
+                "text": "Onboarding uses the same approach to context. It explains why an address is requested and introduces the account setup in steps, including the proposed flyer-code verification. These screens frame an account around the services it would enable, while keeping each stage of data entry focused."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          }
+        ],
+        "heading": "Connect local information with a clear next action",
+        "title": "Community"
+      },
+      {
+        "_key": "yrconnect-section-outcome",
+        "_type": "projectSection",
+        "content": [
+          {
+            "_key": "yrconnect-outcome-p1",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "yrconnect-outcome-p1-text",
+                "_type": "span",
+                "marks": [],
+                "text": "We completed the high-fidelity screens and an interactive Figma prototype, then presented YRConnect to the judges. The prototype let us demonstrate the relationship between home, facility booking, service requests, and community participation. We explained how the visual system and recurring patterns supported the different tasks within one resident experience."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "yrconnect-outcome-p2",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "yrconnect-outcome-p2-text",
+                "_type": "span",
+                "marks": [],
+                "text": "YRConnect won Second Place overall at YRHacks 2024. It was a rewarding end to my third hackathon, where our submission centred on interface design and a connected product concept. The final presentation brought our prototype and the reasoning behind its decisions together."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "yrconnect-outcome-p3",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "yrconnect-outcome-p3-text",
+                "_type": "span",
+                "marks": [],
+                "text": "My main takeaway was the value of setting a clear direction early. Planning the feature set, dividing responsibilities, and building reusable components helped us carry the idea through to the presentation. The work also reinforced that a prototype and a concise explanation of the design decisions are both part of making a product proposal understandable."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          }
+        ],
+        "heading": "Turn a broad idea into a coherent prototype",
+        "title": "Outcome"
+      }
+    ],
+    "showSideMenu": true,
+    "slug": {
+      "_type": "slug",
+      "current": "yrconnect"
+    },
+    "summary": "YRConnect brings facility bookings, service requests, and community participation into a shared resident app. I led the interface and design system for the Figma prototype, which won Second Place at YRHacks 2024.",
+    "title": "YRConnect",
+    "year": 2024
+  },
+  "sourceNotes": [
+    {
+      "source": "Existing author-written YRConnect story",
+      "path": "content/figma-case-studies/sanity-before-yrconnect-merge.json",
+      "documentId": "legacy-portfolio-yrconnect",
+      "supports": [
+        "Third hackathon; design-only submission",
+        "Two-person collaboration with Aubree; paper sketches; readability intent; dashboard cards",
+        "Blue/green/teal palette and Mori typeface",
+        "Figma components and auto-layout; interactive prototype; presentation; reflection"
+      ],
+      "editorialDecision": "Reorganized the authentic story into seven chapters. Omitted unsupported claims of implemented push notifications and published poll-result visualizations. Readability is presented as a design intention rather than a verified accessibility outcome."
+    },
+    {
+      "source": "Author project submission",
+      "url": "https://devpost.com/software/yrconnect",
+      "supports": [
+        "Personal frustration booking courts and study rooms at Cornell Library",
+        "Figma deliverable and account concept",
+        "Winston interface/design-system contribution; Aubree onboarding/pitch contribution",
+        "Winner: Second Place, YRHacks 2024"
+      ],
+      "editorialDecision": "Treat the submission as a design prototype. No launched backend, municipal partnership, government funding, adoption, or measured task improvement claimed."
+    },
+    {
+      "source": "Official YRHacks 2024 rules",
+      "url": "https://yrhacks2024.devpost.com/rules",
+      "supports": [
+        "Online start April 17, 2024; in-person continuation and closing April 18, 2024"
+      ],
+      "editorialDecision": "Timeline uses the event dates, not sample dates within interface screens."
+    },
+    {
+      "source": "Figma Design Demo",
+      "url": "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W/Winston-Design-Demo?node-id=1-7779",
+      "pageId": "1:7779",
+      "pageName": "MuniSync",
+      "screenIds": [
+        {
+          "id": "1:8106",
+          "label": "Home"
+        },
+        {
+          "id": "1:8321",
+          "label": "Service request categories"
+        },
+        {
+          "id": "1:8379",
+          "label": "Large item pickup date and eligibility"
+        },
+        {
+          "id": "1:8453",
+          "label": "Pickup request and contact confirmation"
+        },
+        {
+          "id": "1:8526",
+          "label": "Community updates"
+        },
+        {
+          "id": "1:8629",
+          "label": "Poll details and Yes/No response"
+        },
+        {
+          "id": "1:9251",
+          "label": "Study-room availability"
+        },
+        {
+          "id": "1:9610",
+          "label": "Study-room review and swipe confirmation"
+        },
+        {
+          "id": "1:9856",
+          "label": "Sports booking success"
+        }
+      ],
+      "supports": [
+        "Dashboard hierarchy and bottom navigation",
+        "Study-room capacity, length, and amenity information",
+        "Sports date, sport, length, gym, and price information",
+        "Review, swipe, and success states",
+        "Pickup eligibility/material rules and five-item limit",
+        "Notices, projects, polls, and explanatory onboarding copy"
+      ],
+      "editorialDecision": "User confirmed MuniSync and YRConnect are the same project. The imported narrative and body image are merged under YRConnect; no MuniSync name appears in customer-facing fields."
+    },
+    {
+      "source": "Visual inspection of retained and imported images",
+      "paths": [
+        "content/figma-case-studies/assets/yrconnect-legacy-1.jpg",
+        "content/figma-case-studies/assets/yrconnect-legacy-2.jpg",
+        "content/figma-case-studies/assets/yrconnect-legacy-3.jpg",
+        "content/figma-case-studies/assets/munisync-details.png"
+      ],
+      "supports": [
+        "Captions and alt text match actual image content"
+      ],
+      "editorialDecision": "All three original body media references are retained exactly once. Imported image gives a readable close-up of dashboard/study-room details; the original full screen set remains a process overview and the original mockups cover booking overview/sports availability."
+    }
+  ],
+  "preservedFields": [
+    "title",
+    "slug",
+    "year",
+    "order",
+    "featured",
+    "client",
+    "discipline",
+    "coverImage",
+    "hero",
+    "link",
+    "impact"
+  ],
+  "retainedMediaReferences": [
+    "image-c7abc0e39835158c6efa76c71adefaf809653093-1440x1080-png",
+    "image-5ddbaea93bd2dd82a8ad5768a378705d8799b727-1440x1080-png",
+    "image-232c2a79dde56306ae5bf225ee0b0105c3786ed1-2752x4238-png"
+  ],
+  "importedMediaReferences": [
+    "image-92ae8fbce021cdde8d5051166bbd0f254acdd02c-1600x1100-png"
+  ]
+}

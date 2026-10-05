@@ -1,0 +1,497 @@
+{
+  "mergedAt": "2026-10-05T08:16:12.079Z",
+  "mergedInto": {
+    "id": "legacy-portfolio-yrconnect",
+    "slug": "yrconnect"
+  },
+  "recoverableId": "drafts.figma-portfolio-munisync",
+  "document": {
+    "_createdAt": "2026-10-05T06:56:16Z",
+    "_id": "figma-portfolio-munisync",
+    "_rev": "4Uon20R3fRb2VIjNA8mbFW",
+    "_type": "project",
+    "_updatedAt": "2026-10-05T07:18:51Z",
+    "client": "YRHacks",
+    "coverImage": {
+      "_type": "image",
+      "alt": "MuniSync project interface",
+      "asset": {
+        "_ref": "image-379bbd4c16d13a252f3de473bfbc4d02b24992ea-716x717-png",
+        "_type": "reference"
+      }
+    },
+    "description": "A resident app that connects local bookings, service requests, community notices, and polls through a shared mobile interface.",
+    "details": [
+      {
+        "_key": "detail-0",
+        "_type": "detailItem",
+        "label": "Role",
+        "value": "Product Design"
+      },
+      {
+        "_key": "detail-1",
+        "_type": "detailItem",
+        "label": "Platform",
+        "value": "Mobile app"
+      },
+      {
+        "_key": "detail-2",
+        "_type": "detailItem",
+        "label": "Recognition",
+        "value": "Second Place, YRHacks 2024"
+      },
+      {
+        "_key": "detail-timeline",
+        "_type": "detailItem",
+        "label": "Timeline",
+        "value": "April 2024"
+      }
+    ],
+    "discipline": "Product Design",
+    "featured": false,
+    "hero": [
+      {
+        "_key": "hero",
+        "_type": "mediaImage",
+        "alt": "MuniSync project interface",
+        "asset": {
+          "_ref": "image-379bbd4c16d13a252f3de473bfbc4d02b24992ea-716x717-png",
+          "_type": "reference"
+        },
+        "size": "full"
+      }
+    ],
+    "intro": "Bringing everyday municipal tasks into a familiar mobile experience.",
+    "order": 19,
+    "overview": "Designed in the YRHacks context, MuniSync explores a connected experience for York Region residents. Its screens cover account setup, study-room and sports bookings, large-item pickup, community notices, and anonymous polls.",
+    "sections": [
+      {
+        "_key": "section-0",
+        "_type": "projectSection",
+        "content": [
+          {
+            "_key": "paragraph-0-0",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "paragraph-0-0-span",
+                "_type": "span",
+                "marks": [],
+                "text": "The home screen combines a personal greeting with large cards for bookings, a community poll, filed reports, and upcoming events. The next reservation receives the most prominent space, pairing its time with the room and library. Smaller cards keep participation and service activity within reach."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "paragraph-0-1",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "paragraph-0-1-span",
+                "_type": "span",
+                "marks": [],
+                "text": "A persistent bottom navigation gives these different areas a shared structure. Rounded surfaces and distinct colour blocks separate tasks without requiring residents to decode a dense menu."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          }
+        ],
+        "heading": "A dashboard built around the resident",
+        "title": "Overview"
+      },
+      {
+        "_key": "section-1",
+        "_type": "projectSection",
+        "content": [
+          {
+            "_key": "paragraph-1-0",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "paragraph-1-0-span",
+                "_type": "span",
+                "marks": [],
+                "text": "The study-room flow places the date selector, facility, and filters above the available rooms. Each row pairs a time slot with room capacity and amenity icons, supporting comparison in the same view. Sports bookings follow the same broader pattern of choosing a facility, reviewing details, and confirming."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "paragraph-1-1",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "paragraph-1-1-span",
+                "_type": "span",
+                "marks": [],
+                "text": "Confirmation screens collect the selected date, time, and room into a focused summary. A swipe action marks the commitment, followed by a success state that gives the reservation a clear endpoint."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "image-0",
+            "_type": "mediaImage",
+            "alt": "MuniSync resident dashboard and study-room availability",
+            "asset": {
+              "_ref": "image-92ae8fbce021cdde8d5051166bbd0f254acdd02c-1600x1100-png",
+              "_type": "reference"
+            },
+            "caption": "MuniSync resident dashboard and study-room availability",
+            "size": "full"
+          }
+        ],
+        "heading": "Compare availability before committing",
+        "title": "Booking"
+      },
+      {
+        "_key": "section-2",
+        "_type": "projectSection",
+        "content": [
+          {
+            "_key": "paragraph-2-0",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "paragraph-2-0-span",
+                "_type": "span",
+                "marks": [],
+                "text": "The service-request flow explains acceptable pickup items before collecting the request and confirming contact information. Community updates use separate groups for notices, projects, and polls, keeping informational browsing distinct from taking action."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "paragraph-2-1",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "paragraph-2-1-span",
+                "_type": "span",
+                "marks": [],
+                "text": "Poll screens explicitly state that submissions are anonymous. Onboarding also explains why the resident's address is needed. These small pieces of contextual copy make the purpose of each interaction visible at the point where residents provide information."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          }
+        ],
+        "heading": "Make different civic tasks feel connected",
+        "title": "Community"
+      }
+    ],
+    "showSideMenu": true,
+    "slug": {
+      "_type": "slug",
+      "current": "munisync"
+    },
+    "summary": "MuniSync combines recreation booking, service requests, and community participation in one resident app. The design gives each task a clear path while keeping upcoming commitments and local activity visible from home.",
+    "title": "MuniSync",
+    "year": 2024
+  },
+  "copy": {
+    "slug": "munisync",
+    "title": "MuniSync",
+    "description": "A resident app that connects local bookings, service requests, community notices, and polls through a shared mobile interface.",
+    "client": "YRHacks",
+    "discipline": "Product Design",
+    "intro": "Bringing everyday municipal tasks into a familiar mobile experience.",
+    "summary": "MuniSync combines recreation booking, service requests, and community participation in one resident app. The design gives each task a clear path while keeping upcoming commitments and local activity visible from home.",
+    "overview": "Designed in the YRHacks context, MuniSync explores a connected experience for York Region residents. Its screens cover account setup, study-room and sports bookings, large-item pickup, community notices, and anonymous polls.",
+    "details": [
+      {
+        "label": "Role",
+        "value": "Product Design"
+      },
+      {
+        "label": "Platform",
+        "value": "Mobile app"
+      },
+      {
+        "label": "Recognition",
+        "value": "Second Place, YRHacks 2024"
+      },
+      {
+        "label": "Timeline",
+        "value": "April 2024"
+      }
+    ],
+    "sections": [
+      {
+        "title": "Overview",
+        "heading": "A dashboard built around the resident",
+        "paragraphs": [
+          "The home screen combines a personal greeting with large cards for bookings, a community poll, filed reports, and upcoming events. The next reservation receives the most prominent space, pairing its time with the room and library. Smaller cards keep participation and service activity within reach.",
+          "A persistent bottom navigation gives these different areas a shared structure. Rounded surfaces and distinct colour blocks separate tasks without requiring residents to decode a dense menu."
+        ]
+      },
+      {
+        "title": "Booking",
+        "heading": "Compare availability before committing",
+        "paragraphs": [
+          "The study-room flow places the date selector, facility, and filters above the available rooms. Each row pairs a time slot with room capacity and amenity icons, supporting comparison in the same view. Sports bookings follow the same broader pattern of choosing a facility, reviewing details, and confirming.",
+          "Confirmation screens collect the selected date, time, and room into a focused summary. A swipe action marks the commitment, followed by a success state that gives the reservation a clear endpoint."
+        ]
+      },
+      {
+        "title": "Community",
+        "heading": "Make different civic tasks feel connected",
+        "paragraphs": [
+          "The service-request flow explains acceptable pickup items before collecting the request and confirming contact information. Community updates use separate groups for notices, projects, and polls, keeping informational browsing distinct from taking action.",
+          "Poll screens explicitly state that submissions are anonymous. Onboarding also explains why the resident's address is needed. These small pieces of contextual copy make the purpose of each interaction visible at the point where residents provide information."
+        ]
+      }
+    ],
+    "screenIds": [
+      {
+        "id": "1:8106",
+        "label": "Resident dashboard with bookings, polls, and reports"
+      },
+      {
+        "id": "1:9251",
+        "label": "Study-room availability with dates and capacity"
+      }
+    ],
+    "year": 2024,
+    "yearSource": "YRConnect names Winston as creator, links to YRHacks 2024 and its Second Place award, and records the project update on April 18, 2024 at 5:35 PM EDT. Source: https://devpost.com/software/yrconnect"
+  },
+  "importEntry": {
+    "id": "figma-portfolio-munisync",
+    "status": "published",
+    "yearSource": "YRConnect names Winston as creator, links to YRHacks 2024 and its Second Place award, and records the project update on April 18, 2024 at 5:35 PM EDT. Source: https://devpost.com/software/yrconnect",
+    "document": {
+      "_type": "project",
+      "title": "MuniSync",
+      "slug": {
+        "_type": "slug",
+        "current": "munisync"
+      },
+      "year": 2024,
+      "featured": false,
+      "order": 19,
+      "description": "A resident app that connects local bookings, service requests, community notices, and polls through a shared mobile interface.",
+      "client": "YRHacks",
+      "discipline": "Product Design",
+      "intro": "Bringing everyday municipal tasks into a familiar mobile experience.",
+      "summary": "MuniSync combines recreation booking, service requests, and community participation in one resident app. The design gives each task a clear path while keeping upcoming commitments and local activity visible from home.",
+      "overview": "Designed in the YRHacks context, MuniSync explores a connected experience for York Region residents. Its screens cover account setup, study-room and sports bookings, large-item pickup, community notices, and anonymous polls.",
+      "showSideMenu": true,
+      "details": [
+        {
+          "_type": "detailItem",
+          "_key": "detail-0",
+          "label": "Role",
+          "value": "Product Design"
+        },
+        {
+          "_type": "detailItem",
+          "_key": "detail-1",
+          "label": "Platform",
+          "value": "Mobile app"
+        },
+        {
+          "_type": "detailItem",
+          "_key": "detail-2",
+          "label": "Recognition",
+          "value": "Second Place, YRHacks 2024"
+        },
+        {
+          "_type": "detailItem",
+          "_key": "detail-3",
+          "label": "Timeline",
+          "value": "April 2024"
+        }
+      ],
+      "sections": [
+        {
+          "_type": "projectSection",
+          "_key": "section-0",
+          "title": "Overview",
+          "heading": "A dashboard built around the resident",
+          "content": [
+            {
+              "_type": "block",
+              "_key": "paragraph-0-0",
+              "style": "normal",
+              "markDefs": [],
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "paragraph-0-0-span",
+                  "marks": [],
+                  "text": "The home screen combines a personal greeting with large cards for bookings, a community poll, filed reports, and upcoming events. The next reservation receives the most prominent space, pairing its time with the room and library. Smaller cards keep participation and service activity within reach."
+                }
+              ]
+            },
+            {
+              "_type": "block",
+              "_key": "paragraph-0-1",
+              "style": "normal",
+              "markDefs": [],
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "paragraph-0-1-span",
+                  "marks": [],
+                  "text": "A persistent bottom navigation gives these different areas a shared structure. Rounded surfaces and distinct colour blocks separate tasks without requiring residents to decode a dense menu."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_type": "projectSection",
+          "_key": "section-1",
+          "title": "Booking",
+          "heading": "Compare availability before committing",
+          "content": [
+            {
+              "_type": "block",
+              "_key": "paragraph-1-0",
+              "style": "normal",
+              "markDefs": [],
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "paragraph-1-0-span",
+                  "marks": [],
+                  "text": "The study-room flow places the date selector, facility, and filters above the available rooms. Each row pairs a time slot with room capacity and amenity icons, supporting comparison in the same view. Sports bookings follow the same broader pattern of choosing a facility, reviewing details, and confirming."
+                }
+              ]
+            },
+            {
+              "_type": "block",
+              "_key": "paragraph-1-1",
+              "style": "normal",
+              "markDefs": [],
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "paragraph-1-1-span",
+                  "marks": [],
+                  "text": "Confirmation screens collect the selected date, time, and room into a focused summary. A swipe action marks the commitment, followed by a success state that gives the reservation a clear endpoint."
+                }
+              ]
+            },
+            {
+              "_type": "mediaImage",
+              "_key": "image-0",
+              "localAssetKey": "image-0",
+              "alt": "MuniSync resident dashboard and study-room availability",
+              "caption": "MuniSync resident dashboard and study-room availability",
+              "size": "full"
+            }
+          ]
+        },
+        {
+          "_type": "projectSection",
+          "_key": "section-2",
+          "title": "Community",
+          "heading": "Make different civic tasks feel connected",
+          "content": [
+            {
+              "_type": "block",
+              "_key": "paragraph-2-0",
+              "style": "normal",
+              "markDefs": [],
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "paragraph-2-0-span",
+                  "marks": [],
+                  "text": "The service-request flow explains acceptable pickup items before collecting the request and confirming contact information. Community updates use separate groups for notices, projects, and polls, keeping informational browsing distinct from taking action."
+                }
+              ]
+            },
+            {
+              "_type": "block",
+              "_key": "paragraph-2-1",
+              "style": "normal",
+              "markDefs": [],
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "paragraph-2-1-span",
+                  "marks": [],
+                  "text": "Poll screens explicitly state that submissions are anonymous. Onboarding also explains why the resident's address is needed. These small pieces of contextual copy make the purpose of each interaction visible at the point where residents provide information."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "images": {
+      "cover": {
+        "path": "assets/munisync-cover.png",
+        "fileKey": "r2Feu1tLXWg8ApMcINffew",
+        "nodeId": "595:1022",
+        "alt": "MuniSync project interface"
+      },
+      "hero": {
+        "path": "assets/munisync-cover.png",
+        "fileKey": "r2Feu1tLXWg8ApMcINffew",
+        "nodeId": "595:1022",
+        "alt": "MuniSync project interface"
+      },
+      "additional": [
+        {
+          "path": "assets/munisync-details.png",
+          "fileKey": "qDdxlqtBxVpaAOUMITle4W",
+          "nodeId": "1:8106",
+          "alt": "MuniSync resident dashboard and study-room availability",
+          "sourceNodeIds": [
+            "1:8106",
+            "1:9251"
+          ],
+          "key": "image-0"
+        }
+      ]
+    }
+  },
+  "dateEvidence": {
+    "id": "figma-portfolio-munisync",
+    "slug": "munisync",
+    "title": "MuniSync",
+    "year": 2024,
+    "sortDate": "2024-04-18",
+    "displayDate": "April 2024",
+    "precision": "day",
+    "sourceSummary": "YRConnect names Winston as creator, links to YRHacks 2024 and its Second Place award, and records the project update on April 18, 2024 at 5:35 PM EDT. Source: https://devpost.com/software/yrconnect",
+    "evidenceFile": "civic-extra-dates.json",
+    "sources": [
+      {
+        "url": "https://devpost.com/software/yrconnect",
+        "type": "author project submission",
+        "evidence": "YRConnect names Winston as creator, links to YRHacks 2024 and its Second Place award, and records the project update on April 18, 2024 at 5:35 PM EDT."
+      },
+      {
+        "url": "https://yrhacks2024.devpost.com/rules",
+        "type": "official event rules",
+        "evidence": "The hacking period starts April 17, 2024, continues in person April 18, and closes April 18."
+      },
+      {
+        "url": "https://yrhacks2024.devpost.com/details/dates",
+        "type": "official event schedule",
+        "evidence": "Submissions open April 17 at 6 PM and close April 18 at 5:30 PM EDT; winners are announced April 18."
+      },
+      {
+        "url": "https://ca.linkedin.com/in/zhaowinston",
+        "type": "project author",
+        "evidence": "YRConnect is listed under April 2024 and identifies YRHacks 2024."
+      },
+      {
+        "url": "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W/Winston-Design-Demo?node-id=1-7779",
+        "type": "supplied project design",
+        "evidence": "The MuniSync page contains YRConnect onboarding and the matching municipal-app screens."
+      }
+    ],
+    "updateTimeline": true,
+    "order": 19
+  }
+}

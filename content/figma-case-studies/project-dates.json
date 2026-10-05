@@ -1,0 +1,737 @@
+{
+  "researchedAt": "2026-10-05T07:17:11.552Z",
+  "projectId": "7k8ajlip",
+  "dataset": "production",
+  "method": "Newest documented project work first. A verified work range sorts by its end; event-day evidence breaks ties for short designathon projects. Unknown end dates use the verified start. Original years remain where finer evidence is unavailable. CMS import/update timestamps and dates in sample screens are excluded. Featured cards keep their existing placement.",
+  "projects": [
+    {
+      "id": "legacy-portfolio-heatmap",
+      "slug": "heatmap-portal-redesign",
+      "title": "Heatmap Portal Redesign",
+      "year": 2024,
+      "sortDate": "2024",
+      "displayDate": "2024",
+      "precision": "year",
+      "updateTimeline": false,
+      "sourceSummary": "Original published portfolio year; a finer creation or work date was not independently verified.",
+      "evidenceFile": "legacy-date-evidence.json",
+      "order": 1
+    },
+    {
+      "id": "legacy-portfolio-yrconnect",
+      "slug": "yrconnect",
+      "title": "YRConnect",
+      "year": 2024,
+      "sortDate": "2024-04-18",
+      "displayDate": "April 17–18, 2024",
+      "precision": "day",
+      "sourceSummary": "YRConnect names Winston as creator, links to YRHacks 2024 and its Second Place award, and records the project update on April 18, 2024 at 5:35 PM EDT. Source: https://devpost.com/software/yrconnect",
+      "evidenceFile": "civic-extra-dates.json",
+      "sources": [
+        {
+          "url": "https://devpost.com/software/yrconnect",
+          "type": "author project submission",
+          "evidence": "YRConnect names Winston as creator, links to YRHacks 2024 and its Second Place award, and records the project update on April 18, 2024 at 5:35 PM EDT."
+        },
+        {
+          "url": "https://yrhacks2024.devpost.com/rules",
+          "type": "official event rules",
+          "evidence": "The hacking period starts April 17, 2024, continues in person April 18, and closes April 18."
+        },
+        {
+          "url": "https://yrhacks2024.devpost.com/details/dates",
+          "type": "official event schedule",
+          "evidence": "Submissions open April 17 at 6 PM and close April 18 at 5:30 PM EDT; winners are announced April 18."
+        },
+        {
+          "url": "https://ca.linkedin.com/in/zhaowinston",
+          "type": "project author",
+          "evidence": "YRConnect is listed under April 2024 and identifies YRHacks 2024."
+        },
+        {
+          "url": "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W/Winston-Design-Demo?node-id=1-7779",
+          "type": "supplied project design",
+          "evidence": "The MuniSync page contains YRConnect onboarding and the matching municipal-app screens."
+        }
+      ],
+      "updateTimeline": true,
+      "order": 2
+    },
+    {
+      "id": "legacy-portfolio-hopperhangout",
+      "slug": "hopper-hangout",
+      "title": "Hopper Hangout",
+      "year": 2023,
+      "sortDate": "2023",
+      "displayDate": "2023",
+      "precision": "year",
+      "updateTimeline": false,
+      "sourceSummary": "Original published portfolio year; a finer creation or work date was not independently verified.",
+      "evidenceFile": "legacy-date-evidence.json"
+    },
+    {
+      "id": "legacy-portfolio-elapsedesign",
+      "slug": "elapse-app-design",
+      "title": "Elapse App Design",
+      "year": 2023,
+      "sortDate": "2023",
+      "displayDate": "2023",
+      "precision": "year",
+      "updateTimeline": false,
+      "sourceSummary": "Original published portfolio year; a finer creation or work date was not independently verified.",
+      "evidenceFile": "legacy-date-evidence.json"
+    },
+    {
+      "id": "legacy-portfolio-robotics",
+      "slug": "competitive-robotics",
+      "title": "Competitive Robotics",
+      "year": 2023,
+      "sortDate": "2023-05",
+      "displayDate": "2018–May 2023",
+      "precision": "year-start/month-end",
+      "sourceSummary": "Case study covers 2018–2023; author’s final 25K Robotics captain role ends May 2023. Source: https://ca.linkedin.com/in/zhaowinston",
+      "sources": [
+        {
+          "url": "https://ca.linkedin.com/in/zhaowinston",
+          "type": "project-author profile",
+          "access": "Explicit project range returned in indexed author profile."
+        }
+      ],
+      "evidenceFile": "legacy-date-evidence.json",
+      "updateTimeline": true,
+      "order": 21
+    },
+    {
+      "id": "legacy-portfolio-thedriveteampodcast",
+      "slug": "the-drive-team-podcast",
+      "title": "The Drive Team Podcast",
+      "year": 2023,
+      "sortDate": "2023-07",
+      "displayDate": "October 2022–July 2023",
+      "precision": "month-range",
+      "sourceSummary": "October 2022–July 2023. Source: https://ca.linkedin.com/in/zhaowinston",
+      "evidenceFile": "legacy-public-dates.json",
+      "sources": [
+        {
+          "url": "https://v1.winstonzhao.ca/resume.pdf",
+          "evidence": "Author resume starts the specific Drive Team Podcast & Website project in October 2022."
+        },
+        {
+          "url": "https://ca.linkedin.com/in/zhaowinston",
+          "evidence": "Author Podcast Host & Producer role at The Drive Team Media runs October 2022 through July 2023."
+        },
+        {
+          "url": "https://v1.winstonzhao.ca/",
+          "evidence": "Original portfolio labels the podcast project 2022."
+        }
+      ],
+      "updateTimeline": true,
+      "notes": [
+        "The role name, organization, and start month match this specific podcast scope. Use July 2023 as latest documented project work, while preserving the original 2022 project year. This does not imply a 2023 first release."
+      ],
+      "originalProjectYear": 2022,
+      "order": 20
+    },
+    {
+      "id": "legacy-portfolio-25kteam",
+      "slug": "team-25k-website",
+      "title": "Team 25K Website",
+      "year": 2022,
+      "sortDate": "2022-10",
+      "displayDate": "June–October 2022",
+      "precision": "month-range",
+      "sourceSummary": "June–October 2022. Source: https://ca.linkedin.com/in/zhaowinston",
+      "sources": [
+        {
+          "url": "https://ca.linkedin.com/in/zhaowinston",
+          "evidence": "Author reports June through October 2022 for this website project."
+        },
+        {
+          "url": "https://github.com/25K-vrc/25K-website/commit/d1534a4213f12d94be7ba9e0b5525d0a7331607b",
+          "evidence": "Nomnomburger authored the initial README-only commit on June 20, 2022."
+        },
+        {
+          "url": "https://winstonzhao.ca/portfolio/25kteam",
+          "evidence": "Author case study explicitly labels the project 2022."
+        }
+      ],
+      "evidenceFile": "legacy-public-dates.json",
+      "workStart": "2022-06",
+      "workEnd": "2022-10",
+      "updateTimeline": true,
+      "notes": [
+        "The explicit project range ends October 2022. June 20 is repository setup rather than public launch."
+      ],
+      "repositorySetupDate": "2022-06-20",
+      "order": 22
+    },
+    {
+      "id": "legacy-portfolio-sorbackyardscrimmage",
+      "slug": "sor-backyard-scrimmage-video",
+      "title": "SOR Backyard Scrimmage Video",
+      "year": 2022,
+      "sortDate": "2022",
+      "displayDate": "2022",
+      "precision": "year",
+      "updateTimeline": false,
+      "sourceSummary": "Original published portfolio year; a finer creation or work date was not independently verified.",
+      "evidenceFile": "legacy-public-dates.json",
+      "sources": [
+        {
+          "url": "https://winstonzhao.ca/portfolio/sorbackyardscrimmage",
+          "evidence": "Author video case study explicitly labels the project 2022."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=jNJzbm1Zd14",
+          "evidence": "Linked video was checked, but no upload date was exposed by the accessible page."
+        }
+      ],
+      "notes": [
+        "Retain year-only. The Tipping Point season is not an exact video date."
+      ],
+      "order": 25
+    },
+    {
+      "id": "legacy-portfolio-sorreveal",
+      "slug": "sor22-robot-reveal-video",
+      "title": "SOR22 Robot Reveal Video",
+      "year": 2022,
+      "sortDate": "2022",
+      "displayDate": "2022",
+      "precision": "year",
+      "updateTimeline": false,
+      "sourceSummary": "Original published portfolio year; a finer creation or work date was not independently verified.",
+      "evidenceFile": "legacy-public-dates.json",
+      "sources": [
+        {
+          "url": "https://winstonzhao.ca/",
+          "evidence": "Author portfolio lists the reveal video under 2022."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=ktJ5cc93fWk",
+          "evidence": "The linked page confirms the 3150A SOR22 reveal title, but exposes no upload date."
+        }
+      ],
+      "notes": [
+        "Retain year-only. A current YouTube copyright footer or crawl date is not the video upload date."
+      ],
+      "order": 26
+    },
+    {
+      "id": "legacy-portfolio-unionvillehowl",
+      "slug": "the-unionville-howl-website-design",
+      "title": "The Unionville Howl Website Design",
+      "year": 2022,
+      "sortDate": "2022-05",
+      "displayDate": "December 2021–May 2022",
+      "precision": "month-range",
+      "sourceSummary": "December 2021–May 2022. Source: https://ca.linkedin.com/in/zhaowinston",
+      "sources": [
+        {
+          "url": "https://ca.linkedin.com/in/zhaowinston",
+          "evidence": "Author reports December 2021 through May 2022 for the newspaper website project."
+        },
+        {
+          "url": "https://winstonzhao.ca/",
+          "evidence": "Author portfolio labels the website design 2021."
+        }
+      ],
+      "evidenceFile": "legacy-public-dates.json",
+      "workStart": "2021-12",
+      "workEnd": "2022-05",
+      "updateTimeline": true,
+      "notes": [
+        "The original portfolio labels the design 2021; the author project range ends May 2022. Under latest documented project work ordering, use 2022 and show December 2021–May 2022 as the timeline. A launch day is not verified."
+      ],
+      "originalDesignYear": 2021,
+      "order": 23
+    },
+    {
+      "id": "legacy-portfolio-winstonzhaov1",
+      "slug": "winstonzhao-ca-v1",
+      "title": "Winstonzhao.ca V1",
+      "year": 2021,
+      "sortDate": "2021",
+      "displayDate": "2021",
+      "precision": "year",
+      "updateTimeline": false,
+      "sourceSummary": "Original published portfolio year; a finer creation or work date was not independently verified.",
+      "evidenceFile": "legacy-public-dates.json",
+      "sources": [
+        {
+          "url": "https://github.com/Nomnomburger/winstonzhao-v1/commit/76ed80baa2e656eb4c627cda2ad769c8c19edb12",
+          "evidence": "Nomnomburger authored the initial README-only commit on May 31, 2021."
+        },
+        {
+          "url": "https://winstonzhao.ca/",
+          "evidence": "Author portfolio labels the first website design 2021."
+        }
+      ],
+      "notes": [
+        "May 31 verifies repository setup only. It can anchor original activity to May 2021 as a tie-break within year 2021; do not label it as the launch or last-work date."
+      ],
+      "repositorySetupDate": "2021-05-31",
+      "order": 27
+    },
+    {
+      "id": "legacy-portfolio-839team",
+      "slug": "team-839-website",
+      "title": "Team 839 Website",
+      "year": 2022,
+      "sortDate": "2022-02",
+      "displayDate": "December 2020–February 2022",
+      "precision": "month-range",
+      "sourceSummary": "December 2020–February 2022. Source: https://ca.linkedin.com/in/zhaowinston",
+      "sources": [
+        {
+          "url": "https://github.com/Nomnomburger/839.team-website/commit/0f341b5515a0efe0933afe63b5bba943ca348bd5",
+          "evidence": "Winston Zhao authored the initial README and gitattributes commit on January 12, 2021."
+        },
+        {
+          "url": "https://v1.winstonzhao.ca/",
+          "evidence": "The original portfolio explicitly labels the website project 2021."
+        },
+        {
+          "url": "https://ca.linkedin.com/in/zhaowinston",
+          "evidence": "Author gives December 2020 through February 2022 as the full design, development, and maintenance range."
+        }
+      ],
+      "evidenceFile": "legacy-public-dates.json",
+      "workStart": "2020-12",
+      "workEnd": "2022-02",
+      "updateTimeline": true,
+      "notes": [
+        "The author project starts December 2020, the repository setup is January 12, 2021, and the original portfolio labels the design 2021. The same author project explicitly includes design, development, and maintenance through February 2022. Under latest documented project work ordering, use 2022 with the full range. This does not claim the original release was in 2022."
+      ],
+      "originalDesignYear": 2021,
+      "repositorySetupDate": "2021-01-12",
+      "order": 24
+    },
+    {
+      "id": "legacy-portfolio-asymtry",
+      "slug": "asymtry-logo-branding",
+      "title": "Asymtry Logo & Branding",
+      "year": 2020,
+      "sortDate": "2020",
+      "displayDate": "2020",
+      "precision": "year",
+      "updateTimeline": false,
+      "sourceSummary": "Original published portfolio year; a finer creation or work date was not independently verified.",
+      "evidenceFile": "legacy-public-dates.json",
+      "sources": [
+        {
+          "url": "https://v1.winstonzhao.ca/",
+          "evidence": "The author labels the Asymtry logo and artwork 2020."
+        }
+      ],
+      "notes": [
+        "Retain year-only. No supported month or day was found in the quick lookup."
+      ],
+      "order": 29
+    },
+    {
+      "id": "legacy-portfolio-controllerdeskmats",
+      "slug": "controller-deskmats",
+      "title": "Controller Deskmats",
+      "year": 2020,
+      "sortDate": "2020-12",
+      "displayDate": "August–December 2020",
+      "precision": "month-range",
+      "sourceSummary": "August–December 2020. Source: https://ca.linkedin.com/in/zhaowinston",
+      "sources": [
+        {
+          "url": "https://ca.linkedin.com/in/zhaowinston",
+          "evidence": "Author reports August through December 2020 for the deskmat design and group buy."
+        },
+        {
+          "url": "https://www.deskhero.ca/products/deskmat-artist-x-tkc-controller-series-extras",
+          "evidence": "Original vendor listing credits Nomnomburger and gives the original group-buy timeline as October 28, 2020."
+        },
+        {
+          "url": "https://prototypist.net/products/group-buy-controller-series-deskmat",
+          "evidence": "Original vendor explicitly gives the closing date as October 28, 2020."
+        }
+      ],
+      "evidenceFile": "legacy-public-dates.json",
+      "workStart": "2020-08",
+      "workEnd": "2020-12",
+      "updateTimeline": true,
+      "notes": [
+        "The explicit design/group-buy project range ends December 2020. October 28 is the sales closing date; the vendor February 2021 shipping estimate is not verified project work and does not change the year."
+      ],
+      "order": 28
+    },
+    {
+      "id": "figma-portfolio-yelo",
+      "slug": "yelo",
+      "title": "Yelo",
+      "year": 2026,
+      "sortDate": "2026-04",
+      "displayDate": "January–April 2026",
+      "precision": "month-range",
+      "sourceSummary": "January–April 2026. Source: /Users/winston/repo/winstonzhao-v3/public/winstonzhao-resume.pdf",
+      "evidenceFile": "root-activity-dates.json",
+      "sources": [
+        {
+          "title": "Current Winston Zhao résumé",
+          "path": "/Users/winston/repo/winstonzhao-v3/public/winstonzhao-resume.pdf",
+          "kind": "author-maintained résumé",
+          "access": "Local file text extracted with pypdf and full page visually inspected; no PDF metadata timestamps used."
+        }
+      ],
+      "updateTimeline": true,
+      "order": 7
+    },
+    {
+      "id": "figma-portfolio-villio-ai",
+      "slug": "villio-ai",
+      "title": "Villio AI",
+      "year": 2025,
+      "sortDate": "2025-05",
+      "displayDate": "Started May 2025",
+      "precision": "month-start-only",
+      "sourceSummary": "Started May 2025. Source: https://winstonzhao.ca/resume.pdf",
+      "evidenceFile": "root-activity-dates.json",
+      "sources": [
+        {
+          "title": "Older Winston Zhao résumé",
+          "url": "https://winstonzhao.ca/resume.pdf",
+          "kind": "author-maintained résumé",
+          "access": "Opened as one-page PDF through web tool."
+        }
+      ],
+      "notes": [
+        "Newer local résumé omits Villio; omission does not establish an end date.",
+        "Do not borrow a colleague’s Villio employment end or the current year as Winston’s end date.",
+        "No exact authored asset date or public launch date found."
+      ],
+      "updateTimeline": true,
+      "order": 12
+    },
+    {
+      "id": "figma-portfolio-newly",
+      "slug": "newly",
+      "title": "Newly",
+      "year": 2026,
+      "sortDate": "2026-10",
+      "displayDate": "May–October 2026",
+      "precision": "month-range",
+      "sourceSummary": "May–October 2026. Source: /Users/winston/repo/winstonzhao-v3/public/winstonzhao-resume.pdf",
+      "evidenceFile": "root-activity-dates.json",
+      "sources": [
+        {
+          "title": "Current Winston Zhao résumé",
+          "path": "/Users/winston/repo/winstonzhao-v3/public/winstonzhao-resume.pdf",
+          "kind": "author-maintained résumé",
+          "access": "Local file text extracted with pypdf and full page visually inspected; no PDF metadata timestamps used."
+        }
+      ],
+      "updateTimeline": true,
+      "order": 5
+    },
+    {
+      "id": "figma-portfolio-augwa",
+      "slug": "augwa",
+      "title": "Augwa",
+      "year": 2025,
+      "sortDate": "2025-08",
+      "displayDate": "May–August 2025",
+      "precision": "month",
+      "sourceSummary": "May–August 2025. Source: /Users/winston/repo/winstonzhao-v3/public/winstonzhao-resume.pdf",
+      "evidenceFile": "root-activity-dates.json",
+      "sources": [
+        {
+          "title": "Current Winston Zhao résumé",
+          "path": "/Users/winston/repo/winstonzhao-v3/public/winstonzhao-resume.pdf",
+          "kind": "author-maintained résumé",
+          "access": "Local file text extracted with pypdf and full page visually inspected; no PDF metadata timestamps used."
+        },
+        {
+          "title": "Older Winston Zhao résumé",
+          "url": "https://winstonzhao.ca/resume.pdf",
+          "kind": "author-maintained résumé",
+          "access": "Opened as one-page PDF through web tool."
+        }
+      ],
+      "notes": [
+        "Current and older author résumés agree on the internship period.",
+        "Exact individual dashboard/mobile screen creation dates are unavailable."
+      ],
+      "updateTimeline": true,
+      "order": 9
+    },
+    {
+      "id": "figma-portfolio-hack404-launchpad",
+      "slug": "hack404-launchpad",
+      "title": "Hack404 Launchpad",
+      "year": 2025,
+      "sortDate": "2025-08",
+      "displayDate": "March–August 2025",
+      "precision": "month",
+      "sourceSummary": "March–August 2025. Source: https://winstonzhao.ca/resume.pdf",
+      "evidenceFile": "root-activity-dates.json",
+      "sources": [
+        {
+          "title": "Older Winston Zhao résumé",
+          "url": "https://winstonzhao.ca/resume.pdf",
+          "kind": "author-maintained résumé",
+          "access": "Opened as one-page PDF through web tool."
+        },
+        {
+          "title": "Winston Zhao public LinkedIn profile",
+          "url": "https://ca.linkedin.com/in/zhaowinston",
+          "kind": "author-maintained profile",
+          "access": "Public author profile content returned by search index; direct open denied by robots.txt. Dates are explicit profile date fields, not inferred from relative post ages."
+        }
+      ],
+      "notes": [
+        "Role date range covers Winston’s Hack404 design work. The portal is part of that work, but its exact individual asset creation date is unavailable.",
+        "Official event timing supports the 2025 iteration; the event end is separate from the author’s later role end."
+      ],
+      "updateTimeline": true,
+      "order": 10
+    },
+    {
+      "id": "figma-portfolio-costudy",
+      "slug": "costudy",
+      "title": "CoStudy",
+      "year": 2025,
+      "sortDate": "2025-11",
+      "displayDate": "November 2025",
+      "precision": "month",
+      "sourceSummary": "The author's Projects section dates CoStudy to November 2025; the Honors section independently dates the Canvas Designathon award to the same month. Source: https://ca.linkedin.com/in/zhaowinston",
+      "evidenceFile": "consumer-dates.json",
+      "sources": [
+        {
+          "url": "https://ca.linkedin.com/in/zhaowinston",
+          "title": "Winston Zhao — LinkedIn Projects and Honors",
+          "type": "primary-author",
+          "evidence": "The author's Projects section dates CoStudy to November 2025; the Honors section independently dates the Canvas Designathon award to the same month."
+        }
+      ],
+      "updateTimeline": true,
+      "order": 8
+    },
+    {
+      "id": "figma-portfolio-cocart",
+      "slug": "cocart",
+      "title": "CoCart",
+      "year": 2024,
+      "sortDate": "2024-11-23",
+      "displayDate": "November 2024",
+      "precision": "month",
+      "sourceSummary": "The author's CoCart project is dated November 2024 and attributed to the UW/UX FUSE Designathon. Source: https://ca.linkedin.com/in/zhaowinston",
+      "evidenceFile": "consumer-dates.json",
+      "sources": [
+        {
+          "url": "https://ca.linkedin.com/in/zhaowinston",
+          "title": "Winston Zhao — LinkedIn Projects",
+          "type": "primary-author",
+          "evidence": "The author's CoCart project is dated November 2024 and attributed to the UW/UX FUSE Designathon."
+        },
+        {
+          "url": "https://www.linkedin.com/posts/zhaowinston_design-tech-growth-activity-7280414489466793984--ZE7",
+          "title": "Winston Zhao — 2024 retrospective",
+          "type": "primary-author",
+          "evidence": "The author's retrospective identifies CoCart as a FUSE Designathon 2024 project."
+        },
+        {
+          "url": "https://luma.com/kbve20eh",
+          "title": "FUSE: A Designathon by UW/UX!",
+          "type": "primary-organizer",
+          "evidence": "The event page is hosted by UW/UX Waterloo. The organizer's announcement, preserved on LinkedIn reposts, specifies November 23, 2024."
+        },
+        {
+          "url": "https://ca.linkedin.com/in/zeajzamoranos",
+          "title": "UW/UX organizer announcement preserved in a repost",
+          "type": "primary-organizer-repost",
+          "evidence": "The original UW/UX post explicitly schedules the FUSE one-day event for November 23, 2024 and links to luma.com/kbve20eh."
+        }
+      ],
+      "updateTimeline": true,
+      "order": 17
+    },
+    {
+      "id": "figma-portfolio-ryri",
+      "slug": "ryri",
+      "title": "Ryri",
+      "year": 2025,
+      "sortDate": "2025-01",
+      "displayDate": "December 2024–January 2025",
+      "precision": "month-range",
+      "sourceSummary": "The author's Ryri project is dated December 2024 through January 2025 and described as a mobile adaptation of the earlier Hack the North project. Source: https://ca.linkedin.com/in/zhaowinston",
+      "evidenceFile": "consumer-dates.json",
+      "sources": [
+        {
+          "url": "https://ca.linkedin.com/in/zhaowinston",
+          "title": "Winston Zhao — LinkedIn Projects",
+          "type": "primary-author",
+          "evidence": "The author's Ryri project is dated December 2024 through January 2025 and described as a mobile adaptation of the earlier Hack the North project."
+        }
+      ],
+      "updateTimeline": true,
+      "order": 16
+    },
+    {
+      "id": "figma-portfolio-smartbasket",
+      "slug": "smartbasket",
+      "title": "SmartBasket",
+      "year": 2025,
+      "sortDate": "2025-02",
+      "displayDate": "February 2025",
+      "precision": "month",
+      "sourceSummary": "The author's SmartBasket project is explicitly dated February 2025 and linked to Hack Canada 2025. Source: https://ca.linkedin.com/in/zhaowinston",
+      "evidenceFile": "consumer-dates.json",
+      "sources": [
+        {
+          "url": "https://ca.linkedin.com/in/zhaowinston",
+          "title": "Winston Zhao — LinkedIn Projects",
+          "type": "primary-author",
+          "evidence": "The author's SmartBasket project is explicitly dated February 2025 and linked to Hack Canada 2025."
+        }
+      ],
+      "updateTimeline": true,
+      "order": 15
+    },
+    {
+      "id": "figma-portfolio-arca",
+      "slug": "arca",
+      "title": "Arca",
+      "year": 2025,
+      "sortDate": "2025-03-23",
+      "displayDate": "March 2025",
+      "precision": "event range",
+      "sourceSummary": "Arca is dated March 2025 and identifies the UXL Wander UX Designathon and Best Pitch award. Source: https://ca.linkedin.com/in/zhaowinston",
+      "evidenceFile": "civic-extra-dates.json",
+      "sources": [
+        {
+          "url": "https://ca.linkedin.com/in/zhaowinston",
+          "type": "project author",
+          "evidence": "Arca is dated March 2025 and identifies the UXL Wander UX Designathon and Best Pitch award."
+        },
+        {
+          "url": "https://luma.com/jbjb5m4g",
+          "type": "official organizer registration page",
+          "evidence": "UX Laurier's Wander UX event is explicitly scheduled March 21–23, 2025."
+        },
+        {
+          "url": "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W/Winston-Design-Demo?node-id=101-3100",
+          "type": "supplied project index",
+          "evidence": "Arca is identified as Best Pitch at UXL Designathon; the included resume award list specifies 2025."
+        }
+      ],
+      "updateTimeline": true,
+      "order": 13
+    },
+    {
+      "id": "figma-portfolio-sparks",
+      "slug": "sparks",
+      "title": "Sparks",
+      "year": 2025,
+      "sortDate": "2025-03-02",
+      "displayDate": "March 2025",
+      "precision": "event range",
+      "sourceSummary": "Sparks is dated March 2025 and associated with Western Founders Network's Product Design Sprint. Source: https://ca.linkedin.com/in/zhaowinston",
+      "evidenceFile": "civic-extra-dates.json",
+      "sources": [
+        {
+          "url": "https://ca.linkedin.com/in/zhaowinston",
+          "type": "project author",
+          "evidence": "Sparks is dated March 2025 and associated with Western Founders Network's Product Design Sprint."
+        },
+        {
+          "url": "https://luma.com/o9sy2dij",
+          "type": "official organizer registration page",
+          "evidence": "Western Founders Network identifies the Product Design Sprint as February 28–March 2, 2025."
+        },
+        {
+          "url": "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W/Winston-Design-Demo?node-id=9-5317",
+          "type": "supplied project gallery",
+          "evidence": "Sparks is labeled WFN Product Design Sprint."
+        },
+        {
+          "url": "https://www.figma.com/design/r2Feu1tLXWg8ApMcINffew/Winston-Zhao-Portfolio-V3?node-id=595-1026",
+          "type": "supplied portfolio source",
+          "evidence": "Sparks cover, with no embedded project date."
+        }
+      ],
+      "updateTimeline": true,
+      "order": 14
+    },
+    {
+      "id": "figma-portfolio-garden",
+      "slug": "garden",
+      "title": "Garden",
+      "year": 2024,
+      "sortDate": "2024-11-02",
+      "displayDate": "November 2024",
+      "precision": "day",
+      "sourceSummary": "Garden is listed under November 2024 and the SunLife UXperience Design Jam. Source: https://ca.linkedin.com/in/zhaowinston",
+      "evidenceFile": "civic-extra-dates.json",
+      "sources": [
+        {
+          "url": "https://ca.linkedin.com/in/zhaowinston",
+          "type": "project author",
+          "evidence": "Garden is listed under November 2024 and the SunLife UXperience Design Jam."
+        },
+        {
+          "url": "https://ca.linkedin.com/in/darren-millar",
+          "type": "project collaborator",
+          "evidence": "Garden is dated November 2024 and explicitly identifies Winston Zhao as an interface-design collaborator at the SunLife event."
+        },
+        {
+          "url": "https://uwaterloo.ca/stratford-school-of-interaction-design-and-business/news/uxperience-design-jam-sun-life",
+          "type": "official university event report",
+          "evidence": "The Sun Life uXperience Design Jam took place November 2, 2024. The article was published November 8, which is a separate date."
+        },
+        {
+          "url": "https://www.figma.com/design/r2Feu1tLXWg8ApMcINffew/Winston-Zhao-Portfolio-V3?node-id=595-1030",
+          "type": "supplied portfolio source",
+          "evidence": "Garden cover. Nearby gallery text labels the project uXperience Design Jam."
+        }
+      ],
+      "updateTimeline": true,
+      "order": 18
+    },
+    {
+      "id": "figma-portfolio-habitat",
+      "slug": "habitat",
+      "title": "HabitAt",
+      "year": 2025,
+      "sortDate": "2025-06",
+      "displayDate": "June 2025",
+      "precision": "month",
+      "sourceSummary": "HabitAt and its UWUX Design Sprint first-place award are dated June 2025. Source: https://ca.linkedin.com/in/zhaowinston",
+      "evidenceFile": "civic-extra-dates.json",
+      "sources": [
+        {
+          "url": "https://ca.linkedin.com/in/zhaowinston",
+          "type": "project author",
+          "evidence": "HabitAt and its UWUX Design Sprint first-place award are dated June 2025."
+        },
+        {
+          "url": "https://ca.linkedin.com/in/amna-sahi",
+          "type": "project team member",
+          "evidence": "HabitAt is also dated June 2025 and identified as First Place at the UWUX Design Sprint 2025."
+        },
+        {
+          "url": "https://ca.linkedin.com/in/alisa-tran-mai",
+          "type": "participant with organizer repost",
+          "evidence": "Reposted GBDA Society results name HabitAt as the first-place team, with Winston Zhao, Amna Sahi, Andrew Chu, and Anita Du. The text describes a Monday-night event without an exact calendar date."
+        },
+        {
+          "url": "https://uwux.medium.com/2025-wrapped-uw-ux-a8bd48e53faa",
+          "type": "official club retrospective",
+          "evidence": "UW/UX places its collaboration with GBDA Society in Spring 2025. It does not supply an exact date."
+        },
+        {
+          "url": "https://www.figma.com/design/r2Feu1tLXWg8ApMcINffew/Winston-Zhao-Portfolio-V3?node-id=600-1042",
+          "type": "supplied portfolio source",
+          "evidence": "HabitAt cover, with no embedded project date."
+        }
+      ],
+      "updateTimeline": true,
+      "order": 11
+    }
+  ]
+}

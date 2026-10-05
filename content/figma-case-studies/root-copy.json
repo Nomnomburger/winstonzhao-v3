@@ -1,0 +1,314 @@
+[
+  {
+    "slug": "yelo",
+    "title": "Yelo",
+    "year": 2026,
+    "client": "Yelo",
+    "discipline": "Product Design",
+    "description": "Bringing campus events, social discovery, and ride choices into one mobile experience.",
+    "intro": "Yelo brings together where people are going, what is happening nearby, and how to get there. The mobile design makes campus activity part of the ride-discovery experience, with destinations, events, and social signals sharing one home feed.",
+    "summary": "A ride starts with somewhere worth going—and knowing who else is heading there.",
+    "overview": "As Product Designer at Yelo, I worked on a social mobility experience for campus life. The mobile interface connects a home feed, live map, destination search, ride selection, event details, and phone-based onboarding. Each flow connects discovering a place with taking the next step toward getting there.",
+    "details": [
+      {
+        "label": "Role",
+        "value": "Product Designer"
+      },
+      {
+        "label": "Timeline",
+        "value": "January–April 2026"
+      },
+      {
+        "label": "Focus",
+        "value": "Mobile UI/UX · Social discovery · Ride booking"
+      }
+    ],
+    "sections": [
+      {
+        "title": "Discovery",
+        "heading": "Make the destination part of the decision.",
+        "paragraphs": [
+          "The home screen opens with “Where to?” and saved places, followed by a feed of people heading out, ticketed events, and trending searches. Names, avatars, recent activity, and mutual connections give each destination context beyond a pin on a map.",
+          "Soft translucent surfaces separate the search controls from the feed. A yellow live indicator highlights current activity, while event cards carry recognizable artwork and social context."
+        ]
+      },
+      {
+        "title": "Ride selection",
+        "heading": "Compare ways to get there in the same place.",
+        "paragraphs": [
+          "Destination search and the map connect into a ride-selection sheet. Car, Big Car, Cart, and Mini Bus options present different group sizes, prices, and sharing arrangements together, with fastest and cheapest labels helping people compare.",
+          "The request action sits below the choices alongside a note about when charging begins. This keeps the immediate decision and its payment context close together."
+        ]
+      },
+      {
+        "title": "Events & onboarding",
+        "heading": "Connect interest, attendance, and travel.",
+        "paragraphs": [
+          "Event details bring location, ticket access, attendees, and a ride action into one flow. People can move from discovering an event to understanding who is going and deciding how to join them.",
+          "The onboarding screens introduce the campus proposition before phone-number verification. A floating navigation bar keeps Home, Map, and Profile available across the main experience."
+        ]
+      }
+    ],
+    "yearSource": "January–April 2026. Source: /Users/winston/repo/winstonzhao-v3/public/winstonzhao-resume.pdf"
+  },
+  {
+    "slug": "hack404-launchpad",
+    "title": "Hack404 Launchpad",
+    "year": 2025,
+    "client": "Hack404",
+    "discipline": "UI/UX · Branding",
+    "description": "A responsive participant portal for hackathon schedules, announcements, submissions, and leaderboards.",
+    "intro": "Launchpad gives Hack404 participants a shared place to follow the event. Its dashboard brings the agenda, organizer announcements, project submission, and leaderboard together around the time remaining in the hackathon.",
+    "summary": "Keep the next event, the latest update, and the submission deadline within reach.",
+    "overview": "As Design Lead at Hack404, I directed UI/UX, branding, and media for the student hackathon. These screens focus on Launchpad, a participant portal designed for desktop and mobile use throughout the event.",
+    "details": [
+      {
+        "label": "Role",
+        "value": "Design Lead"
+      },
+      {
+        "label": "Timeline",
+        "value": "March–August 2025"
+      },
+      {
+        "label": "Focus",
+        "value": "Responsive UI/UX · Event information · Branding"
+      }
+    ],
+    "sections": [
+      {
+        "title": "Dashboard",
+        "heading": "Organize the event around what participants need next.",
+        "paragraphs": [
+          "The desktop home uses three columns for the agenda, announcements, and submission area. A greeting and countdown anchor the page, while events show relative timing, scheduled times, and room locations.",
+          "The top navigation separates Home, Agenda, Mentor, Resources, and Map. Profile and QR Code actions remain visible at the edge of the header for participant-specific tasks."
+        ]
+      },
+      {
+        "title": "Participation",
+        "heading": "Keep event logistics beside the work.",
+        "paragraphs": [
+          "Project submission has its own panel with a deadline and a direct Devpost action. Team avatars connect the submission area to the people involved, without making users leave the overview.",
+          "The leaderboard switches between solo and team views. Repeated announcement tiles and leaderboard rows create a consistent structure for information that changes over the event."
+        ]
+      },
+      {
+        "title": "Responsive design",
+        "heading": "Carry the event identity onto a smaller screen.",
+        "paragraphs": [
+          "Mobile explorations reorganize the portal for a phone-sized viewport. The page retains the same event identity and core information while testing how navigation can stay accessible on the go.",
+          "A vivid blue-to-green gradient, translucent panels, thin dividers, and bright action colors give the participant portal a distinct visual language across screen sizes."
+        ]
+      }
+    ],
+    "yearSource": "March–August 2025. Source: https://winstonzhao.ca/resume.pdf"
+  },
+  {
+    "slug": "augwa",
+    "title": "Augwa",
+    "year": 2025,
+    "client": "Augwa",
+    "discipline": "Product Design",
+    "description": "Connecting an operations dashboard with mobile schedules, job details, and shift tracking.",
+    "intro": "Augwa connects the business view of bookings, revenue, and staffing with the day-to-day work of people in the field. The designs cover a desktop operations dashboard and a mobile experience for scheduled jobs, job progress, and shift activity.",
+    "summary": "One product language for the office overview and the next job on a phone.",
+    "overview": "During my product design internship at Augwa, I worked across web and mobile UI/UX and branding. The project included a tokenized design system and application screens that organize operational data while supporting work away from a desk.",
+    "details": [
+      {
+        "label": "Role",
+        "value": "Product Design Intern"
+      },
+      {
+        "label": "Timeline",
+        "value": "May–August 2025"
+      },
+      {
+        "label": "Focus",
+        "value": "Dashboard design · Mobile workflows · Design systems"
+      }
+    ],
+    "sections": [
+      {
+        "title": "Operations overview",
+        "heading": "Put exceptions ahead of routine reporting.",
+        "paragraphs": [
+          "The dashboard leads with overdue bookings, overtime bookings, schedules without bookings, and bookings without staff. These cards surface operational exceptions before the revenue, booking, and staff-utilization summaries.",
+          "A persistent sidebar groups Operations, Finance, Staff, and Company. Rounded cards and a restrained blue accent create a common structure for charts, lists, and status information."
+        ]
+      },
+      {
+        "title": "Mobile jobs",
+        "heading": "Show the next action in the context of the job.",
+        "paragraphs": [
+          "The mobile home identifies the customer, address, scheduled time, and current job status. Directions, Start Job, Notify Client, and More Details sit together so the person doing the work can act from the same screen.",
+          "Separate not-started and in-progress states change the available actions to match the job. The job-details view adds notes without overwhelming the immediate task."
+        ]
+      },
+      {
+        "title": "Scheduling & shifts",
+        "heading": "Keep work history connected to the working day.",
+        "paragraphs": [
+          "Schedule and shift-log screens provide the time context around each job. Punch-clock states include clocking in and out, travel, meals, and breaks, giving work activity a clear sequence.",
+          "The onboarding checklist on desktop introduces business details, payments, staff, clients, and schedules as individual setup tasks. Shared visual patterns connect these administrative steps with the operational and mobile views."
+        ]
+      }
+    ],
+    "yearSource": "May–August 2025. Source: /Users/winston/repo/winstonzhao-v3/public/winstonzhao-resume.pdf"
+  },
+  {
+    "slug": "garden",
+    "title": "Garden",
+    "year": 2024,
+    "client": "Product concept",
+    "discipline": "UI/UX",
+    "description": "A savings dashboard that turns financial goals into visible progress and small milestones.",
+    "intro": "Garden presents financial goals through the language of growth. Its home-screen concept pairs a featured savings goal with recent plans and earned badges, turning a collection of money targets into a calm, readable overview.",
+    "summary": "Make long-term goals feel tangible through progress people can see.",
+    "overview": "This concept explores how a mobile savings experience can show progress without making the home screen feel like a financial spreadsheet. The home screen brings together a featured goal, recent plans, milestone badges, and persistent navigation.",
+    "details": [
+      {
+        "label": "Focus",
+        "value": "Mobile UI/UX · Goal tracking · Visual storytelling"
+      },
+      {
+        "label": "Tool",
+        "value": "Figma"
+      },
+      {
+        "label": "Timeline",
+        "value": "November 2024"
+      }
+    ],
+    "sections": [
+      {
+        "title": "Goal overview",
+        "heading": "Give one goal room to stand out.",
+        "paragraphs": [
+          "A featured goal card combines the goal name, target amount, and segmented progress indicator. A flower illustration connects progress to the Garden identity, while the personalized greeting establishes a gentle tone.",
+          "Recent plans use repeated rows for goals such as buying a car, retirement, and student loans. Keeping their progress indicators aligned makes it possible to compare several ambitions at a glance."
+        ]
+      },
+      {
+        "title": "Milestones",
+        "heading": "Recognize the smaller steps.",
+        "paragraphs": [
+          "An earned-badges area gives saving milestones their own space beneath the plans. Circular badges and green progress rings carry the same growth language through a different visual format.",
+          "The screen distinguishes the ongoing work of saving from the milestones already reached, rather than giving every number equal emphasis."
+        ]
+      },
+      {
+        "title": "Interface",
+        "heading": "Keep the overview calm and legible.",
+        "paragraphs": [
+          "Soft borders, rounded cards, generous white space, and muted green accents organize the screen into clearly defined groups. Serif section headings add a warmer voice to the functional interface.",
+          "Home, Plans, Resources, and Search remain in the bottom navigation, keeping goal tracking and supporting information connected to the overview."
+        ]
+      }
+    ],
+    "yearSource": "Garden is listed under November 2024 and the SunLife UXperience Design Jam. Source: https://ca.linkedin.com/in/zhaowinston"
+  },
+  {
+    "slug": "habitat",
+    "title": "HabitAt",
+    "year": 2025,
+    "client": "Product concept",
+    "discipline": "UI/UX",
+    "description": "A playful household-task concept built around a colorful house, room counters, and reward points.",
+    "intro": "HabitAt turns a household task overview into a small illustrated home. Rooms, counters, and a points balance give the screen an immediate structure, while a prominent New Task action creates a clear starting point.",
+    "summary": "Use the shape of a home to make household tasks feel approachable.",
+    "overview": "The mobile interface organizes household tasks around the rooms of a house. Laundry, bathroom, bedroom, office, dining room, and living room appear as distinct spaces, supported by a points balance and bottom navigation.",
+    "details": [
+      {
+        "label": "Focus",
+        "value": "Mobile UI/UX · Household tasks · Gamification"
+      },
+      {
+        "label": "Tool",
+        "value": "Figma"
+      },
+      {
+        "label": "Timeline",
+        "value": "June 2025"
+      }
+    ],
+    "sections": [
+      {
+        "title": "Room overview",
+        "heading": "Organize tasks around familiar spaces.",
+        "paragraphs": [
+          "The illustrated house gives each room a labeled, colored area. Small numbered counters let each space carry its own status without turning the home overview into a long list.",
+          "Furniture details and the roof-and-garden silhouette reinforce the household context. The illustration acts as the organizing structure for the interface, as well as its visual identity."
+        ]
+      },
+      {
+        "title": "Actions & rewards",
+        "heading": "Make the next step easy to spot.",
+        "paragraphs": [
+          "A large New Task button sits below the house in a green yard. Its separate position gives task creation a clear place without obscuring the room overview.",
+          "The points balance sits beside the page title, while Shop appears in the navigation. Together, these elements introduce a reward-oriented direction without requiring dense explanatory copy on the home screen."
+        ]
+      },
+      {
+        "title": "Visual system",
+        "heading": "Pair playful graphics with straightforward controls.",
+        "paragraphs": [
+          "Pastel room colors, simple furniture shapes, white counter circles, and a picket fence give the concept a playful character. Black labels and icons preserve a clear functional layer.",
+          "Home, Shop, and Friend Map define the main navigation, connecting daily tasks with rewards and social discovery."
+        ]
+      }
+    ],
+    "yearSource": "HabitAt and its UWUX Design Sprint first-place award are dated June 2025. Source: https://ca.linkedin.com/in/zhaowinston"
+  },
+  {
+    "slug": "newly",
+    "title": "Newly",
+    "year": 2026,
+    "client": "Newly",
+    "discipline": "Product Design",
+    "description": "A desktop AI-building workspace that keeps conversations, sessions, and mobile previews together.",
+    "intro": "Newly brings the conversation with an AI builder and the app being built into the same desktop workspace. A session sidebar, central chat, and adjacent device preview make it possible to move between an instruction, the response, and the visible result.",
+    "summary": "Keep the conversation and its result side by side.",
+    "overview": "The desktop experience combines searchable session history, pinned work, a build composer, progress messages, and an iPhone preview with device and platform controls in an AI-assisted app-building environment.",
+    "details": [
+      {
+        "label": "Focus",
+        "value": "Desktop UI/UX · AI interaction · Device preview"
+      },
+      {
+        "label": "Tool",
+        "value": "Figma"
+      },
+      {
+        "label": "Timeline",
+        "value": "May–October 2026"
+      }
+    ],
+    "sections": [
+      {
+        "title": "Workspace",
+        "heading": "Give each part of the workflow a clear place.",
+        "paragraphs": [
+          "The left sidebar organizes sessions into pinned work and recents, with search and New Chat close to the top. A selected session remains visible while the central panel shows the conversation.",
+          "The three-part layout separates navigation, instructions, and the result while keeping them in view together. Translucent surfaces and restrained dividers create a coherent desktop frame around the work."
+        ]
+      },
+      {
+        "title": "Conversation",
+        "heading": "Make the builder's work readable.",
+        "paragraphs": [
+          "The conversation distinguishes the user's prompt from the builder's response. A worked-time and tool-use disclosure provides a compact way to show activity, followed by a readable explanation of the changes.",
+          "The composer combines a prompt field with the Build action and supporting controls. This keeps the next instruction near the recent response, so the conversation can continue in context."
+        ]
+      },
+      {
+        "title": "Preview",
+        "heading": "Bring the app into the same workspace.",
+        "paragraphs": [
+          "An iPhone preview sits beside the chat, with a device selector and a vertical set of controls. Platform, media, and log areas provide adjacent ways to inspect the project.",
+          "The composition makes the output a first-class part of the workspace. People can compare the app with the conversation without switching away from the session they are working in."
+        ]
+      }
+    ],
+    "yearSource": "May–October 2026. Source: /Users/winston/repo/winstonzhao-v3/public/winstonzhao-resume.pdf"
+  }
+]

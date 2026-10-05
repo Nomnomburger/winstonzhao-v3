@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { motion, useAnimate } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import { imageUrl, imageAspect } from '@/lib/image';
+import { sortProjectList } from '@/lib/project-order';
 import CursorPreview, { useCursorPreview } from './CursorPreview';
 import { revealTransition, TEXT_HIDDEN_Y, TEXT_MASK, useReveal } from './reveal';
 import type { ProjectCardData } from './types';
@@ -77,6 +78,7 @@ function ProjectRow({ project, active, dimmed, onMouseEnter, nextDelay }: Projec
 export default function ProjectList({ projects }: { projects: ProjectCardData[] }) {
   const preview = useCursorPreview();
   const batch = useRef({ start: -Infinity, count: 0 });
+  const orderedProjects = sortProjectList(projects);
 
   if (projects.length === 0) return null;
 
@@ -89,7 +91,7 @@ export default function ProjectList({ projects }: { projects: ProjectCardData[] 
   return (
     <div className="relative w-full" onMouseMove={preview.move} onMouseLeave={preview.hide}>
       <ul className="flex flex-col gap-2 w-full text-[12px] md:text-[14px] leading-[1.2]">
-        {projects.map((project) => (
+        {orderedProjects.map((project) => (
           <ProjectRow
             key={project._id}
             project={project}
@@ -108,7 +110,7 @@ export default function ProjectList({ projects }: { projects: ProjectCardData[] 
 
       <CursorPreview
         preview={preview}
-        images={projects.map((project) => {
+        images={orderedProjects.map((project) => {
           const src = imageUrl(project.coverImage, THUMB_WIDTH * 2);
           return {
             key: project._id,

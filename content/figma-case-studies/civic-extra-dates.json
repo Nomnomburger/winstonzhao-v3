@@ -1,0 +1,293 @@
+{
+  "researchedOn": "2026-10-05",
+  "method": "Use project-author and collaborator profiles to identify each project, then primary organizer pages for event dates. Event dates describe the designathon milestone, not a later redesign or case-study publication. Do not use dates inside sample UI, copyright notices, asset exports, or CMS imports as project dates.",
+  "findings": [
+    {
+      "slug": "garden",
+      "title": "Garden",
+      "year": 2024,
+      "month": 11,
+      "day": 2,
+      "datePrecision": "day",
+      "recommendedDate": "2024-11-02",
+      "dateBasis": "Source-mapped design-jam date",
+      "confidence": "high",
+      "projectContext": "Sun Life uXperience Design Jam 2024",
+      "sources": [
+        {
+          "url": "https://ca.linkedin.com/in/zhaowinston",
+          "type": "project author",
+          "evidence": "Garden is listed under November 2024 and the SunLife UXperience Design Jam."
+        },
+        {
+          "url": "https://ca.linkedin.com/in/darren-millar",
+          "type": "project collaborator",
+          "evidence": "Garden is dated November 2024 and explicitly identifies Winston Zhao as an interface-design collaborator at the SunLife event."
+        },
+        {
+          "url": "https://uwaterloo.ca/stratford-school-of-interaction-design-and-business/news/uxperience-design-jam-sun-life",
+          "type": "official university event report",
+          "evidence": "The Sun Life uXperience Design Jam took place November 2, 2024. The article was published November 8, which is a separate date."
+        },
+        {
+          "url": "https://www.figma.com/design/r2Feu1tLXWg8ApMcINffew/Winston-Zhao-Portfolio-V3?node-id=595-1030",
+          "type": "supplied portfolio source",
+          "evidence": "Garden cover. Nearby gallery text labels the project uXperience Design Jam."
+        }
+      ],
+      "uncertainties": [
+        "No independent record of subsequent design revision dates was found.",
+        "November 2 is the mapped event date, rather than a directly stated file-creation date."
+      ],
+      "sortMonth": 11,
+      "eventDay": 2,
+      "timelineForDisplay": "November 2024"
+    },
+    {
+      "slug": "habitat",
+      "title": "HabitAt",
+      "year": 2025,
+      "month": 6,
+      "day": null,
+      "datePrecision": "month",
+      "recommendedDate": "2025-06",
+      "dateBasis": "Matching project-author and team-member project dates",
+      "confidence": "high for year and month; day unknown",
+      "projectContext": "First Place, UW/UX and GBDA Society Design Sprint 2025",
+      "sources": [
+        {
+          "url": "https://ca.linkedin.com/in/zhaowinston",
+          "type": "project author",
+          "evidence": "HabitAt and its UWUX Design Sprint first-place award are dated June 2025."
+        },
+        {
+          "url": "https://ca.linkedin.com/in/amna-sahi",
+          "type": "project team member",
+          "evidence": "HabitAt is also dated June 2025 and identified as First Place at the UWUX Design Sprint 2025."
+        },
+        {
+          "url": "https://ca.linkedin.com/in/alisa-tran-mai",
+          "type": "participant with organizer repost",
+          "evidence": "Reposted GBDA Society results name HabitAt as the first-place team, with Winston Zhao, Amna Sahi, Andrew Chu, and Anita Du. The text describes a Monday-night event without an exact calendar date."
+        },
+        {
+          "url": "https://uwux.medium.com/2025-wrapped-uw-ux-a8bd48e53faa",
+          "type": "official club retrospective",
+          "evidence": "UW/UX places its collaboration with GBDA Society in Spring 2025. It does not supply an exact date."
+        },
+        {
+          "url": "https://www.figma.com/design/r2Feu1tLXWg8ApMcINffew/Winston-Zhao-Portfolio-V3?node-id=600-1042",
+          "type": "supplied portfolio source",
+          "evidence": "HabitAt cover, with no embedded project date."
+        }
+      ],
+      "uncertainties": [
+        "No exact day was located. Keep the display precision at June 2025.",
+        "A runner-up participant, Cathy Yin, lists Snap Habit and the same sprint under July 2025. The matching June entries from Winston and teammate Amna take precedence for HabitAt; the discrepancy remains documented rather than silently resolved."
+      ],
+      "conflictingSource": "https://ca.linkedin.com/in/catherinayin",
+      "sortMonth": 6,
+      "eventDay": null,
+      "timelineForDisplay": "June 2025"
+    },
+    {
+      "slug": "sparks",
+      "title": "Sparks",
+      "year": 2025,
+      "month": 3,
+      "day": 2,
+      "datePrecision": "event range",
+      "recommendedDate": "2025-03-02",
+      "eventStart": "2025-02-28",
+      "eventEnd": "2025-03-02",
+      "dateBasis": "End of source-mapped product design sprint",
+      "confidence": "high for year, month, and event range; endpoint used for sorting",
+      "projectContext": "Western Founders Network Product Design Sprint 2025",
+      "sources": [
+        {
+          "url": "https://ca.linkedin.com/in/zhaowinston",
+          "type": "project author",
+          "evidence": "Sparks is dated March 2025 and associated with Western Founders Network's Product Design Sprint."
+        },
+        {
+          "url": "https://luma.com/o9sy2dij",
+          "type": "official organizer registration page",
+          "evidence": "Western Founders Network identifies the Product Design Sprint as February 28–March 2, 2025."
+        },
+        {
+          "url": "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W/Winston-Design-Demo?node-id=9-5317",
+          "type": "supplied project gallery",
+          "evidence": "Sparks is labeled WFN Product Design Sprint."
+        },
+        {
+          "url": "https://www.figma.com/design/r2Feu1tLXWg8ApMcINffew/Winston-Zhao-Portfolio-V3?node-id=595-1026",
+          "type": "supplied portfolio source",
+          "evidence": "Sparks cover, with no embedded project date."
+        }
+      ],
+      "uncertainties": [
+        "March 2 represents the event endpoint for sorting; no separate project completion timestamp was located.",
+        "No Sparks award was substantiated."
+      ],
+      "sortMonth": 3,
+      "eventDay": 2,
+      "timelineForDisplay": "March 2025"
+    },
+    {
+      "slug": "newly",
+      "title": "Newly",
+      "year": 2026,
+      "month": 5,
+      "day": null,
+      "datePrecision": "month range",
+      "recommendedDate": "2026-05",
+      "dateBasis": "Current local author resume, inspected by root",
+      "confidence": "high for year and month range; day unknown",
+      "sources": [
+        {
+          "path": "/Users/winston/repo/winstonzhao-v3/public/winstonzhao-resume.pdf",
+          "type": "current local author resume, verified by root",
+          "evidence": "Root confirms the current resume dates Newly work May–October 2026."
+        },
+        {
+          "url": "https://www.linkedin.com/posts/zhaowinston_this-summer-ill-be-working-at-newly-a-stockholm-activity-7457049495621693440-zgTi",
+          "type": "project author announcement",
+          "evidence": "Winston announces an upcoming summer as a product designer at Newly in Stockholm. The extracted public text uses relative age and does not state an exact employment start."
+        },
+        {
+          "url": "https://ca.linkedin.com/in/zhaowinston",
+          "type": "project author profile",
+          "evidence": "Current experience lists Newly in Stockholm, while the public search rendering omits the role dates."
+        },
+        {
+          "url": "https://www.figma.com/design/r2Feu1tLXWg8ApMcINffew/Winston-Zhao-Portfolio-V3?node-id=953-1355",
+          "type": "supplied portfolio source",
+          "evidence": "Newly desktop demo. The screen contains session-relative timestamps and device labels, but no project-work date."
+        }
+      ],
+      "uncertainties": [
+        "No exact start or end day is supplied by the resume.",
+        "The March 2026 company funding/rebrand milestone does not independently date Winston's work.",
+        "Session-relative timestamps and device model labels in sample screens are not project dates."
+      ],
+      "sortMonth": 5,
+      "eventDay": null,
+      "timelineForDisplay": "May–October 2026",
+      "workStart": "2026-05",
+      "workEnd": "2026-10"
+    },
+    {
+      "slug": "villio-ai",
+      "title": "Villio AI",
+      "year": 2025,
+      "month": 5,
+      "day": null,
+      "datePrecision": "month",
+      "recommendedDate": "2025-05",
+      "dateBasis": "Author's co-founder and product-designer role start",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://winstonzhao.ca/resume.pdf",
+          "type": "author resume",
+          "evidence": "Villio AI Co-Founder / Product Designer is dated May 2025–present. The role description states that Winston designed the MVP."
+        },
+        {
+          "url": "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W/Winston-Design-Demo?node-id=101-3100",
+          "type": "supplied resume source",
+          "evidence": "Welcome + Contents includes the same May 2025 start and MVP role description."
+        }
+      ],
+      "uncertainties": [
+        "This is the beginning of the product role, not a confirmed launch date or date of the selected screen revision."
+      ],
+      "sortMonth": 5,
+      "eventDay": null,
+      "timelineForDisplay": "May 2025–present"
+    },
+    {
+      "slug": "munisync",
+      "title": "MuniSync / YRConnect",
+      "year": 2024,
+      "month": 4,
+      "day": 18,
+      "datePrecision": "day",
+      "recommendedDate": "2024-04-18",
+      "eventStart": "2024-04-17",
+      "eventEnd": "2024-04-18",
+      "dateBasis": "Project submission/update date at mapped hackathon",
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://devpost.com/software/yrconnect",
+          "type": "author project submission",
+          "evidence": "YRConnect names Winston as creator, links to YRHacks 2024 and its Second Place award, and records the project update on April 18, 2024 at 5:35 PM EDT."
+        },
+        {
+          "url": "https://yrhacks2024.devpost.com/rules",
+          "type": "official event rules",
+          "evidence": "The hacking period starts April 17, 2024, continues in person April 18, and closes April 18."
+        },
+        {
+          "url": "https://yrhacks2024.devpost.com/details/dates",
+          "type": "official event schedule",
+          "evidence": "Submissions open April 17 at 6 PM and close April 18 at 5:30 PM EDT; winners are announced April 18."
+        },
+        {
+          "url": "https://ca.linkedin.com/in/zhaowinston",
+          "type": "project author",
+          "evidence": "YRConnect is listed under April 2024 and identifies YRHacks 2024."
+        },
+        {
+          "url": "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W/Winston-Design-Demo?node-id=1-7779",
+          "type": "supplied project design",
+          "evidence": "The MuniSync page contains YRConnect onboarding and the matching municipal-app screens."
+        }
+      ],
+      "uncertainties": [
+        "The Devpost timestamp dates the submitted project entry; actual design work spans the April 17–18 event.",
+        "Dates displayed within sample bookings and event cards do not date the project."
+      ],
+      "sortMonth": 4,
+      "eventDay": 18,
+      "timelineForDisplay": "April 2024"
+    },
+    {
+      "slug": "arca",
+      "title": "Arca",
+      "year": 2025,
+      "month": 3,
+      "day": 23,
+      "datePrecision": "event range",
+      "recommendedDate": "2025-03-23",
+      "eventStart": "2025-03-21",
+      "eventEnd": "2025-03-23",
+      "dateBasis": "End of source-mapped designathon",
+      "confidence": "high for year, month, and event range; endpoint used for sorting",
+      "projectContext": "Best Pitch, UXL Wander UX Designathon 2025",
+      "sources": [
+        {
+          "url": "https://ca.linkedin.com/in/zhaowinston",
+          "type": "project author",
+          "evidence": "Arca is dated March 2025 and identifies the UXL Wander UX Designathon and Best Pitch award."
+        },
+        {
+          "url": "https://luma.com/jbjb5m4g",
+          "type": "official organizer registration page",
+          "evidence": "UX Laurier's Wander UX event is explicitly scheduled March 21–23, 2025."
+        },
+        {
+          "url": "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W/Winston-Design-Demo?node-id=101-3100",
+          "type": "supplied project index",
+          "evidence": "Arca is identified as Best Pitch at UXL Designathon; the included resume award list specifies 2025."
+        }
+      ],
+      "uncertainties": [
+        "March 23 represents the event endpoint for sorting; no separate project completion timestamp was located."
+      ],
+      "sortMonth": 3,
+      "eventDay": 23,
+      "timelineForDisplay": "March 2025"
+    }
+  ]
+}

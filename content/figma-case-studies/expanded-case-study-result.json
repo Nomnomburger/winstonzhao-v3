@@ -1,0 +1,134 @@
+{
+  "publishedAt": "2026-10-05T07:40:48.512Z",
+  "transactionId": "bQYP7xhuT5v8w3idX2tA8B",
+  "allProtectedFieldsVerifiedUnchanged": true,
+  "projects": [
+    {
+      "id": "legacy-portfolio-elapsedesign",
+      "title": "Elapse App Design",
+      "slug": "elapse-app-design",
+      "sourceFile": "elapse-expanded-copy.json",
+      "sourceNotes": {
+        "snapshot": "content/figma-case-studies/sanity-before-expanded-legacy.json",
+        "identityAndAssets": "The patch omits title, slug, year, order, featured, coverImage, hero, client, discipline, and link. All three original section image asset references are preserved exactly once; they are redistributed into relevant sections with visually verified alt text and captions.",
+        "sources": [
+          {
+            "source": "Existing Elapse case-study content in the Sanity snapshot",
+            "supports": "Four years competing in VEX Robotics; tournament logistics, schedule delays and missed announcements; initial personalized home, live-timing, announcement-feed and organizer-portal proposals; original interface hierarchy. Historical plans are described as proposals, not released features."
+          },
+          {
+            "url": "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W/Winston-Design-Demo?node-id=157-24824",
+            "supports": "Elapse page inspected in Figma. Home 157:29965; match-detail states 157:29626, 157:29648, 157:29670, 157:29692, 157:29714, 157:29740; tournament schedule 157:28944; team information 157:29602; onboarding 157:31035 and page R1; CloudScout 157:32675; group settings 157:32452; ranking/filter/theme/settings variants. Screen content supports structure and design choices, not evidence that every depicted feature shipped."
+          },
+          {
+            "source": "Visually inspected original gallery assets",
+            "paths": [
+              "content/figma-case-studies/assets/elapse-app-design-legacy-1.jpg",
+              "content/figma-case-studies/assets/elapse-app-design-legacy-2.jpg",
+              "content/figma-case-studies/assets/elapse-app-design-legacy-3.jpg"
+            ],
+            "supports": "Scene is a mobile match-info mockup. Scene 4 is a desktop two-panel concept. Elapse map connects home, schedule, match, team, search and settings screens. Captions describe visible content and do not claim the desktop app shipped."
+          },
+          {
+            "url": "https://www.elapseapp.com/",
+            "supports": "Available on iOS and Android; Winston Zhao credited as designer; developer credits."
+          },
+          {
+            "url": "https://apps.apple.com/ca/app/elapse/id6596757269",
+            "supports": "Version 1.0 released November 11, 2024; official description documents tournament mode, upcoming matches, and ScoutSheets. Current store ratings are not used as historical outcomes."
+          },
+          {
+            "url": "https://play.google.com/store/apps/details?id=com.elapseapp.elapse_app",
+            "supports": "Released Android app; official description documents tournament mode, upcoming matches, and ScoutSheets."
+          },
+          {
+            "source": "public/winstonzhao-resume.pdf",
+            "supports": "Co-Founder / Product Designer at Elapse, November 2022–January 2025; led team of eight to design and develop tournament companion; reached 3,500+ users globally. Source also reports 4.8 stars and user-reported 3x faster data access; those figures are omitted from the copy because they are historical self-reported metrics, and the current store rating differs."
+          }
+        ],
+        "scopeNotes": [
+          "No interviews, controlled usability tests, implementation stack, timing algorithm performance, or unsupported launch outcomes are asserted.",
+          "The timeline describes the author's documented role range. The existing project year is left unchanged for the parent to preserve.",
+          "Original web/desktop, organizer portal, announcement and TeamSync directions are explicitly kept separate from verified released mobile features.",
+          "No Sanity mutation, frontend change, or existing file edit was performed by this subagent."
+        ]
+      },
+      "sectionTitles": [
+        "Context",
+        "Structure",
+        "Tournament day",
+        "Scouting",
+        "Visual system",
+        "Release"
+      ],
+      "sideNavigation": true,
+      "retainedBodyImages": [
+        "image-01f03a3abde68fd7a88c39293aa1d5fc98727d08-2500x1875-png",
+        "image-3687dc9ccc7a7fe2dd02e9f59ad45f78e7212276-3680x2760-png",
+        "image-bb95d054eccf29ebd6f503e05817d3e441addae9-2095x2396-png"
+      ]
+    },
+    {
+      "id": "legacy-portfolio-hopperhangout",
+      "title": "Hopper Hangout",
+      "slug": "hopper-hangout",
+      "sourceFile": "hopper-expanded-copy.json",
+      "sourceNotes": [
+        {
+          "source": "existing authored case study",
+          "path": "/Users/winston/repo/winstonzhao-v3/content/figma-case-studies/sanity-before-expanded-legacy.json",
+          "documentId": "legacy-portfolio-hopperhangout",
+          "notes": "Preserves the authentic ideation, paper sketching, team, branding, component, adaptive action-bar, onboarding, prototyping, presentation, and award account. Reworks the long Design process section into seven chapters. The unsupported click-through-rate claim is omitted."
+        },
+        {
+          "source": "supplied Figma product design",
+          "url": "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W/Winston-Design-Demo?node-id=1-2648",
+          "screenIds": [
+            "1:3676",
+            "1:3824",
+            "1:3884",
+            "1:3992",
+            "1:4098",
+            "1:4151",
+            "1:4990",
+            "1:5368",
+            "1:5437",
+            "1:5497",
+            "1:5828",
+            "1:6180"
+          ],
+          "notes": "Read screen text and visually verified Home, Hangout Plan, preference onboarding, and date/location/name steps. The copy describes designed interactions and the proposed recommendation concept, without implying a launched backend or measured improvements."
+        },
+        {
+          "source": "supplied Figma portfolio cover",
+          "url": "https://www.figma.com/design/r2Feu1tLXWg8ApMcINffew/Winston-Zhao-Portfolio-V3?node-id=595-1028",
+          "notes": "Existing Sanity cover and hero preserved without changing the asset reference."
+        },
+        {
+          "source": "author team submission",
+          "url": "https://devpost.com/software/hopper-hangout",
+          "notes": "Confirms the team, Figma prototype, Best Design Hack award, and November 19, 2023 submission. No adoption, launch, user-testing, or efficiency metrics are asserted."
+        },
+        {
+          "source": "retained Sanity media",
+          "notes": "All three original gallery images were visually inspected in a temporary Safari tab, then assigned by subject: full screen collection to Process, Hangout Plan mockup to Planning, Profile/Map mockup to Navigation. Their asset references are retained; alt text and captions now describe their content."
+        }
+      ],
+      "sectionTitles": [
+        "Challenge",
+        "Process",
+        "Visual identity",
+        "Onboarding",
+        "Planning",
+        "Navigation",
+        "Outcome"
+      ],
+      "sideNavigation": true,
+      "retainedBodyImages": [
+        "image-3a548684c2b5b583daa1cdc795835ce107c7f0d6-2149x1441-png",
+        "image-6bd1f56159332180c28e8041a1008d3676359050-2000x1500-png",
+        "image-e5f2439d90bf88727a2c09c8940f01fb3382a0c6-2000x1500-png"
+      ]
+    }
+  ]
+}

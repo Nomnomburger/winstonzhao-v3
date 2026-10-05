@@ -1,0 +1,55 @@
+{
+  "publishedAt": "2026-10-05T15:46:00.015Z",
+  "transactionId": "bQYP7xhuT5v8w3idX3u6fR",
+  "featuredOrder": [
+    {
+      "id": "legacy-portfolio-heatmap",
+      "title": "Heatmap Portal Redesign",
+      "order": 1
+    },
+    {
+      "id": "legacy-portfolio-yrconnect",
+      "title": "YRConnect",
+      "order": 2
+    },
+    {
+      "id": "legacy-portfolio-hopperhangout",
+      "title": "Hopper Hangout",
+      "order": 3
+    },
+    {
+      "id": "legacy-portfolio-elapsedesign",
+      "title": "Elapse App Design",
+      "order": 4
+    }
+  ],
+  "mainMockups": [
+    {
+      "id": "legacy-portfolio-heatmap",
+      "asset": "image-661612863671ffa444405207c2f6d8777494c3f6-2000x1500-png"
+    },
+    {
+      "id": "legacy-portfolio-yrconnect",
+      "asset": "image-955cb0ae1d7016d6e320cbfa544ff5bd4b458118-1840x1380-png"
+    },
+    {
+      "id": "legacy-portfolio-hopperhangout",
+      "asset": "image-d1924b828288ce077645d4d6e7dcf21c51f0aeae-1440x1080-png"
+    },
+    {
+      "id": "legacy-portfolio-elapsedesign",
+      "asset": "image-55f22614414893bbaf5f44dfe4f843c9a3343cc1-3680x2760-png"
+    }
+  ],
+  "addedStraightOnImages": [
+    {
+      "id": "legacy-portfolio-elapsedesign",
+      "asset": "image-8c49073b4b5525fe754b2d170217c0d777f2b7c1-716x717-png"
+    },
+    {
+      "id": "legacy-portfolio-hopperhangout",
+      "asset": "image-7670f22c7ccfdf0347d7c8c051f713190aeae892-716x717-png"
+    }
+  ],
+  "allUnrelatedFieldsVerifiedUnchanged": true
+}

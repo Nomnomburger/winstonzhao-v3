@@ -1,0 +1,633 @@
+{
+  "researchedAt": "2026-10-05T07:07:09.441Z",
+  "sourceSnapshot": "sanity-before-reorder.json",
+  "method": "Authenticated read of current published Sanity documents. Dates come from narrative, detail, and stored year fields. CMS _createdAt and _updatedAt were deliberately excluded; they reflect migration/editing, not project creation.",
+  "publicProjectCount": 29,
+  "legacyProjectCount": 14,
+  "existingYearErrors": [],
+  "limitations": "Only five legacy projects contain absolute dates in narrative/details. The remaining nine retain existing years pending independent source research. Relative phrases and tournament-season references do not provide exact creation dates.",
+  "currentPublicProjects": [
+    {
+      "_id": "legacy-portfolio-heatmap",
+      "title": "Heatmap Portal Redesign",
+      "year": 2024,
+      "featured": true,
+      "order": 1
+    },
+    {
+      "_id": "legacy-portfolio-yrconnect",
+      "title": "YRConnect",
+      "year": 2024,
+      "featured": true,
+      "order": 2
+    },
+    {
+      "_id": "legacy-portfolio-hopperhangout",
+      "title": "Hopper Hangout",
+      "year": 2023,
+      "featured": true,
+      "order": 3
+    },
+    {
+      "_id": "legacy-portfolio-elapsedesign",
+      "title": "Elapse App Design",
+      "year": 2023,
+      "featured": true,
+      "order": 4
+    },
+    {
+      "_id": "legacy-portfolio-robotics",
+      "title": "Competitive Robotics",
+      "year": 2023,
+      "featured": false,
+      "order": 5
+    },
+    {
+      "_id": "legacy-portfolio-thedriveteampodcast",
+      "title": "The Drive Team Podcast",
+      "year": 2022,
+      "featured": false,
+      "order": 6
+    },
+    {
+      "_id": "legacy-portfolio-25kteam",
+      "title": "Team 25K Website",
+      "year": 2022,
+      "featured": false,
+      "order": 7
+    },
+    {
+      "_id": "legacy-portfolio-sorbackyardscrimmage",
+      "title": "SOR Backyard Scrimmage Video",
+      "year": 2022,
+      "featured": false,
+      "order": 8
+    },
+    {
+      "_id": "legacy-portfolio-sorreveal",
+      "title": "SOR22 Robot Reveal Video",
+      "year": 2022,
+      "featured": false,
+      "order": 9
+    },
+    {
+      "_id": "legacy-portfolio-unionvillehowl",
+      "title": "The Unionville Howl Website Design",
+      "year": 2021,
+      "featured": false,
+      "order": 10
+    },
+    {
+      "_id": "legacy-portfolio-winstonzhaov1",
+      "title": "Winstonzhao.ca V1",
+      "year": 2021,
+      "featured": false,
+      "order": 11
+    },
+    {
+      "_id": "legacy-portfolio-839team",
+      "title": "Team 839 Website",
+      "year": 2021,
+      "featured": false,
+      "order": 12
+    },
+    {
+      "_id": "legacy-portfolio-asymtry",
+      "title": "Asymtry Logo & Branding",
+      "year": 2020,
+      "featured": false,
+      "order": 13
+    },
+    {
+      "_id": "legacy-portfolio-controllerdeskmats",
+      "title": "Controller Deskmats",
+      "year": 2020,
+      "featured": false,
+      "order": 14
+    },
+    {
+      "_id": "figma-portfolio-yelo",
+      "title": "Yelo",
+      "year": 2026,
+      "featured": false,
+      "order": 15
+    },
+    {
+      "_id": "figma-portfolio-villio-ai",
+      "title": "Villio AI",
+      "year": 2025,
+      "featured": false,
+      "order": 16
+    },
+    {
+      "_id": "figma-portfolio-newly",
+      "title": "Newly",
+      "year": 2026,
+      "featured": false,
+      "order": 17
+    },
+    {
+      "_id": "figma-portfolio-augwa",
+      "title": "Augwa",
+      "year": 2025,
+      "featured": false,
+      "order": 18
+    },
+    {
+      "_id": "figma-portfolio-hack404-launchpad",
+      "title": "Hack404 Launchpad",
+      "year": 2025,
+      "featured": false,
+      "order": 19
+    },
+    {
+      "_id": "figma-portfolio-summerhacks",
+      "title": "SummerHacks",
+      "year": 2026,
+      "featured": false,
+      "order": 20
+    },
+    {
+      "_id": "figma-portfolio-costudy",
+      "title": "CoStudy",
+      "year": 2025,
+      "featured": false,
+      "order": 21
+    },
+    {
+      "_id": "figma-portfolio-cocart",
+      "title": "CoCart",
+      "year": 2026,
+      "featured": false,
+      "order": 22
+    },
+    {
+      "_id": "figma-portfolio-ryri",
+      "title": "Ryri",
+      "year": 2026,
+      "featured": false,
+      "order": 23
+    },
+    {
+      "_id": "figma-portfolio-munisync",
+      "title": "MuniSync",
+      "year": 2024,
+      "featured": false,
+      "order": 24
+    },
+    {
+      "_id": "figma-portfolio-smartbasket",
+      "title": "SmartBasket",
+      "year": 2025,
+      "featured": false,
+      "order": 25
+    },
+    {
+      "_id": "figma-portfolio-arca",
+      "title": "Arca",
+      "year": 2025,
+      "featured": false,
+      "order": 26
+    },
+    {
+      "_id": "figma-portfolio-sparks",
+      "title": "Sparks",
+      "year": 2026,
+      "featured": false,
+      "order": 27
+    },
+    {
+      "_id": "figma-portfolio-garden",
+      "title": "Garden",
+      "year": 2026,
+      "featured": false,
+      "order": 28
+    },
+    {
+      "_id": "figma-portfolio-habitat",
+      "title": "HabitAt",
+      "year": 2026,
+      "featured": false,
+      "order": 29
+    }
+  ],
+  "projects": [
+    {
+      "_id": "legacy-portfolio-heatmap",
+      "title": "Heatmap Portal Redesign",
+      "slug": "heatmap-portal-redesign",
+      "currentYear": 2024,
+      "featured": true,
+      "order": 1,
+      "timeline": {
+        "start": "2024-07",
+        "end": "2024-08",
+        "precision": "month",
+        "basis": "Explicit Duration detail, supported by intro and overview.",
+        "recommendedYear": 2024
+      },
+      "yearCorrectionSupported": false,
+      "evidence": [
+        {
+          "path": "details.3.value",
+          "text": "July 2024 – August 2024",
+          "years": [
+            2024
+          ]
+        },
+        {
+          "path": "intro",
+          "text": "During my Full Sprint internship in July 2024, I redesigned Heatmap’s interface to improve navigation and scalability. As new features expanded the platform, the UI became fragmented. This case study details the process of creating a more cohesive and user-friendly design.",
+          "years": [
+            2024
+          ]
+        },
+        {
+          "path": "overview",
+          "text": "It was July 2024 when I was onboarded with the challenge of reimagining the interface for Heatmap during my internship at Full Sprint. Heatmap (Heatmap.com) is an innovative analytics platform that helps small businesses gain insights into user interactions on their websites. By visualizing the most clicked areas (heatmaps), providing screen recordings, and offering AI-driven insights, Heatmap empowers business owners to make data-driven decisions for their online storefronts. With new features constantly being added, the existing interface became increasingly fragmented and difficult to navigate. This case study details the redesign process aimed at creating a cohesive, scalable experience that aligns with Heatmap’s updated design language and expanded feature set.",
+          "years": [
+            2024
+          ]
+        }
+      ],
+      "externalSource": "https://heatmap.com"
+    },
+    {
+      "_id": "legacy-portfolio-yrconnect",
+      "title": "YRConnect",
+      "slug": "yrconnect",
+      "currentYear": 2024,
+      "featured": true,
+      "order": 2,
+      "timeline": {
+        "start": "2024",
+        "end": "2024",
+        "precision": "year",
+        "basis": "YR Hacks 2024 event context appears in client, recognition details, impact, and body.",
+        "recommendedYear": 2024
+      },
+      "yearCorrectionSupported": false,
+      "evidence": [
+        {
+          "path": "client",
+          "text": "YR Hacks 2024",
+          "years": [
+            2024
+          ]
+        },
+        {
+          "path": "details.3.label",
+          "text": "YR Hacks 2024",
+          "years": [
+            2024
+          ]
+        },
+        {
+          "path": "impact",
+          "text": "YR Hacks 2024 — 2nd Place",
+          "years": [
+            2024
+          ]
+        },
+        {
+          "path": "sections.1.content.0.children.0.text",
+          "text": "With YRHacks of York Region being the third hackathon I attended, I had more experience going into the hackathon and knew what would and wouldn’t work. The best design award was up for grabs, which meant another design project for this hackathon. I decided to partner with my friend Aubree this time. Together we would design a forward-thinking mobile app for the residents of York Region. The app is designed to be accessible while exploring new design patterns and elements. At the end, instead of winning best design, we won 2nd place of the entire hackathon! Here’s the story about how YRConnect, a testament to the power of design, came to fruition at YRHacks 2024.",
+          "years": [
+            2024
+          ]
+        }
+      ],
+      "externalSource": "https://devpost.com/software/yrconnect"
+    },
+    {
+      "_id": "legacy-portfolio-hopperhangout",
+      "title": "Hopper Hangout",
+      "slug": "hopper-hangout",
+      "currentYear": 2023,
+      "featured": true,
+      "order": 3,
+      "timeline": {
+        "start": "2023",
+        "end": "2023",
+        "precision": "year",
+        "basis": "Alicehacks 2023 appears in client, recognition details, and impact.",
+        "recommendedYear": 2023
+      },
+      "yearCorrectionSupported": false,
+      "evidence": [
+        {
+          "path": "client",
+          "text": "Alicehacks 2023",
+          "years": [
+            2023
+          ]
+        },
+        {
+          "path": "details.3.label",
+          "text": "Alicehacks 2023",
+          "years": [
+            2023
+          ]
+        },
+        {
+          "path": "impact",
+          "text": "Alicehacks 2023 — Best Design Hack",
+          "years": [
+            2023
+          ]
+        }
+      ],
+      "externalSource": "https://devpost.com/software/hopper-hangout"
+    },
+    {
+      "_id": "legacy-portfolio-elapsedesign",
+      "title": "Elapse App Design",
+      "slug": "elapse-app-design",
+      "currentYear": 2023,
+      "featured": true,
+      "order": 4,
+      "timeline": {
+        "start": null,
+        "end": null,
+        "precision": "existing-year-only",
+        "basis": "No absolute project date found in the existing narrative or details; current CMS year is the only explicit stored date.",
+        "recommendedYear": 2023
+      },
+      "yearCorrectionSupported": false,
+      "evidence": [],
+      "externalSource": "https://www.elapseapp.com/"
+    },
+    {
+      "_id": "legacy-portfolio-robotics",
+      "title": "Competitive Robotics",
+      "slug": "competitive-robotics",
+      "currentYear": 2023,
+      "featured": false,
+      "order": 5,
+      "timeline": {
+        "start": "2018",
+        "end": "2023",
+        "precision": "year",
+        "basis": "Explicit 2018–2023 Timeline detail and five season chapters: 2018/19, 2019/20, 2020/21, 2021/22, 2022/23.",
+        "recommendedYear": 2023,
+        "creationYear": 2018,
+        "note": "Current displayed year is the end of this multi-year portfolio journey. Earliest documented project activity is 2018; use that only if ordering means initial creation rather than latest work."
+      },
+      "yearCorrectionSupported": false,
+      "evidence": [
+        {
+          "path": "details.5.value",
+          "text": "2018–2023",
+          "years": [
+            2018,
+            2023
+          ]
+        },
+        {
+          "path": "impact",
+          "text": "We achieved the most prestigious award of 2022 Provincial Tournament Champion, and qualified to the international 2022 Vex Worlds tournament. At Vex Worlds we made it into the round of 16 in our division.",
+          "years": [
+            2022
+          ]
+        },
+        {
+          "path": "sections.1.title",
+          "text": "Team Polaris - 2018/19",
+          "years": [
+            2018
+          ]
+        },
+        {
+          "path": "sections.2.title",
+          "text": "Team 839Z - 2019/20",
+          "years": [
+            2019
+          ]
+        },
+        {
+          "path": "sections.3.content.1.children.0.text",
+          "text": "As the head programmer and digital development team lead of VEX Robotics Competition Team 839A, I managed our libraries of code for our robot. I collaborated with other programmers on Team 839A to solve problems and find new solutions to challenges we are presented to in VRC. I lead the team in using online technologies such as Microsoft Teams, Microsoft Office, SharePoint, and GitHub. On VRC Team 839A, I also contributed heavily to designing and building the robot for each season, using tools such as Fusion 360 CAD and MeshCAM. We have successfully ranked 6 th in Ontario and qualified for the global VEX Worlds 2021 Championship.",
+          "years": [
+            2021
+          ]
+        },
+        {
+          "path": "sections.3.title",
+          "text": "Team 839A - 2020/21",
+          "years": [
+            2020
+          ]
+        },
+        {
+          "path": "sections.4.content.1.children.0.text",
+          "text": "While on Silver Owl Robotics Team 3150A, I worked with the team to produce a competitive robot for our local, provincial, and international Vex Robotics Competition tournaments. We have won three local live remote tournaments, and qualified to the 2022 Ontario Provincial Championships. We achieved the most prestigious award of 2022 Provincial Tournament Champion, and qualified to the international 2022 Vex Worlds tournament. At Vex Worlds we made it into the round of 16 in our division.",
+          "years": [
+            2022
+          ]
+        },
+        {
+          "path": "sections.4.title",
+          "text": "Team 3150A - 2021/22",
+          "years": [
+            2021
+          ]
+        },
+        {
+          "path": "sections.5.content.1.children.0.text",
+          "text": "I founded Vex Robotics Competition Team 25K and as a team of 8 we competed in the 2022-2023 Vex Robotics Competition season, Spin Up. As team captain, I manage the team, and work on robot design, and program the robot. Together we managed to win three awards, Build, Design, and Excellence. After placing 3rd in skills at the 2023 Ontario Provincial Championships, we qualified for the 2023 Vex World Championships. As a completely student run team, some added responsibilities included managing the team budget, logistics, and sponsorship acquisition. Overall, this experience was extremely fun and eye opening, and I gained valuable leadership experiences.",
+          "years": [
+            2022,
+            2023
+          ]
+        },
+        {
+          "path": "sections.5.title",
+          "text": "Team 25K - 2022/23",
+          "years": [
+            2022
+          ]
+        }
+      ],
+      "externalSource": null
+    },
+    {
+      "_id": "legacy-portfolio-thedriveteampodcast",
+      "title": "The Drive Team Podcast",
+      "slug": "the-drive-team-podcast",
+      "currentYear": 2022,
+      "featured": false,
+      "order": 6,
+      "timeline": {
+        "start": null,
+        "end": null,
+        "precision": "existing-year-only",
+        "basis": "No absolute project date found in the existing narrative or details; current CMS year is the only explicit stored date.",
+        "recommendedYear": 2022
+      },
+      "yearCorrectionSupported": false,
+      "evidence": [],
+      "externalSource": "https://thedriveteam.ca"
+    },
+    {
+      "_id": "legacy-portfolio-25kteam",
+      "title": "Team 25K Website",
+      "slug": "team-25k-website",
+      "currentYear": 2022,
+      "featured": false,
+      "order": 7,
+      "timeline": {
+        "start": null,
+        "end": null,
+        "precision": "existing-year-only",
+        "basis": "No absolute project date found in the existing narrative or details; current CMS year is the only explicit stored date.",
+        "recommendedYear": 2022
+      },
+      "yearCorrectionSupported": false,
+      "evidence": [],
+      "externalSource": "https://team-25k-website.web.app/"
+    },
+    {
+      "_id": "legacy-portfolio-sorbackyardscrimmage",
+      "title": "SOR Backyard Scrimmage Video",
+      "slug": "sor-backyard-scrimmage-video",
+      "currentYear": 2022,
+      "featured": false,
+      "order": 8,
+      "timeline": {
+        "start": null,
+        "end": null,
+        "precision": "existing-year-only",
+        "basis": "No absolute project date found in the existing narrative or details; current CMS year is the only explicit stored date.",
+        "recommendedYear": 2022,
+        "note": "Narrative identifies the VRC Tipping Point season, but does not state a production/release date. The linked YouTube source may provide more precise evidence."
+      },
+      "yearCorrectionSupported": false,
+      "evidence": [],
+      "externalSource": "https://youtu.be/jNJzbm1Zd14"
+    },
+    {
+      "_id": "legacy-portfolio-sorreveal",
+      "title": "SOR22 Robot Reveal Video",
+      "slug": "sor22-robot-reveal-video",
+      "currentYear": 2022,
+      "featured": false,
+      "order": 9,
+      "timeline": {
+        "start": "2022",
+        "end": "2022",
+        "precision": "year",
+        "basis": "Description explicitly identifies the 2022 robot. This confirms the robot season, not an exact video production or release date.",
+        "recommendedYear": 2022,
+        "note": "Exact video creation/release date needs the linked YouTube source."
+      },
+      "yearCorrectionSupported": false,
+      "evidence": [
+        {
+          "path": "description",
+          "text": "Cinematic video showcasing Silver Owl Robotics' 2022 robot",
+          "years": [
+            2022
+          ]
+        }
+      ],
+      "externalSource": "https://youtu.be/ktJ5cc93fWk"
+    },
+    {
+      "_id": "legacy-portfolio-unionvillehowl",
+      "title": "The Unionville Howl Website Design",
+      "slug": "the-unionville-howl-website-design",
+      "currentYear": 2021,
+      "featured": false,
+      "order": 10,
+      "timeline": {
+        "start": null,
+        "end": null,
+        "precision": "existing-year-only",
+        "basis": "No absolute project date found in the existing narrative or details; current CMS year is the only explicit stored date.",
+        "recommendedYear": 2021
+      },
+      "yearCorrectionSupported": false,
+      "evidence": [],
+      "externalSource": "https://www.figma.com/proto/uZQaR5G7IwW6194IieCEeY/UHS-Howl-Website?page-id=0%3A1&type=design&node-id=21-172&viewport=1388%2C347%2C0.16&t=OnkZQyhcMlMu1Ydp-1&scaling=min-zoom&starting-point-node-id=2%3A2&show-proto-sidebar=0&mode=design"
+    },
+    {
+      "_id": "legacy-portfolio-winstonzhaov1",
+      "title": "Winstonzhao.ca V1",
+      "slug": "winstonzhao-ca-v1",
+      "currentYear": 2021,
+      "featured": false,
+      "order": 11,
+      "timeline": {
+        "start": null,
+        "end": null,
+        "precision": "existing-year-only",
+        "basis": "No absolute project date found in the existing narrative or details; current CMS year is the only explicit stored date.",
+        "recommendedYear": 2021,
+        "note": "Overview says \"two years ago\", but its original authorship date is unknown. Do not anchor this relative phrase to the 2026 migration timestamp."
+      },
+      "yearCorrectionSupported": false,
+      "evidence": [
+        {
+          "path": "overview",
+          "text": "This was the first version of my portfolio website! I made it two years ago, and I think the progress of quality shows how much I’ve learned about web design and development through these two years. Check it out for some nostalgic vibes!",
+          "years": []
+        }
+      ],
+      "externalSource": "https://v1.winstonzhao.ca"
+    },
+    {
+      "_id": "legacy-portfolio-839team",
+      "title": "Team 839 Website",
+      "slug": "team-839-website",
+      "currentYear": 2021,
+      "featured": false,
+      "order": 12,
+      "timeline": {
+        "start": null,
+        "end": null,
+        "precision": "existing-year-only",
+        "basis": "No absolute project date found in the existing narrative or details; current CMS year is the only explicit stored date.",
+        "recommendedYear": 2021
+      },
+      "yearCorrectionSupported": false,
+      "evidence": [],
+      "externalSource": "https://www.839.team"
+    },
+    {
+      "_id": "legacy-portfolio-asymtry",
+      "title": "Asymtry Logo & Branding",
+      "slug": "asymtry-logo-branding",
+      "currentYear": 2020,
+      "featured": false,
+      "order": 13,
+      "timeline": {
+        "start": null,
+        "end": null,
+        "precision": "existing-year-only",
+        "basis": "No absolute project date found in the existing narrative or details; current CMS year is the only explicit stored date.",
+        "recommendedYear": 2020
+      },
+      "yearCorrectionSupported": false,
+      "evidence": [],
+      "externalSource": null
+    },
+    {
+      "_id": "legacy-portfolio-controllerdeskmats",
+      "title": "Controller Deskmats",
+      "slug": "controller-deskmats",
+      "currentYear": 2020,
+      "featured": false,
+      "order": 14,
+      "timeline": {
+        "start": null,
+        "end": null,
+        "precision": "existing-year-only",
+        "basis": "No absolute project date found in the existing narrative or details; current CMS year is the only explicit stored date.",
+        "recommendedYear": 2020
+      },
+      "yearCorrectionSupported": false,
+      "evidence": [],
+      "externalSource": "https://www.deskhero.ca/products/deskmat-artist-x-tkc-controller-series-extras"
+    }
+  ]
+}

@@ -1,0 +1,142 @@
+{
+  "publishedAt": "2026-10-05T08:16:12.079Z",
+  "transactionId": "gYBbIurMXvrOqyYf7SfR0J",
+  "id": "legacy-portfolio-yrconnect",
+  "slug": "yrconnect",
+  "title": "YRConnect",
+  "order": 1,
+  "sectionTitles": [
+    "Challenge",
+    "Process",
+    "Dashboard",
+    "Bookings",
+    "Service requests",
+    "Community",
+    "Outcome"
+  ],
+  "sideNavigation": true,
+  "retainedBodyImages": [
+    "image-232c2a79dde56306ae5bf225ee0b0105c3786ed1-2752x4238-png",
+    "image-5ddbaea93bd2dd82a8ad5768a378705d8799b727-1440x1080-png",
+    "image-92ae8fbce021cdde8d5051166bbd0f254acdd02c-1600x1100-png",
+    "image-c7abc0e39835158c6efa76c71adefaf809653093-1440x1080-png"
+  ],
+  "sourceNotes": [
+    {
+      "source": "Existing author-written YRConnect story",
+      "path": "content/figma-case-studies/sanity-before-yrconnect-merge.json",
+      "documentId": "legacy-portfolio-yrconnect",
+      "supports": [
+        "Third hackathon; design-only submission",
+        "Two-person collaboration with Aubree; paper sketches; readability intent; dashboard cards",
+        "Blue/green/teal palette and Mori typeface",
+        "Figma components and auto-layout; interactive prototype; presentation; reflection"
+      ],
+      "editorialDecision": "Reorganized the authentic story into seven chapters. Omitted unsupported claims of implemented push notifications and published poll-result visualizations. Readability is presented as a design intention rather than a verified accessibility outcome."
+    },
+    {
+      "source": "Author project submission",
+      "url": "https://devpost.com/software/yrconnect",
+      "supports": [
+        "Personal frustration booking courts and study rooms at Cornell Library",
+        "Figma deliverable and account concept",
+        "Winston interface/design-system contribution; Aubree onboarding/pitch contribution",
+        "Winner: Second Place, YRHacks 2024"
+      ],
+      "editorialDecision": "Treat the submission as a design prototype. No launched backend, municipal partnership, government funding, adoption, or measured task improvement claimed."
+    },
+    {
+      "source": "Official YRHacks 2024 rules",
+      "url": "https://yrhacks2024.devpost.com/rules",
+      "supports": [
+        "Online start April 17, 2024; in-person continuation and closing April 18, 2024"
+      ],
+      "editorialDecision": "Timeline uses the event dates, not sample dates within interface screens."
+    },
+    {
+      "source": "Figma Design Demo",
+      "url": "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W/Winston-Design-Demo?node-id=1-7779",
+      "pageId": "1:7779",
+      "pageName": "MuniSync",
+      "screenIds": [
+        {
+          "id": "1:8106",
+          "label": "Home"
+        },
+        {
+          "id": "1:8321",
+          "label": "Service request categories"
+        },
+        {
+          "id": "1:8379",
+          "label": "Large item pickup date and eligibility"
+        },
+        {
+          "id": "1:8453",
+          "label": "Pickup request and contact confirmation"
+        },
+        {
+          "id": "1:8526",
+          "label": "Community updates"
+        },
+        {
+          "id": "1:8629",
+          "label": "Poll details and Yes/No response"
+        },
+        {
+          "id": "1:9251",
+          "label": "Study-room availability"
+        },
+        {
+          "id": "1:9610",
+          "label": "Study-room review and swipe confirmation"
+        },
+        {
+          "id": "1:9856",
+          "label": "Sports booking success"
+        }
+      ],
+      "supports": [
+        "Dashboard hierarchy and bottom navigation",
+        "Study-room capacity, length, and amenity information",
+        "Sports date, sport, length, gym, and price information",
+        "Review, swipe, and success states",
+        "Pickup eligibility/material rules and five-item limit",
+        "Notices, projects, polls, and explanatory onboarding copy"
+      ],
+      "editorialDecision": "User confirmed MuniSync and YRConnect are the same project. The imported narrative and body image are merged under YRConnect; no MuniSync name appears in customer-facing fields."
+    },
+    {
+      "source": "Visual inspection of retained and imported images",
+      "paths": [
+        "content/figma-case-studies/assets/yrconnect-legacy-1.jpg",
+        "content/figma-case-studies/assets/yrconnect-legacy-2.jpg",
+        "content/figma-case-studies/assets/yrconnect-legacy-3.jpg",
+        "content/figma-case-studies/assets/munisync-details.png"
+      ],
+      "supports": [
+        "Captions and alt text match actual image content"
+      ],
+      "editorialDecision": "All three original body media references are retained exactly once. Imported image gives a readable close-up of dashboard/study-room details; the original full screen set remains a process overview and the original mockups cover booking overview/sports availability."
+    }
+  ],
+  "removedDuplicate": {
+    "id": "figma-portfolio-munisync",
+    "recoverableId": "drafts.figma-portfolio-munisync"
+  },
+  "restoredCovers": [
+    {
+      "id": "legacy-portfolio-hopperhangout",
+      "title": "Hopper Hangout",
+      "asset": "image-d1924b828288ce077645d4d6e7dcf21c51f0aeae-1440x1080-png",
+      "sourceFile": "content/figma-case-studies/sanity-before-import.json"
+    },
+    {
+      "id": "legacy-portfolio-elapsedesign",
+      "title": "Elapse App Design",
+      "asset": "image-0b98c6114bd2f841d4d5181d57b477fb052c387e-1440x1080-png",
+      "sourceFile": "content/figma-case-studies/sanity-before-import.json"
+    }
+  ],
+  "allUnrelatedFieldsVerifiedUnchanged": true
+}

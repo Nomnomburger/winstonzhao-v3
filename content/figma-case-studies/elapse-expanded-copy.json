@@ -1,0 +1,368 @@
+{
+  "documentId": "legacy-portfolio-elapsedesign",
+  "document": {
+    "description": "A tournament companion that brings VEX match schedules, team rankings, and scouting into one mobile experience.",
+    "intro": "After four years competing in VEX Robotics, I knew how much attention tournament logistics could take away from the competition itself. I designed Elapse to put a team's next match, tournament information, and scouting tools within easy reach.",
+    "summary": "Helping robotics teams move from checking the schedule to preparing for their next match.",
+    "overview": "Elapse is a tournament companion for VEX Robotics competitors. As co-founder and product designer, I shaped the interface around the decisions teams make throughout an event: when to head to the field, who they are playing with, and which teams to scout. The design grew from a personalized schedule into a broader mobile experience with rankings and ScoutSheets.",
+    "impact": "Released on iOS and Android; reached 3,500+ users globally.",
+    "showSideMenu": true,
+    "details": [
+      {
+        "_key": "elapse-role",
+        "_type": "detailItem",
+        "label": "Role",
+        "value": "Co-founder / Product Designer"
+      },
+      {
+        "_key": "elapse-timeline",
+        "_type": "detailItem",
+        "label": "Timeline",
+        "value": "November 2022–January 2025"
+      },
+      {
+        "_key": "elapsedesign-9",
+        "_type": "detailItem",
+        "label": "Activity",
+        "value": "VEX Robotics Competition"
+      },
+      {
+        "_key": "elapsedesign-10",
+        "_type": "detailItem",
+        "label": "App Status",
+        "value": "Released on iOS and Android"
+      },
+      {
+        "_key": "elapsedesign-11",
+        "_type": "detailItem",
+        "label": "Key Features",
+        "value": "Schedules, rankings & scouting"
+      },
+      {
+        "_key": "elapsedesign-12",
+        "_type": "detailItem",
+        "label": "UI Design",
+        "value": "Figma"
+      }
+    ],
+    "sections": [
+      {
+        "_key": "elapse-context",
+        "_type": "projectSection",
+        "content": [
+          {
+            "_key": "elapse-context-p1",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "elapse-context-p1-text",
+                "_type": "span",
+                "marks": [],
+                "text": "A robotics tournament asks teams to manage a lot at once: prepare the robot, find alliance partners, scout other teams, and arrive at the right field on time. During my four years competing, I experienced how delays and missed announcements could make that harder. Checking the schedule was another interruption when useful information was spread across multiple screens."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "elapse-context-p2",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "elapse-context-p2-text",
+                "_type": "span",
+                "marks": [],
+                "text": "The original concept focused on three problems: finding key tournament information, understanding schedule changes, and receiving announcements. I proposed a personalized home screen, live timing, and an announcement feed with organizer controls. These ideas established the direction for Elapse; the released mobile app now centres on tournament mode, upcoming matches, and team scouting."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          }
+        ],
+        "heading": "Built from the competition floor",
+        "title": "Context"
+      },
+      {
+        "_key": "elapse-structure",
+        "_type": "projectSection",
+        "content": [
+          {
+            "_key": "elapse-structure-p1",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "elapse-structure-p1-text",
+                "_type": "span",
+                "marks": [],
+                "text": "I organized the experience around a team's tournament day. The home screen surfaces the next match and upcoming schedule, with tournament search close by. From a match, a competitor can move into an alliance team's profile, see its ranking and record, and return to that team's matches. The flow map connects these routes so a schedule entry becomes a starting point for preparation."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "elapse-structure-p2",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "elapse-structure-p2-text",
+                "_type": "span",
+                "marks": [],
+                "text": "Later designs extend that structure with dedicated tournament, scouting, and explore areas. Onboarding asks for a team number to personalize the experience and offers an option to continue without an account. Account creation is introduced alongside CloudScout, where syncing and sharing give competitors a concrete reason to sign in."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "elapsedesign-15",
+            "_type": "mediaImage",
+            "alt": "Elapse interface flow map connecting home, schedules, match details, team profiles, search, and settings",
+            "asset": {
+              "_ref": "image-bb95d054eccf29ebd6f503e05817d3e441addae9-2095x2396-png",
+              "_type": "reference"
+            },
+            "caption": "The original flow map connects a team's schedule to match details, alliance profiles, and settings.",
+            "size": "full"
+          }
+        ],
+        "heading": "Start with the team, then connect the information",
+        "title": "Structure"
+      },
+      {
+        "_key": "elapse-tournament",
+        "_type": "projectSection",
+        "content": [
+          {
+            "_key": "elapse-tournament-p1",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "elapse-tournament-p1-text",
+                "_type": "span",
+                "marks": [],
+                "text": "The next-match card gives the most immediate decision the strongest hierarchy. A large match number sits above the alliance teams, field, and start time. The upcoming list remains below it, so competitors can see what comes after without opening the full schedule. Search and the team's tournament context stay available around that priority."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "elapse-media-home-front",
+            "_type": "mediaImage",
+            "alt": "Front-facing iPhone showing the Elapse home screen, with the Q23 next-match card and upcoming matches",
+            "asset": {
+              "_ref": "image-8c49073b4b5525fe754b2d170217c0d777f2b7c1-716x717-png",
+              "_type": "reference"
+            },
+            "caption": "The home screen puts the next match first, followed by the upcoming schedule.",
+            "size": "full"
+          },
+          {
+            "_key": "elapse-tournament-p2",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "elapse-tournament-p2-text",
+                "_type": "span",
+                "marks": [],
+                "text": "Match details bring the number, time, field, and alliance information together. The Figma work includes separate states for upcoming and completed matches, a team's own matches, and live timing. In the live-timing design, a delay is shown alongside the original time. That makes the schedule change explicit while retaining the reference a competitor may already know."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "elapsedesign-13",
+            "_type": "mediaImage",
+            "alt": "Elapse match information screen in an iPhone mockup, showing match Q29, its start time, field, and alliance teams",
+            "asset": {
+              "_ref": "image-3687dc9ccc7a7fe2dd02e9f59ad45f78e7212276-3680x2760-png",
+              "_type": "reference"
+            },
+            "caption": "Match information groups the field and start time with alliance team rankings and records.",
+            "size": "full"
+          }
+        ],
+        "heading": "Make the next match the first thing to see",
+        "title": "Tournament day"
+      },
+      {
+        "_key": "elapse-scouting",
+        "_type": "projectSection",
+        "content": [
+          {
+            "_key": "elapse-scouting-p1",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "elapse-scouting-p1-text",
+                "_type": "span",
+                "marks": [],
+                "text": "Scouting expands Elapse beyond checking when to play. The CloudScout designs separate ScoutSheets from a personal picklist, giving teams a place to record observations and organize potential alliance partners. A team profile includes robot specifications, photos, scouted matches, and notes. Those fields connect the statistics a competitor can read to the observations they make at the event."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "elapse-scouting-p2",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "elapse-scouting-p2-text",
+                "_type": "span",
+                "marks": [],
+                "text": "I also explored collaboration through TeamSync: shared scout data, group join codes, and member roles. The sharing designs make access visible, with controls to copy a link or stop sharing. TeamSync and the organizer portal remained concepts, while ScoutSheets became part of the released mobile app."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          }
+        ],
+        "heading": "Carry team knowledge through the tournament",
+        "title": "Scouting"
+      },
+      {
+        "_key": "elapse-system",
+        "_type": "projectSection",
+        "content": [
+          {
+            "_key": "elapse-system-p1",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "elapse-system-p1-text",
+                "_type": "span",
+                "marks": [],
+                "text": "The interface uses a pale cyan frame, white content cards, and a pink highlight for the next match. Large match and team numbers anchor screens that contain many smaller statistics. Red and blue alliance colours reinforce the grouping already named in the headings. Consistent rows keep ranks, records, and points aligned as competitors compare teams."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "elapse-system-p2",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "elapse-system-p2-text",
+                "_type": "span",
+                "marks": [],
+                "text": "The design file also covers light, dark, and system-following themes, onboarding choices, filters, and account settings. The original desktop concept carries the same hierarchy into a two-panel layout: the schedule stays on the left while selected information opens on the right. It documents the broader design direction, alongside the mobile screens that became the app."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "elapsedesign-14",
+            "_type": "mediaImage",
+            "alt": "Original Elapse desktop concept shown on a laptop, with the next match and upcoming schedule in a left panel",
+            "asset": {
+              "_ref": "image-01f03a3abde68fd7a88c39293aa1d5fc98727d08-2500x1875-png",
+              "_type": "reference"
+            },
+            "caption": "The original desktop concept keeps the schedule visible beside a larger detail panel.",
+            "size": "full"
+          }
+        ],
+        "heading": "A calm frame for dense tournament data",
+        "title": "Visual system"
+      },
+      {
+        "_key": "elapse-release",
+        "_type": "projectSection",
+        "content": [
+          {
+            "_key": "elapse-release-p1",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "elapse-release-p1-text",
+                "_type": "span",
+                "marks": [],
+                "text": "Elapse launched on iOS in November 2024 and is also available on Android. The released app includes tournament mode, upcoming matches, and ScoutSheets. As co-founder and product designer, I led a team of eight through design and development. Elapse reached 3,500+ users globally."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "elapse-release-p2",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "elapse-release-p2-text",
+                "_type": "span",
+                "marks": [],
+                "text": "This project brought together my experience as a competitor and my work as a designer. I wanted the app to stay useful in the rush of an event, so the next match remained the anchor as scouting and ranking tools expanded the scope. The early desktop, organizer, and sharing concepts remain part of the design exploration shown here."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          }
+        ],
+        "heading": "From a tournament idea to a released app",
+        "title": "Release"
+      }
+    ],
+    "hero": [
+      {
+        "_key": "elapsedesign-18",
+        "_type": "mediaImage",
+        "alt": "Elapse App Design — Scene 6",
+        "asset": {
+          "_ref": "image-55f22614414893bbaf5f44dfe4f843c9a3343cc1-3680x2760-png",
+          "_type": "reference"
+        },
+        "size": "full"
+      }
+    ]
+  },
+  "provenance": {
+    "snapshot": "content/figma-case-studies/sanity-before-expanded-legacy.json",
+    "identityAndAssets": "The patch omits title, slug, year, order, featured, coverImage, hero, client, discipline, and link. All three original section image asset references are preserved exactly once; they are redistributed into relevant sections with visually verified alt text and captions.",
+    "sources": [
+      {
+        "source": "Existing Elapse case-study content in the Sanity snapshot",
+        "supports": "Four years competing in VEX Robotics; tournament logistics, schedule delays and missed announcements; initial personalized home, live-timing, announcement-feed and organizer-portal proposals; original interface hierarchy. Historical plans are described as proposals, not released features."
+      },
+      {
+        "url": "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W/Winston-Design-Demo?node-id=157-24824",
+        "supports": "Elapse page inspected in Figma. Home 157:29965; match-detail states 157:29626, 157:29648, 157:29670, 157:29692, 157:29714, 157:29740; tournament schedule 157:28944; team information 157:29602; onboarding 157:31035 and page R1; CloudScout 157:32675; group settings 157:32452; ranking/filter/theme/settings variants. Screen content supports structure and design choices, not evidence that every depicted feature shipped."
+      },
+      {
+        "source": "Visually inspected original gallery assets",
+        "paths": [
+          "content/figma-case-studies/assets/elapse-app-design-legacy-1.jpg",
+          "content/figma-case-studies/assets/elapse-app-design-legacy-2.jpg",
+          "content/figma-case-studies/assets/elapse-app-design-legacy-3.jpg"
+        ],
+        "supports": "Scene is a mobile match-info mockup. Scene 4 is a desktop two-panel concept. Elapse map connects home, schedule, match, team, search and settings screens. Captions describe visible content and do not claim the desktop app shipped."
+      },
+      {
+        "url": "https://www.elapseapp.com/",
+        "supports": "Available on iOS and Android; Winston Zhao credited as designer; developer credits."
+      },
+      {
+        "url": "https://apps.apple.com/ca/app/elapse/id6596757269",
+        "supports": "Version 1.0 released November 11, 2024; official description documents tournament mode, upcoming matches, and ScoutSheets. Current store ratings are not used as historical outcomes."
+      },
+      {
+        "url": "https://play.google.com/store/apps/details?id=com.elapseapp.elapse_app",
+        "supports": "Released Android app; official description documents tournament mode, upcoming matches, and ScoutSheets."
+      },
+      {
+        "source": "public/winstonzhao-resume.pdf",
+        "supports": "Co-Founder / Product Designer at Elapse, November 2022–January 2025; led team of eight to design and develop tournament companion; reached 3,500+ users globally. Source also reports 4.8 stars and user-reported 3x faster data access; those figures are omitted from the copy because they are historical self-reported metrics, and the current store rating differs."
+      }
+    ],
+    "scopeNotes": [
+      "No interviews, controlled usability tests, implementation stack, timing algorithm performance, or unsupported launch outcomes are asserted.",
+      "The timeline describes the author's documented role range. The existing project year is left unchanged for the parent to preserve.",
+      "Original web/desktop, organizer portal, announcement and TeamSync directions are explicitly kept separate from verified released mobile features.",
+      "No Sanity mutation, frontend change, or existing file edit was performed by this subagent."
+    ]
+  }
+}

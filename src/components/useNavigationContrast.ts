@@ -23,6 +23,37 @@ function luminance([r, g, b]: Color) {
   return 0.2126 * linear(r) + 0.7152 * linear(g) + 0.0722 * linear(b);
 }
 
+// Perceptual lightness (CIE L*, 0 to 100) of a relative luminance.
+function lightness(luminance: number) {
+  const f = luminance > 216 / 24389 ? Math.cbrt(luminance) : (841 / 108) * luminance + 4 / 29;
+  return 116 * f - 16;
+}
+
+// The controls rest on the page's own contrast (black on a light page, white
+// on a dark one) and only leave it for content near the other extreme: on a
+// light page white text needs content darker than L* 18 (about #2c2c2c) and
+// black returns above L* 30 (about #474747); on a dark page black text needs
+// content lighter than L* 82 (about #cdcdcd) and white returns below L* 70
+// (about #ababab). The gaps keep the current colour, and a change must hold
+// for a moment before it is applied, so a boundary scrolling past cannot
+// flicker the text, much like the iOS status bar's own switching.
+const LIGHT_PAGE_WHITE_BELOW = 18;
+const LIGHT_PAGE_BLACK_ABOVE = 30;
+const DARK_PAGE_BLACK_ABOVE = 82;
+const DARK_PAGE_WHITE_BELOW = 70;
+const SWITCH_DELAY_MS = 100;
+
+function contrastColor(background: number, darkPage: boolean, current: string) {
+  if (darkPage) {
+    if (background > DARK_PAGE_BLACK_ABOVE) return '#000000';
+    if (background < DARK_PAGE_WHITE_BELOW) return '#ffffff';
+    return current === '#000000' ? '#000000' : '#ffffff';
+  }
+  if (background < LIGHT_PAGE_WHITE_BELOW) return '#ffffff';
+  if (background > LIGHT_PAGE_BLACK_ABOVE) return '#000000';
+  return current === '#ffffff' ? '#ffffff' : '#000000';
+}
+
 function readBitmap(source: CanvasImageSource, width: number, height: number): Bitmap | null {
   if (!width || !height) return null;
   const scale = Math.min(1, BITMAP_SIZE / Math.max(width, height));
@@ -70,6 +101,7 @@ export default function useNavigationContrast(pathname: string, open: boolean) {
     const images = new Map<string, ImageSample>();
     const blockedVideos = new WeakMap<HTMLVideoElement, string>();
     const colors = new Map<string, Color>();
+    const pending: Array<{ color: string; since: number } | null> = [null, null];
     const colorCanvas = document.createElement('canvas');
     colorCanvas.width = colorCanvas.height = 1;
     const colorContext = colorCanvas.getContext('2d', { willReadFrequently: true });
@@ -134,6 +166,7 @@ export default function useNavigationContrast(pathname: string, open: boolean) {
       };
       const bodyColor = parseColor(styleOf(document.body).backgroundColor);
       const fallback = bodyColor[3] > 0 ? bodyColor : parseColor(styleOf(root).getPropertyValue('--background').trim());
+      const darkPage = lightness(luminance(fallback)) < 50;
 
       // Prepare nearby photos before scrolling places them under the controls.
       for (const image of document.images) {
@@ -206,9 +239,21 @@ export default function useNavigationContrast(pathname: string, open: boolean) {
         // Follow the predominant local background so a few bright highlights
         // or page margins cannot outweigh a dark photo (or vice versa).
         samples.sort((a, b) => a - b);
-        const background = samples[Math.floor(samples.length / 2)];
-        const color = samples.length ? background > Math.sqrt(1.05 * 0.05) - 0.05 ? '#000000' : '#ffffff' : 'var(--navigation-foreground)';
-        if (root.style.getPropertyValue(VARIABLES[index]) !== color) root.style.setProperty(VARIABLES[index], color);
+        const background = lightness(samples[Math.floor(samples.length / 2)]);
+        const current = root.style.getPropertyValue(VARIABLES[index]);
+        const color = samples.length ? contrastColor(background, darkPage, current) : 'var(--navigation-foreground)';
+        if (current === color) {
+          pending[index] = null;
+          return;
+        }
+        // The 250ms timer below re-samples, so a change that keeps holding is
+        // applied within a quarter second even if scrolling has stopped.
+        const now = performance.now();
+        if (pending[index]?.color !== color) pending[index] = { color, since: now };
+        else if (now - pending[index]!.since >= SWITCH_DELAY_MS) {
+          pending[index] = null;
+          root.style.setProperty(VARIABLES[index], color);
+        }
       });
     };
 

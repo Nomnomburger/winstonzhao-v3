@@ -1,0 +1,196 @@
+[
+  {
+    "slug": "villio-ai",
+    "title": "Villio AI",
+    "description": "A municipal service platform that brings bookings, local updates, and AI-assisted requests into one resident experience.",
+    "client": "Villio AI",
+    "discipline": "Product Design",
+    "intro": "Making city services easier to find, understand, and use.",
+    "summary": "As co-founder and product designer, I designed Villio's MVP around a unified resident experience: a personal home feed, conversational service discovery, and clear cards for bookings and local updates.",
+    "overview": "Villio connects residents with recreation, 311 requests, and community information. The product pairs a mobile experience for residents with a municipal management platform, bringing both sides of digital city services into one product direction.",
+    "details": [
+      {
+        "label": "Role",
+        "value": "Co-Founder / Product Designer"
+      },
+      {
+        "label": "Platform",
+        "value": "Mobile app and web"
+      },
+      {
+        "label": "Focus",
+        "value": "Municipal services and conversational UX"
+      },
+      {
+        "label": "Timeline",
+        "value": "Started May 2025"
+      }
+    ],
+    "sections": [
+      {
+        "title": "Context",
+        "heading": "One starting point for city services",
+        "paragraphs": [
+          "A resident might need to reserve a court, check a waste schedule, report an issue, or read a construction notice. Villio brings those different tasks into a shared entry point. The home screen starts with what matters today, including a waste reminder and an upcoming booking, then extends into the next seven days.",
+          "Time, location, and a direct management action sit together on each booking card. That structure turns the home feed into a practical overview of the resident's relationship with their city."
+        ]
+      },
+      {
+        "title": "Interaction",
+        "heading": "From a prompt to something actionable",
+        "paragraphs": [
+          "The prompt bar stays close to the resident's current context, with text input and a voice entry point. Suggested actions introduce the range of available services through concrete requests such as booking a study room or reporting a pothole.",
+          "In the booking conversation, a plain-language request produces a structured study-room card. The room, date, time, and community centre remain visible together, giving the response a familiar shape that residents can read and check."
+        ]
+      },
+      {
+        "title": "System",
+        "heading": "A shared product story for residents and staff",
+        "paragraphs": [
+          "The visual language uses spacious white surfaces, restrained green accents, and rounded cards across the resident experience. The accompanying website explains the same service categories from the municipality's perspective: recreation bookings, issue tracking, and publishing community updates.",
+          "This creates a coherent MVP story. Residents get a clear way to access services, while the product direction gives municipal teams a central place to manage them."
+        ]
+      }
+    ],
+    "screenIds": [
+      {
+        "id": "1:961",
+        "label": "Resident home with today's reminders and bookings"
+      },
+      {
+        "id": "1:1685",
+        "label": "Study-room booking through a conversation"
+      }
+    ],
+    "year": 2025,
+    "yearSource": "Started May 2025. Source: https://winstonzhao.ca/resume.pdf"
+  },
+  {
+    "slug": "arca",
+    "title": "Arca",
+    "description": "An art-kit companion that connects traditional crafts, cultural context, and step-by-step making instructions.",
+    "client": "UXL Designathon",
+    "discipline": "Product Design",
+    "intro": "Connecting the discovery of traditional art with the experience of making it.",
+    "summary": "Arca is a mobile companion for traditional art kits. It brings discovery, delivery status, material lists, artist context, and guided instructions into a continuous path from choosing a craft to creating it.",
+    "overview": "The concept uses Rogan Art to demonstrate the journey. A physical kit connects to its digital guide through scanning or a code, while the app keeps the art form's materials and cultural context close to the activity.",
+    "details": [
+      {
+        "label": "Role",
+        "value": "Product Design"
+      },
+      {
+        "label": "Platform",
+        "value": "Mobile companion app"
+      },
+      {
+        "label": "Recognition",
+        "value": "Best Pitch, UXL Designathon 2025"
+      },
+      {
+        "label": "Timeline",
+        "value": "March 2025"
+      }
+    ],
+    "sections": [
+      {
+        "title": "Discovery",
+        "heading": "Let the craft lead the experience",
+        "paragraphs": [
+          "Arca introduces traditional art forms through large photographic cards on a dark background. The discovery view combines a personal kit collection with categories such as painting, crafts, and paper. The imagery gives the work room to speak before the user opens a kit's details.",
+          "The Rogan Art page extends that first impression with a synopsis, artist information, and a materials list. It distinguishes what the kit includes from what the maker needs to bring, turning interest into practical preparation."
+        ]
+      },
+      {
+        "title": "Connection",
+        "heading": "Bridge the box and the guide",
+        "paragraphs": [
+          "The home experience includes delivery states, allowing a kit to move from being in transit to being ready to use. A prominent Scan Kit action provides a consistent way to enter the digital activity once the physical box arrives.",
+          "The scan flow explains the action in three short steps: scan the kit, point the camera at the box, and unlock the instructions. A code-entry alternative gives the same journey another entry point when scanning is unavailable."
+        ]
+      },
+      {
+        "title": "Making",
+        "heading": "Keep attention on one step at a time",
+        "paragraphs": [
+          "The activity view presents a single instruction with a reference image, a progress indicator, and a practical tip. A clear Next Step button advances the sequence, while a message about saved progress supports leaving and returning to the project.",
+          "Completion opens another connection to the art form through further reading. The journey therefore carries cultural context through discovery, preparation, and making, with the digital interface supporting the physical work at each stage."
+        ]
+      }
+    ],
+    "screenIds": [
+      {
+        "id": "0:202",
+        "label": "Discover traditional art kits"
+      },
+      {
+        "id": "0:499",
+        "label": "Guided Rogan Art activity, first step"
+      }
+    ],
+    "year": 2025,
+    "yearSource": "Arca is dated March 2025 and identifies the UXL Wander UX Designathon and Best Pitch award. Source: https://ca.linkedin.com/in/zhaowinston"
+  },
+  {
+    "slug": "sparks",
+    "title": "Sparks",
+    "description": "A location-based social feed concept for sharing everyday campus moments through text and photo updates.",
+    "client": "WFN Product Design Sprint",
+    "discipline": "UI/UX Design",
+    "intro": "A simple way to see and share what's happening around campus.",
+    "summary": "Sparks explores a social updates feed organized around location. The mobile concept brings a place, the people posting there, and their everyday moments into a calm interface with a clear action for adding an update.",
+    "overview": "Created in a Western University product design sprint context, the featured screen shows an Updates feed for Ontario Hall. Location, Map, and Friends provide three visible ways to frame discovery, with Location selected in the presented design.",
+    "details": [
+      {
+        "label": "Role",
+        "value": "UI/UX Design"
+      },
+      {
+        "label": "Context",
+        "value": "WFN Product Design Sprint, Western University"
+      },
+      {
+        "label": "Platform",
+        "value": "Mobile app concept"
+      },
+      {
+        "label": "Timeline",
+        "value": "March 2025"
+      }
+    ],
+    "sections": [
+      {
+        "title": "Context",
+        "heading": "Give a social feed a sense of place",
+        "paragraphs": [
+          "The Updates screen introduces its browsing modes before the feed begins. A segmented control places Location alongside Map and Friends, making the discovery choices visible without pulling attention away from the current view. The selected location then appears as a compact heading above the posts.",
+          "In the featured design, Ontario Hall is the shared context. That placement gives otherwise informal updates a clear point of connection: people are seeing moments associated with the same campus location."
+        ]
+      },
+      {
+        "title": "Content",
+        "heading": "Make everyday updates easy to read",
+        "paragraphs": [
+          "Post cards combine a small avatar, author name, elapsed time, and short text. A photo can sit directly beneath the update, preserving the connection between the caption and the moment it describes. The repeated card structure supports both image-based posts and shorter text updates in the same feed.",
+          "Light borders, white surfaces, and generous spacing keep the content hierarchy quiet. A serif Updates heading adds character, while the smaller interface labels stay simple and readable around it."
+        ]
+      },
+      {
+        "title": "Participation",
+        "heading": "Keep the next action close",
+        "paragraphs": [
+          "The bottom navigation stays visible as posts continue down the screen. Its blue plus button stands out from the neutral navigation icons, giving the act of sharing a clear visual priority. A Manage post control beneath the featured update also makes an author's content-management action visible in context.",
+          "Together, these decisions frame the feed as a place to participate as well as browse. The concept keeps the location, the current conversation, and the entry point for a new update within one compact mobile view."
+        ]
+      }
+    ],
+    "screenIds": [
+      {
+        "id": "595:1026",
+        "label": "Sparks location-based Updates feed, Portfolio V3 cover"
+      }
+    ],
+    "year": 2025,
+    "yearSource": "Sparks is dated March 2025 and associated with Western Founders Network's Product Design Sprint. Source: https://ca.linkedin.com/in/zhaowinston"
+  }
+]

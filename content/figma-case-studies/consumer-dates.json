@@ -1,0 +1,117 @@
+{
+  "researchedAt": "2026-10-05",
+  "method": "Author-maintained project dates on Winston Zhao's public LinkedIn profile, with event corroboration where available. Dates appearing inside example application screens were excluded.",
+  "recommendedOrderNewestFirst": ["costudy", "smartbasket", "ryri", "cocart"],
+  "projects": [
+    {
+      "slug": "costudy",
+      "title": "CoStudy",
+      "year": "2025",
+      "startMonth": "2025-11",
+      "endMonth": "2025-11",
+      "sortMonth": "2025-11",
+      "displayDate": "November 2025",
+      "precision": "month",
+      "confidence": "high",
+      "event": "UW Blueprint Canvas Designathon 2025",
+      "sources": [
+        {
+          "url": "https://ca.linkedin.com/in/zhaowinston",
+          "title": "Winston Zhao — LinkedIn Projects and Honors",
+          "type": "primary-author",
+          "evidence": "The author's Projects section dates CoStudy to November 2025; the Honors section independently dates the Canvas Designathon award to the same month."
+        }
+      ],
+      "notes": "A November 16 event date appeared in another participant's case study, but an organizer source was not verified. Use the author's explicit month. November 29, 2025 inside the Figma session form is sample UI data, not project chronology."
+    },
+    {
+      "slug": "smartbasket",
+      "title": "SmartBasket",
+      "year": "2025",
+      "startMonth": "2025-02",
+      "endMonth": "2025-02",
+      "sortMonth": "2025-02",
+      "displayDate": "February 2025",
+      "precision": "month",
+      "confidence": "high",
+      "event": "Hack Canada 2025",
+      "sources": [
+        {
+          "url": "https://ca.linkedin.com/in/zhaowinston",
+          "title": "Winston Zhao — LinkedIn Projects",
+          "type": "primary-author",
+          "evidence": "The author's SmartBasket project is explicitly dated February 2025 and linked to Hack Canada 2025."
+        }
+      ],
+      "notes": "An organizer's event announcement repost gives February 21–23, 2025, but the author month is sufficient and avoids presenting an event end date as a precise project completion date. Excluded devpost.com/software/smartbasket: it belongs to Abhishek Sisodia and a different June 2025 Bolt project."
+    },
+    {
+      "slug": "ryri",
+      "title": "Ryri",
+      "year": "2025",
+      "yearRange": "2024–2025",
+      "startMonth": "2024-12",
+      "endMonth": "2025-01",
+      "sortMonth": "2025-01",
+      "displayDate": "December 2024–January 2025",
+      "precision": "month-range",
+      "confidence": "high",
+      "event": "Mobile adaptation of a Hack the North 2024 project",
+      "sources": [
+        {
+          "url": "https://ca.linkedin.com/in/zhaowinston",
+          "title": "Winston Zhao — LinkedIn Projects",
+          "type": "primary-author",
+          "evidence": "The author's Ryri project is dated December 2024 through January 2025 and described as a mobile adaptation of the earlier Hack the North project."
+        }
+      ],
+      "notes": "Use January 2025 for newest-first ordering by the end of the reported project range. If the UI permits a range, show 2024–2025; otherwise 2025 is the latest reported project year. The 2024 hackathon origin and September dates in example task rows are not the mobile project's design date."
+    },
+    {
+      "slug": "cocart",
+      "title": "CoCart",
+      "year": "2024",
+      "startMonth": "2024-11",
+      "endMonth": "2024-11",
+      "sortMonth": "2024-11",
+      "displayDate": "November 2024",
+      "precision": "month",
+      "confidence": "high",
+      "event": "UW/UX FUSE Designathon 2024",
+      "eventDate": "2024-11-23",
+      "eventDateConfidence": "high",
+      "sources": [
+        {
+          "url": "https://ca.linkedin.com/in/zhaowinston",
+          "title": "Winston Zhao — LinkedIn Projects",
+          "type": "primary-author",
+          "evidence": "The author's CoCart project is dated November 2024 and attributed to the UW/UX FUSE Designathon."
+        },
+        {
+          "url": "https://www.linkedin.com/posts/zhaowinston_design-tech-growth-activity-7280414489466793984--ZE7",
+          "title": "Winston Zhao — 2024 retrospective",
+          "type": "primary-author",
+          "evidence": "The author's retrospective identifies CoCart as a FUSE Designathon 2024 project."
+        },
+        {
+          "url": "https://luma.com/kbve20eh",
+          "title": "FUSE: A Designathon by UW/UX!",
+          "type": "primary-organizer",
+          "evidence": "The event page is hosted by UW/UX Waterloo. The organizer's announcement, preserved on LinkedIn reposts, specifies November 23, 2024."
+        },
+        {
+          "url": "https://ca.linkedin.com/in/zeajzamoranos",
+          "title": "UW/UX organizer announcement preserved in a repost",
+          "type": "primary-organizer-repost",
+          "evidence": "The original UW/UX post explicitly schedules the FUSE one-day event for November 23, 2024 and links to luma.com/kbve20eh."
+        }
+      ],
+      "notes": "Use November 2024 as the project date. November 23 is a verified event date, which can be used if the CMS intentionally represents the designathon day."
+    }
+  ],
+  "limitations": [
+    "The current portfolio case-study pages were not used as evidence because they were generated in the preceding task and contained fallback years.",
+    "Exact project completion days were not asserted when only author-maintained months or event dates were available.",
+    "LinkedIn direct open requests failed, but its indexed author profile consistently exposed explicit project date ranges."
+  ]
+}

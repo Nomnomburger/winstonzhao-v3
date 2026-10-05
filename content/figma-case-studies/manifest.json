@@ -1,0 +1,2428 @@
+{
+  "projectId": "7k8ajlip",
+  "dataset": "production",
+  "source": {
+    "fileKey": "qDdxlqtBxVpaAOUMITle4W",
+    "url": "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W/Winston-Design-Demo",
+    "portfolioFileKey": "r2Feu1tLXWg8ApMcINffew"
+  },
+  "defaults": {
+    "undatedYear": 2026,
+    "yearConfirmedByUser": true
+  },
+  "projects": [
+    {
+      "id": "figma-portfolio-yelo",
+      "status": "published",
+      "yearSource": "January–April 2026. Source: /Users/winston/repo/winstonzhao-v3/public/winstonzhao-resume.pdf",
+      "document": {
+        "_type": "project",
+        "title": "Yelo",
+        "slug": {
+          "_type": "slug",
+          "current": "yelo"
+        },
+        "year": 2026,
+        "featured": false,
+        "order": 7,
+        "description": "Bringing campus events, social discovery, and ride choices into one mobile experience.",
+        "client": "Yelo",
+        "discipline": "Product Design",
+        "intro": "Yelo brings together where people are going, what is happening nearby, and how to get there. The mobile design makes campus activity part of the ride-discovery experience, with destinations, events, and social signals sharing one home feed.",
+        "summary": "A ride starts with somewhere worth going—and knowing who else is heading there.",
+        "overview": "As Product Designer at Yelo, I worked on a social mobility experience for campus life. The mobile interface connects a home feed, live map, destination search, ride selection, event details, and phone-based onboarding. Each flow connects discovering a place with taking the next step toward getting there.",
+        "showSideMenu": true,
+        "details": [
+          {
+            "_type": "detailItem",
+            "_key": "detail-0",
+            "label": "Role",
+            "value": "Product Designer"
+          },
+          {
+            "_type": "detailItem",
+            "_key": "detail-1",
+            "label": "Timeline",
+            "value": "January–April 2026"
+          },
+          {
+            "_type": "detailItem",
+            "_key": "detail-2",
+            "label": "Focus",
+            "value": "Mobile UI/UX · Social discovery · Ride booking"
+          }
+        ],
+        "sections": [
+          {
+            "_type": "projectSection",
+            "_key": "section-0",
+            "title": "Discovery",
+            "heading": "Make the destination part of the decision.",
+            "content": [
+              {
+                "_type": "block",
+                "_key": "paragraph-0-0",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-0-0-span",
+                    "marks": [],
+                    "text": "The home screen opens with “Where to?” and saved places, followed by a feed of people heading out, ticketed events, and trending searches. Names, avatars, recent activity, and mutual connections give each destination context beyond a pin on a map."
+                  }
+                ]
+              },
+              {
+                "_type": "block",
+                "_key": "paragraph-0-1",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-0-1-span",
+                    "marks": [],
+                    "text": "Soft translucent surfaces separate the search controls from the feed. A yellow live indicator highlights current activity, while event cards carry recognizable artwork and social context."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "_type": "projectSection",
+            "_key": "section-1",
+            "title": "Ride selection",
+            "heading": "Compare ways to get there in the same place.",
+            "content": [
+              {
+                "_type": "block",
+                "_key": "paragraph-1-0",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-1-0-span",
+                    "marks": [],
+                    "text": "Destination search and the map connect into a ride-selection sheet. Car, Big Car, Cart, and Mini Bus options present different group sizes, prices, and sharing arrangements together, with fastest and cheapest labels helping people compare."
+                  }
+                ]
+              },
+              {
+                "_type": "block",
+                "_key": "paragraph-1-1",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-1-1-span",
+                    "marks": [],
+                    "text": "The request action sits below the choices alongside a note about when charging begins. This keeps the immediate decision and its payment context close together."
+                  }
+                ]
+              },
+              {
+                "_type": "mediaImage",
+                "_key": "image-0",
+                "localAssetKey": "image-0",
+                "alt": "Yelo map and ride selection screens",
+                "caption": "Yelo map and ride selection screens",
+                "size": "full"
+              }
+            ]
+          },
+          {
+            "_type": "projectSection",
+            "_key": "section-2",
+            "title": "Events & onboarding",
+            "heading": "Connect interest, attendance, and travel.",
+            "content": [
+              {
+                "_type": "block",
+                "_key": "paragraph-2-0",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-2-0-span",
+                    "marks": [],
+                    "text": "Event details bring location, ticket access, attendees, and a ride action into one flow. People can move from discovering an event to understanding who is going and deciding how to join them."
+                  }
+                ]
+              },
+              {
+                "_type": "block",
+                "_key": "paragraph-2-1",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-2-1-span",
+                    "marks": [],
+                    "text": "The onboarding screens introduce the campus proposition before phone-number verification. A floating navigation bar keeps Home, Map, and Profile available across the main experience."
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "images": {
+        "cover": {
+          "path": "assets/yelo-cover.png",
+          "fileKey": "qDdxlqtBxVpaAOUMITle4W",
+          "nodeId": "155:1617",
+          "alt": "Yelo project interface"
+        },
+        "hero": {
+          "path": "assets/yelo-cover.png",
+          "fileKey": "qDdxlqtBxVpaAOUMITle4W",
+          "nodeId": "155:1617",
+          "alt": "Yelo project interface"
+        },
+        "additional": [
+          {
+            "path": "assets/yelo-details.png",
+            "fileKey": "qDdxlqtBxVpaAOUMITle4W",
+            "nodeId": "155:1874",
+            "alt": "Yelo map and ride selection screens",
+            "sourceNodeIds": [
+              "155:1874",
+              "155:2521"
+            ],
+            "key": "image-0"
+          }
+        ]
+      }
+    },
+    {
+      "id": "figma-portfolio-villio-ai",
+      "status": "published",
+      "yearSource": "Started May 2025. Source: https://winstonzhao.ca/resume.pdf",
+      "document": {
+        "_type": "project",
+        "title": "Villio AI",
+        "slug": {
+          "_type": "slug",
+          "current": "villio-ai"
+        },
+        "year": 2025,
+        "featured": false,
+        "order": 12,
+        "description": "A municipal service platform that brings bookings, local updates, and AI-assisted requests into one resident experience.",
+        "client": "Villio AI",
+        "discipline": "Product Design",
+        "intro": "Making city services easier to find, understand, and use.",
+        "summary": "As co-founder and product designer, I designed Villio's MVP around a unified resident experience: a personal home feed, conversational service discovery, and clear cards for bookings and local updates.",
+        "overview": "Villio connects residents with recreation, 311 requests, and community information. The product pairs a mobile experience for residents with a municipal management platform, bringing both sides of digital city services into one product direction.",
+        "showSideMenu": true,
+        "details": [
+          {
+            "_type": "detailItem",
+            "_key": "detail-0",
+            "label": "Role",
+            "value": "Co-Founder / Product Designer"
+          },
+          {
+            "_type": "detailItem",
+            "_key": "detail-1",
+            "label": "Platform",
+            "value": "Mobile app and web"
+          },
+          {
+            "_type": "detailItem",
+            "_key": "detail-2",
+            "label": "Focus",
+            "value": "Municipal services and conversational UX"
+          },
+          {
+            "_type": "detailItem",
+            "_key": "detail-3",
+            "label": "Timeline",
+            "value": "Started May 2025"
+          }
+        ],
+        "sections": [
+          {
+            "_type": "projectSection",
+            "_key": "section-0",
+            "title": "Context",
+            "heading": "One starting point for city services",
+            "content": [
+              {
+                "_type": "block",
+                "_key": "paragraph-0-0",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-0-0-span",
+                    "marks": [],
+                    "text": "A resident might need to reserve a court, check a waste schedule, report an issue, or read a construction notice. Villio brings those different tasks into a shared entry point. The home screen starts with what matters today, including a waste reminder and an upcoming booking, then extends into the next seven days."
+                  }
+                ]
+              },
+              {
+                "_type": "block",
+                "_key": "paragraph-0-1",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-0-1-span",
+                    "marks": [],
+                    "text": "Time, location, and a direct management action sit together on each booking card. That structure turns the home feed into a practical overview of the resident's relationship with their city."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "_type": "projectSection",
+            "_key": "section-1",
+            "title": "Interaction",
+            "heading": "From a prompt to something actionable",
+            "content": [
+              {
+                "_type": "block",
+                "_key": "paragraph-1-0",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-1-0-span",
+                    "marks": [],
+                    "text": "The prompt bar stays close to the resident's current context, with text input and a voice entry point. Suggested actions introduce the range of available services through concrete requests such as booking a study room or reporting a pothole."
+                  }
+                ]
+              },
+              {
+                "_type": "block",
+                "_key": "paragraph-1-1",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-1-1-span",
+                    "marks": [],
+                    "text": "In the booking conversation, a plain-language request produces a structured study-room card. The room, date, time, and community centre remain visible together, giving the response a familiar shape that residents can read and check."
+                  }
+                ]
+              },
+              {
+                "_type": "mediaImage",
+                "_key": "image-0",
+                "localAssetKey": "image-0",
+                "alt": "Villio resident home and conversational study-room booking",
+                "caption": "Villio resident home and conversational study-room booking",
+                "size": "full"
+              }
+            ]
+          },
+          {
+            "_type": "projectSection",
+            "_key": "section-2",
+            "title": "System",
+            "heading": "A shared product story for residents and staff",
+            "content": [
+              {
+                "_type": "block",
+                "_key": "paragraph-2-0",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-2-0-span",
+                    "marks": [],
+                    "text": "The visual language uses spacious white surfaces, restrained green accents, and rounded cards across the resident experience. The accompanying website explains the same service categories from the municipality's perspective: recreation bookings, issue tracking, and publishing community updates."
+                  }
+                ]
+              },
+              {
+                "_type": "block",
+                "_key": "paragraph-2-1",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-2-1-span",
+                    "marks": [],
+                    "text": "This creates a coherent MVP story. Residents get a clear way to access services, while the product direction gives municipal teams a central place to manage them."
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "images": {
+        "cover": {
+          "path": "assets/villio-ai-cover.png",
+          "fileKey": "r2Feu1tLXWg8ApMcINffew",
+          "nodeId": "599:1040",
+          "alt": "Villio AI project interface"
+        },
+        "hero": {
+          "path": "assets/villio-ai-cover.png",
+          "fileKey": "r2Feu1tLXWg8ApMcINffew",
+          "nodeId": "599:1040",
+          "alt": "Villio AI project interface"
+        },
+        "additional": [
+          {
+            "path": "assets/villio-details.png",
+            "fileKey": "qDdxlqtBxVpaAOUMITle4W",
+            "nodeId": "1:961",
+            "alt": "Villio resident home and conversational study-room booking",
+            "sourceNodeIds": [
+              "1:961",
+              "1:1685"
+            ],
+            "key": "image-0"
+          }
+        ]
+      }
+    },
+    {
+      "id": "figma-portfolio-newly",
+      "status": "published",
+      "yearSource": "May–October 2026. Source: /Users/winston/repo/winstonzhao-v3/public/winstonzhao-resume.pdf",
+      "document": {
+        "_type": "project",
+        "title": "Newly",
+        "slug": {
+          "_type": "slug",
+          "current": "newly"
+        },
+        "year": 2026,
+        "featured": false,
+        "order": 5,
+        "description": "A desktop AI-building workspace that keeps conversations, sessions, and mobile previews together.",
+        "client": "Newly",
+        "discipline": "Product Design",
+        "intro": "Newly brings the conversation with an AI builder and the app being built into the same desktop workspace. A session sidebar, central chat, and adjacent device preview make it possible to move between an instruction, the response, and the visible result.",
+        "summary": "Keep the conversation and its result side by side.",
+        "overview": "The desktop experience combines searchable session history, pinned work, a build composer, progress messages, and an iPhone preview with device and platform controls in an AI-assisted app-building environment.",
+        "showSideMenu": true,
+        "details": [
+          {
+            "_type": "detailItem",
+            "_key": "detail-0",
+            "label": "Focus",
+            "value": "Desktop UI/UX · AI interaction · Device preview"
+          },
+          {
+            "_type": "detailItem",
+            "_key": "detail-1",
+            "label": "Tool",
+            "value": "Figma"
+          },
+          {
+            "_type": "detailItem",
+            "_key": "detail-2",
+            "label": "Timeline",
+            "value": "May–October 2026"
+          }
+        ],
+        "sections": [
+          {
+            "_type": "projectSection",
+            "_key": "section-0",
+            "title": "Workspace",
+            "heading": "Give each part of the workflow a clear place.",
+            "content": [
+              {
+                "_type": "block",
+                "_key": "paragraph-0-0",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-0-0-span",
+                    "marks": [],
+                    "text": "The left sidebar organizes sessions into pinned work and recents, with search and New Chat close to the top. A selected session remains visible while the central panel shows the conversation."
+                  }
+                ]
+              },
+              {
+                "_type": "block",
+                "_key": "paragraph-0-1",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-0-1-span",
+                    "marks": [],
+                    "text": "The three-part layout separates navigation, instructions, and the result while keeping them in view together. Translucent surfaces and restrained dividers create a coherent desktop frame around the work."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "_type": "projectSection",
+            "_key": "section-1",
+            "title": "Conversation",
+            "heading": "Make the builder's work readable.",
+            "content": [
+              {
+                "_type": "block",
+                "_key": "paragraph-1-0",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-1-0-span",
+                    "marks": [],
+                    "text": "The conversation distinguishes the user's prompt from the builder's response. A worked-time and tool-use disclosure provides a compact way to show activity, followed by a readable explanation of the changes."
+                  }
+                ]
+              },
+              {
+                "_type": "block",
+                "_key": "paragraph-1-1",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-1-1-span",
+                    "marks": [],
+                    "text": "The composer combines a prompt field with the Build action and supporting controls. This keeps the next instruction near the recent response, so the conversation can continue in context."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "_type": "projectSection",
+            "_key": "section-2",
+            "title": "Preview",
+            "heading": "Bring the app into the same workspace.",
+            "content": [
+              {
+                "_type": "block",
+                "_key": "paragraph-2-0",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-2-0-span",
+                    "marks": [],
+                    "text": "An iPhone preview sits beside the chat, with a device selector and a vertical set of controls. Platform, media, and log areas provide adjacent ways to inspect the project."
+                  }
+                ]
+              },
+              {
+                "_type": "block",
+                "_key": "paragraph-2-1",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-2-1-span",
+                    "marks": [],
+                    "text": "The composition makes the output a first-class part of the workspace. People can compare the app with the conversation without switching away from the session they are working in."
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "images": {
+        "cover": {
+          "path": "assets/newly-cover.png",
+          "fileKey": "r2Feu1tLXWg8ApMcINffew",
+          "nodeId": "953:1355",
+          "alt": "Newly desktop workspace"
+        },
+        "hero": {
+          "path": "assets/newly-cover.png",
+          "fileKey": "r2Feu1tLXWg8ApMcINffew",
+          "nodeId": "953:1355",
+          "alt": "Newly desktop workspace"
+        },
+        "additional": []
+      }
+    },
+    {
+      "id": "figma-portfolio-augwa",
+      "status": "published",
+      "yearSource": "May–August 2025. Source: /Users/winston/repo/winstonzhao-v3/public/winstonzhao-resume.pdf",
+      "document": {
+        "_type": "project",
+        "title": "Augwa",
+        "slug": {
+          "_type": "slug",
+          "current": "augwa"
+        },
+        "year": 2025,
+        "featured": false,
+        "order": 9,
+        "description": "Connecting an operations dashboard with mobile schedules, job details, and shift tracking.",
+        "client": "Augwa",
+        "discipline": "Product Design",
+        "intro": "Augwa connects the business view of bookings, revenue, and staffing with the day-to-day work of people in the field. The designs cover a desktop operations dashboard and a mobile experience for scheduled jobs, job progress, and shift activity.",
+        "summary": "One product language for the office overview and the next job on a phone.",
+        "overview": "During my product design internship at Augwa, I worked across web and mobile UI/UX and branding. The project included a tokenized design system and application screens that organize operational data while supporting work away from a desk.",
+        "showSideMenu": true,
+        "details": [
+          {
+            "_type": "detailItem",
+            "_key": "detail-0",
+            "label": "Role",
+            "value": "Product Design Intern"
+          },
+          {
+            "_type": "detailItem",
+            "_key": "detail-1",
+            "label": "Timeline",
+            "value": "May–August 2025"
+          },
+          {
+            "_type": "detailItem",
+            "_key": "detail-2",
+            "label": "Focus",
+            "value": "Dashboard design · Mobile workflows · Design systems"
+          }
+        ],
+        "sections": [
+          {
+            "_type": "projectSection",
+            "_key": "section-0",
+            "title": "Operations overview",
+            "heading": "Put exceptions ahead of routine reporting.",
+            "content": [
+              {
+                "_type": "block",
+                "_key": "paragraph-0-0",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-0-0-span",
+                    "marks": [],
+                    "text": "The dashboard leads with overdue bookings, overtime bookings, schedules without bookings, and bookings without staff. These cards surface operational exceptions before the revenue, booking, and staff-utilization summaries."
+                  }
+                ]
+              },
+              {
+                "_type": "block",
+                "_key": "paragraph-0-1",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-0-1-span",
+                    "marks": [],
+                    "text": "A persistent sidebar groups Operations, Finance, Staff, and Company. Rounded cards and a restrained blue accent create a common structure for charts, lists, and status information."
+                  }
+                ]
+              },
+              {
+                "_type": "mediaImage",
+                "_key": "image-0",
+                "localAssetKey": "image-0",
+                "alt": "Augwa operations dashboard with booking exceptions, charts, and setup checklist",
+                "caption": "Desktop operations dashboard",
+                "size": "full"
+              }
+            ]
+          },
+          {
+            "_type": "projectSection",
+            "_key": "section-1",
+            "title": "Mobile jobs",
+            "heading": "Show the next action in the context of the job.",
+            "content": [
+              {
+                "_type": "block",
+                "_key": "paragraph-1-0",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-1-0-span",
+                    "marks": [],
+                    "text": "The mobile home identifies the customer, address, scheduled time, and current job status. Directions, Start Job, Notify Client, and More Details sit together so the person doing the work can act from the same screen."
+                  }
+                ]
+              },
+              {
+                "_type": "block",
+                "_key": "paragraph-1-1",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-1-1-span",
+                    "marks": [],
+                    "text": "Separate not-started and in-progress states change the available actions to match the job. The job-details view adds notes without overwhelming the immediate task."
+                  }
+                ]
+              },
+              {
+                "_type": "mediaImage",
+                "_key": "image-1",
+                "localAssetKey": "image-1",
+                "alt": "Augwa mobile scheduled job with customer, address, and start action",
+                "caption": "Mobile job overview",
+                "size": "full"
+              }
+            ]
+          },
+          {
+            "_type": "projectSection",
+            "_key": "section-2",
+            "title": "Scheduling & shifts",
+            "heading": "Keep work history connected to the working day.",
+            "content": [
+              {
+                "_type": "block",
+                "_key": "paragraph-2-0",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-2-0-span",
+                    "marks": [],
+                    "text": "Schedule and shift-log screens provide the time context around each job. Punch-clock states include clocking in and out, travel, meals, and breaks, giving work activity a clear sequence."
+                  }
+                ]
+              },
+              {
+                "_type": "block",
+                "_key": "paragraph-2-1",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-2-1-span",
+                    "marks": [],
+                    "text": "The onboarding checklist on desktop introduces business details, payments, staff, clients, and schedules as individual setup tasks. Shared visual patterns connect these administrative steps with the operational and mobile views."
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "images": {
+        "cover": {
+          "path": "assets/augwa-cover.png",
+          "fileKey": "qDdxlqtBxVpaAOUMITle4W",
+          "nodeId": "19:2849",
+          "alt": "Augwa project interface"
+        },
+        "hero": {
+          "path": "assets/augwa-cover.png",
+          "fileKey": "qDdxlqtBxVpaAOUMITle4W",
+          "nodeId": "19:2849",
+          "alt": "Augwa project interface"
+        },
+        "additional": [
+          {
+            "path": "assets/augwa-screen.png",
+            "fileKey": "qDdxlqtBxVpaAOUMITle4W",
+            "nodeId": "19:2849",
+            "alt": "Augwa operations dashboard with booking exceptions, charts, and setup checklist",
+            "key": "image-0"
+          },
+          {
+            "path": "assets/augwa-job-screen.png",
+            "fileKey": "qDdxlqtBxVpaAOUMITle4W",
+            "nodeId": "19:3616",
+            "alt": "Augwa mobile scheduled job with customer, address, and start action",
+            "key": "image-1"
+          }
+        ]
+      }
+    },
+    {
+      "id": "figma-portfolio-hack404-launchpad",
+      "status": "published",
+      "yearSource": "March–August 2025. Source: https://winstonzhao.ca/resume.pdf",
+      "document": {
+        "_type": "project",
+        "title": "Hack404 Launchpad",
+        "slug": {
+          "_type": "slug",
+          "current": "hack404-launchpad"
+        },
+        "year": 2025,
+        "featured": false,
+        "order": 10,
+        "description": "A responsive participant portal for hackathon schedules, announcements, submissions, and leaderboards.",
+        "client": "Hack404",
+        "discipline": "UI/UX · Branding",
+        "intro": "Launchpad gives Hack404 participants a shared place to follow the event. Its dashboard brings the agenda, organizer announcements, project submission, and leaderboard together around the time remaining in the hackathon.",
+        "summary": "Keep the next event, the latest update, and the submission deadline within reach.",
+        "overview": "As Design Lead at Hack404, I directed UI/UX, branding, and media for the student hackathon. These screens focus on Launchpad, a participant portal designed for desktop and mobile use throughout the event.",
+        "showSideMenu": true,
+        "details": [
+          {
+            "_type": "detailItem",
+            "_key": "detail-0",
+            "label": "Role",
+            "value": "Design Lead"
+          },
+          {
+            "_type": "detailItem",
+            "_key": "detail-1",
+            "label": "Timeline",
+            "value": "March–August 2025"
+          },
+          {
+            "_type": "detailItem",
+            "_key": "detail-2",
+            "label": "Focus",
+            "value": "Responsive UI/UX · Event information · Branding"
+          }
+        ],
+        "sections": [
+          {
+            "_type": "projectSection",
+            "_key": "section-0",
+            "title": "Dashboard",
+            "heading": "Organize the event around what participants need next.",
+            "content": [
+              {
+                "_type": "block",
+                "_key": "paragraph-0-0",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-0-0-span",
+                    "marks": [],
+                    "text": "The desktop home uses three columns for the agenda, announcements, and submission area. A greeting and countdown anchor the page, while events show relative timing, scheduled times, and room locations."
+                  }
+                ]
+              },
+              {
+                "_type": "block",
+                "_key": "paragraph-0-1",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-0-1-span",
+                    "marks": [],
+                    "text": "The top navigation separates Home, Agenda, Mentor, Resources, and Map. Profile and QR Code actions remain visible at the edge of the header for participant-specific tasks."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "_type": "projectSection",
+            "_key": "section-1",
+            "title": "Participation",
+            "heading": "Keep event logistics beside the work.",
+            "content": [
+              {
+                "_type": "block",
+                "_key": "paragraph-1-0",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-1-0-span",
+                    "marks": [],
+                    "text": "Project submission has its own panel with a deadline and a direct Devpost action. Team avatars connect the submission area to the people involved, without making users leave the overview."
+                  }
+                ]
+              },
+              {
+                "_type": "block",
+                "_key": "paragraph-1-1",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-1-1-span",
+                    "marks": [],
+                    "text": "The leaderboard switches between solo and team views. Repeated announcement tiles and leaderboard rows create a consistent structure for information that changes over the event."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "_type": "projectSection",
+            "_key": "section-2",
+            "title": "Responsive design",
+            "heading": "Carry the event identity onto a smaller screen.",
+            "content": [
+              {
+                "_type": "block",
+                "_key": "paragraph-2-0",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-2-0-span",
+                    "marks": [],
+                    "text": "Mobile explorations reorganize the portal for a phone-sized viewport. The page retains the same event identity and core information while testing how navigation can stay accessible on the go."
+                  }
+                ]
+              },
+              {
+                "_type": "block",
+                "_key": "paragraph-2-1",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-2-1-span",
+                    "marks": [],
+                    "text": "A vivid blue-to-green gradient, translucent panels, thin dividers, and bright action colors give the participant portal a distinct visual language across screen sizes."
+                  }
+                ]
+              },
+              {
+                "_type": "mediaImage",
+                "_key": "image-0",
+                "localAssetKey": "image-0",
+                "alt": "Hack404 Launchpad mobile portal",
+                "caption": "Mobile navigation exploration",
+                "size": "full"
+              }
+            ]
+          }
+        ]
+      },
+      "images": {
+        "cover": {
+          "path": "assets/hack404-cover.png",
+          "fileKey": "qDdxlqtBxVpaAOUMITle4W",
+          "nodeId": "101:3256",
+          "alt": "Hack404 Launchpad project interface"
+        },
+        "hero": {
+          "path": "assets/hack404-cover.png",
+          "fileKey": "qDdxlqtBxVpaAOUMITle4W",
+          "nodeId": "101:3256",
+          "alt": "Hack404 Launchpad project interface"
+        },
+        "additional": [
+          {
+            "path": "assets/hack404-mobile-screen.png",
+            "fileKey": "qDdxlqtBxVpaAOUMITle4W",
+            "nodeId": "101:3882",
+            "alt": "Hack404 Launchpad mobile portal",
+            "key": "image-0"
+          }
+        ]
+      }
+    },
+    {
+      "id": "figma-portfolio-costudy",
+      "status": "published",
+      "yearSource": "The author's Projects section dates CoStudy to November 2025; the Honors section independently dates the Canvas Designathon award to the same month. Source: https://ca.linkedin.com/in/zhaowinston",
+      "document": {
+        "_type": "project",
+        "title": "CoStudy",
+        "slug": {
+          "_type": "slug",
+          "current": "costudy"
+        },
+        "year": 2025,
+        "featured": false,
+        "order": 8,
+        "description": "A campus study app that brings nearby sessions, course discussions, and classmates into one place.",
+        "client": "CoStudy",
+        "discipline": "Product Design",
+        "intro": "Finding people studying the same thing should feel as simple as finding a place to study.",
+        "summary": "CoStudy connects students through course-based study sessions and discussion threads. The mobile interface brings campus locations, session details, and academic context together.",
+        "overview": "The design follows a student from university verification and course selection to discovering a session, joining a group, and asking classmates for help. A campus map anchors the home screen, while session cards provide a second way to browse.",
+        "showSideMenu": true,
+        "details": [
+          {
+            "_type": "detailItem",
+            "_key": "detail-0",
+            "label": "Platform",
+            "value": "Mobile app"
+          },
+          {
+            "_type": "detailItem",
+            "_key": "detail-1",
+            "label": "Timeline",
+            "value": "November 2025"
+          },
+          {
+            "_type": "detailItem",
+            "_key": "detail-2",
+            "label": "Team",
+            "value": "Ishan, Raghav, Lily, and Winston"
+          },
+          {
+            "_type": "detailItem",
+            "_key": "detail-3",
+            "label": "Focus",
+            "value": "Study sessions and course communities"
+          },
+          {
+            "_type": "detailItem",
+            "_key": "detail-award",
+            "label": "Recognition",
+            "value": "First Place, UW Blueprint Designathon 2025"
+          }
+        ],
+        "sections": [
+          {
+            "_type": "projectSection",
+            "_key": "section-0",
+            "title": "Discovery",
+            "heading": "Start with the campus and the course",
+            "content": [
+              {
+                "_type": "block",
+                "_key": "paragraph-0-0",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-0-0-span",
+                    "marks": [],
+                    "text": "The home screen combines a campus map with a list of current and upcoming sessions. Colored course markers make groups visible on the map, and matching course labels carry that context into the cards below. A prominent plus button provides an entry point for creating a session."
+                  }
+                ]
+              },
+              {
+                "_type": "block",
+                "_key": "paragraph-0-1",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-0-1-span",
+                    "marks": [],
+                    "text": "Onboarding collects a university email, expected graduation, major, and courses. Course confirmation gives the student a chance to adjust that information before entering the experience."
+                  }
+                ]
+              },
+              {
+                "_type": "mediaImage",
+                "_key": "image-0",
+                "localAssetKey": "image-0",
+                "alt": "CoStudy campus map, study sessions, and course discussion threads",
+                "caption": "CoStudy campus map, study sessions, and course discussion threads",
+                "size": "full"
+              }
+            ]
+          },
+          {
+            "_type": "projectSection",
+            "_key": "section-1",
+            "title": "Sessions",
+            "heading": "Make the commitment clear before joining",
+            "content": [
+              {
+                "_type": "block",
+                "_key": "paragraph-1-0",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-1-0-span",
+                    "marks": [],
+                    "text": "Session cards show the subject, activity, location, time, and people attending. Live labels distinguish sessions already happening from future plans. The detail view extends this information with the host and a direct join action."
+                  }
+                ]
+              },
+              {
+                "_type": "block",
+                "_key": "paragraph-1-1",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-1-1-span",
+                    "marks": [],
+                    "text": "Creating a session uses a compact form for the title, duration, date, and location. After joining, the interface offers a leave action and a link to the class thread, keeping the group connected beyond the event itself."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "_type": "projectSection",
+            "_key": "section-2",
+            "title": "Community",
+            "heading": "Keep questions close to the people who can help",
+            "content": [
+              {
+                "_type": "block",
+                "_key": "paragraph-2-0",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-2-0-span",
+                    "marks": [],
+                    "text": "Course filters and thread search organize the discussion area around classes. Each thread preview shows an author, question, and activity counts; the detail screen gives replies their own space beneath the original post."
+                  }
+                ]
+              },
+              {
+                "_type": "block",
+                "_key": "paragraph-2-1",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-2-1-span",
+                    "marks": [],
+                    "text": "The profile brings upcoming and attended sessions together. Home, Threads, and Profile remain available through the bottom navigation, giving the product a consistent structure across planning, discussion, and personal history."
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "images": {
+        "cover": {
+          "path": "assets/costudy-cover.png",
+          "fileKey": "r2Feu1tLXWg8ApMcINffew",
+          "nodeId": "595:1036",
+          "alt": "CoStudy project interface"
+        },
+        "hero": {
+          "path": "assets/costudy-cover.png",
+          "fileKey": "r2Feu1tLXWg8ApMcINffew",
+          "nodeId": "595:1036",
+          "alt": "CoStudy project interface"
+        },
+        "additional": [
+          {
+            "path": "assets/costudy-details.png",
+            "fileKey": "qDdxlqtBxVpaAOUMITle4W",
+            "nodeId": "9:1861",
+            "alt": "CoStudy campus map, study sessions, and course discussion threads",
+            "sourceNodeIds": [
+              "9:1861",
+              "9:2108"
+            ],
+            "key": "image-0"
+          }
+        ]
+      }
+    },
+    {
+      "id": "figma-portfolio-cocart",
+      "status": "published",
+      "yearSource": "The author's CoCart project is dated November 2024 and attributed to the UW/UX FUSE Designathon. Source: https://ca.linkedin.com/in/zhaowinston",
+      "document": {
+        "_type": "project",
+        "title": "CoCart",
+        "slug": {
+          "_type": "slug",
+          "current": "cocart"
+        },
+        "year": 2024,
+        "featured": false,
+        "order": 17,
+        "description": "A shared shopping concept that helps nearby shoppers join a cart, coordinate delivery, and track a group order.",
+        "client": "CoCart",
+        "discipline": "Product Design",
+        "intro": "A shared cart needs to explain more than what someone is buying. It also needs to explain who is joining and where the order will arrive.",
+        "summary": "CoCart turns nearby group shopping into a mobile flow, from choosing a delivery range to finding an open cart and following its progress toward shipment.",
+        "overview": "The concept centers on combining purchases around a shared delivery location. Store, host, distance, available shopper spaces, and order status appear throughout the interface so each purchase remains connected to the larger group.",
+        "showSideMenu": true,
+        "details": [
+          {
+            "_type": "detailItem",
+            "_key": "detail-0",
+            "label": "Platform",
+            "value": "Mobile app"
+          },
+          {
+            "_type": "detailItem",
+            "_key": "detail-1",
+            "label": "Timeline",
+            "value": "November 2024"
+          },
+          {
+            "_type": "detailItem",
+            "_key": "detail-2",
+            "label": "Focus",
+            "value": "Shared shopping and delivery coordination"
+          },
+          {
+            "_type": "detailItem",
+            "_key": "detail-award",
+            "label": "Recognition",
+            "value": "First Place, UWUX Fuse Designathon"
+          }
+        ],
+        "sections": [
+          {
+            "_type": "projectSection",
+            "_key": "section-0",
+            "title": "Local discovery",
+            "heading": "Find a cart around a useful delivery location",
+            "content": [
+              {
+                "_type": "block",
+                "_key": "paragraph-0-0",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-0-0-span",
+                    "marks": [],
+                    "text": "The home screen pairs recent orders with an Eco-Delivery entry point. Existing order cards show purchased products, the shipping address, and the host, making the delivery arrangement part of the order summary."
+                  }
+                ]
+              },
+              {
+                "_type": "block",
+                "_key": "paragraph-0-1",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-0-1-span",
+                    "marks": [],
+                    "text": "For a new order, shoppers can adjust their delivery range and browse open carts nearby. Location names, shopper counts, and remaining time help compare the options. A create-cart path explains that the new location needs a host to receive the order."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "_type": "projectSection",
+            "_key": "section-1",
+            "title": "Shared cart",
+            "heading": "Keep the individual purchase inside the group context",
+            "content": [
+              {
+                "_type": "block",
+                "_key": "paragraph-1-0",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-1-0-span",
+                    "marks": [],
+                    "text": "The shopping flow connects product details to a store-specific cart. Individual item rows show the product, price, and quantity, followed by a subtotal and checkout action."
+                  }
+                ]
+              },
+              {
+                "_type": "block",
+                "_key": "paragraph-1-1",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-1-1-span",
+                    "marks": [],
+                    "text": "Group participation stays visible alongside those personal items. Shopper counts explain how full the cart is, while the interface presents delivery-fee savings and reward points as part of the proposed shared-shopping experience."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "_type": "projectSection",
+            "_key": "section-2",
+            "title": "Order status",
+            "heading": "Explain the wait after checkout",
+            "content": [
+              {
+                "_type": "block",
+                "_key": "paragraph-2-0",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-2-0-span",
+                    "marks": [],
+                    "text": "The confirmation screen explains that the order will ship once additional shoppers join and purchase. The pending-cart view repeats that condition beside the current shopper count, so checkout does not leave the next step ambiguous."
+                  }
+                ]
+              },
+              {
+                "_type": "block",
+                "_key": "paragraph-2-1",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-2-1-span",
+                    "marks": [],
+                    "text": "The visual language uses spacious white cards, black primary actions, and a bright pink brand accent. Product imagery, location previews, and clear status copy carry the experience from discovery through the waiting state."
+                  }
+                ]
+              },
+              {
+                "_type": "mediaImage",
+                "_key": "image-0",
+                "localAssetKey": "image-0",
+                "alt": "CoCart recent orders and a shared cart waiting for more shoppers",
+                "caption": "CoCart recent orders and a shared cart waiting for more shoppers",
+                "size": "full"
+              }
+            ]
+          }
+        ]
+      },
+      "images": {
+        "cover": {
+          "path": "assets/cocart-cover.png",
+          "fileKey": "qDdxlqtBxVpaAOUMITle4W",
+          "nodeId": "1:13674",
+          "alt": "CoCart project interface"
+        },
+        "hero": {
+          "path": "assets/cocart-cover.png",
+          "fileKey": "qDdxlqtBxVpaAOUMITle4W",
+          "nodeId": "1:13674",
+          "alt": "CoCart project interface"
+        },
+        "additional": [
+          {
+            "path": "assets/cocart-details.png",
+            "fileKey": "qDdxlqtBxVpaAOUMITle4W",
+            "nodeId": "1:13674",
+            "alt": "CoCart recent orders and a shared cart waiting for more shoppers",
+            "sourceNodeIds": [
+              "1:13674",
+              "1:13782"
+            ],
+            "key": "image-0"
+          }
+        ]
+      }
+    },
+    {
+      "id": "figma-portfolio-ryri",
+      "status": "published",
+      "yearSource": "The author's Ryri project is dated December 2024 through January 2025 and described as a mobile adaptation of the earlier Hack the North project. Source: https://ca.linkedin.com/in/zhaowinston",
+      "document": {
+        "_type": "project",
+        "title": "Ryri",
+        "slug": {
+          "_type": "slug",
+          "current": "ryri"
+        },
+        "year": 2025,
+        "featured": false,
+        "order": 16,
+        "description": "A focus companion that combines timed work sessions, task planning, ambience, and a configurable conversational tone.",
+        "client": "Ryri",
+        "discipline": "Product Design",
+        "intro": "Ryri brings the task, timer, and atmosphere into the same place before a focus session begins.",
+        "summary": "The mobile concept combines a task list with adjustable session lengths, planned breaks, ambience choices, and a conversational companion named TED.",
+        "overview": "The interface separates getting ready from being in a session. The ready dashboard supports setup and task selection; the active dashboard emphasizes the current task, completed time, remaining time, and the next break.",
+        "showSideMenu": true,
+        "details": [
+          {
+            "_type": "detailItem",
+            "_key": "detail-0",
+            "label": "Platform",
+            "value": "Mobile app"
+          },
+          {
+            "_type": "detailItem",
+            "_key": "detail-1",
+            "label": "Timeline",
+            "value": "December 2024–January 2025"
+          },
+          {
+            "_type": "detailItem",
+            "_key": "detail-2",
+            "label": "Focus",
+            "value": "Task planning and timed focus sessions"
+          }
+        ],
+        "sections": [
+          {
+            "_type": "projectSection",
+            "_key": "section-0",
+            "title": "Preparation",
+            "heading": "Give the session a clear starting point",
+            "content": [
+              {
+                "_type": "block",
+                "_key": "paragraph-0-0",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-0-0-span",
+                    "marks": [],
+                    "text": "Session setup places the duration above the task list. Preset lengths offer quick choices, while the selected duration includes a short explanation of the planned breaks. Task rows pair a title with a due date, keeping the work choice concrete."
+                  }
+                ]
+              },
+              {
+                "_type": "block",
+                "_key": "paragraph-0-1",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-0-1-span",
+                    "marks": [],
+                    "text": "A create-task flow includes a title, due date, and reminder setting. The selected-task states then lead to a start-session action, connecting planning to the moment of beginning the work."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "_type": "projectSection",
+            "_key": "section-1",
+            "title": "Focus",
+            "heading": "Make the current task the center of the screen",
+            "content": [
+              {
+                "_type": "block",
+                "_key": "paragraph-1-0",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-1-0-span",
+                    "marks": [],
+                    "text": "During a session, the dashboard names the current task and shows completed and remaining time together. The upcoming break appears directly beneath that progress, giving the session a visible rhythm."
+                  }
+                ]
+              },
+              {
+                "_type": "block",
+                "_key": "paragraph-1-1",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-1-1-span",
+                    "marks": [],
+                    "text": "Ambience options such as Zen, Nature, Upbeat, and Flow sit alongside the focus experience. Other tasks remain available below, and an explicit completion action gives the current session a clear endpoint."
+                  }
+                ]
+              },
+              {
+                "_type": "mediaImage",
+                "_key": "image-0",
+                "localAssetKey": "image-0",
+                "alt": "Ryri session setup and active focus session",
+                "caption": "Ryri session setup and active focus session",
+                "size": "full"
+              }
+            ]
+          },
+          {
+            "_type": "projectSection",
+            "_key": "section-2",
+            "title": "Companion",
+            "heading": "Let the support match the person",
+            "content": [
+              {
+                "_type": "block",
+                "_key": "paragraph-2-0",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-2-0-span",
+                    "marks": [],
+                    "text": "TED has a dedicated chat view and tone controls ranging from calm to more forceful styles. Those controls make the companion's manner an explicit preference rather than a fixed part of the product."
+                  }
+                ]
+              },
+              {
+                "_type": "block",
+                "_key": "paragraph-2-1",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-2-1-span",
+                    "marks": [],
+                    "text": "The account area includes focus history and accumulated focus time. Dark surfaces, rounded panels, and aqua highlights tie setup, active sessions, and conversation together while keeping the primary controls easy to identify."
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "images": {
+        "cover": {
+          "path": "assets/ryri-cover.png",
+          "fileKey": "r2Feu1tLXWg8ApMcINffew",
+          "nodeId": "595:1034",
+          "alt": "Ryri project interface"
+        },
+        "hero": {
+          "path": "assets/ryri-cover.png",
+          "fileKey": "r2Feu1tLXWg8ApMcINffew",
+          "nodeId": "595:1034",
+          "alt": "Ryri project interface"
+        },
+        "additional": [
+          {
+            "path": "assets/ryri-details.png",
+            "fileKey": "qDdxlqtBxVpaAOUMITle4W",
+            "nodeId": "1:11468",
+            "alt": "Ryri session setup and active focus session",
+            "sourceNodeIds": [
+              "1:11468",
+              "1:11138"
+            ],
+            "key": "image-0"
+          }
+        ]
+      }
+    },
+    {
+      "id": "figma-portfolio-smartbasket",
+      "status": "published",
+      "yearSource": "The author's SmartBasket project is explicitly dated February 2025 and linked to Hack Canada 2025. Source: https://ca.linkedin.com/in/zhaowinston",
+      "document": {
+        "_type": "project",
+        "title": "SmartBasket",
+        "slug": {
+          "_type": "slug",
+          "current": "smartbasket"
+        },
+        "year": 2025,
+        "featured": false,
+        "order": 15,
+        "description": "A grocery shopping concept that connects a personal list with nearby sales, store comparisons, and community contributions.",
+        "client": "Hack Canada 2025",
+        "discipline": "Product Design · Development",
+        "intro": "SmartBasket puts nearby deals in the context of what someone already plans to buy.",
+        "summary": "The mobile concept brings shopping lists, local sale discovery, price comparison, and contribution rewards into a single card-based interface.",
+        "overview": "Designed and developed at Hack Canada 2025, SmartBasket combines generative AI with location-based crowdsourcing to help Canadians compare local shopping options. The home screen moves from nearby offers to a personal basket and contribution rewards, keeping price, store, and distance visible together.",
+        "showSideMenu": true,
+        "details": [
+          {
+            "_type": "detailItem",
+            "_key": "detail-0",
+            "label": "Platform",
+            "value": "Mobile app"
+          },
+          {
+            "_type": "detailItem",
+            "_key": "detail-1",
+            "label": "Timeline",
+            "value": "February 2025"
+          },
+          {
+            "_type": "detailItem",
+            "_key": "detail-2",
+            "label": "Focus",
+            "value": "Grocery lists and nearby sale discovery"
+          },
+          {
+            "_type": "detailItem",
+            "_key": "detail-stack",
+            "label": "Stack",
+            "value": "Firebase · Gemini API · SerpAPI · Google Cloud"
+          }
+        ],
+        "sections": [
+          {
+            "_type": "projectSection",
+            "_key": "section-0",
+            "title": "Discovery",
+            "heading": "Connect today's offers to the shopping list",
+            "content": [
+              {
+                "_type": "block",
+                "_key": "paragraph-0-0",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-0-0-span",
+                    "marks": [],
+                    "text": "The Today card presents nearby product suggestions as quick-add chips. Below it, the basket summary reports the number of saved products and highlights items currently on sale, with each offer showing its price, store, and distance."
+                  }
+                ]
+              },
+              {
+                "_type": "block",
+                "_key": "paragraph-0-1",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-0-1-span",
+                    "marks": [],
+                    "text": "Add-to-list and nearby-items actions sit directly beside that summary. The layout connects browsing to list building, so the shopper can move between a new deal and an existing need without leaving the same overview."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "_type": "projectSection",
+            "_key": "section-1",
+            "title": "Comparison",
+            "heading": "Organize the basket around nearby stores",
+            "content": [
+              {
+                "_type": "block",
+                "_key": "paragraph-1-0",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-1-0-span",
+                    "marks": [],
+                    "text": "The shopping-list view groups items by retailer and pairs each store with its distance and item count. This gives the basket a second structure beyond individual products: where the shopper might go to find them."
+                  }
+                ]
+              },
+              {
+                "_type": "block",
+                "_key": "paragraph-1-1",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-1-1-span",
+                    "marks": [],
+                    "text": "The new-item flow introduces automatic price comparison and explains that pricing and a suggested store appear after an item is added. That short explanation makes the proposed comparison behavior visible at the point of entry."
+                  }
+                ]
+              },
+              {
+                "_type": "mediaImage",
+                "_key": "image-0",
+                "localAssetKey": "image-0",
+                "alt": "SmartBasket nearby sale discovery and shopping list grouped by store",
+                "caption": "SmartBasket nearby sale discovery and shopping list grouped by store",
+                "size": "full"
+              }
+            ]
+          },
+          {
+            "_type": "projectSection",
+            "_key": "section-2",
+            "title": "Contribution",
+            "heading": "Make local sale information a shared activity",
+            "content": [
+              {
+                "_type": "block",
+                "_key": "paragraph-2-0",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-2-0-span",
+                    "marks": [],
+                    "text": "Contribution prompts ask whether the shopper has seen a sale at a nearby store. Other states ask whether listed items are still on sale, bringing confirmation into the same experience as discovery."
+                  }
+                ]
+              },
+              {
+                "_type": "block",
+                "_key": "paragraph-2-1",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-2-1-span",
+                    "marks": [],
+                    "text": "A points card shows reward balance, level, and progress toward the next level. Bright green highlights separate current offers from the softer shopping-list cards, while rounded containers and direct actions give the different parts of the product a shared visual language."
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "images": {
+        "cover": {
+          "path": "assets/smartbasket-cover.png",
+          "fileKey": "r2Feu1tLXWg8ApMcINffew",
+          "nodeId": "595:1020",
+          "alt": "SmartBasket project interface"
+        },
+        "hero": {
+          "path": "assets/smartbasket-cover.png",
+          "fileKey": "r2Feu1tLXWg8ApMcINffew",
+          "nodeId": "595:1020",
+          "alt": "SmartBasket project interface"
+        },
+        "additional": [
+          {
+            "path": "assets/smartbasket-details.png",
+            "fileKey": "qDdxlqtBxVpaAOUMITle4W",
+            "nodeId": "1:12432",
+            "alt": "SmartBasket nearby sale discovery and shopping list grouped by store",
+            "sourceNodeIds": [
+              "1:12432",
+              "1:12930"
+            ],
+            "key": "image-0"
+          }
+        ]
+      }
+    },
+    {
+      "id": "figma-portfolio-arca",
+      "status": "published",
+      "yearSource": "Arca is dated March 2025 and identifies the UXL Wander UX Designathon and Best Pitch award. Source: https://ca.linkedin.com/in/zhaowinston",
+      "document": {
+        "_type": "project",
+        "title": "Arca",
+        "slug": {
+          "_type": "slug",
+          "current": "arca"
+        },
+        "year": 2025,
+        "featured": false,
+        "order": 13,
+        "description": "An art-kit companion that connects traditional crafts, cultural context, and step-by-step making instructions.",
+        "client": "UXL Designathon",
+        "discipline": "Product Design",
+        "intro": "Connecting the discovery of traditional art with the experience of making it.",
+        "summary": "Arca is a mobile companion for traditional art kits. It brings discovery, delivery status, material lists, artist context, and guided instructions into a continuous path from choosing a craft to creating it.",
+        "overview": "The concept uses Rogan Art to demonstrate the journey. A physical kit connects to its digital guide through scanning or a code, while the app keeps the art form's materials and cultural context close to the activity.",
+        "showSideMenu": true,
+        "details": [
+          {
+            "_type": "detailItem",
+            "_key": "detail-0",
+            "label": "Role",
+            "value": "Product Design"
+          },
+          {
+            "_type": "detailItem",
+            "_key": "detail-1",
+            "label": "Platform",
+            "value": "Mobile companion app"
+          },
+          {
+            "_type": "detailItem",
+            "_key": "detail-2",
+            "label": "Recognition",
+            "value": "Best Pitch, UXL Designathon 2025"
+          },
+          {
+            "_type": "detailItem",
+            "_key": "detail-3",
+            "label": "Timeline",
+            "value": "March 2025"
+          }
+        ],
+        "sections": [
+          {
+            "_type": "projectSection",
+            "_key": "section-0",
+            "title": "Discovery",
+            "heading": "Let the craft lead the experience",
+            "content": [
+              {
+                "_type": "block",
+                "_key": "paragraph-0-0",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-0-0-span",
+                    "marks": [],
+                    "text": "Arca introduces traditional art forms through large photographic cards on a dark background. The discovery view combines a personal kit collection with categories such as painting, crafts, and paper. The imagery gives the work room to speak before the user opens a kit's details."
+                  }
+                ]
+              },
+              {
+                "_type": "block",
+                "_key": "paragraph-0-1",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-0-1-span",
+                    "marks": [],
+                    "text": "The Rogan Art page extends that first impression with a synopsis, artist information, and a materials list. It distinguishes what the kit includes from what the maker needs to bring, turning interest into practical preparation."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "_type": "projectSection",
+            "_key": "section-1",
+            "title": "Connection",
+            "heading": "Bridge the box and the guide",
+            "content": [
+              {
+                "_type": "block",
+                "_key": "paragraph-1-0",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-1-0-span",
+                    "marks": [],
+                    "text": "The home experience includes delivery states, allowing a kit to move from being in transit to being ready to use. A prominent Scan Kit action provides a consistent way to enter the digital activity once the physical box arrives."
+                  }
+                ]
+              },
+              {
+                "_type": "block",
+                "_key": "paragraph-1-1",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-1-1-span",
+                    "marks": [],
+                    "text": "The scan flow explains the action in three short steps: scan the kit, point the camera at the box, and unlock the instructions. A code-entry alternative gives the same journey another entry point when scanning is unavailable."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "_type": "projectSection",
+            "_key": "section-2",
+            "title": "Making",
+            "heading": "Keep attention on one step at a time",
+            "content": [
+              {
+                "_type": "block",
+                "_key": "paragraph-2-0",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-2-0-span",
+                    "marks": [],
+                    "text": "The activity view presents a single instruction with a reference image, a progress indicator, and a practical tip. A clear Next Step button advances the sequence, while a message about saved progress supports leaving and returning to the project."
+                  }
+                ]
+              },
+              {
+                "_type": "block",
+                "_key": "paragraph-2-1",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-2-1-span",
+                    "marks": [],
+                    "text": "Completion opens another connection to the art form through further reading. The journey therefore carries cultural context through discovery, preparation, and making, with the digital interface supporting the physical work at each stage."
+                  }
+                ]
+              },
+              {
+                "_type": "mediaImage",
+                "_key": "image-0",
+                "localAssetKey": "image-0",
+                "alt": "Arca art discovery and guided Rogan Art activity",
+                "caption": "Arca art discovery and guided Rogan Art activity",
+                "size": "full"
+              }
+            ]
+          }
+        ]
+      },
+      "images": {
+        "cover": {
+          "path": "assets/arca-cover.png",
+          "fileKey": "r2Feu1tLXWg8ApMcINffew",
+          "nodeId": "595:1032",
+          "alt": "Arca project interface"
+        },
+        "hero": {
+          "path": "assets/arca-cover.png",
+          "fileKey": "r2Feu1tLXWg8ApMcINffew",
+          "nodeId": "595:1032",
+          "alt": "Arca project interface"
+        },
+        "additional": [
+          {
+            "path": "assets/arca-details.png",
+            "fileKey": "qDdxlqtBxVpaAOUMITle4W",
+            "nodeId": "0:202",
+            "alt": "Arca art discovery and guided Rogan Art activity",
+            "sourceNodeIds": [
+              "0:202",
+              "0:499"
+            ],
+            "key": "image-0"
+          }
+        ]
+      }
+    },
+    {
+      "id": "figma-portfolio-sparks",
+      "status": "published",
+      "yearSource": "Sparks is dated March 2025 and associated with Western Founders Network's Product Design Sprint. Source: https://ca.linkedin.com/in/zhaowinston",
+      "document": {
+        "_type": "project",
+        "title": "Sparks",
+        "slug": {
+          "_type": "slug",
+          "current": "sparks"
+        },
+        "year": 2025,
+        "featured": false,
+        "order": 14,
+        "description": "A location-based social feed concept for sharing everyday campus moments through text and photo updates.",
+        "client": "WFN Product Design Sprint",
+        "discipline": "UI/UX Design",
+        "intro": "A simple way to see and share what's happening around campus.",
+        "summary": "Sparks explores a social updates feed organized around location. The mobile concept brings a place, the people posting there, and their everyday moments into a calm interface with a clear action for adding an update.",
+        "overview": "Created in a Western University product design sprint context, the featured screen shows an Updates feed for Ontario Hall. Location, Map, and Friends provide three visible ways to frame discovery, with Location selected in the presented design.",
+        "showSideMenu": true,
+        "details": [
+          {
+            "_type": "detailItem",
+            "_key": "detail-0",
+            "label": "Role",
+            "value": "UI/UX Design"
+          },
+          {
+            "_type": "detailItem",
+            "_key": "detail-1",
+            "label": "Context",
+            "value": "WFN Product Design Sprint, Western University"
+          },
+          {
+            "_type": "detailItem",
+            "_key": "detail-2",
+            "label": "Platform",
+            "value": "Mobile app concept"
+          },
+          {
+            "_type": "detailItem",
+            "_key": "detail-3",
+            "label": "Timeline",
+            "value": "March 2025"
+          }
+        ],
+        "sections": [
+          {
+            "_type": "projectSection",
+            "_key": "section-0",
+            "title": "Context",
+            "heading": "Give a social feed a sense of place",
+            "content": [
+              {
+                "_type": "block",
+                "_key": "paragraph-0-0",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-0-0-span",
+                    "marks": [],
+                    "text": "The Updates screen introduces its browsing modes before the feed begins. A segmented control places Location alongside Map and Friends, making the discovery choices visible without pulling attention away from the current view. The selected location then appears as a compact heading above the posts."
+                  }
+                ]
+              },
+              {
+                "_type": "block",
+                "_key": "paragraph-0-1",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-0-1-span",
+                    "marks": [],
+                    "text": "In the featured design, Ontario Hall is the shared context. That placement gives otherwise informal updates a clear point of connection: people are seeing moments associated with the same campus location."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "_type": "projectSection",
+            "_key": "section-1",
+            "title": "Content",
+            "heading": "Make everyday updates easy to read",
+            "content": [
+              {
+                "_type": "block",
+                "_key": "paragraph-1-0",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-1-0-span",
+                    "marks": [],
+                    "text": "Post cards combine a small avatar, author name, elapsed time, and short text. A photo can sit directly beneath the update, preserving the connection between the caption and the moment it describes. The repeated card structure supports both image-based posts and shorter text updates in the same feed."
+                  }
+                ]
+              },
+              {
+                "_type": "block",
+                "_key": "paragraph-1-1",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-1-1-span",
+                    "marks": [],
+                    "text": "Light borders, white surfaces, and generous spacing keep the content hierarchy quiet. A serif Updates heading adds character, while the smaller interface labels stay simple and readable around it."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "_type": "projectSection",
+            "_key": "section-2",
+            "title": "Participation",
+            "heading": "Keep the next action close",
+            "content": [
+              {
+                "_type": "block",
+                "_key": "paragraph-2-0",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-2-0-span",
+                    "marks": [],
+                    "text": "The bottom navigation stays visible as posts continue down the screen. Its blue plus button stands out from the neutral navigation icons, giving the act of sharing a clear visual priority. A Manage post control beneath the featured update also makes an author's content-management action visible in context."
+                  }
+                ]
+              },
+              {
+                "_type": "block",
+                "_key": "paragraph-2-1",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-2-1-span",
+                    "marks": [],
+                    "text": "Together, these decisions frame the feed as a place to participate as well as browse. The concept keeps the location, the current conversation, and the entry point for a new update within one compact mobile view."
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "images": {
+        "cover": {
+          "path": "assets/sparks-cover.png",
+          "fileKey": "r2Feu1tLXWg8ApMcINffew",
+          "nodeId": "595:1026",
+          "alt": "Sparks project interface"
+        },
+        "hero": {
+          "path": "assets/sparks-cover.png",
+          "fileKey": "r2Feu1tLXWg8ApMcINffew",
+          "nodeId": "595:1026",
+          "alt": "Sparks project interface"
+        },
+        "additional": []
+      }
+    },
+    {
+      "id": "figma-portfolio-garden",
+      "status": "published",
+      "yearSource": "Garden is listed under November 2024 and the SunLife UXperience Design Jam. Source: https://ca.linkedin.com/in/zhaowinston",
+      "document": {
+        "_type": "project",
+        "title": "Garden",
+        "slug": {
+          "_type": "slug",
+          "current": "garden"
+        },
+        "year": 2024,
+        "featured": false,
+        "order": 18,
+        "description": "A savings dashboard that turns financial goals into visible progress and small milestones.",
+        "client": "Product concept",
+        "discipline": "UI/UX",
+        "intro": "Garden presents financial goals through the language of growth. Its home-screen concept pairs a featured savings goal with recent plans and earned badges, turning a collection of money targets into a calm, readable overview.",
+        "summary": "Make long-term goals feel tangible through progress people can see.",
+        "overview": "This concept explores how a mobile savings experience can show progress without making the home screen feel like a financial spreadsheet. The home screen brings together a featured goal, recent plans, milestone badges, and persistent navigation.",
+        "showSideMenu": true,
+        "details": [
+          {
+            "_type": "detailItem",
+            "_key": "detail-0",
+            "label": "Focus",
+            "value": "Mobile UI/UX · Goal tracking · Visual storytelling"
+          },
+          {
+            "_type": "detailItem",
+            "_key": "detail-1",
+            "label": "Tool",
+            "value": "Figma"
+          },
+          {
+            "_type": "detailItem",
+            "_key": "detail-2",
+            "label": "Timeline",
+            "value": "November 2024"
+          }
+        ],
+        "sections": [
+          {
+            "_type": "projectSection",
+            "_key": "section-0",
+            "title": "Goal overview",
+            "heading": "Give one goal room to stand out.",
+            "content": [
+              {
+                "_type": "block",
+                "_key": "paragraph-0-0",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-0-0-span",
+                    "marks": [],
+                    "text": "A featured goal card combines the goal name, target amount, and segmented progress indicator. A flower illustration connects progress to the Garden identity, while the personalized greeting establishes a gentle tone."
+                  }
+                ]
+              },
+              {
+                "_type": "block",
+                "_key": "paragraph-0-1",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-0-1-span",
+                    "marks": [],
+                    "text": "Recent plans use repeated rows for goals such as buying a car, retirement, and student loans. Keeping their progress indicators aligned makes it possible to compare several ambitions at a glance."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "_type": "projectSection",
+            "_key": "section-1",
+            "title": "Milestones",
+            "heading": "Recognize the smaller steps.",
+            "content": [
+              {
+                "_type": "block",
+                "_key": "paragraph-1-0",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-1-0-span",
+                    "marks": [],
+                    "text": "An earned-badges area gives saving milestones their own space beneath the plans. Circular badges and green progress rings carry the same growth language through a different visual format."
+                  }
+                ]
+              },
+              {
+                "_type": "block",
+                "_key": "paragraph-1-1",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-1-1-span",
+                    "marks": [],
+                    "text": "The screen distinguishes the ongoing work of saving from the milestones already reached, rather than giving every number equal emphasis."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "_type": "projectSection",
+            "_key": "section-2",
+            "title": "Interface",
+            "heading": "Keep the overview calm and legible.",
+            "content": [
+              {
+                "_type": "block",
+                "_key": "paragraph-2-0",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-2-0-span",
+                    "marks": [],
+                    "text": "Soft borders, rounded cards, generous white space, and muted green accents organize the screen into clearly defined groups. Serif section headings add a warmer voice to the functional interface."
+                  }
+                ]
+              },
+              {
+                "_type": "block",
+                "_key": "paragraph-2-1",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-2-1-span",
+                    "marks": [],
+                    "text": "Home, Plans, Resources, and Search remain in the bottom navigation, keeping goal tracking and supporting information connected to the overview."
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "images": {
+        "cover": {
+          "path": "assets/garden-cover.png",
+          "fileKey": "r2Feu1tLXWg8ApMcINffew",
+          "nodeId": "595:1030",
+          "alt": "Garden project interface"
+        },
+        "hero": {
+          "path": "assets/garden-cover.png",
+          "fileKey": "r2Feu1tLXWg8ApMcINffew",
+          "nodeId": "595:1030",
+          "alt": "Garden project interface"
+        },
+        "additional": []
+      }
+    },
+    {
+      "id": "figma-portfolio-habitat",
+      "status": "published",
+      "yearSource": "HabitAt and its UWUX Design Sprint first-place award are dated June 2025. Source: https://ca.linkedin.com/in/zhaowinston",
+      "document": {
+        "_type": "project",
+        "title": "HabitAt",
+        "slug": {
+          "_type": "slug",
+          "current": "habitat"
+        },
+        "year": 2025,
+        "featured": false,
+        "order": 11,
+        "description": "A playful household-task concept built around a colorful house, room counters, and reward points.",
+        "client": "Product concept",
+        "discipline": "UI/UX",
+        "intro": "HabitAt turns a household task overview into a small illustrated home. Rooms, counters, and a points balance give the screen an immediate structure, while a prominent New Task action creates a clear starting point.",
+        "summary": "Use the shape of a home to make household tasks feel approachable.",
+        "overview": "The mobile interface organizes household tasks around the rooms of a house. Laundry, bathroom, bedroom, office, dining room, and living room appear as distinct spaces, supported by a points balance and bottom navigation.",
+        "showSideMenu": true,
+        "details": [
+          {
+            "_type": "detailItem",
+            "_key": "detail-0",
+            "label": "Focus",
+            "value": "Mobile UI/UX · Household tasks · Gamification"
+          },
+          {
+            "_type": "detailItem",
+            "_key": "detail-1",
+            "label": "Tool",
+            "value": "Figma"
+          },
+          {
+            "_type": "detailItem",
+            "_key": "detail-2",
+            "label": "Timeline",
+            "value": "June 2025"
+          }
+        ],
+        "sections": [
+          {
+            "_type": "projectSection",
+            "_key": "section-0",
+            "title": "Room overview",
+            "heading": "Organize tasks around familiar spaces.",
+            "content": [
+              {
+                "_type": "block",
+                "_key": "paragraph-0-0",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-0-0-span",
+                    "marks": [],
+                    "text": "The illustrated house gives each room a labeled, colored area. Small numbered counters let each space carry its own status without turning the home overview into a long list."
+                  }
+                ]
+              },
+              {
+                "_type": "block",
+                "_key": "paragraph-0-1",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-0-1-span",
+                    "marks": [],
+                    "text": "Furniture details and the roof-and-garden silhouette reinforce the household context. The illustration acts as the organizing structure for the interface, as well as its visual identity."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "_type": "projectSection",
+            "_key": "section-1",
+            "title": "Actions & rewards",
+            "heading": "Make the next step easy to spot.",
+            "content": [
+              {
+                "_type": "block",
+                "_key": "paragraph-1-0",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-1-0-span",
+                    "marks": [],
+                    "text": "A large New Task button sits below the house in a green yard. Its separate position gives task creation a clear place without obscuring the room overview."
+                  }
+                ]
+              },
+              {
+                "_type": "block",
+                "_key": "paragraph-1-1",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-1-1-span",
+                    "marks": [],
+                    "text": "The points balance sits beside the page title, while Shop appears in the navigation. Together, these elements introduce a reward-oriented direction without requiring dense explanatory copy on the home screen."
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "_type": "projectSection",
+            "_key": "section-2",
+            "title": "Visual system",
+            "heading": "Pair playful graphics with straightforward controls.",
+            "content": [
+              {
+                "_type": "block",
+                "_key": "paragraph-2-0",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-2-0-span",
+                    "marks": [],
+                    "text": "Pastel room colors, simple furniture shapes, white counter circles, and a picket fence give the concept a playful character. Black labels and icons preserve a clear functional layer."
+                  }
+                ]
+              },
+              {
+                "_type": "block",
+                "_key": "paragraph-2-1",
+                "style": "normal",
+                "markDefs": [],
+                "children": [
+                  {
+                    "_type": "span",
+                    "_key": "paragraph-2-1-span",
+                    "marks": [],
+                    "text": "Home, Shop, and Friend Map define the main navigation, connecting daily tasks with rewards and social discovery."
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "images": {
+        "cover": {
+          "path": "assets/habitat-cover.png",
+          "fileKey": "r2Feu1tLXWg8ApMcINffew",
+          "nodeId": "600:1042",
+          "alt": "HabitAt project interface"
+        },
+        "hero": {
+          "path": "assets/habitat-cover.png",
+          "fileKey": "r2Feu1tLXWg8ApMcINffew",
+          "nodeId": "600:1042",
+          "alt": "HabitAt project interface"
+        },
+        "additional": []
+      }
+    }
+  ]
+}

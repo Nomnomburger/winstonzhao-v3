@@ -6,5 +6,7 @@ export const client = createClient({
   projectId,
   dataset,
   apiVersion,
-  useCdn: true, // Set to false if statically generating pages, using ISR or tag-based revalidation
+  // Next's 60-second revalidation controls freshness without a second CDN cache.
+  useCdn: false,
+  perspective: 'published',
 })

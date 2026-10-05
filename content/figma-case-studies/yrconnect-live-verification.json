@@ -1,0 +1,172 @@
+{
+  "verifiedAt": "2026-10-05T08:19:53.471Z",
+  "caseStudy": {
+    "focusedSection": "dashboard-3",
+    "sectionLinks": [
+      {
+        "href": "#challenge-1",
+        "title": "Challenge"
+      },
+      {
+        "href": "#process-2",
+        "title": "Process"
+      },
+      {
+        "href": "#dashboard-3",
+        "title": "Dashboard"
+      },
+      {
+        "href": "#bookings-4",
+        "title": "Bookings"
+      },
+      {
+        "href": "#service-requests-5",
+        "title": "Service requests"
+      },
+      {
+        "href": "#community-6",
+        "title": "Community"
+      },
+      {
+        "href": "#outcome-7",
+        "title": "Outcome"
+      }
+    ],
+    "selected": "Dashboard",
+    "title": "YRConnect",
+    "url": "https://winston.studio/projects/yrconnect#dashboard-3"
+  },
+  "home": {
+    "duplicateLinks": 0,
+    "featured": [
+      {
+        "cover": "https://cdn.sanity.io/images/7k8ajlip/production/955cb0ae1d7016d6e320cbfa544ff5bd4b458118-1840x1380.png?w=1400&q=80&auto=format",
+        "href": "/projects/yrconnect",
+        "title": "YRConnect2024"
+      },
+      {
+        "cover": "https://cdn.sanity.io/images/7k8ajlip/production/661612863671ffa444405207c2f6d8777494c3f6-2000x1500.png?w=1000&q=80&auto=format",
+        "href": "/projects/heatmap-portal-redesign",
+        "title": "Heatmap Portal Redesign2024"
+      },
+      {
+        "cover": "https://cdn.sanity.io/images/7k8ajlip/production/d1924b828288ce077645d4d6e7dcf21c51f0aeae-1440x1080.png?w=1000&q=80&auto=format",
+        "href": "/projects/hopper-hangout",
+        "title": "Hopper Hangout2023"
+      },
+      {
+        "cover": "https://cdn.sanity.io/images/7k8ajlip/production/0b98c6114bd2f841d4d5181d57b477fb052c387e-1440x1080.png?w=1400&q=80&auto=format",
+        "href": "/projects/elapse-app-design",
+        "title": "Elapse App Design2023"
+      }
+    ],
+    "list": [
+      {
+        "href": "/projects/newly",
+        "text": "Newly2026A desktop AI-building workspace that keeps conversations, sessions, and mobile previews together.↗"
+      },
+      {
+        "href": "/projects/yelo",
+        "text": "Yelo2026Bringing campus events, social discovery, and ride choices into one mobile experience.↗"
+      },
+      {
+        "href": "/projects/costudy",
+        "text": "CoStudy2025A campus study app that brings nearby sessions, course discussions, and classmates into one place.↗"
+      },
+      {
+        "href": "/projects/augwa",
+        "text": "Augwa2025Connecting an operations dashboard with mobile schedules, job details, and shift tracking.↗"
+      },
+      {
+        "href": "/projects/hack404-launchpad",
+        "text": "Hack404 Launchpad2025A responsive participant portal for hackathon schedules, announcements, submissions, and leaderboards.↗"
+      },
+      {
+        "href": "/projects/habitat",
+        "text": "HabitAt2025A playful household-task concept built around a colorful house, room counters, and reward points.↗"
+      },
+      {
+        "href": "/projects/villio-ai",
+        "text": "Villio AI2025A municipal service platform that brings bookings, local updates, and AI-assisted requests into one resident experience.↗"
+      },
+      {
+        "href": "/projects/arca",
+        "text": "Arca2025An art-kit companion that connects traditional crafts, cultural context, and step-by-step making instructions.↗"
+      },
+      {
+        "href": "/projects/sparks",
+        "text": "Sparks2025A location-based social feed concept for sharing everyday campus moments through text and photo updates.↗"
+      },
+      {
+        "href": "/projects/smartbasket",
+        "text": "SmartBasket2025A grocery shopping concept that connects a personal list with nearby sales, store comparisons, and community contributions.↗"
+      },
+      {
+        "href": "/projects/ryri",
+        "text": "Ryri2025A focus companion that combines timed work sessions, task planning, ambience, and a configurable conversational tone.↗"
+      },
+      {
+        "href": "/projects/cocart",
+        "text": "CoCart2024A shared shopping concept that helps nearby shoppers join a cart, coordinate delivery, and track a group order.↗"
+      },
+      {
+        "href": "/projects/garden",
+        "text": "Garden2024A savings dashboard that turns financial goals into visible progress and small milestones.↗"
+      },
+      {
+        "href": "/projects/the-drive-team-podcast",
+        "text": "The Drive Team Podcast2023A fun podcast about experiences in competitive robotics↗"
+      },
+      {
+        "href": "/projects/competitive-robotics",
+        "text": "Competitive Robotics2023Participated in FLL and VRC over five years↗"
+      },
+      {
+        "href": "/projects/team-25k-website",
+        "text": "Team 25K Website2022Landing page website made for Team 25K↗"
+      },
+      {
+        "href": "/projects/the-unionville-howl-website-design",
+        "text": "The Unionville Howl Website Design2022A website design for Unionville High School’s digital newspaper↗"
+      },
+      {
+        "href": "/projects/team-839-website",
+        "text": "Team 839 Website2022Caution Tape Robotics Team 839's website↗"
+      },
+      {
+        "href": "/projects/sor-backyard-scrimmage-video",
+        "text": "SOR Backyard Scrimmage Video2022Video highlighting the fun backyard scrimmage at Silver Owl Robotics↗"
+      },
+      {
+        "href": "/projects/sor22-robot-reveal-video",
+        "text": "SOR22 Robot Reveal Video2022Cinematic video showcasing Silver Owl Robotics' 2022 robot↗"
+      },
+      {
+        "href": "/projects/winstonzhao-ca-v1",
+        "text": "Winstonzhao.ca V12021The first version and design of my website↗"
+      },
+      {
+        "href": "/projects/controller-deskmats",
+        "text": "Controller Deskmats2020Deskmat design based on Stadia Controller, previous group buy↗"
+      },
+      {
+        "href": "/projects/asymtry-logo-branding",
+        "text": "Asymtry Logo & Branding2020Logo design and 3D art for a fun design collective↗"
+      }
+    ],
+    "projectCount": "projects27"
+  },
+  "formerMuniSyncRoute": {
+    "verifiedAt": "2026-10-05T08:20:55.914Z",
+    "url": "https://winston.studio/projects/munisync",
+    "status": 404,
+    "cache": "HIT"
+  },
+  "localPreview": {
+    "verified": true,
+    "sections": 7,
+    "projectCount": 27,
+    "firstFeatured": "YRConnect",
+    "originalMockupCovers": true
+  }
+}

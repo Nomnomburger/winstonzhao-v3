@@ -1,0 +1,268 @@
+{
+  "verifiedAt": "2026-10-05T07:18:53.390Z",
+  "transactionId": "4Uon20R3fRb2VIjNA8mbFW",
+  "changedProjectCount": 25,
+  "yearCorrections": [
+    {
+      "title": "HabitAt",
+      "from": 2026,
+      "to": 2025
+    },
+    {
+      "title": "Sparks",
+      "from": 2026,
+      "to": 2025
+    },
+    {
+      "title": "Ryri",
+      "from": 2026,
+      "to": 2025
+    },
+    {
+      "title": "CoCart",
+      "from": 2026,
+      "to": 2024
+    },
+    {
+      "title": "Garden",
+      "from": 2026,
+      "to": 2024
+    },
+    {
+      "title": "The Drive Team Podcast",
+      "from": 2022,
+      "to": 2023
+    },
+    {
+      "title": "The Unionville Howl Website Design",
+      "from": 2021,
+      "to": 2022
+    },
+    {
+      "title": "Team 839 Website",
+      "from": 2021,
+      "to": 2022
+    }
+  ],
+  "orderedList": [
+    {
+      "id": "figma-portfolio-newly",
+      "title": "Newly",
+      "slug": "newly",
+      "year": 2026,
+      "order": 5,
+      "date": "May–October 2026"
+    },
+    {
+      "id": "figma-portfolio-summerhacks",
+      "title": "SummerHacks",
+      "slug": "summerhacks",
+      "year": 2026,
+      "order": 6,
+      "date": "November 2025–May 2026"
+    },
+    {
+      "id": "figma-portfolio-yelo",
+      "title": "Yelo",
+      "slug": "yelo",
+      "year": 2026,
+      "order": 7,
+      "date": "January–April 2026"
+    },
+    {
+      "id": "figma-portfolio-costudy",
+      "title": "CoStudy",
+      "slug": "costudy",
+      "year": 2025,
+      "order": 8,
+      "date": "November 2025"
+    },
+    {
+      "id": "figma-portfolio-augwa",
+      "title": "Augwa",
+      "slug": "augwa",
+      "year": 2025,
+      "order": 9,
+      "date": "May–August 2025"
+    },
+    {
+      "id": "figma-portfolio-hack404-launchpad",
+      "title": "Hack404 Launchpad",
+      "slug": "hack404-launchpad",
+      "year": 2025,
+      "order": 10,
+      "date": "March–August 2025"
+    },
+    {
+      "id": "figma-portfolio-habitat",
+      "title": "HabitAt",
+      "slug": "habitat",
+      "year": 2025,
+      "order": 11,
+      "date": "June 2025"
+    },
+    {
+      "id": "figma-portfolio-villio-ai",
+      "title": "Villio AI",
+      "slug": "villio-ai",
+      "year": 2025,
+      "order": 12,
+      "date": "Started May 2025"
+    },
+    {
+      "id": "figma-portfolio-arca",
+      "title": "Arca",
+      "slug": "arca",
+      "year": 2025,
+      "order": 13,
+      "date": "March 2025"
+    },
+    {
+      "id": "figma-portfolio-sparks",
+      "title": "Sparks",
+      "slug": "sparks",
+      "year": 2025,
+      "order": 14,
+      "date": "March 2025"
+    },
+    {
+      "id": "figma-portfolio-smartbasket",
+      "title": "SmartBasket",
+      "slug": "smartbasket",
+      "year": 2025,
+      "order": 15,
+      "date": "February 2025"
+    },
+    {
+      "id": "figma-portfolio-ryri",
+      "title": "Ryri",
+      "slug": "ryri",
+      "year": 2025,
+      "order": 16,
+      "date": "December 2024–January 2025"
+    },
+    {
+      "id": "figma-portfolio-cocart",
+      "title": "CoCart",
+      "slug": "cocart",
+      "year": 2024,
+      "order": 17,
+      "date": "November 2024"
+    },
+    {
+      "id": "figma-portfolio-garden",
+      "title": "Garden",
+      "slug": "garden",
+      "year": 2024,
+      "order": 18,
+      "date": "November 2024"
+    },
+    {
+      "id": "figma-portfolio-munisync",
+      "title": "MuniSync",
+      "slug": "munisync",
+      "year": 2024,
+      "order": 19,
+      "date": "April 2024"
+    },
+    {
+      "id": "legacy-portfolio-thedriveteampodcast",
+      "title": "The Drive Team Podcast",
+      "slug": "the-drive-team-podcast",
+      "year": 2023,
+      "order": 20,
+      "date": "October 2022–July 2023"
+    },
+    {
+      "id": "legacy-portfolio-robotics",
+      "title": "Competitive Robotics",
+      "slug": "competitive-robotics",
+      "year": 2023,
+      "order": 21,
+      "date": "2018–May 2023"
+    },
+    {
+      "id": "legacy-portfolio-25kteam",
+      "title": "Team 25K Website",
+      "slug": "team-25k-website",
+      "year": 2022,
+      "order": 22,
+      "date": "June–October 2022"
+    },
+    {
+      "id": "legacy-portfolio-unionvillehowl",
+      "title": "The Unionville Howl Website Design",
+      "slug": "the-unionville-howl-website-design",
+      "year": 2022,
+      "order": 23,
+      "date": "December 2021–May 2022"
+    },
+    {
+      "id": "legacy-portfolio-839team",
+      "title": "Team 839 Website",
+      "slug": "team-839-website",
+      "year": 2022,
+      "order": 24,
+      "date": "December 2020–February 2022"
+    },
+    {
+      "id": "legacy-portfolio-sorbackyardscrimmage",
+      "title": "SOR Backyard Scrimmage Video",
+      "slug": "sor-backyard-scrimmage-video",
+      "year": 2022,
+      "order": 25,
+      "date": "2022"
+    },
+    {
+      "id": "legacy-portfolio-sorreveal",
+      "title": "SOR22 Robot Reveal Video",
+      "slug": "sor22-robot-reveal-video",
+      "year": 2022,
+      "order": 26,
+      "date": "2022"
+    },
+    {
+      "id": "legacy-portfolio-winstonzhaov1",
+      "title": "Winstonzhao.ca V1",
+      "slug": "winstonzhao-ca-v1",
+      "year": 2021,
+      "order": 27,
+      "date": "2021"
+    },
+    {
+      "id": "legacy-portfolio-controllerdeskmats",
+      "title": "Controller Deskmats",
+      "slug": "controller-deskmats",
+      "year": 2020,
+      "order": 28,
+      "date": "August–December 2020"
+    },
+    {
+      "id": "legacy-portfolio-asymtry",
+      "title": "Asymtry Logo & Branding",
+      "slug": "asymtry-logo-branding",
+      "year": 2020,
+      "order": 29,
+      "date": "2020"
+    }
+  ],
+  "preservedFeaturedProjects": [
+    "legacy-portfolio-elapsedesign",
+    "legacy-portfolio-heatmap",
+    "legacy-portfolio-hopperhangout",
+    "legacy-portfolio-yrconnect"
+  ],
+  "allOtherFieldsVerifiedUnchanged": true,
+  "liveVerification": {
+    "url": "https://winston.studio/",
+    "verifiedAt": "2026-10-05T07:22:45.901Z",
+    "publishedListRowsMatched": 25,
+    "topProjects": [
+      "Newly",
+      "SummerHacks",
+      "Yelo",
+      "CoStudy"
+    ],
+    "screenshot": "chronological-list-preview.png"
+  }
+}

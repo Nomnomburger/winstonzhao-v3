@@ -3,6 +3,7 @@ import { groq } from 'next-sanity';
 import { client } from '../../sanity/lib/client';
 import { buildMockProjects, type MockAsset } from '../../sanity/mock/projects';
 import type { ImageCrop, ImageHotspot } from './image';
+import { sortHomeProjects } from './project-order';
 
 // ---------------------------------------------------------------------------
 // Types (the shapes returned by the queries below)
@@ -177,16 +178,8 @@ const mockSummaries = (): ProjectSummary[] =>
     coverImage,
   }));
 
-// Home page order: the "Sort order" field (lowest first), then newest year.
-function sortProjects<T extends ProjectSummary>(projects: T[]): T[] {
-  return [...projects].sort(
-    (a, b) =>
-      (a.order ?? Infinity) - (b.order ?? Infinity) || (b.year ?? 0) - (a.year ?? 0),
-  );
-}
-
 export async function getProjects(): Promise<ProjectSummary[]> {
-  if (mocksOnly()) return sortProjects(mockSummaries());
+  if (mocksOnly()) return sortHomeProjects(mockSummaries());
   let projects: ProjectSummary[] = [];
   try {
     projects = await client.fetch<ProjectSummary[]>(
@@ -200,7 +193,7 @@ export async function getProjects(): Promise<ProjectSummary[]> {
     if (process.env.NODE_ENV === 'production') throw error;
     console.error('Could not load projects from Sanity:', error);
   }
-  return sortProjects(projects);
+  return sortHomeProjects(projects);
 }
 
 export async function getProject(slug: string): Promise<Project | null> {

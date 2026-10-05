@@ -64,6 +64,37 @@ body {
   }
 }
 
+/* On iOS the navigation blur bleeds above the layout viewport, under the
+   status bar. WebKit clamps a fixed layer's composited bounds to the viewport
+   unless the layer itself is transformed, so the bleeding backdrop carries an
+   identity transform. WebKit also wraps a fixed layer in a viewport-sized
+   clipping layer unless its compositing ancestor is not the root, so the
+   backdrop sits inside a wrapper composited by an animation that never changes
+   its opacity: unlike will-change or a transform, that is neither a backdrop
+   root nor a containing block. */
+.home-navigation-backdrop-bleed {
+  transform: translateZ(0);
+}
+
+@keyframes navigation-composited {
+  from, to {
+    opacity: 1;
+  }
+}
+
+.navigation-composited {
+  animation: navigation-composited 1s linear infinite;
+}
+
+/* The name and menu toggle switch between black and white as the content
+   beneath them changes (useNavigationContrast). Cross-fade that switch instead
+   of snapping; currentColor strokes and backgrounds follow the fade. This stays
+   outside @layer so it also wins over the slow theme transition inside
+   .theme-root. */
+.navigation-color-fade {
+  transition: color 150ms ease;
+}
+
 @keyframes spin-slow {
   0% {
     transform: rotate(0deg);
