@@ -25,7 +25,9 @@ export default function MobileNavigationToggle({ triggerRef, open, closing, navi
       aria-controls={navigationId}
       aria-haspopup="dialog"
       aria-label={open ? 'Close menu' : 'Open menu'}
-      className="pointer-events-auto relative block h-[17px] w-[18px] cursor-pointer"
+      // The pseudo-element widens the touch target to about 44px without
+      // moving or resizing the two lines.
+      className="pointer-events-auto relative block h-[17px] w-[18px] cursor-pointer before:absolute before:-inset-[13px] before:content-['']"
     >
       <motion.span
         aria-hidden="true"
