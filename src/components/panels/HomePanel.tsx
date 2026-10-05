@@ -631,7 +631,9 @@ export default function HomePanel({
         aria-hidden="true"
         className="fixed inset-0 z-10 bg-background"
         initial={false}
-        animate={{ opacity: menuOpen ? 1 : 0 }}
+        // Hidden once closed so iPad Safari stops painting the menu colour
+        // under its bars (see HomePanelMobile).
+        animate={{ opacity: menuOpen ? 1 : 0, visibility: menuOpen ? 'visible' : 'hidden' }}
         transition={{ duration: reducedMotion ? 0 : 0.4 }}
         style={{ pointerEvents: menuOpen ? 'auto' : 'none' }}
       />
@@ -686,7 +688,7 @@ export default function HomePanel({
             }}
             transition={shrinkTransition}
           >
-            <motion.div data-navigation-contrast="name" className="flex gap-4 items-start pointer-events-auto" style={{ scale: nameScale, transformOrigin: 'top left', color: navigationColor }}>
+            <motion.div data-navigation-contrast="name" className="navigation-color-fade flex gap-4 items-start pointer-events-auto" style={{ scale: nameScale, transformOrigin: 'top left', color: navigationColor }}>
               {/* The font size snaps to its target and each word FLIPs from
                   its previous box via the layout prop, so the last name's
                   position and scale can trail the first name's together. */}

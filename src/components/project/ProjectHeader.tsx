@@ -76,7 +76,9 @@ export default function ProjectHeader({ projectCount }: { projectCount: number }
         data-lenis-prevent
         className="fixed inset-0 z-40 overflow-y-auto overscroll-contain bg-background px-6 pb-12 pt-[104px] text-foreground md:flex md:flex-col md:px-9 md:pb-9 md:pt-36 lg:pt-[200px]"
         initial={false}
-        animate={{ opacity: open ? 1 : 0 }}
+        // Hidden once closed so Safari stops painting the menu colour under
+        // its bars (see HomePanelMobile).
+        animate={{ opacity: open ? 1 : 0, visibility: open ? 'visible' : 'hidden' }}
         style={{ pointerEvents: open ? 'auto' : 'none' }}
         transition={{ duration: reducedMotion ? 0 : 0.3, ease: [0.4, 0, 0.2, 1] }}
       >

@@ -457,7 +457,7 @@ export default function NavigationProvider({ children }: { children: ReactNode }
           data-site-navigation="name"
           aria-hidden={!showName}
           inert={!showName}
-          className="fixed left-6 top-6 z-50 md:left-9 md:top-9"
+          className="navigation-color-fade fixed left-6 top-6 z-50 md:left-9 md:top-9"
           style={{ color: 'var(--navigation-name-color, var(--navigation-foreground))', visibility: showName || nameAnimating && !resume ? 'visible' : 'hidden' }}
         >
           <Link
@@ -481,7 +481,7 @@ export default function NavigationProvider({ children }: { children: ReactNode }
           data-site-navigation="toggle"
           aria-hidden={!enabled}
           inert={!enabled}
-          className="pointer-events-none fixed right-6 top-6 z-[60] md:right-9 md:top-9"
+          className="navigation-color-fade pointer-events-none fixed right-6 top-6 z-[60] md:right-9 md:top-9"
           initial={false}
           animate={{ opacity: enabled ? 1 : 0, y: isMobile && !enabled ? 20 : 0, scale: !isMobile && !enabled ? 0.8 : 1 }}
           transition={{ duration: reducedMotion || instant ? 0 : isMobile ? 0.6 : 0.8, delay: enabled && !instant ? settings?.delay ?? 0 : 0, ease: [0.4, 0, 0.2, 1] }}

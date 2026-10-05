@@ -667,7 +667,7 @@ export default function HomePanelMobile({
             <motion.div
               ref={containerRef}
               data-navigation-contrast="name"
-              className="fixed top-6 left-6 right-6 z-40 py-1 origin-top-left"
+              className="navigation-color-fade fixed top-6 left-6 right-6 z-40 py-1 origin-top-left"
               style={{ scale: titleScale, color: menuOpen ? 'var(--navigation-name-color, var(--navigation-foreground))' : nameColor }}
             >
               <motion.h1
@@ -1111,7 +1111,10 @@ export default function HomePanelMobile({
         onScroll={(event) => menuScrollTop.set(event.currentTarget.scrollTop)}
         className="fixed inset-0 z-[35] overflow-y-auto overscroll-contain bg-background px-6 pb-12 pt-44 text-foreground"
         initial={false}
-        animate={{ opacity: menuOpen ? 1 : 0 }}
+        // Safari 26 keeps painting the last colour it sampled under its bars
+        // while the fixed overlay remains visible; opacity 0 does not count.
+        // Hiding it once the fade ends lets the page show through again.
+        animate={{ opacity: menuOpen ? 1 : 0, visibility: menuOpen ? 'visible' : 'hidden' }}
         style={{ pointerEvents: menuOpen ? 'auto' : 'none' }}
         transition={{ duration: reducedMotion ? 0 : 0.3, ease: [0.4, 0, 0.2, 1] }}
       >
