@@ -1,5 +1,4 @@
 import type Lenis from 'lenis';
-import { syncPageScroll } from './page-scroll';
 
 let smoothScroll: Lenis | null = null;
 
@@ -17,7 +16,6 @@ export function scrollInstantly(top: number) {
   const instance = smoothScroll;
   if (!instance) {
     window.scrollTo({ top, behavior: 'instant' });
-    syncPageScroll();
     return;
   }
   if (instance.isScrolling === 'smooth') {
@@ -26,5 +24,4 @@ export function scrollInstantly(top: number) {
     if (!wasStopped) instance.start();
   }
   instance.scrollTo(top, { immediate: true, force: true });
-  syncPageScroll();
 }

@@ -29,12 +29,14 @@ function lightness(luminance: number) {
   return 116 * f - 16;
 }
 
-// White text needs clearly dark content beneath a control (below L* 40, about
-// #5e5e5e), and black text returns once it is lighter than L* 50 (about
-// #777). The gap in between keeps the current colour, so a boundary scrolling
-// past cannot flicker the text, much like the iOS status bar's own switching.
-const LIGHT_TEXT_BELOW = 40;
-const DARK_TEXT_ABOVE = 50;
+// White text needs clearly dark content beneath a control (below L* 30, about
+// #474747), and black text returns once it is lighter than L* 42 (about
+// #636363). The gap in between keeps the current colour, and a change must
+// hold for a moment before it is applied, so a boundary scrolling past cannot
+// flicker the text, much like the iOS status bar's own switching.
+const LIGHT_TEXT_BELOW = 30;
+const DARK_TEXT_ABOVE = 42;
+const SWITCH_DELAY_MS = 100;
 
 function readBitmap(source: CanvasImageSource, width: number, height: number): Bitmap | null {
   if (!width || !height) return null;
@@ -83,6 +85,7 @@ export default function useNavigationContrast(pathname: string, open: boolean) {
     const images = new Map<string, ImageSample>();
     const blockedVideos = new WeakMap<HTMLVideoElement, string>();
     const colors = new Map<string, Color>();
+    const pending: Array<{ color: string; since: number } | null> = [null, null];
     const colorCanvas = document.createElement('canvas');
     colorCanvas.width = colorCanvas.height = 1;
     const colorContext = colorCanvas.getContext('2d', { willReadFrequently: true });
@@ -225,7 +228,18 @@ export default function useNavigationContrast(pathname: string, open: boolean) {
           : background < LIGHT_TEXT_BELOW ? '#ffffff'
           : background > DARK_TEXT_ABOVE ? '#000000'
           : current === '#ffffff' ? '#ffffff' : '#000000';
-        if (current !== color) root.style.setProperty(VARIABLES[index], color);
+        if (current === color) {
+          pending[index] = null;
+          return;
+        }
+        // The 250ms timer below re-samples, so a change that keeps holding is
+        // applied within a quarter second even if scrolling has stopped.
+        const now = performance.now();
+        if (pending[index]?.color !== color) pending[index] = { color, since: now };
+        else if (now - pending[index]!.since >= SWITCH_DELAY_MS) {
+          pending[index] = null;
+          root.style.setProperty(VARIABLES[index], color);
+        }
       });
     };
 
