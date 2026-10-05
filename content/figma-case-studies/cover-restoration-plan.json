@@ -1,0 +1,163 @@
+{
+  "preparedAt": "2026-10-05T08:13:09.479Z",
+  "projectId": "7k8ajlip",
+  "dataset": "production",
+  "readEvidenceAt": "2026-10-05T08:10:22.756Z",
+  "recommendation": "Restore only coverImage on both existing documents. Keep current heroes and expanded case-study content. Existing original image assets are present; no upload is needed.",
+  "projects": [
+    {
+      "id": "legacy-portfolio-hopperhangout",
+      "title": "Hopper Hangout",
+      "slug": "hopper-hangout",
+      "coverImage": {
+        "_type": "image",
+        "alt": "Hopper Hangout — cover",
+        "asset": {
+          "_ref": "image-d1924b828288ce077645d4d6e7dcf21c51f0aeae-1440x1080-png",
+          "_type": "reference"
+        }
+      },
+      "sourceFile": "content/figma-case-studies/sanity-before-import.json",
+      "snapshotSavedAt": "2026-10-05T06:37:14.343Z",
+      "originalHero": [
+        {
+          "_key": "hopperhangout-48",
+          "_type": "mediaImage",
+          "alt": "Hopper Hangout — cover",
+          "asset": {
+            "_ref": "image-d1924b828288ce077645d4d6e7dcf21c51f0aeae-1440x1080-png",
+            "_type": "reference"
+          },
+          "size": "full"
+        }
+      ],
+      "originalHeroUsesCoverAsset": true,
+      "currentCoverImage": {
+        "_type": "image",
+        "alt": "Hopper Hangout mobile app shown in an iPhone mockup",
+        "asset": {
+          "_ref": "image-7670f22c7ccfdf0347d7c8c051f713190aeae892-716x717-png",
+          "_type": "reference"
+        }
+      },
+      "currentHero": [
+        {
+          "_key": "hero",
+          "_type": "mediaImage",
+          "alt": "Hopper Hangout mobile app shown in an iPhone mockup",
+          "asset": {
+            "_ref": "image-7670f22c7ccfdf0347d7c8c051f713190aeae892-716x717-png",
+            "_type": "reference"
+          },
+          "size": "full"
+        }
+      ],
+      "existingAssetConfirmed": true,
+      "asset": {
+        "id": "image-d1924b828288ce077645d4d6e7dcf21c51f0aeae-1440x1080-png",
+        "originalFilename": "cover.webp",
+        "source": {
+          "id": "img/portfolio/hopperhangout/cover.webp",
+          "name": "winstonzhao-legacy-portfolio"
+        },
+        "url": "https://cdn.sanity.io/images/7k8ajlip/production/d1924b828288ce077645d4d6e7dcf21c51f0aeae-1440x1080.png",
+        "dimensions": {
+          "_type": "sanity.imageDimensions",
+          "aspectRatio": 1.3333333333333333,
+          "height": 1080,
+          "width": 1440
+        }
+      },
+      "previewPath": "/private/tmp/hopper-original-cover-preview.png",
+      "visualInspection": "An angled iPhone on a silver perforated-metal surface, showing the green Hopper Hangout brand and colorful event cards.",
+      "patchScope": [
+        "coverImage"
+      ],
+      "preserveFields": [
+        "hero",
+        "sections",
+        "details",
+        "description",
+        "year",
+        "order"
+      ]
+    },
+    {
+      "id": "legacy-portfolio-elapsedesign",
+      "title": "Elapse App Design",
+      "slug": "elapse-app-design",
+      "coverImage": {
+        "_type": "image",
+        "alt": "Elapse App Design — Scene 10",
+        "asset": {
+          "_ref": "image-0b98c6114bd2f841d4d5181d57b477fb052c387e-1440x1080-png",
+          "_type": "reference"
+        }
+      },
+      "sourceFile": "content/figma-case-studies/sanity-before-import.json",
+      "snapshotSavedAt": "2026-10-05T06:37:14.343Z",
+      "originalHero": [
+        {
+          "_key": "elapsedesign-18",
+          "_type": "mediaImage",
+          "alt": "Elapse App Design — Scene 6",
+          "asset": {
+            "_ref": "image-55f22614414893bbaf5f44dfe4f843c9a3343cc1-3680x2760-png",
+            "_type": "reference"
+          },
+          "size": "full"
+        }
+      ],
+      "originalHeroUsesCoverAsset": false,
+      "currentCoverImage": {
+        "_type": "image",
+        "alt": "Elapse mobile app shown in an iPhone mockup",
+        "asset": {
+          "_ref": "image-8c49073b4b5525fe754b2d170217c0d777f2b7c1-716x717-png",
+          "_type": "reference"
+        }
+      },
+      "currentHero": [
+        {
+          "_key": "hero",
+          "_type": "mediaImage",
+          "alt": "Elapse mobile app shown in an iPhone mockup",
+          "asset": {
+            "_ref": "image-8c49073b4b5525fe754b2d170217c0d777f2b7c1-716x717-png",
+            "_type": "reference"
+          },
+          "size": "full"
+        }
+      ],
+      "existingAssetConfirmed": true,
+      "asset": {
+        "id": "image-0b98c6114bd2f841d4d5181d57b477fb052c387e-1440x1080-png",
+        "originalFilename": "Scene_10.webp",
+        "source": {
+          "id": "img/portfolio/elapsedesign/Scene_10.webp",
+          "name": "winstonzhao-legacy-portfolio"
+        },
+        "url": "https://cdn.sanity.io/images/7k8ajlip/production/0b98c6114bd2f841d4d5181d57b477fb052c387e-1440x1080.png",
+        "dimensions": {
+          "_type": "sanity.imageDimensions",
+          "aspectRatio": 1.3333333333333333,
+          "height": 1080,
+          "width": 1440
+        }
+      },
+      "previewPath": "/private/tmp/elapse-original-cover-preview.png",
+      "visualInspection": "An iPhone on a circular white pedestal in a bright paneled room with diagonal sunlight, showing the pastel Elapse app interface.",
+      "patchScope": [
+        "coverImage"
+      ],
+      "preserveFields": [
+        "hero",
+        "sections",
+        "details",
+        "description",
+        "year",
+        "order"
+      ]
+    }
+  ]
+}

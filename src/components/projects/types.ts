@@ -8,6 +8,7 @@ export interface ProjectCardData {
   slug: string;
   year?: number;
   featured?: boolean;
+  order?: number;
   description?: string;
   coverImage?: ImageSource;
 }

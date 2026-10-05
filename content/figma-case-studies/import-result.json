@@ -1,0 +1,595 @@
+{
+  "generatedAt": "2026-10-05T06:55:00.028Z",
+  "mode": "apply",
+  "projectId": "7k8ajlip",
+  "dataset": "production",
+  "manifest": "/Users/winston/repo/winstonzhao-v3/content/figma-case-studies/manifest.json",
+  "results": [
+    {
+      "title": "Yelo",
+      "id": "figma-portfolio-yelo",
+      "slug": "yelo",
+      "status": "published",
+      "action": "create",
+      "images": [
+        {
+          "key": "cover",
+          "path": "assets/yelo-cover.png",
+          "sourceUrl": "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W?node-id=155-1617",
+          "assetId": "image-8f29a6534f956c88e7f433daf2be878a06b3073a-716x717-png"
+        },
+        {
+          "key": "hero",
+          "path": "assets/yelo-cover.png",
+          "sourceUrl": "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W?node-id=155-1617",
+          "assetId": "image-8f29a6534f956c88e7f433daf2be878a06b3073a-716x717-png"
+        },
+        {
+          "key": "image-0",
+          "path": "assets/yelo-details.png",
+          "sourceUrl": "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W?node-id=155-1874",
+          "assetId": "image-9a670650c0ba9406a202ba59aec93bd8de7df475-1600x1100-png"
+        }
+      ]
+    },
+    {
+      "title": "Villio AI",
+      "id": "figma-portfolio-villio-ai",
+      "slug": "villio-ai",
+      "status": "published",
+      "action": "create",
+      "images": [
+        {
+          "key": "cover",
+          "path": "assets/villio-ai-cover.png",
+          "sourceUrl": "https://www.figma.com/design/r2Feu1tLXWg8ApMcINffew?node-id=599-1040",
+          "assetId": "image-a9a1516f1788362fdb0e0e9b71f97b9c1760d7fb-716x717-png"
+        },
+        {
+          "key": "hero",
+          "path": "assets/villio-ai-cover.png",
+          "sourceUrl": "https://www.figma.com/design/r2Feu1tLXWg8ApMcINffew?node-id=599-1040",
+          "assetId": "image-a9a1516f1788362fdb0e0e9b71f97b9c1760d7fb-716x717-png"
+        },
+        {
+          "key": "image-0",
+          "path": "assets/villio-details.png",
+          "sourceUrl": "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W?node-id=1-961",
+          "assetId": "image-bdd0a3332340a65ecd871c55fe1df2944521dde6-1600x1100-png"
+        }
+      ]
+    },
+    {
+      "title": "Newly",
+      "id": "figma-portfolio-newly",
+      "slug": "newly",
+      "status": "published",
+      "action": "create",
+      "images": [
+        {
+          "key": "cover",
+          "path": "assets/newly-cover.png",
+          "sourceUrl": "https://www.figma.com/design/r2Feu1tLXWg8ApMcINffew?node-id=953-1355",
+          "assetId": "image-8c0532a34265163a72526d4489d33719f5767f64-1583x991-png"
+        },
+        {
+          "key": "hero",
+          "path": "assets/newly-cover.png",
+          "sourceUrl": "https://www.figma.com/design/r2Feu1tLXWg8ApMcINffew?node-id=953-1355",
+          "assetId": "image-8c0532a34265163a72526d4489d33719f5767f64-1583x991-png"
+        }
+      ]
+    },
+    {
+      "title": "Augwa",
+      "id": "figma-portfolio-augwa",
+      "slug": "augwa",
+      "status": "published",
+      "action": "create",
+      "images": [
+        {
+          "key": "cover",
+          "path": "assets/augwa-cover.png",
+          "sourceUrl": "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W?node-id=19-2849",
+          "assetId": "image-a4f75e07fcbbf47f1020354f366078935123aa7e-1008x613-png"
+        },
+        {
+          "key": "hero",
+          "path": "assets/augwa-cover.png",
+          "sourceUrl": "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W?node-id=19-2849",
+          "assetId": "image-a4f75e07fcbbf47f1020354f366078935123aa7e-1008x613-png"
+        },
+        {
+          "key": "image-0",
+          "path": "assets/augwa-screen.png",
+          "sourceUrl": "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W?node-id=19-2849",
+          "assetId": "image-14c7cf459cbd671fec62f33266815e12a3549b98-1008x1600-png"
+        },
+        {
+          "key": "image-1",
+          "path": "assets/augwa-job-screen.png",
+          "sourceUrl": "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W?node-id=19-3616",
+          "assetId": "image-5176ac03d666f3a7705142d18dfacc9a20ace36e-402x874-png"
+        }
+      ]
+    },
+    {
+      "title": "Hack404 Launchpad",
+      "id": "figma-portfolio-hack404-launchpad",
+      "slug": "hack404-launchpad",
+      "status": "published",
+      "action": "create",
+      "images": [
+        {
+          "key": "cover",
+          "path": "assets/hack404-cover.png",
+          "sourceUrl": "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W?node-id=101-3256",
+          "assetId": "image-44ad2d436faeb8b0b7268fe42f61f5f6efe896cc-1280x832-png"
+        },
+        {
+          "key": "hero",
+          "path": "assets/hack404-cover.png",
+          "sourceUrl": "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W?node-id=101-3256",
+          "assetId": "image-44ad2d436faeb8b0b7268fe42f61f5f6efe896cc-1280x832-png"
+        },
+        {
+          "key": "image-0",
+          "path": "assets/hack404-mobile-screen.png",
+          "sourceUrl": "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W?node-id=101-3882",
+          "assetId": "image-218afa83b158f42e9ad6501839a4540246be28ab-402x874-png"
+        }
+      ]
+    },
+    {
+      "title": "SummerHacks",
+      "id": "figma-portfolio-summerhacks",
+      "slug": "summerhacks",
+      "status": "published",
+      "action": "create",
+      "images": [
+        {
+          "key": "cover",
+          "path": "assets/summerhacks-cover.png",
+          "sourceUrl": "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W?node-id=172-1582",
+          "assetId": "image-d9b8c0b069a1859f6fc394e59616ea55f9093acc-1280x832-png"
+        },
+        {
+          "key": "hero",
+          "path": "assets/summerhacks-cover.png",
+          "sourceUrl": "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W?node-id=172-1582",
+          "assetId": "image-d9b8c0b069a1859f6fc394e59616ea55f9093acc-1280x832-png"
+        },
+        {
+          "key": "image-0",
+          "path": "assets/summerhacks-brand-screen.png",
+          "sourceUrl": "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W?node-id=172-1238",
+          "assetId": "image-a05e5679afa6295b9bd4b81a148516c31295c2c4-612x792-png"
+        }
+      ]
+    },
+    {
+      "title": "CoStudy",
+      "id": "figma-portfolio-costudy",
+      "slug": "costudy",
+      "status": "published",
+      "action": "create",
+      "images": [
+        {
+          "key": "cover",
+          "path": "assets/costudy-cover.png",
+          "sourceUrl": "https://www.figma.com/design/r2Feu1tLXWg8ApMcINffew?node-id=595-1036",
+          "assetId": "image-773f7bd3030ef819e60ece8aaf6f4b5921a7f016-716x717-png"
+        },
+        {
+          "key": "hero",
+          "path": "assets/costudy-cover.png",
+          "sourceUrl": "https://www.figma.com/design/r2Feu1tLXWg8ApMcINffew?node-id=595-1036",
+          "assetId": "image-773f7bd3030ef819e60ece8aaf6f4b5921a7f016-716x717-png"
+        },
+        {
+          "key": "image-0",
+          "path": "assets/costudy-details.png",
+          "sourceUrl": "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W?node-id=9-1861",
+          "assetId": "image-2af78d356f94d6e28ee5d88cc4e604a02b1633bb-1600x1100-png"
+        }
+      ]
+    },
+    {
+      "title": "CoCart",
+      "id": "figma-portfolio-cocart",
+      "slug": "cocart",
+      "status": "published",
+      "action": "create",
+      "images": [
+        {
+          "key": "cover",
+          "path": "assets/cocart-cover.png",
+          "sourceUrl": "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W?node-id=1-13674",
+          "assetId": "image-4a93eda423afa38b09733a3feeac5c29f8624e24-716x717-png"
+        },
+        {
+          "key": "hero",
+          "path": "assets/cocart-cover.png",
+          "sourceUrl": "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W?node-id=1-13674",
+          "assetId": "image-4a93eda423afa38b09733a3feeac5c29f8624e24-716x717-png"
+        },
+        {
+          "key": "image-0",
+          "path": "assets/cocart-details.png",
+          "sourceUrl": "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W?node-id=1-13674",
+          "assetId": "image-209b7cb0054209035a2d33453c079f1698f69ea1-1600x1100-png"
+        }
+      ]
+    },
+    {
+      "title": "Ryri",
+      "id": "figma-portfolio-ryri",
+      "slug": "ryri",
+      "status": "published",
+      "action": "create",
+      "images": [
+        {
+          "key": "cover",
+          "path": "assets/ryri-cover.png",
+          "sourceUrl": "https://www.figma.com/design/r2Feu1tLXWg8ApMcINffew?node-id=595-1034",
+          "assetId": "image-5a11bee732c97a91f6e6639b9bae33eb5ce378f9-716x717-png"
+        },
+        {
+          "key": "hero",
+          "path": "assets/ryri-cover.png",
+          "sourceUrl": "https://www.figma.com/design/r2Feu1tLXWg8ApMcINffew?node-id=595-1034",
+          "assetId": "image-5a11bee732c97a91f6e6639b9bae33eb5ce378f9-716x717-png"
+        },
+        {
+          "key": "image-0",
+          "path": "assets/ryri-details.png",
+          "sourceUrl": "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W?node-id=1-11468",
+          "assetId": "image-642e2729fa3dcfdde48bc25ace4f1fe69a92245d-1600x1100-png"
+        }
+      ]
+    },
+    {
+      "title": "MuniSync",
+      "id": "figma-portfolio-munisync",
+      "slug": "munisync",
+      "status": "published",
+      "action": "create",
+      "images": [
+        {
+          "key": "cover",
+          "path": "assets/munisync-cover.png",
+          "sourceUrl": "https://www.figma.com/design/r2Feu1tLXWg8ApMcINffew?node-id=595-1022",
+          "assetId": "image-379bbd4c16d13a252f3de473bfbc4d02b24992ea-716x717-png"
+        },
+        {
+          "key": "hero",
+          "path": "assets/munisync-cover.png",
+          "sourceUrl": "https://www.figma.com/design/r2Feu1tLXWg8ApMcINffew?node-id=595-1022",
+          "assetId": "image-379bbd4c16d13a252f3de473bfbc4d02b24992ea-716x717-png"
+        },
+        {
+          "key": "image-0",
+          "path": "assets/munisync-details.png",
+          "sourceUrl": "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W?node-id=1-8106",
+          "assetId": "image-92ae8fbce021cdde8d5051166bbd0f254acdd02c-1600x1100-png"
+        }
+      ]
+    },
+    {
+      "title": "SmartBasket",
+      "id": "figma-portfolio-smartbasket",
+      "slug": "smartbasket",
+      "status": "published",
+      "action": "create",
+      "images": [
+        {
+          "key": "cover",
+          "path": "assets/smartbasket-cover.png",
+          "sourceUrl": "https://www.figma.com/design/r2Feu1tLXWg8ApMcINffew?node-id=595-1020",
+          "assetId": "image-23386ead098cc79561243b37decc1ace6cdac7ac-716x717-png"
+        },
+        {
+          "key": "hero",
+          "path": "assets/smartbasket-cover.png",
+          "sourceUrl": "https://www.figma.com/design/r2Feu1tLXWg8ApMcINffew?node-id=595-1020",
+          "assetId": "image-23386ead098cc79561243b37decc1ace6cdac7ac-716x717-png"
+        },
+        {
+          "key": "image-0",
+          "path": "assets/smartbasket-details.png",
+          "sourceUrl": "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W?node-id=1-12432",
+          "assetId": "image-23a40f2979f8f3bbd70751bceb5b7dc170d93ff8-1600x1100-png"
+        }
+      ]
+    },
+    {
+      "title": "Arca",
+      "id": "figma-portfolio-arca",
+      "slug": "arca",
+      "status": "published",
+      "action": "create",
+      "images": [
+        {
+          "key": "cover",
+          "path": "assets/arca-cover.png",
+          "sourceUrl": "https://www.figma.com/design/r2Feu1tLXWg8ApMcINffew?node-id=595-1032",
+          "assetId": "image-5fbe3f8a5a0c1de0c02c37d72e5c942a67b4f8b5-716x717-png"
+        },
+        {
+          "key": "hero",
+          "path": "assets/arca-cover.png",
+          "sourceUrl": "https://www.figma.com/design/r2Feu1tLXWg8ApMcINffew?node-id=595-1032",
+          "assetId": "image-5fbe3f8a5a0c1de0c02c37d72e5c942a67b4f8b5-716x717-png"
+        },
+        {
+          "key": "image-0",
+          "path": "assets/arca-details.png",
+          "sourceUrl": "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W?node-id=0-202",
+          "assetId": "image-a1dca1b92ac05537811b8c3746d9536934df92e3-1600x1100-png"
+        }
+      ]
+    },
+    {
+      "title": "Sparks",
+      "id": "figma-portfolio-sparks",
+      "slug": "sparks",
+      "status": "published",
+      "action": "create",
+      "images": [
+        {
+          "key": "cover",
+          "path": "assets/sparks-cover.png",
+          "sourceUrl": "https://www.figma.com/design/r2Feu1tLXWg8ApMcINffew?node-id=595-1026",
+          "assetId": "image-5529dafe72c6cc8f8462b5d6a2612238d6af9b0c-716x717-png"
+        },
+        {
+          "key": "hero",
+          "path": "assets/sparks-cover.png",
+          "sourceUrl": "https://www.figma.com/design/r2Feu1tLXWg8ApMcINffew?node-id=595-1026",
+          "assetId": "image-5529dafe72c6cc8f8462b5d6a2612238d6af9b0c-716x717-png"
+        }
+      ]
+    },
+    {
+      "title": "Garden",
+      "id": "figma-portfolio-garden",
+      "slug": "garden",
+      "status": "published",
+      "action": "create",
+      "images": [
+        {
+          "key": "cover",
+          "path": "assets/garden-cover.png",
+          "sourceUrl": "https://www.figma.com/design/r2Feu1tLXWg8ApMcINffew?node-id=595-1030",
+          "assetId": "image-ccc88c00e852de29c6d8ed4932dbaf8238c6eda7-716x717-png"
+        },
+        {
+          "key": "hero",
+          "path": "assets/garden-cover.png",
+          "sourceUrl": "https://www.figma.com/design/r2Feu1tLXWg8ApMcINffew?node-id=595-1030",
+          "assetId": "image-ccc88c00e852de29c6d8ed4932dbaf8238c6eda7-716x717-png"
+        }
+      ]
+    },
+    {
+      "title": "HabitAt",
+      "id": "figma-portfolio-habitat",
+      "slug": "habitat",
+      "status": "published",
+      "action": "create",
+      "images": [
+        {
+          "key": "cover",
+          "path": "assets/habitat-cover.png",
+          "sourceUrl": "https://www.figma.com/design/r2Feu1tLXWg8ApMcINffew?node-id=600-1042",
+          "assetId": "image-0dced57f3eca6eda3be9c785a2fa4873ce61284c-716x717-png"
+        },
+        {
+          "key": "hero",
+          "path": "assets/habitat-cover.png",
+          "sourceUrl": "https://www.figma.com/design/r2Feu1tLXWg8ApMcINffew?node-id=600-1042",
+          "assetId": "image-0dced57f3eca6eda3be9c785a2fa4873ce61284c-716x717-png"
+        }
+      ]
+    },
+    {
+      "title": "Elapse App Design",
+      "id": "legacy-portfolio-elapsedesign",
+      "slug": "elapse-app-design",
+      "status": "published",
+      "action": "update-images",
+      "images": [
+        {
+          "key": "cover",
+          "path": "assets/elapse-cover.png",
+          "sourceUrl": "https://www.figma.com/design/r2Feu1tLXWg8ApMcINffew?node-id=595-1024",
+          "assetId": "image-8c49073b4b5525fe754b2d170217c0d777f2b7c1-716x717-png"
+        },
+        {
+          "key": "hero",
+          "path": "assets/elapse-cover.png",
+          "sourceUrl": "https://www.figma.com/design/r2Feu1tLXWg8ApMcINffew?node-id=595-1024",
+          "assetId": "image-8c49073b4b5525fe754b2d170217c0d777f2b7c1-716x717-png"
+        }
+      ]
+    },
+    {
+      "title": "Hopper Hangout",
+      "id": "legacy-portfolio-hopperhangout",
+      "slug": "hopper-hangout",
+      "status": "published",
+      "action": "update-images",
+      "images": [
+        {
+          "key": "cover",
+          "path": "assets/hopper-hangout-cover.png",
+          "sourceUrl": "https://www.figma.com/design/r2Feu1tLXWg8ApMcINffew?node-id=595-1028",
+          "assetId": "image-7670f22c7ccfdf0347d7c8c051f713190aeae892-716x717-png"
+        },
+        {
+          "key": "hero",
+          "path": "assets/hopper-hangout-cover.png",
+          "sourceUrl": "https://www.figma.com/design/r2Feu1tLXWg8ApMcINffew?node-id=595-1028",
+          "assetId": "image-7670f22c7ccfdf0347d7c8c051f713190aeae892-716x717-png"
+        }
+      ]
+    }
+  ],
+  "state": "verified",
+  "transactionId": "bQYP7xhuT5v8w3idX2pa71",
+  "verified": [
+    {
+      "_id": "figma-portfolio-arca",
+      "_rev": "bQYP7xhuT5v8w3idX2pa71",
+      "title": "Arca",
+      "slug": "arca",
+      "coverAsset": "image-5fbe3f8a5a0c1de0c02c37d72e5c942a67b4f8b5-716x717-png",
+      "heroAsset": "image-5fbe3f8a5a0c1de0c02c37d72e5c942a67b4f8b5-716x717-png",
+      "sections": 3
+    },
+    {
+      "_id": "figma-portfolio-augwa",
+      "_rev": "bQYP7xhuT5v8w3idX2pa71",
+      "title": "Augwa",
+      "slug": "augwa",
+      "coverAsset": "image-a4f75e07fcbbf47f1020354f366078935123aa7e-1008x613-png",
+      "heroAsset": "image-a4f75e07fcbbf47f1020354f366078935123aa7e-1008x613-png",
+      "sections": 3
+    },
+    {
+      "_id": "figma-portfolio-cocart",
+      "_rev": "bQYP7xhuT5v8w3idX2pa71",
+      "title": "CoCart",
+      "slug": "cocart",
+      "coverAsset": "image-4a93eda423afa38b09733a3feeac5c29f8624e24-716x717-png",
+      "heroAsset": "image-4a93eda423afa38b09733a3feeac5c29f8624e24-716x717-png",
+      "sections": 3
+    },
+    {
+      "_id": "figma-portfolio-costudy",
+      "_rev": "bQYP7xhuT5v8w3idX2pa71",
+      "title": "CoStudy",
+      "slug": "costudy",
+      "coverAsset": "image-773f7bd3030ef819e60ece8aaf6f4b5921a7f016-716x717-png",
+      "heroAsset": "image-773f7bd3030ef819e60ece8aaf6f4b5921a7f016-716x717-png",
+      "sections": 3
+    },
+    {
+      "_id": "figma-portfolio-garden",
+      "_rev": "bQYP7xhuT5v8w3idX2pa71",
+      "title": "Garden",
+      "slug": "garden",
+      "coverAsset": "image-ccc88c00e852de29c6d8ed4932dbaf8238c6eda7-716x717-png",
+      "heroAsset": "image-ccc88c00e852de29c6d8ed4932dbaf8238c6eda7-716x717-png",
+      "sections": 3
+    },
+    {
+      "_id": "figma-portfolio-habitat",
+      "_rev": "bQYP7xhuT5v8w3idX2pa71",
+      "title": "HabitAt",
+      "slug": "habitat",
+      "coverAsset": "image-0dced57f3eca6eda3be9c785a2fa4873ce61284c-716x717-png",
+      "heroAsset": "image-0dced57f3eca6eda3be9c785a2fa4873ce61284c-716x717-png",
+      "sections": 3
+    },
+    {
+      "_id": "figma-portfolio-hack404-launchpad",
+      "_rev": "bQYP7xhuT5v8w3idX2pa71",
+      "title": "Hack404 Launchpad",
+      "slug": "hack404-launchpad",
+      "coverAsset": "image-44ad2d436faeb8b0b7268fe42f61f5f6efe896cc-1280x832-png",
+      "heroAsset": "image-44ad2d436faeb8b0b7268fe42f61f5f6efe896cc-1280x832-png",
+      "sections": 3
+    },
+    {
+      "_id": "figma-portfolio-munisync",
+      "_rev": "bQYP7xhuT5v8w3idX2pa71",
+      "title": "MuniSync",
+      "slug": "munisync",
+      "coverAsset": "image-379bbd4c16d13a252f3de473bfbc4d02b24992ea-716x717-png",
+      "heroAsset": "image-379bbd4c16d13a252f3de473bfbc4d02b24992ea-716x717-png",
+      "sections": 3
+    },
+    {
+      "_id": "figma-portfolio-newly",
+      "_rev": "bQYP7xhuT5v8w3idX2pa71",
+      "title": "Newly",
+      "slug": "newly",
+      "coverAsset": "image-8c0532a34265163a72526d4489d33719f5767f64-1583x991-png",
+      "heroAsset": "image-8c0532a34265163a72526d4489d33719f5767f64-1583x991-png",
+      "sections": 3
+    },
+    {
+      "_id": "figma-portfolio-ryri",
+      "_rev": "bQYP7xhuT5v8w3idX2pa71",
+      "title": "Ryri",
+      "slug": "ryri",
+      "coverAsset": "image-5a11bee732c97a91f6e6639b9bae33eb5ce378f9-716x717-png",
+      "heroAsset": "image-5a11bee732c97a91f6e6639b9bae33eb5ce378f9-716x717-png",
+      "sections": 3
+    },
+    {
+      "_id": "figma-portfolio-smartbasket",
+      "_rev": "bQYP7xhuT5v8w3idX2pa71",
+      "title": "SmartBasket",
+      "slug": "smartbasket",
+      "coverAsset": "image-23386ead098cc79561243b37decc1ace6cdac7ac-716x717-png",
+      "heroAsset": "image-23386ead098cc79561243b37decc1ace6cdac7ac-716x717-png",
+      "sections": 3
+    },
+    {
+      "_id": "figma-portfolio-sparks",
+      "_rev": "bQYP7xhuT5v8w3idX2pa71",
+      "title": "Sparks",
+      "slug": "sparks",
+      "coverAsset": "image-5529dafe72c6cc8f8462b5d6a2612238d6af9b0c-716x717-png",
+      "heroAsset": "image-5529dafe72c6cc8f8462b5d6a2612238d6af9b0c-716x717-png",
+      "sections": 3
+    },
+    {
+      "_id": "figma-portfolio-summerhacks",
+      "_rev": "bQYP7xhuT5v8w3idX2pa71",
+      "title": "SummerHacks",
+      "slug": "summerhacks",
+      "coverAsset": "image-d9b8c0b069a1859f6fc394e59616ea55f9093acc-1280x832-png",
+      "heroAsset": "image-d9b8c0b069a1859f6fc394e59616ea55f9093acc-1280x832-png",
+      "sections": 3
+    },
+    {
+      "_id": "figma-portfolio-villio-ai",
+      "_rev": "bQYP7xhuT5v8w3idX2pa71",
+      "title": "Villio AI",
+      "slug": "villio-ai",
+      "coverAsset": "image-a9a1516f1788362fdb0e0e9b71f97b9c1760d7fb-716x717-png",
+      "heroAsset": "image-a9a1516f1788362fdb0e0e9b71f97b9c1760d7fb-716x717-png",
+      "sections": 3
+    },
+    {
+      "_id": "figma-portfolio-yelo",
+      "_rev": "bQYP7xhuT5v8w3idX2pa71",
+      "title": "Yelo",
+      "slug": "yelo",
+      "coverAsset": "image-8f29a6534f956c88e7f433daf2be878a06b3073a-716x717-png",
+      "heroAsset": "image-8f29a6534f956c88e7f433daf2be878a06b3073a-716x717-png",
+      "sections": 3
+    },
+    {
+      "_id": "legacy-portfolio-elapsedesign",
+      "_rev": "bQYP7xhuT5v8w3idX2pa71",
+      "title": "Elapse App Design",
+      "slug": "elapse-app-design",
+      "coverAsset": "image-8c49073b4b5525fe754b2d170217c0d777f2b7c1-716x717-png",
+      "heroAsset": "image-8c49073b4b5525fe754b2d170217c0d777f2b7c1-716x717-png",
+      "sections": 2
+    },
+    {
+      "_id": "legacy-portfolio-hopperhangout",
+      "_rev": "bQYP7xhuT5v8w3idX2pa71",
+      "title": "Hopper Hangout",
+      "slug": "hopper-hangout",
+      "coverAsset": "image-7670f22c7ccfdf0347d7c8c051f713190aeae892-716x717-png",
+      "heroAsset": "image-7670f22c7ccfdf0347d7c8c051f713190aeae892-716x717-png",
+      "sections": 2
+    }
+  ]
+}

@@ -1,0 +1,283 @@
+{
+  "researchedAt": "2026-10-05",
+  "method": "Quick primary-source lookup of the author's archived portfolio, project timeline, GitHub initial commits, original sales listings, and linked YouTube pages. Repository setup dates, design ranges, and sales dates are distinguished from release dates.",
+  "yearCorrections": [
+    {
+      "_id": "legacy-portfolio-unionvillehowl",
+      "from": 2021,
+      "to": 2022,
+      "basis": "Author project range ends May 2022."
+    },
+    {
+      "_id": "legacy-portfolio-839team",
+      "from": 2021,
+      "to": 2022,
+      "basis": "Author design, development, and maintenance project range ends February 2022."
+    },
+    {
+      "_id": "legacy-portfolio-thedriveteampodcast",
+      "from": 2022,
+      "to": 2023,
+      "basis": "Author Podcast Host & Producer role for The Drive Team Media ends July 2023 and matches this project scope."
+    }
+  ],
+  "projects": [
+    {
+      "_id": "legacy-portfolio-25kteam",
+      "slug": "team-25k-website",
+      "title": "Team 25K Website",
+      "recommendedYear": 2022,
+      "timeline": {
+        "start": "2022-06",
+        "end": "2022-10",
+        "precision": "month-range",
+        "basis": "Author project timeline"
+      },
+      "repositorySetupDate": "2022-06-20",
+      "releaseDate": null,
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://ca.linkedin.com/in/zhaowinston",
+          "evidence": "Author reports June through October 2022 for this website project."
+        },
+        {
+          "url": "https://github.com/25K-vrc/25K-website/commit/d1534a4213f12d94be7ba9e0b5525d0a7331607b",
+          "evidence": "Nomnomburger authored the initial README-only commit on June 20, 2022."
+        },
+        {
+          "url": "https://winstonzhao.ca/portfolio/25kteam",
+          "evidence": "Author case study explicitly labels the project 2022."
+        }
+      ],
+      "note": "The explicit project range ends October 2022. June 20 is repository setup rather than public launch.",
+      "sortMonth": "2022-10"
+    },
+    {
+      "_id": "legacy-portfolio-sorbackyardscrimmage",
+      "slug": "sor-backyard-scrimmage-video",
+      "title": "SOR Backyard Scrimmage Video",
+      "recommendedYear": 2022,
+      "timeline": {
+        "start": "2022",
+        "end": "2022",
+        "precision": "year",
+        "basis": "Author portfolio year"
+      },
+      "releaseDate": null,
+      "confidence": "high-for-year",
+      "sources": [
+        {
+          "url": "https://winstonzhao.ca/portfolio/sorbackyardscrimmage",
+          "evidence": "Author video case study explicitly labels the project 2022."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=jNJzbm1Zd14",
+          "evidence": "Linked video was checked, but no upload date was exposed by the accessible page."
+        }
+      ],
+      "note": "Retain year-only. The Tipping Point season is not an exact video date."
+    },
+    {
+      "_id": "legacy-portfolio-sorreveal",
+      "slug": "sor22-robot-reveal-video",
+      "title": "SOR22 Robot Reveal Video",
+      "recommendedYear": 2022,
+      "timeline": {
+        "start": "2022",
+        "end": "2022",
+        "precision": "year",
+        "basis": "Author portfolio year"
+      },
+      "releaseDate": null,
+      "confidence": "high-for-year",
+      "sources": [
+        {
+          "url": "https://winstonzhao.ca/",
+          "evidence": "Author portfolio lists the reveal video under 2022."
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=ktJ5cc93fWk",
+          "evidence": "The linked page confirms the 3150A SOR22 reveal title, but exposes no upload date."
+        }
+      ],
+      "note": "Retain year-only. A current YouTube copyright footer or crawl date is not the video upload date."
+    },
+    {
+      "_id": "legacy-portfolio-unionvillehowl",
+      "slug": "the-unionville-howl-website-design",
+      "title": "The Unionville Howl Website Design",
+      "recommendedYear": 2022,
+      "timeline": {
+        "start": "2021-12",
+        "end": "2022-05",
+        "precision": "month-range",
+        "basis": "Author project timeline"
+      },
+      "releaseDate": null,
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://ca.linkedin.com/in/zhaowinston",
+          "evidence": "Author reports December 2021 through May 2022 for the newspaper website project."
+        },
+        {
+          "url": "https://winstonzhao.ca/",
+          "evidence": "Author portfolio labels the website design 2021."
+        }
+      ],
+      "note": "The original portfolio labels the design 2021; the author project range ends May 2022. Under latest documented project work ordering, use 2022 and show December 2021\u2013May 2022 as the timeline. A launch day is not verified.",
+      "originalDesignYear": 2021,
+      "sortMonth": "2022-05"
+    },
+    {
+      "_id": "legacy-portfolio-winstonzhaov1",
+      "slug": "winstonzhao-ca-v1",
+      "title": "Winstonzhao.ca V1",
+      "recommendedYear": 2021,
+      "timeline": {
+        "start": "2021",
+        "end": "2021",
+        "precision": "year",
+        "basis": "Author portfolio year, corroborated by repository setup"
+      },
+      "repositorySetupDate": "2021-05-31",
+      "releaseDate": null,
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://github.com/Nomnomburger/winstonzhao-v1/commit/76ed80baa2e656eb4c627cda2ad769c8c19edb12",
+          "evidence": "Nomnomburger authored the initial README-only commit on May 31, 2021."
+        },
+        {
+          "url": "https://winstonzhao.ca/",
+          "evidence": "Author portfolio labels the first website design 2021."
+        }
+      ],
+      "note": "May 31 verifies repository setup only. It can anchor original activity to May 2021 as a tie-break within year 2021; do not label it as the launch or last-work date.",
+      "sortMonth": "2021-05",
+      "sortMonthBasis": "Initial repository setup; tie-break only because a later design/work date is not verified."
+    },
+    {
+      "_id": "legacy-portfolio-839team",
+      "slug": "team-839-website",
+      "title": "Team 839 Website",
+      "recommendedYear": 2022,
+      "timeline": {
+        "start": "2020-12",
+        "end": "2022-02",
+        "precision": "month-range",
+        "basis": "Author design/development/maintenance range"
+      },
+      "repositorySetupDate": "2021-01-12",
+      "releaseDate": null,
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://github.com/Nomnomburger/839.team-website/commit/0f341b5515a0efe0933afe63b5bba943ca348bd5",
+          "evidence": "Winston Zhao authored the initial README and gitattributes commit on January 12, 2021."
+        },
+        {
+          "url": "https://v1.winstonzhao.ca/",
+          "evidence": "The original portfolio explicitly labels the website project 2021."
+        },
+        {
+          "url": "https://ca.linkedin.com/in/zhaowinston",
+          "evidence": "Author gives December 2020 through February 2022 as the full design, development, and maintenance range."
+        }
+      ],
+      "note": "The author project starts December 2020, the repository setup is January 12, 2021, and the original portfolio labels the design 2021. The same author project explicitly includes design, development, and maintenance through February 2022. Under latest documented project work ordering, use 2022 with the full range. This does not claim the original release was in 2022.",
+      "originalDesignYear": 2021,
+      "sortMonth": "2022-02"
+    },
+    {
+      "_id": "legacy-portfolio-asymtry",
+      "slug": "asymtry-logo-branding",
+      "title": "Asymtry Logo & Branding",
+      "recommendedYear": 2020,
+      "timeline": {
+        "start": "2020",
+        "end": "2020",
+        "precision": "year",
+        "basis": "Original author portfolio"
+      },
+      "releaseDate": null,
+      "confidence": "high-for-year",
+      "sources": [
+        {
+          "url": "https://v1.winstonzhao.ca/",
+          "evidence": "The author labels the Asymtry logo and artwork 2020."
+        }
+      ],
+      "note": "Retain year-only. No supported month or day was found in the quick lookup."
+    },
+    {
+      "_id": "legacy-portfolio-controllerdeskmats",
+      "slug": "controller-deskmats",
+      "title": "Controller Deskmats",
+      "recommendedYear": 2020,
+      "timeline": {
+        "start": "2020-08",
+        "end": "2020-12",
+        "precision": "month-range",
+        "basis": "Author design and group-buy project range"
+      },
+      "groupBuyClosingDate": "2020-10-28",
+      "releaseDate": null,
+      "confidence": "high",
+      "sources": [
+        {
+          "url": "https://ca.linkedin.com/in/zhaowinston",
+          "evidence": "Author reports August through December 2020 for the deskmat design and group buy."
+        },
+        {
+          "url": "https://www.deskhero.ca/products/deskmat-artist-x-tkc-controller-series-extras",
+          "evidence": "Original vendor listing credits Nomnomburger and gives the original group-buy timeline as October 28, 2020."
+        },
+        {
+          "url": "https://prototypist.net/products/group-buy-controller-series-deskmat",
+          "evidence": "Original vendor explicitly gives the closing date as October 28, 2020."
+        }
+      ],
+      "note": "The explicit design/group-buy project range ends December 2020. October 28 is the sales closing date; the vendor February 2021 shipping estimate is not verified project work and does not change the year.",
+      "sortMonth": "2020-12"
+    },
+    {
+      "_id": "legacy-portfolio-thedriveteampodcast",
+      "slug": "the-drive-team-podcast",
+      "title": "The Drive Team Podcast",
+      "recommendedYear": 2023,
+      "originalProjectYear": 2022,
+      "timeline": {
+        "start": "2022-10",
+        "end": "2023-07",
+        "precision": "month-range",
+        "basis": "Project-matching author host/producer role"
+      },
+      "sortMonth": "2023-07",
+      "releaseDate": null,
+      "confidence": "high-for-project-work-range",
+      "sources": [
+        {
+          "url": "https://v1.winstonzhao.ca/resume.pdf",
+          "evidence": "Author resume starts the specific Drive Team Podcast & Website project in October 2022."
+        },
+        {
+          "url": "https://ca.linkedin.com/in/zhaowinston",
+          "evidence": "Author Podcast Host & Producer role at The Drive Team Media runs October 2022 through July 2023."
+        },
+        {
+          "url": "https://v1.winstonzhao.ca/",
+          "evidence": "Original portfolio labels the podcast project 2022."
+        }
+      ],
+      "note": "The role name, organization, and start month match this specific podcast scope. Use July 2023 as latest documented project work, while preserving the original 2022 project year. This does not imply a 2023 first release."
+    }
+  ],
+  "limitations": [
+    "Exact video upload dates were not accessible during this quick lookup.",
+    "Initial GitHub commits inspected for the three websites contain repository setup files, not a release marker.",
+    "Original design years differ from the latest documented project work for Unionville Howl, Team 839, and The Drive Team Podcast; the recommended display years follow the requested latest-work policy."
+  ],
+  "orderingPolicy": "Sort by the latest documented work within the specific project scope. Preserve original creation/design years and repository setup dates as separate evidence; do not substitute unrelated role or import dates."
+}

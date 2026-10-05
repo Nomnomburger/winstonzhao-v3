@@ -1,0 +1,566 @@
+{
+  "savedAt": "2026-10-05T07:28:53.602Z",
+  "projectId": "7k8ajlip",
+  "dataset": "production",
+  "documents": [
+    {
+      "_createdAt": "2026-10-01T23:11:12Z",
+      "_id": "legacy-portfolio-elapsedesign",
+      "_rev": "bQYP7xhuT5v8w3idX2pa71",
+      "_type": "project",
+      "_updatedAt": "2026-10-05T06:56:16Z",
+      "client": "Vex Robotics Competition",
+      "coverImage": {
+        "_type": "image",
+        "alt": "Elapse mobile app shown in an iPhone mockup",
+        "asset": {
+          "_ref": "image-8c49073b4b5525fe754b2d170217c0d777f2b7c1-716x717-png",
+          "_type": "reference"
+        }
+      },
+      "description": "Designed Elapse, a feature packed app to help competitors at VRC events",
+      "details": [
+        {
+          "_key": "elapsedesign-9",
+          "_type": "detailItem",
+          "label": "Activity",
+          "value": "Vex Robotics Competition"
+        },
+        {
+          "_key": "elapsedesign-10",
+          "_type": "detailItem",
+          "label": "App Status",
+          "value": "Released on iOS!"
+        },
+        {
+          "_key": "elapsedesign-11",
+          "_type": "detailItem",
+          "label": "Key Features",
+          "value": "Schedule & Scores"
+        },
+        {
+          "_key": "elapsedesign-12",
+          "_type": "detailItem",
+          "label": "UI Design",
+          "value": "Figma"
+        }
+      ],
+      "discipline": "UI/UX DESIGN",
+      "featured": true,
+      "hero": [
+        {
+          "_key": "hero",
+          "_type": "mediaImage",
+          "alt": "Elapse mobile app shown in an iPhone mockup",
+          "asset": {
+            "_ref": "image-8c49073b4b5525fe754b2d170217c0d777f2b7c1-716x717-png",
+            "_type": "reference"
+          },
+          "size": "full"
+        }
+      ],
+      "intro": "A feature rich app paired with a sleek design is what will make the Elapse app a must have at Vex Robotics Competitions. The app is designed to provide the most important information to competitors at a glance while keeping a simple and delightful user experience.",
+      "link": {
+        "label": "DOWNLOAD NOW",
+        "url": "https://www.elapseapp.com/"
+      },
+      "order": 4,
+      "overview": "A feature rich app paired with a sleek design is what will make the Elapse app a must have at Vex Robotics Competitions. The app is designed to provide the most important information to competitors at a glance while adding on innovative features like live schedule, tournament announcements, and a chatbot. Users will be able to access the app on mobile devices or computers.",
+      "sections": [
+        {
+          "_key": "elapsedesign-16",
+          "_type": "projectSection",
+          "content": [
+            {
+              "_key": "elapsedesign-13",
+              "_type": "mediaImage",
+              "alt": "Elapse App Design — Scene",
+              "asset": {
+                "_ref": "image-3687dc9ccc7a7fe2dd02e9f59ad45f78e7212276-3680x2760-png",
+                "_type": "reference"
+              },
+              "size": "full"
+            },
+            {
+              "_key": "elapsedesign-14",
+              "_type": "mediaImage",
+              "alt": "Elapse App Design — Scene 4",
+              "asset": {
+                "_ref": "image-01f03a3abde68fd7a88c39293aa1d5fc98727d08-2500x1875-png",
+                "_type": "reference"
+              },
+              "size": "full"
+            },
+            {
+              "_key": "elapsedesign-15",
+              "_type": "mediaImage",
+              "alt": "Elapse App Design — elapse map",
+              "asset": {
+                "_ref": "image-bb95d054eccf29ebd6f503e05817d3e441addae9-2095x2396-png",
+                "_type": "reference"
+              },
+              "size": "full"
+            }
+          ],
+          "title": "Project gallery"
+        },
+        {
+          "_key": "elapsedesign-17",
+          "_type": "projectSection",
+          "content": [
+            {
+              "_key": "elapsedesign-2",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "elapsedesign-1",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "As someone who competed in the Vex Robotics Competition for four years, I know just how important time management is at each tournament, and how much effort one needs to put in just in terms of logistics at each tournament. There were also many shortcomings at tournaments, like delays and inaudible announcements. That’s where the idea of the new Elapse app was born, right in the heat of the competition!"
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "elapsedesign-4",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "elapsedesign-3",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Three key problems were identified: the current official tournament schedule app’s poor user experience, inaccurate match timings due to delays, and difficulties for the tournament organizers to announce information to everyone. The current tournament schedule app has a poor user experience since multiple taps are required to find information, and vital information is spread out over multiple different screens. The app also has feature differences comparing iOS to Android. At Vex Robotics Competition tournaments there are often technical difficulties and other delays that skews the originally planned match schedule. Unfortunately, the schedule is not updated with these delays, so finding the actual time of your next match is usually difficult. Tournament organizers frequently make announcements, but currently this is done by just a microphone. If one is not close by or is too caught up amid all the competition, they may miss the announcement completely."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "elapsedesign-6",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "elapsedesign-5",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "To solve these defined problems, the Elapse app will offer a clean, at-a-glance user experience, a personalized live schedule, and a live tournament announcements feed. The Elapse app puts important, personalized information on the home page, providing competitors with an easy way to check their next match, search for teams, and access tournament announcements. Important text is large and bold, and colours are used to deliver information in a beautiful way. For the live schedule, similar to how a bus timing app works, the Elapse app will calculate the delay of the tournament based on crowdsourcing and match result upload times. Tournament organizers will also be able to manually input the delay through a special Event Partner Portal. Finally with tournament announcements, tournament organizers can broadcast messages and pictures to all users through the portal as well."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "elapsedesign-8",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "elapsedesign-7",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "The Elapse app is currently under development and is a work in progress. The app will be a web-based application to run phones, tablets, and desktop environments. Data will be cached offline for spotty connections, and user will be able to get the app through platform specific stores. If you have experience in web application development using NextJS and are interested in working on this project, please contact me at hello@winstonzhao.ca."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            }
+          ],
+          "title": "Design process"
+        }
+      ],
+      "showSideMenu": false,
+      "slug": {
+        "_type": "slug",
+        "current": "elapse-app-design"
+      },
+      "summary": "The app is designed to provide the most important information to competitors at a glance while keeping a simple and delightful user experience.",
+      "title": "Elapse App Design",
+      "year": 2023
+    },
+    {
+      "_createdAt": "2026-10-01T23:11:12Z",
+      "_id": "legacy-portfolio-hopperhangout",
+      "_rev": "bQYP7xhuT5v8w3idX2pa71",
+      "_type": "project",
+      "_updatedAt": "2026-10-05T06:56:16Z",
+      "client": "Alicehacks 2023",
+      "coverImage": {
+        "_type": "image",
+        "alt": "Hopper Hangout mobile app shown in an iPhone mockup",
+        "asset": {
+          "_ref": "image-7670f22c7ccfdf0347d7c8c051f713190aeae892-716x717-png",
+          "_type": "reference"
+        }
+      },
+      "description": "Designed Hopper Hangout, a fun app that helps teens plan group activities",
+      "details": [
+        {
+          "_key": "hopperhangout-39",
+          "_type": "detailItem",
+          "label": "Role",
+          "value": "Lead Designer"
+        },
+        {
+          "_key": "hopperhangout-40",
+          "_type": "detailItem",
+          "label": "Team",
+          "value": "Andrew Chu, Anita Du, Laison Tao"
+        },
+        {
+          "_key": "hopperhangout-41",
+          "_type": "detailItem",
+          "label": "Tools",
+          "value": "Figma"
+        },
+        {
+          "_key": "hopperhangout-42",
+          "_type": "detailItem",
+          "label": "Alicehacks 2023",
+          "value": "Best Design Hack"
+        }
+      ],
+      "discipline": "UI/UX DESIGN",
+      "featured": true,
+      "hero": [
+        {
+          "_key": "hero",
+          "_type": "mediaImage",
+          "alt": "Hopper Hangout mobile app shown in an iPhone mockup",
+          "asset": {
+            "_ref": "image-7670f22c7ccfdf0347d7c8c051f713190aeae892-716x717-png",
+            "_type": "reference"
+          },
+          "size": "full"
+        }
+      ],
+      "impact": "Alicehacks 2023 — Best Design Hack",
+      "intro": "Simplifying group hangout planning for teens. This playful app uses preferences to suggest hangouts accessible to everyone, making get-togethers stress-free and fun. Its unique \"Floating Action Bar\" and whimsical design add to an enjoyable user experience. This was an Alicehacks project.",
+      "link": {
+        "label": "VIEW ON DEVPOST",
+        "url": "https://devpost.com/software/hopper-hangout"
+      },
+      "order": 3,
+      "overview": "In the quest to streamline social gatherings, Hopper Hangout was created as the solution for teens to solve the often-cumbersome process of planning group activities with friends. The app crafts hangout plans to match group preferences, ensuring accessible and agreeable destinations for all. The app is designed to be playful and functional, featuring an innovative “Floating Action Bar” UI element along with whimsical graphics and icons that add a touch of fun to the user experience.",
+      "sections": [
+        {
+          "_key": "hopperhangout-46",
+          "_type": "projectSection",
+          "content": [
+            {
+              "_key": "hopperhangout-43",
+              "_type": "mediaImage",
+              "alt": "Hopper Hangout — pic1",
+              "asset": {
+                "_ref": "image-e5f2439d90bf88727a2c09c8940f01fb3382a0c6-2000x1500-png",
+                "_type": "reference"
+              },
+              "size": "full"
+            },
+            {
+              "_key": "hopperhangout-44",
+              "_type": "mediaImage",
+              "alt": "Hopper Hangout — pic2",
+              "asset": {
+                "_ref": "image-6bd1f56159332180c28e8041a1008d3676359050-2000x1500-png",
+                "_type": "reference"
+              },
+              "size": "full"
+            },
+            {
+              "_key": "hopperhangout-45",
+              "_type": "mediaImage",
+              "alt": "Hopper Hangout — pic3",
+              "asset": {
+                "_ref": "image-3a548684c2b5b583daa1cdc795835ce107c7f0d6-2149x1441-png",
+                "_type": "reference"
+              },
+              "size": "full"
+            }
+          ],
+          "title": "Project gallery"
+        },
+        {
+          "_key": "hopperhangout-47",
+          "_type": "projectSection",
+          "content": [
+            {
+              "_key": "hopperhangout-2",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "hopperhangout-1",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Alicehacks marked the second hackathon I ever attended and with the Best Design award within reach, I decided to team up alongside three friends – Anita, Laison, and Andrew – to take on the challenge. We went design only, which meant purely focusing on the product and user experience without the fuss of code. This hackathon went extremely smoothly and throughout our time working we were able to have some fun as well, remarkably facing little to no setbacks. Here’s the story on how our team won the Best Design award at Alicehacks, creating a beautiful and innovative product, Hopper Hangout."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "hopperhangout-4",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "hopperhangout-3",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "As Alicehacks was an online hackathon, our team was able to meet up when necessary and collaborate remotely in the comfort of our own homes. Every good hackathon project starts with a good idea that solves a real problem, underpinned by thorough planning. A few hours before the hackathon started that evening, we started ideating on a shared document. We landed on an idea that would help teens plan hangouts with their friends. For many people, on many occasions it would be extremely time consuming and difficult to plan a day out with friends filled with activities everyone is happy with. We’ve all been there: one friend may hate a certain cuisine, another may groan at excessive walking (yesterday was leg day), and so on. Our solution was to create a mobile app that learns each user’s tastes and preferences, then finding locations using artificial intelligence curation system with online information to automatically create an itinerary based on the preferences of each person in the friend group."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "hopperhangout-6",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "hopperhangout-5",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "To generate revenue and sustain our application financially, businesses or events would be able to pay for their listing to be featured and prioritised in the curation system. The curation system would still find the best matching places for a friend group, but if there are multiple similar businesses or events that fit the parameters, a sponsor would be prioritised."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "hopperhangout-8",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "hopperhangout-7",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Despite being a design project, it was still imperative to consider the technical and business dimensions of the application. Systems such as how each hangout spot is curated in the backend would be integral to the app’s functionality and is deeply tied with how the interface displays the generated itineraries. Moreover, a viable business model is essential for any project’s transition from concept to reality, as it requires financial backing to thrive. Ultimately, product design is not just about the user interface but about how the product functions and serves the user in every way."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "hopperhangout-10",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "hopperhangout-9",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "With the hackathon underway, we started a FigJam session on Figma where we delineated the user needs and the features in the application. This was a crucial stage of planning as it cemented our idea and pointed us towards a clear end goal. During this step, extra features were introduced as well, making for a feature rich and well-rounded experience. We then populated a kanban board with project tasks and distributed responsibilities among the team. A particularly enjoyable part of this planning stage was coming up with the name of the app. There were certainly lots of different opinions, but we eventually settled on a name we all loved: Hopper Hangout."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "hopperhangout-12",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "hopperhangout-11",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Later that night we started the next step in the design process, working on preliminary wireframes. This step is focused on user interface design, ideating for an accessible and beautiful mobile app. I started by sketching out wireframes and UI elements on paper. I find that this approach of starting in a sketchbook has several advantages. It’s a tactile process that engages different cognitive pathways which leads to more creative and free flowing ideas. Drawing on paper is also a quick way to iterate without the constraints of software tools, allowing for rapid exploration of design concepts and layouts. The immediacy of pen on paper also means that ideas can be captured and communicated with minimal delay, which is important in the fast-paced environment of a hackathon."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "hopperhangout-14",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "hopperhangout-13",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "After initial sketches, we decided to create a brand system for Hopper Hangout. We had to ask ourselves about the user persona and investigate the preferences of our target audience: youth. What colours do they like? What graphics are appealing? What typeface stands out? We are youth so it was easy to answer those questions. We decided to go with a colour palette that was bolder and more colourful than pastels but still neutral enough where it was friendly for all. This consisted of a primary turquoise and dark gray, alongside secondary red, purple, and green. To create a bold and playful aesthetic, Koulen was chosen as the primary typeface with its rounded and tall geometric letters. Manrope was chosen as the secondary typeface as it is easy to read at smaller font sizes while maintaining a modern look. For the graphics, seeing as we were at Alicehacks, the Alice in Wonderland themed hackathon, we chose Alice in Wonderland characters as our graphic of choice. These graphics would be used in the onboarding, friend group icons, and user profile pictures. These graphics were drawn by hand throughout the hackathon."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "hopperhangout-16",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "hopperhangout-15",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "With our brand system now in place, we dove into creating high-fidelity wireframes. Typically, the product design process would include a medium-fidelity phase, but the fast-paced nature of the hackathon demanded a swift transition to a fully functional and final product. We used Figma for this wireframing process, setting up components to streamline our workflow. Thanks to the groundwork laid on paper, translating our ideas into a high-quality wireframe was seamless. We opted to design everything from scratch, including buttons, switches, and cards, to create a truly bespoke application. This stage sparked the creation of the innovative adaptive app action bar. This innovative element of our application would display a primary action and a secondary action simultaneously without taking up too much screen space. The buttons for primary and secondary actions would be adaptive, meaning the primary action could become the secondary action in some contexts, and vice versa. The actions could also be labeled with text, which would lead to a higher click-through rate from the user. These actions were contextually adaptive, allowing for flexibility in their roles. Text labels for the actions further enhanced user engagement. We chose Google's Material Icons for their simplicity and adaptability to our app's visual style. Throughout this process, we also integrated our custom-designed graphics, adding a fun and unique touch."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "hopperhangout-18",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "hopperhangout-17",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "After a few hours of wireframing, we took a well-deserved break. We indulged in a light-hearted critique session, roasting some of the less-than-stellar graphic designs from school accounts on Instagram. This “exercise” wasn’t just for laughs; it served as a little review of design principles and helped us identify common pitfalls to avoid in our own app design."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "hopperhangout-20",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "hopperhangout-19",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "We returned to our Figma project, continuing to work on our wireframes. Simplicity and intuitiveness were our guiding principles. We organized the app's features into three distinct tabs on the bottom navigation bar: home, map, and profile."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "hopperhangout-22",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "hopperhangout-21",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Upon opening Hopper Hangout, users would be greeted by the Home tab, a dynamic dashboard displaying upcoming hangouts, recent friend groups, and personalized suggestions for new places to explore. This central hub would encourage user engagement and subtly promote sponsored events or businesses, ensuring a sustainable revenue model for our app."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "hopperhangout-24",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "hopperhangout-23",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "The map tab presents suggested locations, each tailored to the tastes and preferences of specific friend groups. For instance, a burger joint might be recommended for Friend Group A, while a hiking trail could be suggested for Friend Group B. Users have the option to filter these suggestions by category, choosing from parks, food, entertainment, and more. Additionally, if they choose to share their location, users can see their friends' locations on the map as well. This tab not only enhances local discovery but also strengthens connections between friends."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "hopperhangout-26",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "hopperhangout-25",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Finally, the profile tab serves as a hub for managing friend groups and hangouts. Users can view and edit their groups, as well as add new friends via a link or QR code. This streamlined approach ensures that all essential features are easily accessible, contributing to a user-friendly and enjoyable experience."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "hopperhangout-28",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "hopperhangout-27",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Early next morning, we crafted the onboarding experience. This critical phase of the user journey sets the initial impression and establishes the app's value proposition. Our objective was to design an onboarding flow that was both informative and engaging, effectively guiding new users through the app's functionalities and benefits in a visually compelling manner. The onboarding also had to learn about the user’s tastes and preferences. This was done with generic questions like “do you enjoy Chinese food” with a slider going from hate it to love it. Users would be able to slide through these questions on cards and tell the app what they like."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "hopperhangout-30",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "hopperhangout-29",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "After the design was complete, we linked our wireframes into a Figma prototype. This interactive mockup allowed us to simulate the user flow and experience the app as it would function in its final form. Animations were added between page navigations, breathing life into the prototype and adding a touch of polish. The smooth transitions and subtle animations not only enhanced the app's visual appeal but also contributed to a more intuitive and enjoyable user experience."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "hopperhangout-32",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "hopperhangout-31",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "With our prototype complete, it was time to prepare our submission for the Alicehacks closing ceremony. Andrew created a state diagram to show how all the features and interactions were connected. We opted for a slideshow presentation, narrated by Anita, along with videos on our Devpost highlighting the main features of an app to showcase our project and share our vision with the judges. We poured our hearts and souls into the presentation, highlighting the app's unique features, its potential impact on teen social lives, and the innovative design choices we had made."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "hopperhangout-34",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "hopperhangout-33",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Finally, the moment we were all waiting for arrived. The judges announced the winners of each category, and our hearts were pounding with anticipation. When they declared Hopper Hangout the recipient of the Best Design award, we were filled with joy and accomplishment. We had done it! Our hard work, dedication, and innovative design had paid off. We had accomplished our goal while delivering a new and beautifully designed mobile app."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "hopperhangout-36",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "hopperhangout-35",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Here are my key takeaways from this experience: A great hackathon project needs a spark of brilliance, an idea that's not only creative and innovative but also addresses a real-world problem that resonates with people. That's what catches the judges' eyes. And of course, in the fast-paced environment of a hackathon, working swiftly is key. But for design, focus on planning out the experience beforehand, iterating early ideas on paper, and creating components in Figma. But above all, it's the shared vision and the proper planning with your teammates that truly ties it all together."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "hopperhangout-38",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "hopperhangout-37",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Alicehacks was an absolute blast, and seeing Hopper Hangout be successful was such an amazing experience! I'm hooked on hackathons now and can't wait for the next. Until then, I'll be honing my design skills and working on some other projects. Cheers!"
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            }
+          ],
+          "title": "Design process"
+        }
+      ],
+      "showSideMenu": false,
+      "slug": {
+        "_type": "slug",
+        "current": "hopper-hangout"
+      },
+      "summary": "The app crafts hangout plans to match group preferences, ensuring accessible and agreeable destinations for all.",
+      "title": "Hopper Hangout",
+      "year": 2023
+    }
+  ]
+}

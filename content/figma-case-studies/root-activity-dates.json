@@ -1,0 +1,213 @@
+{
+  "researchedAt": "2026-10-05T07:13:27.608Z",
+  "method": "Primary author and official event sources. Project authorship periods, event periods, and creation/release dates are recorded separately. Unknown end dates are retained as unknown; migration timestamps, crawl dates, and unrelated staff dates were not used.",
+  "sources": {
+    "currentResume": {
+      "title": "Current Winston Zhao résumé",
+      "path": "/Users/winston/repo/winstonzhao-v3/public/winstonzhao-resume.pdf",
+      "kind": "author-maintained résumé",
+      "access": "Local file text extracted with pypdf and full page visually inspected; no PDF metadata timestamps used."
+    },
+    "olderResume": {
+      "title": "Older Winston Zhao résumé",
+      "url": "https://winstonzhao.ca/resume.pdf",
+      "kind": "author-maintained résumé",
+      "access": "Opened as one-page PDF through web tool."
+    },
+    "authorLinkedIn": {
+      "title": "Winston Zhao public LinkedIn profile",
+      "url": "https://ca.linkedin.com/in/zhaowinston",
+      "kind": "author-maintained profile",
+      "access": "Public author profile content returned by search index; direct open denied by robots.txt. Dates are explicit profile date fields, not inferred from relative post ages."
+    },
+    "hack404Official": {
+      "title": "Hack404 official event website",
+      "url": "https://hack404.dev/",
+      "kind": "official event website",
+      "access": "Opened page states exact event date."
+    },
+    "summerHacksOfficial": {
+      "title": "SummerHacks official event website",
+      "url": "https://www.summerhacks.ca/",
+      "kind": "official event website",
+      "access": "Opened page states exact event date and lists Winston Zhao on the organizing team."
+    },
+    "villioOfficial": {
+      "title": "Villio AI official product website",
+      "url": "https://www.villio.ai/",
+      "kind": "official product website",
+      "access": "Public product page describes service platform but supplies no project start, author work end, or dated launch."
+    }
+  },
+  "projects": [
+    {
+      "slug": "villio-ai",
+      "title": "Villio AI",
+      "authorTimeline": {
+        "start": "2025-05",
+        "end": null,
+        "precision": "month-start-only",
+        "sourceIds": [
+          "olderResume"
+        ],
+        "endStatus": "unknown",
+        "historicalStatus": "Older author résumé described the role as ongoing; this is not current proof of ongoing work."
+      },
+      "eventTimeline": null,
+      "creationYearSupported": 2025,
+      "lastWorkDateSupported": null,
+      "recommendedFallbackSortDate": "2025-05",
+      "confidence": "high for start; unknown for end",
+      "notes": [
+        "Newer local résumé omits Villio; omission does not establish an end date.",
+        "Do not borrow a colleague’s Villio employment end or the current year as Winston’s end date.",
+        "No exact authored asset date or public launch date found."
+      ]
+    },
+    {
+      "slug": "hack404-launchpad",
+      "title": "Hack404 Launchpad",
+      "authorTimeline": {
+        "start": "2025-03",
+        "end": "2025-08",
+        "precision": "month",
+        "sourceIds": [
+          "olderResume",
+          "authorLinkedIn"
+        ]
+      },
+      "eventTimeline": {
+        "start": "2025-07-04",
+        "end": "2025-07-06",
+        "precision": "day",
+        "sourceIds": [
+          "hack404Official"
+        ]
+      },
+      "creationYearSupported": 2025,
+      "lastWorkDateSupported": "2025-08",
+      "recommendedFallbackSortDate": "2025-08",
+      "confidence": "high",
+      "notes": [
+        "Role date range covers Winston’s Hack404 design work. The portal is part of that work, but its exact individual asset creation date is unavailable.",
+        "Official event timing supports the 2025 iteration; the event end is separate from the author’s later role end."
+      ]
+    },
+    {
+      "slug": "summerhacks",
+      "title": "SummerHacks",
+      "authorTimeline": {
+        "start": "2025-11",
+        "end": "2026-05",
+        "precision": "month",
+        "sourceIds": [
+          "authorLinkedIn"
+        ]
+      },
+      "eventTimeline": {
+        "start": "2026-08-08",
+        "end": "2026-08-09",
+        "precision": "day",
+        "sourceIds": [
+          "summerHacksOfficial"
+        ]
+      },
+      "creationYearSupported": 2025,
+      "latestWorkYearSupported": 2026,
+      "lastWorkDateSupported": "2026-05",
+      "recommendedFallbackSortDate": "2026-05",
+      "confidence": "high for explicitly listed role and event periods",
+      "notes": [
+        "The author’s involvement began in 2025, ended in May 2026 according to his indexed profile, and the official event occurred in August 2026.",
+        "For creation ordering use November 2025; for latest authored work ordering use May 2026. Do not silently substitute the event date for an authored design date.",
+        "Current résumé lists SummerHacks in Community without dates; exact individual design asset dates are unavailable."
+      ]
+    },
+    {
+      "slug": "augwa",
+      "title": "Augwa",
+      "authorTimeline": {
+        "start": "2025-05",
+        "end": "2025-08",
+        "precision": "month",
+        "sourceIds": [
+          "currentResume",
+          "olderResume"
+        ]
+      },
+      "eventTimeline": null,
+      "creationYearSupported": 2025,
+      "lastWorkDateSupported": "2025-08",
+      "recommendedFallbackSortDate": "2025-08",
+      "confidence": "high",
+      "notes": [
+        "Current and older author résumés agree on the internship period.",
+        "Exact individual dashboard/mobile screen creation dates are unavailable."
+      ]
+    }
+  ],
+  "additionalAuthorTimelines": [
+    {
+      "slug": "newly",
+      "title": "Newly",
+      "start": "2026-05",
+      "end": "2026-10",
+      "precision": "month",
+      "sourceIds": [
+        "currentResume"
+      ],
+      "note": "Author-stated work period; month-level end, no exact day."
+    },
+    {
+      "slug": "yelo",
+      "title": "Yelo",
+      "start": "2026-01",
+      "end": "2026-04",
+      "precision": "month",
+      "sourceIds": [
+        "currentResume"
+      ]
+    },
+    {
+      "slug": "elapse-app-design",
+      "title": "Elapse App Design",
+      "start": "2022-11",
+      "end": "2025-01",
+      "precision": "month",
+      "sourceIds": [
+        "currentResume",
+        "olderResume",
+        "authorLinkedIn"
+      ],
+      "note": "App cofounder/product design role covers multiple years. This does not by itself date the original 2023 portfolio design asset."
+    },
+    {
+      "slug": "the-drive-team-podcast",
+      "title": "The Drive Team Podcast",
+      "start": "2022-10",
+      "end": "2023-07",
+      "precision": "month",
+      "sourceIds": [
+        "authorLinkedIn"
+      ],
+      "note": "Creation-year 2022 is consistent with current CMS year; most recent author activity is 2023."
+    },
+    {
+      "slug": "heatmap-portal-redesign",
+      "title": "Heatmap Portal Redesign",
+      "start": "2024-05",
+      "end": "2024-08",
+      "precision": "month",
+      "sourceIds": [
+        "currentResume",
+        "olderResume"
+      ],
+      "note": "This is the employment range; the case study itself gives the more specific project range July–August 2024. Prefer project-specific evidence when dating the redesign."
+    }
+  ],
+  "unresolved": [
+    "Villio author work end or exact launch date.",
+    "Exact individual asset creation dates for these four design projects.",
+    "YouTube IDs jNJzbm1Zd14 and ktJ5cc93fWk did not produce indexed release-date evidence in a bounded search."
+  ]
+}

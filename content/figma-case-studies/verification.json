@@ -1,0 +1,344 @@
+{
+  "verifiedAt": "2026-10-05T06:57:16.474Z",
+  "verified": true,
+  "sanity": {
+    "expectedDocuments": 17,
+    "foundDocuments": 17,
+    "referencedImageAssets": 35,
+    "validImageAssets": 35,
+    "invalidAssets": [],
+    "projects": [
+      {
+        "id": "figma-portfolio-yelo",
+        "title": "Yelo",
+        "slug": "yelo",
+        "year": 2026,
+        "titleMatches": true,
+        "sectionCount": 3,
+        "sectionsPopulated": true,
+        "coverAsset": "image-8f29a6534f956c88e7f433daf2be878a06b3073a-716x717-png",
+        "heroAsset": "image-8f29a6534f956c88e7f433daf2be878a06b3073a-716x717-png",
+        "imageAssetsValid": true
+      },
+      {
+        "id": "figma-portfolio-villio-ai",
+        "title": "Villio AI",
+        "slug": "villio-ai",
+        "year": 2025,
+        "titleMatches": true,
+        "sectionCount": 3,
+        "sectionsPopulated": true,
+        "coverAsset": "image-a9a1516f1788362fdb0e0e9b71f97b9c1760d7fb-716x717-png",
+        "heroAsset": "image-a9a1516f1788362fdb0e0e9b71f97b9c1760d7fb-716x717-png",
+        "imageAssetsValid": true
+      },
+      {
+        "id": "figma-portfolio-newly",
+        "title": "Newly",
+        "slug": "newly",
+        "year": 2026,
+        "titleMatches": true,
+        "sectionCount": 3,
+        "sectionsPopulated": true,
+        "coverAsset": "image-8c0532a34265163a72526d4489d33719f5767f64-1583x991-png",
+        "heroAsset": "image-8c0532a34265163a72526d4489d33719f5767f64-1583x991-png",
+        "imageAssetsValid": true
+      },
+      {
+        "id": "figma-portfolio-augwa",
+        "title": "Augwa",
+        "slug": "augwa",
+        "year": 2025,
+        "titleMatches": true,
+        "sectionCount": 3,
+        "sectionsPopulated": true,
+        "coverAsset": "image-a4f75e07fcbbf47f1020354f366078935123aa7e-1008x613-png",
+        "heroAsset": "image-a4f75e07fcbbf47f1020354f366078935123aa7e-1008x613-png",
+        "imageAssetsValid": true
+      },
+      {
+        "id": "figma-portfolio-hack404-launchpad",
+        "title": "Hack404 Launchpad",
+        "slug": "hack404-launchpad",
+        "year": 2025,
+        "titleMatches": true,
+        "sectionCount": 3,
+        "sectionsPopulated": true,
+        "coverAsset": "image-44ad2d436faeb8b0b7268fe42f61f5f6efe896cc-1280x832-png",
+        "heroAsset": "image-44ad2d436faeb8b0b7268fe42f61f5f6efe896cc-1280x832-png",
+        "imageAssetsValid": true
+      },
+      {
+        "id": "figma-portfolio-summerhacks",
+        "title": "SummerHacks",
+        "slug": "summerhacks",
+        "year": 2026,
+        "titleMatches": true,
+        "sectionCount": 3,
+        "sectionsPopulated": true,
+        "coverAsset": "image-d9b8c0b069a1859f6fc394e59616ea55f9093acc-1280x832-png",
+        "heroAsset": "image-d9b8c0b069a1859f6fc394e59616ea55f9093acc-1280x832-png",
+        "imageAssetsValid": true
+      },
+      {
+        "id": "figma-portfolio-costudy",
+        "title": "CoStudy",
+        "slug": "costudy",
+        "year": 2025,
+        "titleMatches": true,
+        "sectionCount": 3,
+        "sectionsPopulated": true,
+        "coverAsset": "image-773f7bd3030ef819e60ece8aaf6f4b5921a7f016-716x717-png",
+        "heroAsset": "image-773f7bd3030ef819e60ece8aaf6f4b5921a7f016-716x717-png",
+        "imageAssetsValid": true
+      },
+      {
+        "id": "figma-portfolio-cocart",
+        "title": "CoCart",
+        "slug": "cocart",
+        "year": 2026,
+        "titleMatches": true,
+        "sectionCount": 3,
+        "sectionsPopulated": true,
+        "coverAsset": "image-4a93eda423afa38b09733a3feeac5c29f8624e24-716x717-png",
+        "heroAsset": "image-4a93eda423afa38b09733a3feeac5c29f8624e24-716x717-png",
+        "imageAssetsValid": true
+      },
+      {
+        "id": "figma-portfolio-ryri",
+        "title": "Ryri",
+        "slug": "ryri",
+        "year": 2026,
+        "titleMatches": true,
+        "sectionCount": 3,
+        "sectionsPopulated": true,
+        "coverAsset": "image-5a11bee732c97a91f6e6639b9bae33eb5ce378f9-716x717-png",
+        "heroAsset": "image-5a11bee732c97a91f6e6639b9bae33eb5ce378f9-716x717-png",
+        "imageAssetsValid": true
+      },
+      {
+        "id": "figma-portfolio-munisync",
+        "title": "MuniSync",
+        "slug": "munisync",
+        "year": 2024,
+        "titleMatches": true,
+        "sectionCount": 3,
+        "sectionsPopulated": true,
+        "coverAsset": "image-379bbd4c16d13a252f3de473bfbc4d02b24992ea-716x717-png",
+        "heroAsset": "image-379bbd4c16d13a252f3de473bfbc4d02b24992ea-716x717-png",
+        "imageAssetsValid": true
+      },
+      {
+        "id": "figma-portfolio-smartbasket",
+        "title": "SmartBasket",
+        "slug": "smartbasket",
+        "year": 2025,
+        "titleMatches": true,
+        "sectionCount": 3,
+        "sectionsPopulated": true,
+        "coverAsset": "image-23386ead098cc79561243b37decc1ace6cdac7ac-716x717-png",
+        "heroAsset": "image-23386ead098cc79561243b37decc1ace6cdac7ac-716x717-png",
+        "imageAssetsValid": true
+      },
+      {
+        "id": "figma-portfolio-arca",
+        "title": "Arca",
+        "slug": "arca",
+        "year": 2025,
+        "titleMatches": true,
+        "sectionCount": 3,
+        "sectionsPopulated": true,
+        "coverAsset": "image-5fbe3f8a5a0c1de0c02c37d72e5c942a67b4f8b5-716x717-png",
+        "heroAsset": "image-5fbe3f8a5a0c1de0c02c37d72e5c942a67b4f8b5-716x717-png",
+        "imageAssetsValid": true
+      },
+      {
+        "id": "figma-portfolio-sparks",
+        "title": "Sparks",
+        "slug": "sparks",
+        "year": 2026,
+        "titleMatches": true,
+        "sectionCount": 3,
+        "sectionsPopulated": true,
+        "coverAsset": "image-5529dafe72c6cc8f8462b5d6a2612238d6af9b0c-716x717-png",
+        "heroAsset": "image-5529dafe72c6cc8f8462b5d6a2612238d6af9b0c-716x717-png",
+        "imageAssetsValid": true
+      },
+      {
+        "id": "figma-portfolio-garden",
+        "title": "Garden",
+        "slug": "garden",
+        "year": 2026,
+        "titleMatches": true,
+        "sectionCount": 3,
+        "sectionsPopulated": true,
+        "coverAsset": "image-ccc88c00e852de29c6d8ed4932dbaf8238c6eda7-716x717-png",
+        "heroAsset": "image-ccc88c00e852de29c6d8ed4932dbaf8238c6eda7-716x717-png",
+        "imageAssetsValid": true
+      },
+      {
+        "id": "figma-portfolio-habitat",
+        "title": "HabitAt",
+        "slug": "habitat",
+        "year": 2026,
+        "titleMatches": true,
+        "sectionCount": 3,
+        "sectionsPopulated": true,
+        "coverAsset": "image-0dced57f3eca6eda3be9c785a2fa4873ce61284c-716x717-png",
+        "heroAsset": "image-0dced57f3eca6eda3be9c785a2fa4873ce61284c-716x717-png",
+        "imageAssetsValid": true
+      }
+    ],
+    "legacy": [
+      {
+        "id": "legacy-portfolio-elapsedesign",
+        "slug": "elapse-app-design",
+        "bodyPreserved": true,
+        "allFieldsOutsideImagesPreserved": true,
+        "coverAsset": "image-8c49073b4b5525fe754b2d170217c0d777f2b7c1-716x717-png",
+        "heroAsset": "image-8c49073b4b5525fe754b2d170217c0d777f2b7c1-716x717-png"
+      },
+      {
+        "id": "legacy-portfolio-hopperhangout",
+        "slug": "hopper-hangout",
+        "bodyPreserved": true,
+        "allFieldsOutsideImagesPreserved": true,
+        "coverAsset": "image-7670f22c7ccfdf0347d7c8c051f713190aeae892-716x717-png",
+        "heroAsset": "image-7670f22c7ccfdf0347d7c8c051f713190aeae892-716x717-png"
+      }
+    ]
+  },
+  "routes": [
+    {
+      "slug": "yelo",
+      "url": "https://winston.studio/projects/yelo",
+      "status": 200,
+      "title": "Yelo",
+      "titleMatches": true,
+      "cache": "HIT"
+    },
+    {
+      "slug": "villio-ai",
+      "url": "https://winston.studio/projects/villio-ai",
+      "status": 200,
+      "title": "Villio AI",
+      "titleMatches": true,
+      "cache": "MISS"
+    },
+    {
+      "slug": "newly",
+      "url": "https://winston.studio/projects/newly",
+      "status": 200,
+      "title": "Newly",
+      "titleMatches": true,
+      "cache": "HIT"
+    },
+    {
+      "slug": "augwa",
+      "url": "https://winston.studio/projects/augwa",
+      "status": 200,
+      "title": "Augwa",
+      "titleMatches": true,
+      "cache": "MISS"
+    },
+    {
+      "slug": "hack404-launchpad",
+      "url": "https://winston.studio/projects/hack404-launchpad",
+      "status": 200,
+      "title": "Hack404 Launchpad",
+      "titleMatches": true,
+      "cache": "MISS"
+    },
+    {
+      "slug": "summerhacks",
+      "url": "https://winston.studio/projects/summerhacks",
+      "status": 200,
+      "title": "SummerHacks",
+      "titleMatches": true,
+      "cache": "MISS"
+    },
+    {
+      "slug": "costudy",
+      "url": "https://winston.studio/projects/costudy",
+      "status": 200,
+      "title": "CoStudy",
+      "titleMatches": true,
+      "cache": "MISS"
+    },
+    {
+      "slug": "cocart",
+      "url": "https://winston.studio/projects/cocart",
+      "status": 200,
+      "title": "CoCart",
+      "titleMatches": true,
+      "cache": "MISS"
+    },
+    {
+      "slug": "ryri",
+      "url": "https://winston.studio/projects/ryri",
+      "status": 200,
+      "title": "Ryri",
+      "titleMatches": true,
+      "cache": "MISS"
+    },
+    {
+      "slug": "munisync",
+      "url": "https://winston.studio/projects/munisync",
+      "status": 200,
+      "title": "MuniSync",
+      "titleMatches": true,
+      "cache": "MISS"
+    },
+    {
+      "slug": "smartbasket",
+      "url": "https://winston.studio/projects/smartbasket",
+      "status": 200,
+      "title": "SmartBasket",
+      "titleMatches": true,
+      "cache": "MISS"
+    },
+    {
+      "slug": "arca",
+      "url": "https://winston.studio/projects/arca",
+      "status": 200,
+      "title": "Arca",
+      "titleMatches": true,
+      "cache": "MISS"
+    },
+    {
+      "slug": "sparks",
+      "url": "https://winston.studio/projects/sparks",
+      "status": 200,
+      "title": "Sparks",
+      "titleMatches": true,
+      "cache": "MISS"
+    },
+    {
+      "slug": "garden",
+      "url": "https://winston.studio/projects/garden",
+      "status": 200,
+      "title": "Garden",
+      "titleMatches": true,
+      "cache": "MISS"
+    },
+    {
+      "slug": "habitat",
+      "url": "https://winston.studio/projects/habitat",
+      "status": 200,
+      "title": "HabitAt",
+      "titleMatches": true,
+      "cache": "MISS"
+    }
+  ],
+  "prosePolish": {
+    "transactionId": "gYBbIurMXvrOqyYf7SVKHm",
+    "projectIds": [
+      "figma-portfolio-yelo",
+      "figma-portfolio-summerhacks",
+      "figma-portfolio-garden",
+      "figma-portfolio-habitat",
+      "figma-portfolio-newly"
+    ],
+    "verified": true
+  }
+}

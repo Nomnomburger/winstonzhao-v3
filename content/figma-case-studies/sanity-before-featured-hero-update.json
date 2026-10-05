@@ -1,0 +1,2996 @@
+{
+  "savedAt": "2026-10-05T08:22:14.114Z",
+  "documents": [
+    {
+      "_createdAt": "2026-10-01T23:11:12Z",
+      "_id": "legacy-portfolio-elapsedesign",
+      "_rev": "gYBbIurMXvrOqyYf7SfR0J",
+      "_type": "project",
+      "_updatedAt": "2026-10-05T08:16:10Z",
+      "client": "Vex Robotics Competition",
+      "coverImage": {
+        "_type": "image",
+        "alt": "Elapse App Design — Scene 10",
+        "asset": {
+          "_ref": "image-0b98c6114bd2f841d4d5181d57b477fb052c387e-1440x1080-png",
+          "_type": "reference"
+        }
+      },
+      "description": "A tournament companion that brings VEX match schedules, team rankings, and scouting into one mobile experience.",
+      "details": [
+        {
+          "_key": "elapse-role",
+          "_type": "detailItem",
+          "label": "Role",
+          "value": "Co-founder / Product Designer"
+        },
+        {
+          "_key": "elapse-timeline",
+          "_type": "detailItem",
+          "label": "Timeline",
+          "value": "November 2022–January 2025"
+        },
+        {
+          "_key": "elapsedesign-9",
+          "_type": "detailItem",
+          "label": "Activity",
+          "value": "VEX Robotics Competition"
+        },
+        {
+          "_key": "elapsedesign-10",
+          "_type": "detailItem",
+          "label": "App Status",
+          "value": "Released on iOS and Android"
+        },
+        {
+          "_key": "elapsedesign-11",
+          "_type": "detailItem",
+          "label": "Key Features",
+          "value": "Schedules, rankings & scouting"
+        },
+        {
+          "_key": "elapsedesign-12",
+          "_type": "detailItem",
+          "label": "UI Design",
+          "value": "Figma"
+        }
+      ],
+      "discipline": "UI/UX DESIGN",
+      "featured": true,
+      "hero": [
+        {
+          "_key": "hero",
+          "_type": "mediaImage",
+          "alt": "Elapse mobile app shown in an iPhone mockup",
+          "asset": {
+            "_ref": "image-8c49073b4b5525fe754b2d170217c0d777f2b7c1-716x717-png",
+            "_type": "reference"
+          },
+          "size": "full"
+        }
+      ],
+      "impact": "Released on iOS and Android; reached 3,500+ users globally.",
+      "intro": "After four years competing in VEX Robotics, I knew how much attention tournament logistics could take away from the competition itself. I designed Elapse to put a team's next match, tournament information, and scouting tools within easy reach.",
+      "link": {
+        "label": "DOWNLOAD NOW",
+        "url": "https://www.elapseapp.com/"
+      },
+      "order": 4,
+      "overview": "Elapse is a tournament companion for VEX Robotics competitors. As co-founder and product designer, I shaped the interface around the decisions teams make throughout an event: when to head to the field, who they are playing with, and which teams to scout. The design grew from a personalized schedule into a broader mobile experience with rankings and ScoutSheets.",
+      "sections": [
+        {
+          "_key": "elapse-context",
+          "_type": "projectSection",
+          "content": [
+            {
+              "_key": "elapse-context-p1",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "elapse-context-p1-text",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "A robotics tournament asks teams to manage a lot at once: prepare the robot, find alliance partners, scout other teams, and arrive at the right field on time. During my four years competing, I experienced how delays and missed announcements could make that harder. Checking the schedule was another interruption when useful information was spread across multiple screens."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "elapse-context-p2",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "elapse-context-p2-text",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "The original concept focused on three problems: finding key tournament information, understanding schedule changes, and receiving announcements. I proposed a personalized home screen, live timing, and an announcement feed with organizer controls. These ideas established the direction for Elapse; the released mobile app now centres on tournament mode, upcoming matches, and team scouting."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            }
+          ],
+          "heading": "Built from the competition floor",
+          "title": "Context"
+        },
+        {
+          "_key": "elapse-structure",
+          "_type": "projectSection",
+          "content": [
+            {
+              "_key": "elapse-structure-p1",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "elapse-structure-p1-text",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "I organized the experience around a team's tournament day. The home screen surfaces the next match and upcoming schedule, with tournament search close by. From a match, a competitor can move into an alliance team's profile, see its ranking and record, and return to that team's matches. The flow map connects these routes so a schedule entry becomes a starting point for preparation."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "elapse-structure-p2",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "elapse-structure-p2-text",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Later designs extend that structure with dedicated tournament, scouting, and explore areas. Onboarding asks for a team number to personalize the experience and offers an option to continue without an account. Account creation is introduced alongside CloudScout, where syncing and sharing give competitors a concrete reason to sign in."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "elapsedesign-15",
+              "_type": "mediaImage",
+              "alt": "Elapse interface flow map connecting home, schedules, match details, team profiles, search, and settings",
+              "asset": {
+                "_ref": "image-bb95d054eccf29ebd6f503e05817d3e441addae9-2095x2396-png",
+                "_type": "reference"
+              },
+              "caption": "The original flow map connects a team's schedule to match details, alliance profiles, and settings.",
+              "size": "full"
+            }
+          ],
+          "heading": "Start with the team, then connect the information",
+          "title": "Structure"
+        },
+        {
+          "_key": "elapse-tournament",
+          "_type": "projectSection",
+          "content": [
+            {
+              "_key": "elapse-tournament-p1",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "elapse-tournament-p1-text",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "The next-match card gives the most immediate decision the strongest hierarchy. A large match number sits above the alliance teams, field, and start time. The upcoming list remains below it, so competitors can see what comes after without opening the full schedule. Search and the team's tournament context stay available around that priority."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "elapse-tournament-p2",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "elapse-tournament-p2-text",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Match details bring the number, time, field, and alliance information together. The Figma work includes separate states for upcoming and completed matches, a team's own matches, and live timing. In the live-timing design, a delay is shown alongside the original time. That makes the schedule change explicit while retaining the reference a competitor may already know."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "elapsedesign-13",
+              "_type": "mediaImage",
+              "alt": "Elapse match information screen in an iPhone mockup, showing match Q29, its start time, field, and alliance teams",
+              "asset": {
+                "_ref": "image-3687dc9ccc7a7fe2dd02e9f59ad45f78e7212276-3680x2760-png",
+                "_type": "reference"
+              },
+              "caption": "Match information groups the field and start time with alliance team rankings and records.",
+              "size": "full"
+            }
+          ],
+          "heading": "Make the next match the first thing to see",
+          "title": "Tournament day"
+        },
+        {
+          "_key": "elapse-scouting",
+          "_type": "projectSection",
+          "content": [
+            {
+              "_key": "elapse-scouting-p1",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "elapse-scouting-p1-text",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Scouting expands Elapse beyond checking when to play. The CloudScout designs separate ScoutSheets from a personal picklist, giving teams a place to record observations and organize potential alliance partners. A team profile includes robot specifications, photos, scouted matches, and notes. Those fields connect the statistics a competitor can read to the observations they make at the event."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "elapse-scouting-p2",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "elapse-scouting-p2-text",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "I also explored collaboration through TeamSync: shared scout data, group join codes, and member roles. The sharing designs make access visible, with controls to copy a link or stop sharing. TeamSync and the organizer portal remained concepts, while ScoutSheets became part of the released mobile app."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            }
+          ],
+          "heading": "Carry team knowledge through the tournament",
+          "title": "Scouting"
+        },
+        {
+          "_key": "elapse-system",
+          "_type": "projectSection",
+          "content": [
+            {
+              "_key": "elapse-system-p1",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "elapse-system-p1-text",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "The interface uses a pale cyan frame, white content cards, and a pink highlight for the next match. Large match and team numbers anchor screens that contain many smaller statistics. Red and blue alliance colours reinforce the grouping already named in the headings. Consistent rows keep ranks, records, and points aligned as competitors compare teams."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "elapse-system-p2",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "elapse-system-p2-text",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "The design file also covers light, dark, and system-following themes, onboarding choices, filters, and account settings. The original desktop concept carries the same hierarchy into a two-panel layout: the schedule stays on the left while selected information opens on the right. It documents the broader design direction, alongside the mobile screens that became the app."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "elapsedesign-14",
+              "_type": "mediaImage",
+              "alt": "Original Elapse desktop concept shown on a laptop, with the next match and upcoming schedule in a left panel",
+              "asset": {
+                "_ref": "image-01f03a3abde68fd7a88c39293aa1d5fc98727d08-2500x1875-png",
+                "_type": "reference"
+              },
+              "caption": "The original desktop concept keeps the schedule visible beside a larger detail panel.",
+              "size": "full"
+            }
+          ],
+          "heading": "A calm frame for dense tournament data",
+          "title": "Visual system"
+        },
+        {
+          "_key": "elapse-release",
+          "_type": "projectSection",
+          "content": [
+            {
+              "_key": "elapse-release-p1",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "elapse-release-p1-text",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Elapse launched on iOS in November 2024 and is also available on Android. The released app includes tournament mode, upcoming matches, and ScoutSheets. As co-founder and product designer, I led a team of eight through design and development. Elapse reached 3,500+ users globally."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "elapse-release-p2",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "elapse-release-p2-text",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "This project brought together my experience as a competitor and my work as a designer. I wanted the app to stay useful in the rush of an event, so the next match remained the anchor as scouting and ranking tools expanded the scope. The early desktop, organizer, and sharing concepts remain part of the design exploration shown here."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            }
+          ],
+          "heading": "From a tournament idea to a released app",
+          "title": "Release"
+        }
+      ],
+      "showSideMenu": true,
+      "slug": {
+        "_type": "slug",
+        "current": "elapse-app-design"
+      },
+      "summary": "Helping robotics teams move from checking the schedule to preparing for their next match.",
+      "title": "Elapse App Design",
+      "year": 2023
+    },
+    {
+      "_createdAt": "2026-10-01T23:11:12Z",
+      "_id": "legacy-portfolio-heatmap",
+      "_rev": "gYBbIurMXvrOqyYf7SfR0J",
+      "_type": "project",
+      "_updatedAt": "2026-10-05T08:16:10Z",
+      "client": "INTERNSHIP",
+      "coverImage": {
+        "_type": "image",
+        "alt": "Laptop displaying the redesigned Heatmap analytics dashboard on a desk",
+        "asset": {
+          "_ref": "image-661612863671ffa444405207c2f6d8777494c3f6-2000x1500-png",
+          "_type": "reference"
+        }
+      },
+      "description": "Product Design Intern @ Full Sprint",
+      "details": [
+        {
+          "_key": "detail_0002",
+          "_type": "detailItem",
+          "label": "Role",
+          "value": "Product Design Intern"
+        },
+        {
+          "_key": "detail_0003",
+          "_type": "detailItem",
+          "label": "Company",
+          "value": "Full Sprint – Good Design LLC"
+        },
+        {
+          "_key": "detail_0004",
+          "_type": "detailItem",
+          "label": "Client",
+          "value": "Heatmap"
+        },
+        {
+          "_key": "detail_0005",
+          "_type": "detailItem",
+          "label": "Duration",
+          "value": "July 2024 – August 2024"
+        }
+      ],
+      "discipline": "UI/UX DESIGN",
+      "featured": true,
+      "hero": [
+        {
+          "_key": "image_0001",
+          "_type": "mediaImage",
+          "alt": "Laptop displaying the redesigned Heatmap analytics dashboard on a desk",
+          "asset": {
+            "_ref": "image-661612863671ffa444405207c2f6d8777494c3f6-2000x1500-png",
+            "_type": "reference"
+          },
+          "size": "full"
+        }
+      ],
+      "intro": "During my Full Sprint internship in July 2024, I redesigned Heatmap’s interface to improve navigation and scalability. As new features expanded the platform, the UI became fragmented. This case study details the process of creating a more cohesive and user-friendly design.",
+      "link": {
+        "label": "HEATMAP.COM",
+        "url": "https://heatmap.com"
+      },
+      "order": 2,
+      "overview": "It was July 2024 when I was onboarded with the challenge of reimagining the interface for Heatmap during my internship at Full Sprint. Heatmap (Heatmap.com) is an innovative analytics platform that helps small businesses gain insights into user interactions on their websites. By visualizing the most clicked areas (heatmaps), providing screen recordings, and offering AI-driven insights, Heatmap empowers business owners to make data-driven decisions for their online storefronts. With new features constantly being added, the existing interface became increasingly fragmented and difficult to navigate. This case study details the redesign process aimed at creating a cohesive, scalable experience that aligns with Heatmap’s updated design language and expanded feature set.",
+      "sections": [
+        {
+          "_key": "section_0072",
+          "_type": "projectSection",
+          "content": [
+            {
+              "_key": "image_0070",
+              "_type": "mediaImage",
+              "alt": "Overhead laptop mockup showing the redesigned Heatmap portal",
+              "asset": {
+                "_ref": "image-1aa0840e5e8ba2d74128f0b92caa31eec8c78e1e-2000x1500-png",
+                "_type": "reference"
+              },
+              "size": "full"
+            },
+            {
+              "_key": "image_0071",
+              "_type": "mediaImage",
+              "alt": "Heatmap analytics dashboard before and after the portal redesign",
+              "asset": {
+                "_ref": "image-95ee0a8a3088a408ec26b03c821636bb0dfb02a0-10182x3572-png",
+                "_type": "reference"
+              },
+              "size": "full"
+            }
+          ],
+          "title": "Overview"
+        },
+        {
+          "_key": "section_0006",
+          "_type": "projectSection",
+          "content": [
+            {
+              "_key": "block_000a",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_0009",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Imagine walking into a house where new furniture had been added whenever needed, without consideration for the overall layout or style. A modern sectional sofa sits next to a vintage rocking chair, while a minimalist coffee table clashes with an ornate cabinet. That's what Heatmap's interface had become – a collection of mismatched features that, while individually functional, created a confusing and disjointed experience. The result:"
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "block_000d",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_000b",
+                  "_type": "span",
+                  "marks": [
+                    "strong"
+                  ],
+                  "text": "Inconsistent navigation:"
+                },
+                {
+                  "_key": "span_000c",
+                  "_type": "span",
+                  "marks": [],
+                  "text": " The UI lacked a clear hierarchy or logical grouping of features."
+                }
+              ],
+              "level": 1,
+              "listItem": "bullet",
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "block_000g",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_000e",
+                  "_type": "span",
+                  "marks": [
+                    "strong"
+                  ],
+                  "text": "Fragmented design:"
+                },
+                {
+                  "_key": "span_000f",
+                  "_type": "span",
+                  "marks": [],
+                  "text": " The old interface felt incoherent as new modules were added arbitrarily."
+                }
+              ],
+              "level": 1,
+              "listItem": "bullet",
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "block_000j",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_000h",
+                  "_type": "span",
+                  "marks": [
+                    "strong"
+                  ],
+                  "text": "Increased cognitive load:"
+                },
+                {
+                  "_key": "span_000i",
+                  "_type": "span",
+                  "marks": [],
+                  "text": " Users struggled to find and learn new features in the disorganized layout."
+                }
+              ],
+              "level": 1,
+              "listItem": "bullet",
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "block_000m",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_000k",
+                  "_type": "span",
+                  "marks": [
+                    "strong"
+                  ],
+                  "text": "Unscalable structure:"
+                },
+                {
+                  "_key": "span_000l",
+                  "_type": "span",
+                  "marks": [],
+                  "text": " The existing framework could not smoothly accommodate expanding capabilities."
+                }
+              ],
+              "level": 1,
+              "listItem": "bullet",
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "block_000q",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_000o",
+                  "_type": "span",
+                  "marks": [
+                    "strong"
+                  ],
+                  "text": "Goal:"
+                },
+                {
+                  "_key": "span_000p",
+                  "_type": "span",
+                  "marks": [],
+                  "text": " Redesign the Heatmap portal so it presents a unified visual language, improves feature discoverability, and streamlines user workflows for analyzing data—all while remaining flexible for future updates."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            }
+          ],
+          "title": "Problem Statement"
+        },
+        {
+          "_key": "section_000r",
+          "_type": "projectSection",
+          "content": [
+            {
+              "_key": "block_000v",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_000u",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "2.1 Competitive Analysis"
+                }
+              ],
+              "markDefs": [],
+              "style": "h3"
+            },
+            {
+              "_key": "block_000y",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_000x",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Before jumping into solutions, I needed to understand what Heatmap was up against. I started by examining other analytics platforms, noting how they handled similar challenges. Key observations included:"
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "block_0010",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_000z",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Clear, Collapsible Navigation as a common strategy for handling multiple analytics features."
+                }
+              ],
+              "level": 1,
+              "listItem": "bullet",
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "block_0012",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_0011",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Split Views for showing data alongside a list for easy navigation."
+                }
+              ],
+              "level": 1,
+              "listItem": "bullet",
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "block_0014",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_0013",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Modular Dashboards that let users see at-a-glance metrics quickly and customize their data."
+                }
+              ],
+              "level": 1,
+              "listItem": "bullet",
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "image_0015",
+              "_type": "mediaImage",
+              "alt": "Competitive audit of analytics platforms and their navigation layouts",
+              "asset": {
+                "_ref": "image-98116904bd6b0c3826844524797c2e9399a91c53-3978x1382-png",
+                "_type": "reference"
+              },
+              "size": "content"
+            },
+            {
+              "_key": "block_0017",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_0016",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "These insights guided the redesign’s approach to navigation, layout, and data presentation."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "block_001a",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_0019",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "2.2 Platform Evaluation"
+                }
+              ],
+              "markDefs": [],
+              "style": "h3"
+            },
+            {
+              "_key": "block_001d",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_001c",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "I conducted a deep dive into the existing platform to understand its structure and usability challenges. This involved systematically mapping out features, analyzing navigation flows, and identifying inconsistencies."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "block_001f",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_001e",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Comprehensive Feature Audit: Mapped out every feature and its location in the portal."
+                }
+              ],
+              "level": 1,
+              "listItem": "bullet",
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "block_001h",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_001g",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Information Architecture Review: Assessed the hierarchical structure of pages and sections."
+                }
+              ],
+              "level": 1,
+              "listItem": "bullet",
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "block_001j",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_001i",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Navigation Pattern Analysis: Noted user pathways and identified bottlenecks."
+                }
+              ],
+              "level": 1,
+              "listItem": "bullet",
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "block_001l",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_001k",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Visual Consistency Check: Evaluated UI elements for brand alignment (where they existed)."
+                }
+              ],
+              "level": 1,
+              "listItem": "bullet",
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "block_001o",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_001n",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Key Findings"
+                }
+              ],
+              "markDefs": [],
+              "style": "h3"
+            },
+            {
+              "_key": "block_001r",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_001q",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Scattered Features: Users had to jump between multiple, unconnected sections for related insights."
+                }
+              ],
+              "level": 1,
+              "listItem": "number",
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "block_001t",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_001s",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Inconsistent UI Patterns: New feature additions led to mismatched button styles, card layouts, and icons."
+                }
+              ],
+              "level": 1,
+              "listItem": "number",
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "block_001v",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_001u",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Navigation Bottlenecks: Switching between heatmap views or applying filters took multiple steps."
+                }
+              ],
+              "level": 1,
+              "listItem": "number",
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "block_001x",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_001w",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Limited Scalability: The existing structure was not well suited to handle a growing array of features."
+                }
+              ],
+              "level": 1,
+              "listItem": "number",
+              "markDefs": [],
+              "style": "normal"
+            }
+          ],
+          "title": "Research"
+        },
+        {
+          "_key": "section_001y",
+          "_type": "projectSection",
+          "content": [
+            {
+              "_key": "block_0022",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_0021",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "With a tight timeline ahead, I needed to move efficiently. Drawing inspiration from Heatmap's public preview page—which showcased their modern visual direction—I began sketching out solutions. Instead of getting caught in lengthy wireframing cycles, we made the bold decision to jump straight from low-fidelity sketches to high-fidelity designs."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "block_0024",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_0023",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "3.1 Goals"
+                }
+              ],
+              "markDefs": [],
+              "style": "h3"
+            },
+            {
+              "_key": "block_0027",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_0026",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Establish a Cohesive Design System: Ensure visual and functional consistency across features."
+                }
+              ],
+              "level": 1,
+              "listItem": "bullet",
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "block_0029",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_0028",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Improve Navigation & Feature Discoverability: Simplify how users move between different toolsets (heatmaps, screen recordings, AI insights)."
+                }
+              ],
+              "level": 1,
+              "listItem": "bullet",
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "block_002b",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_002a",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Streamline Workflow: Reduce unnecessary clicks, unify related features, and present data more clearly."
+                }
+              ],
+              "level": 1,
+              "listItem": "bullet",
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "block_002d",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_002c",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Maintain Familiarity: Provide a smooth transition for existing users so they can quickly adapt."
+                }
+              ],
+              "level": 1,
+              "listItem": "bullet",
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "block_002g",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_002f",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "3.2 Design Foundation"
+                }
+              ],
+              "markDefs": [],
+              "style": "h3"
+            },
+            {
+              "_key": "block_002j",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_002i",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "A pivotal reference point was an existing public preview page, approved by stakeholders, that showcased a modernized color palette and typography. By applying this established visual style consistently throughout the platform, the redesign aimed to unify existing features, accommodate new ones, and keep the interface intuitive."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "block_002m",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_002l",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "3.3 Wireframing & Prototyping"
+                }
+              ],
+              "markDefs": [],
+              "style": "h3"
+            },
+            {
+              "_key": "block_002p",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_002o",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Low-Fidelity Wireframes: I started by sketching rough layouts for the navbar, dashboard, and key pages. This helped clarify the overall structure and key user flows."
+                }
+              ],
+              "level": 1,
+              "listItem": "number",
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "block_002r",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_002q",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Direct Jump to High-Fidelity: Due to a tighter timeline, we skipped the medium-fidelity stage. After reviewing the low-fidelity concepts with colleagues, I iterated directly in high-fidelity wireframes to refine visuals, layout, and components."
+                }
+              ],
+              "level": 1,
+              "listItem": "number",
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "block_002u",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_002s",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Advanced Figma Prototype: I built a fully interactive and size-responsive prototype in Figma, leveraging Auto Layout to ensure components and pages could scale or reflow easily. This prototype included:"
+                }
+              ],
+              "level": 1,
+              "listItem": "number",
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "block_002w",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_002v",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Clickable navigation elements"
+                }
+              ],
+              "level": 2,
+              "listItem": "bullet",
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "block_002y",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_002x",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Full-page transitions"
+                }
+              ],
+              "level": 2,
+              "listItem": "bullet",
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "block_0030",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_002z",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Interactive filters and tabs for heatmaps and recordings"
+                }
+              ],
+              "level": 2,
+              "listItem": "bullet",
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "block_0032",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_0031",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Responsive breakpoints to demonstrate adaptability"
+                }
+              ],
+              "level": 2,
+              "listItem": "bullet",
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "block_0034",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_0033",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Final Stakeholder Presentation: I presented the high-fidelity prototype to the Full Sprint and Heatmap team. Early feedback was generally positive, though Heatmap highlighted certain areas as needing additional refinement."
+                }
+              ],
+              "level": 1,
+              "listItem": "number",
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "image_0035",
+              "_type": "mediaImage",
+              "alt": "Low-fidelity dashboard wireframes with design annotations",
+              "asset": {
+                "_ref": "image-9e1ac8653178c6d25b653d95bd24e458e44f2e56-4492x1911-png",
+                "_type": "reference"
+              },
+              "size": "content"
+            },
+            {
+              "_key": "image_0036",
+              "_type": "mediaImage",
+              "alt": "Low-fidelity navigation bar wireframes with design annotations",
+              "asset": {
+                "_ref": "image-b4adeb9a26c997802f9354b9aed937ab0208276d-4513x1912-png",
+                "_type": "reference"
+              },
+              "size": "content"
+            }
+          ],
+          "title": "Design Process"
+        },
+        {
+          "_key": "section_0037",
+          "_type": "projectSection",
+          "content": [
+            {
+              "_key": "block_003b",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_003a",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "4.1 Navbar Redesign"
+                }
+              ],
+              "markDefs": [],
+              "style": "h3"
+            },
+            {
+              "_key": "block_003e",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_003d",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Primary Color Emphasis: Adopted the standout color from the public preview page for brand consistency."
+                }
+              ],
+              "level": 1,
+              "listItem": "bullet",
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "block_003g",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_003f",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Simplified, Collapsible Navigation: Consolidated links for the dashboard, heatmaps, screen recordings, and settings into a clear, collapsible menu."
+                }
+              ],
+              "level": 1,
+              "listItem": "bullet",
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "block_003i",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_003h",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Pinned Items: Introduced a dedicated area for pinned heatmaps or screen recordings, providing quick access to frequently analyzed data."
+                }
+              ],
+              "level": 1,
+              "listItem": "bullet",
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "block_003k",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_003j",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Anticipated Outcome: A more intuitive, consistent navbar that reduces clutter and highlights frequently used features."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "image_003l",
+              "_type": "mediaImage",
+              "alt": "Animated comparison of the original and redesigned Heatmap navigation",
+              "asset": {
+                "_ref": "image-d9141c57aff115ffd24b0466d28a455366c9816f-5091x1786-gif",
+                "_type": "reference"
+              },
+              "size": "content"
+            },
+            {
+              "_key": "block_003o",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_003n",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "4.2 Dashboard Improvements"
+                }
+              ],
+              "markDefs": [],
+              "style": "h3"
+            },
+            {
+              "_key": "block_003r",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_003q",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "At-a-Glance Visuals: Enhanced summary charts with x- and y-axis labels, data markers, and tooltips."
+                }
+              ],
+              "level": 1,
+              "listItem": "bullet",
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "block_003t",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_003s",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Key Metrics: Surfaced essential performance metrics (e.g., total clicks, conversion rates) in a card-based layout at the top."
+                }
+              ],
+              "level": 1,
+              "listItem": "bullet",
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "block_003v",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_003u",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Anticipated Outcome: A quick overview of site performance that doesn’t overwhelm users, with room for future expansions."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "image_003w",
+              "_type": "mediaImage",
+              "alt": "Animated comparison of the original and redesigned Heatmap dashboard",
+              "asset": {
+                "_ref": "image-59a7423f542a5cb974c9217f8ff52d8523c08b48-5091x1786-gif",
+                "_type": "reference"
+              },
+              "size": "content"
+            },
+            {
+              "_key": "block_003z",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_003y",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "4.3 Heatmaps Section Overhaul"
+                }
+              ],
+              "markDefs": [],
+              "style": "h3"
+            },
+            {
+              "_key": "block_0042",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_0041",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "List Page"
+                }
+              ],
+              "markDefs": [],
+              "style": "h3"
+            },
+            {
+              "_key": "block_0044",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_0043",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Full-Page List View: Eliminated the cramped list that was in the navbar by dedicating a full page to browsing heatmaps."
+                }
+              ],
+              "level": 1,
+              "listItem": "bullet",
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "block_0046",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_0045",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Expandable Rows: Incorporated metadata like device type, date range, and tags without cluttering the primary list view."
+                }
+              ],
+              "level": 1,
+              "listItem": "bullet",
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "block_0048",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_0047",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Heatmap Viewer"
+                }
+              ],
+              "markDefs": [],
+              "style": "h3"
+            },
+            {
+              "_key": "block_004a",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_0049",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Clean Data Cards: When clicking on hotspots, the pop-up cards clearly display click counts and percentages."
+                }
+              ],
+              "level": 1,
+              "listItem": "bullet",
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "block_004c",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_004b",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Separated Controls: Grouped filters, device switcher (desktop, mobile, tablet), and mode toggles (data vs. interactive) at the top."
+                }
+              ],
+              "level": 1,
+              "listItem": "bullet",
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "block_004e",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_004d",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Tabbed Layout: Introduced tabs for Heatmap View, Scrollmap View, and Data Table, improving the information architecture."
+                }
+              ],
+              "level": 1,
+              "listItem": "bullet",
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "block_004g",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_004f",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "AI Insights Integration: Partnered with a colleague to incorporate automated insights on user behavior."
+                }
+              ],
+              "level": 1,
+              "listItem": "bullet",
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "block_004i",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_004h",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Anticipated Outcome: A flexible, all-encompassing space for analyzing heatmap data, with a cleaner layout that reduces user confusion."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "image_004j",
+              "_type": "mediaImage",
+              "alt": "Before and after comparison of the Heatmap viewer interface",
+              "asset": {
+                "_ref": "image-e85c10f2547a0142a2dfe3262b3d8e643386b20c-5091x1861-png",
+                "_type": "reference"
+              },
+              "size": "content"
+            },
+            {
+              "_key": "image_004k",
+              "_type": "mediaImage",
+              "alt": "Before and after comparison of Heatmap list and data table views",
+              "asset": {
+                "_ref": "image-23d16b90a40c96f2823f99d6138b4667f903e4bc-5091x2011-png",
+                "_type": "reference"
+              },
+              "size": "content"
+            },
+            {
+              "_key": "block_004n",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_004m",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "4.4 Screen Recordings Refresh"
+                }
+              ],
+              "markDefs": [],
+              "style": "h3"
+            },
+            {
+              "_key": "block_004q",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_004p",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Consistent Visual Language: Unified fonts, colors, and buttons with the rest of the new design."
+                }
+              ],
+              "level": 1,
+              "listItem": "bullet",
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "block_004s",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_004r",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Dedicated List View: Introduced clearer pagination, sorting, and filtering of session recordings."
+                }
+              ],
+              "level": 1,
+              "listItem": "bullet",
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "block_004u",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_004t",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Enhanced Viewer: Presented recording metadata (e.g., session duration, user location) alongside the playback to offer broader context."
+                }
+              ],
+              "level": 1,
+              "listItem": "bullet",
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "block_004w",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_004v",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Anticipated Outcome: An easier way to locate and review session recordings, maintaining visual consistency with other sections."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "image_004x",
+              "_type": "mediaImage",
+              "alt": "Before and after comparison of the screen recording viewer",
+              "asset": {
+                "_ref": "image-db612adfec04bd6d476f610f6c67424b7a8f60aa-5091x2011-png",
+                "_type": "reference"
+              },
+              "size": "content"
+            },
+            {
+              "_key": "block_0050",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_004z",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "4.5 Kaitlyn’s Journey - Real World Example"
+                }
+              ],
+              "markDefs": [],
+              "style": "h3"
+            },
+            {
+              "_key": "block_0053",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_0052",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "To illustrate how these design changes come together, meet Kaitlyn, a marketing specialist for a small organic skincare e-commerce store."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "block_0056",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_0054",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Collapsible Navigation & Pinned Items"
+                }
+              ],
+              "level": 1,
+              "listItem": "bullet",
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "block_0058",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_0057",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Use Case: Kaitlyn logs into the Heatmap portal to track performance after running a new campaign."
+                }
+              ],
+              "level": 2,
+              "listItem": "bullet",
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "block_005a",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_0059",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Before: She had to click through disjointed menus to get to her most-used heatmaps."
+                }
+              ],
+              "level": 2,
+              "listItem": "bullet",
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "block_005c",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_005b",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Now: She immediately notices the collapsible navigation on the left. It’s clearly labeled, paired with an icon, and streamlined. Below the tabs is the Pinned section, where she’s added her newly launched “Rose Glow Serum” heatmap. She clicks it to jump straight into analysis—no more hunting through multiple tabs."
+                }
+              ],
+              "level": 2,
+              "listItem": "bullet",
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "block_005f",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_005d",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Heatmaps Section Overhaul"
+                }
+              ],
+              "level": 1,
+              "listItem": "bullet",
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "block_005h",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_005g",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Use Case: Kaitlyn needs to identify user interaction hotspots for the new product page."
+                }
+              ],
+              "level": 2,
+              "listItem": "bullet",
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "block_005j",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_005i",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Before: Navigating to the heatmap was difficult in the cramped sidebar, data visibility controls were scattered."
+                }
+              ],
+              "level": 2,
+              "listItem": "bullet",
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "block_005l",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_005k",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Now: She clicks “Heatmaps” in the simplified nav, landing on a full-page list view of all her site’s heatmaps. She opens the “Rose Glow Serum” heatmap, and a clean data card pops up when she clicks on the hotspots, showing precise click counts and percentages. The separated controls at the top allow her to toggle device type or filter date ranges without losing her place. The new tabs to switch between heatmap, scrollmap, and data table means she know where to find the data she is looking for."
+                }
+              ],
+              "level": 2,
+              "listItem": "bullet",
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "block_005o",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_005m",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Screen Recordings Refresh"
+                }
+              ],
+              "level": 1,
+              "listItem": "bullet",
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "block_005q",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_005p",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Use Case: Kaitlyn wants to watch real user sessions to see how visitors scroll and click around the product page."
+                }
+              ],
+              "level": 2,
+              "listItem": "bullet",
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "block_005s",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_005r",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Before: The session recordings panel was visually inconsistent, and recordings were hard to sift through."
+                }
+              ],
+              "level": 2,
+              "listItem": "bullet",
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "block_005u",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_005t",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Now: She heads over to Screen Recordings, where a dedicated list view with filtering lets her quickly find recordings tagged “Rose Glow Serum.” The enhanced viewer displays session duration, user device, and location information right alongside the playback. Kaitlyn notices several users never hover over the “Add to Cart” button—confirming the heatmap analysis and AI insights."
+                }
+              ],
+              "level": 2,
+              "listItem": "bullet",
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "block_005w",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_005v",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Takeaway"
+                }
+              ],
+              "markDefs": [],
+              "style": "h3"
+            },
+            {
+              "_key": "block_005y",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_005x",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "By guiding Kaitlyn through these key tasks, the redesigned portal addresses her specific pain points: scattered features, inconsistent UI patterns, and difficulty in quickly synthesizing user behavior data. Having everything organized under the new navigation system, with pinned items for rapid access, empowers Kaitlyn to make informed decisions about layout adjustments—ultimately enhancing the user experience on her e-commerce site."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            }
+          ],
+          "title": "Design Solutions"
+        },
+        {
+          "_key": "section_005z",
+          "_type": "projectSection",
+          "content": [
+            {
+              "_key": "block_0063",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_0062",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Although the redesign did not reach full implementation during my internship:"
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "block_0065",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_0064",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Initial Internal Reactions: Stakeholders and team members responded positively to the unified visual style and simplified navigation."
+                }
+              ],
+              "level": 1,
+              "listItem": "bullet",
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "block_0067",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_0066",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Constructive Critiques: Toward the end of my internship, certain aspects—like the pinning mechanism’s discoverability and the default dashboard layout—were called out for needing refinement."
+                }
+              ],
+              "level": 1,
+              "listItem": "bullet",
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "block_0069",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_0068",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Testing Plans: True user testing and broader data-driven validation are pending implementation in a future development cycle."
+                }
+              ],
+              "level": 1,
+              "listItem": "bullet",
+              "markDefs": [],
+              "style": "normal"
+            }
+          ],
+          "title": "Feedback & Next Steps"
+        },
+        {
+          "_key": "section_006a",
+          "_type": "projectSection",
+          "content": [
+            {
+              "_key": "block_006e",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_006d",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "This project taught me valuable lessons about balancing familiarity with innovation, designing for future growth, and working within time constraints. While I couldn't see the project through to implementation, I left knowing we had created a solid foundation for Heatmap's future growth."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "block_006g",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_006f",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Challenges"
+                }
+              ],
+              "markDefs": [],
+              "style": "h3"
+            },
+            {
+              "_key": "block_006i",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_006h",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Familiarity vs. Change: Balancing a recognizable interface for existing users with introducing innovative layouts."
+                }
+              ],
+              "level": 1,
+              "listItem": "bullet",
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "block_006k",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_006j",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Scalability: Ensuring designs support future features—like extended AI insights—without overcomplicating the structure."
+                }
+              ],
+              "level": 1,
+              "listItem": "bullet",
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "block_006m",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_006l",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Research Data: The smaller scaled company and limited resources meant user testing prior to the redesign could not be collected."
+                }
+              ],
+              "level": 1,
+              "listItem": "bullet",
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "block_006o",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_006n",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Time Constraints: The internship timeline meant I could not see the project through full user testing or final implementation."
+                }
+              ],
+              "level": 1,
+              "listItem": "bullet",
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "block_006q",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_006p",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Future Opportunities"
+                }
+              ],
+              "markDefs": [],
+              "style": "h3"
+            },
+            {
+              "_key": "block_006s",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_006r",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Refine Pinning & Dashboard Configuration: Provide ways for users to customize pinning and dashboard widgets to match their specific analytics needs."
+                }
+              ],
+              "level": 1,
+              "listItem": "bullet",
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "block_006u",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_006t",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Deeper User Testing: Gather feedback through usability studies once the redesign is live, then iterate based on real-world insights."
+                }
+              ],
+              "level": 1,
+              "listItem": "bullet",
+              "markDefs": [],
+              "style": "normal"
+            }
+          ],
+          "title": "Reflections"
+        },
+        {
+          "_key": "section_006v",
+          "_type": "projectSection",
+          "content": [
+            {
+              "_key": "block_006z",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "span_006y",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "By applying a new visual style and carefully reorganizing Heatmap’s navigation and data presentation, this redesign aims to streamline how users interact with heatmaps, screen recordings, and AI-driven insights. While fully implementing and testing these updates remains a future task, the positive initial response from Heatmap.com’s internal team and the constructive critiques offer a solid starting point for iterative improvement."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            }
+          ],
+          "title": "Conclusion"
+        }
+      ],
+      "showSideMenu": true,
+      "slug": {
+        "_type": "slug",
+        "current": "heatmap-portal-redesign"
+      },
+      "summary": "Redesign the Heatmap portal so it presents a unified visual language, improves feature discoverability, and streamlines user workflows for analyzing data—all while remaining flexible for future updates.",
+      "title": "Heatmap Portal Redesign",
+      "year": 2024
+    },
+    {
+      "_createdAt": "2026-10-01T23:11:12Z",
+      "_id": "legacy-portfolio-hopperhangout",
+      "_rev": "gYBbIurMXvrOqyYf7SfR0J",
+      "_type": "project",
+      "_updatedAt": "2026-10-05T08:16:10Z",
+      "client": "Alicehacks 2023",
+      "coverImage": {
+        "_type": "image",
+        "alt": "Hopper Hangout — cover",
+        "asset": {
+          "_ref": "image-d1924b828288ce077645d4d6e7dcf21c51f0aeae-1440x1080-png",
+          "_type": "reference"
+        }
+      },
+      "description": "A playful mobile concept that helps teens turn shared preferences into group plans and multi-stop hangouts.",
+      "details": [
+        {
+          "_key": "hopper-expanded-detail-role",
+          "_type": "detailItem",
+          "label": "Role",
+          "value": "Lead Designer"
+        },
+        {
+          "_key": "hopper-expanded-detail-timeline",
+          "_type": "detailItem",
+          "label": "Timeline",
+          "value": "November 2023 · Alicehacks"
+        },
+        {
+          "_key": "hopper-expanded-detail-team",
+          "_type": "detailItem",
+          "label": "Team",
+          "value": "Andrew Chu, Anita Du, Laison Tao"
+        },
+        {
+          "_key": "hopper-expanded-detail-tools",
+          "_type": "detailItem",
+          "label": "Tools",
+          "value": "Figma, FigJam, paper sketches"
+        },
+        {
+          "_key": "hopper-expanded-detail-recognition",
+          "_type": "detailItem",
+          "label": "Recognition",
+          "value": "Best Design Hack · Alicehacks 2023"
+        }
+      ],
+      "discipline": "UI/UX DESIGN",
+      "featured": true,
+      "hero": [
+        {
+          "_key": "hero",
+          "_type": "mediaImage",
+          "alt": "Hopper Hangout mobile app shown in an iPhone mockup",
+          "asset": {
+            "_ref": "image-7670f22c7ccfdf0347d7c8c051f713190aeae892-716x717-png",
+            "_type": "reference"
+          },
+          "size": "full"
+        }
+      ],
+      "impact": "Winner, Best Design Hack at Alicehacks 2023.",
+      "intro": "At Alicehacks 2023, I led the design of Hopper Hangout with three friends. We created a mobile app concept that helps teens plan activities around the interests of their whole group, combining playful custom graphics with a connected Figma prototype.",
+      "link": {
+        "label": "VIEW ON DEVPOST",
+        "url": "https://devpost.com/software/hopper-hangout"
+      },
+      "order": 3,
+      "overview": "The idea came from our own experience of trying to organize a day out. Food preferences, travel distance, and different interests could turn a simple meetup into a long discussion. Hopper Hangout explores how a mobile product could bring those inputs together, suggest places for a friend group, and organize them into a plan that everyone can review.",
+      "sections": [
+        {
+          "_key": "hopper-expanded-section-challenge",
+          "_type": "projectSection",
+          "content": [
+            {
+              "_key": "hopper-expanded-block-01",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "hopper-expanded-span-01",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Planning a hangout involves more than finding an interesting destination. One friend may dislike a cuisine, another may prefer a shorter trip, and the group still needs to agree on an activity and a time. We wanted to help teens move through those decisions without losing sight of each person’s preferences."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "hopper-expanded-block-02",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "hopper-expanded-span-02",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Our concept treats a friend group as the starting point for recommendations. Members contribute their tastes, then use those shared inputs to create a hangout made up of individual stops, or “hops.” The goal was to turn a vague idea for a meetup into a specific itinerary the group could understand and confirm."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "hopper-expanded-block-03",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "hopper-expanded-span-03",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Alicehacks was my second hackathon. Working with Anita, Laison, and Andrew, we chose a design-only submission and focused our time on the product experience, visual identity, and an interactive prototype."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            }
+          ],
+          "heading": "Make a plan that considers everyone",
+          "title": "Challenge"
+        },
+        {
+          "_key": "hopper-expanded-section-process",
+          "_type": "projectSection",
+          "content": [
+            {
+              "_key": "hopper-expanded-block-04",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "hopper-expanded-span-04",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "We began by discussing our own planning frustrations in a shared document. Once we chose the hangout concept, we used FigJam to map user needs and the features required to support them. A task board helped us divide responsibilities while keeping a shared view of the product."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "hopper-expanded-block-05",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "hopper-expanded-span-05",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "I sketched preliminary layouts and interface elements on paper before moving into Figma. This made it quick to explore alternatives and communicate ideas. Under the hackathon time constraint, we moved from those early sketches into high-fidelity screens, building components for buttons, cards, switches, and recurring navigation patterns."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "hopper-expanded-block-06",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "hopper-expanded-span-06",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "We also considered how the proposed recommendation system and business model would affect the experience. Featured business and event listings were one possible revenue source, with sponsorship influencing placement among options that already matched the group. That was a product proposal for future development; our submission demonstrated the experience through a Figma prototype."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "hopper-expanded-media-system",
+              "_type": "mediaImage",
+              "alt": "Hopper Hangout Figma screen collection showing home, map, profile, onboarding, hangout creation, friend groups, and reusable components",
+              "asset": {
+                "_ref": "image-3a548684c2b5b583daa1cdc795835ce107c7f0d6-2149x1441-png",
+                "_type": "reference"
+              },
+              "caption": "The connected screen set covers the product journey, from onboarding to creating a group plan.",
+              "size": "full"
+            }
+          ],
+          "heading": "Sketch the experience before polishing the interface",
+          "title": "Process"
+        },
+        {
+          "_key": "hopper-expanded-section-identity",
+          "_type": "projectSection",
+          "content": [
+            {
+              "_key": "hopper-expanded-block-07",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "hopper-expanded-span-07",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "We wanted the app to feel inviting to a teenage audience while keeping practical information easy to read. The brand combines a dark gray foundation with turquoise and secondary red, purple, and green accents. Lighter surfaces give cards and illustrations space, while stronger colours help distinguish groups and activities."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "hopper-expanded-block-08",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "hopper-expanded-span-08",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Koulen gives headings a bold, compact shape. Manrope handles smaller labels and body text. This division lets the product keep its character in titles without carrying the same visual weight into every detail."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "hopper-expanded-block-09",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "hopper-expanded-span-09",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "The Alice in Wonderland theme of the hackathon became part of the product identity. Our team drew characters and objects for onboarding, personal avatars, and friend-group icons. Reusing those illustrations across the app gave familiar people and groups a recognizable presence in the planning experience."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            }
+          ],
+          "heading": "Give the product a playful, recognizable personality",
+          "title": "Visual identity"
+        },
+        {
+          "_key": "hopper-expanded-section-onboarding",
+          "_type": "projectSection",
+          "content": [
+            {
+              "_key": "hopper-expanded-block-10",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "hopper-expanded-span-10",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Onboarding introduces three ideas: planning with friends, building adventures with multiple hops, and receiving recommendations based on tastes and location. Those short explanations establish why the app asks for personal preferences before the user reaches the main experience."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "hopper-expanded-block-11",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "hopper-expanded-span-11",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "The taste questions use concrete examples such as movies in a theatre, Chinese food, Italian food, and hiking. Each card presents a slider from “Hate it” to “Love it,” allowing a preference to have a degree rather than a simple yes-or-no answer. A single card stays prominent while the surrounding cards suggest that the questions continue."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "hopper-expanded-block-12",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "hopper-expanded-span-12",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Back, Skip, and Next remain visible at the bottom of the flow. The interface tells users that these answers inform their plans, and the completion screen gives the setup process a definite end before they enter the app."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            }
+          ],
+          "heading": "Make preferences a clear input to the plan",
+          "title": "Onboarding"
+        },
+        {
+          "_key": "hopper-expanded-section-planning",
+          "_type": "projectSection",
+          "content": [
+            {
+              "_key": "hopper-expanded-block-13",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "hopper-expanded-span-13",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Creating a hangout starts with a friend group. The flow then asks what the group is in the mood for, with choices including lunch, dinner, entertainment, exploration, outdoors, and study. Location options express different constraints: closest to everyone, within the city, or unrestricted."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "hopper-expanded-block-14",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "hopper-expanded-span-14",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Date and start/end time receive their own step, followed by naming the plan. Separating these decisions keeps each screen focused. A group can provide the context for recommendations without filling out one dense form."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "hopper-expanded-block-15",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "hopper-expanded-span-15",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "The resulting Hangout Plan brings the map, group members, activity type, and timing together. Individual hops show their location and scheduled time, with an Add a Hop action for extending the itinerary. The new-plan state also displays a confirmation count, making group agreement visible as part of the plan."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "hopper-expanded-media-plan",
+              "_type": "mediaImage",
+              "alt": "Hopper Hangout itinerary screen with map, friends, date, time, and an Add a Hop action, shown in an angled iPhone mockup",
+              "asset": {
+                "_ref": "image-e5f2439d90bf88727a2c09c8940f01fb3382a0c6-2000x1500-png",
+                "_type": "reference"
+              },
+              "caption": "The hangout plan brings people, timing, and individual stops into one overview.",
+              "size": "full"
+            }
+          ],
+          "heading": "Build an itinerary through small decisions",
+          "title": "Planning"
+        },
+        {
+          "_key": "hopper-expanded-section-navigation",
+          "_type": "projectSection",
+          "content": [
+            {
+              "_key": "hopper-expanded-block-16",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "hopper-expanded-span-16",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "The main navigation uses three tabs: Home, Map, and Profile. Home collects upcoming hangouts, quick activity categories, friend groups, and promoted events. Map supports browsing places spatially, while Profile organizes personal information, friend groups, and past and upcoming plans."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "hopper-expanded-block-17",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "hopper-expanded-span-17",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "A floating action bar sits above the tab navigation and adapts to the current task. Home gives Start a New Hangout the larger labelled action. Map gives more room to Search for Places. Within a plan, Add a Hop becomes the prominent action. A smaller companion control keeps the secondary action available without adding another full row of buttons."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "hopper-expanded-block-18",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "hopper-expanded-span-18",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "This distinction was central to the interface: the tabs answer where to go, and the action bar answers what to do next. Friend groups follow the same approach, pairing upcoming plans and suggested activities with a direct way to start a new hangout. Profile-link and QR-code screens provide concrete ways to add friends."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "hopper-expanded-media-navigation",
+              "_type": "mediaImage",
+              "alt": "Hopper Hangout profile and nearby-map screens shown in two iPhone mockups",
+              "asset": {
+                "_ref": "image-6bd1f56159332180c28e8041a1008d3676359050-2000x1500-png",
+                "_type": "reference"
+              },
+              "caption": "Profile organizes friends and plans; Map provides a spatial view of nearby places.",
+              "size": "full"
+            }
+          ],
+          "heading": "Separate where you go from what you do",
+          "title": "Navigation"
+        },
+        {
+          "_key": "hopper-expanded-section-outcome",
+          "_type": "projectSection",
+          "content": [
+            {
+              "_key": "hopper-expanded-block-19",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "hopper-expanded-span-19",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "We linked the screens into an interactive Figma prototype and added transitions between parts of the journey. Andrew created a state diagram to communicate how the features connected. For the final submission, we prepared a narrated presentation with Anita and demonstration videos that showed the main flows."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "hopper-expanded-block-20",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "hopper-expanded-span-20",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Hopper Hangout won Best Design Hack at Alicehacks 2023. The result was a connected design concept spanning onboarding, local discovery, group management, and itinerary creation, supported by a consistent visual system and custom illustrations."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "hopper-expanded-block-21",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "hopper-expanded-span-21",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "My main takeaway was the value of making the experience clear early. Shared planning, paper sketches, and reusable components helped us work quickly without losing consistency across screens. The next step for a product like this would be to test the planning flow with real groups and build the recommendation logic; the prototype established a concrete experience to evaluate."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            }
+          ],
+          "heading": "A complete prototype and a Best Design award",
+          "title": "Outcome"
+        }
+      ],
+      "showSideMenu": true,
+      "slug": {
+        "_type": "slug",
+        "current": "hopper-hangout"
+      },
+      "summary": "From individual tastes to a shared itinerary: a playful way to make plans with friends.",
+      "title": "Hopper Hangout",
+      "year": 2023
+    },
+    {
+      "_createdAt": "2026-10-01T23:11:12Z",
+      "_id": "legacy-portfolio-yrconnect",
+      "_rev": "gYBbIurMXvrOqyYf7SfR0J",
+      "_type": "project",
+      "_updatedAt": "2026-10-05T08:16:10Z",
+      "client": "YR Hacks 2024",
+      "coverImage": {
+        "_type": "image",
+        "alt": "YRConnect — cover",
+        "asset": {
+          "_ref": "image-955cb0ae1d7016d6e320cbfa544ff5bd4b458118-1840x1380-png",
+          "_type": "reference"
+        }
+      },
+      "description": "A York Region resident app concept for facility bookings, service requests, community updates, and local polls.",
+      "details": [
+        {
+          "_key": "yrconnect-detail-role",
+          "_type": "detailItem",
+          "label": "Role",
+          "value": "Lead Designer"
+        },
+        {
+          "_key": "yrconnect-detail-team",
+          "_type": "detailItem",
+          "label": "Team",
+          "value": "Aubree Lianto"
+        },
+        {
+          "_key": "yrconnect-detail-timeline",
+          "_type": "detailItem",
+          "label": "Timeline",
+          "value": "April 17–18, 2024"
+        },
+        {
+          "_key": "yrconnect-detail-tools",
+          "_type": "detailItem",
+          "label": "Tools",
+          "value": "Figma"
+        },
+        {
+          "_key": "yrconnect-detail-deliverable",
+          "_type": "detailItem",
+          "label": "Deliverable",
+          "value": "Mobile app concept / Interactive prototype"
+        },
+        {
+          "_key": "yrconnect-detail-recognition",
+          "_type": "detailItem",
+          "label": "Recognition",
+          "value": "Second Place, YRHacks 2024"
+        }
+      ],
+      "discipline": "UI/UX DESIGN",
+      "featured": true,
+      "hero": [
+        {
+          "_key": "yrconnect-30",
+          "_type": "mediaImage",
+          "alt": "YRConnect — cover",
+          "asset": {
+            "_ref": "image-955cb0ae1d7016d6e320cbfa544ff5bd4b458118-1840x1380-png",
+            "_type": "reference"
+          },
+          "size": "full"
+        }
+      ],
+      "impact": "YR Hacks 2024 — 2nd Place",
+      "intro": "Booking a study room or a court should not require learning a different website each time. At YRHacks 2024, Aubree and I designed YRConnect to bring everyday York Region services into one mobile experience.",
+      "link": {
+        "label": "VIEW ON DEVPOST",
+        "url": "https://devpost.com/software/yrconnect"
+      },
+      "order": 1,
+      "overview": "YRConnect is a mobile app concept for York Region residents. It connects study-room and sports bookings with municipal service requests, local notices, events, and polls. Working with Aubree across the two-day hackathon, I designed a consistent set of mobile flows and an interactive prototype that made the idea tangible for the judges.",
+      "sections": [
+        {
+          "_key": "yrconnect-section-challenge",
+          "_type": "projectSection",
+          "content": [
+            {
+              "_key": "yrconnect-challenge-p1",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "yrconnect-challenge-p1-text",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "The idea came from a familiar frustration. Aubree and I wanted to meet for volleyball games and study sessions, but booking a court or a room at Cornell Library meant navigating a series of pages and forms. Municipal and regional services were spread across different URLs, tabs, and interfaces. We saw an opportunity to give residents one place to find a service and follow through on it."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "yrconnect-challenge-p2",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "yrconnect-challenge-p2-text",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "YRHacks was my third hackathon, and we chose to submit a design project. The event started online and continued in person the following day, so we needed a clear scope we could turn into a convincing prototype. We focused on facility bookings, service requests, and community updates: three everyday needs that could share a resident account and a familiar navigation structure."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "yrconnect-challenge-p3",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "yrconnect-challenge-p3-text",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "The audience extended beyond students like us. We wanted the concept to be readable for residents of different ages, with visible actions and clear information hierarchy. That goal shaped the interface from the first sketches through the final screens."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            }
+          ],
+          "heading": "Bring fragmented services into one place",
+          "title": "Challenge"
+        },
+        {
+          "_key": "yrconnect-section-process",
+          "_type": "projectSection",
+          "content": [
+            {
+              "_key": "yrconnect-process-p1",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "yrconnect-process-p1-text",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "We began with a feature list and divided the work around what each of us felt comfortable designing. I worked on the interface and design system, while Aubree contributed to onboarding and the pitch. Paper sketches let us explore the dashboard quickly before refining spacing and individual elements in Figma. The key question was how to fit varied information on home without turning it into a dense menu."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "yrconnect-process-p2",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "yrconnect-process-p2-text",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Different coloured cards became the organizing device. Blue connected the visual direction to York Region, while light green, pale cyan, and darker teal gave us ways to separate content and create emphasis. We paired that palette with the Mori typeface from Pangram Pangram. Bold labels, generous type sizes, and distinct surfaces supported our aim to make different kinds of content readable at a glance."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "yrconnect-process-p3",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "yrconnect-process-p3-text",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Reusable headers and bottom navigation kept the growing set of screens consistent. Figma components let us carry those decisions between frames, and auto-layout helped organize the dashboard grid. We then connected account setup, bookings, requests, and community screens into a prototype so the proposal could be experienced as a set of related tasks."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "yrconnect-27",
+              "_type": "mediaImage",
+              "alt": "YRConnect Figma screen overview showing dashboard, bookings, service requests, community polls, and onboarding",
+              "asset": {
+                "_ref": "image-232c2a79dde56306ae5bf225ee0b0105c3786ed1-2752x4238-png",
+                "_type": "reference"
+              },
+              "caption": "The complete screen set connects onboarding with bookings, service requests, and community updates.",
+              "size": "full"
+            }
+          ],
+          "heading": "Establish the system before building the flows",
+          "title": "Process"
+        },
+        {
+          "_key": "yrconnect-section-dashboard",
+          "_type": "projectSection",
+          "content": [
+            {
+              "_key": "yrconnect-dashboard-p1",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "yrconnect-dashboard-p1-text",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Home combines a personal greeting with cards for bookings, a community poll, filed reports, and events. The next reservation gets the strongest hierarchy: its time is large, with the room, library, and duration grouped below. A resident can see an upcoming commitment immediately and move into the booking area from the same card."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "yrconnect-dashboard-p2",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "yrconnect-dashboard-p2-text",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "The other cards keep community activity visible around that priority. The poll includes a direct voting prompt, the report card summarizes an existing request, and the event list pairs dates with names and locations. Colour and scale give each type of information its own place without asking residents to scan a long list of equal-weight options."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "yrconnect-dashboard-p3",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "yrconnect-dashboard-p3-text",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "A persistent bottom navigation connects the main areas. The same rounded surfaces and circular controls recur across the screens, giving booking, reporting, and participation a shared visual language even when their content differs."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "yrconnect-dashboard-studyrooms",
+              "_type": "mediaImage",
+              "alt": "YRConnect home dashboard and study-room availability shown side by side in iPhone frames",
+              "asset": {
+                "_ref": "image-92ae8fbce021cdde8d5051166bbd0f254acdd02c-1600x1100-png",
+                "_type": "reference"
+              },
+              "caption": "Home prioritizes the next booking; study-room availability groups time, capacity, and amenities for comparison.",
+              "size": "full"
+            }
+          ],
+          "heading": "Put the next commitment first",
+          "title": "Dashboard"
+        },
+        {
+          "_key": "yrconnect-section-bookings",
+          "_type": "projectSection",
+          "content": [
+            {
+              "_key": "yrconnect-bookings-p1",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "yrconnect-bookings-p1-text",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "The booking area separates sports facilities from study rooms and keeps existing reservations alongside upcoming events. This makes it useful both for starting a new booking and checking plans already made. From there, the availability screens put the date, facility, and relevant filters above the results."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "yrconnect-25",
+              "_type": "mediaImage",
+              "alt": "YRConnect booking overview in an iPhone mockup, showing sports and study-room entry points, booked reservations, and events",
+              "asset": {
+                "_ref": "image-c7abc0e39835158c6efa76c71adefaf809653093-1440x1080-png",
+                "_type": "reference"
+              },
+              "caption": "The booking overview combines new reservations with existing bookings and upcoming events.",
+              "size": "full"
+            },
+            {
+              "_key": "yrconnect-bookings-p2",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "yrconnect-bookings-p2-text",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Study-room rows pair the time slot with the room name, capacity, and amenity icons. The sports version uses the same structure to show the gym, sport, time, and price. Keeping these details together supports comparison within one view. Capacity and length controls help narrow study-room choices, while sport and length controls suit the facility flow."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "yrconnect-bookings-p3",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "yrconnect-bookings-p3-text",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Before confirming, a focused review screen collects the selected date, time, and room or court. Photos and amenity information add context to the reservation. A swipe action marks the final commitment, and a separate success state closes the flow. The account concept was intended to carry resident information between tasks, reducing the need to enter the same details for each booking."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "yrconnect-26",
+              "_type": "mediaImage",
+              "alt": "YRConnect sports facility availability in an iPhone mockup, showing a date selector, sport and length filters, and gym time slots",
+              "asset": {
+                "_ref": "image-5ddbaea93bd2dd82a8ad5768a378705d8799b727-1440x1080-png",
+                "_type": "reference"
+              },
+              "caption": "Sports availability pairs each time slot with its gym, activity, and price.",
+              "size": "full"
+            }
+          ],
+          "heading": "Compare the options, then review the commitment",
+          "title": "Bookings"
+        },
+        {
+          "_key": "yrconnect-section-services",
+          "_type": "projectSection",
+          "content": [
+            {
+              "_key": "yrconnect-services-p1",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "yrconnect-services-p1-text",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "The service area starts with recognizable categories such as large-item pickup, streetlight maintenance, and plants and vegetation. Each is a direct entry point into a particular request. The interface identifies the service provider so residents have context for the task they are about to complete."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "yrconnect-services-p2",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "yrconnect-services-p2-text",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "For large-item pickup, the design places the date selection alongside an explanation of eligibility. Accepted and unacceptable materials are listed before the request form. That sequence gives residents the information needed to decide whether the service applies to their situation before they spend time filling it out."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "yrconnect-services-p3",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "yrconnect-services-p3-text",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "The next screen allows up to five items and then asks the resident to confirm contact and address information. Separating service rules, item details, and personal information gives the request a readable progression. Together, these screens carry a request through a series of focused decisions within the Figma prototype."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            }
+          ],
+          "heading": "Explain the service before asking for information",
+          "title": "Service requests"
+        },
+        {
+          "_key": "yrconnect-section-community",
+          "_type": "projectSection",
+          "content": [
+            {
+              "_key": "yrconnect-community-p1",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "yrconnect-community-p1-text",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Community updates groups polls, notices, and local projects into distinct sections. Road construction and transit changes can be read as notices, while a project or poll leads into more detail. This gives informational browsing and active participation a place within the same area without treating every item as the same kind of content."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "yrconnect-community-p2",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "yrconnect-community-p2-text",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "A poll screen presents the initiative before asking for a Yes or No response. The design includes copy describing polls as anonymous. We wanted the action and its expectations to be visible at the point of participation. Keeping that explanation close to the response controls gives the resident context before submitting an opinion."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "yrconnect-community-p3",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "yrconnect-community-p3-text",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Onboarding uses the same approach to context. It explains why an address is requested and introduces the account setup in steps, including the proposed flyer-code verification. These screens frame an account around the services it would enable, while keeping each stage of data entry focused."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            }
+          ],
+          "heading": "Connect local information with a clear next action",
+          "title": "Community"
+        },
+        {
+          "_key": "yrconnect-section-outcome",
+          "_type": "projectSection",
+          "content": [
+            {
+              "_key": "yrconnect-outcome-p1",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "yrconnect-outcome-p1-text",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "We completed the high-fidelity screens and an interactive Figma prototype, then presented YRConnect to the judges. The prototype let us demonstrate the relationship between home, facility booking, service requests, and community participation. We explained how the visual system and recurring patterns supported the different tasks within one resident experience."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "yrconnect-outcome-p2",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "yrconnect-outcome-p2-text",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "YRConnect won Second Place overall at YRHacks 2024. It was a rewarding end to my third hackathon, where our submission centred on interface design and a connected product concept. The final presentation brought our prototype and the reasoning behind its decisions together."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "yrconnect-outcome-p3",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "yrconnect-outcome-p3-text",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "My main takeaway was the value of setting a clear direction early. Planning the feature set, dividing responsibilities, and building reusable components helped us carry the idea through to the presentation. The work also reinforced that a prototype and a concise explanation of the design decisions are both part of making a product proposal understandable."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            }
+          ],
+          "heading": "Turn a broad idea into a coherent prototype",
+          "title": "Outcome"
+        }
+      ],
+      "showSideMenu": true,
+      "slug": {
+        "_type": "slug",
+        "current": "yrconnect"
+      },
+      "summary": "YRConnect brings facility bookings, service requests, and community participation into a shared resident app. I led the interface and design system for the Figma prototype, which won Second Place at YRHacks 2024.",
+      "title": "YRConnect",
+      "year": 2024
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "verifiedAt": "2026-10-05T15:49:42.264Z",
+  "home": {
+    "count": "projects27",
+    "munisyncLinks": 0,
+    "order": [
+      "Heatmap Portal Redesign2024",
+      "YRConnect2024",
+      "Hopper Hangout2023",
+      "Elapse App Design2023"
+    ]
+  },
+  "elapse": {
+    "mainImage": "https://cdn.sanity.io/images/7k8ajlip/production/55f22614414893bbaf5f44dfe4f843c9a3343cc1-3680x2760.png?w=1400&q=80&auto=format",
+    "sections": 6,
+    "straightOn": "https://cdn.sanity.io/images/7k8ajlip/production/8c49073b4b5525fe754b2d170217c0d777f2b7c1-716x717.png?w=1400&q=80&auto=format",
+    "title": "Elapse App Design"
+  },
+  "hopper": {
+    "mainImage": "https://cdn.sanity.io/images/7k8ajlip/production/d1924b828288ce077645d4d6e7dcf21c51f0aeae-1440x1080.png?w=1400&q=80&auto=format",
+    "sections": 7,
+    "straightOn": "https://cdn.sanity.io/images/7k8ajlip/production/7670f22c7ccfdf0347d7c8c051f713190aeae892-716x717.png?w=1400&q=80&auto=format",
+    "title": "Hopper Hangout"
+  }
+}

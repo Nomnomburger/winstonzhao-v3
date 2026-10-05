@@ -1,0 +1,18 @@
+[
+  {
+    "slug": "elapse-app-design",
+    "activeTab": "Tournament day",
+    "allTargetsPresent": true,
+    "focusedSection": "tournament-day-3",
+    "sectionCount": 6,
+    "url": "http://localhost:3000/projects/elapse-app-design#tournament-day-3"
+  },
+  {
+    "slug": "hopper-hangout",
+    "activeTab": "Planning",
+    "allTargetsPresent": true,
+    "focusedSection": "planning-5",
+    "sectionCount": 7,
+    "url": "http://localhost:3000/projects/hopper-hangout#planning-5"
+  }
+]

@@ -1,0 +1,454 @@
+{
+  "removedAt": "2026-10-05T07:45:30.882Z",
+  "projectId": "7k8ajlip",
+  "dataset": "production",
+  "publishedDocument": {
+    "_createdAt": "2026-10-05T06:56:16Z",
+    "_id": "figma-portfolio-summerhacks",
+    "_rev": "4Uon20R3fRb2VIjNA8mbFW",
+    "_type": "project",
+    "_updatedAt": "2026-10-05T07:18:51Z",
+    "client": "SummerHacks",
+    "coverImage": {
+      "_type": "image",
+      "alt": "SummerHacks project interface",
+      "asset": {
+        "_ref": "image-d9b8c0b069a1859f6fc394e59616ea55f9093acc-1280x832-png",
+        "_type": "reference"
+      }
+    },
+    "description": "A warm visual identity, waitlist landing page, and sponsorship package for an outdoor builder retreat.",
+    "details": [
+      {
+        "_key": "detail-0",
+        "_type": "detailItem",
+        "label": "Role",
+        "value": "Co-Director"
+      },
+      {
+        "_key": "detail-1",
+        "_type": "detailItem",
+        "label": "Timeline",
+        "value": "November 2025–May 2026"
+      },
+      {
+        "_key": "detail-2",
+        "_type": "detailItem",
+        "label": "Focus",
+        "value": "Visual identity · Landing page · Editorial design"
+      }
+    ],
+    "discipline": "Branding · Web Design",
+    "featured": false,
+    "hero": [
+      {
+        "_key": "hero",
+        "_type": "mediaImage",
+        "alt": "SummerHacks project interface",
+        "asset": {
+          "_ref": "image-d9b8c0b069a1859f6fc394e59616ea55f9093acc-1280x832-png",
+          "_type": "reference"
+        },
+        "size": "full"
+      }
+    ],
+    "intro": "SummerHacks imagines a hackathon outside the familiar classroom setting: a builder retreat inspired by summer camp. The design work translates that idea into a warm visual identity, an early waitlist landing page, and a sponsorship package.",
+    "order": 6,
+    "overview": "As Co-Director of SummerHacks, I worked on the way the event introduces itself to participants and partners. The work includes nature-inspired graphic explorations, landing-page concepts, and several versions of a sponsorship document.",
+    "sections": [
+      {
+        "_key": "section-0",
+        "_type": "projectSection",
+        "content": [
+          {
+            "_key": "paragraph-0-0",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "paragraph-0-0-span",
+                "_type": "span",
+                "marks": [],
+                "text": "Warm orange, cream, and pale blue connect the work to sunlight, open air, and summer. Fruit, leaves, flowers, and campsite-inspired forms appear in the graphic library, creating a set of elements that can move between digital and printed material."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "paragraph-0-1",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "paragraph-0-1-span",
+                "_type": "span",
+                "marks": [],
+                "text": "Large typography and generous space keep the identity approachable. The sponsorship cover pairs a simple wordmark with an oversized organic form and the line “Where the brightest ideas meet the brightest stars.”"
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "image-0",
+            "_type": "mediaImage",
+            "alt": "SummerHacks sponsorship package cover with nature-inspired graphics",
+            "asset": {
+              "_ref": "image-a05e5679afa6295b9bd4b81a148516c31295c2c4-612x792-png",
+              "_type": "reference"
+            },
+            "caption": "Sponsorship package cover",
+            "size": "full"
+          }
+        ],
+        "heading": "Build the identity around the setting.",
+        "title": "Visual identity"
+      },
+      {
+        "_key": "section-1",
+        "_type": "projectSection",
+        "content": [
+          {
+            "_key": "paragraph-1-0",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "paragraph-1-0-span",
+                "_type": "span",
+                "marks": [],
+                "text": "The landing-page concept gives SummerHacks the largest visual presence, with sunset imagery and a curved graphic occupying the edge of the screen. The email waitlist is the primary action."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "paragraph-1-1",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "paragraph-1-1-span",
+                "_type": "span",
+                "marks": [],
+                "text": "The page uses a small amount of copy to establish the atmosphere and invitation. This provides a focused entry point while the broader event format is developed in the sponsorship materials."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          }
+        ],
+        "heading": "Make the first interaction a simple invitation.",
+        "title": "Landing page"
+      },
+      {
+        "_key": "section-2",
+        "_type": "projectSection",
+        "content": [
+          {
+            "_key": "paragraph-2-0",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "paragraph-2-0-span",
+                "_type": "span",
+                "marks": [],
+                "text": "The sponsorship package explores a sequence from the event vision and snapshot to audience, partnership tiers, and contact information. Repeated headings, page labels, and illustrated motifs connect the presentation to the landing page."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "paragraph-2-1",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "paragraph-2-1-span",
+                "_type": "span",
+                "marks": [],
+                "text": "Multiple versions show the format being refined across editorial layouts and sponsorship tables. The resulting design direction links an outdoor event concept with a clear structure for prospective partners."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          }
+        ],
+        "heading": "Turn the event concept into a readable partner story.",
+        "title": "Sponsorship"
+      }
+    ],
+    "showSideMenu": true,
+    "slug": {
+      "_type": "slug",
+      "current": "summerhacks"
+    },
+    "summary": "Give an outdoor hackathon an identity that feels like open skies and summer camp.",
+    "title": "SummerHacks",
+    "year": 2026
+  },
+  "draftId": "drafts.figma-portfolio-summerhacks",
+  "manifestEntry": {
+    "id": "figma-portfolio-summerhacks",
+    "status": "published",
+    "yearSource": "November 2025–May 2026. Source: https://ca.linkedin.com/in/zhaowinston",
+    "document": {
+      "_type": "project",
+      "title": "SummerHacks",
+      "slug": {
+        "_type": "slug",
+        "current": "summerhacks"
+      },
+      "year": 2026,
+      "featured": false,
+      "order": 6,
+      "description": "A warm visual identity, waitlist landing page, and sponsorship package for an outdoor builder retreat.",
+      "client": "SummerHacks",
+      "discipline": "Branding · Web Design",
+      "intro": "SummerHacks imagines a hackathon outside the familiar classroom setting: a builder retreat inspired by summer camp. The design work translates that idea into a warm visual identity, an early waitlist landing page, and a sponsorship package.",
+      "summary": "Give an outdoor hackathon an identity that feels like open skies and summer camp.",
+      "overview": "As Co-Director of SummerHacks, I worked on the way the event introduces itself to participants and partners. The work includes nature-inspired graphic explorations, landing-page concepts, and several versions of a sponsorship document.",
+      "showSideMenu": true,
+      "details": [
+        {
+          "_type": "detailItem",
+          "_key": "detail-0",
+          "label": "Role",
+          "value": "Co-Director"
+        },
+        {
+          "_type": "detailItem",
+          "_key": "detail-1",
+          "label": "Timeline",
+          "value": "November 2025–May 2026"
+        },
+        {
+          "_type": "detailItem",
+          "_key": "detail-2",
+          "label": "Focus",
+          "value": "Visual identity · Landing page · Editorial design"
+        }
+      ],
+      "sections": [
+        {
+          "_type": "projectSection",
+          "_key": "section-0",
+          "title": "Visual identity",
+          "heading": "Build the identity around the setting.",
+          "content": [
+            {
+              "_type": "block",
+              "_key": "paragraph-0-0",
+              "style": "normal",
+              "markDefs": [],
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "paragraph-0-0-span",
+                  "marks": [],
+                  "text": "Warm orange, cream, and pale blue connect the work to sunlight, open air, and summer. Fruit, leaves, flowers, and campsite-inspired forms appear in the graphic library, creating a set of elements that can move between digital and printed material."
+                }
+              ]
+            },
+            {
+              "_type": "block",
+              "_key": "paragraph-0-1",
+              "style": "normal",
+              "markDefs": [],
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "paragraph-0-1-span",
+                  "marks": [],
+                  "text": "Large typography and generous space keep the identity approachable. The sponsorship cover pairs a simple wordmark with an oversized organic form and the line “Where the brightest ideas meet the brightest stars.”"
+                }
+              ]
+            },
+            {
+              "_type": "mediaImage",
+              "_key": "image-0",
+              "localAssetKey": "image-0",
+              "alt": "SummerHacks sponsorship package cover with nature-inspired graphics",
+              "caption": "Sponsorship package cover",
+              "size": "full"
+            }
+          ]
+        },
+        {
+          "_type": "projectSection",
+          "_key": "section-1",
+          "title": "Landing page",
+          "heading": "Make the first interaction a simple invitation.",
+          "content": [
+            {
+              "_type": "block",
+              "_key": "paragraph-1-0",
+              "style": "normal",
+              "markDefs": [],
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "paragraph-1-0-span",
+                  "marks": [],
+                  "text": "The landing-page concept gives SummerHacks the largest visual presence, with sunset imagery and a curved graphic occupying the edge of the screen. The email waitlist is the primary action."
+                }
+              ]
+            },
+            {
+              "_type": "block",
+              "_key": "paragraph-1-1",
+              "style": "normal",
+              "markDefs": [],
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "paragraph-1-1-span",
+                  "marks": [],
+                  "text": "The page uses a small amount of copy to establish the atmosphere and invitation. This provides a focused entry point while the broader event format is developed in the sponsorship materials."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_type": "projectSection",
+          "_key": "section-2",
+          "title": "Sponsorship",
+          "heading": "Turn the event concept into a readable partner story.",
+          "content": [
+            {
+              "_type": "block",
+              "_key": "paragraph-2-0",
+              "style": "normal",
+              "markDefs": [],
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "paragraph-2-0-span",
+                  "marks": [],
+                  "text": "The sponsorship package explores a sequence from the event vision and snapshot to audience, partnership tiers, and contact information. Repeated headings, page labels, and illustrated motifs connect the presentation to the landing page."
+                }
+              ]
+            },
+            {
+              "_type": "block",
+              "_key": "paragraph-2-1",
+              "style": "normal",
+              "markDefs": [],
+              "children": [
+                {
+                  "_type": "span",
+                  "_key": "paragraph-2-1-span",
+                  "marks": [],
+                  "text": "Multiple versions show the format being refined across editorial layouts and sponsorship tables. The resulting design direction links an outdoor event concept with a clear structure for prospective partners."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "images": {
+      "cover": {
+        "path": "assets/summerhacks-cover.png",
+        "fileKey": "qDdxlqtBxVpaAOUMITle4W",
+        "nodeId": "172:1582",
+        "alt": "SummerHacks project interface"
+      },
+      "hero": {
+        "path": "assets/summerhacks-cover.png",
+        "fileKey": "qDdxlqtBxVpaAOUMITle4W",
+        "nodeId": "172:1582",
+        "alt": "SummerHacks project interface"
+      },
+      "additional": [
+        {
+          "path": "assets/summerhacks-brand-screen.png",
+          "fileKey": "qDdxlqtBxVpaAOUMITle4W",
+          "nodeId": "172:1238",
+          "alt": "SummerHacks sponsorship package cover with nature-inspired graphics",
+          "key": "image-0"
+        }
+      ]
+    }
+  },
+  "dateEvidence": {
+    "id": "figma-portfolio-summerhacks",
+    "slug": "summerhacks",
+    "title": "SummerHacks",
+    "year": 2026,
+    "sortDate": "2026-05",
+    "displayDate": "November 2025–May 2026",
+    "precision": "month",
+    "sourceSummary": "November 2025–May 2026. Source: https://ca.linkedin.com/in/zhaowinston",
+    "evidenceFile": "root-activity-dates.json",
+    "sources": [
+      {
+        "title": "Winston Zhao public LinkedIn profile",
+        "url": "https://ca.linkedin.com/in/zhaowinston",
+        "kind": "author-maintained profile",
+        "access": "Public author profile content returned by search index; direct open denied by robots.txt. Dates are explicit profile date fields, not inferred from relative post ages."
+      }
+    ],
+    "notes": [
+      "The author’s involvement began in 2025, ended in May 2026 according to his indexed profile, and the official event occurred in August 2026.",
+      "For creation ordering use November 2025; for latest authored work ordering use May 2026. Do not silently substitute the event date for an authored design date.",
+      "Current résumé lists SummerHacks in Community without dates; exact individual design asset dates are unavailable."
+    ],
+    "updateTimeline": true,
+    "order": 6
+  },
+  "copyEntry": {
+    "slug": "summerhacks",
+    "title": "SummerHacks",
+    "year": 2026,
+    "client": "SummerHacks",
+    "discipline": "Branding · Web Design",
+    "description": "A warm visual identity, waitlist landing page, and sponsorship package for an outdoor builder retreat.",
+    "intro": "SummerHacks imagines a hackathon outside the familiar classroom setting: a builder retreat inspired by summer camp. The design work translates that idea into a warm visual identity, an early waitlist landing page, and a sponsorship package.",
+    "summary": "Give an outdoor hackathon an identity that feels like open skies and summer camp.",
+    "overview": "As Co-Director of SummerHacks, I worked on the way the event introduces itself to participants and partners. The work includes nature-inspired graphic explorations, landing-page concepts, and several versions of a sponsorship document.",
+    "details": [
+      {
+        "label": "Role",
+        "value": "Co-Director"
+      },
+      {
+        "label": "Timeline",
+        "value": "November 2025–May 2026"
+      },
+      {
+        "label": "Focus",
+        "value": "Visual identity · Landing page · Editorial design"
+      }
+    ],
+    "sections": [
+      {
+        "title": "Visual identity",
+        "heading": "Build the identity around the setting.",
+        "paragraphs": [
+          "Warm orange, cream, and pale blue connect the work to sunlight, open air, and summer. Fruit, leaves, flowers, and campsite-inspired forms appear in the graphic library, creating a set of elements that can move between digital and printed material.",
+          "Large typography and generous space keep the identity approachable. The sponsorship cover pairs a simple wordmark with an oversized organic form and the line “Where the brightest ideas meet the brightest stars.”"
+        ]
+      },
+      {
+        "title": "Landing page",
+        "heading": "Make the first interaction a simple invitation.",
+        "paragraphs": [
+          "The landing-page concept gives SummerHacks the largest visual presence, with sunset imagery and a curved graphic occupying the edge of the screen. The email waitlist is the primary action.",
+          "The page uses a small amount of copy to establish the atmosphere and invitation. This provides a focused entry point while the broader event format is developed in the sponsorship materials."
+        ]
+      },
+      {
+        "title": "Sponsorship",
+        "heading": "Turn the event concept into a readable partner story.",
+        "paragraphs": [
+          "The sponsorship package explores a sequence from the event vision and snapshot to audience, partnership tiers, and contact information. Repeated headings, page labels, and illustrated motifs connect the presentation to the landing page.",
+          "Multiple versions show the format being refined across editorial layouts and sponsorship tables. The resulting design direction links an outdoor event concept with a clear structure for prospective partners."
+        ]
+      }
+    ],
+    "yearSource": "November 2025–May 2026. Source: https://ca.linkedin.com/in/zhaowinston"
+  },
+  "transactionId": "bQYP7xhuT5v8w3idX2tT8t",
+  "verifiedUnpublished": true,
+  "draftPreserved": true
+}

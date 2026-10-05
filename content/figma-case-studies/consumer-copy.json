@@ -1,0 +1,254 @@
+[
+  {
+    "slug": "costudy",
+    "title": "CoStudy",
+    "description": "A campus study app that brings nearby sessions, course discussions, and classmates into one place.",
+    "client": "CoStudy",
+    "discipline": "Product Design",
+    "intro": "Finding people studying the same thing should feel as simple as finding a place to study.",
+    "summary": "CoStudy connects students through course-based study sessions and discussion threads. The mobile interface brings campus locations, session details, and academic context together.",
+    "overview": "The design follows a student from university verification and course selection to discovering a session, joining a group, and asking classmates for help. A campus map anchors the home screen, while session cards provide a second way to browse.",
+    "details": [
+      {
+        "label": "Platform",
+        "value": "Mobile app"
+      },
+      {
+        "label": "Timeline",
+        "value": "November 2025"
+      },
+      {
+        "label": "Team",
+        "value": "Ishan, Raghav, Lily, and Winston"
+      },
+      {
+        "label": "Focus",
+        "value": "Study sessions and course communities"
+      }
+    ],
+    "sections": [
+      {
+        "title": "Discovery",
+        "heading": "Start with the campus and the course",
+        "paragraphs": [
+          "The home screen combines a campus map with a list of current and upcoming sessions. Colored course markers make groups visible on the map, and matching course labels carry that context into the cards below. A prominent plus button provides an entry point for creating a session.",
+          "Onboarding collects a university email, expected graduation, major, and courses. Course confirmation gives the student a chance to adjust that information before entering the experience."
+        ]
+      },
+      {
+        "title": "Sessions",
+        "heading": "Make the commitment clear before joining",
+        "paragraphs": [
+          "Session cards show the subject, activity, location, time, and people attending. Live labels distinguish sessions already happening from future plans. The detail view extends this information with the host and a direct join action.",
+          "Creating a session uses a compact form for the title, duration, date, and location. After joining, the interface offers a leave action and a link to the class thread, keeping the group connected beyond the event itself."
+        ]
+      },
+      {
+        "title": "Community",
+        "heading": "Keep questions close to the people who can help",
+        "paragraphs": [
+          "Course filters and thread search organize the discussion area around classes. Each thread preview shows an author, question, and activity counts; the detail screen gives replies their own space beneath the original post.",
+          "The profile brings upcoming and attended sessions together. Home, Threads, and Profile remain available through the bottom navigation, giving the product a consistent structure across planning, discussion, and personal history."
+        ]
+      }
+    ],
+    "screenIds": [
+      {
+        "id": "9:1861",
+        "label": "Campus map and study sessions"
+      },
+      {
+        "id": "9:2108",
+        "label": "Course discussion threads"
+      }
+    ],
+    "year": 2025,
+    "yearSource": "The author's Projects section dates CoStudy to November 2025; the Honors section independently dates the Canvas Designathon award to the same month. Source: https://ca.linkedin.com/in/zhaowinston"
+  },
+  {
+    "slug": "cocart",
+    "title": "CoCart",
+    "description": "A shared shopping concept that helps nearby shoppers join a cart, coordinate delivery, and track a group order.",
+    "client": "CoCart",
+    "discipline": "Product Design",
+    "intro": "A shared cart needs to explain more than what someone is buying. It also needs to explain who is joining and where the order will arrive.",
+    "summary": "CoCart turns nearby group shopping into a mobile flow, from choosing a delivery range to finding an open cart and following its progress toward shipment.",
+    "overview": "The concept centers on combining purchases around a shared delivery location. Store, host, distance, available shopper spaces, and order status appear throughout the interface so each purchase remains connected to the larger group.",
+    "details": [
+      {
+        "label": "Platform",
+        "value": "Mobile app"
+      },
+      {
+        "label": "Timeline",
+        "value": "November 2024"
+      },
+      {
+        "label": "Focus",
+        "value": "Shared shopping and delivery coordination"
+      }
+    ],
+    "sections": [
+      {
+        "title": "Local discovery",
+        "heading": "Find a cart around a useful delivery location",
+        "paragraphs": [
+          "The home screen pairs recent orders with an Eco-Delivery entry point. Existing order cards show purchased products, the shipping address, and the host, making the delivery arrangement part of the order summary.",
+          "For a new order, shoppers can adjust their delivery range and browse open carts nearby. Location names, shopper counts, and remaining time help compare the options. A create-cart path explains that the new location needs a host to receive the order."
+        ]
+      },
+      {
+        "title": "Shared cart",
+        "heading": "Keep the individual purchase inside the group context",
+        "paragraphs": [
+          "The shopping flow connects product details to a store-specific cart. Individual item rows show the product, price, and quantity, followed by a subtotal and checkout action.",
+          "Group participation stays visible alongside those personal items. Shopper counts explain how full the cart is, while the interface presents delivery-fee savings and reward points as part of the proposed shared-shopping experience."
+        ]
+      },
+      {
+        "title": "Order status",
+        "heading": "Explain the wait after checkout",
+        "paragraphs": [
+          "The confirmation screen explains that the order will ship once additional shoppers join and purchase. The pending-cart view repeats that condition beside the current shopper count, so checkout does not leave the next step ambiguous.",
+          "The visual language uses spacious white cards, black primary actions, and a bright pink brand accent. Product imagery, location previews, and clear status copy carry the experience from discovery through the waiting state."
+        ]
+      }
+    ],
+    "screenIds": [
+      {
+        "id": "1:13674",
+        "label": "Recent orders and delivery discovery"
+      },
+      {
+        "id": "1:13782",
+        "label": "Shared cart awaiting more shoppers"
+      }
+    ],
+    "year": 2024,
+    "yearSource": "The author's CoCart project is dated November 2024 and attributed to the UW/UX FUSE Designathon. Source: https://ca.linkedin.com/in/zhaowinston"
+  },
+  {
+    "slug": "ryri",
+    "title": "Ryri",
+    "description": "A focus companion that combines timed work sessions, task planning, ambience, and a configurable conversational tone.",
+    "client": "Ryri",
+    "discipline": "Product Design",
+    "intro": "Ryri brings the task, timer, and atmosphere into the same place before a focus session begins.",
+    "summary": "The mobile concept combines a task list with adjustable session lengths, planned breaks, ambience choices, and a conversational companion named TED.",
+    "overview": "The interface separates getting ready from being in a session. The ready dashboard supports setup and task selection; the active dashboard emphasizes the current task, completed time, remaining time, and the next break.",
+    "details": [
+      {
+        "label": "Platform",
+        "value": "Mobile app"
+      },
+      {
+        "label": "Timeline",
+        "value": "December 2024–January 2025"
+      },
+      {
+        "label": "Focus",
+        "value": "Task planning and timed focus sessions"
+      }
+    ],
+    "sections": [
+      {
+        "title": "Preparation",
+        "heading": "Give the session a clear starting point",
+        "paragraphs": [
+          "Session setup places the duration above the task list. Preset lengths offer quick choices, while the selected duration includes a short explanation of the planned breaks. Task rows pair a title with a due date, keeping the work choice concrete.",
+          "A create-task flow includes a title, due date, and reminder setting. The selected-task states then lead to a start-session action, connecting planning to the moment of beginning the work."
+        ]
+      },
+      {
+        "title": "Focus",
+        "heading": "Make the current task the center of the screen",
+        "paragraphs": [
+          "During a session, the dashboard names the current task and shows completed and remaining time together. The upcoming break appears directly beneath that progress, giving the session a visible rhythm.",
+          "Ambience options such as Zen, Nature, Upbeat, and Flow sit alongside the focus experience. Other tasks remain available below, and an explicit completion action gives the current session a clear endpoint."
+        ]
+      },
+      {
+        "title": "Companion",
+        "heading": "Let the support match the person",
+        "paragraphs": [
+          "TED has a dedicated chat view and tone controls ranging from calm to more forceful styles. Those controls make the companion's manner an explicit preference rather than a fixed part of the product.",
+          "The account area includes focus history and accumulated focus time. Dark surfaces, rounded panels, and aqua highlights tie setup, active sessions, and conversation together while keeping the primary controls easy to identify."
+        ]
+      }
+    ],
+    "screenIds": [
+      {
+        "id": "1:11468",
+        "label": "Session setup and task selection"
+      },
+      {
+        "id": "1:11138",
+        "label": "Active focus session"
+      }
+    ],
+    "year": 2025,
+    "yearSource": "The author's Ryri project is dated December 2024 through January 2025 and described as a mobile adaptation of the earlier Hack the North project. Source: https://ca.linkedin.com/in/zhaowinston"
+  },
+  {
+    "slug": "smartbasket",
+    "title": "SmartBasket",
+    "description": "A grocery shopping concept that connects a personal list with nearby sales, store comparisons, and community contributions.",
+    "client": "SmartBasket",
+    "discipline": "Product Design",
+    "intro": "SmartBasket puts nearby deals in the context of what someone already plans to buy.",
+    "summary": "The mobile concept brings shopping lists, local sale discovery, price comparison, and contribution rewards into a single card-based interface.",
+    "overview": "The home screen moves from today's nearby offers to the shopper's own basket and reward progress. Product cards pair prices with a store and distance, giving the numbers a location instead of presenting deals in isolation.",
+    "details": [
+      {
+        "label": "Platform",
+        "value": "Mobile app"
+      },
+      {
+        "label": "Timeline",
+        "value": "February 2025"
+      },
+      {
+        "label": "Focus",
+        "value": "Grocery lists and nearby sale discovery"
+      }
+    ],
+    "sections": [
+      {
+        "title": "Discovery",
+        "heading": "Connect today's offers to the shopping list",
+        "paragraphs": [
+          "The Today card presents nearby product suggestions as quick-add chips. Below it, the basket summary reports the number of saved products and highlights items currently on sale, with each offer showing its price, store, and distance.",
+          "Add-to-list and nearby-items actions sit directly beside that summary. The layout connects browsing to list building, so the shopper can move between a new deal and an existing need without leaving the same overview."
+        ]
+      },
+      {
+        "title": "Comparison",
+        "heading": "Organize the basket around nearby stores",
+        "paragraphs": [
+          "The shopping-list view groups items by retailer and pairs each store with its distance and item count. This gives the basket a second structure beyond individual products: where the shopper might go to find them.",
+          "The new-item flow introduces automatic price comparison and explains that pricing and a suggested store appear after an item is added. That short explanation makes the proposed comparison behavior visible at the point of entry."
+        ]
+      },
+      {
+        "title": "Contribution",
+        "heading": "Make local sale information a shared activity",
+        "paragraphs": [
+          "Contribution prompts ask whether the shopper has seen a sale at a nearby store. Other states ask whether listed items are still on sale, bringing confirmation into the same experience as discovery.",
+          "A points card shows reward balance, level, and progress toward the next level. Bright green highlights separate current offers from the softer shopping-list cards, while rounded containers and direct actions give the different parts of the product a shared visual language."
+        ]
+      }
+    ],
+    "screenIds": [
+      {
+        "id": "1:12432",
+        "label": "Nearby deals and basket overview"
+      },
+      {
+        "id": "1:12930",
+        "label": "Shopping list grouped by store"
+      }
+    ],
+    "year": 2025,
+    "yearSource": "The author's SmartBasket project is explicitly dated February 2025 and linked to Hack Canada 2025. Source: https://ca.linkedin.com/in/zhaowinston"
+  }
+]

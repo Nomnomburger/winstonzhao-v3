@@ -1,0 +1,531 @@
+{
+  "documentId": "legacy-portfolio-hopperhangout",
+  "fields": {
+    "client": "Alicehacks 2023",
+    "coverImage": {
+      "_type": "image",
+      "alt": "Hopper Hangout — cover",
+      "asset": {
+        "_ref": "image-d1924b828288ce077645d4d6e7dcf21c51f0aeae-1440x1080-png",
+        "_type": "reference"
+      }
+    },
+    "description": "A playful mobile concept that helps teens turn shared preferences into group plans and multi-stop hangouts.",
+    "details": [
+      {
+        "_key": "hopper-expanded-detail-role",
+        "_type": "detailItem",
+        "label": "Role",
+        "value": "Lead Designer"
+      },
+      {
+        "_key": "hopper-expanded-detail-timeline",
+        "_type": "detailItem",
+        "label": "Timeline",
+        "value": "November 2023 · Alicehacks"
+      },
+      {
+        "_key": "hopper-expanded-detail-team",
+        "_type": "detailItem",
+        "label": "Team",
+        "value": "Andrew Chu, Anita Du, Laison Tao"
+      },
+      {
+        "_key": "hopper-expanded-detail-tools",
+        "_type": "detailItem",
+        "label": "Tools",
+        "value": "Figma, FigJam, paper sketches"
+      },
+      {
+        "_key": "hopper-expanded-detail-recognition",
+        "_type": "detailItem",
+        "label": "Recognition",
+        "value": "Best Design Hack · Alicehacks 2023"
+      }
+    ],
+    "discipline": "UI/UX DESIGN",
+    "featured": true,
+    "hero": [
+      {
+        "_key": "hopperhangout-48",
+        "_type": "mediaImage",
+        "alt": "Hopper Hangout — cover",
+        "asset": {
+          "_ref": "image-d1924b828288ce077645d4d6e7dcf21c51f0aeae-1440x1080-png",
+          "_type": "reference"
+        },
+        "size": "full"
+      }
+    ],
+    "impact": "Winner, Best Design Hack at Alicehacks 2023.",
+    "intro": "At Alicehacks 2023, I led the design of Hopper Hangout with three friends. We created a mobile app concept that helps teens plan activities around the interests of their whole group, combining playful custom graphics with a connected Figma prototype.",
+    "link": {
+      "label": "VIEW ON DEVPOST",
+      "url": "https://devpost.com/software/hopper-hangout"
+    },
+    "order": 3,
+    "overview": "The idea came from our own experience of trying to organize a day out. Food preferences, travel distance, and different interests could turn a simple meetup into a long discussion. Hopper Hangout explores how a mobile product could bring those inputs together, suggest places for a friend group, and organize them into a plan that everyone can review.",
+    "sections": [
+      {
+        "_key": "hopper-expanded-section-challenge",
+        "_type": "projectSection",
+        "content": [
+          {
+            "_key": "hopper-expanded-block-01",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "hopper-expanded-span-01",
+                "_type": "span",
+                "marks": [],
+                "text": "Planning a hangout involves more than finding an interesting destination. One friend may dislike a cuisine, another may prefer a shorter trip, and the group still needs to agree on an activity and a time. We wanted to help teens move through those decisions without losing sight of each person’s preferences."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "hopper-expanded-block-02",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "hopper-expanded-span-02",
+                "_type": "span",
+                "marks": [],
+                "text": "Our concept treats a friend group as the starting point for recommendations. Members contribute their tastes, then use those shared inputs to create a hangout made up of individual stops, or “hops.” The goal was to turn a vague idea for a meetup into a specific itinerary the group could understand and confirm."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "hopper-expanded-block-03",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "hopper-expanded-span-03",
+                "_type": "span",
+                "marks": [],
+                "text": "Alicehacks was my second hackathon. Working with Anita, Laison, and Andrew, we chose a design-only submission and focused our time on the product experience, visual identity, and an interactive prototype."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          }
+        ],
+        "heading": "Make a plan that considers everyone",
+        "title": "Challenge"
+      },
+      {
+        "_key": "hopper-expanded-section-process",
+        "_type": "projectSection",
+        "content": [
+          {
+            "_key": "hopper-expanded-block-04",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "hopper-expanded-span-04",
+                "_type": "span",
+                "marks": [],
+                "text": "We began by discussing our own planning frustrations in a shared document. Once we chose the hangout concept, we used FigJam to map user needs and the features required to support them. A task board helped us divide responsibilities while keeping a shared view of the product."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "hopper-expanded-block-05",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "hopper-expanded-span-05",
+                "_type": "span",
+                "marks": [],
+                "text": "I sketched preliminary layouts and interface elements on paper before moving into Figma. This made it quick to explore alternatives and communicate ideas. Under the hackathon time constraint, we moved from those early sketches into high-fidelity screens, building components for buttons, cards, switches, and recurring navigation patterns."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "hopper-expanded-block-06",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "hopper-expanded-span-06",
+                "_type": "span",
+                "marks": [],
+                "text": "We also considered how the proposed recommendation system and business model would affect the experience. Featured business and event listings were one possible revenue source, with sponsorship influencing placement among options that already matched the group. That was a product proposal for future development; our submission demonstrated the experience through a Figma prototype."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "hopper-expanded-media-system",
+            "_type": "mediaImage",
+            "alt": "Hopper Hangout Figma screen collection showing home, map, profile, onboarding, hangout creation, friend groups, and reusable components",
+            "asset": {
+              "_ref": "image-3a548684c2b5b583daa1cdc795835ce107c7f0d6-2149x1441-png",
+              "_type": "reference"
+            },
+            "caption": "The connected screen set covers the product journey, from onboarding to creating a group plan.",
+            "size": "full"
+          }
+        ],
+        "heading": "Sketch the experience before polishing the interface",
+        "title": "Process"
+      },
+      {
+        "_key": "hopper-expanded-section-identity",
+        "_type": "projectSection",
+        "content": [
+          {
+            "_key": "hopper-expanded-block-07",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "hopper-expanded-span-07",
+                "_type": "span",
+                "marks": [],
+                "text": "We wanted the app to feel inviting to a teenage audience while keeping practical information easy to read. The brand combines a dark gray foundation with turquoise and secondary red, purple, and green accents. Lighter surfaces give cards and illustrations space, while stronger colours help distinguish groups and activities."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "hopper-expanded-block-08",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "hopper-expanded-span-08",
+                "_type": "span",
+                "marks": [],
+                "text": "Koulen gives headings a bold, compact shape. Manrope handles smaller labels and body text. This division lets the product keep its character in titles without carrying the same visual weight into every detail."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "hopper-expanded-block-09",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "hopper-expanded-span-09",
+                "_type": "span",
+                "marks": [],
+                "text": "The Alice in Wonderland theme of the hackathon became part of the product identity. Our team drew characters and objects for onboarding, personal avatars, and friend-group icons. Reusing those illustrations across the app gave familiar people and groups a recognizable presence in the planning experience."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          }
+        ],
+        "heading": "Give the product a playful, recognizable personality",
+        "title": "Visual identity"
+      },
+      {
+        "_key": "hopper-expanded-section-onboarding",
+        "_type": "projectSection",
+        "content": [
+          {
+            "_key": "hopper-expanded-block-10",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "hopper-expanded-span-10",
+                "_type": "span",
+                "marks": [],
+                "text": "Onboarding introduces three ideas: planning with friends, building adventures with multiple hops, and receiving recommendations based on tastes and location. Those short explanations establish why the app asks for personal preferences before the user reaches the main experience."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "hopper-expanded-block-11",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "hopper-expanded-span-11",
+                "_type": "span",
+                "marks": [],
+                "text": "The taste questions use concrete examples such as movies in a theatre, Chinese food, Italian food, and hiking. Each card presents a slider from “Hate it” to “Love it,” allowing a preference to have a degree rather than a simple yes-or-no answer. A single card stays prominent while the surrounding cards suggest that the questions continue."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "hopper-expanded-block-12",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "hopper-expanded-span-12",
+                "_type": "span",
+                "marks": [],
+                "text": "Back, Skip, and Next remain visible at the bottom of the flow. The interface tells users that these answers inform their plans, and the completion screen gives the setup process a definite end before they enter the app."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          }
+        ],
+        "heading": "Make preferences a clear input to the plan",
+        "title": "Onboarding"
+      },
+      {
+        "_key": "hopper-expanded-section-planning",
+        "_type": "projectSection",
+        "content": [
+          {
+            "_key": "hopper-expanded-block-13",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "hopper-expanded-span-13",
+                "_type": "span",
+                "marks": [],
+                "text": "Creating a hangout starts with a friend group. The flow then asks what the group is in the mood for, with choices including lunch, dinner, entertainment, exploration, outdoors, and study. Location options express different constraints: closest to everyone, within the city, or unrestricted."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "hopper-expanded-block-14",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "hopper-expanded-span-14",
+                "_type": "span",
+                "marks": [],
+                "text": "Date and start/end time receive their own step, followed by naming the plan. Separating these decisions keeps each screen focused. A group can provide the context for recommendations without filling out one dense form."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "hopper-expanded-block-15",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "hopper-expanded-span-15",
+                "_type": "span",
+                "marks": [],
+                "text": "The resulting Hangout Plan brings the map, group members, activity type, and timing together. Individual hops show their location and scheduled time, with an Add a Hop action for extending the itinerary. The new-plan state also displays a confirmation count, making group agreement visible as part of the plan."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "hopper-expanded-media-plan",
+            "_type": "mediaImage",
+            "alt": "Hopper Hangout itinerary screen with map, friends, date, time, and an Add a Hop action, shown in an angled iPhone mockup",
+            "asset": {
+              "_ref": "image-e5f2439d90bf88727a2c09c8940f01fb3382a0c6-2000x1500-png",
+              "_type": "reference"
+            },
+            "caption": "The hangout plan brings people, timing, and individual stops into one overview.",
+            "size": "full"
+          }
+        ],
+        "heading": "Build an itinerary through small decisions",
+        "title": "Planning"
+      },
+      {
+        "_key": "hopper-expanded-section-navigation",
+        "_type": "projectSection",
+        "content": [
+          {
+            "_key": "hopper-expanded-block-16",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "hopper-expanded-span-16",
+                "_type": "span",
+                "marks": [],
+                "text": "The main navigation uses three tabs: Home, Map, and Profile. Home collects upcoming hangouts, quick activity categories, friend groups, and promoted events. Map supports browsing places spatially, while Profile organizes personal information, friend groups, and past and upcoming plans."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "hopper-media-home-front",
+            "_type": "mediaImage",
+            "alt": "Front-facing iPhone showing Hopper Hangout Home, with hangouts, activity shortcuts, friend groups, and promotions",
+            "asset": {
+              "_ref": "image-7670f22c7ccfdf0347d7c8c051f713190aeae892-716x717-png",
+              "_type": "reference"
+            },
+            "caption": "Home brings upcoming hangouts, activity shortcuts, and friend groups together above the main action bar.",
+            "size": "full"
+          },
+          {
+            "_key": "hopper-expanded-block-17",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "hopper-expanded-span-17",
+                "_type": "span",
+                "marks": [],
+                "text": "A floating action bar sits above the tab navigation and adapts to the current task. Home gives Start a New Hangout the larger labelled action. Map gives more room to Search for Places. Within a plan, Add a Hop becomes the prominent action. A smaller companion control keeps the secondary action available without adding another full row of buttons."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "hopper-expanded-block-18",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "hopper-expanded-span-18",
+                "_type": "span",
+                "marks": [],
+                "text": "This distinction was central to the interface: the tabs answer where to go, and the action bar answers what to do next. Friend groups follow the same approach, pairing upcoming plans and suggested activities with a direct way to start a new hangout. Profile-link and QR-code screens provide concrete ways to add friends."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "hopper-expanded-media-navigation",
+            "_type": "mediaImage",
+            "alt": "Hopper Hangout profile and nearby-map screens shown in two iPhone mockups",
+            "asset": {
+              "_ref": "image-6bd1f56159332180c28e8041a1008d3676359050-2000x1500-png",
+              "_type": "reference"
+            },
+            "caption": "Profile organizes friends and plans; Map provides a spatial view of nearby places.",
+            "size": "full"
+          }
+        ],
+        "heading": "Separate where you go from what you do",
+        "title": "Navigation"
+      },
+      {
+        "_key": "hopper-expanded-section-outcome",
+        "_type": "projectSection",
+        "content": [
+          {
+            "_key": "hopper-expanded-block-19",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "hopper-expanded-span-19",
+                "_type": "span",
+                "marks": [],
+                "text": "We linked the screens into an interactive Figma prototype and added transitions between parts of the journey. Andrew created a state diagram to communicate how the features connected. For the final submission, we prepared a narrated presentation with Anita and demonstration videos that showed the main flows."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "hopper-expanded-block-20",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "hopper-expanded-span-20",
+                "_type": "span",
+                "marks": [],
+                "text": "Hopper Hangout won Best Design Hack at Alicehacks 2023. The result was a connected design concept spanning onboarding, local discovery, group management, and itinerary creation, supported by a consistent visual system and custom illustrations."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          },
+          {
+            "_key": "hopper-expanded-block-21",
+            "_type": "block",
+            "children": [
+              {
+                "_key": "hopper-expanded-span-21",
+                "_type": "span",
+                "marks": [],
+                "text": "My main takeaway was the value of making the experience clear early. Shared planning, paper sketches, and reusable components helped us work quickly without losing consistency across screens. The next step for a product like this would be to test the planning flow with real groups and build the recommendation logic; the prototype established a concrete experience to evaluate."
+              }
+            ],
+            "markDefs": [],
+            "style": "normal"
+          }
+        ],
+        "heading": "A complete prototype and a Best Design award",
+        "title": "Outcome"
+      }
+    ],
+    "showSideMenu": true,
+    "slug": {
+      "_type": "slug",
+      "current": "hopper-hangout"
+    },
+    "summary": "From individual tastes to a shared itinerary: a playful way to make plans with friends.",
+    "title": "Hopper Hangout",
+    "year": 2023
+  },
+  "sourceNotes": [
+    {
+      "source": "existing authored case study",
+      "path": "/Users/winston/repo/winstonzhao-v3/content/figma-case-studies/sanity-before-expanded-legacy.json",
+      "documentId": "legacy-portfolio-hopperhangout",
+      "notes": "Preserves the authentic ideation, paper sketching, team, branding, component, adaptive action-bar, onboarding, prototyping, presentation, and award account. Reworks the long Design process section into seven chapters. The unsupported click-through-rate claim is omitted."
+    },
+    {
+      "source": "supplied Figma product design",
+      "url": "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W/Winston-Design-Demo?node-id=1-2648",
+      "screenIds": [
+        "1:3676",
+        "1:3824",
+        "1:3884",
+        "1:3992",
+        "1:4098",
+        "1:4151",
+        "1:4990",
+        "1:5368",
+        "1:5437",
+        "1:5497",
+        "1:5828",
+        "1:6180"
+      ],
+      "notes": "Read screen text and visually verified Home, Hangout Plan, preference onboarding, and date/location/name steps. The copy describes designed interactions and the proposed recommendation concept, without implying a launched backend or measured improvements."
+    },
+    {
+      "source": "supplied Figma portfolio cover",
+      "url": "https://www.figma.com/design/r2Feu1tLXWg8ApMcINffew/Winston-Zhao-Portfolio-V3?node-id=595-1028",
+      "notes": "Existing Sanity cover and hero preserved without changing the asset reference."
+    },
+    {
+      "source": "author team submission",
+      "url": "https://devpost.com/software/hopper-hangout",
+      "notes": "Confirms the team, Figma prototype, Best Design Hack award, and November 19, 2023 submission. No adoption, launch, user-testing, or efficiency metrics are asserted."
+    },
+    {
+      "source": "retained Sanity media",
+      "notes": "All three original gallery images were visually inspected in a temporary Safari tab, then assigned by subject: full screen collection to Process, Hangout Plan mockup to Planning, Profile/Map mockup to Navigation. Their asset references are retained; alt text and captions now describe their content."
+    }
+  ],
+  "preservedFields": [
+    "title",
+    "year",
+    "order",
+    "coverImage",
+    "hero",
+    "slug",
+    "featured",
+    "client",
+    "discipline",
+    "link"
+  ],
+  "retainedMediaReferences": [
+    "image-e5f2439d90bf88727a2c09c8940f01fb3382a0c6-2000x1500-png",
+    "image-6bd1f56159332180c28e8041a1008d3676359050-2000x1500-png",
+    "image-3a548684c2b5b583daa1cdc795835ce107c7f0d6-2149x1441-png"
+  ]
+}
