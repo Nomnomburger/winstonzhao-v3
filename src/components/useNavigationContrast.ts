@@ -23,6 +23,19 @@ function luminance([r, g, b]: Color) {
   return 0.2126 * linear(r) + 0.7152 * linear(g) + 0.0722 * linear(b);
 }
 
+// Perceptual lightness (CIE L*, 0 to 100) of a relative luminance.
+function lightness(luminance: number) {
+  const f = luminance > 216 / 24389 ? Math.cbrt(luminance) : (841 / 108) * luminance + 4 / 29;
+  return 116 * f - 16;
+}
+
+// White text needs clearly dark content beneath a control (below L* 40, about
+// #5e5e5e), and black text returns once it is lighter than L* 50 (about
+// #777). The gap in between keeps the current colour, so a boundary scrolling
+// past cannot flicker the text, much like the iOS status bar's own switching.
+const LIGHT_TEXT_BELOW = 40;
+const DARK_TEXT_ABOVE = 50;
+
 function readBitmap(source: CanvasImageSource, width: number, height: number): Bitmap | null {
   if (!width || !height) return null;
   const scale = Math.min(1, BITMAP_SIZE / Math.max(width, height));
@@ -206,9 +219,13 @@ export default function useNavigationContrast(pathname: string, open: boolean) {
         // Follow the predominant local background so a few bright highlights
         // or page margins cannot outweigh a dark photo (or vice versa).
         samples.sort((a, b) => a - b);
-        const background = samples[Math.floor(samples.length / 2)];
-        const color = samples.length ? background > Math.sqrt(1.05 * 0.05) - 0.05 ? '#000000' : '#ffffff' : 'var(--navigation-foreground)';
-        if (root.style.getPropertyValue(VARIABLES[index]) !== color) root.style.setProperty(VARIABLES[index], color);
+        const background = lightness(samples[Math.floor(samples.length / 2)]);
+        const current = root.style.getPropertyValue(VARIABLES[index]);
+        const color = !samples.length ? 'var(--navigation-foreground)'
+          : background < LIGHT_TEXT_BELOW ? '#ffffff'
+          : background > DARK_TEXT_ABOVE ? '#000000'
+          : current === '#ffffff' ? '#ffffff' : '#000000';
+        if (current !== color) root.style.setProperty(VARIABLES[index], color);
       });
     };
 

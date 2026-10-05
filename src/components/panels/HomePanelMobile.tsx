@@ -667,7 +667,7 @@ export default function HomePanelMobile({
             <motion.div
               ref={containerRef}
               data-navigation-contrast="name"
-              className="fixed top-6 left-6 right-6 z-40 py-1 origin-top-left"
+              className="navigation-color-fade fixed top-6 left-6 right-6 z-40 py-1 origin-top-left"
               style={{ scale: titleScale, color: menuOpen ? 'var(--navigation-name-color, var(--navigation-foreground))' : nameColor }}
             >
               <motion.h1

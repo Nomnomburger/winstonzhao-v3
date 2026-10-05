@@ -64,6 +64,15 @@ body {
   }
 }
 
+/* The name and menu toggle switch between black and white as the content
+   beneath them changes (useNavigationContrast). Cross-fade that switch instead
+   of snapping; currentColor strokes and backgrounds follow the fade. This stays
+   outside @layer so it also wins over the slow theme transition inside
+   .theme-root. */
+.navigation-color-fade {
+  transition: color 150ms ease;
+}
+
 @keyframes spin-slow {
   0% {
     transform: rotate(0deg);
