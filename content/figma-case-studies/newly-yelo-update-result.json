@@ -1,0 +1,387 @@
+{
+  "publishedAt": "2026-10-06T13:03:45.338Z",
+  "transactionId": "gYBbIurMXvrOqyYf7Wt6Ro",
+  "projects": [
+    {
+      "id": "figma-portfolio-newly",
+      "slug": "newly",
+      "sectionTitles": [
+        "Context",
+        "Explorations",
+        "Workspace",
+        "The prompt bar",
+        "Conversation & preview",
+        "Deploy",
+        "Launcher & web",
+        "Visual system",
+        "Reflection"
+      ],
+      "assets": {
+        "cover": {
+          "path": "assets/newly-cs-cover.jpg",
+          "assetId": "image-a92feb57f3ae17c17d030d1df4155636a6eeebf1-2400x1500-jpg",
+          "sourceNodeIds": [
+            "284:33716",
+            "284:992"
+          ]
+        },
+        "explorations-board": {
+          "path": "assets/newly-cs-explorations-board.jpg",
+          "assetId": "image-4663acf2977a2325ba870331e1cda1a73d8d6865-2400x900-jpg",
+          "sourceNodeIds": [
+            "284:1741",
+            "284:4696"
+          ]
+        },
+        "explorations-demo": {
+          "path": "assets/newly-cs-explorations-demo.jpg",
+          "assetId": "image-40ae93dcfdb9d87a43581a3fda5d92eb19c359df-1583x991-jpg",
+          "sourceNodeIds": [
+            "284:8083"
+          ]
+        },
+        "workspace-densities": {
+          "path": "assets/newly-cs-workspace-densities.jpg",
+          "assetId": "image-be2450f2384f459427f9d8300bc7515edc1ba0d1-2400x1670-jpg",
+          "sourceNodeIds": [
+            "284:32437",
+            "284:25320",
+            "284:28085",
+            "284:32540"
+          ]
+        },
+        "workspace-collapse": {
+          "path": "assets/newly-cs-workspace-collapse.mp4",
+          "assetId": "file-0d3adf78bae9996c3142f71525d6b0f6edc01e38-mp4",
+          "sourceNodeIds": [
+            "284:8835",
+            "284:8669",
+            "284:9058",
+            "284:9231",
+            "284:9344"
+          ]
+        },
+        "workspace-collapse-poster": {
+          "path": "assets/newly-cs-workspace-collapse-poster.jpg",
+          "assetId": "image-8998bb091151487288c008ad4e8e5aba7239faae-1584x992-jpg",
+          "sourceNodeIds": [
+            "284:8835"
+          ]
+        },
+        "workspace-anatomy": {
+          "path": "assets/newly-cs-workspace-anatomy.jpg",
+          "assetId": "image-6a5b41db5f0fae58c3996d503d0ba66f5f9a8ea6-2400x1500-jpg",
+          "sourceNodeIds": [
+            "284:25426"
+          ]
+        },
+        "bar-modes": {
+          "path": "assets/newly-cs-bar-modes.jpg",
+          "assetId": "image-2f3af816b581624aef473b060cf7a718426078b4-2400x1122-jpg",
+          "sourceNodeIds": [
+            "284:16035",
+            "284:16209",
+            "284:16251"
+          ]
+        },
+        "bar-empty-filled": {
+          "path": "assets/newly-cs-bar-empty-filled.jpg",
+          "assetId": "image-445c19a676a671d85a340efe73d4d402a69d73b4-2400x876-jpg",
+          "sourceNodeIds": [
+            "284:16035",
+            "284:16056"
+          ]
+        },
+        "bar-layouts": {
+          "path": "assets/newly-cs-bar-layouts.jpg",
+          "assetId": "image-220f9f2f6759f108e9e5fab5ab6ad556d42fb09d-2400x539-jpg",
+          "sourceNodeIds": [
+            "284:16035",
+            "284:16077",
+            "284:16293"
+          ]
+        },
+        "bar-reflow": {
+          "path": "assets/newly-cs-bar-reflow.jpg",
+          "assetId": "image-8b007df13af1413b27c88524f1db9633175d9995-2400x620-jpg",
+          "sourceNodeIds": [
+            "284:8669",
+            "284:8835"
+          ]
+        },
+        "bar-states": {
+          "path": "assets/newly-cs-bar-states.jpg",
+          "assetId": "image-3800fca226ce592ceeb53510084555b429519b9b-2400x1607-jpg",
+          "sourceNodeIds": [
+            "284:16343",
+            "284:16369",
+            "284:16418",
+            "284:16542",
+            "284:16566",
+            "284:16593",
+            "284:16620",
+            "284:16650"
+          ]
+        },
+        "bar-states-clip": {
+          "path": "assets/newly-cs-bar-states.mp4",
+          "assetId": "file-3f9d4dc8560f8c0a0929501e19259c644e609dbb-mp4",
+          "sourceNodeIds": [
+            "284:16035",
+            "284:16209",
+            "284:16251",
+            "284:16056",
+            "284:16343",
+            "284:16369",
+            "284:16418",
+            "284:16542",
+            "284:16566",
+            "284:16593",
+            "284:16620",
+            "284:16650"
+          ]
+        },
+        "bar-states-poster": {
+          "path": "assets/newly-cs-bar-states-poster.jpg",
+          "assetId": "image-cbf0dedf89d95bd93639b391035b9761fd7c250d-1600x900-jpg",
+          "sourceNodeIds": [
+            "284:16035"
+          ]
+        },
+        "bar-settings": {
+          "path": "assets/newly-cs-bar-settings.jpg",
+          "assetId": "image-5aead46c71fa8b25ce4cb4f85fc81fc2355eec56-2400x900-jpg",
+          "sourceNodeIds": [
+            "284:26915",
+            "284:27667",
+            "284:29443"
+          ]
+        },
+        "preview-run": {
+          "path": "assets/newly-cs-preview-run.jpg",
+          "assetId": "image-f40a2af567b56324dd0c139d324e05758e65522e-2400x900-jpg",
+          "sourceNodeIds": [
+            "284:34995",
+            "284:33716"
+          ]
+        },
+        "preview-picker": {
+          "path": "assets/newly-cs-preview-picker.jpg",
+          "assetId": "image-86349d726d2181e88f6b3a3a8e42a1c643558709-2400x640-jpg",
+          "sourceNodeIds": [
+            "284:30426",
+            "284:30672",
+            "284:31166",
+            "284:32180"
+          ]
+        },
+        "deploy": {
+          "path": "assets/newly-cs-deploy.jpg",
+          "assetId": "image-e35bbe0d8bba8a35718f2dd348875e620314e9df-2400x900-jpg",
+          "sourceNodeIds": [
+            "284:35485",
+            "284:35947"
+          ]
+        },
+        "launcher": {
+          "path": "assets/newly-cs-launcher.jpg",
+          "assetId": "image-4f2223376f651037cf44d88dc0f7701412061e3b-2400x728-jpg",
+          "sourceNodeIds": [
+            "284:33689",
+            "284:33654",
+            "284:33374"
+          ]
+        },
+        "web-welcome": {
+          "path": "assets/newly-cs-web-welcome.jpg",
+          "assetId": "image-827aeda789b34138c8ec295c0e383bb60eda4ef9-2400x1500-jpg",
+          "sourceNodeIds": [
+            "284:39266"
+          ]
+        },
+        "brand": {
+          "path": "assets/newly-cs-brand.jpg",
+          "assetId": "image-61b82fb1f4b82c2f51524c5ee3676166d11a84df-1583x991-jpg",
+          "sourceNodeIds": [
+            "284:21933"
+          ]
+        }
+      }
+    },
+    {
+      "id": "figma-portfolio-yelo",
+      "slug": "yelo",
+      "sectionTitles": [
+        "Context",
+        "Home screen",
+        "Four directions",
+        "The feed card",
+        "Search & map",
+        "Choosing a ride",
+        "Events & deals",
+        "Onboarding",
+        "Visual system",
+        "Reflection"
+      ],
+      "assets": {
+        "cover": {
+          "path": "assets/yelo-cs-cover.jpg",
+          "assetId": "image-4d187a1c528e0112f305f98c83e8da51d9a955e3-2400x1350-jpg",
+          "sourceNodeIds": [
+            "1:7130",
+            "1:5728",
+            "1:6840"
+          ]
+        },
+        "sketches": {
+          "path": "assets/yelo-cs-sketches.jpg",
+          "assetId": "image-068cd3c349c9640bb6cdd2efbaa74e1267f837c5-2638x880-jpg",
+          "sourceNodeIds": [
+            "1:3765"
+          ]
+        },
+        "home-evolution": {
+          "path": "assets/yelo-cs-home-evolution.jpg",
+          "assetId": "image-a7173db9ac9abbc2f8c240f7177eec56d2093160-2400x1800-jpg",
+          "sourceNodeIds": [
+            "1:1460",
+            "1:1507",
+            "1:1588",
+            "1:1731",
+            "1:1840",
+            "1:2237",
+            "1:2517",
+            "1:7130"
+          ]
+        },
+        "home-timelapse": {
+          "path": "assets/yelo-cs-home-timelapse.mp4",
+          "assetId": "file-52d798f405ee5449bdaba486c9b004d67fbcbed1-mp4",
+          "sourceNodeIds": [
+            "1:1460",
+            "1:3741",
+            "1:1484",
+            "1:1507",
+            "1:1537",
+            "1:1588",
+            "1:1638",
+            "1:1666",
+            "1:1698",
+            "1:1731",
+            "1:1840",
+            "1:1879",
+            "1:2237",
+            "1:2395",
+            "1:4204",
+            "1:7130"
+          ]
+        },
+        "home-timelapse-poster": {
+          "path": "assets/yelo-cs-home-timelapse-poster.jpg",
+          "assetId": "image-596909355766061279c98317d04bd4c13ede2313-1600x900-jpg",
+          "sourceNodeIds": [
+            "1:1460"
+          ]
+        },
+        "status": {
+          "path": "assets/yelo-cs-status.jpg",
+          "assetId": "image-f8a0ffb75338fb8a586e8140d253ca36729faf9e-2400x1530-jpg",
+          "sourceNodeIds": [
+            "1:1731",
+            "1:3442",
+            "1:3551"
+          ]
+        },
+        "directions": {
+          "path": "assets/yelo-cs-directions.jpg",
+          "assetId": "image-4d23796c42e61684ea35b51f99588d112d52d408-2400x1191-jpg",
+          "sourceNodeIds": [
+            "1:2517",
+            "1:2395",
+            "1:2237",
+            "1:1976"
+          ]
+        },
+        "cards": {
+          "path": "assets/yelo-cs-cards.jpg",
+          "assetId": "image-535670feca7cd0d71b28a91d234fdb8ee9fe71f7-2400x760-jpg",
+          "sourceNodeIds": [
+            "1:2307",
+            "1:4583",
+            "1:7130"
+          ]
+        },
+        "first-run": {
+          "path": "assets/yelo-cs-first-run.jpg",
+          "assetId": "image-56ab960dc2b2fe4d51fb7ee361818c4a6d00228c-2400x1530-jpg",
+          "sourceNodeIds": [
+            "1:3933",
+            "1:4204",
+            "1:7130"
+          ]
+        },
+        "search-map": {
+          "path": "assets/yelo-cs-search-map.jpg",
+          "assetId": "image-1078835ac5633ff0a94734e5d14466131c10da57-2400x1191-jpg",
+          "sourceNodeIds": [
+            "1:6473",
+            "1:6652",
+            "1:5728",
+            "1:7068"
+          ]
+        },
+        "ride-sheet": {
+          "path": "assets/yelo-cs-ride-sheet.jpg",
+          "assetId": "image-4202f6931974ffbc17fd885aecdb46dc3e397fc0-2400x1191-jpg",
+          "sourceNodeIds": [
+            "1:8053",
+            "1:7986",
+            "1:7899",
+            "1:6840"
+          ]
+        },
+        "fleet": {
+          "path": "assets/yelo-cs-fleet.jpg",
+          "assetId": "image-620f1755cfc73d6479e6bb84645a49e7e130f96f-3599x706-jpg",
+          "sourceNodeIds": [
+            "1:9096"
+          ]
+        },
+        "toy-fleet": {
+          "path": "assets/yelo-cs-toy-fleet.jpg",
+          "assetId": "image-75b27aea1ba35c5ec43f6d0f60d3f940331f5829-3680x850-jpg",
+          "sourceNodeIds": [
+            "1:9267"
+          ]
+        },
+        "events-deals": {
+          "path": "assets/yelo-cs-events-deals.jpg",
+          "assetId": "image-6ae99856da0210c27b85eea0bd11b26dcc7c4f01-2400x1530-jpg",
+          "sourceNodeIds": [
+            "1:5817",
+            "1:5899",
+            "1:8859"
+          ]
+        },
+        "onboarding": {
+          "path": "assets/yelo-cs-onboarding.jpg",
+          "assetId": "image-67fc9881f43f21ecb9177635d3d52497a05de325-2400x1191-jpg",
+          "sourceNodeIds": [
+            "1:7252",
+            "1:7417",
+            "1:7368",
+            "1:7268"
+          ]
+        },
+        "profile": {
+          "path": "assets/yelo-cs-profile.jpg",
+          "assetId": "image-f8d15b70db15b2966d5774ac83ddf21cd7c7deb0-2400x1530-jpg",
+          "sourceNodeIds": [
+            "1:6215",
+            "1:6031"
+          ]
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,362 @@
+{
+  "savedAt": "2026-10-06T13:02:43.192Z",
+  "projectId": "7k8ajlip",
+  "dataset": "production",
+  "documents": [
+    {
+      "_createdAt": "2026-10-05T06:56:16Z",
+      "_id": "figma-portfolio-newly",
+      "_rev": "4Uon20R3fRb2VIjNA8mbFW",
+      "_type": "project",
+      "_updatedAt": "2026-10-05T07:18:51Z",
+      "client": "Newly",
+      "coverImage": {
+        "_type": "image",
+        "alt": "Newly desktop workspace",
+        "asset": {
+          "_ref": "image-8c0532a34265163a72526d4489d33719f5767f64-1583x991-png",
+          "_type": "reference"
+        }
+      },
+      "description": "A desktop AI-building workspace that keeps conversations, sessions, and mobile previews together.",
+      "details": [
+        {
+          "_key": "detail-0",
+          "_type": "detailItem",
+          "label": "Focus",
+          "value": "Desktop UI/UX · AI interaction · Device preview"
+        },
+        {
+          "_key": "detail-1",
+          "_type": "detailItem",
+          "label": "Tool",
+          "value": "Figma"
+        },
+        {
+          "_key": "detail-timeline",
+          "_type": "detailItem",
+          "label": "Timeline",
+          "value": "May–October 2026"
+        }
+      ],
+      "discipline": "Product Design",
+      "featured": false,
+      "hero": [
+        {
+          "_key": "hero",
+          "_type": "mediaImage",
+          "alt": "Newly desktop workspace",
+          "asset": {
+            "_ref": "image-8c0532a34265163a72526d4489d33719f5767f64-1583x991-png",
+            "_type": "reference"
+          },
+          "size": "full"
+        }
+      ],
+      "intro": "Newly brings the conversation with an AI builder and the app being built into the same desktop workspace. A session sidebar, central chat, and adjacent device preview make it possible to move between an instruction, the response, and the visible result.",
+      "order": 5,
+      "overview": "The desktop experience combines searchable session history, pinned work, a build composer, progress messages, and an iPhone preview with device and platform controls in an AI-assisted app-building environment.",
+      "sections": [
+        {
+          "_key": "section-0",
+          "_type": "projectSection",
+          "content": [
+            {
+              "_key": "paragraph-0-0",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "paragraph-0-0-span",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "The left sidebar organizes sessions into pinned work and recents, with search and New Chat close to the top. A selected session remains visible while the central panel shows the conversation."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "paragraph-0-1",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "paragraph-0-1-span",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "The three-part layout separates navigation, instructions, and the result while keeping them in view together. Translucent surfaces and restrained dividers create a coherent desktop frame around the work."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            }
+          ],
+          "heading": "Give each part of the workflow a clear place.",
+          "title": "Workspace"
+        },
+        {
+          "_key": "section-1",
+          "_type": "projectSection",
+          "content": [
+            {
+              "_key": "paragraph-1-0",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "paragraph-1-0-span",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "The conversation distinguishes the user's prompt from the builder's response. A worked-time and tool-use disclosure provides a compact way to show activity, followed by a readable explanation of the changes."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "paragraph-1-1",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "paragraph-1-1-span",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "The composer combines a prompt field with the Build action and supporting controls. This keeps the next instruction near the recent response, so the conversation can continue in context."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            }
+          ],
+          "heading": "Make the builder's work readable.",
+          "title": "Conversation"
+        },
+        {
+          "_key": "section-2",
+          "_type": "projectSection",
+          "content": [
+            {
+              "_key": "paragraph-2-0",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "paragraph-2-0-span",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "An iPhone preview sits beside the chat, with a device selector and a vertical set of controls. Platform, media, and log areas provide adjacent ways to inspect the project."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "paragraph-2-1",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "paragraph-2-1-span",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "The composition makes the output a first-class part of the workspace. People can compare the app with the conversation without switching away from the session they are working in."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            }
+          ],
+          "heading": "Bring the app into the same workspace.",
+          "title": "Preview"
+        }
+      ],
+      "showSideMenu": true,
+      "slug": {
+        "_type": "slug",
+        "current": "newly"
+      },
+      "summary": "Keep the conversation and its result side by side.",
+      "title": "Newly",
+      "year": 2026
+    },
+    {
+      "_createdAt": "2026-10-05T06:56:16Z",
+      "_id": "figma-portfolio-yelo",
+      "_rev": "4Uon20R3fRb2VIjNA8mbFW",
+      "_type": "project",
+      "_updatedAt": "2026-10-05T07:18:51Z",
+      "client": "Yelo",
+      "coverImage": {
+        "_type": "image",
+        "alt": "Yelo project interface",
+        "asset": {
+          "_ref": "image-8f29a6534f956c88e7f433daf2be878a06b3073a-716x717-png",
+          "_type": "reference"
+        }
+      },
+      "description": "Bringing campus events, social discovery, and ride choices into one mobile experience.",
+      "details": [
+        {
+          "_key": "detail-0",
+          "_type": "detailItem",
+          "label": "Role",
+          "value": "Product Designer"
+        },
+        {
+          "_key": "detail-1",
+          "_type": "detailItem",
+          "label": "Timeline",
+          "value": "January–April 2026"
+        },
+        {
+          "_key": "detail-2",
+          "_type": "detailItem",
+          "label": "Focus",
+          "value": "Mobile UI/UX · Social discovery · Ride booking"
+        }
+      ],
+      "discipline": "Product Design",
+      "featured": false,
+      "hero": [
+        {
+          "_key": "hero",
+          "_type": "mediaImage",
+          "alt": "Yelo project interface",
+          "asset": {
+            "_ref": "image-8f29a6534f956c88e7f433daf2be878a06b3073a-716x717-png",
+            "_type": "reference"
+          },
+          "size": "full"
+        }
+      ],
+      "intro": "Yelo brings together where people are going, what is happening nearby, and how to get there. The mobile design makes campus activity part of the ride-discovery experience, with destinations, events, and social signals sharing one home feed.",
+      "order": 7,
+      "overview": "As Product Designer at Yelo, I worked on a social mobility experience for campus life. The mobile interface connects a home feed, live map, destination search, ride selection, event details, and phone-based onboarding. Each flow connects discovering a place with taking the next step toward getting there.",
+      "sections": [
+        {
+          "_key": "section-0",
+          "_type": "projectSection",
+          "content": [
+            {
+              "_key": "paragraph-0-0",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "paragraph-0-0-span",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "The home screen opens with “Where to?” and saved places, followed by a feed of people heading out, ticketed events, and trending searches. Names, avatars, recent activity, and mutual connections give each destination context beyond a pin on a map."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "paragraph-0-1",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "paragraph-0-1-span",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Soft translucent surfaces separate the search controls from the feed. A yellow live indicator highlights current activity, while event cards carry recognizable artwork and social context."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            }
+          ],
+          "heading": "Make the destination part of the decision.",
+          "title": "Discovery"
+        },
+        {
+          "_key": "section-1",
+          "_type": "projectSection",
+          "content": [
+            {
+              "_key": "paragraph-1-0",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "paragraph-1-0-span",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Destination search and the map connect into a ride-selection sheet. Car, Big Car, Cart, and Mini Bus options present different group sizes, prices, and sharing arrangements together, with fastest and cheapest labels helping people compare."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "paragraph-1-1",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "paragraph-1-1-span",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "The request action sits below the choices alongside a note about when charging begins. This keeps the immediate decision and its payment context close together."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "image-0",
+              "_type": "mediaImage",
+              "alt": "Yelo map and ride selection screens",
+              "asset": {
+                "_ref": "image-9a670650c0ba9406a202ba59aec93bd8de7df475-1600x1100-png",
+                "_type": "reference"
+              },
+              "caption": "Yelo map and ride selection screens",
+              "size": "full"
+            }
+          ],
+          "heading": "Compare ways to get there in the same place.",
+          "title": "Ride selection"
+        },
+        {
+          "_key": "section-2",
+          "_type": "projectSection",
+          "content": [
+            {
+              "_key": "paragraph-2-0",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "paragraph-2-0-span",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "Event details bring location, ticket access, attendees, and a ride action into one flow. People can move from discovering an event to understanding who is going and deciding how to join them."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            },
+            {
+              "_key": "paragraph-2-1",
+              "_type": "block",
+              "children": [
+                {
+                  "_key": "paragraph-2-1-span",
+                  "_type": "span",
+                  "marks": [],
+                  "text": "The onboarding screens introduce the campus proposition before phone-number verification. A floating navigation bar keeps Home, Map, and Profile available across the main experience."
+                }
+              ],
+              "markDefs": [],
+              "style": "normal"
+            }
+          ],
+          "heading": "Connect interest, attendance, and travel.",
+          "title": "Events & onboarding"
+        }
+      ],
+      "showSideMenu": true,
+      "slug": {
+        "_type": "slug",
+        "current": "yelo"
+      },
+      "summary": "A ride starts with somewhere worth going—and knowing who else is heading there.",
+      "title": "Yelo",
+      "year": 2026
+    }
+  ]
+}

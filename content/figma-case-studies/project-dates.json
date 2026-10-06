@@ -15,7 +15,8 @@
       "updateTimeline": false,
       "sourceSummary": "Original published portfolio year; a finer creation or work date was not independently verified.",
       "evidenceFile": "legacy-date-evidence.json",
-      "order": 1
+      "order": 2,
+      "featured": true
     },
     {
       "id": "legacy-portfolio-yrconnect",
@@ -55,7 +56,8 @@
         }
       ],
       "updateTimeline": true,
-      "order": 2
+      "order": 16,
+      "featured": false
     },
     {
       "id": "legacy-portfolio-hopperhangout",
@@ -67,7 +69,9 @@
       "precision": "year",
       "updateTimeline": false,
       "sourceSummary": "Original published portfolio year; a finer creation or work date was not independently verified.",
-      "evidenceFile": "legacy-date-evidence.json"
+      "evidenceFile": "legacy-date-evidence.json",
+      "order": 19,
+      "featured": false
     },
     {
       "id": "legacy-portfolio-elapsedesign",
@@ -79,7 +83,9 @@
       "precision": "year",
       "updateTimeline": false,
       "sourceSummary": "Original published portfolio year; a finer creation or work date was not independently verified.",
-      "evidenceFile": "legacy-date-evidence.json"
+      "evidenceFile": "legacy-date-evidence.json",
+      "order": 3,
+      "featured": true
     },
     {
       "id": "legacy-portfolio-robotics",
@@ -99,7 +105,8 @@
       ],
       "evidenceFile": "legacy-date-evidence.json",
       "updateTimeline": true,
-      "order": 21
+      "order": 18,
+      "featured": false
     },
     {
       "id": "legacy-portfolio-thedriveteampodcast",
@@ -130,7 +137,8 @@
         "The role name, organization, and start month match this specific podcast scope. Use July 2023 as latest documented project work, while preserving the original 2022 project year. This does not imply a 2023 first release."
       ],
       "originalProjectYear": 2022,
-      "order": 20
+      "order": 17,
+      "featured": false
     },
     {
       "id": "legacy-portfolio-25kteam",
@@ -163,7 +171,8 @@
         "The explicit project range ends October 2022. June 20 is repository setup rather than public launch."
       ],
       "repositorySetupDate": "2022-06-20",
-      "order": 22
+      "order": 20,
+      "featured": false
     },
     {
       "id": "legacy-portfolio-sorbackyardscrimmage",
@@ -189,7 +198,8 @@
       "notes": [
         "Retain year-only. The Tipping Point season is not an exact video date."
       ],
-      "order": 25
+      "order": 23,
+      "featured": false
     },
     {
       "id": "legacy-portfolio-sorreveal",
@@ -215,7 +225,8 @@
       "notes": [
         "Retain year-only. A current YouTube copyright footer or crawl date is not the video upload date."
       ],
-      "order": 26
+      "order": 24,
+      "featured": false
     },
     {
       "id": "legacy-portfolio-unionvillehowl",
@@ -244,7 +255,8 @@
         "The original portfolio labels the design 2021; the author project range ends May 2022. Under latest documented project work ordering, use 2022 and show December 2021–May 2022 as the timeline. A launch day is not verified."
       ],
       "originalDesignYear": 2021,
-      "order": 23
+      "order": 21,
+      "featured": false
     },
     {
       "id": "legacy-portfolio-winstonzhaov1",
@@ -271,7 +283,8 @@
         "May 31 verifies repository setup only. It can anchor original activity to May 2021 as a tie-break within year 2021; do not label it as the launch or last-work date."
       ],
       "repositorySetupDate": "2021-05-31",
-      "order": 27
+      "order": 25,
+      "featured": false
     },
     {
       "id": "legacy-portfolio-839team",
@@ -305,7 +318,8 @@
       ],
       "originalDesignYear": 2021,
       "repositorySetupDate": "2021-01-12",
-      "order": 24
+      "order": 22,
+      "featured": false
     },
     {
       "id": "legacy-portfolio-asymtry",
@@ -327,7 +341,8 @@
       "notes": [
         "Retain year-only. No supported month or day was found in the quick lookup."
       ],
-      "order": 29
+      "order": 27,
+      "featured": false
     },
     {
       "id": "legacy-portfolio-controllerdeskmats",
@@ -359,7 +374,8 @@
       "notes": [
         "The explicit design/group-buy project range ends December 2020. October 28 is the sales closing date; the vendor February 2021 shipping estimate is not verified project work and does not change the year."
       ],
-      "order": 28
+      "order": 26,
+      "featured": false
     },
     {
       "id": "figma-portfolio-yelo",
@@ -380,7 +396,8 @@
         }
       ],
       "updateTimeline": true,
-      "order": 7
+      "order": 4,
+      "featured": true
     },
     {
       "id": "figma-portfolio-villio-ai",
@@ -406,7 +423,8 @@
         "No exact authored asset date or public launch date found."
       ],
       "updateTimeline": true,
-      "order": 12
+      "order": 9,
+      "featured": false
     },
     {
       "id": "figma-portfolio-newly",
@@ -427,7 +445,8 @@
         }
       ],
       "updateTimeline": true,
-      "order": 5
+      "order": 1,
+      "featured": true
     },
     {
       "id": "figma-portfolio-augwa",
@@ -458,7 +477,8 @@
         "Exact individual dashboard/mobile screen creation dates are unavailable."
       ],
       "updateTimeline": true,
-      "order": 9
+      "order": 6,
+      "featured": false
     },
     {
       "id": "figma-portfolio-hack404-launchpad",
@@ -489,7 +509,8 @@
         "Official event timing supports the 2025 iteration; the event end is separate from the author’s later role end."
       ],
       "updateTimeline": true,
-      "order": 10
+      "order": 7,
+      "featured": false
     },
     {
       "id": "figma-portfolio-costudy",
@@ -510,7 +531,8 @@
         }
       ],
       "updateTimeline": true,
-      "order": 8
+      "order": 5,
+      "featured": false
     },
     {
       "id": "figma-portfolio-cocart",
@@ -549,7 +571,8 @@
         }
       ],
       "updateTimeline": true,
-      "order": 17
+      "order": 14,
+      "featured": false
     },
     {
       "id": "figma-portfolio-ryri",
@@ -570,7 +593,8 @@
         }
       ],
       "updateTimeline": true,
-      "order": 16
+      "order": 13,
+      "featured": false
     },
     {
       "id": "figma-portfolio-smartbasket",
@@ -591,7 +615,8 @@
         }
       ],
       "updateTimeline": true,
-      "order": 15
+      "order": 12,
+      "featured": false
     },
     {
       "id": "figma-portfolio-arca",
@@ -621,7 +646,8 @@
         }
       ],
       "updateTimeline": true,
-      "order": 13
+      "order": 10,
+      "featured": false
     },
     {
       "id": "figma-portfolio-sparks",
@@ -656,7 +682,8 @@
         }
       ],
       "updateTimeline": true,
-      "order": 14
+      "order": 11,
+      "featured": false
     },
     {
       "id": "figma-portfolio-garden",
@@ -691,7 +718,8 @@
         }
       ],
       "updateTimeline": true,
-      "order": 18
+      "order": 15,
+      "featured": false
     },
     {
       "id": "figma-portfolio-habitat",
@@ -731,7 +759,8 @@
         }
       ],
       "updateTimeline": true,
-      "order": 11
+      "order": 8,
+      "featured": false
     }
   ]
 }
