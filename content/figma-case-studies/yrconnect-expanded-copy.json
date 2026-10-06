@@ -10,7 +10,7 @@
         "_type": "reference"
       }
     },
-    "description": "A York Region resident app concept for facility bookings, service requests, community updates, and local polls.",
+    "description": "Facility bookings, service requests, and local polls for York Region.",
     "details": [
       {
         "_key": "yrconnect-detail-role",
