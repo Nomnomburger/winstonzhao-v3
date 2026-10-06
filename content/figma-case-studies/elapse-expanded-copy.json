@@ -1,7 +1,7 @@
 {
   "documentId": "legacy-portfolio-elapsedesign",
   "document": {
-    "description": "A tournament companion that brings VEX match schedules, team rankings, and scouting into one mobile experience.",
+    "description": "VEX match schedules, rankings, and scouting in one tournament app.",
     "intro": "After four years competing in VEX Robotics, I knew how much attention tournament logistics could take away from the competition itself. I designed Elapse to put a team's next match, tournament information, and scouting tools within easy reach.",
     "summary": "Helping robotics teams move from checking the schedule to preparing for their next match.",
     "overview": "Elapse is a tournament companion for VEX Robotics competitors. As co-founder and product designer, I shaped the interface around the decisions teams make throughout an event: when to head to the field, who they are playing with, and which teams to scout. The design grew from a personalized schedule into a broader mobile experience with rankings and ScoutSheets.",

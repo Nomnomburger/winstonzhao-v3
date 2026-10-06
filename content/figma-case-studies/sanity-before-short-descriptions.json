@@ -1,0 +1,74 @@
+[
+  {
+    "_id": "drafts.figma-portfolio-munisync",
+    "description": "A resident app that connects local bookings, service requests, community notices, and polls through a shared mobile interface."
+  },
+  {
+    "_id": "drafts.figma-portfolio-summerhacks",
+    "description": "A warm visual identity, waitlist landing page, and sponsorship package for an outdoor builder retreat."
+  },
+  {
+    "_id": "figma-portfolio-arca",
+    "description": "An art-kit companion that connects traditional crafts, cultural context, and step-by-step making instructions."
+  },
+  {
+    "_id": "figma-portfolio-augwa",
+    "description": "Connecting an operations dashboard with mobile schedules, job details, and shift tracking."
+  },
+  {
+    "_id": "figma-portfolio-cocart",
+    "description": "A shared shopping concept that helps nearby shoppers join a cart, coordinate delivery, and track a group order."
+  },
+  {
+    "_id": "figma-portfolio-costudy",
+    "description": "A campus study app that brings nearby sessions, course discussions, and classmates into one place."
+  },
+  {
+    "_id": "figma-portfolio-garden",
+    "description": "A savings dashboard that turns financial goals into visible progress and small milestones."
+  },
+  {
+    "_id": "figma-portfolio-habitat",
+    "description": "A playful household-task concept built around a colorful house, room counters, and reward points."
+  },
+  {
+    "_id": "figma-portfolio-hack404-launchpad",
+    "description": "A responsive participant portal for hackathon schedules, announcements, submissions, and leaderboards."
+  },
+  {
+    "_id": "figma-portfolio-newly",
+    "description": "Designing the desktop and web workspace for Newly, an AI app builder — one prompt bar, a sessions sidebar, a live iPhone preview and a path to the App Store."
+  },
+  {
+    "_id": "figma-portfolio-ryri",
+    "description": "A focus companion that combines timed work sessions, task planning, ambience, and a configurable conversational tone."
+  },
+  {
+    "_id": "figma-portfolio-smartbasket",
+    "description": "A grocery shopping concept that connects a personal list with nearby sales, store comparisons, and community contributions."
+  },
+  {
+    "_id": "figma-portfolio-sparks",
+    "description": "A location-based social feed concept for sharing everyday campus moments through text and photo updates."
+  },
+  {
+    "_id": "figma-portfolio-villio-ai",
+    "description": "A municipal service platform that brings bookings, local updates, and AI-assisted requests into one resident experience."
+  },
+  {
+    "_id": "figma-portfolio-yelo",
+    "description": "Designing the rider app for a student-only ride-share: a social, event-driven home that turns “where is everyone going?” into a ride."
+  },
+  {
+    "_id": "legacy-portfolio-elapsedesign",
+    "description": "A tournament companion that brings VEX match schedules, team rankings, and scouting into one mobile experience."
+  },
+  {
+    "_id": "legacy-portfolio-hopperhangout",
+    "description": "A playful mobile concept that helps teens turn shared preferences into group plans and multi-stop hangouts."
+  },
+  {
+    "_id": "legacy-portfolio-yrconnect",
+    "description": "A York Region resident app concept for facility bookings, service requests, community updates, and local polls."
+  }
+]
