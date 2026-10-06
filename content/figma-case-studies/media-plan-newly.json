@@ -1,0 +1,385 @@
+{
+  "project": "newly",
+  "figmaFile": "qDdxlqtBxVpaAOUMITle4W",
+  "notes": "Sources are Figma node renders (node.screenshot at 2x for 1280x832 screens, 3x for the prompt-bar component, 1x for the 1583x991 'Newly Desktop Demo' compositions). Crop boxes are in 1x node coordinates and multiplied by `scale`. Run: python3 scripts/compose-case-study-media.py content/figma-case-studies/media-plan-newly.json --source-map <exports.json>,<chatbar-exports.json>",
+  "compositions": [
+    {
+      "name": "cover",
+      "type": "desktop",
+      "frame": "laptop",
+      "sources": [
+        "figma:284:33716"
+      ],
+      "out": "assets/newly-cs-cover.jpg",
+      "size": [
+        2400,
+        1500
+      ],
+      "bg": "newly",
+      "bgImage": "figma:284:992",
+      "bgBlur": 30,
+      "bgDim": 0.25,
+      "pad": 0.05
+    },
+    {
+      "name": "explorations-board",
+      "type": "desktop",
+      "sources": [
+        "figma:284:1741",
+        "figma:284:4696"
+      ],
+      "out": "assets/newly-cs-explorations-board.jpg",
+      "size": [
+        2400,
+        900
+      ],
+      "bg": "newly",
+      "pad": 0.05
+    },
+    {
+      "name": "explorations-demo",
+      "type": "strip",
+      "sources": [
+        "figma:284:8083"
+      ],
+      "out": "assets/newly-cs-explorations-demo.jpg",
+      "pad": 0,
+      "bg": "white"
+    },
+    {
+      "name": "workspace-densities",
+      "type": "grid",
+      "columns": 2,
+      "sources": [
+        "figma:284:32437",
+        "figma:284:25320",
+        "figma:284:28085",
+        "figma:284:32540"
+      ],
+      "out": "assets/newly-cs-workspace-densities.jpg",
+      "width": 2400,
+      "bg": "newly",
+      "radius": 28,
+      "pad": 0.05,
+      "gap": 0.03
+    },
+    {
+      "name": "workspace-collapse",
+      "type": "timelapse",
+      "phone": false,
+      "sources": [
+        "figma:284:8835",
+        "figma:284:8669",
+        "figma:284:9058",
+        "figma:284:9231",
+        "figma:284:9344"
+      ],
+      "out": "assets/newly-cs-workspace-collapse.mp4",
+      "poster": "assets/newly-cs-workspace-collapse-poster.jpg",
+      "size": [
+        1584,
+        992
+      ],
+      "itemWidth": 1.0,
+      "shadow": false,
+      "bg": "white",
+      "hold": 1.4,
+      "fade": 0.5
+    },
+    {
+      "name": "workspace-anatomy",
+      "type": "desktop",
+      "sources": [
+        "figma:284:25426"
+      ],
+      "out": "assets/newly-cs-workspace-anatomy.jpg",
+      "size": [
+        2400,
+        1500
+      ],
+      "bg": "newly",
+      "pad": 0.05
+    },
+    {
+      "name": "bar-modes",
+      "type": "stack",
+      "sources": [
+        "figma:284:16035",
+        "figma:284:16209",
+        "figma:284:16251"
+      ],
+      "out": "assets/newly-cs-bar-modes.jpg",
+      "width": 2400,
+      "pad": 0.08,
+      "gap": 0.0,
+      "shadow": false,
+      "bg": "newly"
+    },
+    {
+      "name": "bar-empty-filled",
+      "type": "stack",
+      "sources": [
+        "figma:284:16035",
+        "figma:284:16056"
+      ],
+      "out": "assets/newly-cs-bar-empty-filled.jpg",
+      "width": 2400,
+      "pad": 0.08,
+      "gap": 0.0,
+      "shadow": false,
+      "bg": "newly"
+    },
+    {
+      "name": "bar-layouts",
+      "type": "row",
+      "sources": [
+        "figma:284:16035",
+        "figma:284:16077",
+        "figma:284:16293"
+      ],
+      "out": "assets/newly-cs-bar-layouts.jpg",
+      "width": 2400,
+      "pad": 0.06,
+      "gap": 0.02,
+      "shadow": false,
+      "bg": "newly"
+    },
+    {
+      "name": "bar-reflow",
+      "type": "crop-row",
+      "sources": [
+        "figma:284:8727",
+        "figma:284:8952"
+      ],
+      "boxes": [
+        [
+          0,
+          640,
+          550,
+          180
+        ],
+        [
+          0,
+          640,
+          381,
+          180
+        ]
+      ],
+      "scale": 3,
+      "out": "assets/newly-cs-bar-reflow.jpg",
+      "size": [
+        2400,
+        620
+      ],
+      "bg": "newly",
+      "rowHeight": 0.7,
+      "radius": 24
+    },
+    {
+      "name": "bar-states",
+      "type": "grid",
+      "columns": 2,
+      "sources": [
+        "figma:284:16343",
+        "figma:284:16369",
+        "figma:284:16418",
+        "figma:284:16542",
+        "figma:284:16566",
+        "figma:284:16593",
+        "figma:284:16620",
+        "figma:284:16650"
+      ],
+      "out": "assets/newly-cs-bar-states.jpg",
+      "width": 2400,
+      "pad": 0.05,
+      "gap": 0.0,
+      "shadow": false,
+      "bg": "newly",
+      "valign": "middle"
+    },
+    {
+      "name": "bar-states-clip",
+      "type": "timelapse",
+      "phone": false,
+      "anchor": "bottom",
+      "shadow": false,
+      "sources": [
+        "figma:284:16035",
+        "figma:284:16056",
+        "figma:284:16343",
+        "figma:284:16369",
+        "figma:284:16394",
+        "figma:284:16418",
+        "figma:284:16521",
+        "figma:284:16566",
+        "figma:284:16542",
+        "figma:284:16620",
+        "figma:284:16650",
+        "figma:284:16593"
+      ],
+      "out": "assets/newly-cs-bar-states.mp4",
+      "poster": "assets/newly-cs-bar-states-poster.jpg",
+      "size": [
+        1600,
+        900
+      ],
+      "itemWidth": 0.78,
+      "bottomPad": 0.06,
+      "bg": "newly",
+      "hold": 1.1,
+      "fade": 0.3
+    },
+    {
+      "name": "bar-settings",
+      "type": "crop-row",
+      "sources": [
+        "figma:284:26915",
+        "figma:284:27667",
+        "figma:284:29443"
+      ],
+      "boxes": [
+        [
+          493,
+          300,
+          500,
+          412
+        ],
+        [
+          493,
+          325,
+          500,
+          412
+        ],
+        [
+          291,
+          390,
+          500,
+          412
+        ]
+      ],
+      "scale": "auto",
+      "out": "assets/newly-cs-bar-settings.jpg",
+      "size": [
+        2400,
+        900
+      ],
+      "bg": "newly",
+      "rowHeight": 0.78,
+      "radius": 24
+    },
+    {
+      "name": "preview-run",
+      "type": "desktop",
+      "sources": [
+        "figma:284:34995",
+        "figma:284:33716"
+      ],
+      "out": "assets/newly-cs-preview-run.jpg",
+      "size": [
+        2400,
+        900
+      ],
+      "bg": "newly",
+      "pad": 0.05
+    },
+    {
+      "name": "preview-picker",
+      "type": "crop-row",
+      "sources": [
+        "figma:284:30426",
+        "figma:284:30672",
+        "figma:284:31166",
+        "figma:284:32180"
+      ],
+      "boxes": [
+        [
+          835,
+          58,
+          420,
+          317
+        ],
+        [
+          835,
+          58,
+          420,
+          317
+        ],
+        [
+          835,
+          58,
+          420,
+          317
+        ],
+        [
+          835,
+          58,
+          420,
+          317
+        ]
+      ],
+      "scale": 2,
+      "out": "assets/newly-cs-preview-picker.jpg",
+      "size": [
+        2400,
+        640
+      ],
+      "bg": "newly",
+      "rowHeight": 0.74,
+      "radius": 24
+    },
+    {
+      "name": "deploy",
+      "type": "desktop",
+      "sources": [
+        "figma:284:35485",
+        "figma:284:35947"
+      ],
+      "out": "assets/newly-cs-deploy.jpg",
+      "size": [
+        2400,
+        900
+      ],
+      "bg": "newly",
+      "pad": 0.05
+    },
+    {
+      "name": "launcher",
+      "type": "row",
+      "sources": [
+        "figma:284:33689",
+        "figma:284:33654",
+        "figma:284:33374"
+      ],
+      "out": "assets/newly-cs-launcher.jpg",
+      "width": 2400,
+      "pad": 0.05,
+      "gap": 0.03,
+      "radius": 28,
+      "bg": "newly"
+    },
+    {
+      "name": "web-welcome",
+      "type": "desktop",
+      "sources": [
+        "figma:284:39266"
+      ],
+      "out": "assets/newly-cs-web-welcome.jpg",
+      "size": [
+        2400,
+        1500
+      ],
+      "bg": "newly",
+      "pad": 0.05
+    },
+    {
+      "name": "brand",
+      "type": "strip",
+      "sources": [
+        "figma:284:9647"
+      ],
+      "out": "assets/newly-cs-brand.jpg",
+      "pad": 0,
+      "bg": "white"
+    }
+  ]
+}

@@ -1,0 +1,389 @@
+{
+  "documentId": "figma-portfolio-newly",
+  "source": {
+    "figmaFile": "qDdxlqtBxVpaAOUMITle4W",
+    "urls": [
+      "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W/Winston-Design-Demo?node-id=284-25319",
+      "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W/Winston-Design-Demo?node-id=284-25318",
+      "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W/Winston-Design-Demo?node-id=284-16034",
+      "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W/Winston-Design-Demo?node-id=284-16320"
+    ]
+  },
+  "fields": {
+    "description": "Designing the desktop and web workspace for Newly, an AI app builder — one prompt bar, a sessions sidebar, a live iPhone preview and a path to the App Store.",
+    "client": "Newly",
+    "discipline": "Product Design",
+    "link": {
+      "url": "https://newly.app",
+      "label": "Visit"
+    },
+    "intro": "Newly turns a conversation into a real iOS, Android or web app. I design the product: the desktop and web workspace where you describe what you want, watch the agent build it, test it on a simulator and ship it to the App Store.",
+    "summary": "Building an app should feel like a conversation. So the prompt bar is the product, and everything else is arranged around it.",
+    "overview": "Newly is an AI agent that builds mobile apps from a chat. When I joined, the agent could already build; the product around it was mostly a blank window. Over five months I designed the desktop and web workspace — launcher, sessions sidebar, conversation, live device preview and the deploy flow — along with the one component every surface shares: the prompt bar. The work spans two generations of information architecture, a long tail of component states, and many small decisions about how an agent should show its work.",
+    "impact": "A complete desktop and web workspace, from launcher to App Store release, built around a single prompt-bar component and one set of layout rules.",
+    "details": [
+      {
+        "label": "Role",
+        "value": "Product Designer"
+      },
+      {
+        "label": "Timeline",
+        "value": "May – October 2026"
+      },
+      {
+        "label": "Platform",
+        "value": "macOS · Web"
+      },
+      {
+        "label": "Scope",
+        "value": "Workspace · Prompt bar · Device preview\nDeploy · Launcher · Marketing"
+      },
+      {
+        "label": "Tools",
+        "value": "Figma"
+      }
+    ],
+    "cover": {
+      "asset": "cover",
+      "alt": "The Newly desktop workspace on a MacBook — project sidebar, conversation with the agent and a live iPhone preview — over the blue brand gradient"
+    },
+    "hero": {
+      "image": "cover",
+      "alt": "The Newly desktop workspace on a MacBook — project sidebar, conversation with the agent and a live iPhone preview — over the blue brand gradient"
+    },
+    "sections": [
+      {
+        "title": "Context",
+        "heading": "An agent that builds apps needed a place to work.",
+        "content": [
+          "Newly’s agent writes, runs and ships mobile apps from natural language. That is a lot of machinery to put behind a text box: sessions that run locally or in the cloud, a simulator, git branches, model choices, deployment to TestFlight and the App Store. The design problem was deciding what a person needs to see, and when — and keeping the rest one click away.",
+          "I joined as the designer on a small team. The constraints were real: desktop and web had to feel like one product, the audience included people who had never opened Xcode, and the agent’s work had to be visible without turning the chat into a terminal."
+        ]
+      },
+      {
+        "title": "Explorations",
+        "heading": "Should the home be a board or a chat?",
+        "content": [
+          "My first direction treated the app like a product roadmap. The agent proposed features as cards — “Proposed by Newly”, with a reasoning panel citing session data and drop-off rates — and you approved, built and deployed them from a board. I pushed it far: a git-style tree of sub-features, a “New Idea” card you could compose inline, and three columns for Features, Marketing and Website.",
+          {
+            "image": "explorations-board",
+            "alt": "Two early Newly home screens: a git-style tree of proposed features, and the flat three-column board that replaced it",
+            "caption": "The feature board: a git-style tree of proposals, and the flat version that fit the viewport."
+          },
+          {
+            "image": "explorations-demo",
+            "alt": "Newly window on a blue gradient showing the feature board, the agent's reasoning panel with a Deploy button, and a live iPhone preview",
+            "caption": "Board, agent reasoning and a live preview in one window."
+          },
+          "It demoed well, and it was wrong. People didn’t want to manage a roadmap; they wanted to say what they wanted and watch it appear. The board’s best ideas — provenance, progress, reasoning before you approve — survived inside a chat-first workspace."
+        ]
+      },
+      {
+        "title": "Workspace",
+        "heading": "Three columns that collapse to one.",
+        "content": [
+          "The workspace is a sessions sidebar, a conversation and a device preview — each a rounded card that can collapse on its own. Pinned and recent sessions sit on the left with a cloud or laptop glyph for where they run and a blue dot for the one that is running; the conversation stays in the middle; the simulator takes the right.",
+          {
+            "image": "workspace-densities",
+            "alt": "Four Newly screens showing the same empty prompt with zero, one, two and three panels open",
+            "caption": "The same prompt with zero, one, two and three panels open."
+          },
+          {
+            "video": "workspace-collapse",
+            "poster": "workspace-collapse-poster",
+            "caption": "Collapsing panels one at a time. The chat column and the prompt bar reflow at each step."
+          },
+          "I rebuilt the sidebar once along the way: Create / Deploy / Analytics / Settings became New Session / Search / Deploy / Configure, because people think in sessions, not in product areas.",
+          {
+            "image": "workspace-anatomy",
+            "alt": "Newly new-session screen with the Travel App sidebar: pinned and recent sessions, cloud and laptop glyphs, a running indicator",
+            "caption": "Project header, pinned and recent sessions, local vs. cloud glyphs, and a running indicator."
+          }
+        ]
+      },
+      {
+        "title": "The prompt bar",
+        "heading": "One bar, three modes, every state.",
+        "content": [
+          "The prompt bar is the one element on every screen, so it got the most attention. It has three modes — Build, Plan and Ask — in a segmented control where only the active mode shows its label, so the bar stays narrow but always says what it will do. Attach on the left, microphone or send on the right, and a second row for the things you set once: where the session runs, which branch, which model.",
+          {
+            "image": "bar-modes",
+            "alt": "Three Newly prompt bars in Build, Plan and Ask mode",
+            "caption": "Build, Plan and Ask. Only the active mode carries a label."
+          },
+          {
+            "image": "bar-empty-filled",
+            "alt": "The Newly prompt bar empty with a microphone button, and filled with text and a blue send button",
+            "caption": "Empty: a microphone. Typed: the send button."
+          },
+          "It comes in three layouts for three widths: expanded on the empty canvas, stacked when the column is narrow — placeholder on top, controls below — and collapsed to the Newly mark when a panel needs the room.",
+          {
+            "image": "bar-layouts",
+            "alt": "The Newly prompt bar in expanded, stacked and collapsed layouts",
+            "caption": "Expanded, stacked, collapsed."
+          },
+          {
+            "image": "bar-reflow",
+            "alt": "The prompt bar at the bottom of a wide chat column and of a narrow one, where it wraps to two rows",
+            "caption": "The same bar in a wide and a narrow chat column."
+          },
+          "Then the states that make an agent feel alive: dropping files, attached images, a voice message, a stop button while it works, a status line while it connects or fixes a bug, and a queue — you can keep typing while it is busy, and your messages wait in order above the bar.",
+          {
+            "image": "bar-states",
+            "alt": "Eight states of the Newly prompt bar: drop files, attached images, audio message, stop, connecting, fixing bugs, and messages in queue",
+            "caption": "Drop files, images, audio, stop, connecting, fixing bugs, one and two messages in queue."
+          },
+          {
+            "video": "bar-states-clip",
+            "poster": "bar-states-poster",
+            "caption": "The bar through a session."
+          },
+          "Settings follow progressive disclosure. On the empty canvas, Remote Session and Newly Agent sit under the bar and open into popovers that explain the trade-off in one line — “Runs in the cloud, accessible on any device” against “Runs on your computer, device must stay awake”; Effort as a scale, Model as a list with “+ LINK” for your own Codex or Claude subscription. Once a conversation starts, the same popovers move behind the + button.",
+          {
+            "image": "bar-settings",
+            "alt": "Three popovers from the Newly prompt bar: Remote or Local session, Effort and Model, and the + menu with the model submenu",
+            "caption": "Session location, model and effort, and the same controls folded into + mid-conversation."
+          }
+        ]
+      },
+      {
+        "title": "Conversation & preview",
+        "heading": "Chat on the left, the app on the right.",
+        "content": [
+          "The conversation is deliberately plain: your messages in bubbles, the agent’s as text, and its work folded behind one line — “Worked for 3m, used 3 tools” — that expands to the commands it ran. The device pane starts as an explanation and a Run button, then becomes a live iPhone 17 Pro with a rail of simulator controls beside it.",
+          {
+            "image": "preview-run",
+            "alt": "The Newly workspace before and after pressing Run: an App preview placeholder, then a habit-tracker app running in an iPhone simulator",
+            "caption": "Before and after Run."
+          },
+          "Choosing a simulator sounds trivial and took eight iterations: the cloud/local toggle moved from the footer into its own column, the columns got labels, the wheel picker became a list, and “Apply” became “Apply & Run” so the consequence was explicit.",
+          {
+            "image": "preview-picker",
+            "alt": "Four iterations of the iOS simulator picker popover, ending with labelled Type, Device and Version columns",
+            "caption": "Four of the eight iterations of the simulator picker."
+          }
+        ]
+      },
+      {
+        "title": "Deploy",
+        "heading": "From a session to the App Store.",
+        "content": [
+          "Deploy groups destinations by platform — iOS, Android, Web — with the public release in blue and testing targets in grey. Pick the App Store and a release card slides in with a short checklist and, underneath, what the agent already filled in. The point was to make the agent’s busywork legible, not invisible.",
+          {
+            "image": "deploy",
+            "alt": "The Newly Deploy hub, and the App Store release card with a checklist and an Automatically Completed list",
+            "caption": "The Deploy hub, and the App Store release card with the agent’s pre-filled details."
+          }
+        ]
+      },
+      {
+        "title": "Launcher & web",
+        "heading": "Native on the desktop, familiar on the web.",
+        "content": [
+          "The desktop app opens like an IDE: a sign-in splash, then a small welcome window with recent projects. On the web the same workspace runs in the browser, with a brand gradient and a “Pick up where you left off” toast. The two differ only where the platform does — traffic lights here, a download nudge there.",
+          {
+            "image": "launcher",
+            "alt": "Three small Newly launcher windows: the sign-in splash, the first-run welcome, and the launcher with recent projects",
+            "caption": "Sign in, first run, and the launcher with recent projects."
+          },
+          {
+            "image": "web-welcome",
+            "alt": "Newly on the web: the welcome screen with a magenta gradient, a filled prompt and a Pick up where you left off toast",
+            "caption": "The web welcome with the resume toast."
+          }
+        ]
+      },
+      {
+        "title": "Visual system",
+        "heading": "Blue means go; pink stays in the logo.",
+        "content": [
+          "The interface is nearly colourless on purpose: an off-white window, white cards with hairlines, one typeface, Phosphor icons. Blue is reserved for the active mode, the primary action and anything that is running. The brand’s pink and the gradient wallpapers stay in the logo, the launcher and marketing, so the user’s own app is the most colourful thing on screen.",
+          {
+            "image": "brand",
+            "alt": "Newly marketing composition with the workspace on a gradient of glossy blue and violet shapes",
+            "caption": "The workspace on the brand gradient, as used in marketing."
+          }
+        ]
+      },
+      {
+        "title": "Reflection",
+        "heading": "What designing for an agent taught me.",
+        "content": [
+          "Most of the work was states, not screens: what the bar says while the agent connects, fixes a bug, or holds your next three messages. Designing those honestly — a status line, a queue, a stop button — did more for trust than any onboarding could.",
+          "I also learned to kill a direction I liked. The feature board was the most “designed” thing in the file, and the right call was to keep three ideas from it and let the rest go."
+        ]
+      }
+    ]
+  },
+  "assets": {
+    "cover": {
+      "path": "assets/newly-cs-cover.jpg",
+      "sourceNodeIds": [
+        "284:33716",
+        "284:992"
+      ],
+      "note": "Composed cover: the running build session set in a MacBook frame over the blurred brand gradient tile."
+    },
+    "explorations-board": {
+      "path": "assets/newly-cs-explorations-board.jpg",
+      "sourceNodeIds": [
+        "284:1741",
+        "284:4696"
+      ]
+    },
+    "explorations-demo": {
+      "path": "assets/newly-cs-explorations-demo.jpg",
+      "sourceNodeIds": [
+        "284:8083"
+      ]
+    },
+    "workspace-densities": {
+      "path": "assets/newly-cs-workspace-densities.jpg",
+      "sourceNodeIds": [
+        "284:32437",
+        "284:25320",
+        "284:28085",
+        "284:32540"
+      ]
+    },
+    "workspace-collapse": {
+      "path": "assets/newly-cs-workspace-collapse.mp4",
+      "sourceNodeIds": [
+        "284:8835",
+        "284:8669",
+        "284:9058",
+        "284:9231",
+        "284:9344"
+      ]
+    },
+    "workspace-collapse-poster": {
+      "path": "assets/newly-cs-workspace-collapse-poster.jpg",
+      "sourceNodeIds": [
+        "284:8835"
+      ]
+    },
+    "workspace-anatomy": {
+      "path": "assets/newly-cs-workspace-anatomy.jpg",
+      "sourceNodeIds": [
+        "284:25426"
+      ]
+    },
+    "bar-modes": {
+      "path": "assets/newly-cs-bar-modes.jpg",
+      "sourceNodeIds": [
+        "284:16035",
+        "284:16209",
+        "284:16251"
+      ]
+    },
+    "bar-empty-filled": {
+      "path": "assets/newly-cs-bar-empty-filled.jpg",
+      "sourceNodeIds": [
+        "284:16035",
+        "284:16056"
+      ]
+    },
+    "bar-layouts": {
+      "path": "assets/newly-cs-bar-layouts.jpg",
+      "sourceNodeIds": [
+        "284:16035",
+        "284:16077",
+        "284:16293"
+      ]
+    },
+    "bar-reflow": {
+      "path": "assets/newly-cs-bar-reflow.jpg",
+      "sourceNodeIds": [
+        "284:8669",
+        "284:8835"
+      ]
+    },
+    "bar-states": {
+      "path": "assets/newly-cs-bar-states.jpg",
+      "sourceNodeIds": [
+        "284:16343",
+        "284:16369",
+        "284:16418",
+        "284:16542",
+        "284:16566",
+        "284:16593",
+        "284:16620",
+        "284:16650"
+      ]
+    },
+    "bar-states-clip": {
+      "path": "assets/newly-cs-bar-states.mp4",
+      "sourceNodeIds": [
+        "284:16035",
+        "284:16209",
+        "284:16251",
+        "284:16056",
+        "284:16343",
+        "284:16369",
+        "284:16418",
+        "284:16542",
+        "284:16566",
+        "284:16593",
+        "284:16620",
+        "284:16650"
+      ]
+    },
+    "bar-states-poster": {
+      "path": "assets/newly-cs-bar-states-poster.jpg",
+      "sourceNodeIds": [
+        "284:16035"
+      ]
+    },
+    "bar-settings": {
+      "path": "assets/newly-cs-bar-settings.jpg",
+      "sourceNodeIds": [
+        "284:26915",
+        "284:27667",
+        "284:29443"
+      ]
+    },
+    "preview-run": {
+      "path": "assets/newly-cs-preview-run.jpg",
+      "sourceNodeIds": [
+        "284:34995",
+        "284:33716"
+      ]
+    },
+    "preview-picker": {
+      "path": "assets/newly-cs-preview-picker.jpg",
+      "sourceNodeIds": [
+        "284:30426",
+        "284:30672",
+        "284:31166",
+        "284:32180"
+      ]
+    },
+    "deploy": {
+      "path": "assets/newly-cs-deploy.jpg",
+      "sourceNodeIds": [
+        "284:35485",
+        "284:35947"
+      ]
+    },
+    "launcher": {
+      "path": "assets/newly-cs-launcher.jpg",
+      "sourceNodeIds": [
+        "284:33689",
+        "284:33654",
+        "284:33374"
+      ]
+    },
+    "web-welcome": {
+      "path": "assets/newly-cs-web-welcome.jpg",
+      "sourceNodeIds": [
+        "284:39266"
+      ]
+    },
+    "brand": {
+      "path": "assets/newly-cs-brand.jpg",
+      "sourceNodeIds": [
+        "284:21933"
+      ]
+    }
+  }
+}

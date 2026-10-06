@@ -1,0 +1,244 @@
+{
+  "project": "yelo",
+  "figmaFile": "ku9ORnV1TNcdc1LIohihFd",
+  "notes": "Sources are Figma node renders (node.screenshot at 3x for phones, 2x for wide assets). Run: python3 scripts/compose-case-study-media.py content/figma-case-studies/media-plan-yelo.json --source-map <exports.json>",
+  "compositions": [
+    {
+      "name": "cover",
+      "type": "cover",
+      "sources": [
+        "figma:1:7130",
+        "figma:1:5728",
+        "figma:1:6840"
+      ],
+      "out": "assets/yelo-cs-cover.jpg",
+      "size": [
+        2400,
+        1350
+      ],
+      "bg": "yelo",
+      "phoneHeight": 0.82
+    },
+    {
+      "name": "sketches",
+      "type": "strip",
+      "sources": [
+        "figma:1:3765"
+      ],
+      "out": "assets/yelo-cs-sketches.jpg",
+      "pad": 110,
+      "bg": "white"
+    },
+    {
+      "name": "home-evolution",
+      "type": "phone-row",
+      "sources": [
+        "figma:1:1460",
+        "figma:1:1507",
+        "figma:1:1588",
+        "figma:1:1731",
+        "figma:1:1840",
+        "figma:1:2237",
+        "figma:1:2517",
+        "figma:1:7130"
+      ],
+      "out": "assets/yelo-cs-home-evolution.jpg",
+      "size": [
+        2400,
+        1800
+      ],
+      "bg": "yelo",
+      "rows": 2
+    },
+    {
+      "name": "home-timelapse",
+      "type": "timelapse",
+      "sources": [
+        "figma:1:1460",
+        "figma:1:3741",
+        "figma:1:1484",
+        "figma:1:1507",
+        "figma:1:1537",
+        "figma:1:1588",
+        "figma:1:1638",
+        "figma:1:1666",
+        "figma:1:1698",
+        "figma:1:1731",
+        "figma:1:1840",
+        "figma:1:1879",
+        "figma:1:2237",
+        "figma:1:2395",
+        "figma:1:4204",
+        "figma:1:7130"
+      ],
+      "out": "assets/yelo-cs-home-timelapse.mp4",
+      "poster": "assets/yelo-cs-home-timelapse-poster.jpg",
+      "size": [
+        1600,
+        900
+      ],
+      "bg": "yelo",
+      "hold": 0.8,
+      "fade": 0.35
+    },
+    {
+      "name": "status",
+      "type": "phone-row",
+      "sources": [
+        "figma:1:1731",
+        "figma:1:3442",
+        "figma:1:3551"
+      ],
+      "out": "assets/yelo-cs-status.jpg",
+      "size": "auto",
+      "bg": "yelo"
+    },
+    {
+      "name": "directions",
+      "type": "phone-row",
+      "sources": [
+        "figma:1:2517",
+        "figma:1:2395",
+        "figma:1:2237",
+        "figma:1:1976"
+      ],
+      "out": "assets/yelo-cs-directions.jpg",
+      "size": "auto",
+      "bg": "yelo"
+    },
+    {
+      "name": "cards",
+      "type": "crop-row",
+      "sources": [
+        "figma:1:2307",
+        "figma:1:4583",
+        "figma:1:7130"
+      ],
+      "boxes": [
+        [
+          16,
+          318,
+          370,
+          170
+        ],
+        [
+          16,
+          315,
+          370,
+          112
+        ],
+        [
+          2,
+          312,
+          392,
+          124
+        ]
+      ],
+      "scale": 3,
+      "out": "assets/yelo-cs-cards.jpg",
+      "size": [
+        2400,
+        760
+      ],
+      "bg": "yelo",
+      "rowHeight": 0.62,
+      "radius": 36
+    },
+    {
+      "name": "first-run",
+      "type": "phone-row",
+      "sources": [
+        "figma:1:3933",
+        "figma:1:4204",
+        "figma:1:7130"
+      ],
+      "out": "assets/yelo-cs-first-run.jpg",
+      "size": "auto",
+      "bg": "yelo"
+    },
+    {
+      "name": "search-map",
+      "type": "phone-row",
+      "sources": [
+        "figma:1:6473",
+        "figma:1:6652",
+        "figma:1:5728",
+        "figma:1:7068"
+      ],
+      "out": "assets/yelo-cs-search-map.jpg",
+      "size": "auto",
+      "bg": "yelo"
+    },
+    {
+      "name": "ride-sheet",
+      "type": "phone-row",
+      "sources": [
+        "figma:1:8053",
+        "figma:1:7986",
+        "figma:1:7899",
+        "figma:1:6840"
+      ],
+      "out": "assets/yelo-cs-ride-sheet.jpg",
+      "size": "auto",
+      "bg": "yelo"
+    },
+    {
+      "name": "fleet",
+      "type": "strip",
+      "sources": [
+        "figma:1:9096"
+      ],
+      "out": "assets/yelo-cs-fleet.jpg",
+      "pad": 140,
+      "bg": "white",
+      "maxWidth": 3400
+    },
+    {
+      "name": "toy-fleet",
+      "type": "strip",
+      "sources": [
+        "figma:1:9267"
+      ],
+      "out": "assets/yelo-cs-toy-fleet.jpg",
+      "pad": 140,
+      "bg": "white",
+      "maxWidth": 3400
+    },
+    {
+      "name": "events-deals",
+      "type": "phone-row",
+      "sources": [
+        "figma:1:5817",
+        "figma:1:5899",
+        "figma:1:8859"
+      ],
+      "out": "assets/yelo-cs-events-deals.jpg",
+      "size": "auto",
+      "bg": "yelo"
+    },
+    {
+      "name": "onboarding",
+      "type": "phone-row",
+      "sources": [
+        "figma:1:7252",
+        "figma:1:7417",
+        "figma:1:7368",
+        "figma:1:7268"
+      ],
+      "out": "assets/yelo-cs-onboarding.jpg",
+      "size": "auto",
+      "bg": "yelo-warm"
+    },
+    {
+      "name": "profile",
+      "type": "phone-row",
+      "sources": [
+        "figma:1:6215",
+        "figma:1:6031"
+      ],
+      "out": "assets/yelo-cs-profile.jpg",
+      "size": "auto",
+      "bg": "yelo"
+    }
+  ]
+}

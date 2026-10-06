@@ -1,0 +1,339 @@
+{
+  "documentId": "figma-portfolio-yelo",
+  "source": {
+    "figmaFile": "ku9ORnV1TNcdc1LIohihFd",
+    "url": "https://www.figma.com/design/ku9ORnV1TNcdc1LIohihFd/Yelo-Backup?node-id=0-1",
+    "page": "New Design"
+  },
+  "fields": {
+    "description": "Designing the rider app for a student-only ride-share: a social, event-driven home that turns “where is everyone going?” into a ride.",
+    "client": "Yelo",
+    "discipline": "Product Design",
+    "intro": "Yelo is a campus ride-share for students, built by a founding team recognized on Forbes 30 Under 30. As the product designer I designed the rider app from a blank file: onboarding, home, search, map, ride selection, events, deals and profile.",
+    "summary": "Students don’t just need a ride — they need to know where everyone is going. So the app starts with the destination, and every destination ends in a ride.",
+    "overview": "Yelo runs one campus at a time, where the same few hundred people move between the same libraries, residences, bars and events, in a fleet of yellow cars, carts and mini buses priced below the big apps. The founders had the fleet and the pricing; they needed a rider app that felt like campus rather than a transaction. I owned the rider experience end to end — from the first sketches to a build-ready Figma file — working directly with the founding team.",
+    "impact": "A complete rider app from sign-up to ride request, with a reusable component set and a 3D vehicle fleet the team can keep building on.",
+    "details": [
+      {
+        "label": "Role",
+        "value": "Product Designer"
+      },
+      {
+        "label": "Timeline",
+        "value": "January – April 2026"
+      },
+      {
+        "label": "Platform",
+        "value": "iOS"
+      },
+      {
+        "label": "Scope",
+        "value": "Rider app · 60+ screens\nOnboarding to ride request"
+      },
+      {
+        "label": "Tools",
+        "value": "Figma · 3D renders"
+      }
+    ],
+    "cover": {
+      "asset": "cover",
+      "alt": "Three Yelo screens on iPhones: the home feed, the event map and ride selection"
+    },
+    "hero": {
+      "image": "cover",
+      "alt": "Three Yelo screens on iPhones: the home feed, the event map and ride selection"
+    },
+    "sections": [
+      {
+        "title": "Context",
+        "heading": "A ride-share for one campus at a time.",
+        "content": [
+          "Yelo is a student-only ride-share. Verified students ride in a fleet of yellow cars, carts and mini buses, and most trips go to the same handful of places: the library, a residence, a kickoff party. Uber and Lyft treat a trip as a transaction. On campus, the trip is social.",
+          "My brief was open: design the rider app. I had the brand colour, the fleet and the founders’ thesis. Everything else — information architecture, flows, components — was mine to figure out."
+        ]
+      },
+      {
+        "title": "Home screen",
+        "heading": "Thirty versions of “Where to?”",
+        "content": [
+          "The home screen carries the whole thesis, so I iterated on it more than anything else — over thirty versions on a single row of the canvas. It started as a search box with a greeting. Then came a sky gradient and a white sheet, events near you, an invitation card with a “Book a ride” button, and finally a live feed of where people are heading.",
+          {
+            "image": "sketches",
+            "alt": "Hand-drawn wireframes of the Yelo home screen and three ways to mark a popular location",
+            "caption": "Early sketches: a flagship event, popular places, and three ways to show whether a location is popular."
+          },
+          {
+            "image": "home-evolution",
+            "alt": "Eight iterations of the Yelo home screen in a row, from a plain search box to a live social feed",
+            "caption": "Eight of the thirty-plus home screen iterations, left to right."
+          },
+          {
+            "video": "home-timelapse",
+            "poster": "home-timelapse-poster",
+            "caption": "The home screen over four months, one iteration at a time."
+          },
+          "Along the way I tried using the headline as live system status — “Busy night for drivers” in green, “Currently not available” in red, with the sky tinted to match — so the app could tell you how the night was going before you typed anything.",
+          {
+            "image": "status",
+            "alt": "Three Yelo home screens whose headline and background colour change with driver availability",
+            "caption": "Ambient status: the headline and the sky change with supply."
+          }
+        ]
+      },
+      {
+        "title": "Four directions",
+        "heading": "Feed first, search first, chat, or a list?",
+        "content": [
+          "Once the content was clear, I framed four labelled directions and reviewed them with the founders. A put the social feed on top with search in a bottom sheet. B kept search first with social cards underneath. C turned the feed into chat bubbles with reactions. D ranked popular places as a list.",
+          {
+            "image": "directions",
+            "alt": "Four Yelo home screen directions side by side: feed first, search first, chat bubbles, ranked list",
+            "caption": "Directions A, B, C and D. B won."
+          },
+          "B won. Searching for a ride stays the primary job and lives where thumbs expect it, while the cards underneath add context — who is heading where, and whether you know them — without turning a ride app into a messaging app."
+        ]
+      },
+      {
+        "title": "The feed card",
+        "heading": "A card that says who, where and why.",
+        "content": [
+          "The feed card went through the most refinement. Early versions read like notifications. The final card moves the person’s avatar outside the card, adds a small-caps label for the kind of signal — HEADED TO, GOT TICKETS, TRENDING SEARCH — then a bold destination and a quiet line for time and origin. A MUTUAL tag marks friends of friends.",
+          {
+            "image": "cards",
+            "alt": "Three versions of the Yelo feed card: notification style, grouped with a stack of avatars, and the final labelled card",
+            "caption": "Card iterations: notification-style, grouped, final."
+          },
+          "The same structure handles first-run and returning users. Before you have saved places, the chips read “Add Home” and “Add School”; afterwards they are your shortcuts.",
+          {
+            "image": "first-run",
+            "alt": "Yelo home screen for a first-time user with Add Home and Add School chips, for a returning user, and the final version",
+            "caption": "First run, returning user, final home."
+          }
+        ]
+      },
+      {
+        "title": "Search & map",
+        "heading": "From “Where to?” to a route in two taps.",
+        "content": [
+          "Search stacks “Current Location” and “Where to?” as two coloured dots, with top locations ranked and recents below. The map keeps your saved places as chips and clusters tonight’s events as poster stacks over the campus. Pick a destination and the route draws itself, with the ride sheet already open.",
+          {
+            "image": "search-map",
+            "alt": "Yelo search screen, destination entered, event map of the University of Waterloo, and a route with the ride sheet open",
+            "caption": "Search, destination set, the event map, and the route with a ride ready."
+          }
+        ]
+      },
+      {
+        "title": "Choosing a ride",
+        "heading": "Vehicle classes you can picture.",
+        "content": [
+          "The ride sheet started as Exclusive vs. Shared with a seat stepper, moved to an ETA-first list, and settled on named classes — Car, Big Car, Cart, Mini Bus — each with capacity, price and one tag: FASTEST, CHEAPEST, MUTUAL or UW DRIVER. Above the yellow button sits a single line of reassurance: when you’ll be charged, or how much you’re saving.",
+          {
+            "image": "ride-sheet",
+            "alt": "Four iterations of the Yelo ride selection sheet, ending with named vehicle classes and 3D cars",
+            "caption": "Ride sheet iterations: Exclusive/Shared, ETA-first, named classes on the route, final."
+          },
+          "To make the classes legible at a glance I built a 3D fleet in Yelo yellow, plus a low-poly toy set for empty states and marketing.",
+          {
+            "image": "fleet",
+            "alt": "Five yellow 3D vehicles in a row: sedan, SUV, golf cart with a flag, van and bus",
+            "caption": "The fleet: Car, Big Car, Cart, Mini Bus — and the bus."
+          },
+          {
+            "image": "toy-fleet",
+            "alt": "Four low-poly yellow toy vehicles",
+            "caption": "The toy fleet, for illustrations and empty states."
+          }
+        ]
+      },
+      {
+        "title": "Events & deals",
+        "heading": "Every event page ends in a ride.",
+        "content": [
+          "Events and deals are what make the feed worth opening. An event page shows the poster, who’s going and the venue on a map; a deal shows the offer and a QR code to redeem. Both end in the same footer — “5 min drive · Discounted Yelo · Get Ride” — so the app never forgets what it’s for.",
+          {
+            "image": "events-deals",
+            "alt": "Yelo event details, deal details, and the Scan to Redeem sheet",
+            "caption": "Event details, deal details, redeeming a deal."
+          }
+        ]
+      },
+      {
+        "title": "Onboarding",
+        "heading": "Prove you’re a student in three screens.",
+        "content": [
+          "Yelo is students-only, so onboarding has to verify a school account without feeling like paperwork. Phone number, a one-time code, then “Claim your student status” with Google or Microsoft sign-in. The profile is pre-filled from the .edu account, and permissions are asked for with the reason each one is needed.",
+          {
+            "image": "onboarding",
+            "alt": "Four Yelo onboarding screens: welcome, claim your student status, pre-filled profile, and permissions",
+            "caption": "Welcome, student verification, pre-filled profile, permissions."
+          }
+        ]
+      },
+      {
+        "title": "Visual system",
+        "heading": "Yellow means one thing.",
+        "content": [
+          "Yellow is reserved for the live signal and the primary action — LIVE, Available, the ride button — so it never competes with event artwork. Everything else sits in neutrals on a soft sky gradient: a floating Home / Map / Profile bar, large rounded sheets, one typeface. Avatars are coloured initials, so the feed works before anyone uploads a photo.",
+          {
+            "image": "profile",
+            "alt": "Two Yelo profile screens with a gold gradient header, ride history and an Enable Driver Mode banner",
+            "caption": "Profile: ride history, attended events and driver mode."
+          }
+        ]
+      },
+      {
+        "title": "Reflection",
+        "heading": "What I’d carry into the next project.",
+        "content": [
+          "Designing from a blank file taught me to put the thesis on the screen early and iterate in the open: thirty home screens on one row made the trade-offs visible to the founders in a way a deck never could. Naming four directions got us to a decision in one review. Building the 3D fleet myself turned a pricing table into something students could picture.",
+          "Next, I’d prototype the live feed with real campus data to see how often it surfaces something worth tapping, and put the ride sheet in front of drivers as well as riders."
+        ]
+      }
+    ]
+  },
+  "assets": {
+    "cover": {
+      "path": "assets/yelo-cs-cover.jpg",
+      "sourceNodeIds": [
+        "1:7130",
+        "1:5728",
+        "1:6840"
+      ],
+      "note": "Composed cover: final home, event map and ride selection in iPhone frames."
+    },
+    "sketches": {
+      "path": "assets/yelo-cs-sketches.jpg",
+      "sourceNodeIds": [
+        "1:3765"
+      ]
+    },
+    "home-evolution": {
+      "path": "assets/yelo-cs-home-evolution.jpg",
+      "sourceNodeIds": [
+        "1:1460",
+        "1:1507",
+        "1:1588",
+        "1:1731",
+        "1:1840",
+        "1:2237",
+        "1:2517",
+        "1:7130"
+      ]
+    },
+    "home-timelapse": {
+      "path": "assets/yelo-cs-home-timelapse.mp4",
+      "sourceNodeIds": [
+        "1:1460",
+        "1:3741",
+        "1:1484",
+        "1:1507",
+        "1:1537",
+        "1:1588",
+        "1:1638",
+        "1:1666",
+        "1:1698",
+        "1:1731",
+        "1:1840",
+        "1:1879",
+        "1:2237",
+        "1:2395",
+        "1:4204",
+        "1:7130"
+      ]
+    },
+    "home-timelapse-poster": {
+      "path": "assets/yelo-cs-home-timelapse-poster.jpg",
+      "sourceNodeIds": [
+        "1:1460"
+      ]
+    },
+    "status": {
+      "path": "assets/yelo-cs-status.jpg",
+      "sourceNodeIds": [
+        "1:1731",
+        "1:3442",
+        "1:3551"
+      ]
+    },
+    "directions": {
+      "path": "assets/yelo-cs-directions.jpg",
+      "sourceNodeIds": [
+        "1:2517",
+        "1:2395",
+        "1:2237",
+        "1:1976"
+      ]
+    },
+    "cards": {
+      "path": "assets/yelo-cs-cards.jpg",
+      "sourceNodeIds": [
+        "1:2307",
+        "1:4583",
+        "1:7130"
+      ]
+    },
+    "first-run": {
+      "path": "assets/yelo-cs-first-run.jpg",
+      "sourceNodeIds": [
+        "1:3933",
+        "1:4204",
+        "1:7130"
+      ]
+    },
+    "search-map": {
+      "path": "assets/yelo-cs-search-map.jpg",
+      "sourceNodeIds": [
+        "1:6473",
+        "1:6652",
+        "1:5728",
+        "1:7068"
+      ]
+    },
+    "ride-sheet": {
+      "path": "assets/yelo-cs-ride-sheet.jpg",
+      "sourceNodeIds": [
+        "1:8053",
+        "1:7986",
+        "1:7899",
+        "1:6840"
+      ]
+    },
+    "fleet": {
+      "path": "assets/yelo-cs-fleet.jpg",
+      "sourceNodeIds": [
+        "1:9096"
+      ]
+    },
+    "toy-fleet": {
+      "path": "assets/yelo-cs-toy-fleet.jpg",
+      "sourceNodeIds": [
+        "1:9267"
+      ]
+    },
+    "events-deals": {
+      "path": "assets/yelo-cs-events-deals.jpg",
+      "sourceNodeIds": [
+        "1:5817",
+        "1:5899",
+        "1:8859"
+      ]
+    },
+    "onboarding": {
+      "path": "assets/yelo-cs-onboarding.jpg",
+      "sourceNodeIds": [
+        "1:7252",
+        "1:7417",
+        "1:7368",
+        "1:7268"
+      ]
+    },
+    "profile": {
+      "path": "assets/yelo-cs-profile.jpg",
+      "sourceNodeIds": [
+        "1:6215",
+        "1:6031"
+      ]
+    }
+  }
+}
