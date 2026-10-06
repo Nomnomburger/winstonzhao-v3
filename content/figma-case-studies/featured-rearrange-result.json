@@ -1,0 +1,174 @@
+{
+  "verifiedAt": "2026-10-06T13:13:28.606Z",
+  "transactionId": "bQYP7xhuT5v8w3idX5l0Dv",
+  "changedProjectCount": 27,
+  "featured": [
+    {
+      "id": "figma-portfolio-newly",
+      "title": "Newly",
+      "order": 1
+    },
+    {
+      "id": "legacy-portfolio-heatmap",
+      "title": "Heatmap Portal Redesign",
+      "order": 2
+    },
+    {
+      "id": "legacy-portfolio-elapsedesign",
+      "title": "Elapse App Design",
+      "order": 3
+    },
+    {
+      "id": "figma-portfolio-yelo",
+      "title": "Yelo App",
+      "order": 4
+    }
+  ],
+  "list": [
+    {
+      "id": "figma-portfolio-costudy",
+      "title": "CoStudy",
+      "year": 2025,
+      "order": 5
+    },
+    {
+      "id": "figma-portfolio-augwa",
+      "title": "Augwa",
+      "year": 2025,
+      "order": 6
+    },
+    {
+      "id": "figma-portfolio-hack404-launchpad",
+      "title": "Hack404 Launchpad",
+      "year": 2025,
+      "order": 7
+    },
+    {
+      "id": "figma-portfolio-habitat",
+      "title": "HabitAt",
+      "year": 2025,
+      "order": 8
+    },
+    {
+      "id": "figma-portfolio-villio-ai",
+      "title": "Villio AI",
+      "year": 2025,
+      "order": 9
+    },
+    {
+      "id": "figma-portfolio-arca",
+      "title": "Arca",
+      "year": 2025,
+      "order": 10
+    },
+    {
+      "id": "figma-portfolio-sparks",
+      "title": "Sparks",
+      "year": 2025,
+      "order": 11
+    },
+    {
+      "id": "figma-portfolio-smartbasket",
+      "title": "SmartBasket",
+      "year": 2025,
+      "order": 12
+    },
+    {
+      "id": "figma-portfolio-ryri",
+      "title": "Ryri",
+      "year": 2025,
+      "order": 13
+    },
+    {
+      "id": "figma-portfolio-cocart",
+      "title": "CoCart",
+      "year": 2024,
+      "order": 14
+    },
+    {
+      "id": "figma-portfolio-garden",
+      "title": "Garden",
+      "year": 2024,
+      "order": 15
+    },
+    {
+      "id": "legacy-portfolio-yrconnect",
+      "title": "YRConnect",
+      "year": 2024,
+      "order": 16
+    },
+    {
+      "id": "legacy-portfolio-thedriveteampodcast",
+      "title": "The Drive Team Podcast",
+      "year": 2023,
+      "order": 17
+    },
+    {
+      "id": "legacy-portfolio-robotics",
+      "title": "Competitive Robotics",
+      "year": 2023,
+      "order": 18
+    },
+    {
+      "id": "legacy-portfolio-hopperhangout",
+      "title": "Hopper Hangout",
+      "year": 2023,
+      "order": 19
+    },
+    {
+      "id": "legacy-portfolio-25kteam",
+      "title": "Team 25K Website",
+      "year": 2022,
+      "order": 20
+    },
+    {
+      "id": "legacy-portfolio-unionvillehowl",
+      "title": "The Unionville Howl Website Design",
+      "year": 2022,
+      "order": 21
+    },
+    {
+      "id": "legacy-portfolio-839team",
+      "title": "Team 839 Website",
+      "year": 2022,
+      "order": 22
+    },
+    {
+      "id": "legacy-portfolio-sorbackyardscrimmage",
+      "title": "SOR Backyard Scrimmage Video",
+      "year": 2022,
+      "order": 23
+    },
+    {
+      "id": "legacy-portfolio-sorreveal",
+      "title": "SOR22 Robot Reveal Video",
+      "year": 2022,
+      "order": 24
+    },
+    {
+      "id": "legacy-portfolio-winstonzhaov1",
+      "title": "Winstonzhao.ca V1",
+      "year": 2021,
+      "order": 25
+    },
+    {
+      "id": "legacy-portfolio-controllerdeskmats",
+      "title": "Controller Deskmats",
+      "year": 2020,
+      "order": 26
+    },
+    {
+      "id": "legacy-portfolio-asymtry",
+      "title": "Asymtry Logo & Branding",
+      "year": 2020,
+      "order": 27
+    }
+  ],
+  "renamed": [
+    {
+      "slug": "yelo",
+      "from": "Yelo",
+      "to": "Yelo App"
+    }
+  ]
+}
