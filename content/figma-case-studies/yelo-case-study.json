@@ -6,8 +6,8 @@
     "client": "Yelo",
     "discipline": "Product Design",
     "intro": "Yelo is a campus ride-share for students, built by a founding team recognized on Forbes 30 Under 30. As the product designer I designed the rider app from a blank file: onboarding, home, search, map, ride selection, events, deals and profile.",
-    "summary": "Students don’t just need a ride — they need to know where everyone is going. So the app starts with the destination, and every destination ends in a ride.",
-    "overview": "Yelo runs one campus at a time, where the same few hundred people move between the same libraries, residences, bars and events, in a fleet of yellow cars, carts and mini buses priced below the big apps. The founders had the fleet and the pricing; they needed a rider app that felt like campus rather than a transaction. I owned the rider experience end to end — from the first sketches to a build-ready Figma file — working directly with the founding team.",
+    "summary": "Students need a ride and a way to see where everyone is going. So the app starts with the destination, and every destination ends in a ride.",
+    "overview": "Yelo runs one campus at a time, where the same few hundred people move between the same libraries, residences, bars and events, in a fleet of yellow cars, carts and mini buses priced below the big apps. The founders had the fleet and the pricing; they needed a rider app that felt like campus rather than a transaction. Working directly with the founding team, I owned the rider experience end to end, from the first sketches to a build-ready Figma file.",
     "impact": "A complete rider app from sign-up to ride request, with a reusable component set and a 3D vehicle fleet the team can keep building on.",
     "showSideMenu": true,
     "details": [
@@ -87,7 +87,7 @@
                 "_type": "span",
                 "_key": "yelo-s-0-b-1-s",
                 "marks": [],
-                "text": "My brief was open: design the rider app. I had the brand colour, the fleet and the founders’ thesis. Everything else — information architecture, flows, components — was mine to figure out."
+                "text": "My brief was open: design the rider app. I had the brand colour, the fleet and the founders’ thesis. The information architecture, flows and components were all mine to figure out."
               }
             ]
           }
@@ -109,7 +109,7 @@
                 "_type": "span",
                 "_key": "yelo-s-1-b-0-s",
                 "marks": [],
-                "text": "The home screen carries the whole thesis, so I iterated on it more than anything else — over thirty versions on a single row of the canvas. It started as a search box with a greeting. Then came a sky gradient and a white sheet, events near you, an invitation card with a “Book a ride” button, and finally a live feed of where people are heading."
+                "text": "The home screen carries the whole thesis, so I iterated on it more than anything else, creating over thirty versions on a single row of the canvas. It started as a search box with a greeting. Then came a sky gradient and a white sheet, events near you, an invitation card with a “Book a ride” button, and finally a live feed of where people are heading."
               }
             ]
           },
@@ -154,7 +154,7 @@
                 "_type": "span",
                 "_key": "yelo-s-1-b-4-s",
                 "marks": [],
-                "text": "Along the way I tried using the headline as live system status — “Busy night for drivers” in green, “Currently not available” in red, with the sky tinted to match — so the app could tell you how the night was going before you typed anything."
+                "text": "Along the way I tried using the headline to show live system status: “Busy night for drivers” in green or “Currently not available” in red, with the sky tinted to match. The app could tell you how the night was going before you typed anything."
               }
             ]
           },
@@ -206,7 +206,7 @@
                 "_type": "span",
                 "_key": "yelo-s-2-b-2-s",
                 "marks": [],
-                "text": "B won. Searching for a ride stays the primary job and lives where thumbs expect it, while the cards underneath add context — who is heading where, and whether you know them — without turning a ride app into a messaging app."
+                "text": "B won. Searching for a ride stays the primary job and lives where thumbs expect it. The cards underneath show who is heading where and whether you know them, without turning a ride app into a messaging app."
               }
             ]
           }
@@ -228,7 +228,7 @@
                 "_type": "span",
                 "_key": "yelo-s-3-b-0-s",
                 "marks": [],
-                "text": "The feed card went through the most refinement. Early versions read like notifications. The final card moves the person’s avatar outside the card, adds a small-caps label for the kind of signal — HEADED TO, GOT TICKETS, TRENDING SEARCH — then a bold destination and a quiet line for time and origin. A MUTUAL tag marks friends of friends."
+                "text": "The feed card went through the most refinement. Early versions read like notifications. The final card moves the person’s avatar outside the card and adds a small-caps label for the kind of signal: HEADED TO, GOT TICKETS or TRENDING SEARCH. A bold destination follows, with a quiet line for time and origin. A MUTUAL tag marks friends of friends."
               }
             ]
           },
@@ -310,7 +310,7 @@
                 "_type": "span",
                 "_key": "yelo-s-5-b-0-s",
                 "marks": [],
-                "text": "The ride sheet started as Exclusive vs. Shared with a seat stepper, moved to an ETA-first list, and settled on named classes — Car, Big Car, Cart, Mini Bus — each with capacity, price and one tag: FASTEST, CHEAPEST, MUTUAL or UW DRIVER. Above the yellow button sits a single line of reassurance: when you’ll be charged, or how much you’re saving."
+                "text": "The ride sheet started as Exclusive vs. Shared with a seat stepper, moved to an ETA-first list, and settled on four named classes: Car, Big Car, Cart and Mini Bus. Each shows capacity, price and one tag: FASTEST, CHEAPEST, MUTUAL or UW DRIVER. Above the yellow button sits a single line of reassurance: when you’ll be charged, or how much you’re saving."
               }
             ]
           },
@@ -341,7 +341,7 @@
             "_key": "yelo-s-5-b-3",
             "localAssetKey": "fleet",
             "alt": "Five yellow 3D vehicles in a row: sedan, SUV, golf cart with a flag, van and bus",
-            "caption": "The fleet: Car, Big Car, Cart, Mini Bus — and the bus.",
+            "caption": "The fleet: Car, Big Car, Cart, Mini Bus and the bus.",
             "size": "full"
           },
           {
@@ -370,7 +370,7 @@
                 "_type": "span",
                 "_key": "yelo-s-6-b-0-s",
                 "marks": [],
-                "text": "Events and deals are what make the feed worth opening. An event page shows the poster, who’s going and the venue on a map; a deal shows the offer and a QR code to redeem. Both end in the same footer — “5 min drive · Discounted Yelo · Get Ride” — so the app never forgets what it’s for."
+                "text": "Events and deals are what make the feed worth opening. An event page shows the poster, who’s going and the venue on a map; a deal shows the offer and a QR code to redeem. Both end in the same footer, “5 min drive · Discounted Yelo · Get Ride”, so the app never forgets what it’s for."
               }
             ]
           },
@@ -430,7 +430,7 @@
                 "_type": "span",
                 "_key": "yelo-s-8-b-0-s",
                 "marks": [],
-                "text": "Yellow is reserved for the live signal and the primary action — LIVE, Available, the ride button — so it never competes with event artwork. Everything else sits in neutrals on a soft sky gradient: a floating Home / Map / Profile bar, large rounded sheets, one typeface. Avatars are coloured initials, so the feed works before anyone uploads a photo."
+                "text": "Yellow is reserved for LIVE, Available and the ride button, keeping the live signal and primary action from competing with event artwork. Everything else sits in neutrals on a soft sky gradient: a floating Home / Map / Profile bar, large rounded sheets, one typeface. Avatars are coloured initials, so the feed works before anyone uploads a photo."
               }
             ]
           },

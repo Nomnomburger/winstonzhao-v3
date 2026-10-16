@@ -11,7 +11,7 @@
     },
     "intro": "Newly turns a conversation into a real iOS, Android or web app. I design the product: the desktop and web workspace where you describe what you want, watch the agent build it, test it on a simulator and ship it to the App Store.",
     "summary": "Building an app should feel like a conversation. So the prompt bar is the product, and everything else is arranged around it.",
-    "overview": "Newly is an AI agent that builds mobile apps from a chat. When I joined, the agent could already build; the product around it was mostly a blank window. Over five months I designed the desktop and web workspace — launcher, sessions sidebar, conversation, live device preview and the deploy flow — along with the one component every surface shares: the prompt bar. The work spans two generations of information architecture, a long tail of component states, and many small decisions about how an agent should show its work.",
+    "overview": "Newly is an AI agent that builds mobile apps from a chat. When I joined, the agent could already build; the product around it was mostly a blank window. Over five months I designed the desktop and web workspace, including the launcher, sessions sidebar, conversation, live device preview and deploy flow. I also designed the one component every surface shares: the prompt bar. The work spans two generations of information architecture, a long tail of component states, and many small decisions about how an agent should show its work.",
     "impact": "A complete desktop and web workspace, from launcher to App Store release, built around a single prompt-bar component and one set of layout rules.",
     "showSideMenu": true,
     "details": [
@@ -49,14 +49,14 @@
     "coverImage": {
       "_type": "image",
       "localAssetKey": "cover",
-      "alt": "The Newly desktop workspace on a MacBook — project sidebar, conversation with the agent and a live iPhone preview — over the blue brand gradient"
+      "alt": "The Newly desktop workspace on a MacBook, showing the project sidebar, conversation with the agent and a live iPhone preview over the blue brand gradient"
     },
     "hero": [
       {
         "_type": "mediaImage",
         "_key": "newly-hero",
         "localAssetKey": "cover",
-        "alt": "The Newly desktop workspace on a MacBook — project sidebar, conversation with the agent and a live iPhone preview — over the blue brand gradient",
+        "alt": "The Newly desktop workspace on a MacBook, showing the project sidebar, conversation with the agent and a live iPhone preview over the blue brand gradient",
         "size": "full"
       }
     ],
@@ -77,7 +77,7 @@
                 "_type": "span",
                 "_key": "newly-s-0-b-0-s",
                 "marks": [],
-                "text": "Newly’s agent writes, runs and ships mobile apps from natural language. That is a lot of machinery to put behind a text box: sessions that run locally or in the cloud, a simulator, git branches, model choices, deployment to TestFlight and the App Store. The design problem was deciding what a person needs to see, and when — and keeping the rest one click away."
+                "text": "Newly’s agent writes, runs and ships mobile apps from natural language. That is a lot of machinery to put behind a text box: sessions that run locally or in the cloud, a simulator, git branches, model choices, deployment to TestFlight and the App Store. The design problem was deciding what a person needs to see and when, while keeping the rest one click away."
               }
             ]
           },
@@ -113,7 +113,7 @@
                 "_type": "span",
                 "_key": "newly-s-1-b-0-s",
                 "marks": [],
-                "text": "My first direction treated the app like a product roadmap. The agent proposed features as cards — “Proposed by Newly”, with a reasoning panel citing session data and drop-off rates — and you approved, built and deployed them from a board. I pushed it far: a git-style tree of sub-features, a “New Idea” card you could compose inline, and three columns for Features, Marketing and Website."
+                "text": "My first direction treated the app like a product roadmap. The agent proposed features as cards labelled “Proposed by Newly”, each with a reasoning panel citing session data and drop-off rates. You approved, built and deployed them from a board. I pushed it far: a git-style tree of sub-features, a “New Idea” card you could compose inline, and three columns for Features, Marketing and Website."
               }
             ]
           },
@@ -143,7 +143,7 @@
                 "_type": "span",
                 "_key": "newly-s-1-b-3-s",
                 "marks": [],
-                "text": "It demoed well, and it was wrong. People didn’t want to manage a roadmap; they wanted to say what they wanted and watch it appear. The board’s best ideas — provenance, progress, reasoning before you approve — survived inside a chat-first workspace."
+                "text": "It demoed well, and it was wrong. People didn’t want to manage a roadmap; they wanted to say what they wanted and watch it appear. The board’s best ideas survived inside a chat-first workspace: provenance, progress and reasoning before you approve."
               }
             ]
           }
@@ -165,7 +165,7 @@
                 "_type": "span",
                 "_key": "newly-s-2-b-0-s",
                 "marks": [],
-                "text": "The workspace is a sessions sidebar, a conversation and a device preview — each a rounded card that can collapse on its own. Pinned and recent sessions sit on the left with a cloud or laptop glyph for where they run and a blue dot for the one that is running; the conversation stays in the middle; the simulator takes the right."
+                "text": "The workspace has a sessions sidebar, a conversation and a device preview, each in a rounded card that can collapse on its own. Pinned and recent sessions sit on the left with a cloud or laptop glyph for where they run and a blue dot for the one that is running; the conversation stays in the middle; the simulator takes the right."
               }
             ]
           },
@@ -232,7 +232,7 @@
                 "_type": "span",
                 "_key": "newly-s-3-b-0-s",
                 "marks": [],
-                "text": "The prompt bar is the one element on every screen, so it got the most attention. It has three modes — Build, Plan and Ask — in a segmented control where only the active mode shows its label, so the bar stays narrow but always says what it will do. Attach on the left, microphone or send on the right, and a second row for the things you set once: where the session runs, which branch, which model."
+                "text": "The prompt bar is the one element on every screen, so it got the most attention. A segmented control holds three modes: Build, Plan and Ask. Only the active mode shows its label, so the bar stays narrow but always says what it will do. Attach on the left, microphone or send on the right, and a second row for the things you set once: where the session runs, which branch, which model."
               }
             ]
           },
@@ -262,7 +262,7 @@
                 "_type": "span",
                 "_key": "newly-s-3-b-3-s",
                 "marks": [],
-                "text": "It comes in three layouts for three widths: expanded on the empty canvas, stacked when the column is narrow — placeholder on top, controls below — and collapsed to the Newly mark when a panel needs the room."
+                "text": "It comes in three layouts for three widths. On the empty canvas, it is expanded. In a narrow column, it stacks the placeholder above the controls. When a panel needs the room, it collapses to the Newly mark."
               }
             ]
           },
@@ -292,7 +292,7 @@
                 "_type": "span",
                 "_key": "newly-s-3-b-6-s",
                 "marks": [],
-                "text": "Then the states that make an agent feel alive: dropping files, attached images, a voice message, a stop button while it works, a status line while it connects or fixes a bug, and a queue — you can keep typing while it is busy, and your messages wait in order above the bar."
+                "text": "Then the states that make an agent feel alive: dropping files, attached images, a voice message, a stop button while it works, a status line while it connects or fixes a bug, and a queue. You can keep typing while it is busy, and your messages wait in order above the bar."
               }
             ]
           },
@@ -329,7 +329,7 @@
                 "_type": "span",
                 "_key": "newly-s-3-b-9-s",
                 "marks": [],
-                "text": "Settings follow progressive disclosure. On the empty canvas, Remote Session and Newly Agent sit under the bar and open into popovers that explain the trade-off in one line — “Runs in the cloud, accessible on any device” against “Runs on your computer, device must stay awake”; Effort as a scale, Model as a list with “+ LINK” for your own Codex or Claude subscription. Once a conversation starts, the same popovers move behind the + button."
+                "text": "Settings follow progressive disclosure. On the empty canvas, Remote Session and Newly Agent sit under the bar and open into popovers. Each explains the trade-off in one line: “Runs in the cloud, accessible on any device” or “Runs on your computer, device must stay awake”. Effort uses a scale, while Model uses a list with “+ LINK” for your own Codex or Claude subscription. Once a conversation starts, the same popovers move behind the + button."
               }
             ]
           },
@@ -359,7 +359,7 @@
                 "_type": "span",
                 "_key": "newly-s-4-b-0-s",
                 "marks": [],
-                "text": "The conversation is deliberately plain: your messages in bubbles, the agent’s as text, and its work folded behind one line — “Worked for 3m, used 3 tools” — that expands to the commands it ran. The device pane starts as an explanation and a Run button, then becomes a live iPhone 17 Pro with a rail of simulator controls beside it."
+                "text": "The conversation is deliberately plain: your messages in bubbles, the agent’s as text, and its work folded behind a line reading “Worked for 3m, used 3 tools”. That line expands to show the commands it ran. The device pane starts as an explanation and a Run button, then becomes a live iPhone 17 Pro with a rail of simulator controls beside it."
               }
             ]
           },
@@ -411,7 +411,7 @@
                 "_type": "span",
                 "_key": "newly-s-5-b-0-s",
                 "marks": [],
-                "text": "Deploy groups destinations by platform — iOS, Android, Web — with the public release in blue and testing targets in grey. Pick the App Store and a release card slides in with a short checklist and, underneath, what the agent already filled in. The point was to make the agent’s busywork legible, not invisible."
+                "text": "Deploy groups destinations by platform (iOS, Android and Web), with the public release in blue and testing targets in grey. Pick the App Store and a release card slides in with a short checklist and, underneath, what the agent already filled in. The point was to make the agent’s busywork legible, not invisible."
               }
             ]
           },
@@ -441,7 +441,7 @@
                 "_type": "span",
                 "_key": "newly-s-6-b-0-s",
                 "marks": [],
-                "text": "The desktop app opens like an IDE: a sign-in splash, then a small welcome window with recent projects. On the web the same workspace runs in the browser, with a brand gradient and a “Pick up where you left off” toast. The two differ only where the platform does — traffic lights here, a download nudge there."
+                "text": "The desktop app opens like an IDE: a sign-in splash, then a small welcome window with recent projects. On the web the same workspace runs in the browser, with a brand gradient and a “Pick up where you left off” toast. Platform differences shape the details: traffic lights on desktop and a download nudge on the web."
               }
             ]
           },
@@ -509,7 +509,7 @@
                 "_type": "span",
                 "_key": "newly-s-8-b-0-s",
                 "marks": [],
-                "text": "Most of the work was states, not screens: what the bar says while the agent connects, fixes a bug, or holds your next three messages. Designing those honestly — a status line, a queue, a stop button — did more for trust than any onboarding could."
+                "text": "Most of the work was states, not screens: what the bar says while the agent connects, fixes a bug, or holds your next three messages. An honest status line, a queue and a stop button did more for trust than any onboarding could."
               }
             ]
           },
