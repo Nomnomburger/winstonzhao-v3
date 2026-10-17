@@ -89,8 +89,8 @@ type HoverKey = 'name' | 'stockholm' | 'newly';
 // devices with a mouse or trackpad). Sizes are the Figma frames'.
 const HOVER_IMAGES: ReadonlyArray<{ key: HoverKey; src: string; width: number; height: number }> = [
   { key: 'name', src: '/profile.webp', width: 154, height: 154 },
-  { key: 'stockholm', src: '/stockholm.webp', width: 237, height: 316 },
-  { key: 'newly', src: '/newlygraphic.avif', width: 390, height: 230 },
+  { key: 'stockholm', src: '/toronto.webp', width: 237, height: 316 },
+  { key: 'newly', src: '/ocad.webp', width: 390, height: 230 },
 ];
 
 // Bio lines (by index) that carry a hover word, with the matching word per
@@ -662,7 +662,7 @@ export default function HomePanel({
         zIndex={70}
         images={HOVER_IMAGES.map((img) => ({
           key: img.key,
-          content: <Image src={img.src} alt="" width={img.width} height={img.height} loading="eager" />,
+          content: <Image src={img.src} alt="" width={img.width} height={img.height} loading="eager" style={img.key === 'newly' ? { objectPosition: 'top' } : undefined} />,
         }))}
       />
 
