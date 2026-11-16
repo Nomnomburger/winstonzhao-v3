@@ -43,7 +43,7 @@
         "_type": "detailItem",
         "_key": "elapse-detail-4",
         "label": "Shipped",
-        "value": "Upcoming matches · Live timing\nTournament mode\nScoutSheet tab (later update)"
+        "value": "Upcoming matches · Live timing\nTournament mode · Scouting\nScoutSheet tab (later update)"
       },
       {
         "_type": "detailItem",
@@ -207,13 +207,13 @@
                 "marks": [
                   "strong"
                 ],
-                "text": "Shipped:"
+                "text": "Shipped in v1.0:"
               },
               {
                 "_type": "span",
                 "_key": "elapse-s-1-b-1-1-s1",
                 "marks": [],
-                "text": " tournament mode, upcoming matches and live timing."
+                "text": " tournament mode, upcoming matches, live timing and basic scouting on each team’s sheet."
               }
             ],
             "listItem": "bullet",
@@ -407,7 +407,7 @@
                 "_type": "span",
                 "_key": "elapse-s-4-b-0-s",
                 "marks": [],
-                "text": "Tournament mode is for when you’re at an event. You turn it on from the home screen."
+                "text": "Tournament mode is for when you’re at an event. You turn it on from the home screen, and it switches off after the event."
               }
             ]
           },

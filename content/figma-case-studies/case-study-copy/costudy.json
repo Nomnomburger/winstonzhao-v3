@@ -6,7 +6,7 @@
       "https://www.figma.com/design/ftcxLE1aKCaG3S61G5EI5e/Canvas-Designathons?node-id=0-1",
       "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W/Winston-Design-Demo?node-id=1-15596"
     ],
-    "facts": "Confirmed by Winston (Nov 2026): 1st place, UW Blueprint Designathon 2025; one-day event; team of four (Ishan, Raghav, Lily, Winston); brainstormed together, picked the idea after brainstorming, then split screens; Winston worked on bits of everything and it was a group effort, so the case study should not say who did what; submitted a clickable prototype and a pitch deck; no specific judge feedback; the move from automatic matching to student-hosted sessions was not a deliberate decision; map-first home because location matters and it is visually engaging; the polished screens ('Final WINSTON') were made by Winston after the event. Prompt: 'How might we design solutions that help people connect, care, and thrive empowering the individual and the community?'"
+    "facts": "Confirmed by Winston (Nov 2026): 1st place, UW Blueprint Designathon 2025; one-day event; team of four (Ishan, Raghav, Lily, Winston); brainstormed together, picked the idea after brainstorming, then split screens; Winston worked on bits of everything and it was a group effort, so the case study should not say who did what; submitted a clickable prototype and a pitch deck; no specific judge feedback; the move from automatic matching to student-hosted sessions was not a deliberate decision; map-first home because location matters and it is visually engaging; the polished screens ('Final WINSTON') were made by Winston after the event. Prompt: 'How might we design solutions that help people connect, care, and thrive empowering the individual and the community?' Follow-up: never tested with students; joining-is-one-tap, map-from-real-maps and a Role line were not confirmed."
   },
   "fields": {
     "description": "A campus study app concept that won 1st place at the UW Blueprint Designathon 2025.",
@@ -86,7 +86,7 @@
         "title": "Joining",
         "heading": "What changes when you join",
         "content": [
-          "Joining is one tap. After that, the main button becomes “Open class thread” and a Leave session button appears. On the day, we also agreed to add a list of people attending.",
+          "After you join, the main button becomes “Open class thread” and a Leave session button appears. On the day, we also agreed to add a list of people attending.",
           {
             "image": "joining",
             "alt": "Two iPhones: a CoStudy session before joining with a Join session button, and after joining with Open class thread and Leave session",
@@ -122,7 +122,7 @@
         "title": "Outcome",
         "heading": "Result and what’s still assumed",
         "content": [
-          "We won 1st place, but we didn’t get any specific feedback beyond the result.",
+          "We won 1st place, but we didn’t get any specific feedback beyond the result, and the design was never tested with students.",
           {
             "h3": "Still assumed"
           },

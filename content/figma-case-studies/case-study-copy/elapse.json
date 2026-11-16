@@ -3,7 +3,7 @@
   "source": {
     "figmaFile": "qDdxlqtBxVpaAOUMITle4W",
     "url": "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W/Winston-Design-Demo?node-id=157-24824",
-    "facts": "Confirmed by Winston (Nov 2026): co-founder and only designer; the other seven were developers; he made product calls and handed off designs; Nov 2022 – Jan 2025; A2–A4 sections are closest to v1.0 (iOS, Nov 2024; also on Android); live timing shipped and detected delays automatically from posted results; tournament mode exists because you don't need those features outside an event, other features help you find teams and tournaments then, and its UI is built for the fast-paced tournament environment (own experience + tester input); your own next match leads with the time because time is what you act on (own experience competing + user/team feedback); the 2023 plan's organizer portal, chatbot and web app gave way to priorities; the ScoutSheet tab (A5) shipped in a later update; TeamSync, Groups and the new onboarding (A5/R1/R2) were designed but not shipped; feedback after launch led to fixes only; 4,000+ accounts; 4.8-star rating; '3x faster' came from automated tests clicking through competitor apps vs Elapse to reach the same data. Takeaways he chose: design for the moment; ship the core first; live data needs honest states."
+    "facts": "Confirmed by Winston (Nov 2026): co-founder and only designer; the other seven were developers; he made product calls and handed off designs; Nov 2022 – Jan 2025; A2–A4 sections are closest to v1.0 (iOS, Nov 2024; also on Android); live timing shipped and detected delays automatically from posted results; tournament mode exists because you don't need those features outside an event, other features help you find teams and tournaments then, and its UI is built for the fast-paced tournament environment (own experience + tester input); your own next match leads with the time because time is what you act on (own experience competing + user/team feedback); the 2023 plan's organizer portal, chatbot and web app gave way to priorities; the ScoutSheet tab (A5) shipped in a later update; TeamSync, Groups and the new onboarding (A5/R1/R2) were designed but not shipped; feedback after launch led to fixes only; 4,000+ accounts; 4.8-star rating; '3x faster' came from automated tests clicking through competitor apps vs Elapse to reach the same data. Takeaways he chose: design for the moment; ship the core first; live data needs honest states. Follow-up: live timing was in v1.0; tournament mode switches off after the event; some scouting (robot specs on the team sheet) was in v1.0."
   },
   "fields": {
     "description": "A tournament companion for VEX Robotics teams: next match, live schedule and scouting. 4,000+ accounts.",
@@ -37,7 +37,7 @@
       },
       {
         "label": "Shipped",
-        "value": "Upcoming matches · Live timing\nTournament mode\nScoutSheet tab (later update)"
+        "value": "Upcoming matches · Live timing\nTournament mode · Scouting\nScoutSheet tab (later update)"
       },
       {
         "label": "Tools",
@@ -76,7 +76,7 @@
           {
             "bullets": [
               "**Planned:** an organizer portal for delays and announcements, a chatbot, and a web app for phones, tablets and computers.",
-              "**Shipped:** tournament mode, upcoming matches and live timing.",
+              "**Shipped in v1.0:** tournament mode, upcoming matches, live timing and basic scouting on each team’s sheet.",
               "**Added later:** the ScoutSheet tab on each team’s page.",
               "**Designed, not shipped:** team sharing and an onboarding flow."
             ]
@@ -118,7 +118,7 @@
         "title": "Tournament mode",
         "heading": "A mode for tournament day",
         "content": [
-          "Tournament mode is for when you’re at an event. You turn it on from the home screen.",
+          "Tournament mode is for when you’re at an event. You turn it on from the home screen, and it switches off after the event.",
           {
             "bullets": [
               "**You don’t need it outside an event.** Other features help you find teams and tournaments then.",

@@ -4,7 +4,7 @@
     "figmaFile": "ku9ORnV1TNcdc1LIohihFd",
     "url": "https://www.figma.com/design/ku9ORnV1TNcdc1LIohihFd/Yelo-Backup?node-id=0-1",
     "page": "New Design (0:1), Old (1:12252)",
-    "facts": "Confirmed by Winston (Nov 2026): only designer; worked with founders, engineers and ops/marketing; Jan–Apr 2026; Yelo's earlier app (Old page) was live; its home was too crowded, social felt bolted on, dated look; the founders picked among directions A–D; B's layout went forward because booking stays first, combined with A; reaction counts were dropped because they felt tacky and few people would tap them (they came from an earlier iMessage-based version where people reacted to ride requests); feed-card changes were his own judgment; home + feed, search + map, ride options and onboarding are live; vehicles sketched first, then modelled and iterated with Gemini, generated together for consistency; no usage numbers. Takeaways he chose: old habits inform design; booking first, social second; simplifying a crowded home."
+    "facts": "Confirmed by Winston (Nov 2026): only designer; worked with founders, engineers and ops/marketing; Jan–Apr 2026; Yelo's earlier app (Old page) was live; its home was too crowded, social felt bolted on, dated look; the founders picked among directions A–D; B's layout went forward because booking stays first, combined with A; reaction counts were dropped because they felt tacky and few people would tap them (they came from an earlier iMessage-based version where people reacted to ride requests); feed-card changes were his own judgment; home + feed, search + map, ride options and onboarding are live; vehicles sketched first, then modelled and iterated with Gemini, generated together for consistency; no usage numbers. Takeaways he chose: old habits inform design; booking first, social second; simplifying a crowded home. Follow-up: worked with a PM and ops (not marketing); iOS only."
   },
   "fields": {
     "description": "Redesigning a live campus ride-share app: booking first, social second.",
@@ -21,7 +21,7 @@
       },
       {
         "label": "Team",
-        "value": "Founders · Engineers\nOps & marketing"
+        "value": "Founders · Engineers\nPM · Ops"
       },
       {
         "label": "Timeline",
