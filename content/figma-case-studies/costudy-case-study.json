@@ -1,0 +1,509 @@
+{
+  "documentId": "figma-portfolio-costudy",
+  "generatedFrom": "case-study-copy/costudy.json",
+  "fields": {
+    "description": "A campus study app that won 1st place at the UW Blueprint Designathon 2025.",
+    "client": "UW Blueprint Designathon 2025",
+    "discipline": "Product Design",
+    "intro": "CoStudy helps students find and join study sessions for their courses on campus. My team of four designed it in one day and won 1st place at the UW Blueprint Designathon 2025.",
+    "summary": "How might we design solutions that help people connect, care, and thrive, empowering the individual and the community?",
+    "overview": "The designathon gave us the prompt above. With Ishan, Raghav and Lily, I brainstormed ideas, picked one together, then split up the screens. We all worked on a bit of everything and submitted a clickable prototype and a pitch deck.",
+    "impact": "1st place, UW Blueprint Designathon 2025.",
+    "showSideMenu": true,
+    "details": [
+      {
+        "_type": "detailItem",
+        "_key": "costudy-detail-0",
+        "label": "Event",
+        "value": "UW Blueprint Designathon 2025\nOne day · November 2025"
+      },
+      {
+        "_type": "detailItem",
+        "_key": "costudy-detail-1",
+        "label": "Result",
+        "value": "1st place"
+      },
+      {
+        "_type": "detailItem",
+        "_key": "costudy-detail-2",
+        "label": "Team",
+        "value": "Ishan, Raghav, Lily and Winston"
+      },
+      {
+        "_type": "detailItem",
+        "_key": "costudy-detail-3",
+        "label": "Deliverables",
+        "value": "Clickable prototype · Pitch deck"
+      },
+      {
+        "_type": "detailItem",
+        "_key": "costudy-detail-4",
+        "label": "Platform",
+        "value": "iOS"
+      }
+    ],
+    "coverImage": {
+      "_type": "image",
+      "localAssetKey": "hero",
+      "alt": "CoStudy project interface"
+    },
+    "hero": [
+      {
+        "_type": "mediaImage",
+        "_key": "costudy-hero",
+        "localAssetKey": "hero",
+        "alt": "CoStudy project interface",
+        "size": "full"
+      }
+    ],
+    "sections": [
+      {
+        "_type": "projectSection",
+        "_key": "costudy-section-0",
+        "title": "Idea",
+        "heading": "From prompt to a study app",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "costudy-s-0-b-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "costudy-s-0-b-0-s",
+                "marks": [],
+                "text": "We started from the prompt and brainstormed about 16 ideas, from micro-volunteering to a neighbourhood emergency app. Then we picked one together: help students find classmates to study with."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "costudy-s-0-b-1",
+            "localAssetKey": "ideas",
+            "alt": "The team’s idea board: the designathon prompt in the middle surrounded by about 16 short ideas",
+            "caption": "Our idea board, with the prompt in the middle.",
+            "size": "full"
+          }
+        ]
+      },
+      {
+        "_type": "projectSection",
+        "_key": "costudy-section-1",
+        "title": "Home",
+        "heading": "A map of who’s studying where",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "costudy-s-1-b-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "costudy-s-1-b-0-s",
+                "marks": [],
+                "text": "Home puts a campus map first, with live sessions stacked by course. A sheet below lists your sessions, then upcoming ones."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "costudy-s-1-b-1-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "costudy-s-1-b-1-0-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Location matters:"
+              },
+              {
+                "_type": "span",
+                "_key": "costudy-s-1-b-1-0-s1",
+                "marks": [],
+                "text": " where a session is decides whether you can go."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "costudy-s-1-b-1-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "costudy-s-1-b-1-1-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "A map is more engaging"
+              },
+              {
+                "_type": "span",
+                "_key": "costudy-s-1-b-1-1-s1",
+                "marks": [],
+                "text": " than another list."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "costudy-s-1-b-1-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "costudy-s-1-b-1-2-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Only live sessions and your own get a tint,"
+              },
+              {
+                "_type": "span",
+                "_key": "costudy-s-1-b-1-2-s1",
+                "marks": [],
+                "text": " so upcoming ones stay plain."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "mediaGallery",
+            "_key": "costudy-s-1-b-2",
+            "caption": "The map, and the sheet pulled up.",
+            "images": [
+              {
+                "_type": "image",
+                "_key": "costudy-s-1-b-2-0",
+                "localAssetKey": "home",
+                "alt": "CoStudy home: a campus map with sessions stacked by course and a sheet of your sessions below"
+              },
+              {
+                "_type": "image",
+                "_key": "costudy-s-1-b-2-1",
+                "localAssetKey": "home-expanded",
+                "alt": "CoStudy home with the sheet pulled up: tinted live sessions above plain upcoming sessions"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "_type": "projectSection",
+        "_key": "costudy-section-2",
+        "title": "Joining",
+        "heading": "Easy to join, easy to leave",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "costudy-s-2-b-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "costudy-s-2-b-0-s",
+                "marks": [],
+                "text": "A session shows who’s hosting, where, when and for which course. Joining is one tap. After that, the main button becomes “Open class thread”, and you can leave anytime."
+              }
+            ]
+          },
+          {
+            "_type": "mediaGallery",
+            "_key": "costudy-s-2-b-1",
+            "caption": "Before and after joining.",
+            "images": [
+              {
+                "_type": "image",
+                "_key": "costudy-s-2-b-1-0",
+                "localAssetKey": "session",
+                "alt": "CoStudy session detail before joining, with a Join session button"
+              },
+              {
+                "_type": "image",
+                "_key": "costudy-s-2-b-1-1",
+                "localAssetKey": "session-joined",
+                "alt": "CoStudy session detail after joining, with Open class thread and Leave session buttons"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "_type": "projectSection",
+        "_key": "costudy-section-3",
+        "title": "Sign-up",
+        "heading": "Confirm your courses, don’t type them",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "costudy-s-3-b-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "costudy-s-3-b-0-s",
+                "marks": [],
+                "text": "Sign-up verifies a school email, then asks you to confirm your courses instead of searching for them. Each course gets a colour that follows it through the app."
+              }
+            ]
+          },
+          {
+            "_type": "mediaGallery",
+            "_key": "costudy-s-3-b-1",
+            "caption": "Welcome, school email and course confirmation.",
+            "images": [
+              {
+                "_type": "image",
+                "_key": "costudy-s-3-b-1-0",
+                "localAssetKey": "welcome",
+                "alt": "CoStudy welcome screen: Where students organize to learn together"
+              },
+              {
+                "_type": "image",
+                "_key": "costudy-s-3-b-1-1",
+                "localAssetKey": "email",
+                "alt": "CoStudy sign-up step asking for a university email, just for verification"
+              },
+              {
+                "_type": "image",
+                "_key": "costudy-s-3-b-1-2",
+                "localAssetKey": "courses",
+                "alt": "CoStudy course confirmation with four pre-filled courses in their colours"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "_type": "projectSection",
+        "_key": "costudy-section-4",
+        "title": "After the event",
+        "heading": "Polishing it afterwards",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "costudy-s-4-b-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "costudy-s-4-b-0-s",
+                "marks": [],
+                "text": "After the designathon, I polished the screens on my own: a campus map redrawn from real maps, a blue accent and a lighter Threads header."
+              }
+            ]
+          },
+          {
+            "_type": "mediaGallery",
+            "_key": "costudy-s-4-b-1",
+            "caption": "As submitted, and polished after the event.",
+            "images": [
+              {
+                "_type": "image",
+                "_key": "costudy-s-4-b-1-0",
+                "localAssetKey": "home",
+                "alt": "CoStudy home as submitted at the designathon"
+              },
+              {
+                "_type": "image",
+                "_key": "costudy-s-4-b-1-1",
+                "localAssetKey": "home-polished",
+                "alt": "CoStudy home polished after the event, with a redrawn campus map and a blue button"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "_type": "projectSection",
+        "_key": "costudy-section-5",
+        "title": "Outcome",
+        "heading": "Result and what’s untested",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "costudy-s-5-b-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "costudy-s-5-b-0-s",
+                "marks": [],
+                "text": "We won 1st place. We didn’t get specific feedback from the judges, and the design hasn’t been tested with students."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "costudy-s-5-b-1",
+            "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "costudy-s-5-b-1-s",
+                "marks": [],
+                "text": "Still assumed"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "costudy-s-5-b-2-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "costudy-s-5-b-2-0-s",
+                "marks": [],
+                "text": "Students will host sessions."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "costudy-s-5-b-2-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "costudy-s-5-b-2-1-s",
+                "marks": [],
+                "text": "There are enough sessions to fill the map."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "costudy-s-5-b-2-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "costudy-s-5-b-2-2-s",
+                "marks": [],
+                "text": "Students are comfortable showing where they study."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "costudy-s-5-b-2-3",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "costudy-s-5-b-2-3-s",
+                "marks": [],
+                "text": "The app can get a student’s courses from the school."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "costudy-s-5-b-3",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "costudy-s-5-b-3-s",
+                "marks": [],
+                "text": "Our first idea matched people into groups automatically. The prototype ended up with students hosting sessions instead, and we never settled which works better."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "assets": {
+    "hero": {
+      "path": "assets/costudy-hero-live.jpg",
+      "existingAssetId": "image-773f7bd3030ef819e60ece8aaf6f4b5921a7f016-716x717-png",
+      "note": "Winston's current hero and thumbnail in Sanity, kept as is."
+    },
+    "ideas": {
+      "path": "assets/costudy-cs2-ideas.png",
+      "sourceNodeIds": [
+        "0:1"
+      ]
+    },
+    "home": {
+      "path": "assets/costudy-cs2-home.png",
+      "sourceNodeIds": [
+        "12:20"
+      ]
+    },
+    "home-expanded": {
+      "path": "assets/costudy-cs2-home-expanded.png",
+      "sourceNodeIds": [
+        "37:760"
+      ]
+    },
+    "session": {
+      "path": "assets/costudy-cs2-session.png",
+      "sourceNodeIds": [
+        "33:3257"
+      ]
+    },
+    "session-joined": {
+      "path": "assets/costudy-cs2-session-joined.png",
+      "sourceNodeIds": [
+        "41:10025"
+      ]
+    },
+    "welcome": {
+      "path": "assets/costudy-cs2-welcome.png",
+      "sourceNodeIds": [
+        "41:5517"
+      ]
+    },
+    "email": {
+      "path": "assets/costudy-cs2-email.png",
+      "sourceNodeIds": [
+        "41:5867"
+      ]
+    },
+    "courses": {
+      "path": "assets/costudy-cs2-courses.png",
+      "sourceNodeIds": [
+        "41:9769"
+      ]
+    },
+    "home-polished": {
+      "path": "assets/costudy-cs2-home-polished.png",
+      "sourceNodeIds": [
+        "9:1861"
+      ]
+    }
+  }
+}

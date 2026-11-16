@@ -4,8 +4,8 @@
  *
  *   node scripts/build-newly-yelo-case-studies.mjs
  *
- * Reads content/figma-case-studies/case-study-copy/{newly,yelo}.json and
- * writes content/figma-case-studies/{newly,yelo}-case-study.json, the files
+ * Reads content/figma-case-studies/case-study-copy/{newly,yelo,elapse,costudy}.json
+ * and writes content/figma-case-studies/<slug>-case-study.json, the files
  * that scripts/update-newly-yelo-case-studies.mjs publishes.
  *
  * Compact format (per project):
@@ -89,7 +89,7 @@ function expand(copy, slug) {
   return { documentId: copy.documentId, generatedFrom: `case-study-copy/${slug}.json`, fields, assets: copy.assets };
 }
 
-for (const slug of ['newly', 'yelo']) {
+for (const slug of ['newly', 'yelo', 'elapse', 'costudy']) {
   const source = path.join(folder, 'case-study-copy', `${slug}.json`);
   if (!fs.existsSync(source)) {
     console.log(`${slug}: no ${path.relative(root, source)} yet, skipped.`);

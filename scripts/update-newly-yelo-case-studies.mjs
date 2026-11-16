@@ -33,6 +33,8 @@ const save = (name, value) => fs.writeFileSync(path.join(folder, name), `${JSON.
 const SPECS = [
   { slug: 'newly', file: 'newly-case-study.json', id: 'figma-portfolio-newly' },
   { slug: 'yelo', file: 'yelo-case-study.json', id: 'figma-portfolio-yelo' },
+  { slug: 'elapse', file: 'elapse-case-study.json', id: 'legacy-portfolio-elapsedesign' },
+  { slug: 'costudy', file: 'costudy-case-study.json', id: 'figma-portfolio-costudy' },
 ];
 // Fields the case study files may change. Everything else on the document is
 // left exactly as it is.
@@ -51,7 +53,7 @@ for (let i = 0; i < args.length; i++) {
   else if (args[i] === '--dry-run') apply = false;
   else if (args[i] === '--offline') offline = true;
   else if (args[i] === '--only') only = args[++i];
-  else throw new Error(`Unknown option ${args[i]}. Usage: node scripts/update-newly-yelo-case-studies.mjs [--apply | --offline] [--only newly|yelo]`);
+  else throw new Error(`Unknown option ${args[i]}. Usage: node scripts/update-newly-yelo-case-studies.mjs [--apply | --offline] [--only newly|yelo|elapse|costudy]`);
 }
 if (apply && offline) throw new Error('--offline only validates the files; it cannot be combined with --apply.');
 const specs = SPECS.filter((spec) => !only || spec.slug === only);
@@ -167,11 +169,11 @@ console.table(prepared.map(({ spec, fields, assets }) => ({
 })));
 
 if (!apply) {
-  console.log(`Dry run: both files validated against the live documents; ${assetCount} assets ready to upload. Re-run with --apply to publish.`);
+  console.log(`Dry run: ${specs.length} file(s) validated against the live documents; ${assetCount} assets ready to upload. Re-run with --apply to publish.`);
   process.exit(0);
 }
 
-save('sanity-before-newly-yelo-update.json', { savedAt: new Date().toISOString(), projectId: '7k8ajlip', dataset: 'production', documents: before });
+save(`sanity-before-${specs.map((s) => s.slug).join('-')}-update.json`, { savedAt: new Date().toISOString(), projectId: '7k8ajlip', dataset: 'production', documents: before });
 
 // Upload every asset once (Sanity de-duplicates identical files by content hash).
 const uploaded = new Map();
@@ -229,7 +231,7 @@ for (const { doc, set } of sets) {
   }
 }
 
-save('newly-yelo-update-result.json', {
+save(`${specs.map((s) => s.slug).join('-')}-update-result.json`, {
   publishedAt: new Date().toISOString(),
   transactionId: result.transactionId,
   projects: prepared.map(({ spec, fields, assets }) => ({
