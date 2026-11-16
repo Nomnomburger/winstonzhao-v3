@@ -6,7 +6,7 @@
       "https://www.figma.com/design/ftcxLE1aKCaG3S61G5EI5e/Canvas-Designathons?node-id=0-1",
       "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W/Winston-Design-Demo?node-id=1-15596"
     ],
-    "facts": "Confirmed by Winston (Nov 2026): 1st place, UW Blueprint Designathon 2025; one-day event; team of four (Ishan, Raghav, Lily, Winston); brainstormed together, picked the idea after brainstorming, then split screens; Winston worked on bits of everything and it was a group effort, so the case study should not say who did what; submitted a clickable prototype and a pitch deck; no specific judge feedback; the move from automatic matching to student-hosted sessions was not a deliberate decision; map-first home because location matters and it is visually engaging; the polished screens ('Final WINSTON') were made by Winston after the event. Prompt: 'How might we design solutions that help people connect, care, and thrive empowering the individual and the community?' Follow-up: never tested with students; joining-is-one-tap, map-from-real-maps and a Role line were not confirmed."
+    "facts": "Confirmed by Winston (Nov 2026): 1st place, UW Blueprint Designathon 2025; one-day event; team of four (Ishan, Raghav, Lily, Winston); brainstormed together, picked the idea after brainstorming, then split screens; Winston worked on bits of everything and it was a group effort, so the case study should not say who did what; submitted a clickable prototype and a pitch deck; no specific judge feedback; the move from automatic matching to student-hosted sessions was not a deliberate decision; map-first home because location matters and it is visually engaging; the polished screens ('Final WINSTON') were made by Winston after the event. Prompt: 'How might we design solutions that help people connect, care, and thrive empowering the individual and the community?' Follow-up: never tested with students; joining-is-one-tap, map-from-real-maps and a Role line were not confirmed. Depth round: use the polished screens where they exist and don't mention the polish; home is a split view (half and half by default, both interactive, resize or tap to go full screen) rather than two tabs, because both show the same sessions; stacked course icons expand on zoom or tap, for busy buildings, a cleaner map and showing activity; course colours help spot your courses fast, tie features together and add personality."
   },
   "fields": {
     "description": "A campus study app concept that won 1st place at the UW Blueprint Designathon 2025.",
@@ -44,11 +44,11 @@
     ],
     "cover": {
       "asset": "hero",
-      "alt": "CoStudy home, polished after the event: a campus map with course icons above a sheet of your live sessions"
+      "alt": "CoStudy home: a campus map with course icons above your live sessions"
     },
     "hero": {
       "image": "hero",
-      "alt": "CoStudy home, polished after the event: a campus map with course icons above a sheet of your live sessions"
+      "alt": "CoStudy home: a campus map with course icons above your live sessions"
     },
     "sections": [
       {
@@ -58,8 +58,8 @@
           "We started from the prompt and brainstormed about 16 ideas, from micro-volunteering to a neighbourhood emergency app. Then we picked one together: an automatic study-group generator that would put students into groups and assign a spot on campus. The prototype ended up with students hosting their own sessions instead.",
           {
             "image": "ideas",
-            "alt": "Part of the team’s idea board: the designathon prompt surrounded by short ideas, with the automatic group study session generator below",
-            "caption": "Part of our idea board. The study-group idea is at the bottom."
+            "alt": "The CoStudy team’s 16 ideas as sticky notes around the designathon prompt, with the automatic study-group generator marked as picked",
+            "caption": "Our 16 ideas around the prompt, with the one we picked."
           }
         ]
       },
@@ -67,18 +67,33 @@
         "title": "Home",
         "heading": "A map of who’s studying where",
         "content": [
-          "Home puts a campus map first, with your sessions in a sheet below. We put the map first for two reasons:",
+          "Home is a split view: the campus map on top and sessions below, half and half by default. Both are interactive, and you can resize either or tap into one to go full screen.",
           {
             "bullets": [
               "**Location matters:** where a session is decides whether you can go.",
-              "**A map is visually engaging.**"
+              "**A map is visually engaging.**",
+              "**Two views, not two tabs:** the map and the list show the same sessions."
             ]
+          },
+          {
+            "image": "home",
+            "alt": "Two iPhones: the CoStudy home split between a campus map and your sessions, and the sessions list expanded",
+            "caption": "The split view, and the list expanded."
+          },
+          {
+            "h3": "Stacked pins"
+          },
+          "Sessions in the same building stack as course icons with “+3 more”. Popular buildings have a lot going on at once, so stacking keeps the map clean and shows where people are studying. Zoom in or tap a stack to see each exact location.",
+          {
+            "image": "stacked-pins",
+            "alt": "A close-up of the CoStudy map: course icons stacked on two buildings with session names and +1 more and +3 more",
+            "caption": "Stacked course icons, with “+3 more”."
           },
           "On the day, we agreed in Figma comments to keep gradients for live sessions and your upcoming ones only.",
           {
-            "image": "home",
-            "alt": "Two iPhones: the CoStudy home with a campus map and stacked course icons above a sheet of your sessions, and the sheet pulled up with tinted live sessions above plain upcoming ones",
-            "caption": "The map, and the sheet pulled up."
+            "image": "session-cards",
+            "alt": "A close-up of CoStudy session cards: two tinted live sessions with course icons, and a plain upcoming session",
+            "caption": "Live and your sessions are tinted; upcoming ones stay plain."
           }
         ]
       },
@@ -98,23 +113,20 @@
         "title": "Sign-up",
         "heading": "Courses come pre-filled",
         "content": [
-          "Sign-up verifies a school email, then shows your courses pre-filled for you to confirm. Each course gets a colour that follows it through the app.",
+          "Sign-up verifies a school email, then shows your courses pre-filled for you to confirm.",
+          {
+            "h3": "Course colours"
+          },
+          "Each course gets its own colour across the map, session cards and threads. It helps you spot your courses fast, ties the features together, and adds some personality.",
+          {
+            "image": "courses",
+            "alt": "A close-up of the CoStudy course confirmation list: MATH 117, CHEM 121, CS 105 and ENG 102, each with its own colour and icon",
+            "caption": "Each course keeps its colour across the app."
+          },
           {
             "image": "signup",
-            "alt": "Three iPhones: the CoStudy welcome screen, the university email step, and course confirmation with four pre-filled courses in their colours",
+            "alt": "Three iPhones: the CoStudy welcome screen, the university email step, and course confirmation with four pre-filled courses",
             "caption": "Welcome, school email and course confirmation."
-          }
-        ]
-      },
-      {
-        "title": "After the event",
-        "heading": "Polishing it afterwards",
-        "content": [
-          "After the designathon, I polished the main screens on my own, including a more detailed campus map, a blue accent and a lighter Threads header.",
-          {
-            "image": "polish",
-            "alt": "Two iPhones: the CoStudy home as submitted at the designathon, and the home polished afterwards with a more detailed campus map and a blue button",
-            "caption": "As submitted, and polished after the event."
           }
         ]
       },
@@ -147,19 +159,17 @@
     "ideas": {
       "path": "assets/costudy-cs3-ideas.png",
       "sourceNodeIds": [
-        "4:2",
-        "2:3",
-        "2:4"
+        "0:1"
       ],
-      "note": "Crop of the Ideas page (0:1) render: prompt plus ~16 ideas, persona excluded."
+      "note": "Sticky-note version of the Ideas page (file ftcxLE1aKCaG3S61G5EI5e), rendered from costudy-ideas-board.html; idea text condensed from the board."
     },
     "home": {
       "path": "assets/costudy-cs3-home.png",
       "sourceNodeIds": [
-        "12:20",
-        "37:760"
+        "9:1861",
+        "9:2054"
       ],
-      "note": "Screens in Apple's iPhone 16 Pro (White Titanium) bezel."
+      "note": "Winston's polished home screens (Final WINSTON section), in Apple's iPhone 16 Pro (White Titanium) bezel. Per Winston, the polish is not called out on the page."
     },
     "joining": {
       "path": "assets/costudy-cs3-joining.png",
@@ -171,17 +181,32 @@
     "signup": {
       "path": "assets/costudy-cs3-signup.png",
       "sourceNodeIds": [
-        "41:5517",
-        "41:5867",
-        "41:9769"
-      ]
+        "316:7097",
+        "316:7126",
+        "316:7211"
+      ],
+      "note": "Winston's updated onboarding in the Final WINSTON section (9:1612)."
     },
-    "polish": {
-      "path": "assets/costudy-cs3-polish.png",
+    "stacked-pins": {
+      "path": "assets/costudy-cmp-stacked-pins.png",
       "sourceNodeIds": [
-        "12:20",
         "9:1861"
-      ]
+      ],
+      "note": "Close-up crop."
+    },
+    "session-cards": {
+      "path": "assets/costudy-cmp-session-cards.png",
+      "sourceNodeIds": [
+        "9:2054"
+      ],
+      "note": "Close-up crop."
+    },
+    "courses": {
+      "path": "assets/costudy-cmp-courses.png",
+      "sourceNodeIds": [
+        "316:7211"
+      ],
+      "note": "Close-up crop."
     }
   }
 }

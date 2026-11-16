@@ -8,7 +8,7 @@
       "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W/Winston-Design-Demo?node-id=284-16034",
       "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W/Winston-Design-Demo?node-id=284-16320"
     ],
-    "facts": "Confirmed by Winston (Nov 2026): contract Design Engineer, May–Oct 2026, only designer; founders + a team of 6+ (roles not stated); built the prompt bar, workspace layout, deploy and web screens in React/TypeScript, mostly with Claude Code and Cursor; the board was his idea, people found it slightly confusing (more used to chatting with an agent), it was too much to build, and the founders/team chose chat-first; the board may return; dual sidebar consolidated after people found two collapsible panes a bit confusing; 8 picker frames are 8 iterations, changed after tester feedback and own critique (unclear what Apply did, unclear what was selected); after the changes shipped people stopped hitting those problems; colour restraint was his call; workspace, prompt bar, deploy and web app are live; the work helped grow ARR (user count private); audience is technical and non-technical people. Takeaways he chose: 'states, not screens' and 'right idea, wrong time'."
+    "facts": "Confirmed by Winston (Nov 2026): contract Design Engineer, May–Oct 2026, only designer; founders + a team of 6+ (roles not stated); built the prompt bar, workspace layout, deploy and web screens in React/TypeScript, mostly with Claude Code and Cursor; the board was his idea, people found it slightly confusing (more used to chatting with an agent), it was too much to build, and the founders/team chose chat-first; the board may return; dual sidebar consolidated after people found two collapsible panes a bit confusing; 8 picker frames are 8 iterations, changed after tester feedback and own critique (unclear what Apply did, unclear what was selected); after the changes shipped people stopped hitting those problems; colour restraint was his call; workspace, prompt bar, deploy and web app are live; the work helped grow ARR (user count private); audience is technical and non-technical people. Takeaways he chose: 'states, not screens' and 'right idea, wrong time'. Depth round (Nov 2026): modes moved out of a dropdown after PostHog showed Plan/Ask were rarely used and support asked for an ask-only mode that already existed; only the active mode is labelled to stay narrow, say what will happen and reduce noise; agent work is folded for non-technical users and readability, expanded logs give each step an icon and code/commands their own containers; remote/local can't change after a session starts and the model rarely changes, so both sit under the bar only at the start; new sessions get a taller bar to feel balanced and important; the queue exists because runs take minutes, people wanted to line up the next change, and it keeps them in control."
   },
   "fields": {
     "description": "One prompt bar, a live iPhone preview and a path to the App Store.",
@@ -139,16 +139,44 @@
         "content": [
           "I built the prompt bar in React and TypeScript, mostly with Claude Code and Cursor. It appears across the workspace and changes with the space it has and what the agent is doing.",
           {
+            "h3": "Modes people can find"
+          },
+          "In the old product, Build, Plan and Ask sat in a dropdown. PostHog showed people weren’t using Plan or Ask because they were hidden, and some support requests asked for a mode that only answers questions without editing anything. That mode already existed. People just couldn’t find it.",
+          "So the modes moved into the bar as a segmented control, and only the active one shows its label:",
+          {
             "bullets": [
-              "**Modes:** Build, Plan and Ask. Only the active mode shows its label.",
-              "**Layouts:** expanded, stacked in a narrow column, or collapsed to the Newly mark.",
-              "**Settings:** session location and model sit under the bar in a new session. Mid-chat, the model moves into the + menu."
+              "**It stays narrow** enough for every width.",
+              "**It always says what will happen** when you send.",
+              "**There’s less noise** next to what you’re typing."
             ]
+          },
+          {
+            "image": "bar-modes",
+            "alt": "Three Newly prompt bars in Build, Plan and Ask mode, with only the active mode labelled",
+            "caption": "Build, Plan and Ask. Only the active mode carries a label."
           },
           {
             "image": "bar-layouts",
             "alt": "The Newly prompt bar in expanded, stacked and collapsed layouts",
             "caption": "Expanded, stacked, collapsed."
+          },
+          {
+            "h3": "Set once, at the start"
+          },
+          "A session can’t switch between remote and local once it starts. Only the model can change, and people rarely change it. So in a new session, location and model sit under the bar where you can’t miss them. Mid-chat, the model moves into the + menu, out of the way, especially for non-technical people.",
+          "New sessions also get a taller bar, so starting a chat feels balanced and important.",
+          {
+            "gallery": [
+              {
+                "image": "new-session-empty",
+                "alt": "Newly with no project open: a tall prompt bar under Let’s make something new, with Remote Session and Newly Agent below it"
+              },
+              {
+                "image": "new-session-project",
+                "alt": "Newly inside a project: a tall prompt bar under Hey Winston! Ready to build?, with branch, Remote Session and Newly Agent below it"
+              }
+            ],
+            "caption": "New sessions get the taller bar: with no project open, and inside a project."
           },
           {
             "image": "bar-settings",
@@ -160,15 +188,34 @@
           },
           {
             "bullets": [
-              "A stop button while it runs.",
-              "A status line while it connects or fixes a bug.",
-              "A queue, so you can keep typing while it’s busy."
+              "A **stop** button while it runs.",
+              "A **status line** while it connects or fixes a bug.",
+              "A **queue**, so you don’t lose your next thought. Runs can take minutes, and people wanted to line up their next change instead of waiting. Queued messages sit above the bar, where you can see and remove them."
             ]
           },
           {
             "image": "bar-states",
             "alt": "Eight states of the Newly prompt bar: drop files, attached images, audio message, stop, connecting, fixing bugs, and messages in queue",
             "caption": "Drop files, images, voice, stop, connecting, fixing bugs and the queue."
+          }
+        ]
+      },
+      {
+        "title": "Conversation",
+        "heading": "Showing the agent’s work",
+        "content": [
+          "The agent’s work folds into one line, like “Worked for 3m, used 3 tools”.",
+          {
+            "bullets": [
+              "**Most people don’t need the commands.** Many Newly users aren’t technical.",
+              "**The chat stays readable** instead of turning into a log.",
+              "**It’s still there to check.** Expanded, each step gets an icon, and code and commands sit in their own containers."
+            ]
+          },
+          {
+            "image": "conversation",
+            "alt": "A close-up of a Newly conversation: the user’s message, the agent’s reply, and its work folded into the line Worked for 3m, used 3 tools",
+            "caption": "The agent’s work, folded into one line."
           }
         ]
       },
@@ -351,6 +398,33 @@
       "sourceNodeIds": [
         "284:39266"
       ]
+    },
+    "new-session-empty": {
+      "path": "assets/newly-cs2-new-session-empty.png",
+      "sourceNodeIds": [
+        "284:36752"
+      ]
+    },
+    "new-session-project": {
+      "path": "assets/newly-cs2-new-session-project.png",
+      "sourceNodeIds": [
+        "284:37196"
+      ]
+    },
+    "bar-modes": {
+      "path": "assets/newly-cs-bar-modes.jpg",
+      "sourceNodeIds": [
+        "284:16035",
+        "284:16209",
+        "284:16251"
+      ]
+    },
+    "conversation": {
+      "path": "assets/newly-cmp-conversation.png",
+      "sourceNodeIds": [
+        "284:33716"
+      ],
+      "note": "Close-up crop of the conversation."
     }
   }
 }

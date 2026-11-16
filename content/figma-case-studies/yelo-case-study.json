@@ -472,6 +472,138 @@
             "alt": "Four iPhones showing the Yelo feed card change: Ride to cards, Headed to cards with initials, a MUTUAL tag, and labelled cards",
             "caption": "Left to right: V1 to the latest card.",
             "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "yelo-s-2-b-3",
+            "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "yelo-s-2-b-3-s",
+                "marks": [],
+                "text": "Why it looks this way"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "yelo-s-2-b-4",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "yelo-s-2-b-4-s",
+                "marks": [],
+                "text": "The wording was heavily debated. Each card had to catch just the right amount of attention. Showing searches, where people are going and events gives people a reason to care about the social side, which is the point of a social ride-share."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "yelo-s-2-b-5-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "yelo-s-2-b-5-0-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Labels"
+              },
+              {
+                "_type": "span",
+                "_key": "yelo-s-2-b-5-0-s1",
+                "marks": [],
+                "text": " let you scan a feed that now mixes rides, tickets and searches."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "yelo-s-2-b-5-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "yelo-s-2-b-5-1-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "MUTUAL"
+              },
+              {
+                "_type": "span",
+                "_key": "yelo-s-2-b-5-1-s1",
+                "marks": [],
+                "text": " shows someone in common, which builds trust."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "yelo-s-2-b-5-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "yelo-s-2-b-5-2-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Initials instead of photos"
+              },
+              {
+                "_type": "span",
+                "_key": "yelo-s-2-b-5-2-s1",
+                "marks": [],
+                "text": " for privacy, a calmer feed and a consistent look."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "yelo-s-2-b-5-3",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "yelo-s-2-b-5-3-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Soft, slightly bubbly cards"
+              },
+              {
+                "_type": "span",
+                "_key": "yelo-s-2-b-5-3-s1",
+                "marks": [],
+                "text": " with a light gradient nod to text messages, while staying clean and not overpowering."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "yelo-s-2-b-6",
+            "localAssetKey": "feed-cards",
+            "alt": "A close-up of four Yelo feed cards: HEADED TO, GOT TICKETS, TRENDING SEARCH and a HEADED TO card with a MUTUAL tag, each with a coloured initials avatar",
+            "caption": "Labels, MUTUAL and initials in the latest cards.",
+            "size": "full"
           }
         ]
       },
@@ -505,13 +637,77 @@
           },
           {
             "_type": "block",
-            "_key": "yelo-s-3-b-2",
+            "_key": "yelo-s-3-b-2-0",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "yelo-s-3-b-2-s",
+                "_key": "yelo-s-3-b-2-0-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Named classes match Yelo’s real fleet,"
+              },
+              {
+                "_type": "span",
+                "_key": "yelo-s-3-b-2-0-s1",
+                "marks": [],
+                "text": " which includes carts and mini buses, not just cars."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "yelo-s-3-b-2-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "yelo-s-3-b-2-1-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Exclusive vs. Shared wasn’t clear."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "yelo-s-3-b-3",
+            "localAssetKey": "ride-options",
+            "alt": "A close-up of the Yelo ride options: Car, Big Car, Cart and Mini Bus, each with a 3D vehicle, price and one tag",
+            "caption": "Four classes, one tag each.",
+            "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "yelo-s-3-b-4",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "yelo-s-3-b-4-s",
+                "marks": [],
+                "text": "Drivers use their own cars, and they’re all different, so a photo of “the car” would be wrong. The 3D vehicles are an abstract, fun stand-in."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "yelo-s-3-b-5",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "yelo-s-3-b-5-s",
                 "marks": [],
                 "text": "I sketched the vehicles first, then used Gemini to model and iterate on them. I started with one vehicle at a time, then switched to generating them all in one image because it gave more consistent results."
               }
@@ -519,7 +715,7 @@
           },
           {
             "_type": "mediaImage",
-            "_key": "yelo-s-3-b-3",
+            "_key": "yelo-s-3-b-6",
             "localAssetKey": "fleet",
             "alt": "Five yellow 3D vehicles in a row: sedan, SUV, golf cart with a flag, van and bus",
             "caption": "The Yelo fleet.",
@@ -530,29 +726,99 @@
       {
         "_type": "projectSection",
         "_key": "yelo-section-4",
-        "title": "Rest of the app",
-        "heading": "Sign-up, permissions and the map",
+        "title": "Look and feel",
+        "heading": "A calm sky, yellow for action",
         "content": [
           {
             "_type": "block",
-            "_key": "yelo-s-4-b-0",
+            "_key": "yelo-s-4-b-0-0",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "yelo-s-4-b-0-s",
+                "_key": "yelo-s-4-b-0-0-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "A light sky gradient"
+              },
+              {
+                "_type": "span",
+                "_key": "yelo-s-4-b-0-0-s1",
                 "marks": [],
-                "text": "Sign-up checks student status with a school email, through Google, Microsoft or a one-time pin."
+                "text": " keeps the app neutral and calm, and hints at people heading out."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "yelo-s-4-b-0-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "yelo-s-4-b-0-1-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Yellow only marks the main action and LIVE."
+              },
+              {
+                "_type": "span",
+                "_key": "yelo-s-4-b-0-1-s1",
+                "marks": [],
+                "text": " Event posters are already colourful, a lot of yellow is hard to read, and the old app used a lot of colour at once."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "yelo-s-4-b-1",
+            "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "yelo-s-4-b-1-s",
+                "marks": [],
+                "text": "Status without alarm"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "yelo-s-4-b-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "yelo-s-4-b-2-s",
+                "marks": [],
+                "text": "We tried tinting the sky with service status: green on a busy night, orange or red when there weren’t enough drivers or Yelo wasn’t running. We dropped it because we didn’t want the home screen to scream “the app isn’t working right now”. Service status lives in the small pill that usually says LIVE."
               }
             ]
           },
           {
             "_type": "mediaImage",
-            "_key": "yelo-s-4-b-1",
-            "localAssetKey": "rest",
-            "alt": "Three iPhones: Yelo student sign-up with Google or Microsoft, permissions with a reason for each, and the event map",
-            "caption": "Student sign-up, permissions with a reason for each, and the event map.",
+            "_key": "yelo-s-4-b-3",
+            "localAssetKey": "status",
+            "alt": "Three iPhones: Yelo home with a green Busy night for drivers sky, a red Currently not available sky, and the final home with a LIVE pill",
+            "caption": "Tried: tinting the sky by service status. Kept: the LIVE pill.",
+            "size": "full"
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "yelo-s-4-b-4",
+            "localAssetKey": "search-live",
+            "alt": "A close-up of the Yelo search bar: Where to? with a yellow LIVE pill",
+            "caption": "The LIVE pill carries service status.",
             "size": "full"
           }
         ]
@@ -560,8 +826,8 @@
       {
         "_type": "projectSection",
         "_key": "yelo-section-5",
-        "title": "Outcome",
-        "heading": "What shipped",
+        "title": "Onboarding",
+        "heading": "Sign-up that gets you riding",
         "content": [
           {
             "_type": "block",
@@ -573,23 +839,17 @@
                 "_type": "span",
                 "_key": "yelo-s-5-b-0-s",
                 "marks": [],
-                "text": "Home and feed, search and map, ride options and onboarding are live. I don’t have usage numbers."
+                "text": "The final sign-up has eight short steps: welcome, phone number, a text code, student status, an email code, a pre-filled profile, an optional photo and permissions."
               }
             ]
           },
           {
-            "_type": "block",
+            "_type": "mediaImage",
             "_key": "yelo-s-5-b-1",
-            "style": "h3",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "yelo-s-5-b-1-s",
-                "marks": [],
-                "text": "What I learned"
-              }
-            ]
+            "localAssetKey": "onboarding-1",
+            "alt": "Three iPhones: the Yelo welcome screen, the phone number step and Claim your student status with Google or Microsoft",
+            "caption": "Welcome, phone number, student status.",
+            "size": "full"
           },
           {
             "_type": "block",
@@ -603,13 +863,13 @@
                 "marks": [
                   "strong"
                 ],
-                "text": "Old habits inform design."
+                "text": "Phone first."
               },
               {
                 "_type": "span",
                 "_key": "yelo-s-5-b-2-0-s1",
                 "marks": [],
-                "text": " How people used the iMessage version shaped what we kept and what we dropped."
+                "text": " Your phone number is your login, drivers need to reach you, and it’s the quickest way to start. It was also a requirement from the founders."
               }
             ],
             "listItem": "bullet",
@@ -627,13 +887,13 @@
                 "marks": [
                   "strong"
                 ],
-                "text": "Booking first, social second."
+                "text": "School Google or Microsoft sign-in"
               },
               {
                 "_type": "span",
                 "_key": "yelo-s-5-b-2-1-s1",
                 "marks": [],
-                "text": " Social signals only help if they don’t slow down getting a ride."
+                "text": " replaced the old school picker and emailed code. It’s fewer steps, most students already have one of those accounts, it keeps Yelo students-only, and it fills in the profile."
               }
             ],
             "listItem": "bullet",
@@ -651,11 +911,199 @@
                 "marks": [
                   "strong"
                 ],
-                "text": "Simplify a crowded home."
+                "text": "The welcome screen shows the app,"
               },
               {
                 "_type": "span",
                 "_key": "yelo-s-5-b-2-2-s1",
+                "marks": [],
+                "text": " with the feed, events and deals, so the social side is clear before you sign up and Yelo doesn’t read as just another ride-share."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "yelo-s-5-b-3",
+            "localAssetKey": "onboarding-2",
+            "alt": "Three iPhones: the pre-filled Yelo profile, the optional profile picture step, and permissions with a reason for each",
+            "caption": "Pre-filled profile, optional photo, permissions.",
+            "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "yelo-s-5-b-4-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "yelo-s-5-b-4-0-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Confirm, don’t type."
+              },
+              {
+                "_type": "span",
+                "_key": "yelo-s-5-b-4-0-s1",
+                "marks": [],
+                "text": " The profile comes pre-filled from the school account."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "yelo-s-5-b-4-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "yelo-s-5-b-4-1-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "The photo is optional for riders"
+              },
+              {
+                "_type": "span",
+                "_key": "yelo-s-5-b-4-1-s1",
+                "marks": [],
+                "text": " and only used in social features. Drivers have to add one. Fewer required steps means fewer people drop off."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "yelo-s-5-b-4-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "yelo-s-5-b-4-2-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Every permission says why."
+              },
+              {
+                "_type": "span",
+                "_key": "yelo-s-5-b-4-2-s1",
+                "marks": [],
+                "text": " Reasons build trust, especially for contacts."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          }
+        ]
+      },
+      {
+        "_type": "projectSection",
+        "_key": "yelo-section-6",
+        "title": "Outcome",
+        "heading": "What shipped",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "yelo-s-6-b-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "yelo-s-6-b-0-s",
+                "marks": [],
+                "text": "Home and feed, search and map, ride options and onboarding are live. I don’t have usage numbers."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "yelo-s-6-b-1",
+            "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "yelo-s-6-b-1-s",
+                "marks": [],
+                "text": "What I learned"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "yelo-s-6-b-2-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "yelo-s-6-b-2-0-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Old habits inform design."
+              },
+              {
+                "_type": "span",
+                "_key": "yelo-s-6-b-2-0-s1",
+                "marks": [],
+                "text": " How people used the iMessage version shaped what we kept and what we dropped."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "yelo-s-6-b-2-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "yelo-s-6-b-2-1-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Booking first, social second."
+              },
+              {
+                "_type": "span",
+                "_key": "yelo-s-6-b-2-1-s1",
+                "marks": [],
+                "text": " Social signals only help if they don’t slow down getting a ride."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "yelo-s-6-b-2-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "yelo-s-6-b-2-2-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Simplify a crowded home."
+              },
+              {
+                "_type": "span",
+                "_key": "yelo-s-6-b-2-2-s1",
                 "marks": [],
                 "text": " Redesigning a live app is mostly deciding what to remove."
               }
@@ -730,12 +1178,49 @@
         "1:6840"
       ]
     },
-    "rest": {
-      "path": "assets/yelo-cs3-rest.png",
+    "status": {
+      "path": "assets/yelo-cs3-status.png",
       "sourceNodeIds": [
-        "1:7417",
-        "1:7268",
-        "1:5728"
+        "1:3442",
+        "1:3551",
+        "1:7130"
+      ]
+    },
+    "search-live": {
+      "path": "assets/yelo-cmp-search-live.png",
+      "sourceNodeIds": [
+        "1:7130"
+      ],
+      "note": "Close-up crop."
+    },
+    "feed-cards": {
+      "path": "assets/yelo-cmp-feed-cards.png",
+      "sourceNodeIds": [
+        "1:7130"
+      ],
+      "note": "Close-up crop."
+    },
+    "ride-options": {
+      "path": "assets/yelo-cmp-ride-options.png",
+      "sourceNodeIds": [
+        "1:6840"
+      ],
+      "note": "Close-up crop."
+    },
+    "onboarding-1": {
+      "path": "assets/yelo-cs3-onboarding-1.png",
+      "sourceNodeIds": [
+        "1:7252",
+        "1:7305",
+        "1:7417"
+      ]
+    },
+    "onboarding-2": {
+      "path": "assets/yelo-cs3-onboarding-2.png",
+      "sourceNodeIds": [
+        "1:7368",
+        "1:7399",
+        "1:7268"
       ]
     }
   }

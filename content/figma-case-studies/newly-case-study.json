@@ -407,23 +407,65 @@
           },
           {
             "_type": "block",
-            "_key": "newly-s-3-b-1-0",
+            "_key": "newly-s-3-b-1",
+            "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-3-b-1-s",
+                "marks": [],
+                "text": "Modes people can find"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-3-b-2",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "newly-s-3-b-1-0-s",
+                "_key": "newly-s-3-b-2-s",
+                "marks": [],
+                "text": "In the old product, Build, Plan and Ask sat in a dropdown. PostHog showed people weren’t using Plan or Ask because they were hidden, and some support requests asked for a mode that only answers questions without editing anything. That mode already existed. People just couldn’t find it."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-3-b-3",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-3-b-3-s",
+                "marks": [],
+                "text": "So the modes moved into the bar as a segmented control, and only the active one shows its label:"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-3-b-4-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-3-b-4-0-s",
                 "marks": [
                   "strong"
                 ],
-                "text": "Modes:"
+                "text": "It stays narrow"
               },
               {
                 "_type": "span",
-                "_key": "newly-s-3-b-1-0-s1",
+                "_key": "newly-s-3-b-4-0-s1",
                 "marks": [],
-                "text": " Build, Plan and Ask. Only the active mode shows its label."
+                "text": " enough for every width."
               }
             ],
             "listItem": "bullet",
@@ -431,23 +473,23 @@
           },
           {
             "_type": "block",
-            "_key": "newly-s-3-b-1-1",
+            "_key": "newly-s-3-b-4-1",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "newly-s-3-b-1-1-s",
+                "_key": "newly-s-3-b-4-1-s",
                 "marks": [
                   "strong"
                 ],
-                "text": "Layouts:"
+                "text": "It always says what will happen"
               },
               {
                 "_type": "span",
-                "_key": "newly-s-3-b-1-1-s1",
+                "_key": "newly-s-3-b-4-1-s1",
                 "marks": [],
-                "text": " expanded, stacked in a narrow column, or collapsed to the Newly mark."
+                "text": " when you send."
               }
             ],
             "listItem": "bullet",
@@ -455,23 +497,23 @@
           },
           {
             "_type": "block",
-            "_key": "newly-s-3-b-1-2",
+            "_key": "newly-s-3-b-4-2",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "newly-s-3-b-1-2-s",
+                "_key": "newly-s-3-b-4-2-s",
                 "marks": [
                   "strong"
                 ],
-                "text": "Settings:"
+                "text": "There’s less noise"
               },
               {
                 "_type": "span",
-                "_key": "newly-s-3-b-1-2-s1",
+                "_key": "newly-s-3-b-4-2-s1",
                 "marks": [],
-                "text": " session location and model sit under the bar in a new session. Mid-chat, the model moves into the + menu."
+                "text": " next to what you’re typing."
               }
             ],
             "listItem": "bullet",
@@ -479,15 +521,84 @@
           },
           {
             "_type": "mediaImage",
-            "_key": "newly-s-3-b-2",
+            "_key": "newly-s-3-b-5",
+            "localAssetKey": "bar-modes",
+            "alt": "Three Newly prompt bars in Build, Plan and Ask mode, with only the active mode labelled",
+            "caption": "Build, Plan and Ask. Only the active mode carries a label.",
+            "size": "full"
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "newly-s-3-b-6",
             "localAssetKey": "bar-layouts",
             "alt": "The Newly prompt bar in expanded, stacked and collapsed layouts",
             "caption": "Expanded, stacked, collapsed.",
             "size": "full"
           },
           {
+            "_type": "block",
+            "_key": "newly-s-3-b-7",
+            "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-3-b-7-s",
+                "marks": [],
+                "text": "Set once, at the start"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-3-b-8",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-3-b-8-s",
+                "marks": [],
+                "text": "A session can’t switch between remote and local once it starts. Only the model can change, and people rarely change it. So in a new session, location and model sit under the bar where you can’t miss them. Mid-chat, the model moves into the + menu, out of the way, especially for non-technical people."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-3-b-9",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-3-b-9-s",
+                "marks": [],
+                "text": "New sessions also get a taller bar, so starting a chat feels balanced and important."
+              }
+            ]
+          },
+          {
+            "_type": "mediaGallery",
+            "_key": "newly-s-3-b-10",
+            "caption": "New sessions get the taller bar: with no project open, and inside a project.",
+            "images": [
+              {
+                "_type": "image",
+                "_key": "newly-s-3-b-10-0",
+                "localAssetKey": "new-session-empty",
+                "alt": "Newly with no project open: a tall prompt bar under Let’s make something new, with Remote Session and Newly Agent below it"
+              },
+              {
+                "_type": "image",
+                "_key": "newly-s-3-b-10-1",
+                "localAssetKey": "new-session-project",
+                "alt": "Newly inside a project: a tall prompt bar under Hey Winston! Ready to build?, with branch, Remote Session and Newly Agent below it"
+              }
+            ]
+          },
+          {
             "_type": "mediaImage",
-            "_key": "newly-s-3-b-3",
+            "_key": "newly-s-3-b-11",
             "localAssetKey": "bar-settings",
             "alt": "Three popovers from the Newly prompt bar: Remote or Local session, Effort and Model, and the + menu with the model submenu",
             "caption": "Session location explains its trade-off in one line, like “Runs on your computer, device must stay awake”.",
@@ -495,13 +606,13 @@
           },
           {
             "_type": "block",
-            "_key": "newly-s-3-b-4",
+            "_key": "newly-s-3-b-12",
             "style": "h3",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "newly-s-3-b-4-s",
+                "_key": "newly-s-3-b-12-s",
                 "marks": [],
                 "text": "While the agent works"
               }
@@ -509,15 +620,29 @@
           },
           {
             "_type": "block",
-            "_key": "newly-s-3-b-5-0",
+            "_key": "newly-s-3-b-13-0",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "newly-s-3-b-5-0-s",
+                "_key": "newly-s-3-b-13-0-s",
                 "marks": [],
-                "text": "A stop button while it runs."
+                "text": "A "
+              },
+              {
+                "_type": "span",
+                "_key": "newly-s-3-b-13-0-s1",
+                "marks": [
+                  "strong"
+                ],
+                "text": "stop"
+              },
+              {
+                "_type": "span",
+                "_key": "newly-s-3-b-13-0-s2",
+                "marks": [],
+                "text": " button while it runs."
               }
             ],
             "listItem": "bullet",
@@ -525,15 +650,29 @@
           },
           {
             "_type": "block",
-            "_key": "newly-s-3-b-5-1",
+            "_key": "newly-s-3-b-13-1",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "newly-s-3-b-5-1-s",
+                "_key": "newly-s-3-b-13-1-s",
                 "marks": [],
-                "text": "A status line while it connects or fixes a bug."
+                "text": "A "
+              },
+              {
+                "_type": "span",
+                "_key": "newly-s-3-b-13-1-s1",
+                "marks": [
+                  "strong"
+                ],
+                "text": "status line"
+              },
+              {
+                "_type": "span",
+                "_key": "newly-s-3-b-13-1-s2",
+                "marks": [],
+                "text": " while it connects or fixes a bug."
               }
             ],
             "listItem": "bullet",
@@ -541,15 +680,29 @@
           },
           {
             "_type": "block",
-            "_key": "newly-s-3-b-5-2",
+            "_key": "newly-s-3-b-13-2",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "newly-s-3-b-5-2-s",
+                "_key": "newly-s-3-b-13-2-s",
                 "marks": [],
-                "text": "A queue, so you can keep typing while it’s busy."
+                "text": "A "
+              },
+              {
+                "_type": "span",
+                "_key": "newly-s-3-b-13-2-s1",
+                "marks": [
+                  "strong"
+                ],
+                "text": "queue"
+              },
+              {
+                "_type": "span",
+                "_key": "newly-s-3-b-13-2-s2",
+                "marks": [],
+                "text": ", so you don’t lose your next thought. Runs can take minutes, and people wanted to line up their next change instead of waiting. Queued messages sit above the bar, where you can see and remove them."
               }
             ],
             "listItem": "bullet",
@@ -557,7 +710,7 @@
           },
           {
             "_type": "mediaImage",
-            "_key": "newly-s-3-b-6",
+            "_key": "newly-s-3-b-14",
             "localAssetKey": "bar-states",
             "alt": "Eight states of the Newly prompt bar: drop files, attached images, audio message, stop, connecting, fixing bugs, and messages in queue",
             "caption": "Drop files, images, voice, stop, connecting, fixing bugs and the queue.",
@@ -568,8 +721,8 @@
       {
         "_type": "projectSection",
         "_key": "newly-section-4",
-        "title": "Simulator picker",
-        "heading": "A clearer simulator picker",
+        "title": "Conversation",
+        "heading": "Showing the agent’s work",
         "content": [
           {
             "_type": "block",
@@ -581,43 +734,29 @@
                 "_type": "span",
                 "_key": "newly-s-4-b-0-s",
                 "marks": [],
-                "text": "The preview runs your app on an iPhone simulator, in the cloud or on your computer. The simulator picker went through eight versions."
+                "text": "The agent’s work folds into one line, like “Worked for 3m, used 3 tools”."
               }
             ]
           },
           {
             "_type": "block",
-            "_key": "newly-s-4-b-1",
+            "_key": "newly-s-4-b-1-0",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "newly-s-4-b-1-s",
-                "marks": [],
-                "text": "Tester feedback and my own critique pointed to two problems:"
-              }
-            ]
-          },
-          {
-            "_type": "block",
-            "_key": "newly-s-4-b-2-0",
-            "style": "normal",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "newly-s-4-b-2-0-s",
+                "_key": "newly-s-4-b-1-0-s",
                 "marks": [
                   "strong"
                 ],
-                "text": "Unclear what was selected →"
+                "text": "Most people don’t need the commands."
               },
               {
                 "_type": "span",
-                "_key": "newly-s-4-b-2-0-s1",
+                "_key": "newly-s-4-b-1-0-s1",
                 "marks": [],
-                "text": " Cloud and Local got their own column, and the columns got labels: Type, Device, Version."
+                "text": " Many Newly users aren’t technical."
               }
             ],
             "listItem": "bullet",
@@ -625,23 +764,47 @@
           },
           {
             "_type": "block",
-            "_key": "newly-s-4-b-2-1",
+            "_key": "newly-s-4-b-1-1",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "newly-s-4-b-2-1-s",
+                "_key": "newly-s-4-b-1-1-s",
                 "marks": [
                   "strong"
                 ],
-                "text": "Unclear what Apply did →"
+                "text": "The chat stays readable"
               },
               {
                 "_type": "span",
-                "_key": "newly-s-4-b-2-1-s1",
+                "_key": "newly-s-4-b-1-1-s1",
                 "marks": [],
-                "text": " it re-runs the app, so Apply became Apply & Run."
+                "text": " instead of turning into a log."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-4-b-1-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-4-b-1-2-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "It’s still there to check."
+              },
+              {
+                "_type": "span",
+                "_key": "newly-s-4-b-1-2-s1",
+                "marks": [],
+                "text": " Expanded, each step gets an icon, and code and commands sit in their own containers."
               }
             ],
             "listItem": "bullet",
@@ -649,10 +812,10 @@
           },
           {
             "_type": "mediaImage",
-            "_key": "newly-s-4-b-3",
-            "localAssetKey": "picker-versions",
-            "alt": "Four versions of the iOS simulator picker, from a footer Cloud/Local toggle and an Apply button to labelled Type, Device and Version columns with Apply & Run",
-            "caption": "Four of the eight versions.",
+            "_key": "newly-s-4-b-2",
+            "localAssetKey": "conversation",
+            "alt": "A close-up of a Newly conversation: the user’s message, the agent’s reply, and its work folded into the line Worked for 3m, used 3 tools",
+            "caption": "The agent’s work, folded into one line.",
             "size": "full"
           }
         ]
@@ -660,8 +823,8 @@
       {
         "_type": "projectSection",
         "_key": "newly-section-5",
-        "title": "Also shipped",
-        "heading": "Deploy, web and colour",
+        "title": "Simulator picker",
+        "heading": "A clearer simulator picker",
         "content": [
           {
             "_type": "block",
@@ -673,114 +836,87 @@
                 "_type": "span",
                 "_key": "newly-s-5-b-0-s",
                 "marks": [],
-                "text": "I designed and built the deploy and web screens, and both are live."
+                "text": "The preview runs your app on an iPhone simulator, in the cloud or on your computer. The simulator picker went through eight versions."
               }
             ]
           },
           {
             "_type": "block",
-            "_key": "newly-s-5-b-1-0",
+            "_key": "newly-s-5-b-1",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "newly-s-5-b-1-0-s",
-                "marks": [
-                  "strong"
-                ],
-                "text": "Deploy"
-              },
-              {
-                "_type": "span",
-                "_key": "newly-s-5-b-1-0-s1",
+                "_key": "newly-s-5-b-1-s",
                 "marks": [],
-                "text": " groups destinations by platform. The App Store card shows a short checklist and the details already filled in."
-              }
-            ],
-            "listItem": "bullet",
-            "level": 1
-          },
-          {
-            "_type": "block",
-            "_key": "newly-s-5-b-1-1",
-            "style": "normal",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "newly-s-5-b-1-1-s",
-                "marks": [
-                  "strong"
-                ],
-                "text": "The web app"
-              },
-              {
-                "_type": "span",
-                "_key": "newly-s-5-b-1-1-s1",
-                "marks": [],
-                "text": " opens with a “Pick up where you left off” card to reopen your last project."
-              }
-            ],
-            "listItem": "bullet",
-            "level": 1
-          },
-          {
-            "_type": "block",
-            "_key": "newly-s-5-b-1-2",
-            "style": "normal",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "newly-s-5-b-1-2-s",
-                "marks": [
-                  "strong"
-                ],
-                "text": "Colour"
-              },
-              {
-                "_type": "span",
-                "_key": "newly-s-5-b-1-2-s1",
-                "marks": [],
-                "text": " is held back in the workspace. Blue only marks the active mode, the main action and anything running, so your own app stands out."
-              }
-            ],
-            "listItem": "bullet",
-            "level": 1
-          },
-          {
-            "_type": "mediaGallery",
-            "_key": "newly-s-5-b-2",
-            "caption": "The Deploy hub, the App Store release card and the web welcome screen.",
-            "images": [
-              {
-                "_type": "image",
-                "_key": "newly-s-5-b-2-0",
-                "localAssetKey": "deploy-hub",
-                "alt": "The Newly Deploy hub with iOS, Android and Web destinations"
-              },
-              {
-                "_type": "image",
-                "_key": "newly-s-5-b-2-1",
-                "localAssetKey": "deploy-release",
-                "alt": "The App Store release card with a checklist and an Automatically Completed list"
-              },
-              {
-                "_type": "image",
-                "_key": "newly-s-5-b-2-2",
-                "localAssetKey": "web-welcome",
-                "alt": "Newly on the web: the welcome screen with a filled prompt and a Pick up where you left off card"
+                "text": "Tester feedback and my own critique pointed to two problems:"
               }
             ]
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-5-b-2-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-5-b-2-0-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Unclear what was selected →"
+              },
+              {
+                "_type": "span",
+                "_key": "newly-s-5-b-2-0-s1",
+                "marks": [],
+                "text": " Cloud and Local got their own column, and the columns got labels: Type, Device, Version."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-5-b-2-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-5-b-2-1-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Unclear what Apply did →"
+              },
+              {
+                "_type": "span",
+                "_key": "newly-s-5-b-2-1-s1",
+                "marks": [],
+                "text": " it re-runs the app, so Apply became Apply & Run."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "newly-s-5-b-3",
+            "localAssetKey": "picker-versions",
+            "alt": "Four versions of the iOS simulator picker, from a footer Cloud/Local toggle and an Apply button to labelled Type, Device and Version columns with Apply & Run",
+            "caption": "Four of the eight versions.",
+            "size": "full"
           }
         ]
       },
       {
         "_type": "projectSection",
         "_key": "newly-section-6",
-        "title": "Outcome",
-        "heading": "What shipped and what I learned",
+        "title": "Also shipped",
+        "heading": "Deploy, web and colour",
         "content": [
           {
             "_type": "block",
@@ -792,19 +928,138 @@
                 "_type": "span",
                 "_key": "newly-s-6-b-0-s",
                 "marks": [],
+                "text": "I designed and built the deploy and web screens, and both are live."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-6-b-1-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-6-b-1-0-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Deploy"
+              },
+              {
+                "_type": "span",
+                "_key": "newly-s-6-b-1-0-s1",
+                "marks": [],
+                "text": " groups destinations by platform. The App Store card shows a short checklist and the details already filled in."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-6-b-1-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-6-b-1-1-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "The web app"
+              },
+              {
+                "_type": "span",
+                "_key": "newly-s-6-b-1-1-s1",
+                "marks": [],
+                "text": " opens with a “Pick up where you left off” card to reopen your last project."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-6-b-1-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-6-b-1-2-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Colour"
+              },
+              {
+                "_type": "span",
+                "_key": "newly-s-6-b-1-2-s1",
+                "marks": [],
+                "text": " is held back in the workspace. Blue only marks the active mode, the main action and anything running, so your own app stands out."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "mediaGallery",
+            "_key": "newly-s-6-b-2",
+            "caption": "The Deploy hub, the App Store release card and the web welcome screen.",
+            "images": [
+              {
+                "_type": "image",
+                "_key": "newly-s-6-b-2-0",
+                "localAssetKey": "deploy-hub",
+                "alt": "The Newly Deploy hub with iOS, Android and Web destinations"
+              },
+              {
+                "_type": "image",
+                "_key": "newly-s-6-b-2-1",
+                "localAssetKey": "deploy-release",
+                "alt": "The App Store release card with a checklist and an Automatically Completed list"
+              },
+              {
+                "_type": "image",
+                "_key": "newly-s-6-b-2-2",
+                "localAssetKey": "web-welcome",
+                "alt": "Newly on the web: the welcome screen with a filled prompt and a Pick up where you left off card"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "_type": "projectSection",
+        "_key": "newly-section-7",
+        "title": "Outcome",
+        "heading": "What shipped and what I learned",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "newly-s-7-b-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-7-b-0-s",
+                "marks": [],
                 "text": "The workspace, the prompt bar and its states, the deploy flow and the web app are all live."
               }
             ]
           },
           {
             "_type": "block",
-            "_key": "newly-s-6-b-1",
+            "_key": "newly-s-7-b-1",
             "style": "h3",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "newly-s-6-b-1-s",
+                "_key": "newly-s-7-b-1-s",
                 "marks": [],
                 "text": "What feedback showed"
               }
@@ -812,13 +1067,13 @@
           },
           {
             "_type": "block",
-            "_key": "newly-s-6-b-2-0",
+            "_key": "newly-s-7-b-2-0",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "newly-s-6-b-2-0-s",
+                "_key": "newly-s-7-b-2-0-s",
                 "marks": [
                   "strong"
                 ],
@@ -826,7 +1081,7 @@
               },
               {
                 "_type": "span",
-                "_key": "newly-s-6-b-2-0-s1",
+                "_key": "newly-s-7-b-2-0-s1",
                 "marks": [],
                 "text": " chat over the board, one sidebar instead of two, and Apply & Run in the simulator picker."
               }
@@ -836,13 +1091,13 @@
           },
           {
             "_type": "block",
-            "_key": "newly-s-6-b-2-1",
+            "_key": "newly-s-7-b-2-1",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "newly-s-6-b-2-1-s",
+                "_key": "newly-s-7-b-2-1-s",
                 "marks": [
                   "strong"
                 ],
@@ -850,7 +1105,7 @@
               },
               {
                 "_type": "span",
-                "_key": "newly-s-6-b-2-1-s1",
+                "_key": "newly-s-7-b-2-1-s1",
                 "marks": [],
                 "text": " people stopped running into those problems."
               }
@@ -860,13 +1115,13 @@
           },
           {
             "_type": "block",
-            "_key": "newly-s-6-b-2-2",
+            "_key": "newly-s-7-b-2-2",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "newly-s-6-b-2-2-s",
+                "_key": "newly-s-7-b-2-2-s",
                 "marks": [
                   "strong"
                 ],
@@ -874,7 +1129,7 @@
               },
               {
                 "_type": "span",
-                "_key": "newly-s-6-b-2-2-s1",
+                "_key": "newly-s-7-b-2-2-s1",
                 "marks": [],
                 "text": " I don’t have numbers for any single change."
               }
@@ -884,13 +1139,13 @@
           },
           {
             "_type": "block",
-            "_key": "newly-s-6-b-3",
+            "_key": "newly-s-7-b-3",
             "style": "h3",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "newly-s-6-b-3-s",
+                "_key": "newly-s-7-b-3-s",
                 "marks": [],
                 "text": "What I learned"
               }
@@ -898,13 +1153,13 @@
           },
           {
             "_type": "block",
-            "_key": "newly-s-6-b-4-0",
+            "_key": "newly-s-7-b-4-0",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "newly-s-6-b-4-0-s",
+                "_key": "newly-s-7-b-4-0-s",
                 "marks": [],
                 "text": "Designing for an agent is mostly states, not screens."
               }
@@ -914,13 +1169,13 @@
           },
           {
             "_type": "block",
-            "_key": "newly-s-6-b-4-1",
+            "_key": "newly-s-7-b-4-1",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "newly-s-6-b-4-1-s",
+                "_key": "newly-s-7-b-4-1-s",
                 "marks": [],
                 "text": "A good idea can still be wrong for the timeline. The board may come back."
               }
@@ -1033,6 +1288,33 @@
       "sourceNodeIds": [
         "284:39266"
       ]
+    },
+    "new-session-empty": {
+      "path": "assets/newly-cs2-new-session-empty.png",
+      "sourceNodeIds": [
+        "284:36752"
+      ]
+    },
+    "new-session-project": {
+      "path": "assets/newly-cs2-new-session-project.png",
+      "sourceNodeIds": [
+        "284:37196"
+      ]
+    },
+    "bar-modes": {
+      "path": "assets/newly-cs-bar-modes.jpg",
+      "sourceNodeIds": [
+        "284:16035",
+        "284:16209",
+        "284:16251"
+      ]
+    },
+    "conversation": {
+      "path": "assets/newly-cmp-conversation.png",
+      "sourceNodeIds": [
+        "284:33716"
+      ],
+      "note": "Close-up crop of the conversation."
     }
   }
 }

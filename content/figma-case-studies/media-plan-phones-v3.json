@@ -41,14 +41,6 @@
   ]
  },
  {
-  "out": "out-phones/yelo-cs3-rest.png",
-  "phones": [
-   "../exports/yelo/1-7417.png",
-   "../exports/yelo/1-7268.png",
-   "../exports/yelo/1-5728.png"
-  ]
- },
- {
   "out": "out-phones/elapse-cs3-next-match.png",
   "phones": [
    "../exports/elapse-filled/157-29965.png",
@@ -69,7 +61,7 @@
   "phones": [
    "../exports/elapse-filled/157-30976.png",
    "../exports/elapse-filled/157-30620.png",
-   "../exports/elapse-filled/157-30726.png"
+   "../exports/elapse-filled/157-28944.png"
   ]
  },
  {
@@ -83,8 +75,8 @@
  {
   "out": "out-phones/costudy-cs3-home.png",
   "phones": [
-   "../exports/costudy/12-20.png",
-   "../exports/costudy/37-760.png"
+   "../exports/costudy/9-1861.png",
+   "../exports/costudy/9-2054.png"
   ],
   "pad_to": 1.6
  },
@@ -99,16 +91,39 @@
  {
   "out": "out-phones/costudy-cs3-signup.png",
   "phones": [
-   "../exports/costudy/41-5517.png",
-   "../exports/costudy/41-5867.png",
-   "../exports/costudy/41-9769.png"
+   "../exports/costudy/316-7097.png",
+   "../exports/costudy/316-7126.png",
+   "../exports/costudy/316-7211.png"
   ]
  },
  {
-  "out": "out-phones/costudy-cs3-polish.png",
+  "out": "out-phones/yelo-cs3-status.png",
   "phones": [
-   "../exports/costudy/12-20.png",
-   "../exports/costudy/9-1861.png"
+   "../exports/yelo/1-3442.png",
+   "../exports/yelo/1-3551.png",
+   "../exports/yelo/1-7130.png"
+  ]
+ },
+ {
+  "out": "out-phones/yelo-cs3-onboarding-1.png",
+  "phones": [
+   "../exports/yelo/1-7252.png",
+   "../exports/yelo/1-7305.png",
+   "../exports/yelo/1-7417.png"
+  ]
+ },
+ {
+  "out": "out-phones/yelo-cs3-onboarding-2.png",
+  "phones": [
+   "../exports/yelo/1-7368.png",
+   "../exports/yelo/1-7399.png",
+   "../exports/yelo/1-7268.png"
+  ]
+ },
+ {
+  "out": "out-phones/elapse-cs3-schedule.png",
+  "phones": [
+   "../exports/elapse-filled/157-28944.png"
   ],
   "pad_to": 1.6
  }

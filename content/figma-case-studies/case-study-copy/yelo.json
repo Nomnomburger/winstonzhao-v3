@@ -4,7 +4,7 @@
     "figmaFile": "ku9ORnV1TNcdc1LIohihFd",
     "url": "https://www.figma.com/design/ku9ORnV1TNcdc1LIohihFd/Yelo-Backup?node-id=0-1",
     "page": "New Design (0:1), Old (1:12252)",
-    "facts": "Confirmed by Winston (Nov 2026): only designer; worked with founders, engineers and ops/marketing; Jan–Apr 2026; Yelo's earlier app (Old page) was live; its home was too crowded, social felt bolted on, dated look; the founders picked among directions A–D; B's layout went forward because booking stays first, combined with A; reaction counts were dropped because they felt tacky and few people would tap them (they came from an earlier iMessage-based version where people reacted to ride requests); feed-card changes were his own judgment; home + feed, search + map, ride options and onboarding are live; vehicles sketched first, then modelled and iterated with Gemini, generated together for consistency; no usage numbers. Takeaways he chose: old habits inform design; booking first, social second; simplifying a crowded home. Follow-up: worked with a PM and ops (not marketing); iOS only."
+    "facts": "Confirmed by Winston (Nov 2026): only designer; worked with founders, engineers and ops/marketing; Jan–Apr 2026; Yelo's earlier app (Old page) was live; its home was too crowded, social felt bolted on, dated look; the founders picked among directions A–D; B's layout went forward because booking stays first, combined with A; reaction counts were dropped because they felt tacky and few people would tap them (they came from an earlier iMessage-based version where people reacted to ride requests); feed-card changes were his own judgment; home + feed, search + map, ride options and onboarding are live; vehicles sketched first, then modelled and iterated with Gemini, generated together for consistency; no usage numbers. Takeaways he chose: old habits inform design; booking first, social second; simplifying a crowded home. Follow-up: worked with a PM and ops (not marketing); iOS only. Depth round: sky gradient = neutral, calm, people heading out; sky tinted by service status was dropped so home wouldn't scream the app isn't working, status moved to the LIVE pill; yellow limited to point to the main action, let event art stand out, because the brand colour is loud, and cleaner than the old app; initials for privacy, calmer feed, consistent look; card wording heavily debated, labels for scanning mixed card types, MUTUAL builds trust, bubbly gradient cards nod to text messages; named classes match the real fleet and Exclusive/Shared was confusing; 3D vehicles are abstract because drivers' personal cars all differ. Final designs: section V1.2 (1:5727). Onboarding round: phone first because it's the login, drivers need to reach you, it's a quick start, and the founders required it; school Google/Microsoft sign-in replaced the school picker + emailed code for fewer steps, because schools use them, to pre-fill the profile and keep it students-only; profile pre-filled (less typing); photo optional for riders, required for drivers (photo only where it matters, lower drop-off); welcome shows the app to show the social side early and set Yelo apart; permission reasons build trust, especially contacts. Final designs are section V1.2 (1:5727)."
   },
   "fields": {
     "description": "Redesigning a live campus ride-share app: booking first, social second.",
@@ -126,6 +126,23 @@
             "image": "feed-card",
             "alt": "Four iPhones showing the Yelo feed card change: Ride to cards, Headed to cards with initials, a MUTUAL tag, and labelled cards",
             "caption": "Left to right: V1 to the latest card."
+          },
+          {
+            "h3": "Why it looks this way"
+          },
+          "The wording was heavily debated. Each card had to catch just the right amount of attention. Showing searches, where people are going and events gives people a reason to care about the social side, which is the point of a social ride-share.",
+          {
+            "bullets": [
+              "**Labels** let you scan a feed that now mixes rides, tickets and searches.",
+              "**MUTUAL** shows someone in common, which builds trust.",
+              "**Initials instead of photos** for privacy, a calmer feed and a consistent look.",
+              "**Soft, slightly bubbly cards** with a light gradient nod to text messages, while staying clean and not overpowering."
+            ]
+          },
+          {
+            "image": "feed-cards",
+            "alt": "A close-up of four Yelo feed cards: HEADED TO, GOT TICKETS, TRENDING SEARCH and a HEADED TO card with a MUTUAL tag, each with a coloured initials avatar",
+            "caption": "Labels, MUTUAL and initials in the latest cards."
           }
         ]
       },
@@ -139,6 +156,18 @@
             "alt": "Three iPhones showing Yelo ride sheet versions: Exclusive or Shared with a seat stepper, ETA first, and named vehicle classes with 3D cars",
             "caption": "Ride sheet versions, left to right."
           },
+          {
+            "bullets": [
+              "**Named classes match Yelo’s real fleet,** which includes carts and mini buses, not just cars.",
+              "**Exclusive vs. Shared wasn’t clear.**"
+            ]
+          },
+          {
+            "image": "ride-options",
+            "alt": "A close-up of the Yelo ride options: Car, Big Car, Cart and Mini Bus, each with a 3D vehicle, price and one tag",
+            "caption": "Four classes, one tag each."
+          },
+          "Drivers use their own cars, and they’re all different, so a photo of “the car” would be wrong. The 3D vehicles are an abstract, fun stand-in.",
           "I sketched the vehicles first, then used Gemini to model and iterate on them. I started with one vehicle at a time, then switched to generating them all in one image because it gave more consistent results.",
           {
             "image": "fleet",
@@ -148,14 +177,59 @@
         ]
       },
       {
-        "title": "Rest of the app",
-        "heading": "Sign-up, permissions and the map",
+        "title": "Look and feel",
+        "heading": "A calm sky, yellow for action",
         "content": [
-          "Sign-up checks student status with a school email, through Google, Microsoft or a one-time pin.",
           {
-            "image": "rest",
-            "alt": "Three iPhones: Yelo student sign-up with Google or Microsoft, permissions with a reason for each, and the event map",
-            "caption": "Student sign-up, permissions with a reason for each, and the event map."
+            "bullets": [
+              "**A light sky gradient** keeps the app neutral and calm, and hints at people heading out.",
+              "**Yellow only marks the main action and LIVE.** Event posters are already colourful, a lot of yellow is hard to read, and the old app used a lot of colour at once."
+            ]
+          },
+          {
+            "h3": "Status without alarm"
+          },
+          "We tried tinting the sky with service status: green on a busy night, orange or red when there weren’t enough drivers or Yelo wasn’t running. We dropped it because we didn’t want the home screen to scream “the app isn’t working right now”. Service status lives in the small pill that usually says LIVE.",
+          {
+            "image": "status",
+            "alt": "Three iPhones: Yelo home with a green Busy night for drivers sky, a red Currently not available sky, and the final home with a LIVE pill",
+            "caption": "Tried: tinting the sky by service status. Kept: the LIVE pill."
+          },
+          {
+            "image": "search-live",
+            "alt": "A close-up of the Yelo search bar: Where to? with a yellow LIVE pill",
+            "caption": "The LIVE pill carries service status."
+          }
+        ]
+      },
+      {
+        "title": "Onboarding",
+        "heading": "Sign-up that gets you riding",
+        "content": [
+          "The final sign-up has eight short steps: welcome, phone number, a text code, student status, an email code, a pre-filled profile, an optional photo and permissions.",
+          {
+            "image": "onboarding-1",
+            "alt": "Three iPhones: the Yelo welcome screen, the phone number step and Claim your student status with Google or Microsoft",
+            "caption": "Welcome, phone number, student status."
+          },
+          {
+            "bullets": [
+              "**Phone first.** Your phone number is your login, drivers need to reach you, and it’s the quickest way to start. It was also a requirement from the founders.",
+              "**School Google or Microsoft sign-in** replaced the old school picker and emailed code. It’s fewer steps, most students already have one of those accounts, it keeps Yelo students-only, and it fills in the profile.",
+              "**The welcome screen shows the app,** with the feed, events and deals, so the social side is clear before you sign up and Yelo doesn’t read as just another ride-share."
+            ]
+          },
+          {
+            "image": "onboarding-2",
+            "alt": "Three iPhones: the pre-filled Yelo profile, the optional profile picture step, and permissions with a reason for each",
+            "caption": "Pre-filled profile, optional photo, permissions."
+          },
+          {
+            "bullets": [
+              "**Confirm, don’t type.** The profile comes pre-filled from the school account.",
+              "**The photo is optional for riders** and only used in social features. Drivers have to add one. Fewer required steps means fewer people drop off.",
+              "**Every permission says why.** Reasons build trust, especially for contacts."
+            ]
           }
         ]
       },
@@ -241,12 +315,49 @@
         "1:6840"
       ]
     },
-    "rest": {
-      "path": "assets/yelo-cs3-rest.png",
+    "status": {
+      "path": "assets/yelo-cs3-status.png",
       "sourceNodeIds": [
-        "1:7417",
-        "1:7268",
-        "1:5728"
+        "1:3442",
+        "1:3551",
+        "1:7130"
+      ]
+    },
+    "search-live": {
+      "path": "assets/yelo-cmp-search-live.png",
+      "sourceNodeIds": [
+        "1:7130"
+      ],
+      "note": "Close-up crop."
+    },
+    "feed-cards": {
+      "path": "assets/yelo-cmp-feed-cards.png",
+      "sourceNodeIds": [
+        "1:7130"
+      ],
+      "note": "Close-up crop."
+    },
+    "ride-options": {
+      "path": "assets/yelo-cmp-ride-options.png",
+      "sourceNodeIds": [
+        "1:6840"
+      ],
+      "note": "Close-up crop."
+    },
+    "onboarding-1": {
+      "path": "assets/yelo-cs3-onboarding-1.png",
+      "sourceNodeIds": [
+        "1:7252",
+        "1:7305",
+        "1:7417"
+      ]
+    },
+    "onboarding-2": {
+      "path": "assets/yelo-cs3-onboarding-2.png",
+      "sourceNodeIds": [
+        "1:7368",
+        "1:7399",
+        "1:7268"
       ]
     }
   }

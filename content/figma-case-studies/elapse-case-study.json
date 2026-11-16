@@ -344,14 +344,132 @@
             "alt": "Three iPhones: the Elapse home with a next match card, your next match leading with the time, and another match leading with the match number",
             "caption": "Home, your next match (time first), another match (number first).",
             "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "elapse-s-2-b-3",
+            "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "elapse-s-2-b-3-s",
+                "marks": [],
+                "text": "Colour and type"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "elapse-s-2-b-4-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "elapse-s-2-b-4-0-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Your next-match card takes your alliance’s colour,"
+              },
+              {
+                "_type": "span",
+                "_key": "elapse-s-2-b-4-0-s1",
+                "marks": [],
+                "text": " pale red or blue, so you know your side at a glance."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "elapse-s-2-b-4-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "elapse-s-2-b-4-1-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Team numbers are red or blue"
+              },
+              {
+                "_type": "span",
+                "_key": "elapse-s-2-b-4-1-s1",
+                "marks": [],
+                "text": " too. It’s the VEX convention, and it saves extra labels."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "elapse-s-2-b-4-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "elapse-s-2-b-4-2-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Big numbers follow the hierarchy,"
+              },
+              {
+                "_type": "span",
+                "_key": "elapse-s-2-b-4-2-s1",
+                "marks": [],
+                "text": " so what matters most reads at a glance. Match and team numbers are also how teams talk, and they anchor screens full of small stats."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "elapse-s-2-b-4-3",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "elapse-s-2-b-4-3-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "The pale cyan is Elapse’s brand colour."
+              },
+              {
+                "_type": "span",
+                "_key": "elapse-s-2-b-4-3-s1",
+                "marks": [],
+                "text": " It keeps things calm in a loud venue."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "elapse-s-2-b-5",
+            "localAssetKey": "next-card",
+            "alt": "A close-up of the Elapse next match card in pale red: 3:25PM, In 5 minutes, match Q23 on field Inspire",
+            "caption": "Your next match, in your alliance’s colour.",
+            "size": "full"
           }
         ]
       },
       {
         "_type": "projectSection",
         "_key": "elapse-section-3",
-        "title": "Live timing",
-        "heading": "Delays you can see",
+        "title": "Schedule",
+        "heading": "A schedule you can scan",
         "content": [
           {
             "_type": "block",
@@ -363,30 +481,96 @@
                 "_type": "span",
                 "_key": "elapse-s-3-b-0-s",
                 "marks": [],
-                "text": "Matches often run late. Live timing worked out delays from posted match results and updated the schedule automatically."
+                "text": "Other apps put the time and field in the middle of each row, with each alliance’s teams on either side. But competitors mostly scroll fast, looking for a match number or a team."
               }
             ]
           },
           {
             "_type": "block",
-            "_key": "elapse-s-3-b-1",
+            "_key": "elapse-s-3-b-1-0",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "elapse-s-3-b-1-s",
+                "_key": "elapse-s-3-b-1-0-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "The match number sits on the left, large,"
+              },
+              {
+                "_type": "span",
+                "_key": "elapse-s-3-b-1-0-s1",
                 "marks": [],
-                "text": "Instead of quietly changing the time, the app shows the new time with “Delayed - originally …”, and finished matches show how late they started."
+                "text": " since that’s what people look for most."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "elapse-s-3-b-1-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "elapse-s-3-b-1-1-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "All four teams sit together on one side,"
+              },
+              {
+                "_type": "span",
+                "_key": "elapse-s-3-b-1-1-s1",
+                "marks": [],
+                "text": " so you can scan them at once instead of reading down blue, then going back up for red."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "elapse-s-3-b-1-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "elapse-s-3-b-1-2-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Time and field moved out of the middle."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "elapse-s-3-b-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "elapse-s-3-b-2-s",
+                "marks": [],
+                "text": "People using the app said it made finding matches a lot easier."
               }
             ]
           },
           {
             "_type": "mediaImage",
-            "_key": "elapse-s-3-b-2",
-            "localAssetKey": "delays",
-            "alt": "Two iPhones: Your Next Match with “Delayed - originally” under the new time, and a finished match that started 3 minutes late",
-            "caption": "A delayed match, and a finished one that started late.",
+            "_key": "elapse-s-3-b-3",
+            "localAssetKey": "schedule-rows",
+            "alt": "A close-up of Elapse schedule rows: large match numbers on the left, time and score next to them, and all four team numbers grouped on the right",
+            "caption": "Match numbers on the left, all four teams together.",
             "size": "full"
           }
         ]
@@ -394,8 +578,8 @@
       {
         "_type": "projectSection",
         "_key": "elapse-section-4",
-        "title": "Tournament mode",
-        "heading": "A mode for tournament day",
+        "title": "Live timing",
+        "heading": "Delays you can see",
         "content": [
           {
             "_type": "block",
@@ -407,88 +591,52 @@
                 "_type": "span",
                 "_key": "elapse-s-4-b-0-s",
                 "marks": [],
-                "text": "Tournament mode is for when you’re at an event. You turn it on from the home screen, and it switches off after the event."
+                "text": "Matches often run late. Live timing worked out delays from posted match results and updated the schedule automatically."
               }
             ]
           },
           {
             "_type": "block",
-            "_key": "elapse-s-4-b-1-0",
+            "_key": "elapse-s-4-b-1",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "elapse-s-4-b-1-0-s",
-                "marks": [
-                  "strong"
-                ],
-                "text": "You don’t need it outside an event."
-              },
-              {
-                "_type": "span",
-                "_key": "elapse-s-4-b-1-0-s1",
+                "_key": "elapse-s-4-b-1-s",
                 "marks": [],
-                "text": " Other features help you find teams and tournaments then."
+                "text": "Instead of quietly changing the time, the app shows the new time with “Delayed - originally …”, and finished matches show how late they started."
               }
-            ],
-            "listItem": "bullet",
-            "level": 1
+            ]
           },
           {
             "_type": "block",
-            "_key": "elapse-s-4-b-1-1",
+            "_key": "elapse-s-4-b-2",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "elapse-s-4-b-1-1-s",
-                "marks": [
-                  "strong"
-                ],
-                "text": "Its UI is built for a fast-paced day"
-              },
-              {
-                "_type": "span",
-                "_key": "elapse-s-4-b-1-1-s1",
+                "_key": "elapse-s-4-b-2-s",
                 "marks": [],
-                "text": " at the event."
+                "text": "Match cards are only tinted when your team played. Every other match stays grey, and your own results speak to you: “You won!”."
               }
-            ],
-            "listItem": "bullet",
-            "level": 1
-          },
-          {
-            "_type": "block",
-            "_key": "elapse-s-4-b-1-2",
-            "style": "normal",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "elapse-s-4-b-1-2-s",
-                "marks": [
-                  "strong"
-                ],
-                "text": "It came from my own experience"
-              },
-              {
-                "_type": "span",
-                "_key": "elapse-s-4-b-1-2-s1",
-                "marks": [],
-                "text": " and from testers."
-              }
-            ],
-            "listItem": "bullet",
-            "level": 1
+            ]
           },
           {
             "_type": "mediaImage",
-            "_key": "elapse-s-4-b-2",
-            "localAssetKey": "tournament-mode",
-            "alt": "Three iPhones: the Elapse home outside tournament mode with a Tournament Mode button, rankings opened as a separate screen, and rankings in the Tournament tab",
-            "caption": "Turning it on from home, and rankings outside vs. inside tournament mode.",
+            "_key": "elapse-s-4-b-3",
+            "localAssetKey": "result-cards",
+            "alt": "Two Elapse match cards side by side: a light blue You won! card for a match your team played, and a grey card for a match it didn’t",
+            "caption": "Tinted when your team played, grey when it didn’t.",
+            "size": "full"
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "elapse-s-4-b-4",
+            "localAssetKey": "delays",
+            "alt": "Two iPhones: Your Next Match with “Delayed - originally” under the new time, and a finished match that started 3 minutes late",
+            "caption": "A delayed match, and a finished one that started late.",
             "size": "full"
           }
         ]
@@ -496,8 +644,8 @@
       {
         "_type": "projectSection",
         "_key": "elapse-section-5",
-        "title": "Outcome",
-        "heading": "After launch",
+        "title": "Tournament mode",
+        "heading": "A mode for tournament day",
         "content": [
           {
             "_type": "block",
@@ -509,19 +657,121 @@
                 "_type": "span",
                 "_key": "elapse-s-5-b-0-s",
                 "marks": [],
+                "text": "Tournament mode is for when you’re at an event. You turn it on from the home screen, and it switches off after the event."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "elapse-s-5-b-1-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "elapse-s-5-b-1-0-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "You don’t need it outside an event."
+              },
+              {
+                "_type": "span",
+                "_key": "elapse-s-5-b-1-0-s1",
+                "marks": [],
+                "text": " Other features help you find teams and tournaments then."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "elapse-s-5-b-1-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "elapse-s-5-b-1-1-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Its UI is built for a fast-paced day"
+              },
+              {
+                "_type": "span",
+                "_key": "elapse-s-5-b-1-1-s1",
+                "marks": [],
+                "text": " at the event."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "elapse-s-5-b-1-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "elapse-s-5-b-1-2-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "It came from my own experience"
+              },
+              {
+                "_type": "span",
+                "_key": "elapse-s-5-b-1-2-s1",
+                "marks": [],
+                "text": " and from testers."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "elapse-s-5-b-2",
+            "localAssetKey": "tournament-mode",
+            "alt": "Three iPhones: the Elapse home outside tournament mode with a Tournament Mode button, rankings opened as a separate screen, and the Schedule tab inside tournament mode",
+            "caption": "Turning it on from home, rankings outside the mode, and the Schedule tab inside it.",
+            "size": "full"
+          }
+        ]
+      },
+      {
+        "_type": "projectSection",
+        "_key": "elapse-section-6",
+        "title": "Outcome",
+        "heading": "After launch",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "elapse-s-6-b-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "elapse-s-6-b-0-s",
+                "marks": [],
                 "text": "Elapse reached 4,000+ accounts with a 4.8-star rating. In our automated tests, which clicked through competitor apps and Elapse to reach the same data, Elapse was 3x faster. After launch, feedback led to fixes, not design changes."
               }
             ]
           },
           {
             "_type": "block",
-            "_key": "elapse-s-5-b-1",
+            "_key": "elapse-s-6-b-1",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "elapse-s-5-b-1-s",
+                "_key": "elapse-s-6-b-1-s",
                 "marks": [],
                 "text": "The ScoutSheet tab on each team’s page came in a later update."
               }
@@ -529,7 +779,7 @@
           },
           {
             "_type": "mediaImage",
-            "_key": "elapse-s-5-b-2",
+            "_key": "elapse-s-6-b-2",
             "localAssetKey": "scoutsheets",
             "alt": "Two iPhones: an Elapse team page with an empty Scoutsheet tab, and a filled ScoutSheet",
             "caption": "A team’s ScoutSheet, empty and filled.",
@@ -537,13 +787,13 @@
           },
           {
             "_type": "block",
-            "_key": "elapse-s-5-b-3",
+            "_key": "elapse-s-6-b-3",
             "style": "h3",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "elapse-s-5-b-3-s",
+                "_key": "elapse-s-6-b-3-s",
                 "marks": [],
                 "text": "What I learned"
               }
@@ -551,13 +801,13 @@
           },
           {
             "_type": "block",
-            "_key": "elapse-s-5-b-4-0",
+            "_key": "elapse-s-6-b-4-0",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "elapse-s-5-b-4-0-s",
+                "_key": "elapse-s-6-b-4-0-s",
                 "marks": [
                   "strong"
                 ],
@@ -565,7 +815,7 @@
               },
               {
                 "_type": "span",
-                "_key": "elapse-s-5-b-4-0-s1",
+                "_key": "elapse-s-6-b-4-0-s1",
                 "marks": [],
                 "text": " Tournament day leaves little attention. The next match has to be readable at a glance."
               }
@@ -575,13 +825,13 @@
           },
           {
             "_type": "block",
-            "_key": "elapse-s-5-b-4-1",
+            "_key": "elapse-s-6-b-4-1",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "elapse-s-5-b-4-1-s",
+                "_key": "elapse-s-6-b-4-1-s",
                 "marks": [
                   "strong"
                 ],
@@ -589,7 +839,7 @@
               },
               {
                 "_type": "span",
-                "_key": "elapse-s-5-b-4-1-s1",
+                "_key": "elapse-s-6-b-4-1-s1",
                 "marks": [],
                 "text": " Leaving the portal and chatbot out let us release what teams needed."
               }
@@ -599,13 +849,13 @@
           },
           {
             "_type": "block",
-            "_key": "elapse-s-5-b-4-2",
+            "_key": "elapse-s-6-b-4-2",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "elapse-s-5-b-4-2-s",
+                "_key": "elapse-s-6-b-4-2-s",
                 "marks": [
                   "strong"
                 ],
@@ -613,7 +863,7 @@
               },
               {
                 "_type": "span",
-                "_key": "elapse-s-5-b-4-2-s1",
+                "_key": "elapse-s-6-b-4-2-s1",
                 "marks": [],
                 "text": " Show a delay next to the original time instead of hiding it."
               }
@@ -658,7 +908,7 @@
       "sourceNodeIds": [
         "307:8426",
         "307:8484",
-        "307:8540"
+        "319:9073"
       ],
       "note": "Sample-data copies in section 307:8347 'Portfolio copies (sample data)' (originals unchanged), set in Apple's iPhone 16 Pro (White Titanium) bezel."
     },
@@ -669,6 +919,28 @@
         "307:8587"
       ],
       "note": "Sample-data copies in section 307:8347 'Portfolio copies (sample data)' (originals unchanged), set in Apple's iPhone 16 Pro (White Titanium) bezel."
+    },
+    "next-card": {
+      "path": "assets/elapse-cmp-next-card.png",
+      "sourceNodeIds": [
+        "307:8382"
+      ],
+      "note": "Close-up crop of the sample-data copy."
+    },
+    "result-cards": {
+      "path": "assets/elapse-cmp-result-cards.png",
+      "sourceNodeIds": [
+        "157:29740",
+        "157:29626"
+      ],
+      "note": "Close-up crops."
+    },
+    "schedule-rows": {
+      "path": "assets/elapse-cmp-schedule-rows.png",
+      "sourceNodeIds": [
+        "319:9073"
+      ],
+      "note": "Close-up crop of the sample-data copy of 157:28944."
     }
   }
 }

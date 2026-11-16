@@ -51,14 +51,14 @@
     "coverImage": {
       "_type": "image",
       "localAssetKey": "hero",
-      "alt": "CoStudy home, polished after the event: a campus map with course icons above a sheet of your live sessions"
+      "alt": "CoStudy home: a campus map with course icons above your live sessions"
     },
     "hero": [
       {
         "_type": "mediaImage",
         "_key": "costudy-hero",
         "localAssetKey": "hero",
-        "alt": "CoStudy home, polished after the event: a campus map with course icons above a sheet of your live sessions",
+        "alt": "CoStudy home: a campus map with course icons above your live sessions",
         "size": "full"
       }
     ],
@@ -87,8 +87,8 @@
             "_type": "mediaImage",
             "_key": "costudy-s-0-b-1",
             "localAssetKey": "ideas",
-            "alt": "Part of the team’s idea board: the designathon prompt surrounded by short ideas, with the automatic group study session generator below",
-            "caption": "Part of our idea board. The study-group idea is at the bottom.",
+            "alt": "The CoStudy team’s 16 ideas as sticky notes around the designathon prompt, with the automatic study-group generator marked as picked",
+            "caption": "Our 16 ideas around the prompt, with the one we picked.",
             "size": "full"
           }
         ]
@@ -109,7 +109,7 @@
                 "_type": "span",
                 "_key": "costudy-s-1-b-0-s",
                 "marks": [],
-                "text": "Home puts a campus map first, with your sessions in a sheet below. We put the map first for two reasons:"
+                "text": "Home is a split view: the campus map on top and sessions below, half and half by default. Both are interactive, and you can resize either or tap into one to go full screen."
               }
             ]
           },
@@ -157,13 +157,81 @@
           },
           {
             "_type": "block",
-            "_key": "costudy-s-1-b-2",
+            "_key": "costudy-s-1-b-1-2",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "costudy-s-1-b-2-s",
+                "_key": "costudy-s-1-b-1-2-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Two views, not two tabs:"
+              },
+              {
+                "_type": "span",
+                "_key": "costudy-s-1-b-1-2-s1",
+                "marks": [],
+                "text": " the map and the list show the same sessions."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "costudy-s-1-b-2",
+            "localAssetKey": "home",
+            "alt": "Two iPhones: the CoStudy home split between a campus map and your sessions, and the sessions list expanded",
+            "caption": "The split view, and the list expanded.",
+            "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "costudy-s-1-b-3",
+            "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "costudy-s-1-b-3-s",
+                "marks": [],
+                "text": "Stacked pins"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "costudy-s-1-b-4",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "costudy-s-1-b-4-s",
+                "marks": [],
+                "text": "Sessions in the same building stack as course icons with “+3 more”. Popular buildings have a lot going on at once, so stacking keeps the map clean and shows where people are studying. Zoom in or tap a stack to see each exact location."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "costudy-s-1-b-5",
+            "localAssetKey": "stacked-pins",
+            "alt": "A close-up of the CoStudy map: course icons stacked on two buildings with session names and +1 more and +3 more",
+            "caption": "Stacked course icons, with “+3 more”.",
+            "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "costudy-s-1-b-6",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "costudy-s-1-b-6-s",
                 "marks": [],
                 "text": "On the day, we agreed in Figma comments to keep gradients for live sessions and your upcoming ones only."
               }
@@ -171,10 +239,10 @@
           },
           {
             "_type": "mediaImage",
-            "_key": "costudy-s-1-b-3",
-            "localAssetKey": "home",
-            "alt": "Two iPhones: the CoStudy home with a campus map and stacked course icons above a sheet of your sessions, and the sheet pulled up with tinted live sessions above plain upcoming ones",
-            "caption": "The map, and the sheet pulled up.",
+            "_key": "costudy-s-1-b-7",
+            "localAssetKey": "session-cards",
+            "alt": "A close-up of CoStudy session cards: two tinted live sessions with course icons, and a plain upcoming session",
+            "caption": "Live and your sessions are tinted; upcoming ones stay plain.",
             "size": "full"
           }
         ]
@@ -225,15 +293,51 @@
                 "_type": "span",
                 "_key": "costudy-s-3-b-0-s",
                 "marks": [],
-                "text": "Sign-up verifies a school email, then shows your courses pre-filled for you to confirm. Each course gets a colour that follows it through the app."
+                "text": "Sign-up verifies a school email, then shows your courses pre-filled for you to confirm."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "costudy-s-3-b-1",
+            "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "costudy-s-3-b-1-s",
+                "marks": [],
+                "text": "Course colours"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "costudy-s-3-b-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "costudy-s-3-b-2-s",
+                "marks": [],
+                "text": "Each course gets its own colour across the map, session cards and threads. It helps you spot your courses fast, ties the features together, and adds some personality."
               }
             ]
           },
           {
             "_type": "mediaImage",
-            "_key": "costudy-s-3-b-1",
+            "_key": "costudy-s-3-b-3",
+            "localAssetKey": "courses",
+            "alt": "A close-up of the CoStudy course confirmation list: MATH 117, CHEM 121, CS 105 and ENG 102, each with its own colour and icon",
+            "caption": "Each course keeps its colour across the app.",
+            "size": "full"
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "costudy-s-3-b-4",
             "localAssetKey": "signup",
-            "alt": "Three iPhones: the CoStudy welcome screen, the university email step, and course confirmation with four pre-filled courses in their colours",
+            "alt": "Three iPhones: the CoStudy welcome screen, the university email step, and course confirmation with four pre-filled courses",
             "caption": "Welcome, school email and course confirmation.",
             "size": "full"
           }
@@ -242,8 +346,8 @@
       {
         "_type": "projectSection",
         "_key": "costudy-section-4",
-        "title": "After the event",
-        "heading": "Polishing it afterwards",
+        "title": "Outcome",
+        "heading": "Result and what’s still assumed",
         "content": [
           {
             "_type": "block",
@@ -255,49 +359,19 @@
                 "_type": "span",
                 "_key": "costudy-s-4-b-0-s",
                 "marks": [],
-                "text": "After the designathon, I polished the main screens on my own, including a more detailed campus map, a blue accent and a lighter Threads header."
-              }
-            ]
-          },
-          {
-            "_type": "mediaImage",
-            "_key": "costudy-s-4-b-1",
-            "localAssetKey": "polish",
-            "alt": "Two iPhones: the CoStudy home as submitted at the designathon, and the home polished afterwards with a more detailed campus map and a blue button",
-            "caption": "As submitted, and polished after the event.",
-            "size": "full"
-          }
-        ]
-      },
-      {
-        "_type": "projectSection",
-        "_key": "costudy-section-5",
-        "title": "Outcome",
-        "heading": "Result and what’s still assumed",
-        "content": [
-          {
-            "_type": "block",
-            "_key": "costudy-s-5-b-0",
-            "style": "normal",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "costudy-s-5-b-0-s",
-                "marks": [],
                 "text": "We won 1st place, but we didn’t get any specific feedback beyond the result, and the design was never tested with students."
               }
             ]
           },
           {
             "_type": "block",
-            "_key": "costudy-s-5-b-1",
+            "_key": "costudy-s-4-b-1",
             "style": "h3",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "costudy-s-5-b-1-s",
+                "_key": "costudy-s-4-b-1-s",
                 "marks": [],
                 "text": "Still assumed"
               }
@@ -305,13 +379,13 @@
           },
           {
             "_type": "block",
-            "_key": "costudy-s-5-b-2-0",
+            "_key": "costudy-s-4-b-2-0",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "costudy-s-5-b-2-0-s",
+                "_key": "costudy-s-4-b-2-0-s",
                 "marks": [],
                 "text": "Students will host sessions."
               }
@@ -321,13 +395,13 @@
           },
           {
             "_type": "block",
-            "_key": "costudy-s-5-b-2-1",
+            "_key": "costudy-s-4-b-2-1",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "costudy-s-5-b-2-1-s",
+                "_key": "costudy-s-4-b-2-1-s",
                 "marks": [],
                 "text": "There are enough sessions to fill the map."
               }
@@ -337,13 +411,13 @@
           },
           {
             "_type": "block",
-            "_key": "costudy-s-5-b-2-2",
+            "_key": "costudy-s-4-b-2-2",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "costudy-s-5-b-2-2-s",
+                "_key": "costudy-s-4-b-2-2-s",
                 "marks": [],
                 "text": "Students are comfortable showing where they study."
               }
@@ -353,13 +427,13 @@
           },
           {
             "_type": "block",
-            "_key": "costudy-s-5-b-2-3",
+            "_key": "costudy-s-4-b-2-3",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "costudy-s-5-b-2-3-s",
+                "_key": "costudy-s-4-b-2-3-s",
                 "marks": [],
                 "text": "The app can get a student’s courses from the school."
               }
@@ -380,19 +454,17 @@
     "ideas": {
       "path": "assets/costudy-cs3-ideas.png",
       "sourceNodeIds": [
-        "4:2",
-        "2:3",
-        "2:4"
+        "0:1"
       ],
-      "note": "Crop of the Ideas page (0:1) render: prompt plus ~16 ideas, persona excluded."
+      "note": "Sticky-note version of the Ideas page (file ftcxLE1aKCaG3S61G5EI5e), rendered from costudy-ideas-board.html; idea text condensed from the board."
     },
     "home": {
       "path": "assets/costudy-cs3-home.png",
       "sourceNodeIds": [
-        "12:20",
-        "37:760"
+        "9:1861",
+        "9:2054"
       ],
-      "note": "Screens in Apple's iPhone 16 Pro (White Titanium) bezel."
+      "note": "Winston's polished home screens (Final WINSTON section), in Apple's iPhone 16 Pro (White Titanium) bezel. Per Winston, the polish is not called out on the page."
     },
     "joining": {
       "path": "assets/costudy-cs3-joining.png",
@@ -404,17 +476,32 @@
     "signup": {
       "path": "assets/costudy-cs3-signup.png",
       "sourceNodeIds": [
-        "41:5517",
-        "41:5867",
-        "41:9769"
-      ]
+        "316:7097",
+        "316:7126",
+        "316:7211"
+      ],
+      "note": "Winston's updated onboarding in the Final WINSTON section (9:1612)."
     },
-    "polish": {
-      "path": "assets/costudy-cs3-polish.png",
+    "stacked-pins": {
+      "path": "assets/costudy-cmp-stacked-pins.png",
       "sourceNodeIds": [
-        "12:20",
         "9:1861"
-      ]
+      ],
+      "note": "Close-up crop."
+    },
+    "session-cards": {
+      "path": "assets/costudy-cmp-session-cards.png",
+      "sourceNodeIds": [
+        "9:2054"
+      ],
+      "note": "Close-up crop."
+    },
+    "courses": {
+      "path": "assets/costudy-cmp-courses.png",
+      "sourceNodeIds": [
+        "316:7211"
+      ],
+      "note": "Close-up crop."
     }
   }
 }
