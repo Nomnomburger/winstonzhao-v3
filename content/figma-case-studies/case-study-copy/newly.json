@@ -59,7 +59,7 @@
     "sections": [
       {
         "title": "Problem",
-        "heading": "A lot to fit behind one text box.",
+        "heading": "One prompt, a lot to control",
         "content": [
           "One text box drives local and cloud sessions, a simulator, git branches, model choices and releases to TestFlight and the App Store.",
           {
@@ -73,7 +73,7 @@
       },
       {
         "title": "Board vs. chat",
-        "heading": "Should the home be a board or a chat?",
+        "heading": "Board or chat",
         "content": [
           "My first direction treated your app like a roadmap. The agent proposed features as cards and explained its reasoning. You approved, built and deployed each one from a board.",
           {
@@ -114,7 +114,7 @@
       },
       {
         "title": "Sidebar",
-        "heading": "Two sidebars became one.",
+        "heading": "One sidebar instead of two",
         "content": [
           "The workspace is made of panes you can open and collapse: sessions, chat and the app preview. I built this layout in code.",
           "At first, app navigation and the session list were separate panes. Both could collapse, and the session list also acted like navigation. People found that a bit confusing, so we merged them into one sidebar.",
@@ -135,7 +135,7 @@
       },
       {
         "title": "Prompt bar",
-        "heading": "One bar, three widths.",
+        "heading": "One prompt bar, three layouts",
         "content": [
           "I built the prompt bar in React and TypeScript, mostly with Claude Code and Cursor. It appears across the workspace and changes with the space it has and what the agent is doing.",
           {
@@ -174,7 +174,7 @@
       },
       {
         "title": "Simulator picker",
-        "heading": "Making “Apply” say what it does.",
+        "heading": "A clearer simulator picker",
         "content": [
           "The preview runs your app on an iPhone simulator, in the cloud or on your computer. The simulator picker went through eight versions.",
           "Tester feedback and my own critique pointed to two problems:",
@@ -193,7 +193,7 @@
       },
       {
         "title": "Also shipped",
-        "heading": "Deploy, the web app and colour.",
+        "heading": "Deploy, web and colour",
         "content": [
           "I designed and built the deploy and web screens, and both are live.",
           {
@@ -224,7 +224,7 @@
       },
       {
         "title": "Outcome",
-        "heading": "What’s live, and what we know.",
+        "heading": "What shipped and what I learned",
         "content": [
           "The workspace, the prompt bar and its states, the deploy flow and the web app are all live.",
           {

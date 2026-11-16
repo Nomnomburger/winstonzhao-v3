@@ -71,7 +71,7 @@
         "_type": "projectSection",
         "_key": "newly-section-0",
         "title": "Problem",
-        "heading": "A lot to fit behind one text box.",
+        "heading": "One prompt, a lot to control",
         "content": [
           {
             "_type": "block",
@@ -165,7 +165,7 @@
         "_type": "projectSection",
         "_key": "newly-section-1",
         "title": "Board vs. chat",
-        "heading": "Should the home be a board or a chat?",
+        "heading": "Board or chat",
         "content": [
           {
             "_type": "block",
@@ -334,7 +334,7 @@
         "_type": "projectSection",
         "_key": "newly-section-2",
         "title": "Sidebar",
-        "heading": "Two sidebars became one.",
+        "heading": "One sidebar instead of two",
         "content": [
           {
             "_type": "block",
@@ -389,7 +389,7 @@
         "_type": "projectSection",
         "_key": "newly-section-3",
         "title": "Prompt bar",
-        "heading": "One bar, three widths.",
+        "heading": "One prompt bar, three layouts",
         "content": [
           {
             "_type": "block",
@@ -569,7 +569,7 @@
         "_type": "projectSection",
         "_key": "newly-section-4",
         "title": "Simulator picker",
-        "heading": "Making “Apply” say what it does.",
+        "heading": "A clearer simulator picker",
         "content": [
           {
             "_type": "block",
@@ -661,7 +661,7 @@
         "_type": "projectSection",
         "_key": "newly-section-5",
         "title": "Also shipped",
-        "heading": "Deploy, the web app and colour.",
+        "heading": "Deploy, web and colour",
         "content": [
           {
             "_type": "block",
@@ -780,7 +780,7 @@
         "_type": "projectSection",
         "_key": "newly-section-6",
         "title": "Outcome",
-        "heading": "What’s live, and what we know.",
+        "heading": "What shipped and what I learned",
         "content": [
           {
             "_type": "block",
