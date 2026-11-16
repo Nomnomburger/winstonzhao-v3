@@ -55,14 +55,14 @@
     "coverImage": {
       "_type": "image",
       "localAssetKey": "cover",
-      "alt": "The Newly desktop workspace on a MacBook, showing the project sidebar, conversation with the agent and a live iPhone preview over the blue brand gradient"
+      "alt": "A MacBook on blue 3D blocks, showing the Newly workspace with sessions, a conversation with the agent and a live iPhone preview"
     },
     "hero": [
       {
         "_type": "mediaImage",
         "_key": "newly-hero",
         "localAssetKey": "cover",
-        "alt": "The Newly desktop workspace on a MacBook, showing the project sidebar, conversation with the agent and a live iPhone preview over the blue brand gradient",
+        "alt": "A MacBook on blue 3D blocks, showing the Newly workspace with sessions, a conversation with the agent and a live iPhone preview",
         "size": "full"
       }
     ],
@@ -934,12 +934,9 @@
   },
   "assets": {
     "cover": {
-      "path": "assets/newly-cs-cover.jpg",
-      "sourceNodeIds": [
-        "284:33716",
-        "284:992"
-      ],
-      "note": "Composed cover: the running build session set in a MacBook frame over the blurred brand gradient tile."
+      "path": "assets/newly-mockup-cover.png",
+      "existingAssetId": "image-f93399f15c30b6702f294390b71dc38e4d217436-2000x1500-png",
+      "note": "Winston's own cover, uploaded in Sanity Studio as \"Newly Mockup Cover.png\". Referenced as is for the hero and the home-page thumbnail; the local file is a copy for the preview."
     },
     "board-demo": {
       "path": "assets/newly-cs2-board-demo.png",

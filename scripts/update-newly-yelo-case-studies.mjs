@@ -99,7 +99,8 @@ function validate(spec, copy) {
     const abs = path.join(folder, asset.path);
     if (!fs.existsSync(abs) || fs.statSync(abs).size === 0) throw new Error(`${where}: asset ${key} is missing at ${asset.path}.`);
     if (!/\.(png|jpe?g|webp|gif|mp4|webm)$/i.test(abs)) throw new Error(`${where}: unsupported asset type for ${key}.`);
-    if (!asset.sourceNodeIds?.length && !asset.sourceUrl) throw new Error(`${where}: asset ${key} needs Figma provenance (sourceNodeIds or sourceUrl).`);
+    if (asset.existingAssetId && !/^(image|file)-[0-9a-f]{40}-/.test(asset.existingAssetId)) throw new Error(`${where}: asset ${key} has a malformed existingAssetId.`);
+    if (!asset.sourceNodeIds?.length && !asset.sourceUrl && !asset.existingAssetId) throw new Error(`${where}: asset ${key} needs provenance (sourceNodeIds, sourceUrl or existingAssetId).`);
   }
   const used = new Set();
   walk(fields, (value, location) => {
@@ -176,6 +177,13 @@ save('sanity-before-newly-yelo-update.json', { savedAt: new Date().toISOString()
 const uploaded = new Map();
 for (const { spec, assets } of prepared) {
   for (const [key, asset] of Object.entries(assets)) {
+    // Already in Sanity (e.g. an image Winston uploaded in Studio): reference it
+    // as is. The local file is only a copy for the offline preview.
+    if (asset.existingAssetId) {
+      asset.assetId = asset.existingAssetId;
+      console.log(`Kept ${spec.slug}/${key} → ${asset.assetId}`);
+      continue;
+    }
     const abs = path.join(folder, asset.path);
     const buffer = fs.readFileSync(abs);
     const sha1 = createHash('sha1').update(buffer).digest('hex');
