@@ -37,8 +37,12 @@ const folder = path.join(root, 'content/figma-case-studies');
 
 function expand(copy, slug) {
   const key = (...parts) => `${slug}-${parts.join('-')}`;
-  const span = (k, text) => ({ _type: 'span', _key: `${k}-s`, marks: [], text });
-  const block = (k, text, style = 'normal', extra = {}) => ({ _type: 'block', _key: k, style, markDefs: [], children: [span(k, text)], ...extra });
+  // **bold** in the copy becomes a span with the strong decorator.
+  const spans = (k, text) => text.split(/(\*\*[^*]+\*\*)/).filter(Boolean).map((part, n) => {
+    const bold = part.startsWith('**') && part.endsWith('**');
+    return { _type: 'span', _key: n === 0 ? `${k}-s` : `${k}-s${n}`, marks: bold ? ['strong'] : [], text: bold ? part.slice(2, -2) : part };
+  });
+  const block = (k, text, style = 'normal', extra = {}) => ({ _type: 'block', _key: k, style, markDefs: [], children: spans(k, text), ...extra });
   const image = (k, item) => ({ _type: 'mediaImage', _key: k, localAssetKey: item.image, alt: item.alt, ...(item.caption ? { caption: item.caption } : {}), size: item.size ?? 'full' });
   const video = (k, item) => ({
     _type: 'mediaVideo', _key: k, file: { _type: 'file', localAssetKey: item.video },
