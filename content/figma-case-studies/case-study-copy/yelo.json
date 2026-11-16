@@ -10,14 +10,14 @@
     "description": "Redesigning a live campus ride-share app: booking first, social second.",
     "client": "Yelo",
     "discipline": "Product Design",
-    "intro": "Yelo is a student-only campus ride-share. As the only designer, I redesigned its live rider app, from the home screen to ride options and sign-up.",
-    "summary": "How might we keep a social ride-share social without getting in the way of booking a ride?",
-    "overview": "Yelo’s earlier app was already live. I redesigned the rider app with the founders, the engineers and the wider team, and the redesign is now live.",
-    "impact": "The redesign is live: home, search, ride options and sign-up.",
+    "intro": "Yelo is a student-only campus ride-share. As the only designer at the time, I redesigned its live rider app, from the home screen to ride options and onboarding.",
+    "summary": "How might we make Yelo’s social side part of getting a ride, without slowing booking down?",
+    "overview": "I was the only designer at the time, working with the founders, engineers and the wider team. The founders picked the home direction; the feed card changes were my own calls.",
+    "impact": "The redesign is live: home and feed, search and map, ride options and onboarding.",
     "details": [
       {
         "label": "Role",
-        "value": "Product Designer\nOnly designer"
+        "value": "Product Designer\nOnly designer at the time"
       },
       {
         "label": "Team",
@@ -42,7 +42,7 @@
     ],
     "cover": {
       "asset": "cover",
-      "alt": "Three Yelo screens on iPhones: the home feed, the event map and ride selection"
+      "alt": "Two Yelo screens on iPhones: the home feed and ride selection"
     },
     "hero": {
       "image": "hero",
@@ -53,40 +53,32 @@
         "title": "Problem",
         "heading": "A crowded home on a live app",
         "content": [
-          "Yelo’s earlier app was already live. Its home packed hotness scores, tickers, promos and events around “Where to?”.",
+          "Yelo’s earlier app was already live. Three things weren’t working on its home:",
           {
             "bullets": [
-              "**Too crowded:** too much competed with booking a ride.",
-              "**Social felt bolted on:** it didn’t connect to getting a ride.",
-              "**Dated look:** the visual design felt old."
+              "The home was too crowded.",
+              "Social features felt bolted on.",
+              "The look felt dated."
             ]
           },
           {
-            "gallery": [
-              {
-                "image": "old-home",
-                "alt": "Yelo’s earlier home screen with a dark photo header, Ride and Drive toggle, a ticker, and place cards with hotness scores and badges"
-              },
-              {
-                "image": "new-home",
-                "alt": "The redesigned Yelo home: Where to? search at the top and feed cards for where people are headed"
-              }
-            ],
+            "image": "before-after",
+            "alt": "Two iPhones: Yelo’s earlier home with a dark photo header, ticker and hotness scores, and the redesigned home with search first and feed cards for where people are headed, tickets and trending searches",
             "caption": "Before: the earlier home. After: the redesign."
           }
         ]
       },
       {
         "title": "Four directions",
-        "heading": "Four ways to lay out home",
+        "heading": "Four ways to lay out the home screen",
         "content": [
-          "I started on paper with one question: what’s the best way to show that a place is popular?",
+          "My early sketches asked one question: what’s the best way to show that a place is popular?",
           {
             "image": "sketches",
-            "alt": "Hand-drawn wireframes of the Yelo home screen and three ways to mark a popular location",
+            "alt": "Hand-drawn wireframes of two Yelo home screens and three ways to mark a popular location",
             "caption": "Early sketches: three ways to mark a popular place."
           },
-          "From there I narrowed the explorations to four directions on the same header:",
+          "Four of the home layouts I explored became directions A to D:",
           {
             "bullets": [
               "**A:** feed first, with search in a bottom sheet.",
@@ -97,25 +89,24 @@
           },
           {
             "image": "directions",
-            "alt": "Four Yelo home screen directions side by side: feed first, search first, chat bubbles, ranked list",
+            "alt": "Four iPhones showing Yelo home directions: feed first, search first, chat bubbles, ranked list",
             "caption": "A, B, C and D."
           },
           {
             "h3": "What went forward"
           },
-          "The founders chose the direction. V1 combined two of them:",
+          "The founders picked the direction. V1 mixed B and A:",
           {
             "bullets": [
               "**B’s layout:** booking stays first, so search sits at the top.",
-              "**A’s live row:** “Someone is searching for a ride…”.",
-              "**No reaction counts:** they came from an earlier version that ran through iMessage, where people reacted to each other’s ride requests. In the app they felt a bit tacky, and we didn’t think many people would tap them."
+              "**A’s live row:** “Someone is searching for a ride…”",
+              "**No reaction counts:** they came from an earlier version that ran through iMessage, where we noticed people reacting to each other’s ride requests. But they felt a bit tacky, and we didn’t think many people would tap them."
             ]
           },
           {
             "image": "v1-home",
-            "alt": "Yelo V1 home: search first, a Someone is searching for a ride row, and feed cards without reaction counts",
-            "caption": "V1: B’s layout with A’s live row, and no reaction counts.",
-            "size": "content"
+            "alt": "An iPhone showing the Yelo V1 home: search first, a Someone is searching for a ride row, and feed cards without reaction counts",
+            "caption": "V1 home."
           }
         ]
       },
@@ -123,36 +114,36 @@
         "title": "Feed card",
         "heading": "A card that says who and where",
         "content": [
-          "From there I refined the feed card one change at a time:",
+          "After V1, I kept changing the feed card. These were my own calls:",
           {
             "bullets": [
               "“Ride to” became “Headed to”.",
               "“Someone you may know” became a MUTUAL tag.",
-              "Labels for each kind of signal (HEADED TO, TRENDING SEARCH, GOT TICKETS) came in one at a time."
+              "Labels for each kind of signal came in one at a time: HEADED TO, then TRENDING SEARCH, then GOT TICKETS."
             ]
           },
           {
             "image": "feed-card",
-            "alt": "Four Yelo home screens showing the feed card change: Ride to cards, Headed to cards with initials, a MUTUAL tag, and labelled cards",
-            "caption": "Left to right: V1, “Headed to”, the MUTUAL tag, labelled cards."
+            "alt": "Four iPhones showing the Yelo feed card change: Ride to cards, Headed to cards with initials, a MUTUAL tag, and labelled cards",
+            "caption": "Left to right: V1 to the latest card."
           }
         ]
       },
       {
         "title": "Ride options",
-        "heading": "Ride options you can picture",
+        "heading": "Three versions of the ride sheet",
         "content": [
           "The ride sheet went from Exclusive vs. Shared with a seat stepper, to ETA first, to four named vehicle classes with one tag each.",
           {
             "image": "ride-sheet",
-            "alt": "Three versions of the Yelo ride sheet: Exclusive or Shared with a seat stepper, ETA first, and named vehicle classes with 3D cars",
-            "caption": "Left to right: Exclusive or Shared, ETA first, named classes."
+            "alt": "Three iPhones showing Yelo ride sheet versions: Exclusive or Shared with a seat stepper, ETA first, and named vehicle classes with 3D cars",
+            "caption": "Ride sheet versions, left to right."
           },
-          "I sketched the vehicles first, then used Gemini to model and iterate on them. Generating all five in one image kept them consistent.",
+          "I sketched the vehicles first, then used Gemini to model and iterate on them. I started with one vehicle at a time, then switched to generating them all in one image because it gave more consistent results.",
           {
             "image": "fleet",
             "alt": "Five yellow 3D vehicles in a row: sedan, SUV, golf cart with a flag, van and bus",
-            "caption": "Car, Big Car, Cart, Mini Bus and bus."
+            "caption": "The Yelo fleet."
           }
         ]
       },
@@ -160,37 +151,19 @@
         "title": "Rest of the app",
         "heading": "Sign-up, permissions and the map",
         "content": [
+          "Sign-up checks student status with a school email, through Google, Microsoft or a one-time pin.",
           {
-            "bullets": [
-              "**Sign-up** verifies student status with a school Google or Microsoft account.",
-              "**Permissions** each come with a reason, like “See where your friends are headed”.",
-              "**The map** shows events across campus."
-            ]
-          },
-          {
-            "gallery": [
-              {
-                "image": "onboarding",
-                "alt": "Yelo sign-up screen: Claim your student status with Continue with Google or Microsoft"
-              },
-              {
-                "image": "permissions",
-                "alt": "Yelo permissions screen with a reason for notifications, location and contacts"
-              },
-              {
-                "image": "event-map",
-                "alt": "Yelo map tab with event posters stacked across campus and event cards below"
-              }
-            ],
-            "caption": "Student verification, permissions and the event map."
+            "image": "rest",
+            "alt": "Three iPhones: Yelo student sign-up with Google or Microsoft, permissions with a reason for each, and the event map",
+            "caption": "Student sign-up, permissions with a reason for each, and the event map."
           }
         ]
       },
       {
         "title": "Outcome",
-        "heading": "What shipped and what I learned",
+        "heading": "What shipped",
         "content": [
-          "The redesign is live: home and feed, search and map, ride options and sign-up. I don’t have usage numbers for it.",
+          "Home and feed, search and map, ride options and onboarding are live. I don’t have usage numbers.",
           {
             "h3": "What I learned"
           },
@@ -198,7 +171,7 @@
             "bullets": [
               "**Old habits inform design.** How people used the iMessage version shaped what we kept and what we dropped.",
               "**Booking first, social second.** Social signals only help if they don’t slow down getting a ride.",
-              "**Redesigning a live app is mostly removing things.**"
+              "**Simplify a crowded home.** Redesigning a live app is mostly deciding what to remove."
             ]
           }
         ]
@@ -216,49 +189,65 @@
       "existingAssetId": "image-4d187a1c528e0112f305f98c83e8da51d9a955e3-2400x1350-jpg",
       "note": "Winston's current hero in Sanity, kept as is."
     },
-    "old-home": {
-      "path": "assets/yelo-cs2-old-home.png",
-      "sourceNodeIds": ["1:21182"]
-    },
-    "new-home": {
-      "path": "assets/yelo-cs2-new-home.png",
-      "sourceNodeIds": ["1:7130"]
-    },
     "sketches": {
       "path": "assets/yelo-cs-sketches.jpg",
-      "sourceNodeIds": ["1:3765"]
-    },
-    "directions": {
-      "path": "assets/yelo-cs2-directions.png",
-      "sourceNodeIds": ["1:2517", "1:2395", "1:2237", "1:1976"]
-    },
-    "v1-home": {
-      "path": "assets/yelo-cs2-v1-home.png",
-      "sourceNodeIds": ["1:4332"]
-    },
-    "feed-card": {
-      "path": "assets/yelo-cs2-feed-card.png",
-      "sourceNodeIds": ["1:4204", "1:4583", "1:8132", "1:7130"]
-    },
-    "ride-sheet": {
-      "path": "assets/yelo-cs2-ride-sheet.png",
-      "sourceNodeIds": ["1:8053", "1:7986", "1:6840"]
+      "sourceNodeIds": [
+        "1:3765"
+      ]
     },
     "fleet": {
       "path": "assets/yelo-cs-fleet.jpg",
-      "sourceNodeIds": ["1:9096"]
+      "sourceNodeIds": [
+        "1:9096"
+      ]
     },
-    "onboarding": {
-      "path": "assets/yelo-cs2-onboarding.png",
-      "sourceNodeIds": ["1:7417"]
+    "before-after": {
+      "path": "assets/yelo-cs3-before-after.png",
+      "sourceNodeIds": [
+        "1:21182",
+        "1:7130"
+      ],
+      "note": "Screens in Apple's iPhone 16 Pro (Black Titanium) bezel."
     },
-    "permissions": {
-      "path": "assets/yelo-cs2-permissions.png",
-      "sourceNodeIds": ["1:7268"]
+    "directions": {
+      "path": "assets/yelo-cs3-directions.png",
+      "sourceNodeIds": [
+        "1:2517",
+        "1:2395",
+        "1:2237",
+        "1:1976"
+      ]
     },
-    "event-map": {
-      "path": "assets/yelo-cs2-event-map.png",
-      "sourceNodeIds": ["1:5728"]
+    "v1-home": {
+      "path": "assets/yelo-cs3-v1-home.png",
+      "sourceNodeIds": [
+        "1:4332"
+      ]
+    },
+    "feed-card": {
+      "path": "assets/yelo-cs3-feed-card.png",
+      "sourceNodeIds": [
+        "1:4204",
+        "1:4583",
+        "1:8132",
+        "1:7130"
+      ]
+    },
+    "ride-sheet": {
+      "path": "assets/yelo-cs3-ride-sheet.png",
+      "sourceNodeIds": [
+        "1:8053",
+        "1:7986",
+        "1:6840"
+      ]
+    },
+    "rest": {
+      "path": "assets/yelo-cs3-rest.png",
+      "sourceNodeIds": [
+        "1:7417",
+        "1:7268",
+        "1:5728"
+      ]
     }
   }
 }

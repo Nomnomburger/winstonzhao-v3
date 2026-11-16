@@ -13,9 +13,9 @@
       "url": "https://www.elapseapp.com/",
       "label": "DOWNLOAD NOW"
     },
-    "intro": "After four years competing in VEX Robotics, I co-founded Elapse to put a team’s next match, live schedule and scouting in one app. I was the only designer, working with seven developers.",
+    "intro": "I co-founded Elapse, an app that shows VEX Robotics teams their next match, a live schedule and scouting. I was the only designer, working with seven developers.",
     "summary": "How might we help robotics teams know when and where their next match is, even when the schedule runs late?",
-    "overview": "As co-founder, I made product calls and handed off designs to seven developers. Elapse launched on iOS in November 2024 and is also on Android.",
+    "overview": "I made product calls and handed off designs to the developers. Elapse launched on iOS in November 2024 and is also on Android.",
     "impact": "4,000+ accounts and a 4.8-star rating.",
     "showSideMenu": true,
     "details": [
@@ -37,7 +37,7 @@
       },
       {
         "label": "Shipped",
-        "value": "Tournament mode · Live timing\nScoutSheets (later update)"
+        "value": "Upcoming matches · Live timing\nTournament mode\nScoutSheet tab (later update)"
       },
       {
         "label": "Tools",
@@ -46,18 +46,18 @@
     ],
     "cover": {
       "asset": "cover",
-      "alt": "An iPhone on a pedestal showing the Elapse home with the next match card"
+      "alt": "An iPhone on a pedestal showing an early Elapse home design with the next match card"
     },
     "hero": {
       "image": "hero",
-      "alt": "An iPhone showing the Elapse home: the Q23 next match card with alliance teams, field and time"
+      "alt": "An iPhone showing an early Elapse home design: the Q23 next match card with alliance teams, field and time"
     },
     "sections": [
       {
         "title": "Problem",
         "heading": "Tournament day moves fast",
         "content": [
-          "I competed in VEX Robotics for four years. At every tournament, the same things got in the way:",
+          "I competed in VEX Robotics for four years. At tournaments, I ran into three problems:",
           {
             "bullets": [
               "The official schedule app took several taps and spread information across screens.",
@@ -72,13 +72,13 @@
         "title": "Plan vs. release",
         "heading": "From plan to release",
         "content": [
-          "The 2023 plan was bigger than what we launched. We focused on what teams needed most.",
+          "The 2023 plan was bigger than what we launched. We cut it back because teams needed other things more, like scouting.",
           {
             "bullets": [
               "**Planned:** an organizer portal for delays and announcements, a chatbot, and a web app for phones, tablets and computers.",
-              "**Shipped in v1.0:** tournament mode, upcoming matches and live timing.",
-              "**Added later:** ScoutSheets.",
-              "**Designed, not shipped:** team sharing and a new onboarding."
+              "**Shipped:** tournament mode, upcoming matches and live timing.",
+              "**Added later:** the ScoutSheet tab on each team’s page.",
+              "**Designed, not shipped:** team sharing and an onboarding flow."
             ]
           }
         ]
@@ -87,28 +87,16 @@
         "title": "Next match",
         "heading": "Your next match comes first",
         "content": [
-          "Home leads with your next match: number, alliance teams, field and time. On your own match, the time and “In X minutes” come first. Other matches lead with the match number.",
+          "On your own next match, the time and “In X minutes” come first. Other matches lead with the match number.",
           {
             "bullets": [
-              "**Time is what you act on:** it tells you when to head to the field.",
-              "**It came from competing,** and teams told us the same."
+              "**Why time first:** time is what you act on.",
+              "**Where it came from:** my own time competing, plus user and team feedback."
             ]
           },
           {
-            "gallery": [
-              {
-                "image": "home",
-                "alt": "Elapse home with a next match card showing match Q23, alliance teams, field and time, and upcoming matches below"
-              },
-              {
-                "image": "my-match",
-                "alt": "Elapse Your Next Match screen leading with a large time and In X minutes"
-              },
-              {
-                "image": "other-match",
-                "alt": "Elapse Match Info screen for another match leading with the match number"
-              }
-            ],
+            "image": "next-match",
+            "alt": "Three iPhones: the Elapse home with a next match card, your next match leading with the time, and another match leading with the match number",
             "caption": "Home, your next match (time first), another match (number first)."
           }
         ]
@@ -117,19 +105,11 @@
         "title": "Live timing",
         "heading": "Delays you can see",
         "content": [
-          "Matches often run late. Live timing worked out delays from when results were posted and updated the schedule on its own.",
-          "Instead of quietly changing the time, the app shows the new time with “Delayed – originally …”. Finished matches show “Started 3 mins late”.",
+          "Matches often run late. Live timing worked out delays from posted match results and updated the schedule automatically.",
+          "Instead of quietly changing the time, the app shows the new time with “Delayed - originally …”, and finished matches show how late they started.",
           {
-            "gallery": [
-              {
-                "image": "delayed",
-                "alt": "Elapse next match screen showing the new time with Delayed, originally and the old time"
-              },
-              {
-                "image": "played",
-                "alt": "Elapse match screen for a finished match: You won!, Started 3 mins late, scores and ranking changes"
-              }
-            ],
+            "image": "delays",
+            "alt": "Two iPhones: Your Next Match with “Delayed - originally” under the new time, and a finished match that started 3 minutes late",
             "caption": "A delayed match, and a finished one that started late."
           }
         ]
@@ -138,7 +118,7 @@
         "title": "Tournament mode",
         "heading": "A mode for tournament day",
         "content": [
-          "The Events tab and live schedule live in a tournament mode you turn on at the event. It switches off afterwards.",
+          "Tournament mode is for when you’re at an event. You turn it on from the home screen.",
           {
             "bullets": [
               "**You don’t need it outside an event.** Other features help you find teams and tournaments then.",
@@ -147,41 +127,21 @@
             ]
           },
           {
-            "gallery": [
-              {
-                "image": "tm-home",
-                "alt": "Elapse home before an event with a tournament card and a Tournament Mode button"
-              },
-              {
-                "image": "tm-off",
-                "alt": "Elapse tournament rankings opened as a separate screen outside tournament mode"
-              },
-              {
-                "image": "tm-on",
-                "alt": "Elapse rankings inside the Tournament tab while tournament mode is on"
-              }
-            ],
+            "image": "tournament-mode",
+            "alt": "Three iPhones: the Elapse home outside tournament mode with a Tournament Mode button, rankings opened as a separate screen, and rankings in the Tournament tab",
             "caption": "Turning it on from home, and rankings outside vs. inside tournament mode."
           }
         ]
       },
       {
         "title": "Outcome",
-        "heading": "What shipped and what I learned",
+        "heading": "After launch",
         "content": [
-          "Elapse reached 4,000+ accounts with a 4.8-star rating. In our automated tests, reaching the same data was about 3x faster than in competing apps. After launch, feedback mostly led to fixes rather than design changes.",
-          "ScoutSheets came in a later update: specs, photos and notes on each team’s page.",
+          "Elapse reached 4,000+ accounts with a 4.8-star rating. In our automated tests, which clicked through competitor apps and Elapse to reach the same data, Elapse was 3x faster. After launch, feedback led to fixes, not design changes.",
+          "The ScoutSheet tab on each team’s page came in a later update.",
           {
-            "gallery": [
-              {
-                "image": "scout-empty",
-                "alt": "Elapse team page with a Scoutsheet tab and a Create Scoutsheet button"
-              },
-              {
-                "image": "scout-filled",
-                "alt": "A filled Elapse ScoutSheet with robot specs, photos and notes"
-              }
-            ],
+            "image": "scoutsheets",
+            "alt": "Two iPhones: an Elapse team page with an empty Scoutsheet tab, and a filled ScoutSheet",
             "caption": "A team’s ScoutSheet, empty and filled."
           },
           {
@@ -189,7 +149,7 @@
           },
           {
             "bullets": [
-              "**Design for the moment.** Tournament day leaves little attention, so the next match has to read at a glance.",
+              "**Design for the moment.** Tournament day leaves little attention. The next match has to be readable at a glance.",
               "**Ship the core first.** Leaving the portal and chatbot out let us release what teams needed.",
               "**Live data needs honest states.** Show a delay next to the original time instead of hiding it."
             ]
@@ -209,63 +169,34 @@
       "existingAssetId": "image-55f22614414893bbaf5f44dfe4f843c9a3343cc1-3680x2760-png",
       "note": "Winston's current hero in Sanity, kept as is."
     },
-    "home": {
-      "path": "assets/elapse-cs2-home.png",
+    "next-match": {
+      "path": "assets/elapse-cs3-next-match.png",
       "sourceNodeIds": [
-        "157:29965"
-      ]
-    },
-    "my-match": {
-      "path": "assets/elapse-cs2-my-match.png",
-      "sourceNodeIds": [
-        "157:29648"
-      ]
-    },
-    "other-match": {
-      "path": "assets/elapse-cs2-other-match.png",
-      "sourceNodeIds": [
+        "157:29965",
+        "157:29648",
         "157:29626"
-      ]
+      ],
+      "note": "Screens in Apple's iPhone 16 Pro (Black Titanium) bezel."
     },
-    "delayed": {
-      "path": "assets/elapse-cs2-delayed.png",
+    "delays": {
+      "path": "assets/elapse-cs3-delays.png",
       "sourceNodeIds": [
-        "157:29670"
-      ]
-    },
-    "played": {
-      "path": "assets/elapse-cs2-played.png",
-      "sourceNodeIds": [
+        "157:29670",
         "157:29740"
       ]
     },
-    "tm-home": {
-      "path": "assets/elapse-cs2-tm-home.png",
+    "tournament-mode": {
+      "path": "assets/elapse-cs3-tournament-mode.png",
       "sourceNodeIds": [
-        "157:30976"
-      ]
-    },
-    "tm-off": {
-      "path": "assets/elapse-cs2-tm-off.png",
-      "sourceNodeIds": [
-        "157:30620"
-      ]
-    },
-    "tm-on": {
-      "path": "assets/elapse-cs2-tm-on.png",
-      "sourceNodeIds": [
+        "157:30976",
+        "157:30620",
         "157:30726"
       ]
     },
-    "scout-empty": {
-      "path": "assets/elapse-cs2-scout-empty.png",
+    "scoutsheets": {
+      "path": "assets/elapse-cs3-scoutsheets.png",
       "sourceNodeIds": [
-        "157:33046"
-      ]
-    },
-    "scout-filled": {
-      "path": "assets/elapse-cs2-scout-filled.png",
-      "sourceNodeIds": [
+        "157:33046",
         "157:32940"
       ]
     }

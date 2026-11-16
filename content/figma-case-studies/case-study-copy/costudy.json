@@ -6,15 +6,15 @@
       "https://www.figma.com/design/ftcxLE1aKCaG3S61G5EI5e/Canvas-Designathons?node-id=0-1",
       "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W/Winston-Design-Demo?node-id=1-15596"
     ],
-    "facts": "Confirmed by Winston (Nov 2026): 1st place, UW Blueprint Designathon 2025; one-day event; team of four (Ishan, Raghav, Lily, Winston); brainstormed together, picked the idea after brainstorming, then split screens; everyone worked on bits of everything, so the case study should not say who did what; submitted a clickable prototype and a pitch deck; no specific judge feedback; the move from automatic matching to student-hosted sessions was not a deliberate decision; map-first home because location matters and it is visually engaging; the polished screens ('Final WINSTON') were made by Winston after the event. Prompt: 'How might we design solutions that help people connect, care, and thrive empowering the individual and the community?'"
+    "facts": "Confirmed by Winston (Nov 2026): 1st place, UW Blueprint Designathon 2025; one-day event; team of four (Ishan, Raghav, Lily, Winston); brainstormed together, picked the idea after brainstorming, then split screens; Winston worked on bits of everything and it was a group effort, so the case study should not say who did what; submitted a clickable prototype and a pitch deck; no specific judge feedback; the move from automatic matching to student-hosted sessions was not a deliberate decision; map-first home because location matters and it is visually engaging; the polished screens ('Final WINSTON') were made by Winston after the event. Prompt: 'How might we design solutions that help people connect, care, and thrive empowering the individual and the community?'"
   },
   "fields": {
-    "description": "A campus study app that won 1st place at the UW Blueprint Designathon 2025.",
+    "description": "A campus study app concept that won 1st place at the UW Blueprint Designathon 2025.",
     "client": "UW Blueprint Designathon 2025",
     "discipline": "Product Design",
-    "intro": "CoStudy helps students find and join study sessions for their courses on campus. My team of four designed it in one day and won 1st place at the UW Blueprint Designathon 2025.",
-    "summary": "How might we design solutions that help people connect, care, and thrive, empowering the individual and the community?",
-    "overview": "The designathon gave us the prompt above. With Ishan, Raghav and Lily, I brainstormed ideas, picked one together, then split up the screens. We all worked on a bit of everything and submitted a clickable prototype and a pitch deck.",
+    "intro": "CoStudy is an app concept for finding and joining study sessions for your courses on campus. My team of four designed it in one day and won 1st place at the UW Blueprint Designathon 2025.",
+    "summary": "“How might we design solutions that help people connect, care, and thrive, empowering the individual and the community?”",
+    "overview": "The designathon gave us the prompt above. We brainstormed ideas as a team, picked one, then split up the screens. It was a group effort, and I worked on a bit of everything. We submitted a clickable prototype and a pitch deck.",
     "impact": "1st place, UW Blueprint Designathon 2025.",
     "details": [
       {
@@ -35,27 +35,31 @@
       },
       {
         "label": "Platform",
-        "value": "iOS"
+        "value": "Mobile"
+      },
+      {
+        "label": "Tools",
+        "value": "Figma"
       }
     ],
     "cover": {
       "asset": "hero",
-      "alt": "CoStudy project interface"
+      "alt": "CoStudy home, polished after the event: a campus map with course icons above a sheet of your live sessions"
     },
     "hero": {
       "image": "hero",
-      "alt": "CoStudy project interface"
+      "alt": "CoStudy home, polished after the event: a campus map with course icons above a sheet of your live sessions"
     },
     "sections": [
       {
         "title": "Idea",
         "heading": "From prompt to a study app",
         "content": [
-          "We started from the prompt and brainstormed about 16 ideas, from micro-volunteering to a neighbourhood emergency app. Then we picked one together: help students find classmates to study with.",
+          "We started from the prompt and brainstormed about 16 ideas, from micro-volunteering to a neighbourhood emergency app. Then we picked one together: an automatic study-group generator that would put students into groups and assign a spot on campus. The prototype ended up with students hosting their own sessions instead.",
           {
             "image": "ideas",
-            "alt": "The team’s idea board: the designathon prompt in the middle surrounded by about 16 short ideas",
-            "caption": "Our idea board, with the prompt in the middle."
+            "alt": "Part of the team’s idea board: the designathon prompt surrounded by short ideas, with the automatic group study session generator below",
+            "caption": "Part of our idea board. The study-group idea is at the bottom."
           }
         ]
       },
@@ -63,69 +67,41 @@
         "title": "Home",
         "heading": "A map of who’s studying where",
         "content": [
-          "Home puts a campus map first, with live sessions stacked by course. A sheet below lists your sessions, then upcoming ones.",
+          "Home puts a campus map first, with your sessions in a sheet below. We put the map first for two reasons:",
           {
             "bullets": [
               "**Location matters:** where a session is decides whether you can go.",
-              "**A map is more engaging** than another list.",
-              "**Only live sessions and your own get a tint,** so upcoming ones stay plain."
+              "**A map is visually engaging.**"
             ]
           },
+          "On the day, we agreed in Figma comments to keep gradients for live sessions and your upcoming ones only.",
           {
-            "gallery": [
-              {
-                "image": "home",
-                "alt": "CoStudy home: a campus map with sessions stacked by course and a sheet of your sessions below"
-              },
-              {
-                "image": "home-expanded",
-                "alt": "CoStudy home with the sheet pulled up: tinted live sessions above plain upcoming sessions"
-              }
-            ],
+            "image": "home",
+            "alt": "Two iPhones: the CoStudy home with a campus map and stacked course icons above a sheet of your sessions, and the sheet pulled up with tinted live sessions above plain upcoming ones",
             "caption": "The map, and the sheet pulled up."
           }
         ]
       },
       {
         "title": "Joining",
-        "heading": "Easy to join, easy to leave",
+        "heading": "What changes when you join",
         "content": [
-          "A session shows who’s hosting, where, when and for which course. Joining is one tap. After that, the main button becomes “Open class thread”, and you can leave anytime.",
+          "Joining is one tap. After that, the main button becomes “Open class thread” and a Leave session button appears. On the day, we also agreed to add a list of people attending.",
           {
-            "gallery": [
-              {
-                "image": "session",
-                "alt": "CoStudy session detail before joining, with a Join session button"
-              },
-              {
-                "image": "session-joined",
-                "alt": "CoStudy session detail after joining, with Open class thread and Leave session buttons"
-              }
-            ],
+            "image": "joining",
+            "alt": "Two iPhones: a CoStudy session before joining with a Join session button, and after joining with Open class thread and Leave session",
             "caption": "Before and after joining."
           }
         ]
       },
       {
         "title": "Sign-up",
-        "heading": "Confirm your courses, don’t type them",
+        "heading": "Courses come pre-filled",
         "content": [
-          "Sign-up verifies a school email, then asks you to confirm your courses instead of searching for them. Each course gets a colour that follows it through the app.",
+          "Sign-up verifies a school email, then shows your courses pre-filled for you to confirm. Each course gets a colour that follows it through the app.",
           {
-            "gallery": [
-              {
-                "image": "welcome",
-                "alt": "CoStudy welcome screen: Where students organize to learn together"
-              },
-              {
-                "image": "email",
-                "alt": "CoStudy sign-up step asking for a university email, just for verification"
-              },
-              {
-                "image": "courses",
-                "alt": "CoStudy course confirmation with four pre-filled courses in their colours"
-              }
-            ],
+            "image": "signup",
+            "alt": "Three iPhones: the CoStudy welcome screen, the university email step, and course confirmation with four pre-filled courses in their colours",
             "caption": "Welcome, school email and course confirmation."
           }
         ]
@@ -134,27 +110,19 @@
         "title": "After the event",
         "heading": "Polishing it afterwards",
         "content": [
-          "After the designathon, I polished the screens on my own: a campus map redrawn from real maps, a blue accent and a lighter Threads header.",
+          "After the designathon, I polished the main screens on my own, including a more detailed campus map, a blue accent and a lighter Threads header.",
           {
-            "gallery": [
-              {
-                "image": "home",
-                "alt": "CoStudy home as submitted at the designathon"
-              },
-              {
-                "image": "home-polished",
-                "alt": "CoStudy home polished after the event, with a redrawn campus map and a blue button"
-              }
-            ],
+            "image": "polish",
+            "alt": "Two iPhones: the CoStudy home as submitted at the designathon, and the home polished afterwards with a more detailed campus map and a blue button",
             "caption": "As submitted, and polished after the event."
           }
         ]
       },
       {
         "title": "Outcome",
-        "heading": "Result and what’s untested",
+        "heading": "Result and what’s still assumed",
         "content": [
-          "We won 1st place. We didn’t get specific feedback from the judges, and the design hasn’t been tested with students.",
+          "We won 1st place, but we didn’t get any specific feedback beyond the result.",
           {
             "h3": "Still assumed"
           },
@@ -165,8 +133,7 @@
               "Students are comfortable showing where they study.",
               "The app can get a student’s courses from the school."
             ]
-          },
-          "Our first idea matched people into groups automatically. The prototype ended up with students hosting sessions instead, and we never settled which works better."
+          }
         ]
       }
     ]
@@ -178,56 +145,41 @@
       "note": "Winston's current hero and thumbnail in Sanity, kept as is."
     },
     "ideas": {
-      "path": "assets/costudy-cs2-ideas.png",
+      "path": "assets/costudy-cs3-ideas.png",
       "sourceNodeIds": [
-        "0:1"
-      ]
+        "4:2",
+        "2:3",
+        "2:4"
+      ],
+      "note": "Crop of the Ideas page (0:1) render: prompt plus ~16 ideas, persona excluded."
     },
     "home": {
-      "path": "assets/costudy-cs2-home.png",
+      "path": "assets/costudy-cs3-home.png",
       "sourceNodeIds": [
-        "12:20"
-      ]
-    },
-    "home-expanded": {
-      "path": "assets/costudy-cs2-home-expanded.png",
-      "sourceNodeIds": [
+        "12:20",
         "37:760"
-      ]
+      ],
+      "note": "Screens in Apple's iPhone 16 Pro (Black Titanium) bezel."
     },
-    "session": {
-      "path": "assets/costudy-cs2-session.png",
+    "joining": {
+      "path": "assets/costudy-cs3-joining.png",
       "sourceNodeIds": [
-        "33:3257"
-      ]
-    },
-    "session-joined": {
-      "path": "assets/costudy-cs2-session-joined.png",
-      "sourceNodeIds": [
+        "33:3257",
         "41:10025"
       ]
     },
-    "welcome": {
-      "path": "assets/costudy-cs2-welcome.png",
+    "signup": {
+      "path": "assets/costudy-cs3-signup.png",
       "sourceNodeIds": [
-        "41:5517"
-      ]
-    },
-    "email": {
-      "path": "assets/costudy-cs2-email.png",
-      "sourceNodeIds": [
-        "41:5867"
-      ]
-    },
-    "courses": {
-      "path": "assets/costudy-cs2-courses.png",
-      "sourceNodeIds": [
+        "41:5517",
+        "41:5867",
         "41:9769"
       ]
     },
-    "home-polished": {
-      "path": "assets/costudy-cs2-home-polished.png",
+    "polish": {
+      "path": "assets/costudy-cs3-polish.png",
       "sourceNodeIds": [
+        "12:20",
         "9:1861"
       ]
     }

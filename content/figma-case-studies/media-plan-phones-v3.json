@@ -1,0 +1,16 @@
+[
+  {"out": "out-phones/yelo-cs3-before-after.png", "phones": ["../exports/yelo/1-21182.png", "../exports/yelo/1-7130.png"], "pad_to": 1.6},
+  {"out": "out-phones/yelo-cs3-directions.png", "phones": ["../exports/yelo/1-2517.png", "../exports/yelo/1-2395.png", "../exports/yelo/1-2237.png", "../exports/yelo/1-1976.png"]},
+  {"out": "out-phones/yelo-cs3-v1-home.png", "phones": ["../exports/yelo/1-4332.png"], "pad_to": 1.6},
+  {"out": "out-phones/yelo-cs3-feed-card.png", "phones": ["../exports/yelo/1-4204.png", "../exports/yelo/1-4583.png", "../exports/yelo/1-8132.png", "../exports/yelo/1-7130.png"]},
+  {"out": "out-phones/yelo-cs3-ride-sheet.png", "phones": ["../exports/yelo/1-8053.png", "../exports/yelo/1-7986.png", "../exports/yelo/1-6840.png"]},
+  {"out": "out-phones/yelo-cs3-rest.png", "phones": ["../exports/yelo/1-7417.png", "../exports/yelo/1-7268.png", "../exports/yelo/1-5728.png"]},
+  {"out": "out-phones/elapse-cs3-next-match.png", "phones": ["../exports/elapse/157-29965.png", "../exports/elapse/157-29648.png", "../exports/elapse/157-29626.png"]},
+  {"out": "out-phones/elapse-cs3-delays.png", "phones": ["../exports/elapse/157-29670.png", "../exports/elapse/157-29740.png"], "pad_to": 1.6},
+  {"out": "out-phones/elapse-cs3-tournament-mode.png", "phones": ["../exports/elapse/157-30976.png", "../exports/elapse/157-30620.png", "../exports/elapse/157-30726.png"]},
+  {"out": "out-phones/elapse-cs3-scoutsheets.png", "phones": ["../exports/elapse/157-33046.png", "../exports/elapse/157-32940.png"], "pad_to": 1.6},
+  {"out": "out-phones/costudy-cs3-home.png", "phones": ["../exports/costudy/12-20.png", "../exports/costudy/37-760.png"], "pad_to": 1.6},
+  {"out": "out-phones/costudy-cs3-joining.png", "phones": ["../exports/costudy/33-3257.png", "../exports/costudy/41-10025.png"], "pad_to": 1.6},
+  {"out": "out-phones/costudy-cs3-signup.png", "phones": ["../exports/costudy/41-5517.png", "../exports/costudy/41-5867.png", "../exports/costudy/41-9769.png"]},
+  {"out": "out-phones/costudy-cs3-polish.png", "phones": ["../exports/costudy/12-20.png", "../exports/costudy/9-1861.png"], "pad_to": 1.6}
+]
