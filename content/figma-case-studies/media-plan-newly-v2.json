@@ -1,0 +1,154 @@
+[
+ {
+  "out": "out/newly-cs2-board-demo.png",
+  "items": [
+   {
+    "src": "../exports/n8083.png",
+    "crop": [
+     304,
+     160,
+     2560,
+     1664
+    ]
+   }
+  ],
+  "stroke": 0,
+  "radius": 28
+ },
+ {
+  "out": "out/newly-cs2-board-flat.png",
+  "items": [
+   {
+    "src": "../exports/n4696.png"
+   }
+  ],
+  "stroke": 0,
+  "radius": 28
+ },
+ {
+  "out": "out/newly-cs2-board-hybrid.png",
+  "items": [
+   {
+    "src": "../exports/n7224.png",
+    "crop": [
+     304,
+     160,
+     2560,
+     1664
+    ]
+   }
+  ],
+  "stroke": 0,
+  "radius": 28
+ },
+ {
+  "out": "out/newly-cs2-chat-first.png",
+  "items": [
+   {
+    "src": "../exports/n33716.png"
+   }
+  ],
+  "stroke": 0,
+  "radius": 28
+ },
+ {
+  "out": "out/newly-cs2-sidebar-before.png",
+  "items": [
+   {
+    "src": "../exports/n8835.png",
+    "crop": [
+     304,
+     160,
+     2560,
+     1664
+    ]
+   }
+  ],
+  "stroke": 0,
+  "radius": 28
+ },
+ {
+  "out": "out/newly-cs2-sidebar-after.png",
+  "items": [
+   {
+    "src": "../exports/n25426.png"
+   }
+  ],
+  "stroke": 0,
+  "radius": 28
+ },
+ {
+  "out": "out/newly-cs2-picker-versions.png",
+  "gap": 64,
+  "items": [
+   {
+    "src": "../exports/n30426.png",
+    "crop": [
+     1660,
+     110,
+     860,
+     640
+    ]
+   },
+   {
+    "src": "../exports/n30672.png",
+    "crop": [
+     1660,
+     110,
+     860,
+     640
+    ]
+   },
+   {
+    "src": "../exports/n31166.png",
+    "crop": [
+     1660,
+     110,
+     860,
+     640
+    ]
+   },
+   {
+    "src": "../exports/n32180.png",
+    "crop": [
+     1660,
+     110,
+     860,
+     640
+    ]
+   }
+  ],
+  "stroke": 0,
+  "radius": 28
+ },
+ {
+  "out": "out/newly-cs2-deploy-hub.png",
+  "items": [
+   {
+    "src": "../exports/n35485.png"
+   }
+  ],
+  "stroke": 0,
+  "radius": 28
+ },
+ {
+  "out": "out/newly-cs2-deploy-release.png",
+  "items": [
+   {
+    "src": "../exports/n35947.png"
+   }
+  ],
+  "stroke": 0,
+  "radius": 28
+ },
+ {
+  "out": "out/newly-cs2-web-welcome.png",
+  "items": [
+   {
+    "src": "../exports/n39266.png"
+   }
+  ],
+  "stroke": 0,
+  "radius": 28
+ }
+]
