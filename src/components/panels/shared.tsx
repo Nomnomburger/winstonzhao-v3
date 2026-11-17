@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, useMotionValue, useTransform, useAnimationControls, useReducedMotion, animate, type AnimationPlaybackControls, type MotionValue } from 'framer-motion';
-import { ReactNode, useCallback, useContext, useEffect, useEffectEvent, useId, useRef, useState, useSyncExternalStore } from 'react';
+import { Fragment, ReactNode, useCallback, useContext, useEffect, useEffectEvent, useId, useRef, useState, useSyncExternalStore } from 'react';
 import { Language } from './translations';
 import { HeroBioExitContext, HeroBioExitWord } from './HeroBioLine';
 import { revealMaskAnimation } from './text-reveal';
@@ -521,19 +521,13 @@ interface RoleProps {
   large?: boolean;
 }
 
-export function NewlyRole({ label = 'Design at', large = false }: RoleProps) {
+function NewlyMark({ large = false }: { large?: boolean }) {
   return (
-    <div className="flex gap-[2px] items-center">
-      <p className={roleTextClass(large)}>{label}</p>
-      <div className={roleIconClass(large)}>
-        <svg viewBox="0 0 12 9.15607" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Newly" role="img" className={`${large ? 'w-[14px] h-[10.682px]' : 'w-[12px] h-[9.156px]'} overflow-visible`}>
-          <path d="M9.15638 1.89468C9.15638 2.41779 9.58039 2.84181 10.1035 2.84181H11.0509C11.574 2.84181 11.9981 3.26583 11.9981 3.78896V8.20937C11.9981 8.73249 11.574 9.15652 11.0509 9.15652H9.78796C9.26483 9.15652 8.84083 8.73249 8.84083 8.20937V4.10476C8.84083 3.58163 8.4168 3.15761 7.89368 3.15761H4.10438C3.58125 3.15761 3.15723 3.58163 3.15723 4.10476V8.20937C3.15723 8.73249 2.73321 9.15652 2.21008 9.15652H0.947145C0.42402 9.15652 0 8.73249 0 8.20937V3.7892C0 3.26608 0.42402 2.84205 0.947145 2.84205H1.89428C2.41741 2.84205 2.84143 2.41803 2.84143 1.8949V0.947766C2.84143 0.424641 3.26546 0.000620978 3.78858 0.000620978H8.20899C8.73212 0.000620978 9.15614 0.424641 9.15614 0.947766V1.89468H9.15638Z" fill="currentColor"/>
-          <path d="M4.89574 5.08094C5.33176 5.08094 5.68498 5.66405 5.68498 6.38346C5.68498 6.39858 5.68474 6.4137 5.68451 6.42882C5.68115 6.58503 5.54604 6.69926 5.38982 6.69926H4.40141C4.24519 6.69926 4.11008 6.58479 4.10674 6.42882C4.10649 6.4137 4.10625 6.39882 4.10625 6.38346C4.10649 5.66429 4.45996 5.08094 4.89574 5.08094Z" fill="currentColor"/>
-          <path d="M7.10355 5.08094C7.53955 5.08094 7.89279 5.66405 7.89279 6.38346C7.89279 6.39858 7.89255 6.4137 7.89231 6.42882C7.88894 6.58503 7.75385 6.69926 7.59763 6.69926H6.60921C6.453 6.69926 6.3179 6.58479 6.31453 6.42882C6.31429 6.4137 6.31406 6.39882 6.31406 6.38346C6.31429 5.66429 6.66753 5.08094 7.10355 5.08094Z" fill="currentColor"/>
-        </svg>
-      </div>
-      <p className={roleTextClass(large)}><a href="https://newly.app" target="_blank" rel="noopener noreferrer" className="hover:underline">Newly</a></p>
-    </div>
+    <svg viewBox="0 0 12 9.15607" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Newly" role="img" className={`${large ? 'w-[14px] h-[10.682px]' : 'w-[12px] h-[9.156px]'} overflow-visible`}>
+      <path d="M9.15638 1.89468C9.15638 2.41779 9.58039 2.84181 10.1035 2.84181H11.0509C11.574 2.84181 11.9981 3.26583 11.9981 3.78896V8.20937C11.9981 8.73249 11.574 9.15652 11.0509 9.15652H9.78796C9.26483 9.15652 8.84083 8.73249 8.84083 8.20937V4.10476C8.84083 3.58163 8.4168 3.15761 7.89368 3.15761H4.10438C3.58125 3.15761 3.15723 3.58163 3.15723 4.10476V8.20937C3.15723 8.73249 2.73321 9.15652 2.21008 9.15652H0.947145C0.42402 9.15652 0 8.73249 0 8.20937V3.7892C0 3.26608 0.42402 2.84205 0.947145 2.84205H1.89428C2.41741 2.84205 2.84143 2.41803 2.84143 1.8949V0.947766C2.84143 0.424641 3.26546 0.000620978 3.78858 0.000620978H8.20899C8.73212 0.000620978 9.15614 0.424641 9.15614 0.947766V1.89468H9.15638Z" fill="currentColor"/>
+      <path d="M4.89574 5.08094C5.33176 5.08094 5.68498 5.66405 5.68498 6.38346C5.68498 6.39858 5.68474 6.4137 5.68451 6.42882C5.68115 6.58503 5.54604 6.69926 5.38982 6.69926H4.40141C4.24519 6.69926 4.11008 6.58479 4.10674 6.42882C4.10649 6.4137 4.10625 6.39882 4.10625 6.38346C4.10649 5.66429 4.45996 5.08094 4.89574 5.08094Z" fill="currentColor"/>
+      <path d="M7.10355 5.08094C7.53955 5.08094 7.89279 5.66405 7.89279 6.38346C7.89279 6.39858 7.89255 6.4137 7.89231 6.42882C7.88894 6.58503 7.75385 6.69926 7.59763 6.69926H6.60921C6.453 6.69926 6.3179 6.58479 6.31453 6.42882C6.31429 6.4137 6.31406 6.39882 6.31406 6.38346C6.31429 5.66429 6.66753 5.08094 7.10355 5.08094Z" fill="currentColor"/>
+    </svg>
   );
 }
 
@@ -573,14 +567,41 @@ export function TextQLMark({ className = '', ariaLabel }: TextQLMarkProps) {
   );
 }
 
-export function TextQLRole({ label = 'Prev. Design at', large = false }: RoleProps) {
+// The "y" from Yelo's wordmark, the brand's only mark (no app icon).
+function YeloMark({ large = false }: { large?: boolean }) {
+  return (
+    <svg viewBox="0 7.25 18.66 24.75" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Yelo" role="img" className={`${large ? 'w-[9.4px] h-[12.5px]' : 'w-[8.3px] h-[11px]'} overflow-visible`}>
+      <path d="M5.40284e-07 30.115L1.83876 24.4587C3.41524 25.3527 5.45106 25.881 7.12678 25.881C9.65596 25.881 11.2324 24.4259 11.2324 22.1425V20.6546H11.1998C10.2471 23.0365 8.44099 24.4587 6.30593 24.4587C3.12036 24.4587 1.24758 22.2425 1.24758 18.504V7.25565H8.80108V16.8161C8.80108 17.8742 9.1952 18.5026 9.8516 18.5026C10.6398 18.5026 11.0992 17.8086 11.0992 16.6833V7.25565H18.6527V22.8037C18.6527 28.46 14.547 32 8.11066 32C5.31921 32 2.19885 31.3388 -0.00141716 30.1136L5.40284e-07 30.115Z" fill="currentColor"/>
+    </svg>
+  );
+}
+
+const PREVIOUS_ROLES = [
+  { name: 'Newly', href: 'https://newly.app', mark: (large: boolean) => <NewlyMark large={large} /> },
+  {
+    name: 'TextQL',
+    href: 'https://textql.com',
+    mark: (large: boolean) => (
+      <TextQLMark className={`${large ? 'w-[14px] h-[10px]' : 'w-[12px] h-[8.578px]'} overflow-visible`} ariaLabel="TextQL" />
+    ),
+  },
+  { name: 'Yelo', href: 'https://joinyelo.com', mark: (large: boolean) => <YeloMark large={large} /> },
+];
+
+// "Prev. Design at [mark] Newly, [mark] TextQL, [mark] Yelo"
+export function PrevDesignRole({ label = 'Prev. Design at', separator = ',', large = false }: RoleProps & { separator?: string }) {
   return (
     <div className="flex gap-[2px] items-center">
       <p className={roleTextClass(large)}>{label}</p>
-      <div className={roleIconClass(large)}>
-        <TextQLMark className={`${large ? 'w-[14px] h-[10px]' : 'w-[12px] h-[8.578px]'} overflow-visible`} ariaLabel="TextQL" />
-      </div>
-      <p className={roleTextClass(large)}><a href="https://textql.com" target="_blank" rel="noopener noreferrer" className="hover:underline">TextQL</a></p>
+      {PREVIOUS_ROLES.map(({ name, href, mark }, i) => (
+        <Fragment key={name}>
+          <div className={`${roleIconClass(large)} ${i > 0 ? 'ml-[3px]' : ''}`}>{mark(large)}</div>
+          <p className={roleTextClass(large)}>
+            <a href={href} target="_blank" rel="noopener noreferrer" className="hover:underline">{name}</a>
+            {i < PREVIOUS_ROLES.length - 1 && separator}
+          </p>
+        </Fragment>
+      ))}
     </div>
   );
 }

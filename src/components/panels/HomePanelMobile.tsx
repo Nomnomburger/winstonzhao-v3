@@ -11,7 +11,7 @@ import {
   useCurrentTime,
   WZLogo,
   LanguageGlobe,
-  NewlyRole,
+  PrevDesignRole,
   FigmaRole,
   OLD_SITE_URL,
   RESUME_URL,
@@ -978,16 +978,16 @@ export default function HomePanelMobile({
                           animate={{ opacity: bioExpanded ? 1 : 0 }}
                           transition={{ duration: reducedMotion ? 0 : 0.3 }}
                         >
-                          <NewlyRole label={langSwitched ? (
-                            <ScrambleText from={fromT.designAt} charDelay={switchCharDelay}>
-                              {t.designAt}
-                            </ScrambleText>
-                          ) : t.designAt} />
                           <FigmaRole label={langSwitched ? (
                             <ScrambleText from={fromT.campusLeaderAt} charDelay={switchCharDelay}>
                               {t.campusLeaderAt}
                             </ScrambleText>
                           ) : t.campusLeaderAt} />
+                          <PrevDesignRole separator={t.listSeparator} label={langSwitched ? (
+                            <ScrambleText from={fromT.prevDesignAt} charDelay={switchCharDelay}>
+                              {t.prevDesignAt}
+                            </ScrambleText>
+                          ) : t.prevDesignAt} />
                         </motion.div>
                       </motion.div>
                     </div>

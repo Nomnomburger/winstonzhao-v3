@@ -7,7 +7,7 @@ import HomeNavigationBackdrop from '@/components/panels/HomeNavigationBackdrop';
 import HomeMenuLinks, { MenuRevealText } from '@/components/panels/HomeMenuLinks';
 import TextRevealMask from '@/components/panels/TextRevealMask';
 import { expandedBioLines } from '@/components/panels/bio-copy';
-import { FigmaRole, LanguageGlobe, NewlyRole, ScrambleText, useCurrentTime, useIsMobile, WZLogo } from '@/components/panels/shared';
+import { FigmaRole, LanguageGlobe, PrevDesignRole, ScrambleText, useCurrentTime, useIsMobile, WZLogo } from '@/components/panels/shared';
 import { translations, type Language } from '@/components/panels/translations';
 import { useHomeMenu } from '@/components/panels/useHomeMenu';
 import { useLanguage } from '@/components/panels/useLanguage';
@@ -117,8 +117,8 @@ export default function ProjectHeader({ projectCount }: { projectCount: number }
         >
           <WZLogo className="w-[27px] h-[17px]" />
           <div className="md:col-span-3 lg:col-span-1 flex flex-wrap gap-x-3 gap-y-1 items-center">
-            <NewlyRole large label={t.designAt} />
             <FigmaRole large label={t.campusLeaderAt} />
+            <PrevDesignRole large label={t.prevDesignAt} separator={t.listSeparator} />
           </div>
           <div className="flex items-center justify-end gap-1.5 whitespace-nowrap">
             <span>{currentTime}</span>
