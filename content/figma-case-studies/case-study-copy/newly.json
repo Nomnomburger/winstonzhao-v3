@@ -8,7 +8,7 @@
       "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W/Winston-Design-Demo?node-id=284-16034",
       "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W/Winston-Design-Demo?node-id=284-16320"
     ],
-    "facts": "Confirmed by Winston (Nov 2026): contract Design Engineer, May–Oct 2026, only designer; founders + a team of 6+ (roles not stated); built the prompt bar, workspace layout, deploy and web screens in React/TypeScript, mostly with Claude Code and Cursor; the board was his idea, people found it slightly confusing (more used to chatting with an agent), it was too much to build, and the founders/team chose chat-first; the board may return; dual sidebar consolidated after people found two collapsible panes a bit confusing; 8 picker frames are 8 iterations, changed after tester feedback and own critique (unclear what Apply did, unclear what was selected); after the changes shipped people stopped hitting those problems; colour restraint was his call; workspace, prompt bar, deploy and web app are live; the work helped grow ARR (user count private); audience is technical and non-technical people. Takeaways he chose: 'states, not screens' and 'right idea, wrong time'. Depth round (Nov 2026): modes moved out of a dropdown after PostHog showed Plan/Ask were rarely used and support asked for an ask-only mode that already existed; only the active mode is labelled to stay narrow, say what will happen and reduce noise; agent work is folded for non-technical users and readability, expanded logs give each step an icon and code/commands their own containers; remote/local can't change after a session starts and the model rarely changes, so both sit under the bar only at the start; new sessions get a taller bar to feel balanced and important; the queue exists because runs take minutes, people wanted to line up the next change, and it keeps them in control. Title: Winston asked for 'Newly Desktop App' (Nov 2026); the slug stays as is. Copy round (Nov 2026): never say 'assumed' or that numbers are missing; just leave it out. Each case ends with a short Summary that doesn't mention what's missing or assumed. Layout (Nov 2026): per Winston's V3 design, the How might we statement is the heading of the first content section, titled 'Problem Statement'; the summary field is a short line on what he did."
+    "facts": "Confirmed by Winston (Nov 2026): contract Design Engineer, May–Oct 2026, only designer; founders + a team of 6+ (roles not stated); built the prompt bar, workspace layout, deploy and web screens in React/TypeScript, mostly with Claude Code and Cursor; the board was his idea, people found it slightly confusing (more used to chatting with an agent), it was too much to build, and the founders/team chose chat-first; the board may return; dual sidebar consolidated after people found two collapsible panes a bit confusing; 8 picker frames are 8 iterations, changed after tester feedback and own critique (unclear what Apply did, unclear what was selected); after the changes shipped people stopped hitting those problems; colour restraint was his call; workspace, prompt bar, deploy and web app are live; the work helped grow ARR (user count private); audience is technical and non-technical people. Takeaways he chose: 'states, not screens' and 'right idea, wrong time'. Depth round (Nov 2026): modes moved out of a dropdown after PostHog showed Plan/Ask were rarely used and support asked for an ask-only mode that already existed; only the active mode is labelled to stay narrow, say what will happen and reduce noise; agent work is folded for non-technical users and readability, expanded logs give each step an icon and code/commands their own containers; remote/local can't change after a session starts and the model rarely changes, so both sit under the bar only at the start; new sessions get a taller bar to feel balanced and important; the queue exists because runs take minutes, people wanted to line up the next change, and it keeps them in control. Title: Winston asked for 'Newly Desktop App' (Nov 2026); the slug stays as is. Copy round (Nov 2026): never say 'assumed' or that numbers are missing; just leave it out. Each case ends with a short Summary that doesn't mention what's missing or assumed. Layout (Nov 2026): per Winston's V3 design, the How might we statement is the heading of the first content section, titled 'Problem Statement'; the summary field is a short line on what he did. Round 2 (Nov 17 2026): the board-with-prompt-bar image is shown without its wallpaper; the board caption is removed. Start screen (335:7662 no project, 284:37196 in a project): the sidebar differs in and out of a project; the taller prompt bar is for attention; there is space for a card stack to resume projects or promote actions like downloading the mobile app. Menus had to give clear information without much text: one-line location trade-offs, the effort slider, and a small LINK button that prompts people to link their own agents. He used Claude Design to prototype the chat interactions and layouts, because he could simulate typing and chatting with the agent while iterating (canvas: Chat screen design experiments). A lot of the onboarding was designed and then prototyped in Claude Design (canvas: Newly App Onboarding Flow); the clips are recorded from that prototype."
   },
   "fields": {
     "title": "Newly Desktop App",
@@ -46,7 +46,7 @@
       },
       {
         "label": "Tools",
-        "value": "Figma · React · TypeScript\nClaude Code · Cursor"
+        "value": "Figma · Claude Design\nReact · TypeScript\nClaude Code · Cursor"
       }
     ],
     "cover": {
@@ -95,8 +95,7 @@
                   "highlight": "Chosen"
                 }
               ]
-            },
-            "caption": "The board was my idea. The founders and team chose chat-first."
+            }
           },
           "My first direction treated your app like a roadmap. The agent proposed features as cards and explained its reasoning. You approved, built and deployed each one from a board.",
           {
@@ -160,6 +159,60 @@
         ]
       },
       {
+        "title": "Onboarding",
+        "heading": "From sign-up to the first prompt",
+        "content": [
+          "I designed the onboarding, then prototyped a lot of it in Claude Design, micro-interactions and animations included.",
+          {
+            "video": "onb-welcome",
+            "poster": "onb-welcome-poster",
+            "caption": "The welcome screen cycles through things you could make, then sign-up."
+          },
+          "Next come two quick questions: what you want to build, and how much of this you’ve done before. Every option has a one-line hint, like “Explain things as we go” or “Give me the controls”, and both questions can be skipped. A three-card tour follows: say it once in plain English, change anything by asking, ship it to the App Store.",
+          {
+            "video": "onb-setup",
+            "poster": "onb-setup-poster",
+            "caption": "What you’re building, how much you’ve done before, and the tour."
+          },
+          "Local development needs Xcode and an iPhone simulator. Newly runs both setups for you, one step at a time, and shows each step as it runs. **Set this up later** skips it.",
+          {
+            "video": "onb-local",
+            "poster": "onb-local-poster",
+            "caption": "Xcode and the simulator set up, then the workspace opens."
+          }
+        ]
+      },
+      {
+        "title": "Start screen",
+        "heading": "One start screen, in and out of a project",
+        "content": [
+          "Every new chat starts on the same screen, with or without a project open. What changes is the sidebar:",
+          {
+            "bullets": [
+              "**No project open:** Home, Open Existing Project and Docs, then your projects and recent ones.",
+              "**Inside a project:** the project, New Session, Search, Deploy and Configure, then pinned sessions and the session list."
+            ]
+          },
+          "The prompt bar is taller here than in a chat, so starting one gets your attention and the screen feels balanced.",
+          "Below it there’s room for a stack of cards: a way back into a recent project, or an action worth promoting, like getting the mobile app.",
+          {
+            "gallery": [
+              {
+                "image": "start-home",
+                "label": "No project",
+                "alt": "Newly with no project open: a sidebar with Home, Open Existing Project, Docs, projects and recents, a tall prompt bar under Let’s make something new, and a Summer Project card to pick up where you left off"
+              },
+              {
+                "image": "start-project",
+                "label": "In a project",
+                "alt": "Newly inside the Travel App project: a sidebar with New Session, Search, Deploy, Configure, pinned sessions and sessions, a tall prompt bar under Hey Winston! Ready to build?, and a card to try the Newly mobile app"
+              }
+            ],
+            "caption": "“Pick up where you left off” outside a project, “Try the Newly Mobile App” inside one."
+          }
+        ]
+      },
+      {
         "title": "Prompt bar",
         "heading": "One prompt bar, three layouts",
         "content": [
@@ -190,24 +243,21 @@
             "h3": "Set once, at the start"
           },
           "A session can’t switch between remote and local once it starts. Only the model can change, and people rarely change it. So in a new session, location and model sit under the bar where you can’t miss them. Mid-chat, the model moves into the + menu, out of the way, especially for non-technical people.",
-          "New sessions also get a taller bar, so starting a chat feels balanced and important.",
           {
-            "gallery": [
-              {
-                "image": "new-session-empty",
-                "alt": "Newly with no project open: a tall prompt bar under Let’s make something new, with Remote Session and Newly Agent below it"
-              },
-              {
-                "image": "new-session-project",
-                "alt": "Newly inside a project: a tall prompt bar under Hey Winston! Ready to build?, with branch, Remote Session and Newly Agent below it"
-              }
-            ],
-            "caption": "New sessions get the taller bar: with no project open, and inside a project."
+            "h3": "Short copy in the menus"
+          },
+          "These menus had to give clear information without much text. Each option gets a name and, at most, one short line:",
+          {
+            "bullets": [
+              "**Location** explains its trade-off: “Runs in the cloud, accessible on any device” or “Runs on your computer, device must stay awake”.",
+              "**Models** say what you’re picking: Newly Agent is “Best all around”, and Codex and Claude “Use your own subscription”. If you haven’t linked one yet, a small **+ LINK** next to it prompts you to link your own.",
+              "**Effort** is a slider with one word for the current level, like “Medium”."
+            ]
           },
           {
             "image": "bar-settings",
             "alt": "Three popovers from the Newly prompt bar: Remote or Local session, Effort and Model, and the + menu with the model submenu",
-            "caption": "Session location explains its trade-off in one line, like “Runs on your computer, device must stay awake”."
+            "caption": "The location and model menus at the start, and the + menu mid-chat."
           },
           {
             "h3": "While the agent works"
@@ -240,8 +290,25 @@
           },
           {
             "image": "conversation",
-            "alt": "A close-up of a Newly conversation: the user’s message, the agent’s reply, and its work folded into the line Worked for 3m, used 3 tools",
-            "caption": "The agent’s work, folded into one line."
+            "alt": "The Newly chat panel on the blue wallpaper: the user’s message, the agent’s reply with its work folded into Worked for 3m, used 3 tools, and the prompt bar at the bottom",
+            "caption": "The agent’s work, folded into one line, with the prompt bar below."
+          },
+          {
+            "h3": "Prototyped in Claude Design"
+          },
+          "I used Claude Design to prototype the chat’s interactions and layouts. I could actually type and chat with the agent while I iterated on the designs.",
+          {
+            "bullets": [
+              "**Markdown** in replies: headings, lists, inline code, tables and links.",
+              "**Code and terminal** blocks: a live terminal, code with its filename, and diffs.",
+              "**The tool list, expanded:** each tool with an icon and how long it took, and steps still running.",
+              "**Questions in the chat bar:** when the agent needs an answer, the bar turns into options to pick from."
+            ]
+          },
+          {
+            "image": "chat-experiments",
+            "alt": "Four Newly chat experiments as selected frames on a dot grid: markdown in a reply, code and terminal blocks, the expanded tool list, and a question in the chat bar",
+            "caption": "Four chat experiments from Claude Design."
           }
         ]
       },
@@ -321,7 +388,7 @@
           {
             "h3": "Summary"
           },
-          "One prompt in Newly drives sessions, a simulator, models and App Store releases, for technical and non-technical people. As the only designer, I designed the workspace around that prompt bar. I also built the layout, the prompt bar, and the deploy and web screens in React and TypeScript.",
+          "One prompt in Newly drives sessions, a simulator, models and App Store releases, for technical and non-technical people. As the only designer, I designed the workspace around that prompt bar. I also built the layout, the prompt bar, and the deploy and web screens in React and TypeScript. I prototyped the chat and the onboarding in Claude Design.",
           "Feedback and the team’s priorities changed the plan more than once along the way. What shipped helped grow Newly’s revenue."
         ]
       }
@@ -349,9 +416,9 @@
     "board-hybrid": {
       "path": "assets/newly-cs2-board-hybrid.png",
       "sourceNodeIds": [
-        "284:7224"
+        "284:7226"
       ],
-      "note": "Window cropped from the Newly Desktop Demo composition."
+      "note": "The window (MacBook Air - 17) exported on its own, without the composition’s wallpaper, so it matches the other two; the frame around the main panel takes the same light grey as the standalone windows."
     },
     "chat-first": {
       "path": "assets/newly-cs2-chat-first.png",
@@ -430,18 +497,6 @@
         "284:39266"
       ]
     },
-    "new-session-empty": {
-      "path": "assets/newly-cs2-new-session-empty.png",
-      "sourceNodeIds": [
-        "284:36752"
-      ]
-    },
-    "new-session-project": {
-      "path": "assets/newly-cs2-new-session-project.png",
-      "sourceNodeIds": [
-        "284:37196"
-      ]
-    },
     "bar-modes": {
       "path": "assets/newly-cs-bar-modes.jpg",
       "sourceNodeIds": [
@@ -451,11 +506,62 @@
       ]
     },
     "conversation": {
-      "path": "assets/newly-cmp-conversation.png",
+      "path": "assets/newly-cs2-conversation.jpg",
       "sourceNodeIds": [
-        "284:33716"
+        "295:41173"
       ],
-      "note": "Close-up crop of the conversation."
+      "note": "The chat panel with its prompt bar, cropped from the 2x composition export, given back its corner radius and a soft shadow, on the Newly wallpaper (the section fill image)."
+    },
+    "start-home": {
+      "path": "assets/newly-cs2-start-home.png",
+      "sourceNodeIds": [
+        "335:7662",
+        "284:36751"
+      ],
+      "note": "Desktop/Welcome/Empty cropped from a 2x export of its section, so the section’s wallpaper shows through the window glass (like sidebar-after)."
+    },
+    "start-project": {
+      "path": "assets/newly-cs2-start-project.png",
+      "sourceNodeIds": [
+        "284:37196",
+        "284:37195"
+      ],
+      "note": "MacBook Air - 73 cropped from a 2x export of its section, so the section’s wallpaper shows through the window glass (like sidebar-after)."
+    },
+    "chat-experiments": {
+      "path": "assets/newly-cs2-chat-experiments.jpg",
+      "note": "The four options on Winston’s Claude Design canvas “Chat screen design experiments” (claude.ai artifact XDVqFK5p4eybsazAfQ2gM7), as selected frames on a dot grid like the Yelo iterations.",
+      "sourceUrl": "https://claude.ai/artifact/XDVqFK5p4eybsazAfQ2gM7"
+    },
+    "onb-welcome": {
+      "path": "assets/newly-cs2-onboarding-welcome.mp4",
+      "note": "Recorded frame by frame at 30 fps from Winston’s Claude Design canvas “Newly App Onboarding Flow” (claude.ai artifact Keh7AEJawGQ1RPkqysUzGH). The prototype’s variant switcher is hidden and a cursor is drawn in.",
+      "sourceUrl": "https://claude.ai/artifact/Keh7AEJawGQ1RPkqysUzGH"
+    },
+    "onb-welcome-poster": {
+      "path": "assets/newly-cs2-onboarding-welcome-poster.jpg",
+      "note": "A frame from the clip.",
+      "sourceUrl": "https://claude.ai/artifact/Keh7AEJawGQ1RPkqysUzGH"
+    },
+    "onb-setup": {
+      "path": "assets/newly-cs2-onboarding-setup.mp4",
+      "note": "Recorded frame by frame at 30 fps from Winston’s Claude Design canvas “Newly App Onboarding Flow” (claude.ai artifact Keh7AEJawGQ1RPkqysUzGH). The prototype’s variant switcher is hidden and a cursor is drawn in.",
+      "sourceUrl": "https://claude.ai/artifact/Keh7AEJawGQ1RPkqysUzGH"
+    },
+    "onb-setup-poster": {
+      "path": "assets/newly-cs2-onboarding-setup-poster.jpg",
+      "note": "A frame from the clip.",
+      "sourceUrl": "https://claude.ai/artifact/Keh7AEJawGQ1RPkqysUzGH"
+    },
+    "onb-local": {
+      "path": "assets/newly-cs2-onboarding-local.mp4",
+      "note": "Recorded frame by frame at 30 fps from Winston’s Claude Design canvas “Newly App Onboarding Flow” (claude.ai artifact Keh7AEJawGQ1RPkqysUzGH). The prototype’s variant switcher is hidden and a cursor is drawn in.",
+      "sourceUrl": "https://claude.ai/artifact/Keh7AEJawGQ1RPkqysUzGH"
+    },
+    "onb-local-poster": {
+      "path": "assets/newly-cs2-onboarding-local-poster.jpg",
+      "note": "A frame from the clip.",
+      "sourceUrl": "https://claude.ai/artifact/Keh7AEJawGQ1RPkqysUzGH"
     }
   }
 }
