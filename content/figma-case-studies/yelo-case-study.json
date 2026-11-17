@@ -839,7 +839,7 @@
                 "_type": "span",
                 "_key": "yelo-s-5-b-0-s",
                 "marks": [],
-                "text": "The final sign-up has eight short steps: welcome, phone number, a text code, student status, an email code, a pre-filled profile, an optional photo and permissions."
+                "text": "The final sign-up has seven short steps: welcome, phone number, a text code, student status, a pre-filled profile, an optional photo and permissions."
               }
             ]
           },
@@ -893,7 +893,7 @@
                 "_type": "span",
                 "_key": "yelo-s-5-b-2-1-s1",
                 "marks": [],
-                "text": " replaced the old school picker and emailed code. It’s fewer steps, most students already have one of those accounts, it keeps Yelo students-only, and it fills in the profile."
+                "text": " replaced the old school picker. An emailed code is still there as a fallback. It’s fewer steps, most students already have one of those accounts, it keeps Yelo students-only, and it fills in the profile."
               }
             ],
             "listItem": "bullet",
