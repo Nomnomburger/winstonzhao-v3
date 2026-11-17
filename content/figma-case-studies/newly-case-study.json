@@ -4,13 +4,13 @@
   "fields": {
     "title": "Newly Desktop App",
     "description": "One prompt bar, a live iPhone preview and a path to the App Store.",
-    "client": "Newly",
-    "discipline": "Product Design · Design Engineering",
+    "client": "Newly · Small Scale Labs AB",
+    "discipline": "Product Design Engineering",
     "link": {
       "url": "https://newly.app",
       "label": "Visit"
     },
-    "intro": "Newly is an AI agent that turns a conversation into a real iOS, Android or web app. As a contract design engineer and the only designer, I designed the desktop and web workspace and built parts of it in React and TypeScript.",
+    "intro": "Newly is an AI agent that turns a conversation into a real iOS, Android or web app. As a contract design engineer and the only designer, I designed the desktop and web workspace and built parts of the frontend.",
     "summary": "Designing the workspace where people build apps with Newly’s agent, from the prompt bar to deploying to the App Store.",
     "overview": "Newly is for technical and non-technical people alike. I worked with the founders and a team of six-plus, and changed course when feedback showed something wasn’t working.",
     "impact": "Shipped on desktop and web, and helped grow Newly’s revenue.",
@@ -872,7 +872,7 @@
                 "_type": "span",
                 "_key": "newly-s-5-b-1-s",
                 "marks": [],
-                "text": "I built it in React and TypeScript, mostly with Claude Code and Cursor."
+                "text": "I also built parts of its frontend, mostly with Claude Code and Cursor."
               }
             ]
           },
@@ -2085,7 +2085,7 @@
                 "_type": "span",
                 "_key": "newly-s-10-b-6-s",
                 "marks": [],
-                "text": "One prompt in Newly drives sessions, a simulator, models and App Store releases, for technical and non-technical people. As the only designer, I designed the workspace around that prompt bar, from onboarding to the preview panel. I also built the layout, the prompt bar, and the deploy and web screens in React and TypeScript, and prototyped the chat and much of the onboarding in Claude Design."
+                "text": "One prompt in Newly drives sessions, a simulator, models and App Store releases, for technical and non-technical people. As the only designer, I designed the workspace around that prompt bar, from onboarding to the preview panel. I also built parts of the frontend and prototyped the chat and much of the onboarding in Claude Design."
               }
             ]
           },
