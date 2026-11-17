@@ -146,7 +146,7 @@ export default async function ProjectPage({ params }: { params: Params }) {
               <dl className="md:col-start-3 flex flex-col gap-6 text-[14px] text-justify leading-[1.2]">
                 {details.map((d, i) => (
                   <div key={d._key} className="flex flex-col gap-2">
-                    <dt className="tracking-[-0.28px]">
+                    <dt className="tracking-[-0.02em]">
                       <RevealText delay={0.1 + i * 0.05}>{d.label}</RevealText>
                     </dt>
                     <dd className="whitespace-pre-line">
@@ -164,7 +164,7 @@ export default async function ProjectPage({ params }: { params: Params }) {
           <RevealArea as="section" className="grid grid-cols-1 md:grid-cols-3 gap-x-6 gap-y-12 p-6 md:p-9">
             {project.overview && (
               <div className="flex flex-col gap-2 text-[14px] text-justify leading-[1.2]">
-                <p className="tracking-[-0.28px]">
+                <p className="tracking-[-0.02em]">
                   <RevealText>Overview</RevealText>
                 </p>
                 <RevealFade delay={0.1}>
@@ -174,7 +174,7 @@ export default async function ProjectPage({ params }: { params: Params }) {
             )}
             {project.impact && (
               <div className="md:col-start-3 flex flex-col gap-2 leading-[1.2]">
-                <p className="text-[14px] text-justify tracking-[-0.28px]">
+                <p className="text-[14px] text-justify tracking-[-0.02em]">
                   <RevealText delay={0.05}>Impact</RevealText>
                 </p>
                 <p className="text-[28px] md:text-[40px] tracking-[-0.02em] whitespace-pre-line">

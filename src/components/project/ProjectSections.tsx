@@ -114,7 +114,7 @@ export default function ProjectSections({ sections, showSideMenu }: ProjectSecti
               className="flex flex-col gap-3 scroll-mt-[104px] focus:outline-none"
             >
               <div className={`flex flex-col gap-3 ${textColumn}`}>
-                <p className="text-[14px] text-justify leading-[1.2]">
+                <p className="text-[14px] text-justify tracking-[-0.02em] leading-[1.2]">
                   <RevealText>{section.title}</RevealText>
                 </p>
                 {section.heading && (

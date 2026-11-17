@@ -52,7 +52,7 @@ export function ResponsiveImage({ image, sizes, className = '', priority = false
 function Caption({ children }: { children?: string }) {
   if (!children) return null;
   return (
-    <figcaption className="mt-3 text-[14px] tracking-[-0.02em] leading-[1.2]">
+    <figcaption className="mt-3 text-[14px] leading-[1.2]">
       {children}
     </figcaption>
   );
