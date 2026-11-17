@@ -16,7 +16,16 @@ export default defineType({
         defineArrayMember({
           type: 'image',
           options: {hotspot: true},
-          fields: [defineField({name: 'alt', title: 'Alt text', type: 'string'})],
+          fields: [
+            defineField({name: 'alt', title: 'Alt text', type: 'string'}),
+            defineField({
+              name: 'label',
+              title: 'Label above image (optional)',
+              type: 'string',
+              description: 'A short word above the image, e.g. Before or After.',
+              validation: (Rule) => Rule.max(24),
+            }),
+          ],
         }),
       ],
       options: {layout: 'grid'},

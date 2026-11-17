@@ -24,6 +24,17 @@ export interface ImageSource {
   crop?: ImageCrop;
   hotspot?: ImageHotspot;
   alt?: string;
+  // A label above this image, for image rows (e.g. "Before", "After").
+  label?: string;
+}
+
+// A short word placed over an image (e.g. "Before"), at fractions of its
+// width (x) and height (y) from the top-left corner.
+export interface ImageLabel {
+  _key?: string;
+  text?: string;
+  x?: number;
+  y?: number;
 }
 
 const isSanityUrl = (url: string) => url.startsWith('https://cdn.sanity.io/');

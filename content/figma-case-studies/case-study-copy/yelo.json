@@ -64,7 +64,19 @@
           {
             "image": "before-after",
             "alt": "Two iPhones: Yelo’s earlier home with a dark photo header, ticker and hotness scores, and the redesigned home with search first and feed cards for where people are headed, tickets and trending searches",
-            "caption": "Before: the earlier home. After: the redesign."
+            "caption": "The earlier home, and the redesign.",
+            "labels": [
+              {
+                "text": "Before",
+                "x": 0.3428,
+                "y": 0.0434
+              },
+              {
+                "text": "After",
+                "x": 0.6572,
+                "y": 0.0434
+              }
+            ]
           }
         ]
       },

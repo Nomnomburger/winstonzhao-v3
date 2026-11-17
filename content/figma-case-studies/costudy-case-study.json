@@ -390,8 +390,24 @@
             "_key": "costudy-s-3-b-1",
             "localAssetKey": "joining",
             "alt": "Two iPhones: a CoStudy session before joining with a Join session button, and after joining with Open class thread and Leave session",
-            "caption": "Before and after joining.",
-            "size": "full"
+            "caption": "A session, before and after you join.",
+            "size": "full",
+            "labels": [
+              {
+                "_type": "imageLabel",
+                "_key": "costudy-s-3-b-1-l0",
+                "text": "Before",
+                "x": 0.3428,
+                "y": 0.0434
+              },
+              {
+                "_type": "imageLabel",
+                "_key": "costudy-s-3-b-1-l1",
+                "text": "After",
+                "x": 0.6572,
+                "y": 0.0434
+              }
+            ]
           }
         ]
       },

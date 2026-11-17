@@ -1,7 +1,8 @@
 'use client';
 
 import { useCallback, useEffect, useRef, useState, type MouseEvent, type ReactNode } from 'react';
-import { imageAspect, imageUrl, type ImageSource } from '@/lib/image';
+import { imageAspect, imageUrl, type ImageLabel, type ImageSource } from '@/lib/image';
+import ImageLabels from './ImageLabels';
 import { getSmoothScroll } from '@/lib/smooth-scroll';
 
 const LIGHTBOX_WIDTHS = [1000, 1600, 2400, 3200];
@@ -56,7 +57,15 @@ const reducedMotion = () => window.matchMedia('(prefers-reduced-motion: reduce)'
 // Wraps an inline image in a button that opens it large in a modal dialog
 // over a blurred page. Clicking anywhere, the close button or Escape closes
 // it, and focus returns to the image.
-export default function Lightbox({ image, children }: { image: ImageSource; children: ReactNode }) {
+export default function Lightbox({
+  image,
+  labels,
+  children,
+}: {
+  image: ImageSource;
+  labels?: ImageLabel[];
+  children: ReactNode;
+}) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
   const closeTimer = useRef<number | undefined>(undefined);
@@ -175,15 +184,10 @@ export default function Lightbox({ image, children }: { image: ImageSource; chil
         className="lightbox"
       >
         {open && (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            src={src}
-            srcSet={srcSet}
-            sizes={aspect < 1 ? `calc((100vh - 132px) * ${aspect.toFixed(3)})` : '100vw'}
-            alt={image.alt ?? ''}
-            decoding="async"
-            onLoad={() => setLoaded(true)}
-            className="lightbox-image"
+          // The box carries the size, the stand-in background and the
+          // animation; the image and any labels fill it.
+          <div
+            className="lightbox-image relative"
             style={{
               aspectRatio: aspect,
               // Fit the viewport, but never smaller than the image was inline;
@@ -192,7 +196,19 @@ export default function Lightbox({ image, children }: { image: ImageSource; chil
               maxWidth: dimensions?.width ? `min(100%, ${dimensions.width}px)` : '100%',
               backgroundImage: !loaded && placeholder ? `url("${placeholder}")` : undefined,
             }}
-          />
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={src}
+              srcSet={srcSet}
+              sizes={aspect < 1 ? `calc((100vh - 132px) * ${aspect.toFixed(3)})` : '100vw'}
+              alt={image.alt ?? ''}
+              decoding="async"
+              onLoad={() => setLoaded(true)}
+              className="absolute inset-0 block h-full w-full"
+            />
+            <ImageLabels labels={labels} className="text-[12px] md:text-[16px]" />
+          </div>
         )}
         <button
           ref={closeButtonRef}

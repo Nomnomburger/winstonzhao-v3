@@ -4,8 +4,9 @@
 // as preload hints in the page's RSC payload, so prefetching a project link on
 // the home page would start downloading its full-size hero.
 import { Fragment } from 'react';
-import { imageUrl, imageAspect, type ImageSource } from '@/lib/image';
+import { imageUrl, imageAspect, type ImageLabel, type ImageSource } from '@/lib/image';
 import AutoplayVideo from './AutoplayVideo';
+import ImageLabels from './ImageLabels';
 import Lightbox from './Lightbox';
 
 const SRCSET_WIDTHS = [640, 1000, 1400, 2000, 2800];
@@ -62,16 +63,25 @@ export function ImageFigure({
   caption,
   sizes,
   priority,
+  labels,
 }: {
   image: ImageSource;
   caption?: string;
   sizes: string;
   priority?: boolean;
+  labels?: ImageLabel[];
 }) {
   return (
     <figure className="w-full">
-      <Lightbox image={image}>
-        <ResponsiveImage image={image} sizes={sizes} priority={priority} />
+      <Lightbox image={image} labels={labels}>
+        {labels?.length ? (
+          <span className="relative block">
+            <ResponsiveImage image={image} sizes={sizes} priority={priority} />
+            <ImageLabels labels={labels} className="text-[11px] md:text-[14px]" />
+          </span>
+        ) : (
+          <ResponsiveImage image={image} sizes={sizes} priority={priority} />
+        )}
       </Lightbox>
       <Caption>{caption}</Caption>
     </figure>
@@ -110,13 +120,15 @@ const GALLERY_COLUMNS: Record<number, string> = {
 // A small arrow between images in a sequence. The same grey and size as
 // the arrows drawn into the composite images, so they match: it reads on
 // the white and the near-black page.
-function SequenceArrow({ vertical = false }: { vertical?: boolean }) {
+function SequenceArrow({ vertical = false, offset = false }: { vertical?: boolean; offset?: boolean }) {
+  // offset: line the arrow up with the images, not with images + labels
+  const shift = offset ? (vertical ? 'sm:mt-[19px] md:mt-[26px]' : 'mt-[19px] md:mt-[26px]') : '';
   return (
     <svg
       aria-hidden="true"
       viewBox="0 0 24 12"
       fill="none"
-      className={`h-3 w-6 shrink-0 ${vertical ? 'rotate-90 sm:rotate-0' : ''}`}
+      className={`h-3 w-6 shrink-0 ${vertical ? 'rotate-90 sm:rotate-0' : ''} ${shift}`}
     >
       <path
         d="M2 6H22M16.5 0.5L22 6L16.5 11.5"
@@ -127,6 +139,13 @@ function SequenceArrow({ vertical = false }: { vertical?: boolean }) {
       />
     </svg>
   );
+}
+
+// A word above an image in a row (e.g. "Before"), in the page's text colour.
+function RowLabel({ text }: { text?: string }) {
+  const t = typeof text === 'string' ? text.trim() : '';
+  if (!t) return null;
+  return <p className="mb-2 md:mb-3 text-center text-[11px] md:text-[14px] leading-none tracking-[-0.02em]">{t}</p>;
 }
 
 export function GalleryFigure({
@@ -148,13 +167,15 @@ export function GalleryFigure({
     // Three images stack on phones like the plain gallery, with the arrows
     // turned to point down.
     const stack = shown.length > 2;
+    const labelled = shown.some((img) => img.label?.trim());
     return (
       <figure className="w-full">
         <div className={`flex items-center gap-2 md:gap-3 ${stack ? 'flex-col sm:flex-row' : 'flex-row'}`}>
           {shown.map((image, i) => (
             <Fragment key={i}>
-              {i > 0 && <SequenceArrow vertical={stack} />}
+              {i > 0 && <SequenceArrow vertical={stack} offset={labelled} />}
               <div className={`min-w-0 ${stack ? 'w-full sm:w-auto sm:flex-1' : 'flex-1'}`}>
+                <RowLabel text={image.label} />
                 <Lightbox image={image}>
                   <ResponsiveImage image={image} aspect={aspect} sizes={sizes} />
                 </Lightbox>
@@ -170,9 +191,12 @@ export function GalleryFigure({
     <figure className="w-full">
       <div className={`grid gap-4 ${GALLERY_COLUMNS[shown.length] ?? 'grid-cols-2'}`}>
         {shown.map((image, i) => (
-          <Lightbox key={i} image={image}>
-            <ResponsiveImage image={image} aspect={aspect} sizes={sizes} />
-          </Lightbox>
+          <div key={i} className="min-w-0">
+            <RowLabel text={image.label} />
+            <Lightbox image={image}>
+              <ResponsiveImage image={image} aspect={aspect} sizes={sizes} />
+            </Lightbox>
+          </div>
         ))}
       </div>
       <Caption>{caption}</Caption>

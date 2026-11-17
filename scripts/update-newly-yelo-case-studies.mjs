@@ -117,6 +117,17 @@ function validate(spec, copy) {
       if (!value.localAssetKey && !value.asset?._ref) throw new Error(`${where}: ${location} has no image.`);
       if (value._type === 'mediaImage' && !value.alt?.trim()) throw new Error(`${where}: ${location} needs alt text.`);
     }
+    if (value._type === 'mediaImage' && 'labels' in value) {
+      if (!Array.isArray(value.labels)) throw new Error(`${where}: ${location} labels must be a list.`);
+      for (const l of value.labels) {
+        const ok = l && l._type === 'imageLabel' && l._key && typeof l.text === 'string' && l.text.trim() && l.text.length <= 24
+          && typeof l.x === 'number' && l.x >= 0 && l.x <= 1 && (l.y === undefined || (typeof l.y === 'number' && l.y >= 0 && l.y <= 1));
+        if (!ok) throw new Error(`${where}: ${location} has a label without text, or with a position outside 0–1.`);
+      }
+    }
+    if (value._type === 'image' && 'label' in value && (typeof value.label !== 'string' || !value.label.trim() || value.label.length > 24)) {
+      throw new Error(`${where}: ${location} label must be short non-empty text.`);
+    }
     if (value._type === 'stickyBoard') {
       const optionalText = (obj, keys, what) => {
         for (const k of keys) {

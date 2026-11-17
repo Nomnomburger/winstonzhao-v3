@@ -136,6 +136,7 @@ export default function ProjectSections({ sections, showSideMenu }: ProjectSecti
                     {c.block._type === 'mediaImage' && (
                       <ImageFigure
                         image={c.block}
+                        labels={c.block.labels}
                         caption={c.block.caption}
                         sizes={c.block.size === 'content' ? contentSizes : fullSizes}
                       />

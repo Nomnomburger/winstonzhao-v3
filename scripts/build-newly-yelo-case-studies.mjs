@@ -20,7 +20,8 @@
  *       "sections": [{"title", "heading", "content": [
  *         "a paragraph",
  *         {"h3": "subheading"}, {"quote": "..."}, {"bullets": ["..."]},
- *         {"image": "assetKey", "alt": "...", "caption": "...", "size": "full" | "content"},
+ *         {"image": "assetKey", "alt": "...", "caption": "...", "size": "full" | "content",
+ *          "labels": [{"text": "Before", "x": 0.34, "y": 0.04}]},   (x, y: fractions of the image)
  *         {"board": {"label", "prompt", "notes": [{"text", "color", "tag", "highlight"}]}, "caption"},
  *         {"video": "assetKey", "poster": "assetKey", "caption": "...", "autoplay": true},
  *         {"gallery": [{"image": "assetKey", "alt": "..."}], "caption": "..."}
@@ -44,7 +45,10 @@ function expand(copy, slug) {
     return { _type: 'span', _key: n === 0 ? `${k}-s` : `${k}-s${n}`, marks: bold ? ['strong'] : [], text: bold ? part.slice(2, -2) : part };
   });
   const block = (k, text, style = 'normal', extra = {}) => ({ _type: 'block', _key: k, style, markDefs: [], children: spans(k, text), ...extra });
-  const image = (k, item) => ({ _type: 'mediaImage', _key: k, localAssetKey: item.image, alt: item.alt, ...(item.caption ? { caption: item.caption } : {}), size: item.size ?? 'full' });
+  const image = (k, item) => ({
+    _type: 'mediaImage', _key: k, localAssetKey: item.image, alt: item.alt, ...(item.caption ? { caption: item.caption } : {}), size: item.size ?? 'full',
+    ...(item.labels ? { labels: item.labels.map((l, i) => ({ _type: 'imageLabel', _key: `${k}-l${i}`, text: l.text, x: l.x, ...(l.y != null ? { y: l.y } : {}) })) } : {}),
+  });
   const video = (k, item) => ({
     _type: 'mediaVideo', _key: k, file: { _type: 'file', localAssetKey: item.video },
     ...(item.poster ? { poster: { _type: 'image', localAssetKey: item.poster } } : {}),
@@ -72,7 +76,7 @@ function expand(copy, slug) {
   });
   const gallery = (k, item) => ({
     _type: 'mediaGallery', _key: k, ...(item.caption ? { caption: item.caption } : {}), ...(item.arrows ? { arrows: true } : {}),
-    images: item.gallery.map((g, i) => ({ _type: 'image', _key: `${k}-${i}`, localAssetKey: g.image, alt: g.alt })),
+    images: item.gallery.map((g, i) => ({ _type: 'image', _key: `${k}-${i}`, localAssetKey: g.image, alt: g.alt, ...(g.label ? { label: g.label } : {}) })),
   });
 
   const f = copy.fields;

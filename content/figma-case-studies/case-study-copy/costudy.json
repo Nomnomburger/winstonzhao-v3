@@ -179,7 +179,19 @@
           {
             "image": "joining",
             "alt": "Two iPhones: a CoStudy session before joining with a Join session button, and after joining with Open class thread and Leave session",
-            "caption": "Before and after joining."
+            "caption": "A session, before and after you join.",
+            "labels": [
+              {
+                "text": "Before",
+                "x": 0.3428,
+                "y": 0.0434
+              },
+              {
+                "text": "After",
+                "x": 0.6572,
+                "y": 0.0434
+              }
+            ]
           }
         ]
       },

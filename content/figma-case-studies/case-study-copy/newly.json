@@ -146,14 +146,16 @@
             "gallery": [
               {
                 "image": "sidebar-before",
-                "alt": "Earlier Newly layout with an app navigation pane (Create, Deploy, Analytics, Settings) next to a separate Sessions pane"
+                "alt": "Earlier Newly layout with an app navigation pane (Create, Deploy, Analytics, Settings) next to a separate Sessions pane",
+                "label": "Before"
               },
               {
                 "image": "sidebar-after",
-                "alt": "Final Newly layout with one sidebar: New Session, Search, Deploy and Configure above pinned sessions and the session list, next to the chat and app preview"
+                "alt": "Final Newly layout with one sidebar: New Session, Search, Deploy and Configure above pinned sessions and the session list, next to the chat and app preview",
+                "label": "After"
               }
             ],
-            "caption": "Before: two collapsible panes. After: one sidebar.",
+            "caption": "Two collapsible panes, then one sidebar.",
             "arrows": true
           }
         ]

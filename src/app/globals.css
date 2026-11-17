@@ -155,6 +155,10 @@ body {
   overflow-x: hidden;
   overflow-y: auto;
   overscroll-behavior: contain;
+  /* Browsers give dialogs their own text colour (CanvasText), which stays
+     black on a dark page; inherit the page's instead, so the close button
+     and image labels follow the theme and fade with it. */
+  color: inherit;
   background-color: color-mix(in srgb, var(--background) 55%, transparent);
   -webkit-backdrop-filter: blur(24px);
   backdrop-filter: blur(24px);
