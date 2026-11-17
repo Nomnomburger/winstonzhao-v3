@@ -1122,9 +1122,13 @@
       "note": "Winston's current home-page thumbnail in Sanity, kept as is. The local file is a downscaled copy for the preview."
     },
     "hero": {
-      "path": "assets/yelo-hero-live.jpg",
-      "existingAssetId": "image-4d187a1c528e0112f305f98c83e8da51d9a955e3-2400x1350-jpg",
-      "note": "Winston's current hero in Sanity, kept as is."
+      "path": "assets/yelo-cs3-hero.jpg",
+      "sourceNodeIds": [
+        "1:7130",
+        "1:5728",
+        "1:6840"
+      ],
+      "note": "Final home, event map and ride sheet (V1.2) in Apple's iPhone 16 Pro (White Titanium) bezel, on the same soft gradient as the previous hero."
     },
     "sketches": {
       "path": "assets/yelo-cs-sketches.jpg",
