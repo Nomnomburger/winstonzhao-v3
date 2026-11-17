@@ -41,10 +41,6 @@
         "value": "Desktop · Web"
       },
       {
-        "label": "Built in code",
-        "value": "Prompt bar · Workspace layout\nDeploy · Web screens"
-      },
-      {
         "label": "Tools",
         "value": "Figma · Claude Design\nReact · TypeScript\nClaude Code · Cursor"
       }

@@ -43,12 +43,6 @@
       {
         "_type": "detailItem",
         "_key": "newly-detail-4",
-        "label": "Built in code",
-        "value": "Prompt bar · Workspace layout\nDeploy · Web screens"
-      },
-      {
-        "_type": "detailItem",
-        "_key": "newly-detail-5",
         "label": "Tools",
         "value": "Figma · Claude Design\nReact · TypeScript\nClaude Code · Cursor"
       }
