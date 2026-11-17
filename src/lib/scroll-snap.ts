@@ -49,12 +49,15 @@ export function wheelDistance(event: WheelEvent) {
 
 // Adds a wheel event to the current gesture, or starts a new one after a
 // pause, a reversal or a renewed push. Returns the gesture it belongs to.
+// `minMomentumDelta`: only a tail that fades from at least this big an event
+// counts as momentum, so a slow scroll's small, uneven steps don't.
 export function trackWheelGesture(
   current: WheelGesture | null,
   direction: SnapDirection,
   delta: number,
   now: number,
   snapping: boolean,
+  minMomentumDelta = 0,
 ): WheelGesture {
   let gesture = current;
   const recentPeak = gesture ? Math.max(gesture.lastDelta, gesture.previousDelta) : 0;
@@ -89,6 +92,7 @@ export function trackWheelGesture(
   if (delta < gesture.lastDelta) {
     gesture.decayingEvents += 1;
     if (gesture.decayingEvents >= WHEEL_MOMENTUM_DECAY_EVENTS &&
+        gesture.decayStartDelta >= minMomentumDelta &&
         delta <= gesture.decayStartDelta * WHEEL_MOMENTUM_DECAY_RATIO) {
       gesture.momentum = true;
     }

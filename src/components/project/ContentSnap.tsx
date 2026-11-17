@@ -10,11 +10,13 @@ import {
   type SnapDirection, type WheelGesture,
 } from '@/lib/scroll-snap';
 
-const ELASTIC_THRESHOLD = 260; // wheel input past the snap point that snaps over (~120px of stretch)
+const ELASTIC_THRESHOLD = 220; // wheel input past the snap point that snaps over (~125px of stretch)
 const ELASTIC_RANGE = 360; // the stretch approaches this, never reaching it
-const ELASTIC_GIVE = 0.7; // how freely it gives at first: px of stretch per px of input
-const ELASTIC_IDLE_MS = 200; // no input for this long counts as letting go
-const ELASTIC_MEMORY_MS = 1200; // a push within this carries on from the last
+const ELASTIC_GIVE = 0.85; // how freely it gives at first: px of stretch per px of input
+const ELASTIC_IDLE_MS = 300; // no input for this long counts as letting go; a slow scroll's pauses are shorter
+const ELASTIC_MEMORY_MS = 1200; // a wheel notch within this carries on from the last
+const NOTCH_DELTA = 40; // a single wheel event this big is a mouse notch, not a trackpad
+const MIN_MOMENTUM_DELTA = 10; // a fling's tail fades from at least this; slow scrolling doesn't
 
 // The stretch for an amount of pull, and back. A rubber band curve like
 // iOS's, a little softer: it gives easily at first and stiffens as it goes.
@@ -203,8 +205,8 @@ export default function ContentSnap({ contentId, overviewId }: { contentId: stri
       if (!e) return;
       if (e.pull > 0 && performance.now() - e.lastInput > ELASTIC_IDLE_MS) releaseElastic(e);
       const target = e.edge + e.direction * stretch(e.pull);
-      // Follows the push a little loosely, and springs back gently.
-      e.y += (target - e.y) * (e.pull > 0 ? 0.2 : 0.14);
+      // Follows the push closely, and springs back gently.
+      e.y += (target - e.y) * (e.pull > 0 ? 0.3 : 0.16);
       if (e.pull === 0 && Math.abs(target - e.y) < 0.5) {
         stopElastic();
         scrollInstantly(target);
@@ -216,8 +218,13 @@ export default function ContentSnap({ contentId, overviewId }: { contentId: stri
     };
 
     // Adds `amount` of wheel input past `edge`, starting the stretch if needed.
-    const pushElastic = (direction: SnapDirection, edge: number, amount: number) => {
+    // `notch`: a mouse wheel notch.
+    const pushElastic = (direction: SnapDirection, edge: number, amount: number, notch = false) => {
       const now = performance.now();
+      // A notch soon after the last one carries on from how far that one got,
+      // even once it has sprung back, so slow notches still get there. A
+      // trackpad carries on from the stretch as it is, so it never jumps.
+      const carried = notch ? recall(direction, now) : 0;
       if (!elastic) {
         // Take over from wherever the smooth scroll has got to.
         scrollInstantly(window.scrollY);
@@ -227,9 +234,10 @@ export default function ContentSnap({ contentId, overviewId }: { contentId: stri
         };
       }
       const e = elastic;
-      // Carry on from the current stretch, or from a push just let go of.
+      // Carry on from the stretch as it is now, even mid-spring, so a pause
+      // in a slow scroll never makes it jump back out.
       const current = unstretch(Math.max(0, (e.y - e.edge) * e.direction));
-      e.pull = Math.max(e.pull, current, recall(direction, now)) + Math.max(0, amount);
+      e.pull = Math.max(e.pull, current, carried) + Math.max(0, amount);
       e.peak = Math.max(e.peak, e.pull);
       e.lastInput = now;
       if (e.pull >= ELASTIC_THRESHOLD) {
@@ -255,7 +263,7 @@ export default function ContentSnap({ contentId, overviewId }: { contentId: stri
       direction: SnapDirection,
       event: Event,
       distance: number,
-      { momentum = false, paging = false, wheel = false } = {},
+      { momentum = false, paging = false, wheel = false, notch = false } = {},
     ) => {
       if (snapDirection !== null) {
         if (event.cancelable) event.preventDefault();
@@ -271,10 +279,17 @@ export default function ContentSnap({ contentId, overviewId }: { contentId: stri
         upwardIntentUntil = performance.now() + UPWARD_INTENT_MS;
         upwardMomentum = momentum;
         if (!momentum && y > overviewEnd + 1 && y <= contentTop + DOCK_TOLERANCE) {
-          if (event.cancelable) event.preventDefault();
-          // At the top of the case study, a wheel push stretches first.
-          if (wheel && y >= contentTop - 1) pushElastic(-1, contentTop, contentTop - (from - distance));
-          else snapTo(-1);
+          if (wheel && y >= contentTop - 1) {
+            // At the top of the case study, a wheel push stretches first. Until
+            // it reaches the edge it scrolls as usual, never pulled there.
+            if (from - distance < contentTop) {
+              if (event.cancelable) event.preventDefault();
+              pushElastic(-1, contentTop, contentTop - (from - distance), notch);
+            }
+          } else {
+            if (event.cancelable) event.preventDefault();
+            snapTo(-1);
+          }
         }
       } else {
         upwardIntentUntil = 0;
@@ -287,7 +302,7 @@ export default function ContentSnap({ contentId, overviewId }: { contentId: stri
           // past the snap point before it snaps; anything else snaps.
           if (paging && y < overviewEnd - 1) stopAtOverviewEnd(true);
           else if (momentum && y <= overviewEnd + 1) stopAtOverviewEnd(!!smoothScroll);
-          else if (wheel && y <= overviewEnd + 1) pushElastic(1, overviewEnd, from + distance - overviewEnd);
+          else if (wheel && y <= overviewEnd + 1) pushElastic(1, overviewEnd, from + distance - overviewEnd, notch);
           else snapTo(1);
         }
       }
@@ -301,7 +316,8 @@ export default function ContentSnap({ contentId, overviewId }: { contentId: stri
       const direction = event.deltaY < 0 ? -1 : 1;
       const smoothScroll = getSmoothScroll();
       const delta = wheelDistance(event);
-      gesture = trackWheelGesture(gesture, direction, delta, performance.now(), snapDirection !== null);
+      gesture = trackWheelGesture(gesture, direction, delta, performance.now(), snapDirection !== null,
+        MIN_MOMENTUM_DELTA);
       // Guards the snap point from a fling's uncancelable tail, only while
       // that tail is still arriving, so a later jump down is left alone.
       downwardMomentumUntil = direction === 1 && gesture.momentum
@@ -318,7 +334,7 @@ export default function ContentSnap({ contentId, overviewId }: { contentId: stri
         } else if (gesture.momentum) {
           releaseElastic(elastic);
           gesture.consumed = true;
-        } else pushElastic(direction, elastic.edge, delta);
+        } else pushElastic(direction, elastic.edge, delta, delta >= NOTCH_DELTA);
         return;
       }
 
@@ -329,7 +345,7 @@ export default function ContentSnap({ contentId, overviewId }: { contentId: stri
         return;
       }
       handleDirection(direction, event, delta * (smoothScroll?.options.wheelMultiplier ?? 1),
-        { momentum: gesture.momentum, wheel: true });
+        { momentum: gesture.momentum, wheel: true, notch: delta >= NOTCH_DELTA });
       if (direction === -1 && gesture.momentum && snapDirection === null &&
           window.scrollY >= contentTop &&
           (smoothScroll ? smoothScroll.targetScroll - delta * smoothScroll.options.wheelMultiplier :
@@ -395,8 +411,9 @@ export default function ContentSnap({ contentId, overviewId }: { contentId: stri
         }
         return;
       }
-      // Deliberate input may still cross the dock in a single native frame.
-      if (y > overviewEnd + 1 && y <= contentTop + DOCK_TOLERANCE) snapTo(-1);
+      // Deliberate input may still cross the edge in a single native frame,
+      // past where the wheel could stretch it.
+      if (y > overviewEnd + 1 && y < contentTop - 1) snapTo(-1);
     };
 
     let lastWidth = window.innerWidth;
