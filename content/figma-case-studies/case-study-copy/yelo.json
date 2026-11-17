@@ -215,7 +215,7 @@
           {
             "bullets": [
               "**Phone first.** Your phone number is your login, drivers need to reach you, and it’s the quickest way to start. It was also a requirement from the founders.",
-              "**School Google or Microsoft sign-in** replaced the old school picker. An emailed code is still there as a fallback. It’s fewer steps, most students already have one of those accounts, it keeps Yelo students-only, and it fills in the profile.",
+              "**School Google or Microsoft sign-in** replaced the old school picker. It’s fewer steps, most students already have one of those accounts, it keeps Yelo students-only, and it fills in the profile. An emailed code is still there as a fallback.",
               "**The welcome screen shows the app,** with the feed, events and deals, so the social side is clear before you sign up and Yelo doesn’t read as just another ride-share."
             ]
           },
