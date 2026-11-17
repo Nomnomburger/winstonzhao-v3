@@ -4,6 +4,11 @@ import { useCallback, useEffect, useLayoutEffect, useRef, useState, type RefObje
 import { animate, useMotionValue, useReducedMotion, type AnimationPlaybackControls } from 'framer-motion';
 import { getSmoothScroll, scrollInstantly } from '@/lib/smooth-scroll';
 import { createHeroTouchScroll } from '@/lib/hero-touch-scroll';
+import {
+  DOCK_TOLERANCE, SNAP_DURATION, SNAP_EASE, UPWARD_INTENT_MS, WHEEL_GESTURE_IDLE_MS,
+  isEditable, isKeyboardControl, trackWheelGesture, wheelDistance,
+  type SnapDirection, type WheelGesture,
+} from '@/lib/scroll-snap';
 
 interface HeroScrollOptions {
   heroRef: RefObject<HTMLElement | null>;
@@ -15,24 +20,6 @@ interface HeroScrollOptions {
   // Omit to keep the heading at its original viewport height.
   headingDockTop?: number;
   fitHeroToViewport?: boolean;
-}
-
-type SnapDirection = -1 | 1;
-const DOCK_TOLERANCE = 48;
-const UPWARD_INTENT_MS = 1500;
-const WHEEL_GESTURE_IDLE_MS = 180;
-const WHEEL_MOMENTUM_DECAY_EVENTS = 3;
-const WHEEL_MOMENTUM_DECAY_RATIO = 0.8;
-
-interface WheelGesture {
-  direction: SnapDirection;
-  lastEventAt: number;
-  lastDelta: number;
-  previousDelta: number;
-  decayStartDelta: number;
-  decayingEvents: number;
-  momentum: boolean;
-  consumed: boolean;
 }
 
 interface HeadingTransition {
@@ -53,19 +40,6 @@ export function documentTop(element: HTMLElement) {
     current = current.offsetParent as HTMLElement | null;
   }
   return top;
-}
-
-function isEditable(target: EventTarget | null) {
-  return target instanceof HTMLElement && (
-    target.isContentEditable ||
-    !!target.closest('input, textarea, select, [role="textbox"]')
-  );
-}
-
-function isKeyboardControl(target: EventTarget | null) {
-  return isEditable(target) || (target instanceof HTMLElement && !!target.closest(
-    'a[href], button, summary, [role="button"], [role="slider"], [role="listbox"], [role="menu"]',
-  ));
 }
 
 export function useHeroScroll({ heroRef, headingRef, enabled, ready, touchEnabled = true, trackHeroState = true, headingDockTop, fitHeroToViewport = false }: HeroScrollOptions) {
@@ -266,8 +240,8 @@ export function useHeroScroll({ heroRef, headingRef, enabled, ready, touchEnable
       };
     }
     animationRef.current = animate(window.scrollY, target, {
-      duration: direction === -1 ? 1.1 : 0.8,
-      ease: [0.2, 0.8, 0.2, 1],
+      duration: SNAP_DURATION[direction],
+      ease: SNAP_EASE,
       onUpdate: (y) => {
         scrollInstantly(y);
         syncScroll(y);
@@ -482,56 +456,11 @@ export function useHeroScroll({ heroRef, headingRef, enabled, ready, touchEnable
       touchInputRef.current = false;
       touchScrollRef.current?.cancel();
       const direction = event.deltaY < 0 ? -1 : 1;
-      const now = performance.now();
       const smoothScroll = getSmoothScroll();
-      const delta = Math.abs(event.deltaY) * (
-        event.deltaMode === 1 ? (smoothScroll ? 100 / 6 : 16) :
-          event.deltaMode === 2 ? window.innerHeight : 1
-      );
-      let gesture = wheelGestureRef.current;
-      const recentPeak = gesture ? Math.max(gesture.lastDelta, gesture.previousDelta) : 0;
-      // A fresh push accelerates again, unlike the fading momentum from the
-      // snap. Accept a clear increase immediately, or a gentler two-event ramp.
-      const renewedPush = (gesture?.consumed || gesture?.momentum) && snapDirectionRef.current === null && (
-        (delta > recentPeak * 1.25 && delta - recentPeak >= 3) ||
-        (delta >= 6 && gesture.lastDelta > gesture.previousDelta && delta > gesture.lastDelta &&
-          delta > gesture.previousDelta * 1.25 && delta - gesture.previousDelta >= 2)
-      );
-      if (!gesture || gesture.direction !== direction ||
-          now - gesture.lastEventAt >= WHEEL_GESTURE_IDLE_MS || renewedPush) {
-        if (gesture?.consumed && gesture.momentum && snapDirectionRef.current === null &&
-            smoothScroll?.isScrolling === 'smooth') {
-          // A fresh gesture takes over from the visible position, so reversing
-          // cannot keep drifting toward the old Projects destination.
-          scrollInstantly(window.scrollY);
-        }
-        gesture = {
-          direction,
-          lastEventAt: now,
-          lastDelta: delta,
-          previousDelta: delta,
-          decayStartDelta: delta,
-          decayingEvents: 0,
-          momentum: false,
-          consumed: false,
-        };
-        wheelGestureRef.current = gesture;
-      }
-      // WheelEvent has no momentum phase. Infer a fading tail from sustained
-      // decay, allowing steady input and small fluctuations to keep snapping.
-      if (delta < gesture.lastDelta) {
-        gesture.decayingEvents += 1;
-        if (gesture.decayingEvents >= WHEEL_MOMENTUM_DECAY_EVENTS &&
-            delta <= gesture.decayStartDelta * WHEEL_MOMENTUM_DECAY_RATIO) {
-          gesture.momentum = true;
-        }
-      } else if (delta > gesture.lastDelta) {
-        gesture.decayStartDelta = delta;
-        gesture.decayingEvents = 0;
-      }
-      gesture.lastEventAt = now;
-      gesture.previousDelta = gesture.lastDelta;
-      gesture.lastDelta = delta;
+      const delta = wheelDistance(event);
+      const gesture = trackWheelGesture(wheelGestureRef.current, direction, delta,
+        performance.now(), snapDirectionRef.current !== null);
+      wheelGestureRef.current = gesture;
 
       // Trackpad momentum can outlast the snap animation. Keep consuming the
       // fading tail; a renewed push, pause, or reversal starts a fresh gesture.

@@ -2,6 +2,7 @@ import { PortableText, type PortableTextComponents } from 'next-sanity';
 import type { BodyBlock, ProjectSection, TextBlock } from '@/lib/projects';
 import { GalleryFigure, ImageFigure, VideoFigure } from './Media';
 import SectionNav from './SectionNav';
+import { RevealArea, RevealFade, RevealText } from './Reveal';
 import StickyBoard from './StickyBoard';
 
 export const sectionId = (title: string, index: number) =>
@@ -102,33 +103,42 @@ export default function ProjectSections({ sections, showSideMenu }: ProjectSecti
           return (
             // Text follows the section title 12px down (as in Figma); media
             // gets 36px around it.
-            <section
+            // The whole section plays when it reaches the screen: the title and
+            // heading slide up like the home page text, and the body follows
+            // with a quick, small fade and lift.
+            <RevealArea
               key={section._key}
+              as="section"
               id={sectionId(section.title, i)}
               tabIndex={-1}
               className="flex flex-col gap-3 scroll-mt-[104px] focus:outline-none"
             >
               <div className={`flex flex-col gap-3 ${textColumn}`}>
-                <p className="text-[12px] md:text-[14px] text-justify leading-[1.2]">{section.title}</p>
+                <p className="text-[14px] text-justify leading-[1.2]">
+                  <RevealText>{section.title}</RevealText>
+                </p>
                 {section.heading && (
                   <h2 className="text-[28px] md:text-[40px] tracking-[-0.02em] leading-[1.2] whitespace-pre-line">
-                    {section.heading}
+                    <RevealText delay={0.06}>{section.heading}</RevealText>
                   </h2>
                 )}
               </div>
 
               {chunks.map((c, j) => {
                 const spaced = c.kind === 'media' || chunks[j - 1]?.kind === 'media' ? 'mt-6' : '';
+                const delay = Math.min(0.15 + j * 0.05, 0.4);
                 return c.kind === 'text' ? (
-                  <div
+                  <RevealFade
                     key={j}
+                    delay={delay}
                     className={`flex flex-col gap-[1.2em] font-[450] text-[15px] md:text-[16px] leading-[1.2] ${spaced} ${textColumn}`}
                   >
                     <PortableText value={c.blocks} components={textComponents} />
-                  </div>
+                  </RevealFade>
                 ) : (
-                  <div
+                  <RevealFade
                     key={c.block._key}
+                    delay={delay}
                     className={`${spaced} ${
                       'size' in c.block && c.block.size === 'content' ? textColumn : 'w-full'
                     }`}
@@ -146,10 +156,10 @@ export default function ProjectSections({ sections, showSideMenu }: ProjectSecti
                       <GalleryFigure images={c.block.images ?? []} caption={c.block.caption} arrows={c.block.arrows} />
                     )}
                     {c.block._type === 'stickyBoard' && <StickyBoard board={c.block} />}
-                  </div>
+                  </RevealFade>
                 );
               })}
-            </section>
+            </RevealArea>
           );
         })}
       </div>
