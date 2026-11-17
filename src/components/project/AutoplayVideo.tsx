@@ -75,7 +75,7 @@ export default function AutoplayVideo({ src, poster, aspect, autoplay }: Autopla
   return (
     <div
       ref={boxRef}
-      className="relative w-full overflow-hidden bg-foreground/5"
+      className="relative w-full overflow-hidden"
       style={{ aspectRatio: aspect ?? 16 / 9 }}
     >
       <video

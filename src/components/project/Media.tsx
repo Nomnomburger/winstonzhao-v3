@@ -4,7 +4,6 @@
 // as preload hints in the page's RSC payload, so prefetching a project link on
 // the home page would start downloading its full-size hero.
 import { imageUrl, imageAspect, type ImageSource } from '@/lib/image';
-import { useEffect, useRef, useState } from 'react';
 import AutoplayVideo from './AutoplayVideo';
 
 const SRCSET_WIDTHS = [640, 1000, 1400, 2000, 2800];
@@ -20,43 +19,26 @@ interface ResponsiveImageProps {
 }
 
 export function ResponsiveImage({ image, sizes, className = '', priority = false, aspect }: ResponsiveImageProps) {
-  // The grey placeholder only covers the loading state. Once the image is in,
-  // it goes away so images with transparency (device mockups, component
-  // close-ups) sit on the page background instead of a grey box.
-  const [loaded, setLoaded] = useState(false);
-  const imgRef = useRef<HTMLImageElement>(null);
-  useEffect(() => {
-    // The image may finish loading before hydration, when onLoad has no listener yet.
-    if (imgRef.current?.complete && imgRef.current.naturalWidth > 0) setLoaded(true);
-  }, []);
-
   const ratio = aspect ?? imageAspect(image);
   const src = imageUrl(image, 1400, aspect ? Math.round(1400 / aspect) : undefined);
   if (!src) return null;
   const srcSet = SRCSET_WIDTHS.map(
     (w) => `${imageUrl(image, w, aspect ? Math.round(w / aspect) : undefined)} ${w}w`,
   ).join(', ');
-  const lqip = image.asset?.metadata?.lqip;
 
+  // No placeholder fill: the box sits on the page background from the start,
+  // so images with transparency (device mockups, close-ups) never flash grey.
+  // The aspect ratio still reserves the space while the image loads.
   return (
-    <div
-      className={`relative w-full overflow-hidden ${loaded ? '' : 'bg-foreground/5'} ${className}`}
-      style={{
-        aspectRatio: ratio,
-        backgroundImage: lqip && !loaded ? `url(${lqip})` : undefined,
-        backgroundSize: 'cover',
-      }}
-    >
+    <div className={`relative w-full overflow-hidden ${className}`} style={{ aspectRatio: ratio }}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        ref={imgRef}
         src={src}
         srcSet={srcSet}
         sizes={sizes}
         alt={image.alt ?? ''}
         loading={priority ? 'eager' : 'lazy'}
         fetchPriority={priority ? 'high' : undefined}
-        onLoad={() => setLoaded(true)}
         className="absolute inset-0 w-full h-full object-cover"
       />
     </div>

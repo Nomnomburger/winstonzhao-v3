@@ -28,6 +28,9 @@ const textComponents: PortableTextComponents = {
     number: ({ children }) => <ol className="list-decimal ps-6">{children}</ol>,
   },
   marks: {
+    // Book (450) body text, so bold is one step up at Medium (500) instead of
+    // the browser's default 700.
+    strong: ({ children }) => <strong className="font-medium">{children}</strong>,
     link: ({ children, value }) => {
       const href = (value as { href?: string } | undefined)?.href ?? '#';
       const external = /^https?:\/\//.test(href);
