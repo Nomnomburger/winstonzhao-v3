@@ -240,7 +240,7 @@
                 "_type": "span",
                 "_key": "newly-s-1-b-4-s",
                 "marks": [],
-                "text": "The board also made branching easy. Every card had a branch button, so you could split off a new idea with its own prompt. It worked a lot like a git worktree, but in a form non-technical people could follow. Once a branch was accepted, it merged back into the card it came from."
+                "text": "The board also made branching easy. Each feature card had a branch button, so you could split off a new idea with its own prompt. It worked a lot like a git worktree, but in a form non-technical people could understand more easily. Once a branch was accepted, it merged back into the card it came from."
               }
             ]
           },
@@ -388,7 +388,7 @@
                 "_type": "span",
                 "_key": "newly-s-1-b-10-s",
                 "marks": [],
-                "text": "The board never made it into production. I still think it’s a good picture of an agentic future, so it stays in the design files in case we come back to it."
+                "text": "The board never made it into production. I still think it’s a good picture of an agentic future, and it stays in the design files in case we come back to it."
               }
             ]
           },
@@ -416,7 +416,7 @@
                 "_type": "span",
                 "_key": "newly-s-1-b-12-s",
                 "marks": [],
-                "text": "The agent was also meant to make marketing content for your app, like graphics and videos. I explored that on the board first, where media lived in a Marketing column and opened on the right with Publish and Download. The direction we went with is the chat: the agent shares the media in the conversation, and a switcher at the bottom of the preview panel moves between your app and its images."
+                "text": "The agent was also meant to make marketing content for your app, like graphics and videos. I explored that on the board first, where media lived in a Marketing column and opened on the right with Publish and Download. The direction we went with is the chat: the agent shares the media in the conversation, and a switcher at the bottom of the preview panel flips between App and Images."
               }
             ]
           },
@@ -460,7 +460,7 @@
                 "_type": "span",
                 "_key": "newly-s-2-b-0-s",
                 "marks": [],
-                "text": "With chat chosen, the workspace became three panes you can open and collapse: sessions, the chat and the preview panel. I built this layout in code."
+                "text": "With chat chosen, the workspace became a set of panes you can open and collapse, with the chat in the middle and the preview panel on the right. I built this layout in code."
               }
             ]
           },
@@ -626,7 +626,7 @@
                 "_type": "span",
                 "_key": "newly-s-4-b-0-s",
                 "marks": [],
-                "text": "Earlier iterations started with a small window of its own, like the startup windows in Xcode or Android Studio: your projects on one side, and Create New Project or Open Existing Project on the other."
+                "text": "Some earlier iterations started in a separate small window, like the startup windows in Xcode or Android Studio: your projects on one side, and Create New Project or Open Existing Project on the other."
               }
             ]
           },
@@ -661,7 +661,7 @@
                 "_type": "span",
                 "_key": "newly-s-4-b-2-s",
                 "marks": [],
-                "text": "We decided against it. We wanted everything in one window, and it was confusing when the startup window opened again over a project that was already open."
+                "text": "We decided against it. We wanted everything in one window, and it was a bit confusing when the startup window opened again over a project that was already open."
               }
             ]
           },
@@ -751,7 +751,7 @@
                 "_type": "span",
                 "_key": "newly-s-4-b-6-s",
                 "marks": [],
-                "text": "The prompt bar is taller here than mid-chat, so it gets your attention and starting a chat feels balanced and important."
+                "text": "The prompt bar is taller here than mid-chat, to draw your attention and make starting a chat feel balanced and important."
               }
             ]
           },
@@ -808,7 +808,7 @@
                 "_type": "span",
                 "_key": "newly-s-5-b-0-s",
                 "marks": [],
-                "text": "Everything in Newly starts in the prompt bar. I built it in React and TypeScript, mostly with Claude Code and Cursor. It appears across the workspace and changes with the space it has and what the agent is doing."
+                "text": "Every chat in Newly starts in the prompt bar. I built it in React and TypeScript, mostly with Claude Code and Cursor. It appears across the workspace and changes with the space it has and what the agent is doing."
               }
             ]
           },
@@ -1316,7 +1316,7 @@
                 "_type": "span",
                 "_key": "newly-s-6-b-4-s",
                 "marks": [],
-                "text": "I used Claude Design to prototype the chat’s interactions and layouts, because I could simulate typing and chatting with the agent while I iterated on the designs. Four of those experiments shipped:"
+                "text": "I used Claude Design to prototype the chat’s interactions and layouts, because I could simulate typing and chatting with the agent while I iterated on the designs. The four experiments below all shipped:"
               }
             ]
           },
@@ -1442,7 +1442,7 @@
                 "_type": "span",
                 "_key": "newly-s-7-b-0-s",
                 "marks": [],
-                "text": "The preview panel runs your app on an iPhone simulator, in the cloud or on your computer. Picking that simulator took eight versions to get right."
+                "text": "The preview panel runs your app on an iPhone simulator, in the cloud or on your computer. The simulator picker went through eight versions."
               }
             ]
           },
@@ -1534,7 +1534,7 @@
                 "_type": "span",
                 "_key": "newly-s-8-b-0-s",
                 "marks": [],
-                "text": "A simulator comes with a lot of controls, but most of the time you don’t need any of them. So they’re hidden. Two small dots on the side of the phone hint that there’s something there to hover."
+                "text": "A simulator comes with a lot of controls, but you don’t always need them. So they’re hidden. Two small dots on the side of the phone hint that there’s something there to hover."
               }
             ]
           },
@@ -1578,7 +1578,7 @@
             "_type": "mediaImage",
             "_key": "newly-s-8-b-3",
             "localAssetKey": "sim-portrait",
-            "alt": "The Newly workspace on a green wallpaper: the sidebar, a new chat, and the preview panel with the simulator’s backplate and control rail out",
+            "alt": "The Newly workspace on a pale yellow-green wallpaper: the sidebar, a new chat, and the preview panel with the simulator’s backplate and control rail out",
             "caption": "The controls out, in the preview panel.",
             "size": "full"
           },
