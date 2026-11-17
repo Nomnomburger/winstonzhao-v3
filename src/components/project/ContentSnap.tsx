@@ -18,13 +18,17 @@ import {
 //
 // `contentId` is the case study's wrapper. Its first section is the
 // destination, lined up by its scroll margin where the side menu sticks.
-export default function ContentSnap({ contentId }: { contentId: string }) {
+// `overviewId` is everything above it. It fades out while the page snaps
+// down and stays hidden at the case study, so it doesn't show through the
+// header's blur; it fades back in as the page returns.
+export default function ContentSnap({ contentId, overviewId }: { contentId: string; overviewId?: string }) {
   const reducedMotion = useReducedMotion();
 
   useEffect(() => {
     // An instant jump of a whole screen is no kinder than the animation.
     if (reducedMotion) return;
     const desktop = window.matchMedia('(min-width: 768px)');
+    const overview = overviewId ? document.getElementById(overviewId) : null;
 
     // overviewEnd: the case study's top edge at the bottom of the screen.
     // contentTop: its first section at the top, under the header.
@@ -51,9 +55,18 @@ export default function ContentSnap({ contentId }: { contentId: string }) {
       overviewEnd = Math.min(contentTop, Math.max(0, documentTop(content) - window.innerHeight));
     };
 
+    const enabled = () => desktop.matches && contentTop > overviewEnd + 1;
     // The menu and the lightbox lock the page's scrolling root.
-    const active = () => desktop.matches && contentTop > overviewEnd + 1 &&
-      document.documentElement.style.overflow !== 'hidden';
+    const active = () => enabled() && document.documentElement.style.overflow !== 'hidden';
+
+    // Hidden from the start of a snap down, and whenever the page sits at or
+    // below the top of the case study; shown from the start of a snap up.
+    const updateFade = () => {
+      if (!overview) return;
+      const faded = enabled() && (snapDirection === 1 ||
+        (snapDirection === null && window.scrollY >= contentTop - 2));
+      overview.toggleAttribute('data-faded', faded);
+    };
 
     const cancelSnap = () => {
       animation?.stop();
@@ -62,6 +75,7 @@ export default function ContentSnap({ contentId }: { contentId: string }) {
       upwardIntentUntil = 0;
       upwardMomentum = false;
       scrollInstantly(window.scrollY);
+      updateFade();
     };
 
     // Upward momentum stops at the top of the case study instead of carrying
@@ -92,12 +106,14 @@ export default function ContentSnap({ contentId }: { contentId: string }) {
         animation = null;
         snapDirection = null;
         scrollInstantly(target);
+        updateFade();
       };
       if (Math.abs(window.scrollY - target) < 1) {
         finish();
         return;
       }
       snapDirection = direction;
+      updateFade();
       animation = animate(window.scrollY, target, {
         duration: SNAP_DURATION[direction],
         ease: SNAP_EASE,
@@ -186,6 +202,7 @@ export default function ContentSnap({ contentId }: { contentId: string }) {
       const previousY = lastScrollY;
       const movingUp = y < previousY;
       lastScrollY = y;
+      updateFade();
       // Back at the overview starts a new visit.
       if (y <= overviewEnd + 1 && snapDirection === null) snapped = false;
       if (!active() || snapDirection !== null || !movingUp) return;
@@ -216,22 +233,27 @@ export default function ContentSnap({ contentId }: { contentId: string }) {
         if (snapDirection !== null) cancelSnap();
       }
       cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(measure);
+      frame = requestAnimationFrame(measureAndFade);
     };
     const onDesktopChange = () => {
       if (!desktop.matches && snapDirection !== null) cancelSnap();
+      updateFade();
     };
 
     // Media, fonts and the reveals settle after load; keep the edges current.
+    const measureAndFade = () => {
+      measure();
+      updateFade();
+    };
     const observer = new ResizeObserver(() => {
       cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(measure);
+      frame = requestAnimationFrame(measureAndFade);
     });
     observer.observe(document.body);
-    measure();
+    measureAndFade();
     let disposed = false;
     document.fonts.ready.then(() => {
-      if (!disposed) measure();
+      if (!disposed) measureAndFade();
     });
 
     window.addEventListener('wheel', onWheel, { passive: false, capture: true });
@@ -244,13 +266,14 @@ export default function ContentSnap({ contentId }: { contentId: string }) {
       observer.disconnect();
       cancelAnimationFrame(frame);
       animation?.stop();
+      overview?.removeAttribute('data-faded');
       window.removeEventListener('wheel', onWheel, { capture: true });
       window.removeEventListener('keydown', onKey);
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('resize', onResize);
       desktop.removeEventListener('change', onDesktopChange);
     };
-  }, [contentId, reducedMotion]);
+  }, [contentId, overviewId, reducedMotion]);
 
   return null;
 }
