@@ -126,7 +126,7 @@ export default async function ProjectPage({ params }: { params: Params }) {
         {/* Hero image or video */}
         {hero && (
           <RevealArea immediate className="p-6 md:p-9">
-            <RevealMedia delay={0.35}>
+            <RevealMedia delay={0.1}>
               {hero._type === 'mediaImage' ? (
                 <ImageFigure image={hero} caption={hero.caption} sizes="100vw" priority />
               ) : (
