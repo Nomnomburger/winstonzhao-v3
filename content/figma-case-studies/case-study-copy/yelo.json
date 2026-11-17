@@ -74,6 +74,30 @@
         "content": [
           "My early sketches asked one question: what’s the best way to show that a place is popular?",
           {
+            "board": {
+              "label": "Ideas from my early sketches",
+              "notes": [
+                {
+                  "text": "Profile-picture bubbles",
+                  "color": "yellow"
+                },
+                {
+                  "text": "A location colour or icon circle",
+                  "color": "blue"
+                },
+                {
+                  "text": "A trending icon",
+                  "color": "pink"
+                },
+                {
+                  "text": "Switch the colour depending on the type of location",
+                  "color": "green"
+                }
+              ]
+            },
+            "caption": "Ideas for marking a popular place."
+          },
+          {
             "image": "sketches",
             "alt": "Hand-drawn wireframes of two Yelo home screens and three ways to mark a popular location",
             "caption": "Early sketches: three ways to mark a popular place."

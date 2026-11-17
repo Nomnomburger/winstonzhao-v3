@@ -75,12 +75,62 @@
         "content": [
           "The 2023 plan was bigger than what we launched. We cut it back to focus on what teams needed most.",
           {
-            "bullets": [
-              "**Planned:** an organizer portal for delays and announcements, a chatbot, and a web app for phones, tablets and computers.",
-              "**Shipped in v1.0:** tournament mode, upcoming matches, live timing and basic scouting on each team’s sheet.",
-              "**Added later:** the ScoutSheet tab on each team’s page.",
-              "**Designed, not shipped:** team sharing and an onboarding flow."
-            ]
+            "board": {
+              "label": "The 2023 plan",
+              "notes": [
+                {
+                  "text": "Tournament mode",
+                  "color": "green",
+                  "tag": "Shipped in v1.0"
+                },
+                {
+                  "text": "Upcoming matches",
+                  "color": "green",
+                  "tag": "Shipped in v1.0"
+                },
+                {
+                  "text": "Live timing",
+                  "color": "green",
+                  "tag": "Shipped in v1.0"
+                },
+                {
+                  "text": "Basic scouting on each team’s sheet",
+                  "color": "green",
+                  "tag": "Shipped in v1.0"
+                },
+                {
+                  "text": "ScoutSheet tab on each team’s page",
+                  "color": "blue",
+                  "tag": "Added later"
+                },
+                {
+                  "text": "Team sharing",
+                  "color": "yellow",
+                  "tag": "Designed, not shipped"
+                },
+                {
+                  "text": "An onboarding flow",
+                  "color": "yellow",
+                  "tag": "Designed, not shipped"
+                },
+                {
+                  "text": "An organizer portal for delays and announcements",
+                  "color": "pink",
+                  "tag": "Cut"
+                },
+                {
+                  "text": "A chatbot",
+                  "color": "pink",
+                  "tag": "Cut"
+                },
+                {
+                  "text": "A web app for phones, tablets and computers",
+                  "color": "pink",
+                  "tag": "Cut"
+                }
+              ]
+            },
+            "caption": "The 2023 plan, and what happened to each idea."
           }
         ]
       },

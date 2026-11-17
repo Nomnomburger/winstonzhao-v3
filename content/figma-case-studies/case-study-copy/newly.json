@@ -76,6 +76,28 @@
         "title": "Board vs. chat",
         "heading": "Board or chat",
         "content": [
+          "I explored a few ways of working with the agent.",
+          {
+            "board": {
+              "label": "Ways to work with the agent",
+              "notes": [
+                {
+                  "text": "A board where the agent proposes features you approve, build and deploy",
+                  "color": "yellow"
+                },
+                {
+                  "text": "A prompt bar above the board",
+                  "color": "blue"
+                },
+                {
+                  "text": "Chat-first, like talking to an agent",
+                  "color": "green",
+                  "highlight": "Chosen"
+                }
+              ]
+            },
+            "caption": "The ways of working with the agent I explored, and the one the team chose."
+          },
           "My first direction treated your app like a roadmap. The agent proposed features as cards and explained its reasoning. You approved, built and deployed each one from a board.",
           {
             "image": "board-demo",

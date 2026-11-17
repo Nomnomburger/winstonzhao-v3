@@ -84,12 +84,110 @@
             ]
           },
           {
-            "_type": "mediaImage",
+            "_type": "stickyBoard",
             "_key": "costudy-s-0-b-1",
-            "localAssetKey": "ideas",
-            "alt": "The CoStudy team’s 16 ideas as sticky notes around the designathon prompt, with the automatic study-group generator marked as picked",
-            "caption": "Our 16 ideas around the prompt, with the one we picked.",
-            "size": "full"
+            "label": "The designathon prompt",
+            "prompt": "How might we design solutions that help people connect, care, and thrive, empowering the individual and the community?",
+            "notes": [
+              {
+                "_type": "stickyNote",
+                "_key": "costudy-s-0-b-1-n0",
+                "text": "A club personality matcher, based on your interests",
+                "color": "yellow"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "costudy-s-0-b-1-n1",
+                "text": "Uni students mentoring high schoolers and their parents",
+                "color": "pink"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "costudy-s-0-b-1-n2",
+                "text": "A group “garden” that grows when you do mindful tasks",
+                "color": "blue"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "costudy-s-0-b-1-n3",
+                "text": "A mind map where musicians share ideas",
+                "color": "green"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "costudy-s-0-b-1-n4",
+                "text": "Running and biking groups near you",
+                "color": "blue"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "costudy-s-0-b-1-n5",
+                "text": "Find people to start working out with",
+                "color": "yellow"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "costudy-s-0-b-1-n6",
+                "text": "A real-time map of cozy hangout spaces on campus",
+                "color": "green"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "costudy-s-0-b-1-n7",
+                "text": "Random calls between college students",
+                "color": "pink"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "costudy-s-0-b-1-n8",
+                "text": "Recurring donations to charities you choose",
+                "color": "green"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "costudy-s-0-b-1-n9",
+                "text": "A micro-volunteering hub, from 15 minutes to a few hours",
+                "color": "blue"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "costudy-s-0-b-1-n10",
+                "text": "Shared “offline hours” to cut phone time",
+                "color": "yellow"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "costudy-s-0-b-1-n11",
+                "text": "Share tiny daily moments with people nearby",
+                "color": "pink"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "costudy-s-0-b-1-n12",
+                "text": "Neighbourhood check-ins during emergencies",
+                "color": "pink"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "costudy-s-0-b-1-n13",
+                "text": "Senior designers giving feedback to juniors",
+                "color": "green"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "costudy-s-0-b-1-n14",
+                "text": "A “Group ___” app for any shared interest",
+                "color": "blue"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "costudy-s-0-b-1-n15",
+                "text": "An automatic study-group generator with a spot on campus",
+                "color": "yellow",
+                "highlight": "Picked"
+              }
+            ],
+            "caption": "Our 16 ideas around the prompt, with the one we picked."
           }
         ]
       },
@@ -409,13 +507,6 @@
         "9:2033"
       ],
       "note": "Final WINSTON threads, home (centre) and profile screens in Apple's iPhone 16 Pro (White Titanium) bezel, laid out like the Yelo hero on a soft CoStudy-colour gradient."
-    },
-    "ideas": {
-      "path": "assets/costudy-cs3-ideas.png",
-      "sourceNodeIds": [
-        "0:1"
-      ],
-      "note": "Sticky-note version of the Ideas page (file ftcxLE1aKCaG3S61G5EI5e), rendered from costudy-ideas-board.html; idea text condensed from the board."
     },
     "home": {
       "path": "assets/costudy-cs3-home.png",

@@ -2,6 +2,7 @@ import { PortableText, type PortableTextComponents } from 'next-sanity';
 import type { BodyBlock, ProjectSection, TextBlock } from '@/lib/projects';
 import { GalleryFigure, ImageFigure, VideoFigure } from './Media';
 import SectionNav from './SectionNav';
+import StickyBoard from './StickyBoard';
 
 export const sectionId = (title: string, index: number) =>
   `${
@@ -129,7 +130,7 @@ export default function ProjectSections({ sections, showSideMenu }: ProjectSecti
                   <div
                     key={c.block._key}
                     className={`${spaced} ${
-                      c.block._type !== 'mediaGallery' && c.block.size === 'content' ? textColumn : 'w-full'
+                      'size' in c.block && c.block.size === 'content' ? textColumn : 'w-full'
                     }`}
                   >
                     {c.block._type === 'mediaImage' && (
@@ -143,6 +144,7 @@ export default function ProjectSections({ sections, showSideMenu }: ProjectSecti
                     {c.block._type === 'mediaGallery' && (
                       <GalleryFigure images={c.block.images ?? []} caption={c.block.caption} />
                     )}
+                    {c.block._type === 'stickyBoard' && <StickyBoard board={c.block} />}
                   </div>
                 );
               })}

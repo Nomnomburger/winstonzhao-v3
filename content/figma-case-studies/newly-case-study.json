@@ -178,17 +178,36 @@
                 "_type": "span",
                 "_key": "newly-s-1-b-0-s",
                 "marks": [],
-                "text": "My first direction treated your app like a roadmap. The agent proposed features as cards and explained its reasoning. You approved, built and deployed each one from a board."
+                "text": "I explored a few ways of working with the agent."
               }
             ]
           },
           {
-            "_type": "mediaImage",
+            "_type": "stickyBoard",
             "_key": "newly-s-1-b-1",
-            "localAssetKey": "board-demo",
-            "alt": "Early Newly workspace with a board of proposed features, the agent’s reasoning panel for one feature, and a live iPhone preview",
-            "caption": "The board, with the agent’s reasoning open.",
-            "size": "full"
+            "label": "Ways to work with the agent",
+            "notes": [
+              {
+                "_type": "stickyNote",
+                "_key": "newly-s-1-b-1-n0",
+                "text": "A board where the agent proposes features you approve, build and deploy",
+                "color": "yellow"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "newly-s-1-b-1-n1",
+                "text": "A prompt bar above the board",
+                "color": "blue"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "newly-s-1-b-1-n2",
+                "text": "Chat-first, like talking to an agent",
+                "color": "green",
+                "highlight": "Chosen"
+              }
+            ],
+            "caption": "The ways of working with the agent I explored, and the one the team chose."
           },
           {
             "_type": "block",
@@ -200,30 +219,52 @@
                 "_type": "span",
                 "_key": "newly-s-1-b-2-s",
                 "marks": [],
+                "text": "My first direction treated your app like a roadmap. The agent proposed features as cards and explained its reasoning. You approved, built and deployed each one from a board."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "newly-s-1-b-3",
+            "localAssetKey": "board-demo",
+            "alt": "Early Newly workspace with a board of proposed features, the agent’s reasoning panel for one feature, and a live iPhone preview",
+            "caption": "The board, with the agent’s reasoning open.",
+            "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-1-b-4",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-1-b-4-s",
+                "marks": [],
                 "text": "Another version put a prompt bar above the board."
               }
             ]
           },
           {
             "_type": "mediaGallery",
-            "_key": "newly-s-1-b-3",
+            "_key": "newly-s-1-b-5",
             "caption": "Board, then board with a prompt bar, then the chat-first direction that shipped.",
             "images": [
               {
                 "_type": "image",
-                "_key": "newly-s-1-b-3-0",
+                "_key": "newly-s-1-b-5-0",
                 "localAssetKey": "board-flat",
                 "alt": "Newly home as a three-column board of proposed features"
               },
               {
                 "_type": "image",
-                "_key": "newly-s-1-b-3-1",
+                "_key": "newly-s-1-b-5-1",
                 "localAssetKey": "board-hybrid",
                 "alt": "Newly home with a Welcome Back prompt bar above the feature board"
               },
               {
                 "_type": "image",
-                "_key": "newly-s-1-b-3-2",
+                "_key": "newly-s-1-b-5-2",
                 "localAssetKey": "chat-first",
                 "alt": "The chat-first Newly workspace with sessions, conversation and a running iPhone simulator"
               }
@@ -231,13 +272,13 @@
           },
           {
             "_type": "block",
-            "_key": "newly-s-1-b-4",
+            "_key": "newly-s-1-b-6",
             "style": "h3",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "newly-s-1-b-4-s",
+                "_key": "newly-s-1-b-6-s",
                 "marks": [],
                 "text": "Why we went with chat"
               }
@@ -245,13 +286,13 @@
           },
           {
             "_type": "block",
-            "_key": "newly-s-1-b-5-0",
+            "_key": "newly-s-1-b-7-0",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "newly-s-1-b-5-0-s",
+                "_key": "newly-s-1-b-7-0-s",
                 "marks": [
                   "strong"
                 ],
@@ -259,7 +300,7 @@
               },
               {
                 "_type": "span",
-                "_key": "newly-s-1-b-5-0-s1",
+                "_key": "newly-s-1-b-7-0-s1",
                 "marks": [],
                 "text": " They were more used to just chatting with an agent."
               }
@@ -269,13 +310,13 @@
           },
           {
             "_type": "block",
-            "_key": "newly-s-1-b-5-1",
+            "_key": "newly-s-1-b-7-1",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "newly-s-1-b-5-1-s",
+                "_key": "newly-s-1-b-7-1-s",
                 "marks": [
                   "strong"
                 ],
@@ -283,7 +324,7 @@
               },
               {
                 "_type": "span",
-                "_key": "newly-s-1-b-5-1-s1",
+                "_key": "newly-s-1-b-7-1-s1",
                 "marks": [],
                 "text": " in the time we had."
               }
@@ -293,13 +334,13 @@
           },
           {
             "_type": "block",
-            "_key": "newly-s-1-b-5-2",
+            "_key": "newly-s-1-b-7-2",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "newly-s-1-b-5-2-s",
+                "_key": "newly-s-1-b-7-2-s",
                 "marks": [
                   "strong"
                 ],
@@ -307,7 +348,7 @@
               },
               {
                 "_type": "span",
-                "_key": "newly-s-1-b-5-2-s1",
+                "_key": "newly-s-1-b-7-2-s1",
                 "marks": [],
                 "text": " and I designed the workspace around it."
               }
@@ -317,13 +358,13 @@
           },
           {
             "_type": "block",
-            "_key": "newly-s-1-b-6",
+            "_key": "newly-s-1-b-8",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "newly-s-1-b-6-s",
+                "_key": "newly-s-1-b-8-s",
                 "marks": [],
                 "text": "The board is still in the file, and we might bring it back."
               }

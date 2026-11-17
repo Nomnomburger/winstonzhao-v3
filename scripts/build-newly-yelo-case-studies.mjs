@@ -21,6 +21,7 @@
  *         "a paragraph",
  *         {"h3": "subheading"}, {"quote": "..."}, {"bullets": ["..."]},
  *         {"image": "assetKey", "alt": "...", "caption": "...", "size": "full" | "content"},
+ *         {"board": {"label", "prompt", "notes": [{"text", "color", "tag", "highlight"}]}, "caption"},
  *         {"video": "assetKey", "poster": "assetKey", "caption": "...", "autoplay": true},
  *         {"gallery": [{"image": "assetKey", "alt": "..."}], "caption": "..."}
  *       ]}]
@@ -48,6 +49,16 @@ function expand(copy, slug) {
     _type: 'mediaVideo', _key: k, file: { _type: 'file', localAssetKey: item.video },
     ...(item.poster ? { poster: { _type: 'image', localAssetKey: item.poster } } : {}),
     autoplay: item.autoplay ?? true, ...(item.caption ? { caption: item.caption } : {}), size: item.size ?? 'full',
+  });
+  const board = (k, item) => ({
+    _type: 'stickyBoard', _key: k,
+    ...(item.board.label ? { label: item.board.label } : {}),
+    ...(item.board.prompt ? { prompt: item.board.prompt } : {}),
+    notes: item.board.notes.map((n, i) => ({
+      _type: 'stickyNote', _key: `${k}-n${i}`, text: n.text, color: n.color ?? 'yellow',
+      ...(n.tag ? { tag: n.tag } : {}), ...(n.highlight ? { highlight: n.highlight } : {}),
+    })),
+    ...(item.caption ? { caption: item.caption } : {}),
   });
   const gallery = (k, item) => ({
     _type: 'mediaGallery', _key: k, ...(item.caption ? { caption: item.caption } : {}),
@@ -83,6 +94,7 @@ function expand(copy, slug) {
         if (item.image) return [image(k, item)];
         if (item.video) return [video(k, item)];
         if (item.gallery) return [gallery(k, item)];
+        if (item.board) return [board(k, item)];
         throw new Error(`${slug}: unknown content item in section "${s.title}" at index ${j}`);
       }),
     })),

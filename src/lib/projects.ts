@@ -52,7 +52,24 @@ export interface TextBlock {
   [key: string]: unknown;
 }
 
-export type BodyBlock = TextBlock | MediaImage | MediaVideo | MediaGallery;
+export interface StickyNote {
+  _key?: string;
+  text?: string;
+  color?: 'yellow' | 'pink' | 'blue' | 'green';
+  tag?: string;
+  highlight?: string;
+}
+
+export interface StickyBoard {
+  _type: 'stickyBoard';
+  _key: string;
+  label?: string;
+  prompt?: string;
+  notes?: StickyNote[];
+  caption?: string;
+}
+
+export type BodyBlock = TextBlock | MediaImage | MediaVideo | MediaGallery | StickyBoard;
 
 export interface ProjectSection {
   _key: string;

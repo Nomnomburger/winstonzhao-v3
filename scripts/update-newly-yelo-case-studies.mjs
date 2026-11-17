@@ -117,6 +117,13 @@ function validate(spec, copy) {
       if (!value.localAssetKey && !value.asset?._ref) throw new Error(`${where}: ${location} has no image.`);
       if (value._type === 'mediaImage' && !value.alt?.trim()) throw new Error(`${where}: ${location} needs alt text.`);
     }
+    if (value._type === 'stickyBoard') {
+      if (!Array.isArray(value.notes) || value.notes.length === 0) throw new Error(`${where}: ${location} needs at least one note.`);
+      for (const note of value.notes) {
+        if (note._type !== 'stickyNote' || !note._key || typeof note.text !== 'string' || !note.text.trim()) throw new Error(`${where}: ${location} has a note without text.`);
+        if (!['yellow', 'pink', 'blue', 'green'].includes(note.color)) throw new Error(`${where}: ${location} has a note with unknown colour ${note.color}.`);
+      }
+    }
     if (value._type === 'mediaVideo' && !value.file?.localAssetKey && !value.file?.asset?._ref && !value.url) {
       throw new Error(`${where}: ${location} needs a video file or url.`);
     }

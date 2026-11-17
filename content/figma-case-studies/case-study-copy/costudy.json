@@ -57,8 +57,77 @@
         "content": [
           "We started from the prompt and brainstormed about 16 ideas, from micro-volunteering to a neighbourhood emergency app. Then we picked one together: an automatic study-group generator that would put students into groups and assign a spot on campus. The prototype ended up with students hosting their own sessions instead.",
           {
-            "image": "ideas",
-            "alt": "The CoStudy team’s 16 ideas as sticky notes around the designathon prompt, with the automatic study-group generator marked as picked",
+            "board": {
+              "label": "The designathon prompt",
+              "prompt": "How might we design solutions that help people connect, care, and thrive, empowering the individual and the community?",
+              "notes": [
+                {
+                  "text": "A club personality matcher, based on your interests",
+                  "color": "yellow"
+                },
+                {
+                  "text": "Uni students mentoring high schoolers and their parents",
+                  "color": "pink"
+                },
+                {
+                  "text": "A group “garden” that grows when you do mindful tasks",
+                  "color": "blue"
+                },
+                {
+                  "text": "A mind map where musicians share ideas",
+                  "color": "green"
+                },
+                {
+                  "text": "Running and biking groups near you",
+                  "color": "blue"
+                },
+                {
+                  "text": "Find people to start working out with",
+                  "color": "yellow"
+                },
+                {
+                  "text": "A real-time map of cozy hangout spaces on campus",
+                  "color": "green"
+                },
+                {
+                  "text": "Random calls between college students",
+                  "color": "pink"
+                },
+                {
+                  "text": "Recurring donations to charities you choose",
+                  "color": "green"
+                },
+                {
+                  "text": "A micro-volunteering hub, from 15 minutes to a few hours",
+                  "color": "blue"
+                },
+                {
+                  "text": "Shared “offline hours” to cut phone time",
+                  "color": "yellow"
+                },
+                {
+                  "text": "Share tiny daily moments with people nearby",
+                  "color": "pink"
+                },
+                {
+                  "text": "Neighbourhood check-ins during emergencies",
+                  "color": "pink"
+                },
+                {
+                  "text": "Senior designers giving feedback to juniors",
+                  "color": "green"
+                },
+                {
+                  "text": "A “Group ___” app for any shared interest",
+                  "color": "blue"
+                },
+                {
+                  "text": "An automatic study-group generator with a spot on campus",
+                  "color": "yellow",
+                  "highlight": "Picked"
+                }
+              ]
+            },
             "caption": "Our 16 ideas around the prompt, with the one we picked."
           }
         ]
@@ -157,13 +226,6 @@
         "9:2033"
       ],
       "note": "Final WINSTON threads, home (centre) and profile screens in Apple's iPhone 16 Pro (White Titanium) bezel, laid out like the Yelo hero on a soft CoStudy-colour gradient."
-    },
-    "ideas": {
-      "path": "assets/costudy-cs3-ideas.png",
-      "sourceNodeIds": [
-        "0:1"
-      ],
-      "note": "Sticky-note version of the Ideas page (file ftcxLE1aKCaG3S61G5EI5e), rendered from costudy-ideas-board.html; idea text condensed from the board."
     },
     "home": {
       "path": "assets/costudy-cs3-home.png",

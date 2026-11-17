@@ -173,100 +173,82 @@
             ]
           },
           {
-            "_type": "block",
-            "_key": "elapse-s-1-b-1-0",
-            "style": "normal",
-            "markDefs": [],
-            "children": [
+            "_type": "stickyBoard",
+            "_key": "elapse-s-1-b-1",
+            "label": "The 2023 plan",
+            "notes": [
               {
-                "_type": "span",
-                "_key": "elapse-s-1-b-1-0-s",
-                "marks": [
-                  "strong"
-                ],
-                "text": "Planned:"
+                "_type": "stickyNote",
+                "_key": "elapse-s-1-b-1-n0",
+                "text": "Tournament mode",
+                "color": "green",
+                "tag": "Shipped in v1.0"
               },
               {
-                "_type": "span",
-                "_key": "elapse-s-1-b-1-0-s1",
-                "marks": [],
-                "text": " an organizer portal for delays and announcements, a chatbot, and a web app for phones, tablets and computers."
-              }
-            ],
-            "listItem": "bullet",
-            "level": 1
-          },
-          {
-            "_type": "block",
-            "_key": "elapse-s-1-b-1-1",
-            "style": "normal",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "elapse-s-1-b-1-1-s",
-                "marks": [
-                  "strong"
-                ],
-                "text": "Shipped in v1.0:"
+                "_type": "stickyNote",
+                "_key": "elapse-s-1-b-1-n1",
+                "text": "Upcoming matches",
+                "color": "green",
+                "tag": "Shipped in v1.0"
               },
               {
-                "_type": "span",
-                "_key": "elapse-s-1-b-1-1-s1",
-                "marks": [],
-                "text": " tournament mode, upcoming matches, live timing and basic scouting on each team’s sheet."
-              }
-            ],
-            "listItem": "bullet",
-            "level": 1
-          },
-          {
-            "_type": "block",
-            "_key": "elapse-s-1-b-1-2",
-            "style": "normal",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "elapse-s-1-b-1-2-s",
-                "marks": [
-                  "strong"
-                ],
-                "text": "Added later:"
+                "_type": "stickyNote",
+                "_key": "elapse-s-1-b-1-n2",
+                "text": "Live timing",
+                "color": "green",
+                "tag": "Shipped in v1.0"
               },
               {
-                "_type": "span",
-                "_key": "elapse-s-1-b-1-2-s1",
-                "marks": [],
-                "text": " the ScoutSheet tab on each team’s page."
-              }
-            ],
-            "listItem": "bullet",
-            "level": 1
-          },
-          {
-            "_type": "block",
-            "_key": "elapse-s-1-b-1-3",
-            "style": "normal",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "elapse-s-1-b-1-3-s",
-                "marks": [
-                  "strong"
-                ],
-                "text": "Designed, not shipped:"
+                "_type": "stickyNote",
+                "_key": "elapse-s-1-b-1-n3",
+                "text": "Basic scouting on each team’s sheet",
+                "color": "green",
+                "tag": "Shipped in v1.0"
               },
               {
-                "_type": "span",
-                "_key": "elapse-s-1-b-1-3-s1",
-                "marks": [],
-                "text": " team sharing and an onboarding flow."
+                "_type": "stickyNote",
+                "_key": "elapse-s-1-b-1-n4",
+                "text": "ScoutSheet tab on each team’s page",
+                "color": "blue",
+                "tag": "Added later"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "elapse-s-1-b-1-n5",
+                "text": "Team sharing",
+                "color": "yellow",
+                "tag": "Designed, not shipped"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "elapse-s-1-b-1-n6",
+                "text": "An onboarding flow",
+                "color": "yellow",
+                "tag": "Designed, not shipped"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "elapse-s-1-b-1-n7",
+                "text": "An organizer portal for delays and announcements",
+                "color": "pink",
+                "tag": "Cut"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "elapse-s-1-b-1-n8",
+                "text": "A chatbot",
+                "color": "pink",
+                "tag": "Cut"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "elapse-s-1-b-1-n9",
+                "text": "A web app for phones, tablets and computers",
+                "color": "pink",
+                "tag": "Cut"
               }
             ],
-            "listItem": "bullet",
-            "level": 1
+            "caption": "The 2023 plan, and what happened to each idea."
           }
         ]
       },
