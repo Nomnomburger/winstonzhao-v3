@@ -85,7 +85,7 @@ export default function StickyBoard({ board }: { board: StickyBoardData }) {
         })}
       </ul>
       {caption && (
-        <figcaption className="mt-4 md:mt-5 text-[14px] leading-[1.2]">{caption}</figcaption>
+        <figcaption className="mt-4 md:mt-5 text-[14px] leading-[1.2] opacity-60">{caption}</figcaption>
       )}
     </figure>
   );

@@ -101,8 +101,8 @@ export default function ProjectSections({ sections, showSideMenu }: ProjectSecti
         {sections.map((section, i) => {
           const chunks = chunk(section.content ?? []);
           return (
-            // Text follows the section title 12px down (as in Figma); media
-            // gets 36px around it.
+            // Body text sits 24px below the section's heading, and 12px apart
+            // after that; media gets 36px around it (48px under the heading).
             // The whole section plays when it reaches the screen: the title and
             // heading slide up like the home page text, and the body follows
             // with a quick, small fade and lift.
@@ -113,7 +113,7 @@ export default function ProjectSections({ sections, showSideMenu }: ProjectSecti
               tabIndex={-1}
               className="flex flex-col gap-3 scroll-mt-[104px] focus:outline-none"
             >
-              <div className={`flex flex-col gap-3 ${textColumn}`}>
+              <div className={`flex flex-col gap-3 mb-3 ${textColumn}`}>
                 <p className="text-[14px] text-justify tracking-[-0.02em] leading-[1.2]">
                   <RevealText>{section.title}</RevealText>
                 </p>

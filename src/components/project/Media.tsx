@@ -52,7 +52,7 @@ export function ResponsiveImage({ image, sizes, className = '', priority = false
 function Caption({ children }: { children?: string }) {
   if (!children) return null;
   return (
-    <figcaption className="mt-3 text-[14px] leading-[1.2]">
+    <figcaption className="mt-3 text-[14px] leading-[1.2] opacity-60">
       {children}
     </figcaption>
   );
@@ -122,7 +122,7 @@ const GALLERY_COLUMNS: Record<number, string> = {
 // the white and the near-black page.
 function SequenceArrow({ vertical = false, offset = false }: { vertical?: boolean; offset?: boolean }) {
   // offset: line the arrow up with the images, not with images + labels
-  const shift = offset ? (vertical ? 'sm:mt-[19px] md:mt-[26px]' : 'mt-[19px] md:mt-[26px]') : '';
+  const shift = offset ? (vertical ? 'sm:mt-[22px] md:mt-[26px]' : 'mt-[22px] md:mt-[26px]') : '';
   return (
     <svg
       aria-hidden="true"
@@ -145,7 +145,7 @@ function SequenceArrow({ vertical = false, offset = false }: { vertical?: boolea
 function RowLabel({ text }: { text?: string }) {
   const t = typeof text === 'string' ? text.trim() : '';
   if (!t) return null;
-  return <p className="mb-2 md:mb-3 text-center text-[11px] md:text-[14px] leading-none tracking-[-0.02em]">{t}</p>;
+  return <p className="mb-2 md:mb-3 text-center text-[14px] leading-none tracking-[-0.02em]">{t}</p>;
 }
 
 export function GalleryFigure({

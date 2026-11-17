@@ -3,7 +3,7 @@
 import { motion, useInView, useReducedMotion } from 'framer-motion';
 import { createContext, useContext, useEffect, useRef, useState, type CSSProperties, type ReactNode, type RefObject } from 'react';
 import { getSmoothScroll } from '@/lib/smooth-scroll';
-import { REVEAL_EASE, TEXT_HIDDEN_Y, TEXT_MASK } from '@/components/projects/reveal';
+import { REVEAL_EASE, TEXT_HIDDEN_Y } from '@/components/projects/reveal';
 
 // Project page reveals. A RevealArea is one block of the page (the title, a
 // section): it plays once, as a whole, when the block reaches the screen, or
@@ -14,7 +14,8 @@ import { REVEAL_EASE, TEXT_HIDDEN_Y, TEXT_MASK } from '@/components/projects/rev
 //                text (titles, headings, short lines).
 //   RevealFade:  a quick, small fade and lift for body text and media.
 //   RevealMedia: the home page image reveal, opening from the bottom.
-// With reduced motion, everything simply shows.
+// With reduced motion, everything simply shows. Every moving part carries
+// data-reveal, so print shows it in its final state (see globals.css).
 
 interface RevealState {
   shown: boolean;
@@ -63,6 +64,11 @@ export function RevealArea({
   );
 }
 
+// The home page's line mask, with room above the line too: hidden text waits
+// below, so the extra room shows nothing then, and afterwards a link's focus
+// ring isn't cut off at the top.
+const TEXT_MASK = { clipPath: 'inset(-0.25em -0.5em -0.2em -0.5em)' };
+
 const transition = (still: boolean, shown: boolean, duration: number, delay: number) =>
   still ? { duration: 0 } : { duration, delay: shown ? delay : 0, ease: REVEAL_EASE };
 
@@ -79,8 +85,9 @@ export function RevealText({
 }) {
   const { shown, still } = useContext(RevealContext);
   return (
-    <span className={`block ${className}`} style={{ ...TEXT_MASK, ...style }}>
+    <span data-reveal className={`block ${className}`} style={{ ...TEXT_MASK, ...style }}>
       <motion.span
+        data-reveal
         className="block"
         initial={false}
         animate={{ y: shown ? '0%' : TEXT_HIDDEN_Y }}
@@ -104,6 +111,7 @@ export function RevealFade({
   const { shown, still } = useContext(RevealContext);
   return (
     <motion.div
+      data-reveal
       className={className}
       initial={false}
       animate={{ opacity: shown ? 1 : 0, y: shown ? 0 : 16 }}
@@ -138,17 +146,25 @@ export function ReadLink({ target }: { target: string }) {
 
 export function RevealMedia({ delay = 0, children }: { delay?: number; children: ReactNode }) {
   const { shown, still } = useContext(RevealContext);
+  // The clip only holds while the reveal plays. Once the image has settled it
+  // comes off, so the focus ring around the image isn't cut off.
+  const [done, setDone] = useState(false);
   return (
     <motion.div
-      className="overflow-hidden"
+      data-reveal
+      className={done || still ? '[clip-path:none]!' : 'overflow-hidden'}
       initial={false}
       animate={{ clipPath: shown ? 'inset(0% 0% 0% 0%)' : 'inset(100% 0% 0% 0%)' }}
       transition={transition(still, shown, 1.1, delay)}
     >
       <motion.div
+        data-reveal
         initial={false}
         animate={{ scale: shown ? 1 : 1.08 }}
         transition={transition(still, shown, 1.4, delay)}
+        onAnimationComplete={() => {
+          if (shown) setDone(true);
+        }}
       >
         {children}
       </motion.div>

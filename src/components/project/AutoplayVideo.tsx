@@ -30,6 +30,8 @@ interface AutoplayVideoProps {
 // (e.g. low-power mode) or the visitor prefers reduced motion. React doesn't
 // render the `muted` attribute on the server, which blocks autoplay in some
 // browsers, so playback starts here once `muted` is set on the element.
+// Each one waits until it's first on screen and plays from the beginning;
+// after that it keeps looping, on screen or off.
 export default function AutoplayVideo({ src, poster, aspect, autoplay }: AutoplayVideoProps) {
   const ref = useRef<HTMLVideoElement>(null);
   const boxRef = useRef<HTMLDivElement>(null);
@@ -62,7 +64,24 @@ export default function AutoplayVideo({ src, poster, aspect, autoplay }: Autopla
       return;
     }
     video.muted = true;
-    video.play().catch(() => setBlocked(true));
+    // Start buffering a screen ahead, so it's ready when it arrives.
+    const warm = new IntersectionObserver((entries) => {
+      if (!entries.some((entry) => entry.isIntersecting)) return;
+      warm.disconnect();
+      video.preload = 'auto';
+    }, { rootMargin: '0px 0px 100% 0px' });
+    const start = new IntersectionObserver((entries) => {
+      if (!entries.some((entry) => entry.isIntersecting)) return;
+      start.disconnect();
+      if (video.currentTime > 0) video.currentTime = 0;
+      video.play().catch(() => setBlocked(true));
+    }, { threshold: 0.4 });
+    warm.observe(video);
+    start.observe(video);
+    return () => {
+      warm.disconnect();
+      start.disconnect();
+    };
   }, [autoplay, src, reducedMotion]);
 
   const togglePlay = () => {
