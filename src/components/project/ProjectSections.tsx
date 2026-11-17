@@ -76,6 +76,7 @@ interface ProjectSectionsProps {
 export default function ProjectSections({ sections, showSideMenu }: ProjectSectionsProps) {
   if (sections.length === 0) return null;
 
+  // The body keeps 36px on the left but 72px on the right on desktop (md+).
   // Text column: columns 2–3, keeping 128px clear on the right on desktop.
   const textColumn = showSideMenu
     ? 'lg:pr-32'
@@ -84,7 +85,7 @@ export default function ProjectSections({ sections, showSideMenu }: ProjectSecti
   const contentSizes = '(min-width: 768px) 55vw, 100vw';
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-x-4 p-6 md:p-9">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-x-4 p-6 md:py-9 md:pl-9 md:pr-18">
       {showSideMenu && (
         <aside className="hidden md:block">
           <SectionNav
