@@ -448,7 +448,7 @@
         "_type": "projectSection",
         "_key": "newly-section-2",
         "title": "Sidebar",
-        "heading": "One sidebar instead of two",
+        "heading": "One sidebar, not two",
         "content": [
           {
             "_type": "block",
@@ -533,7 +533,7 @@
         "_type": "projectSection",
         "_key": "newly-section-3",
         "title": "Onboarding",
-        "heading": "From sign-up to the first prompt",
+        "heading": "Sign-up to first prompt",
         "content": [
           {
             "_type": "block",
@@ -642,7 +642,7 @@
         "_type": "projectSection",
         "_key": "newly-section-4",
         "title": "Start screen",
-        "heading": "Where every chat starts",
+        "heading": "Where chats begin",
         "content": [
           {
             "_type": "block",
@@ -838,7 +838,7 @@
         "_type": "projectSection",
         "_key": "newly-section-5",
         "title": "Prompt bar",
-        "heading": "One prompt bar, three layouts",
+        "heading": "One bar, many states",
         "content": [
           {
             "_type": "block",
@@ -1252,7 +1252,7 @@
         "_type": "projectSection",
         "_key": "newly-section-6",
         "title": "Conversation",
-        "heading": "Showing the agent’s work",
+        "heading": "Showing the work",
         "content": [
           {
             "_type": "block",
@@ -1500,7 +1500,7 @@
         "_type": "projectSection",
         "_key": "newly-section-7",
         "title": "Simulators panel",
-        "heading": "Controls that wait until you need them",
+        "heading": "Controls on hover",
         "content": [
           {
             "_type": "block",
@@ -1686,7 +1686,7 @@
         "_type": "projectSection",
         "_key": "newly-section-8",
         "title": "Craft",
-        "heading": "Glass, corners and light shadows",
+        "heading": "Glass, corners, shadows",
         "content": [
           {
             "_type": "block",
@@ -1921,7 +1921,7 @@
         "_type": "projectSection",
         "_key": "newly-section-10",
         "title": "Outcome",
-        "heading": "What shipped and what I learned",
+        "heading": "Results and lessons",
         "content": [
           {
             "_type": "block",

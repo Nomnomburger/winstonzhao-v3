@@ -163,7 +163,7 @@
       },
       {
         "title": "Sidebar",
-        "heading": "One sidebar instead of two",
+        "heading": "One sidebar, not two",
         "content": [
           "The sidebar is how you get around a project. It’s where you start a new session, search, deploy and configure your project, and your pinned and recent sessions are always one click away.",
           "It sits on the left of the workspace. With chat chosen, the workspace became a set of panes you can open and collapse, with the chat in the middle and the preview panel on the right. I built this layout in code.",
@@ -188,7 +188,7 @@
       },
       {
         "title": "Onboarding",
-        "heading": "From sign-up to the first prompt",
+        "heading": "Sign-up to first prompt",
         "content": [
           "Onboarding is the first few minutes anyone spends in Newly. It takes new users from signing up to their first prompt: a couple of quick questions about what they want to build, a short tour of how Newly works, and getting their Mac set up to build and run iOS apps.",
           "A lot of it was designed and then prototyped in Claude Design before it shipped. The clips below are recorded from that prototype, so you can see its micro-interactions and animations.",
@@ -213,7 +213,7 @@
       },
       {
         "title": "Start screen",
-        "heading": "Where every chat starts",
+        "heading": "Where chats begin",
         "content": [
           "The start screen is where every new chat begins. It’s the place you come back to whenever you want to start something, whether that’s a brand new project or a new session in one you already have. From here you type your first prompt, choose where the session runs, use a shortcut or pick up where you left off. It didn’t always live in the main window, though.",
           "Some earlier iterations started in a separate small window, like the startup windows in Xcode or Android Studio: your projects on one side, and Create New Project or Open Existing Project on the other.",
@@ -262,7 +262,7 @@
       },
       {
         "title": "Prompt bar",
-        "heading": "One prompt bar, three layouts",
+        "heading": "One bar, many states",
         "content": [
           "The prompt bar is how you talk to the agent. You describe what you want built or changed, attach files and images or record a voice message, pick a mode and send it off. While the agent works, the bar shows what’s happening and lets you stop it or line up your next message. It shows up all over the workspace, so it had to work at every size.",
           "I built the prompt bar in React and TypeScript, mostly with Claude Code and Cursor. It changes with the space it has and what the agent is doing.",
@@ -327,7 +327,7 @@
       },
       {
         "title": "Conversation",
-        "heading": "Showing the agent’s work",
+        "heading": "Showing the work",
         "content": [
           "The conversation is where the agent talks back. It explains what it’s doing, shows the work behind each change, like the commands it ran and the code it wrote, and asks you questions when it needs a decision. Newly is for non-technical people too, so all of that had to stay easy to read without hiding anything. That starts with how the agent’s work is shown.",
           "The agent’s work folds into one line, like “Worked for 3m, used 3 tools”.",
@@ -364,7 +364,7 @@
       },
       {
         "title": "Simulators panel",
-        "heading": "Controls that wait until you need them",
+        "heading": "Controls on hover",
         "content": [
           "The simulators panel is where you see your app actually running. It lives in the preview panel and runs your app on an iPhone simulator, in the cloud or on your computer, so you can try it out while the agent builds it. It comes with the controls you’d expect from a phone, like going home, rotating it or taking a screenshot, and a picker for choosing the device and iOS version.",
           "There are a lot of those controls, but you don’t always need them. So they’re hidden. Two small dots on the side of the phone hint that there’s something there to hover.",
@@ -415,7 +415,7 @@
       },
       {
         "title": "Craft",
-        "heading": "Glass, corners and light shadows",
+        "heading": "Glass, corners, shadows",
         "content": [
           "Craft is about the visual details that run through the whole workspace: how the glass lets your wallpaper through, how corners and shadows are drawn, and where colour shows up. None of them are features on their own, but together they shape how Newly feels to use. Here’s where most of that polish went:",
           {
@@ -466,7 +466,7 @@
       },
       {
         "title": "Outcome",
-        "heading": "What shipped and what I learned",
+        "heading": "Results and lessons",
         "content": [
           "The workspace, onboarding, the prompt bar and its states, the new chat features, the deploy flow and the web app are all live.",
           {
