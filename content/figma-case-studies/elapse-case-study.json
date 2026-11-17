@@ -738,8 +738,8 @@
             "_type": "mediaImage",
             "_key": "elapse-s-5-b-2",
             "localAssetKey": "tournament-mode",
-            "alt": "Three iPhones: the Elapse home outside tournament mode with a Tournament Mode button, rankings opened as a separate screen, and the Schedule tab inside tournament mode",
-            "caption": "Turning it on from home, rankings outside the mode, and the Schedule tab inside it.",
+            "alt": "Three iPhones: the Elapse home with a Tournament Mode button, then the Schedule and Rankings tabs inside tournament mode",
+            "caption": "Turning it on from home, then Schedule and Rankings inside the mode.",
             "size": "full"
           }
         ]
@@ -950,10 +950,10 @@
       "path": "assets/elapse-cs3-tournament-mode.png",
       "sourceNodeIds": [
         "307:8426",
-        "307:8484",
-        "319:9073"
+        "319:9073",
+        "332:9190"
       ],
-      "note": "Sample-data copies in section 307:8347 'Portfolio copies (sample data)' (originals unchanged), set in Apple's iPhone 16 Pro (White Titanium) bezel."
+      "note": "Sample-data copies in section 307:8347 'Portfolio copies (sample data)' (originals unchanged): home, Schedule (319:9073, copy of 157:28944) and Rankings inside tournament mode (332:9190, copy of 157:30562), in Apple's iPhone 16 Pro (White Titanium) bezel."
     },
     "scoutsheets": {
       "path": "assets/elapse-cs3-scoutsheets.png",
