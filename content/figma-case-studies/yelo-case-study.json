@@ -179,19 +179,41 @@
                 "_type": "span",
                 "_key": "yelo-s-1-b-2-s",
                 "marks": [],
+                "text": "Then I went through more than 30 versions of the home screen."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "yelo-s-1-b-3",
+            "localAssetKey": "home-iterations",
+            "alt": "Eight Yelo home screen iterations as outlined frames on a dot grid, from a plain search box to the final home with a live social feed",
+            "caption": "Eight of the 30+ home screen iterations, from a plain search box to the final home.",
+            "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "yelo-s-1-b-4",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "yelo-s-1-b-4-s",
+                "marks": [],
                 "text": "Four of the home layouts I explored became directions A to D:"
               }
             ]
           },
           {
             "_type": "block",
-            "_key": "yelo-s-1-b-3-0",
+            "_key": "yelo-s-1-b-5-0",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "yelo-s-1-b-3-0-s",
+                "_key": "yelo-s-1-b-5-0-s",
                 "marks": [
                   "strong"
                 ],
@@ -199,7 +221,7 @@
               },
               {
                 "_type": "span",
-                "_key": "yelo-s-1-b-3-0-s1",
+                "_key": "yelo-s-1-b-5-0-s1",
                 "marks": [],
                 "text": " feed first, with search in a bottom sheet."
               }
@@ -209,13 +231,13 @@
           },
           {
             "_type": "block",
-            "_key": "yelo-s-1-b-3-1",
+            "_key": "yelo-s-1-b-5-1",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "yelo-s-1-b-3-1-s",
+                "_key": "yelo-s-1-b-5-1-s",
                 "marks": [
                   "strong"
                 ],
@@ -223,7 +245,7 @@
               },
               {
                 "_type": "span",
-                "_key": "yelo-s-1-b-3-1-s1",
+                "_key": "yelo-s-1-b-5-1-s1",
                 "marks": [],
                 "text": " search first, with cards below."
               }
@@ -233,13 +255,13 @@
           },
           {
             "_type": "block",
-            "_key": "yelo-s-1-b-3-2",
+            "_key": "yelo-s-1-b-5-2",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "yelo-s-1-b-3-2-s",
+                "_key": "yelo-s-1-b-5-2-s",
                 "marks": [
                   "strong"
                 ],
@@ -247,7 +269,7 @@
               },
               {
                 "_type": "span",
-                "_key": "yelo-s-1-b-3-2-s1",
+                "_key": "yelo-s-1-b-5-2-s1",
                 "marks": [],
                 "text": " the feed as chat bubbles with reactions."
               }
@@ -257,13 +279,13 @@
           },
           {
             "_type": "block",
-            "_key": "yelo-s-1-b-3-3",
+            "_key": "yelo-s-1-b-5-3",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "yelo-s-1-b-3-3-s",
+                "_key": "yelo-s-1-b-5-3-s",
                 "marks": [
                   "strong"
                 ],
@@ -271,7 +293,7 @@
               },
               {
                 "_type": "span",
-                "_key": "yelo-s-1-b-3-3-s1",
+                "_key": "yelo-s-1-b-5-3-s1",
                 "marks": [],
                 "text": " a ranked list of popular places."
               }
@@ -281,7 +303,7 @@
           },
           {
             "_type": "mediaImage",
-            "_key": "yelo-s-1-b-4",
+            "_key": "yelo-s-1-b-6",
             "localAssetKey": "directions",
             "alt": "Four iPhones showing Yelo home directions: feed first, search first, chat bubbles, ranked list",
             "caption": "A, B, C and D.",
@@ -289,13 +311,13 @@
           },
           {
             "_type": "block",
-            "_key": "yelo-s-1-b-5",
+            "_key": "yelo-s-1-b-7",
             "style": "h3",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "yelo-s-1-b-5-s",
+                "_key": "yelo-s-1-b-7-s",
                 "marks": [],
                 "text": "What went forward"
               }
@@ -303,13 +325,13 @@
           },
           {
             "_type": "block",
-            "_key": "yelo-s-1-b-6",
+            "_key": "yelo-s-1-b-8",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "yelo-s-1-b-6-s",
+                "_key": "yelo-s-1-b-8-s",
                 "marks": [],
                 "text": "The founders picked the direction. V1 mixed B and A:"
               }
@@ -317,13 +339,13 @@
           },
           {
             "_type": "block",
-            "_key": "yelo-s-1-b-7-0",
+            "_key": "yelo-s-1-b-9-0",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "yelo-s-1-b-7-0-s",
+                "_key": "yelo-s-1-b-9-0-s",
                 "marks": [
                   "strong"
                 ],
@@ -331,7 +353,7 @@
               },
               {
                 "_type": "span",
-                "_key": "yelo-s-1-b-7-0-s1",
+                "_key": "yelo-s-1-b-9-0-s1",
                 "marks": [],
                 "text": " booking stays first, so search sits at the top."
               }
@@ -341,13 +363,13 @@
           },
           {
             "_type": "block",
-            "_key": "yelo-s-1-b-7-1",
+            "_key": "yelo-s-1-b-9-1",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "yelo-s-1-b-7-1-s",
+                "_key": "yelo-s-1-b-9-1-s",
                 "marks": [
                   "strong"
                 ],
@@ -355,7 +377,7 @@
               },
               {
                 "_type": "span",
-                "_key": "yelo-s-1-b-7-1-s1",
+                "_key": "yelo-s-1-b-9-1-s1",
                 "marks": [],
                 "text": " “Someone is searching for a ride…”"
               }
@@ -365,13 +387,13 @@
           },
           {
             "_type": "block",
-            "_key": "yelo-s-1-b-7-2",
+            "_key": "yelo-s-1-b-9-2",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "yelo-s-1-b-7-2-s",
+                "_key": "yelo-s-1-b-9-2-s",
                 "marks": [
                   "strong"
                 ],
@@ -379,7 +401,7 @@
               },
               {
                 "_type": "span",
-                "_key": "yelo-s-1-b-7-2-s1",
+                "_key": "yelo-s-1-b-9-2-s1",
                 "marks": [],
                 "text": " they came from an earlier version that ran through iMessage, where we noticed people reacting to each other’s ride requests. But they felt a bit tacky, and we didn’t think many people would tap them."
               }
@@ -389,7 +411,7 @@
           },
           {
             "_type": "mediaImage",
-            "_key": "yelo-s-1-b-8",
+            "_key": "yelo-s-1-b-10",
             "localAssetKey": "v1-home",
             "alt": "An iPhone showing the Yelo V1 home: search first, a Someone is searching for a ride row, and feed cards without reaction counts",
             "caption": "V1 home.",
@@ -1177,6 +1199,20 @@
       "sourceNodeIds": [
         "1:3765"
       ]
+    },
+    "home-iterations": {
+      "path": "assets/yelo-cs3-home-iterations.jpg",
+      "sourceNodeIds": [
+        "1:1460",
+        "1:1507",
+        "1:1588",
+        "1:1731",
+        "1:1840",
+        "1:2237",
+        "1:2517",
+        "1:7130"
+      ],
+      "note": "The eight screens from the earlier 'thirty-plus iterations' image, redrawn as selected wireframe frames (thin black outline, corner handles) on a dot grid instead of device frames."
     },
     "fleet": {
       "path": "assets/yelo-cs-fleet.jpg",

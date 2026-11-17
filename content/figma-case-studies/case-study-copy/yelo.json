@@ -4,7 +4,7 @@
     "figmaFile": "ku9ORnV1TNcdc1LIohihFd",
     "url": "https://www.figma.com/design/ku9ORnV1TNcdc1LIohihFd/Yelo-Backup?node-id=0-1",
     "page": "New Design (0:1), Old (1:12252)",
-    "facts": "Confirmed by Winston (Nov 2026): only designer; worked with founders, engineers and ops/marketing; Jan–Apr 2026; Yelo's earlier app (Old page) was live; its home was too crowded, social felt bolted on, dated look; the founders picked among directions A–D; B's layout went forward because booking stays first, combined with A; reaction counts were dropped because they felt tacky and few people would tap them (they came from an earlier iMessage-based version where people reacted to ride requests); feed-card changes were his own judgment; home + feed, search + map, ride options and onboarding are live; vehicles sketched first, then modelled and iterated with Gemini, generated together for consistency; no usage numbers. Takeaways he chose: old habits inform design; booking first, social second; simplifying a crowded home. Follow-up: worked with a PM and ops (not marketing); iOS only. Depth round: sky gradient = neutral, calm, people heading out; sky tinted by service status was dropped so home wouldn't scream the app isn't working, status moved to the LIVE pill; yellow limited to point to the main action, let event art stand out, because the brand colour is loud, and cleaner than the old app; initials for privacy, calmer feed, consistent look; card wording heavily debated, labels for scanning mixed card types, MUTUAL builds trust, bubbly gradient cards nod to text messages; named classes match the real fleet and Exclusive/Shared was confusing; 3D vehicles are abstract because drivers' personal cars all differ. Final designs: section V1.2 (1:5727). Onboarding round: phone first because it's the login, drivers need to reach you, it's a quick start, and the founders required it; school Google/Microsoft sign-in replaced the school picker + emailed code for fewer steps, because schools use them, to pre-fill the profile and keep it students-only; profile pre-filled (less typing); photo optional for riders, required for drivers (photo only where it matters, lower drop-off); welcome shows the app to show the social side early and set Yelo apart; permission reasons build trust, especially contacts. Final designs are section V1.2 (1:5727). Copy round (Nov 2026): don't mention usage numbers; each case ends with a short Summary. Sign-up (Nov 2026): school Google/Microsoft sign-in, with the emailed code as a fallback."
+    "facts": "Confirmed by Winston (Nov 2026): only designer; worked with founders, engineers and ops/marketing; Jan–Apr 2026; Yelo's earlier app (Old page) was live; its home was too crowded, social felt bolted on, dated look; the founders picked among directions A–D; B's layout went forward because booking stays first, combined with A; reaction counts were dropped because they felt tacky and few people would tap them (they came from an earlier iMessage-based version where people reacted to ride requests); feed-card changes were his own judgment; home + feed, search + map, ride options and onboarding are live; vehicles sketched first, then modelled and iterated with Gemini, generated together for consistency; no usage numbers. Takeaways he chose: old habits inform design; booking first, social second; simplifying a crowded home. Follow-up: worked with a PM and ops (not marketing); iOS only. Depth round: sky gradient = neutral, calm, people heading out; sky tinted by service status was dropped so home wouldn't scream the app isn't working, status moved to the LIVE pill; yellow limited to point to the main action, let event art stand out, because the brand colour is loud, and cleaner than the old app; initials for privacy, calmer feed, consistent look; card wording heavily debated, labels for scanning mixed card types, MUTUAL builds trust, bubbly gradient cards nod to text messages; named classes match the real fleet and Exclusive/Shared was confusing; 3D vehicles are abstract because drivers' personal cars all differ. Final designs: section V1.2 (1:5727). Onboarding round: phone first because it's the login, drivers need to reach you, it's a quick start, and the founders required it; school Google/Microsoft sign-in replaced the school picker + emailed code for fewer steps, because schools use them, to pre-fill the profile and keep it students-only; profile pre-filled (less typing); photo optional for riders, required for drivers (photo only where it matters, lower drop-off); welcome shows the app to show the social side early and set Yelo apart; permission reasons build trust, especially contacts. Final designs are section V1.2 (1:5727). Copy round (Nov 2026): don't mention usage numbers; each case ends with a short Summary. Sign-up (Nov 2026): school Google/Microsoft sign-in, with the emailed code as a fallback. Iterations (Nov 2026): Winston asked to bring back the 30+ home screen iterations image as wireframe frames on a dot grid."
   },
   "fields": {
     "description": "Redesigning a live campus ride-share app: booking first, social second.",
@@ -77,6 +77,12 @@
             "image": "sketches",
             "alt": "Hand-drawn wireframes of two Yelo home screens and three ways to mark a popular location",
             "caption": "Early sketches: three ways to mark a popular place."
+          },
+          "Then I went through more than 30 versions of the home screen.",
+          {
+            "image": "home-iterations",
+            "alt": "Eight Yelo home screen iterations as outlined frames on a dot grid, from a plain search box to the final home with a live social feed",
+            "caption": "Eight of the 30+ home screen iterations, from a plain search box to the final home."
           },
           "Four of the home layouts I explored became directions A to D:",
           {
@@ -277,6 +283,20 @@
       "sourceNodeIds": [
         "1:3765"
       ]
+    },
+    "home-iterations": {
+      "path": "assets/yelo-cs3-home-iterations.jpg",
+      "sourceNodeIds": [
+        "1:1460",
+        "1:1507",
+        "1:1588",
+        "1:1731",
+        "1:1840",
+        "1:2237",
+        "1:2517",
+        "1:7130"
+      ],
+      "note": "The eight screens from the earlier 'thirty-plus iterations' image, redrawn as selected wireframe frames (thin black outline, corner handles) on a dot grid instead of device frames."
     },
     "fleet": {
       "path": "assets/yelo-cs-fleet.jpg",
