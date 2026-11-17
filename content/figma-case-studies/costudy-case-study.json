@@ -6,8 +6,8 @@
     "client": "UW Blueprint Designathon 2025",
     "discipline": "Product Design",
     "intro": "CoStudy is an app concept for finding and joining study sessions for your courses on campus. My team of four designed it in one day and won 1st place at the UW Blueprint Designathon 2025.",
-    "summary": "How might we design solutions that help people connect, care, and thrive, empowering the individual and the community?",
-    "overview": "The designathon gave us the prompt above. We brainstormed ideas as a team, picked one, then split up the screens. It was a group effort, and I worked on a bit of everything. We submitted a clickable prototype and a pitch deck.",
+    "summary": "In one day, we went from a broad prompt to a clickable prototype and pitch deck for a map-first study app.",
+    "overview": "We brainstormed ideas as a team, picked one, then split up the screens. It was a group effort, and I worked on a bit of everything. We submitted a clickable prototype and a pitch deck.",
     "impact": "1st place, UW Blueprint Designathon 2025.",
     "showSideMenu": true,
     "details": [
@@ -66,8 +66,8 @@
       {
         "_type": "projectSection",
         "_key": "costudy-section-0",
-        "title": "Idea",
-        "heading": "From prompt to a study app",
+        "title": "Problem Statement",
+        "heading": "How might we design solutions that help people connect, care, and thrive, empowering the individual and the community?",
         "content": [
           {
             "_type": "block",
@@ -79,123 +79,17 @@
                 "_type": "span",
                 "_key": "costudy-s-0-b-0-s",
                 "marks": [],
-                "text": "We started from the prompt and brainstormed about 16 ideas, from micro-volunteering to a neighbourhood emergency app. Then we picked one together: an automatic study-group generator that would put students into groups and assign a spot on campus. The prototype ended up with students hosting their own sessions instead."
+                "text": "This was the prompt for the UW Blueprint Designathon 2025, and we had one day to answer it."
               }
             ]
-          },
-          {
-            "_type": "stickyBoard",
-            "_key": "costudy-s-0-b-1",
-            "label": "The designathon prompt",
-            "prompt": "How might we design solutions that help people connect, care, and thrive, empowering the individual and the community?",
-            "notes": [
-              {
-                "_type": "stickyNote",
-                "_key": "costudy-s-0-b-1-n0",
-                "text": "A club personality matcher, based on your interests",
-                "color": "yellow"
-              },
-              {
-                "_type": "stickyNote",
-                "_key": "costudy-s-0-b-1-n1",
-                "text": "Uni students mentoring high schoolers and their parents",
-                "color": "pink"
-              },
-              {
-                "_type": "stickyNote",
-                "_key": "costudy-s-0-b-1-n2",
-                "text": "A group “garden” that grows when you do mindful tasks",
-                "color": "blue"
-              },
-              {
-                "_type": "stickyNote",
-                "_key": "costudy-s-0-b-1-n3",
-                "text": "A mind map where musicians share ideas",
-                "color": "green"
-              },
-              {
-                "_type": "stickyNote",
-                "_key": "costudy-s-0-b-1-n4",
-                "text": "Running and biking groups near you",
-                "color": "blue"
-              },
-              {
-                "_type": "stickyNote",
-                "_key": "costudy-s-0-b-1-n5",
-                "text": "Find people to start working out with",
-                "color": "yellow"
-              },
-              {
-                "_type": "stickyNote",
-                "_key": "costudy-s-0-b-1-n6",
-                "text": "A real-time map of cozy hangout spaces on campus",
-                "color": "green"
-              },
-              {
-                "_type": "stickyNote",
-                "_key": "costudy-s-0-b-1-n7",
-                "text": "Random calls between college students",
-                "color": "pink"
-              },
-              {
-                "_type": "stickyNote",
-                "_key": "costudy-s-0-b-1-n8",
-                "text": "Recurring donations to charities you choose",
-                "color": "green"
-              },
-              {
-                "_type": "stickyNote",
-                "_key": "costudy-s-0-b-1-n9",
-                "text": "A micro-volunteering hub, from 15 minutes to a few hours",
-                "color": "blue"
-              },
-              {
-                "_type": "stickyNote",
-                "_key": "costudy-s-0-b-1-n10",
-                "text": "Shared “offline hours” to cut phone time",
-                "color": "yellow"
-              },
-              {
-                "_type": "stickyNote",
-                "_key": "costudy-s-0-b-1-n11",
-                "text": "Share tiny daily moments with people nearby",
-                "color": "pink"
-              },
-              {
-                "_type": "stickyNote",
-                "_key": "costudy-s-0-b-1-n12",
-                "text": "Neighbourhood check-ins during emergencies",
-                "color": "pink"
-              },
-              {
-                "_type": "stickyNote",
-                "_key": "costudy-s-0-b-1-n13",
-                "text": "Senior designers giving feedback to juniors",
-                "color": "green"
-              },
-              {
-                "_type": "stickyNote",
-                "_key": "costudy-s-0-b-1-n14",
-                "text": "A “Group ___” app for any shared interest",
-                "color": "blue"
-              },
-              {
-                "_type": "stickyNote",
-                "_key": "costudy-s-0-b-1-n15",
-                "text": "An automatic study-group generator with a spot on campus",
-                "color": "yellow",
-                "highlight": "Picked"
-              }
-            ],
-            "caption": "Our ideas around the prompt, with the one we picked."
           }
         ]
       },
       {
         "_type": "projectSection",
         "_key": "costudy-section-1",
-        "title": "Home",
-        "heading": "A map of who’s studying where",
+        "title": "Idea",
+        "heading": "From prompt to a study app",
         "content": [
           {
             "_type": "block",
@@ -207,149 +101,121 @@
                 "_type": "span",
                 "_key": "costudy-s-1-b-0-s",
                 "marks": [],
-                "text": "Home is a split view: the campus map on top and sessions below, half and half by default. Both are interactive, and you can resize either or tap into one to go full screen."
+                "text": "We started from the prompt and brainstormed about 16 ideas, from micro-volunteering to a neighbourhood emergency app. Then we picked one together: an automatic study-group generator that would put students into groups and assign a spot on campus. The prototype ended up with students hosting their own sessions instead."
               }
             ]
           },
           {
-            "_type": "block",
-            "_key": "costudy-s-1-b-1-0",
-            "style": "normal",
-            "markDefs": [],
-            "children": [
+            "_type": "stickyBoard",
+            "_key": "costudy-s-1-b-1",
+            "notes": [
               {
-                "_type": "span",
-                "_key": "costudy-s-1-b-1-0-s",
-                "marks": [
-                  "strong"
-                ],
-                "text": "Location matters:"
+                "_type": "stickyNote",
+                "_key": "costudy-s-1-b-1-n0",
+                "text": "A club personality matcher, based on your interests",
+                "color": "yellow"
               },
               {
-                "_type": "span",
-                "_key": "costudy-s-1-b-1-0-s1",
-                "marks": [],
-                "text": " where a session is decides whether you can go."
-              }
-            ],
-            "listItem": "bullet",
-            "level": 1
-          },
-          {
-            "_type": "block",
-            "_key": "costudy-s-1-b-1-1",
-            "style": "normal",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "costudy-s-1-b-1-1-s",
-                "marks": [
-                  "strong"
-                ],
-                "text": "A map is visually engaging."
-              }
-            ],
-            "listItem": "bullet",
-            "level": 1
-          },
-          {
-            "_type": "block",
-            "_key": "costudy-s-1-b-1-2",
-            "style": "normal",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "costudy-s-1-b-1-2-s",
-                "marks": [
-                  "strong"
-                ],
-                "text": "Two views, not two tabs:"
+                "_type": "stickyNote",
+                "_key": "costudy-s-1-b-1-n1",
+                "text": "Uni students mentoring high schoolers and their parents",
+                "color": "pink"
               },
               {
-                "_type": "span",
-                "_key": "costudy-s-1-b-1-2-s1",
-                "marks": [],
-                "text": " the map and the list show the same sessions."
+                "_type": "stickyNote",
+                "_key": "costudy-s-1-b-1-n2",
+                "text": "A group “garden” that grows when you do mindful tasks",
+                "color": "blue"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "costudy-s-1-b-1-n3",
+                "text": "A mind map where musicians share ideas",
+                "color": "green"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "costudy-s-1-b-1-n4",
+                "text": "Running and biking groups near you",
+                "color": "blue"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "costudy-s-1-b-1-n5",
+                "text": "Find people to start working out with",
+                "color": "yellow"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "costudy-s-1-b-1-n6",
+                "text": "A real-time map of cozy hangout spaces on campus",
+                "color": "green"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "costudy-s-1-b-1-n7",
+                "text": "Random calls between college students",
+                "color": "pink"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "costudy-s-1-b-1-n8",
+                "text": "Recurring donations to charities you choose",
+                "color": "green"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "costudy-s-1-b-1-n9",
+                "text": "A micro-volunteering hub, from 15 minutes to a few hours",
+                "color": "blue"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "costudy-s-1-b-1-n10",
+                "text": "Shared “offline hours” to cut phone time",
+                "color": "yellow"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "costudy-s-1-b-1-n11",
+                "text": "Share tiny daily moments with people nearby",
+                "color": "pink"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "costudy-s-1-b-1-n12",
+                "text": "Neighbourhood check-ins during emergencies",
+                "color": "pink"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "costudy-s-1-b-1-n13",
+                "text": "Senior designers giving feedback to juniors",
+                "color": "green"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "costudy-s-1-b-1-n14",
+                "text": "A “Group ___” app for any shared interest",
+                "color": "blue"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "costudy-s-1-b-1-n15",
+                "text": "An automatic study-group generator with a spot on campus",
+                "color": "yellow",
+                "highlight": "Picked"
               }
             ],
-            "listItem": "bullet",
-            "level": 1
-          },
-          {
-            "_type": "mediaImage",
-            "_key": "costudy-s-1-b-2",
-            "localAssetKey": "home",
-            "alt": "Two iPhones: the CoStudy home split between a campus map and your sessions, and the sessions list expanded",
-            "caption": "The split view, and the list expanded.",
-            "size": "full"
-          },
-          {
-            "_type": "block",
-            "_key": "costudy-s-1-b-3",
-            "style": "h3",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "costudy-s-1-b-3-s",
-                "marks": [],
-                "text": "Stacked pins"
-              }
-            ]
-          },
-          {
-            "_type": "block",
-            "_key": "costudy-s-1-b-4",
-            "style": "normal",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "costudy-s-1-b-4-s",
-                "marks": [],
-                "text": "Sessions in the same building stack as course icons with “+3 more”. Popular buildings have a lot going on at once, so stacking keeps the map clean and shows where people are studying. Zoom in or tap a stack to see each exact location."
-              }
-            ]
-          },
-          {
-            "_type": "mediaImage",
-            "_key": "costudy-s-1-b-5",
-            "localAssetKey": "stacked-pins",
-            "alt": "A close-up of the CoStudy map: course icons stacked on two buildings with session names and +1 more and +3 more",
-            "caption": "Stacked course icons, with “+3 more”.",
-            "size": "full"
-          },
-          {
-            "_type": "block",
-            "_key": "costudy-s-1-b-6",
-            "style": "normal",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "costudy-s-1-b-6-s",
-                "marks": [],
-                "text": "On the day, we agreed in Figma comments to keep gradients for live sessions and your upcoming ones only."
-              }
-            ]
-          },
-          {
-            "_type": "mediaImage",
-            "_key": "costudy-s-1-b-7",
-            "localAssetKey": "session-cards",
-            "alt": "A close-up of CoStudy session cards: two tinted live sessions with course icons, and a plain upcoming session",
-            "caption": "Live sessions and yours are tinted; other upcoming ones stay plain.",
-            "size": "full"
+            "caption": "Our ideas around the prompt, with the one we picked."
           }
         ]
       },
       {
         "_type": "projectSection",
         "_key": "costudy-section-2",
-        "title": "Joining",
-        "heading": "What changes when you join",
+        "title": "Home",
+        "heading": "A map of who’s studying where",
         "content": [
           {
             "_type": "block",
@@ -361,16 +227,140 @@
                 "_type": "span",
                 "_key": "costudy-s-2-b-0-s",
                 "marks": [],
-                "text": "After you join, the main button becomes “Open class thread” and a Leave session button appears. On the day, we also agreed to add a list of people attending."
+                "text": "Home is a split view: the campus map on top and sessions below, half and half by default. Both are interactive, and you can resize either or tap into one to go full screen."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "costudy-s-2-b-1-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "costudy-s-2-b-1-0-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Location matters:"
+              },
+              {
+                "_type": "span",
+                "_key": "costudy-s-2-b-1-0-s1",
+                "marks": [],
+                "text": " where a session is decides whether you can go."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "costudy-s-2-b-1-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "costudy-s-2-b-1-1-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "A map is visually engaging."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "costudy-s-2-b-1-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "costudy-s-2-b-1-2-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Two views, not two tabs:"
+              },
+              {
+                "_type": "span",
+                "_key": "costudy-s-2-b-1-2-s1",
+                "marks": [],
+                "text": " the map and the list show the same sessions."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "costudy-s-2-b-2",
+            "localAssetKey": "home",
+            "alt": "Two iPhones: the CoStudy home split between a campus map and your sessions, and the sessions list expanded",
+            "caption": "The split view, and the list expanded.",
+            "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "costudy-s-2-b-3",
+            "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "costudy-s-2-b-3-s",
+                "marks": [],
+                "text": "Stacked pins"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "costudy-s-2-b-4",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "costudy-s-2-b-4-s",
+                "marks": [],
+                "text": "Sessions in the same building stack as course icons with “+3 more”. Popular buildings have a lot going on at once, so stacking keeps the map clean and shows where people are studying. Zoom in or tap a stack to see each exact location."
               }
             ]
           },
           {
             "_type": "mediaImage",
-            "_key": "costudy-s-2-b-1",
-            "localAssetKey": "joining",
-            "alt": "Two iPhones: a CoStudy session before joining with a Join session button, and after joining with Open class thread and Leave session",
-            "caption": "Before and after joining.",
+            "_key": "costudy-s-2-b-5",
+            "localAssetKey": "stacked-pins",
+            "alt": "A close-up of the CoStudy map: course icons stacked on two buildings with session names and +1 more and +3 more",
+            "caption": "Stacked course icons, with “+3 more”.",
+            "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "costudy-s-2-b-6",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "costudy-s-2-b-6-s",
+                "marks": [],
+                "text": "On the day, we agreed in Figma comments to keep gradients for live sessions and your upcoming ones only."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "costudy-s-2-b-7",
+            "localAssetKey": "session-cards",
+            "alt": "A close-up of CoStudy session cards: two tinted live sessions with course icons, and a plain upcoming session",
+            "caption": "Live sessions and yours are tinted; other upcoming ones stay plain.",
             "size": "full"
           }
         ]
@@ -378,8 +368,8 @@
       {
         "_type": "projectSection",
         "_key": "costudy-section-3",
-        "title": "Sign-up",
-        "heading": "Courses come pre-filled",
+        "title": "Joining",
+        "heading": "What changes when you join",
         "content": [
           {
             "_type": "block",
@@ -391,52 +381,16 @@
                 "_type": "span",
                 "_key": "costudy-s-3-b-0-s",
                 "marks": [],
-                "text": "Sign-up verifies a school email, then shows your courses pre-filled for you to confirm."
+                "text": "After you join, the main button becomes “Open class thread” and a Leave session button appears. On the day, we also agreed to add a list of people attending."
               }
             ]
           },
           {
-            "_type": "block",
+            "_type": "mediaImage",
             "_key": "costudy-s-3-b-1",
-            "style": "h3",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "costudy-s-3-b-1-s",
-                "marks": [],
-                "text": "Course colours"
-              }
-            ]
-          },
-          {
-            "_type": "block",
-            "_key": "costudy-s-3-b-2",
-            "style": "normal",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "costudy-s-3-b-2-s",
-                "marks": [],
-                "text": "Each course gets its own colour across the map, session cards and threads. It helps you spot your courses fast, ties the features together, and adds some personality."
-              }
-            ]
-          },
-          {
-            "_type": "mediaImage",
-            "_key": "costudy-s-3-b-3",
-            "localAssetKey": "courses",
-            "alt": "A close-up of the CoStudy course confirmation list: MATH 117, CHEM 121, CS 105 and ENG 102, each with its own colour and icon",
-            "caption": "Each course keeps its colour across the app.",
-            "size": "full"
-          },
-          {
-            "_type": "mediaImage",
-            "_key": "costudy-s-3-b-4",
-            "localAssetKey": "signup",
-            "alt": "Three iPhones: the CoStudy welcome screen, the university email step, and course confirmation with four pre-filled courses",
-            "caption": "Welcome, school email and course confirmation.",
+            "localAssetKey": "joining",
+            "alt": "Two iPhones: a CoStudy session before joining with a Join session button, and after joining with Open class thread and Leave session",
+            "caption": "Before and after joining.",
             "size": "full"
           }
         ]
@@ -444,34 +398,34 @@
       {
         "_type": "projectSection",
         "_key": "costudy-section-4",
-        "title": "Outcome",
-        "heading": "First place in one day",
+        "title": "Sign-up",
+        "heading": "Courses come pre-filled",
         "content": [
           {
             "_type": "block",
             "_key": "costudy-s-4-b-0",
-            "style": "h3",
+            "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
                 "_key": "costudy-s-4-b-0-s",
                 "marks": [],
-                "text": "Summary"
+                "text": "Sign-up verifies a school email, then shows your courses pre-filled for you to confirm."
               }
             ]
           },
           {
             "_type": "block",
             "_key": "costudy-s-4-b-1",
-            "style": "normal",
+            "style": "h3",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
                 "_key": "costudy-s-4-b-1-s",
                 "marks": [],
-                "text": "CoStudy started from a broad prompt about helping people connect, care and thrive. In one day, our team of four went from about 16 ideas to a clickable prototype and a pitch deck: an app for finding and joining study sessions for your courses on campus."
+                "text": "Course colours"
               }
             ]
           },
@@ -484,6 +438,72 @@
               {
                 "_type": "span",
                 "_key": "costudy-s-4-b-2-s",
+                "marks": [],
+                "text": "Each course gets its own colour across the map, session cards and threads. It helps you spot your courses fast, ties the features together, and adds some personality."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "costudy-s-4-b-3",
+            "localAssetKey": "courses",
+            "alt": "A close-up of the CoStudy course confirmation list: MATH 117, CHEM 121, CS 105 and ENG 102, each with its own colour and icon",
+            "caption": "Each course keeps its colour across the app.",
+            "size": "full"
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "costudy-s-4-b-4",
+            "localAssetKey": "signup",
+            "alt": "Three iPhones: the CoStudy welcome screen, the university email step, and course confirmation with four pre-filled courses",
+            "caption": "Welcome, school email and course confirmation.",
+            "size": "full"
+          }
+        ]
+      },
+      {
+        "_type": "projectSection",
+        "_key": "costudy-section-5",
+        "title": "Outcome",
+        "heading": "First place in one day",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "costudy-s-5-b-0",
+            "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "costudy-s-5-b-0-s",
+                "marks": [],
+                "text": "Summary"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "costudy-s-5-b-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "costudy-s-5-b-1-s",
+                "marks": [],
+                "text": "CoStudy started from a broad prompt about helping people connect, care and thrive. In one day, our team of four went from about 16 ideas to a clickable prototype and a pitch deck: an app for finding and joining study sessions for your courses on campus."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "costudy-s-5-b-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "costudy-s-5-b-2-s",
                 "marks": [],
                 "text": "We designed a split home with a map of who’s studying where, stacked course icons for busy buildings, course colours that tie the app together, and a sign-up that pre-fills your courses. It won 1st place at the UW Blueprint Designathon 2025."
               }

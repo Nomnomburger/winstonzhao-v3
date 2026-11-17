@@ -8,7 +8,7 @@
       "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W/Winston-Design-Demo?node-id=284-16034",
       "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W/Winston-Design-Demo?node-id=284-16320"
     ],
-    "facts": "Confirmed by Winston (Nov 2026): contract Design Engineer, May–Oct 2026, only designer; founders + a team of 6+ (roles not stated); built the prompt bar, workspace layout, deploy and web screens in React/TypeScript, mostly with Claude Code and Cursor; the board was his idea, people found it slightly confusing (more used to chatting with an agent), it was too much to build, and the founders/team chose chat-first; the board may return; dual sidebar consolidated after people found two collapsible panes a bit confusing; 8 picker frames are 8 iterations, changed after tester feedback and own critique (unclear what Apply did, unclear what was selected); after the changes shipped people stopped hitting those problems; colour restraint was his call; workspace, prompt bar, deploy and web app are live; the work helped grow ARR (user count private); audience is technical and non-technical people. Takeaways he chose: 'states, not screens' and 'right idea, wrong time'. Depth round (Nov 2026): modes moved out of a dropdown after PostHog showed Plan/Ask were rarely used and support asked for an ask-only mode that already existed; only the active mode is labelled to stay narrow, say what will happen and reduce noise; agent work is folded for non-technical users and readability, expanded logs give each step an icon and code/commands their own containers; remote/local can't change after a session starts and the model rarely changes, so both sit under the bar only at the start; new sessions get a taller bar to feel balanced and important; the queue exists because runs take minutes, people wanted to line up the next change, and it keeps them in control. Title: Winston asked for 'Newly Desktop App' (Nov 2026); the slug stays as is. Copy round (Nov 2026): never say 'assumed' or that numbers are missing; just leave it out. Each case ends with a short Summary that doesn't mention what's missing or assumed."
+    "facts": "Confirmed by Winston (Nov 2026): contract Design Engineer, May–Oct 2026, only designer; founders + a team of 6+ (roles not stated); built the prompt bar, workspace layout, deploy and web screens in React/TypeScript, mostly with Claude Code and Cursor; the board was his idea, people found it slightly confusing (more used to chatting with an agent), it was too much to build, and the founders/team chose chat-first; the board may return; dual sidebar consolidated after people found two collapsible panes a bit confusing; 8 picker frames are 8 iterations, changed after tester feedback and own critique (unclear what Apply did, unclear what was selected); after the changes shipped people stopped hitting those problems; colour restraint was his call; workspace, prompt bar, deploy and web app are live; the work helped grow ARR (user count private); audience is technical and non-technical people. Takeaways he chose: 'states, not screens' and 'right idea, wrong time'. Depth round (Nov 2026): modes moved out of a dropdown after PostHog showed Plan/Ask were rarely used and support asked for an ask-only mode that already existed; only the active mode is labelled to stay narrow, say what will happen and reduce noise; agent work is folded for non-technical users and readability, expanded logs give each step an icon and code/commands their own containers; remote/local can't change after a session starts and the model rarely changes, so both sit under the bar only at the start; new sessions get a taller bar to feel balanced and important; the queue exists because runs take minutes, people wanted to line up the next change, and it keeps them in control. Title: Winston asked for 'Newly Desktop App' (Nov 2026); the slug stays as is. Copy round (Nov 2026): never say 'assumed' or that numbers are missing; just leave it out. Each case ends with a short Summary that doesn't mention what's missing or assumed. Layout (Nov 2026): per Winston's V3 design, the How might we statement is the heading of the first content section, titled 'Problem Statement'; the summary field is a short line on what he did."
   },
   "fields": {
     "title": "Newly Desktop App",
@@ -20,7 +20,7 @@
       "label": "Visit"
     },
     "intro": "Newly is an AI agent that turns a conversation into a real iOS, Android or web app. As a contract design engineer and the only designer, I designed the desktop and web workspace and built parts of it in React and TypeScript.",
-    "summary": "How might we let anyone build and ship a real app with an AI agent, without losing track of what it’s doing?",
+    "summary": "I designed the workspace where people build apps with Newly’s agent, from the prompt bar to deploying to the App Store.",
     "overview": "Newly is for technical and non-technical people alike. I worked with the founders and a team of six-plus, and changed course when feedback showed something wasn’t working.",
     "impact": "Shipped on desktop and web, and helped grow Newly’s revenue.",
     "details": [
@@ -59,8 +59,8 @@
     },
     "sections": [
       {
-        "title": "Problem",
-        "heading": "One prompt, a lot to control",
+        "title": "Problem Statement",
+        "heading": "How might we let anyone build and ship a real app with an AI agent, without losing track of what it’s doing?",
         "content": [
           "One text box drives local and cloud sessions, a simulator, git branches, model choices and releases to TestFlight and the App Store.",
           {

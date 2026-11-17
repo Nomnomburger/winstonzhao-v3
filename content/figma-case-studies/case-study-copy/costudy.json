@@ -6,15 +6,15 @@
       "https://www.figma.com/design/ftcxLE1aKCaG3S61G5EI5e/Canvas-Designathons?node-id=0-1",
       "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W/Winston-Design-Demo?node-id=1-15596"
     ],
-    "facts": "Confirmed by Winston (Nov 2026): 1st place, UW Blueprint Designathon 2025; one-day event; team of four (Ishan, Raghav, Lily, Winston); brainstormed together, picked the idea after brainstorming, then split screens; Winston worked on bits of everything and it was a group effort, so the case study should not say who did what; submitted a clickable prototype and a pitch deck; no specific judge feedback; the move from automatic matching to student-hosted sessions was not a deliberate decision; map-first home because location matters and it is visually engaging; the polished screens ('Final WINSTON') were made by Winston after the event. Prompt: 'How might we design solutions that help people connect, care, and thrive empowering the individual and the community?' Follow-up: never tested with students; joining-is-one-tap, map-from-real-maps and a Role line were not confirmed. Depth round: use the polished screens where they exist and don't mention the polish; home is a split view (half and half by default, both interactive, resize or tap to go full screen) rather than two tabs, because both show the same sessions; stacked course icons expand on zoom or tap, for busy buildings, a cleaner map and showing activity; course colours help spot your courses fast, tie features together and add personality. Copy round (Nov 2026): don't say 'assumed', 'never tested' or 'no specific feedback'; describe it as designed. Each case ends with a short Summary."
+    "facts": "Confirmed by Winston (Nov 2026): 1st place, UW Blueprint Designathon 2025; one-day event; team of four (Ishan, Raghav, Lily, Winston); brainstormed together, picked the idea after brainstorming, then split screens; Winston worked on bits of everything and it was a group effort, so the case study should not say who did what; submitted a clickable prototype and a pitch deck; no specific judge feedback; the move from automatic matching to student-hosted sessions was not a deliberate decision; map-first home because location matters and it is visually engaging; the polished screens ('Final WINSTON') were made by Winston after the event. Prompt: 'How might we design solutions that help people connect, care, and thrive empowering the individual and the community?' Follow-up: never tested with students; joining-is-one-tap, map-from-real-maps and a Role line were not confirmed. Depth round: use the polished screens where they exist and don't mention the polish; home is a split view (half and half by default, both interactive, resize or tap to go full screen) rather than two tabs, because both show the same sessions; stacked course icons expand on zoom or tap, for busy buildings, a cleaner map and showing activity; course colours help spot your courses fast, tie features together and add personality. Copy round (Nov 2026): don't say 'assumed', 'never tested' or 'no specific feedback'; describe it as designed. Each case ends with a short Summary. Layout (Nov 2026): per Winston's V3 design, the How might we statement is the heading of the first content section, titled 'Problem Statement'; the summary field is a short line on what he did."
   },
   "fields": {
     "description": "A campus study app concept that won 1st place at the UW Blueprint Designathon 2025.",
     "client": "UW Blueprint Designathon 2025",
     "discipline": "Product Design",
     "intro": "CoStudy is an app concept for finding and joining study sessions for your courses on campus. My team of four designed it in one day and won 1st place at the UW Blueprint Designathon 2025.",
-    "summary": "How might we design solutions that help people connect, care, and thrive, empowering the individual and the community?",
-    "overview": "The designathon gave us the prompt above. We brainstormed ideas as a team, picked one, then split up the screens. It was a group effort, and I worked on a bit of everything. We submitted a clickable prototype and a pitch deck.",
+    "summary": "In one day, we went from a broad prompt to a clickable prototype and pitch deck for a map-first study app.",
+    "overview": "We brainstormed ideas as a team, picked one, then split up the screens. It was a group effort, and I worked on a bit of everything. We submitted a clickable prototype and a pitch deck.",
     "impact": "1st place, UW Blueprint Designathon 2025.",
     "details": [
       {
@@ -52,14 +52,19 @@
     },
     "sections": [
       {
+        "title": "Problem Statement",
+        "heading": "How might we design solutions that help people connect, care, and thrive, empowering the individual and the community?",
+        "content": [
+          "This was the prompt for the UW Blueprint Designathon 2025, and we had one day to answer it."
+        ]
+      },
+      {
         "title": "Idea",
         "heading": "From prompt to a study app",
         "content": [
           "We started from the prompt and brainstormed about 16 ideas, from micro-volunteering to a neighbourhood emergency app. Then we picked one together: an automatic study-group generator that would put students into groups and assign a spot on campus. The prototype ended up with students hosting their own sessions instead.",
           {
             "board": {
-              "label": "The designathon prompt",
-              "prompt": "How might we design solutions that help people connect, care, and thrive, empowering the individual and the community?",
               "notes": [
                 {
                   "text": "A club personality matcher, based on your interests",

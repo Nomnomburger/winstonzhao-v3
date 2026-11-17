@@ -11,7 +11,7 @@
       "label": "Visit"
     },
     "intro": "Newly is an AI agent that turns a conversation into a real iOS, Android or web app. As a contract design engineer and the only designer, I designed the desktop and web workspace and built parts of it in React and TypeScript.",
-    "summary": "How might we let anyone build and ship a real app with an AI agent, without losing track of what it’s doing?",
+    "summary": "I designed the workspace where people build apps with Newly’s agent, from the prompt bar to deploying to the App Store.",
     "overview": "Newly is for technical and non-technical people alike. I worked with the founders and a team of six-plus, and changed course when feedback showed something wasn’t working.",
     "impact": "Shipped on desktop and web, and helped grow Newly’s revenue.",
     "showSideMenu": true,
@@ -71,8 +71,8 @@
       {
         "_type": "projectSection",
         "_key": "newly-section-0",
-        "title": "Problem",
-        "heading": "One prompt, a lot to control",
+        "title": "Problem Statement",
+        "heading": "How might we let anyone build and ship a real app with an AI agent, without losing track of what it’s doing?",
         "content": [
           {
             "_type": "block",
