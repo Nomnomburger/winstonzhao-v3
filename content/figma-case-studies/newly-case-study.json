@@ -454,7 +454,7 @@
                 "_type": "span",
                 "_key": "newly-s-2-b-0-s",
                 "marks": [],
-                "text": "Getting around a project should take a glance, not a search. The sidebar holds what you need to move around: start a new session, search, deploy and configure your project, with your pinned sessions and the session list right below. It’s also one of three panes that make up the workspace."
+                "text": "Once you’re inside a project, you need a way to get around it. The sidebar is where you start a new session, search, deploy and configure your project, with your pinned sessions and the session list right below. It’s also one of three panes that make up the workspace."
               }
             ]
           },
@@ -539,7 +539,7 @@
                 "_type": "span",
                 "_key": "newly-s-3-b-0-s",
                 "marks": [],
-                "text": "Before anyone types their first prompt, Newly gets to know them a little. Onboarding takes you from signing up to that first prompt: a couple of quick questions, a short tour of how Newly works and, if you want to build locally, getting your Mac ready to run iOS apps."
+                "text": "Newly’s first few screens have plenty to do. Onboarding takes you from signing up to your first prompt: it gets to know you a little, shows you how Newly works and, if you want to build locally, gets your Mac ready to run iOS apps."
               }
             ]
           },
@@ -648,7 +648,7 @@
                 "_type": "span",
                 "_key": "newly-s-4-b-0-s",
                 "marks": [],
-                "text": "Every new idea in Newly starts in the same place. Whether it’s a brand new project or a new session in one you already have, the start screen is where you type your first prompt, choose where the session runs, use a shortcut or pick up where you left off. It didn’t always live in the main window, though."
+                "text": "Every new chat in Newly starts in the same place, whether it’s in a brand new project or one you already have. The start screen is where you type your first prompt, choose where the session runs or use a shortcut, and with no project open, pick up where you left off. It didn’t always live in the main window, though."
               }
             ]
           },
@@ -836,7 +836,7 @@
                 "_type": "span",
                 "_key": "newly-s-4-b-10-s",
                 "marks": [],
-                "text": "A session can’t switch between remote and local once it starts. Only the model can change, and people rarely change it. So in a new session, location and model sit under the bar where you can’t miss them. Mid-chat, the model moves into the + menu, out of the way, especially for non-technical people."
+                "text": "Where a session runs is a choice you only make here, because a session can’t switch between remote and local once it starts. Only the model can change, and people rarely change it. So in a new session, location and model sit under the bar where you can’t miss them. Mid-chat, the model moves into the + menu, out of the way, especially for non-technical people."
               }
             ]
           }
@@ -1714,7 +1714,7 @@
                 "_type": "span",
                 "_key": "newly-s-8-b-0-s",
                 "marks": [],
-                "text": "Some of the work doesn’t show up as a feature at all. It’s in the visual details that run through the whole workspace, and together they shape how Newly feels to use. Here’s where most of the attention went:"
+                "text": "Some of the work doesn’t show up as a feature at all. It’s in the visual details that run through the whole workspace and shape how Newly feels to use. Here’s where most of the attention went:"
               }
             ]
           },

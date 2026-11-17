@@ -161,7 +161,7 @@
         "title": "Sidebar",
         "heading": "Simpler navigation",
         "content": [
-          "Getting around a project should take a glance, not a search. The sidebar holds what you need to move around: start a new session, search, deploy and configure your project, with your pinned sessions and the session list right below. It’s also one of three panes that make up the workspace.",
+          "Once you’re inside a project, you need a way to get around it. The sidebar is where you start a new session, search, deploy and configure your project, with your pinned sessions and the session list right below. It’s also one of three panes that make up the workspace.",
           "With chat chosen, the workspace became a set of panes you can open and collapse: the sidebar on the left, the chat in the middle and the preview panel on the right. I built this layout in code.",
           "I call the right side the preview panel because it previews more than your app. It also shows the media the agent makes, and in the future, websites and code.",
           "At first, app navigation and the session list were separate panes. Both could collapse, and the session list also acted like navigation. People found that a bit confusing, so we merged them into one sidebar.",
@@ -186,7 +186,7 @@
         "title": "Onboarding",
         "heading": "Sign-up to first prompt",
         "content": [
-          "Before anyone types their first prompt, Newly gets to know them a little. Onboarding takes you from signing up to that first prompt: a couple of quick questions, a short tour of how Newly works and, if you want to build locally, getting your Mac ready to run iOS apps.",
+          "Newly’s first few screens have plenty to do. Onboarding takes you from signing up to your first prompt: it gets to know you a little, shows you how Newly works and, if you want to build locally, gets your Mac ready to run iOS apps.",
           "A lot of that flow was designed and then prototyped in Claude Design before it shipped. The clips below are recorded from that prototype, so you can see its micro-interactions and animations.",
           {
             "video": "onb-welcome",
@@ -211,7 +211,7 @@
         "title": "Start screen",
         "heading": "Where chats begin",
         "content": [
-          "Every new idea in Newly starts in the same place. Whether it’s a brand new project or a new session in one you already have, the start screen is where you type your first prompt, choose where the session runs, use a shortcut or pick up where you left off. It didn’t always live in the main window, though.",
+          "Every new chat in Newly starts in the same place, whether it’s in a brand new project or one you already have. The start screen is where you type your first prompt, choose where the session runs or use a shortcut, and with no project open, pick up where you left off. It didn’t always live in the main window, though.",
           "Some earlier iterations started in a separate small window, like the startup windows in Xcode or Android Studio: your projects on one side, and Create New Project or Open Existing Project on the other.",
           {
             "gallery": [
@@ -254,7 +254,7 @@
             ],
             "caption": "Two cards from the stack: “Pick up where you left off” outside a project, “Try the Newly Mobile App” inside one."
           },
-          "A session can’t switch between remote and local once it starts. Only the model can change, and people rarely change it. So in a new session, location and model sit under the bar where you can’t miss them. Mid-chat, the model moves into the + menu, out of the way, especially for non-technical people."
+          "Where a session runs is a choice you only make here, because a session can’t switch between remote and local once it starts. Only the model can change, and people rarely change it. So in a new session, location and model sit under the bar where you can’t miss them. Mid-chat, the model moves into the + menu, out of the way, especially for non-technical people."
         ]
       },
       {
@@ -420,7 +420,7 @@
         "title": "Craft",
         "heading": "Glass, corners, shadows",
         "content": [
-          "Some of the work doesn’t show up as a feature at all. It’s in the visual details that run through the whole workspace, and together they shape how Newly feels to use. Here’s where most of the attention went:",
+          "Some of the work doesn’t show up as a feature at all. It’s in the visual details that run through the whole workspace and shape how Newly feels to use. Here’s where most of the attention went:",
           {
             "bullets": [
               "**Glass.** I wanted your wallpaper to shine through the workspace nicely, so I played with different tinting methods until the blur tint felt right.",
