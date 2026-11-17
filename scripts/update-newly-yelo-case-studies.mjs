@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Publish the expanded Newly and Yelo case studies to Sanity.
+ * Publish the Newly, Yelo, Elapse and CoStudy case studies to Sanity.
  *
  * Preview: node scripts/update-newly-yelo-case-studies.mjs
  * Apply:   node scripts/update-newly-yelo-case-studies.mjs --apply
@@ -14,7 +14,9 @@
  *
  * The existing documents are patched in place: slug, year, order and featured
  * are never touched, so the home page order and page addresses stay the same.
- * The title only changes when a case study file sets fields.title. The previous state of both documents is saved first, so the
+ * The title only changes when a case study file sets fields.title (the dry
+ * run shows old → new). The previous state of every document is saved first,
+ * so the
  * update can be reverted.
  */
 import fs from 'node:fs';
@@ -85,7 +87,7 @@ function validate(spec, copy) {
   for (const key of Object.keys(fields)) {
     if (!ALLOWED.includes(key)) throw new Error(`${where}: fields.${key} is not allowed (protected or unknown).`);
   }
-  if ('title' in fields && (typeof fields.title !== 'string' || !fields.title.trim())) throw new Error(`${where}: title must be a non-empty string when set.`);
+  if ('title' in fields && (typeof fields.title !== 'string' || !fields.title.trim() || fields.title !== fields.title.trim())) throw new Error(`${where}: title must be a non-empty string without leading or trailing spaces when set.`);
   if (typeof fields.description !== 'string' || !fields.description.trim()) throw new Error(`${where}: description is required.`);
   if (fields.description.length > 160) throw new Error(`${where}: description must be 160 characters or fewer.`);
   if (fields.showSideMenu !== true) throw new Error(`${where}: showSideMenu must be true (section navigation).`);
@@ -163,6 +165,10 @@ for (const { spec } of prepared) {
 const assetCount = prepared.reduce((n, p) => n + Object.keys(p.assets).length, 0);
 console.table(prepared.map(({ spec, fields, assets }) => ({
   project: spec.slug,
+  title: (() => {
+    const current = before.find((doc) => doc._id === spec.id).title;
+    return fields.title && fields.title !== current ? `${current} → ${fields.title}` : `${current} (unchanged)`;
+  })(),
   sections: fields.sections.length,
   sectionTitles: fields.sections.map((s) => s.title).join(' · '),
   images: Object.values(assets).filter((a) => !/\.(mp4|webm)$/i.test(a.path)).length,

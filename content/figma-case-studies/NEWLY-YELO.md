@@ -1,8 +1,11 @@
 # Case studies: Newly, Yelo, Elapse and CoStudy
 
 Decision-led case studies written from Winston's own answers, with media
-rendered from Figma. Each one patches an existing Sanity document; titles,
-slugs, years, home-page order and "featured" are left alone.
+rendered from Figma. Each one patches an existing Sanity document; slugs,
+years, home-page order and "featured" are left alone. Titles only change where
+a copy file sets `fields.title`: Newly becomes "Newly Desktop App" and Elapse
+becomes "Elapse App" (its page address stays `/projects/elapse-app-design`).
+The dry run shows each title as old → new before you apply.
 
 | Project | Sanity document | Copy |
 | --- | --- | --- |
