@@ -10,17 +10,18 @@ import {
   type SnapDirection, type WheelGesture,
 } from '@/lib/scroll-snap';
 
-const ELASTIC_THRESHOLD = 120; // wheel input past the snap point that snaps over
-const ELASTIC_RANGE = 140; // the stretch approaches this, never reaching it
+const ELASTIC_THRESHOLD = 260; // wheel input past the snap point that snaps over (~120px of stretch)
+const ELASTIC_RANGE = 360; // the stretch approaches this, never reaching it
+const ELASTIC_GIVE = 0.7; // how freely it gives at first: px of stretch per px of input
 const ELASTIC_IDLE_MS = 200; // no input for this long counts as letting go
 const ELASTIC_MEMORY_MS = 1200; // a push within this carries on from the last
 
-// The stretch for an amount of pull, and back. The same curve as iOS's
-// rubber band: it gives easily at first and stiffens as it goes.
-const stretch = (pull: number) => ELASTIC_RANGE * (1 - 1 / ((pull * 0.55) / ELASTIC_RANGE + 1));
+// The stretch for an amount of pull, and back. A rubber band curve like
+// iOS's, a little softer: it gives easily at first and stiffens as it goes.
+const stretch = (pull: number) => ELASTIC_RANGE * (1 - 1 / ((pull * ELASTIC_GIVE) / ELASTIC_RANGE + 1));
 const unstretch = (offset: number) => {
   const fraction = Math.min(offset / ELASTIC_RANGE, 0.99);
-  return (ELASTIC_RANGE / 0.55) * (1 / (1 - fraction) - 1);
+  return (ELASTIC_RANGE / ELASTIC_GIVE) * (1 / (1 - fraction) - 1);
 };
 
 interface Elastic {
@@ -202,7 +203,8 @@ export default function ContentSnap({ contentId, overviewId }: { contentId: stri
       if (!e) return;
       if (e.pull > 0 && performance.now() - e.lastInput > ELASTIC_IDLE_MS) releaseElastic(e);
       const target = e.edge + e.direction * stretch(e.pull);
-      e.y += (target - e.y) * (e.pull > 0 ? 0.25 : 0.2);
+      // Follows the push a little loosely, and springs back gently.
+      e.y += (target - e.y) * (e.pull > 0 ? 0.2 : 0.14);
       if (e.pull === 0 && Math.abs(target - e.y) < 0.5) {
         stopElastic();
         scrollInstantly(target);
