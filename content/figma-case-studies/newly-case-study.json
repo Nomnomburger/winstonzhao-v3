@@ -172,7 +172,7 @@
                 "_type": "span",
                 "_key": "newly-s-1-b-0-s",
                 "marks": [],
-                "text": "Before any screen was final, there was a bigger question to answer: how should people actually work with Newly’s agent? You could manage your app like a project, with the agent proposing features you approve one at a time, or you could just talk to it and let the conversation lead. I explored a few directions before we picked one."
+                "text": "Before any screen was final, there was a bigger question to answer: should working with Newly’s agent feel like managing a project, or like having a conversation? I explored a few directions before we picked one."
               }
             ]
           },
@@ -454,7 +454,7 @@
                 "_type": "span",
                 "_key": "newly-s-2-b-0-s",
                 "marks": [],
-                "text": "The sidebar is how you get around a project. It’s where you start a new session, search, deploy and configure your project, and your pinned and recent sessions are always one click away."
+                "text": "The sidebar is how you get around a project. It’s where you start a new session, search, deploy and configure your project, with your pinned sessions and the session list right below. It’s also one of three panes that make up the workspace."
               }
             ]
           },
@@ -468,7 +468,7 @@
                 "_type": "span",
                 "_key": "newly-s-2-b-1-s",
                 "marks": [],
-                "text": "It sits on the left of the workspace. With chat chosen, the workspace became a set of panes you can open and collapse, with the chat in the middle and the preview panel on the right. I built this layout in code."
+                "text": "With chat chosen, the workspace became a set of panes you can open and collapse: the sidebar on the left, the chat in the middle and the preview panel on the right. I built this layout in code."
               }
             ]
           },
@@ -539,7 +539,7 @@
                 "_type": "span",
                 "_key": "newly-s-3-b-0-s",
                 "marks": [],
-                "text": "Onboarding is the first few minutes anyone spends in Newly. It takes new users from signing up to their first prompt: a couple of quick questions about what they want to build, a short tour of how Newly works, and getting their Mac set up to build and run iOS apps."
+                "text": "Onboarding is the first thing anyone sees in Newly. It takes you from signing up to your first prompt: it gets to know you a little, shows you how Newly works and, if you want to build locally, gets your Mac ready to run iOS apps."
               }
             ]
           },
@@ -553,7 +553,7 @@
                 "_type": "span",
                 "_key": "newly-s-3-b-1-s",
                 "marks": [],
-                "text": "A lot of it was designed and then prototyped in Claude Design before it shipped. The clips below are recorded from that prototype, so you can see its micro-interactions and animations."
+                "text": "A lot of that flow was designed and then prototyped in Claude Design before it shipped. The clips below are recorded from that prototype, so you can see its micro-interactions and animations."
               }
             ]
           },
@@ -858,7 +858,7 @@
                 "_type": "span",
                 "_key": "newly-s-5-b-1-s",
                 "marks": [],
-                "text": "I built the prompt bar in React and TypeScript, mostly with Claude Code and Cursor. It changes with the space it has and what the agent is doing."
+                "text": "I built it in React and TypeScript, mostly with Claude Code and Cursor."
               }
             ]
           },
@@ -1258,7 +1258,7 @@
                 "_type": "span",
                 "_key": "newly-s-6-b-0-s",
                 "marks": [],
-                "text": "The conversation is where the agent talks back. It explains what it’s doing, shows the work behind each change, like the commands it ran and the code it wrote, and asks you questions when it needs a decision. Newly is for non-technical people too, so all of that had to stay easy to read without hiding anything. That starts with how the agent’s work is shown."
+                "text": "The conversation is where the agent talks back. It explains what it’s doing, shows the work behind each change, like the commands it ran and the code it wrote, and asks you questions when it needs a decision. Fitting all of that into one chat starts with what you see first."
               }
             ]
           },
@@ -1506,7 +1506,7 @@
                 "_type": "span",
                 "_key": "newly-s-7-b-0-s",
                 "marks": [],
-                "text": "The simulators panel is where you see your app actually running. It lives in the preview panel and runs your app on an iPhone simulator, in the cloud or on your computer, so you can try it out while the agent builds it. It comes with the controls you’d expect from a phone, like going home, rotating it or taking a screenshot, and a picker for choosing the device and iOS version."
+                "text": "The simulators panel is where you see your app actually running. It lives in the preview panel and runs your app on an iPhone simulator, in the cloud or on your computer, so you can try out what the agent builds. It has a picker for choosing the device and iOS version, plus controls for both your app and the phone, like going home or taking a screenshot."
               }
             ]
           },
@@ -1692,7 +1692,7 @@
                 "_type": "span",
                 "_key": "newly-s-8-b-0-s",
                 "marks": [],
-                "text": "Craft is about the visual details that run through the whole workspace: how the glass lets your wallpaper through, how corners and shadows are drawn, and where colour shows up. None of them are features on their own, but together they shape how Newly feels to use. Here’s where most of that polish went:"
+                "text": "Craft is about the visual details that run through the whole workspace. None of them are features on their own, but they shape how Newly feels to use. Here’s where most of the attention went:"
               }
             ]
           },
@@ -1832,7 +1832,7 @@
                 "_type": "span",
                 "_key": "newly-s-9-b-0-s",
                 "marks": [],
-                "text": "Deploy is where your app leaves Newly. Destinations are grouped by platform, so sending a build to TestFlight and the App Store, or publishing for Android and the web, happens in one place. Newly also runs in the browser, so you can get back to your projects without the desktop app. I designed and built the screens for both, and they’re live."
+                "text": "Deploy is where your app leaves Newly, whether it’s headed to TestFlight and the App Store, Android or the web. Newly also runs in the browser, so you can get back to your projects without the desktop app. I designed and built the screens for both, and they’re live."
               }
             ]
           },

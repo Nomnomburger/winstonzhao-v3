@@ -72,7 +72,7 @@
         "title": "Exploration",
         "heading": "Board or chat",
         "content": [
-          "Before any screen was final, there was a bigger question to answer: how should people actually work with Newly’s agent? You could manage your app like a project, with the agent proposing features you approve one at a time, or you could just talk to it and let the conversation lead. I explored a few directions before we picked one.",
+          "Before any screen was final, there was a bigger question to answer: should working with Newly’s agent feel like managing a project, or like having a conversation? I explored a few directions before we picked one.",
           {
             "board": {
               "label": "Ways to work with the agent",
@@ -161,8 +161,8 @@
         "title": "Sidebar",
         "heading": "One sidebar, not two",
         "content": [
-          "The sidebar is how you get around a project. It’s where you start a new session, search, deploy and configure your project, and your pinned and recent sessions are always one click away.",
-          "It sits on the left of the workspace. With chat chosen, the workspace became a set of panes you can open and collapse, with the chat in the middle and the preview panel on the right. I built this layout in code.",
+          "The sidebar is how you get around a project. It’s where you start a new session, search, deploy and configure your project, with your pinned sessions and the session list right below. It’s also one of three panes that make up the workspace.",
+          "With chat chosen, the workspace became a set of panes you can open and collapse: the sidebar on the left, the chat in the middle and the preview panel on the right. I built this layout in code.",
           "I call the right side the preview panel because it previews more than your app. It also shows the media the agent makes, and in the future, websites and code.",
           "At first, app navigation and the session list were separate panes. Both could collapse, and the session list also acted like navigation. People found that a bit confusing, so we merged them into one sidebar.",
           {
@@ -186,8 +186,8 @@
         "title": "Onboarding",
         "heading": "Sign-up to first prompt",
         "content": [
-          "Onboarding is the first few minutes anyone spends in Newly. It takes new users from signing up to their first prompt: a couple of quick questions about what they want to build, a short tour of how Newly works, and getting their Mac set up to build and run iOS apps.",
-          "A lot of it was designed and then prototyped in Claude Design before it shipped. The clips below are recorded from that prototype, so you can see its micro-interactions and animations.",
+          "Onboarding is the first thing anyone sees in Newly. It takes you from signing up to your first prompt: it gets to know you a little, shows you how Newly works and, if you want to build locally, gets your Mac ready to run iOS apps.",
+          "A lot of that flow was designed and then prototyped in Claude Design before it shipped. The clips below are recorded from that prototype, so you can see its micro-interactions and animations.",
           {
             "video": "onb-welcome",
             "poster": "onb-welcome-poster",
@@ -261,7 +261,7 @@
         "heading": "One bar, many states",
         "content": [
           "The prompt bar is how you talk to the agent. You describe what you want built or changed, attach files and images or record a voice message, pick a mode and send it off. While the agent works, the bar shows what’s happening and lets you stop it or line up your next message. It shows up all over the workspace, so it had to work at every size.",
-          "I built the prompt bar in React and TypeScript, mostly with Claude Code and Cursor. It changes with the space it has and what the agent is doing.",
+          "I built it in React and TypeScript, mostly with Claude Code and Cursor.",
           {
             "h3": "Modes people can find"
           },
@@ -325,7 +325,7 @@
         "title": "Conversation",
         "heading": "Showing the work",
         "content": [
-          "The conversation is where the agent talks back. It explains what it’s doing, shows the work behind each change, like the commands it ran and the code it wrote, and asks you questions when it needs a decision. Newly is for non-technical people too, so all of that had to stay easy to read without hiding anything. That starts with how the agent’s work is shown.",
+          "The conversation is where the agent talks back. It explains what it’s doing, shows the work behind each change, like the commands it ran and the code it wrote, and asks you questions when it needs a decision. Fitting all of that into one chat starts with what you see first.",
           "The agent’s work folds into one line, like “Worked for 3m, used 3 tools”.",
           {
             "bullets": [
@@ -362,7 +362,7 @@
         "title": "Simulators panel",
         "heading": "Controls on hover",
         "content": [
-          "The simulators panel is where you see your app actually running. It lives in the preview panel and runs your app on an iPhone simulator, in the cloud or on your computer, so you can try it out while the agent builds it. It comes with the controls you’d expect from a phone, like going home, rotating it or taking a screenshot, and a picker for choosing the device and iOS version.",
+          "The simulators panel is where you see your app actually running. It lives in the preview panel and runs your app on an iPhone simulator, in the cloud or on your computer, so you can try out what the agent builds. It has a picker for choosing the device and iOS version, plus controls for both your app and the phone, like going home or taking a screenshot.",
           "There are a lot of those controls, but you don’t always need them. So they’re hidden. Two small dots on the side of the phone hint that there’s something there to hover.",
           {
             "gallery": [
@@ -413,7 +413,7 @@
         "title": "Craft",
         "heading": "Glass, corners, shadows",
         "content": [
-          "Craft is about the visual details that run through the whole workspace: how the glass lets your wallpaper through, how corners and shadows are drawn, and where colour shows up. None of them are features on their own, but together they shape how Newly feels to use. Here’s where most of that polish went:",
+          "Craft is about the visual details that run through the whole workspace. None of them are features on their own, but they shape how Newly feels to use. Here’s where most of the attention went:",
           {
             "bullets": [
               "**Glass.** I wanted your wallpaper to shine through the workspace nicely, so I played with different tinting methods until the blur tint felt right.",
@@ -434,7 +434,7 @@
         "title": "Also shipped",
         "heading": "Deploy and web",
         "content": [
-          "Deploy is where your app leaves Newly. Destinations are grouped by platform, so sending a build to TestFlight and the App Store, or publishing for Android and the web, happens in one place. Newly also runs in the browser, so you can get back to your projects without the desktop app. I designed and built the screens for both, and they’re live.",
+          "Deploy is where your app leaves Newly, whether it’s headed to TestFlight and the App Store, Android or the web. Newly also runs in the browser, so you can get back to your projects without the desktop app. I designed and built the screens for both, and they’re live.",
           {
             "bullets": [
               "**Deploy** groups destinations by platform. The App Store card shows a short checklist and the details already filled in.",
