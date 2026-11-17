@@ -454,7 +454,7 @@
                 "_type": "span",
                 "_key": "newly-s-2-b-0-s",
                 "marks": [],
-                "text": "The sidebar is how you get around a project. It’s where you start a new session, search, deploy and configure your project, with your pinned sessions and the session list right below. It’s also one of three panes that make up the workspace."
+                "text": "Getting around a project should take a glance, not a search. The sidebar holds what you need to move around: start a new session, search, deploy and configure your project, with your pinned sessions and the session list right below. It’s also one of three panes that make up the workspace."
               }
             ]
           },
@@ -539,7 +539,7 @@
                 "_type": "span",
                 "_key": "newly-s-3-b-0-s",
                 "marks": [],
-                "text": "Onboarding is the first thing anyone sees in Newly. It takes you from signing up to your first prompt: it gets to know you a little, shows you how Newly works and, if you want to build locally, gets your Mac ready to run iOS apps."
+                "text": "Before anyone types their first prompt, Newly gets to know them a little. Onboarding takes you from signing up to that first prompt: a couple of quick questions, a short tour of how Newly works and, if you want to build locally, getting your Mac ready to run iOS apps."
               }
             ]
           },
@@ -648,7 +648,7 @@
                 "_type": "span",
                 "_key": "newly-s-4-b-0-s",
                 "marks": [],
-                "text": "The start screen is where every new chat begins. It’s the place you come back to whenever you want to start something, whether that’s a brand new project or a new session in one you already have. From here you type your first prompt, choose where the session runs, use a shortcut or pick up where you left off. It didn’t always live in the main window, though."
+                "text": "Every new idea in Newly starts in the same place. Whether it’s a brand new project or a new session in one you already have, the start screen is where you type your first prompt, choose where the session runs, use a shortcut or pick up where you left off. It didn’t always live in the main window, though."
               }
             ]
           },
@@ -825,6 +825,20 @@
                 "label": "In a project"
               }
             ]
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-4-b-10",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-4-b-10-s",
+                "marks": [],
+                "text": "A session can’t switch between remote and local once it starts. Only the model can change, and people rarely change it. So in a new session, location and model sit under the bar where you can’t miss them. Mid-chat, the model moves into the + menu, out of the way, especially for non-technical people."
+              }
+            ]
           }
         ]
       },
@@ -844,7 +858,7 @@
                 "_type": "span",
                 "_key": "newly-s-5-b-0-s",
                 "marks": [],
-                "text": "The prompt bar is how you talk to the agent. You describe what you want built or changed, attach files and images or record a voice message, pick a mode and send it off. While the agent works, the bar shows what’s happening and lets you stop it or line up your next message. It shows up all over the workspace, so it had to work at every size."
+                "text": "If Newly has a steering wheel, it’s the prompt bar. It’s where you describe what you want built or changed, attach files and images or record a voice message, pick a mode and send it off. While the agent works, the bar shows what’s happening and lets you stop it or line up your next message. It shows up all over the workspace, so it had to work at every size."
               }
             ]
           },
@@ -1002,161 +1016,25 @@
                 "_type": "span",
                 "_key": "newly-s-5-b-8-s",
                 "marks": [],
-                "text": "Set once, at the start"
-              }
-            ]
-          },
-          {
-            "_type": "block",
-            "_key": "newly-s-5-b-9",
-            "style": "normal",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "newly-s-5-b-9-s",
-                "marks": [],
-                "text": "A session can’t switch between remote and local once it starts. Only the model can change, and people rarely change it. So in a new session, location and model sit under the bar where you can’t miss them. Mid-chat, the model moves into the + menu, out of the way, especially for non-technical people."
-              }
-            ]
-          },
-          {
-            "_type": "block",
-            "_key": "newly-s-5-b-10",
-            "style": "h3",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "newly-s-5-b-10-s",
-                "marks": [],
-                "text": "Short copy in the menus"
-              }
-            ]
-          },
-          {
-            "_type": "block",
-            "_key": "newly-s-5-b-11",
-            "style": "normal",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "newly-s-5-b-11-s",
-                "marks": [],
-                "text": "These menus had to give clear information without much text. Most options get a name and, at most, one short line:"
-              }
-            ]
-          },
-          {
-            "_type": "block",
-            "_key": "newly-s-5-b-12-0",
-            "style": "normal",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "newly-s-5-b-12-0-s",
-                "marks": [
-                  "strong"
-                ],
-                "text": "Location"
-              },
-              {
-                "_type": "span",
-                "_key": "newly-s-5-b-12-0-s1",
-                "marks": [],
-                "text": " explains its trade-off: “Runs in the cloud, accessible on any device” or “Runs on your computer, device must stay awake”."
-              }
-            ],
-            "listItem": "bullet",
-            "level": 1
-          },
-          {
-            "_type": "block",
-            "_key": "newly-s-5-b-12-1",
-            "style": "normal",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "newly-s-5-b-12-1-s",
-                "marks": [
-                  "strong"
-                ],
-                "text": "Models"
-              },
-              {
-                "_type": "span",
-                "_key": "newly-s-5-b-12-1-s1",
-                "marks": [],
-                "text": " say what you’re picking: Newly Agent is “Best all around”, and Codex and Claude each say “Uses your own subscription”. If you haven’t linked one yet, a small “+ LINK” next to it prompts you to link your own."
-              }
-            ],
-            "listItem": "bullet",
-            "level": 1
-          },
-          {
-            "_type": "block",
-            "_key": "newly-s-5-b-12-2",
-            "style": "normal",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "newly-s-5-b-12-2-s",
-                "marks": [
-                  "strong"
-                ],
-                "text": "Effort"
-              },
-              {
-                "_type": "span",
-                "_key": "newly-s-5-b-12-2-s1",
-                "marks": [],
-                "text": " is a slider with one word for the current level, like “Medium”."
-              }
-            ],
-            "listItem": "bullet",
-            "level": 1
-          },
-          {
-            "_type": "mediaImage",
-            "_key": "newly-s-5-b-13",
-            "localAssetKey": "bar-settings",
-            "alt": "Three popovers from the Newly prompt bar: Remote or Local session, Effort and Model, and the + menu with the model submenu",
-            "caption": "The location menu, and the effort and model menu, at the start; the + menu mid-chat.",
-            "size": "full"
-          },
-          {
-            "_type": "block",
-            "_key": "newly-s-5-b-14",
-            "style": "h3",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "newly-s-5-b-14-s",
-                "marks": [],
                 "text": "While the agent works"
               }
             ]
           },
           {
             "_type": "block",
-            "_key": "newly-s-5-b-15-0",
+            "_key": "newly-s-5-b-9-0",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "newly-s-5-b-15-0-s",
+                "_key": "newly-s-5-b-9-0-s",
                 "marks": [],
                 "text": "A "
               },
               {
                 "_type": "span",
-                "_key": "newly-s-5-b-15-0-s1",
+                "_key": "newly-s-5-b-9-0-s1",
                 "marks": [
                   "strong"
                 ],
@@ -1164,7 +1042,7 @@
               },
               {
                 "_type": "span",
-                "_key": "newly-s-5-b-15-0-s2",
+                "_key": "newly-s-5-b-9-0-s2",
                 "marks": [],
                 "text": " button while it runs."
               }
@@ -1174,19 +1052,19 @@
           },
           {
             "_type": "block",
-            "_key": "newly-s-5-b-15-1",
+            "_key": "newly-s-5-b-9-1",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "newly-s-5-b-15-1-s",
+                "_key": "newly-s-5-b-9-1-s",
                 "marks": [],
                 "text": "A "
               },
               {
                 "_type": "span",
-                "_key": "newly-s-5-b-15-1-s1",
+                "_key": "newly-s-5-b-9-1-s1",
                 "marks": [
                   "strong"
                 ],
@@ -1194,7 +1072,7 @@
               },
               {
                 "_type": "span",
-                "_key": "newly-s-5-b-15-1-s2",
+                "_key": "newly-s-5-b-9-1-s2",
                 "marks": [],
                 "text": " while it connects or fixes a bug."
               }
@@ -1204,19 +1082,19 @@
           },
           {
             "_type": "block",
-            "_key": "newly-s-5-b-15-2",
+            "_key": "newly-s-5-b-9-2",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "newly-s-5-b-15-2-s",
+                "_key": "newly-s-5-b-9-2-s",
                 "marks": [],
                 "text": "A "
               },
               {
                 "_type": "span",
-                "_key": "newly-s-5-b-15-2-s1",
+                "_key": "newly-s-5-b-9-2-s1",
                 "marks": [
                   "strong"
                 ],
@@ -1224,7 +1102,7 @@
               },
               {
                 "_type": "span",
-                "_key": "newly-s-5-b-15-2-s2",
+                "_key": "newly-s-5-b-9-2-s2",
                 "marks": [],
                 "text": ", so you don’t lose your next thought. Runs can take minutes, and people wanted to line up their next change instead of waiting. Queued messages sit above the bar, where you can see and remove them."
               }
@@ -1234,10 +1112,118 @@
           },
           {
             "_type": "mediaImage",
-            "_key": "newly-s-5-b-16",
+            "_key": "newly-s-5-b-10",
             "localAssetKey": "bar-states",
             "alt": "Eight states of the Newly prompt bar: drop files, attached images, audio message, stop, connecting, fixing bugs, and messages in queue",
             "caption": "Drop files, images, voice, stop, connecting, fixing bugs and the queue.",
+            "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-5-b-11",
+            "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-5-b-11-s",
+                "marks": [],
+                "text": "Short copy in the menus"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-5-b-12",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-5-b-12-s",
+                "marks": [],
+                "text": "The menus around the bar had to give clear information without much text. Most options get a name and, at most, one short line:"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-5-b-13-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-5-b-13-0-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Location"
+              },
+              {
+                "_type": "span",
+                "_key": "newly-s-5-b-13-0-s1",
+                "marks": [],
+                "text": " explains its trade-off: “Runs in the cloud, accessible on any device” or “Runs on your computer, device must stay awake”."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-5-b-13-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-5-b-13-1-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Models"
+              },
+              {
+                "_type": "span",
+                "_key": "newly-s-5-b-13-1-s1",
+                "marks": [],
+                "text": " say what you’re picking: Newly Agent is “Best all around”, and Codex and Claude each say “Uses your own subscription”. If you haven’t linked one yet, a small “+ LINK” next to it prompts you to link your own."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-5-b-13-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-5-b-13-2-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Effort"
+              },
+              {
+                "_type": "span",
+                "_key": "newly-s-5-b-13-2-s1",
+                "marks": [],
+                "text": " is a slider with one word for the current level, like “Medium”."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "newly-s-5-b-14",
+            "localAssetKey": "bar-settings",
+            "alt": "Three popovers from the Newly prompt bar: Remote or Local session, Effort and Model, and the + menu with the model submenu",
+            "caption": "The location menu, and the effort and model menu, at the start; the + menu mid-chat.",
             "size": "full"
           }
         ]
@@ -1258,7 +1244,7 @@
                 "_type": "span",
                 "_key": "newly-s-6-b-0-s",
                 "marks": [],
-                "text": "The conversation is where the agent talks back. It explains what it’s doing, shows the work behind each change, like the commands it ran and the code it wrote, and asks you questions when it needs a decision. Fitting all of that into one chat starts with what you see first."
+                "text": "You ask, and the agent talks back. In the chat, it explains what it’s doing, shows the work behind each change, like the commands it ran and the code it wrote, and asks you questions when it needs a decision. Fitting all of that into one chat starts with what you see first."
               }
             ]
           },
@@ -1493,8 +1479,8 @@
       {
         "_type": "projectSection",
         "_key": "newly-section-7",
-        "title": "Simulators panel",
-        "heading": "Controls on hover",
+        "title": "Simulators",
+        "heading": "One panel for every simulator",
         "content": [
           {
             "_type": "block",
@@ -1506,7 +1492,7 @@
                 "_type": "span",
                 "_key": "newly-s-7-b-0-s",
                 "marks": [],
-                "text": "The simulators panel is where you see your app actually running. It lives in the preview panel and runs your app on an iPhone simulator, in the cloud or on your computer, so you can try out what the agent builds. It has a picker for choosing the device and iOS version, plus controls for both your app and the phone, like going home or taking a screenshot."
+                "text": "Nothing beats seeing your app actually run. The simulators panel sits in the preview panel and shows two things: what the agent is testing on its own simulator, and your own simulator for trying the app yourself, on iOS, Android or the web."
               }
             ]
           },
@@ -1520,26 +1506,62 @@
                 "_type": "span",
                 "_key": "newly-s-7-b-1-s",
                 "marks": [],
-                "text": "There are a lot of those controls, but you don’t always need them. So they’re hidden. Two small dots on the side of the phone hint that there’s something there to hover."
+                "text": "Both live in the switcher under the simulator, a set of tabs that expand and collapse. Click Agent, for example, and it opens to let you switch between the agent’s iOS and Android simulators, while your own simulator options fold away. That way there are never too many things on screen at once."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "newly-s-7-b-2",
+            "localAssetKey": "sim-switcher",
+            "alt": "The switcher under the Newly simulator: iOS, Android and web tabs open on the left, with Agent and Media collapsed next to them",
+            "caption": "Your simulators open, with Agent and Media folded away.",
+            "size": "content"
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-7-b-3",
+            "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-7-b-3-s",
+                "marks": [],
+                "text": "Controls when you need them"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-7-b-4",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-7-b-4-s",
+                "marks": [],
+                "text": "The simulator also comes with a lot of controls, but you don’t always need them. So they’re hidden. Two small dots on the side of the phone hint that there’s something there to hover."
               }
             ]
           },
           {
             "_type": "mediaGallery",
-            "_key": "newly-s-7-b-2",
+            "_key": "newly-s-7-b-5",
             "caption": "Two dots at rest. On hover, the backplate expands with the controls.",
             "arrows": true,
             "images": [
               {
                 "_type": "image",
-                "_key": "newly-s-7-b-2-0",
+                "_key": "newly-s-7-b-5-0",
                 "localAssetKey": "sim-resting",
                 "alt": "The Newly preview panel with an iPhone simulator and two small dots beside the phone",
                 "label": "Resting"
               },
               {
                 "_type": "image",
-                "_key": "newly-s-7-b-2-1",
+                "_key": "newly-s-7-b-5-1",
                 "localAssetKey": "sim-hover",
                 "alt": "The same preview panel on hover: a backplate behind the phone has expanded, with a rail of controls on its right",
                 "label": "On hover"
@@ -1548,13 +1570,13 @@
           },
           {
             "_type": "block",
-            "_key": "newly-s-7-b-3",
+            "_key": "newly-s-7-b-6",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "newly-s-7-b-3-s",
+                "_key": "newly-s-7-b-6-s",
                 "marks": [],
                 "text": "On hover, the backplate under the phone expands, and a rail of controls appears on its right. Home sits in the centre, right where your mouse already is after hovering the dots. The top half holds controls for your app, like reloading it or taking a screenshot. The bottom half holds controls for the phone, like the app switcher and rotating it."
               }
@@ -1562,47 +1584,11 @@
           },
           {
             "_type": "mediaImage",
-            "_key": "newly-s-7-b-4",
+            "_key": "newly-s-7-b-7",
             "localAssetKey": "sim-portrait",
             "alt": "The Newly workspace on a pale yellow-green wallpaper: the sidebar, a new chat, and the preview panel with the simulator’s backplate and control rail out",
             "caption": "The controls out, in the preview panel.",
             "size": "full"
-          },
-          {
-            "_type": "block",
-            "_key": "newly-s-7-b-5",
-            "style": "normal",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "newly-s-7-b-5-s",
-                "marks": [],
-                "text": "The panel works in landscape too."
-              }
-            ]
-          },
-          {
-            "_type": "mediaImage",
-            "_key": "newly-s-7-b-6",
-            "localAssetKey": "sim-landscape",
-            "alt": "The Newly workspace with a landscape iPhone simulator in the preview panel, its backplate expanded and the control rail on the right",
-            "caption": "In landscape, the rail stays on the right.",
-            "size": "full"
-          },
-          {
-            "_type": "block",
-            "_key": "newly-s-7-b-7",
-            "style": "h3",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "newly-s-7-b-7-s",
-                "marks": [],
-                "text": "A clearer picker"
-              }
-            ]
           },
           {
             "_type": "block",
@@ -1614,19 +1600,55 @@
                 "_type": "span",
                 "_key": "newly-s-7-b-8-s",
                 "marks": [],
+                "text": "The panel works in landscape too."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "newly-s-7-b-9",
+            "localAssetKey": "sim-landscape",
+            "alt": "The Newly workspace with a landscape iPhone simulator in the preview panel, its backplate expanded and the control rail on the right",
+            "caption": "In landscape, the rail stays on the right.",
+            "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-7-b-10",
+            "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-7-b-10-s",
+                "marks": [],
+                "text": "A clearer picker"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-7-b-11",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-7-b-11-s",
+                "marks": [],
                 "text": "The simulator picker went through eight versions. Tester feedback and my own critique pointed to two problems:"
               }
             ]
           },
           {
             "_type": "block",
-            "_key": "newly-s-7-b-9-0",
+            "_key": "newly-s-7-b-12-0",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "newly-s-7-b-9-0-s",
+                "_key": "newly-s-7-b-12-0-s",
                 "marks": [
                   "strong"
                 ],
@@ -1634,7 +1656,7 @@
               },
               {
                 "_type": "span",
-                "_key": "newly-s-7-b-9-0-s1",
+                "_key": "newly-s-7-b-12-0-s1",
                 "marks": [],
                 "text": " Cloud and Local got their own column, and the columns got labels: Type, Device, Version."
               }
@@ -1644,13 +1666,13 @@
           },
           {
             "_type": "block",
-            "_key": "newly-s-7-b-9-1",
+            "_key": "newly-s-7-b-12-1",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "newly-s-7-b-9-1-s",
+                "_key": "newly-s-7-b-12-1-s",
                 "marks": [
                   "strong"
                 ],
@@ -1658,7 +1680,7 @@
               },
               {
                 "_type": "span",
-                "_key": "newly-s-7-b-9-1-s1",
+                "_key": "newly-s-7-b-12-1-s1",
                 "marks": [],
                 "text": " it re-runs the app, so Apply became Apply & Run."
               }
@@ -1668,7 +1690,7 @@
           },
           {
             "_type": "mediaImage",
-            "_key": "newly-s-7-b-10",
+            "_key": "newly-s-7-b-13",
             "localAssetKey": "picker-versions",
             "alt": "Four versions of the iOS simulator picker, from a footer Cloud/Local toggle and an Apply button to labelled Type, Device and Version columns with Apply & Run",
             "caption": "Four of the eight versions.",
@@ -1692,7 +1714,7 @@
                 "_type": "span",
                 "_key": "newly-s-8-b-0-s",
                 "marks": [],
-                "text": "Craft is about the visual details that run through the whole workspace. None of them are features on their own, but they shape how Newly feels to use. Here’s where most of the attention went:"
+                "text": "Some of the work doesn’t show up as a feature at all. It’s in the visual details that run through the whole workspace, and together they shape how Newly feels to use. Here’s where most of the attention went:"
               }
             ]
           },
@@ -1832,7 +1854,7 @@
                 "_type": "span",
                 "_key": "newly-s-9-b-0-s",
                 "marks": [],
-                "text": "Deploy is where your app leaves Newly, whether it’s headed to TestFlight and the App Store, Android or the web. Newly also runs in the browser, so you can get back to your projects without the desktop app. I designed and built the screens for both, and they’re live."
+                "text": "Building an app is only half the job; at some point it has to ship. Deploy is where your app leaves Newly, whether it’s headed to TestFlight and the App Store, Android or the web. Newly also runs in the browser, so you can get back to your projects without the desktop app. I designed and built the screens for both, and they’re live."
               }
             ]
           },
@@ -2207,17 +2229,19 @@
       "path": "assets/newly-cs2-start-home.png",
       "sourceNodeIds": [
         "335:7662",
-        "284:36751"
+        "345:5388",
+        "295:41173"
       ],
-      "note": "Desktop/Welcome/Empty cropped from a 2x export of its section, so the section’s wallpaper shows through the window glass (like sidebar-after)."
+      "note": "The final window copied onto the Newly Desktop Demo wallpaper at its normal scale (copy 345:5388 in the “Portfolio exports” section, made from 295:41173); cropped from the 2x export."
     },
     "start-project": {
       "path": "assets/newly-cs2-start-project.png",
       "sourceNodeIds": [
         "284:37196",
-        "284:37195"
+        "345:5845",
+        "295:41173"
       ],
-      "note": "MacBook Air - 73 cropped from a 2x export of its section, so the section’s wallpaper shows through the window glass (like sidebar-after)."
+      "note": "The final window copied onto the Newly Desktop Demo wallpaper at its normal scale (copy 345:5845 in the “Portfolio exports” section, made from 295:41173); cropped from the 2x export."
     },
     "chat-experiments": {
       "path": "assets/newly-cs2-chat-experiments.jpg",
@@ -2323,6 +2347,13 @@
         "284:21940"
       ],
       "note": "The Newly Designs detail frame at 2x; its white background is made transparent (flood fill from the edges, colour-to-alpha on the anti-aliased edge) so the tiles sit on the page in light and dark themes."
+    },
+    "sim-switcher": {
+      "path": "assets/newly-cs2-sim-switcher.png",
+      "sourceNodeIds": [
+        "336:8149"
+      ],
+      "note": "Close-up of the switcher under the simulator, cropped from the 2x window (wallpaper showing through)."
     }
   }
 }

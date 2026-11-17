@@ -8,7 +8,7 @@
       "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W/Winston-Design-Demo?node-id=284-16034",
       "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W/Winston-Design-Demo?node-id=284-16320"
     ],
-    "facts": "Confirmed by Winston (Nov 2026): contract Design Engineer, May–Oct 2026, only designer; founders + a team of 6+ (roles not stated); built the prompt bar, workspace layout, deploy and web screens in React/TypeScript, mostly with Claude Code and Cursor; the board was his idea, people found it slightly confusing (more used to chatting with an agent), it was too much to build, and the founders/team chose chat-first; the board may return; dual sidebar consolidated after people found two collapsible panes a bit confusing; 8 picker frames are 8 iterations, changed after tester feedback and own critique (unclear what Apply did, unclear what was selected); after the changes shipped people stopped hitting those problems; colour restraint was his call; workspace, prompt bar, deploy and web app are live; the work helped grow ARR (user count private); audience is technical and non-technical people. Takeaways he chose: 'states, not screens' and 'right idea, wrong time'. Depth round (Nov 2026): modes moved out of a dropdown after PostHog showed Plan/Ask were rarely used and support asked for an ask-only mode that already existed; only the active mode is labelled to stay narrow, say what will happen and reduce noise; agent work is folded for non-technical users and readability, expanded logs give each step an icon and code/commands their own containers; remote/local can't change after a session starts and the model rarely changes, so both sit under the bar only at the start; new sessions get a taller bar to feel balanced and important; the queue exists because runs take minutes, people wanted to line up the next change, and it keeps them in control. Title: Winston asked for 'Newly Desktop App' (Nov 2026); the slug stays as is. Copy round (Nov 2026): never say 'assumed' or that numbers are missing; just leave it out. Each case ends with a short Summary that doesn't mention what's missing or assumed. Layout (Nov 2026): per Winston's V3 design, the How might we statement is the heading of the first content section, titled 'Problem Statement'; the summary field is a short line on what he did. Round 2 (Nov 17 2026): the board-with-prompt-bar image is shown without its wallpaper; the board caption is removed. Start screen (335:7662 no project, 284:37196 in a project): the sidebar differs in and out of a project; the taller prompt bar is for attention; there is space for a card stack to resume projects or promote actions like downloading the mobile app. Menus had to give clear information without much text: one-line location trade-offs, the effort slider, and a small LINK button that prompts people to link their own agents. He used Claude Design to prototype the chat interactions and layouts, because he could simulate typing and chatting with the agent while iterating (canvas: Chat screen design experiments). A lot of the onboarding was designed and then prototyped in Claude Design (canvas: Newly App Onboarding Flow); the clips are recorded from that prototype. Round 3 (Nov 17 2026): the onboarding shipped, and the four chat experiments (markdown, code and terminal blocks, the expanded tool list, questions in the chat bar) shipped. Simulator controls (336:7831): there are a lot of controls but they are not always used, so they are hidden under two dots on the side, telling people they can hover there; on hover the backplate under the phone expands and a rail of controls shows on its right, with Home in the centre where the mouse already is; the top half holds app controls (reload, screenshot), the bottom half phone controls (app switcher, rotate); the panel works in landscape. Screens are white. The agent is meant to generate marketing content like graphics and videos; one design was explored as a board (284:13664), and the one used is the chat with the media switcher in the preview panel (284:11583). The right side panel is the “preview panel”: it previews the app, media content, and in the future websites and code. The board allowed easy branching of ideas and prompts, similar to worktrees but easier for non-technical people to understand; an accepted branch is merged back into what it branched off (284:6704). The board was never used in production; Winston still sees it as a good design of an agentic future, and it stays in the design files for potential future use. Style: tell it like a story, concise where it can be, expanding on important details, especially visual design decisions. Start screen history: earlier iterations had a secondary small startup window like Xcode or Android Studio (284:19691); decided against it because they wanted everything in one window, and it was confusing when it opened again over an open project (284:18965). A project organizer, opened from the sidebar, is to be implemented in the future (do not mention that it has no design). Round 4 (Nov 17 2026): the simulator picker and controls are one section, “Simulators panel”, with the picker last. Craft: attention to detail in the blur and glass; the user’s wallpaper should shine through nicely, so he played with different tinting methods to get the blur tint right; corners are concentric so they feel like they belong, and things are aligned properly; shadows are used lightly but give important things a sense of depth; corners are smoothed to feel more polished; everything feels very crisp. Colour restraint moved into Craft. Image: 284:21940. Round 5 (Nov 17 2026): every section opens with a one-paragraph description of what that part of Newly is for, casual but professional, leading smoothly into the section’s story. The summary line never says “I”; it starts with a verb ending in -ing (Nov 2026)."
+    "facts": "Confirmed by Winston (Nov 2026): contract Design Engineer, May–Oct 2026, only designer; founders + a team of 6+ (roles not stated); built the prompt bar, workspace layout, deploy and web screens in React/TypeScript, mostly with Claude Code and Cursor; the board was his idea, people found it slightly confusing (more used to chatting with an agent), it was too much to build, and the founders/team chose chat-first; the board may return; dual sidebar consolidated after people found two collapsible panes a bit confusing; 8 picker frames are 8 iterations, changed after tester feedback and own critique (unclear what Apply did, unclear what was selected); after the changes shipped people stopped hitting those problems; colour restraint was his call; workspace, prompt bar, deploy and web app are live; the work helped grow ARR (user count private); audience is technical and non-technical people. Takeaways he chose: 'states, not screens' and 'right idea, wrong time'. Depth round (Nov 2026): modes moved out of a dropdown after PostHog showed Plan/Ask were rarely used and support asked for an ask-only mode that already existed; only the active mode is labelled to stay narrow, say what will happen and reduce noise; agent work is folded for non-technical users and readability, expanded logs give each step an icon and code/commands their own containers; remote/local can't change after a session starts and the model rarely changes, so both sit under the bar only at the start; new sessions get a taller bar to feel balanced and important; the queue exists because runs take minutes, people wanted to line up the next change, and it keeps them in control. Title: Winston asked for 'Newly Desktop App' (Nov 2026); the slug stays as is. Copy round (Nov 2026): never say 'assumed' or that numbers are missing; just leave it out. Each case ends with a short Summary that doesn't mention what's missing or assumed. Layout (Nov 2026): per Winston's V3 design, the How might we statement is the heading of the first content section, titled 'Problem Statement'; the summary field is a short line on what he did. Round 2 (Nov 17 2026): the board-with-prompt-bar image is shown without its wallpaper; the board caption is removed. Start screen (335:7662 no project, 284:37196 in a project): the sidebar differs in and out of a project; the taller prompt bar is for attention; there is space for a card stack to resume projects or promote actions like downloading the mobile app. Menus had to give clear information without much text: one-line location trade-offs, the effort slider, and a small LINK button that prompts people to link their own agents. He used Claude Design to prototype the chat interactions and layouts, because he could simulate typing and chatting with the agent while iterating (canvas: Chat screen design experiments). A lot of the onboarding was designed and then prototyped in Claude Design (canvas: Newly App Onboarding Flow); the clips are recorded from that prototype. Round 3 (Nov 17 2026): the onboarding shipped, and the four chat experiments (markdown, code and terminal blocks, the expanded tool list, questions in the chat bar) shipped. Simulator controls (336:7831): there are a lot of controls but they are not always used, so they are hidden under two dots on the side, telling people they can hover there; on hover the backplate under the phone expands and a rail of controls shows on its right, with Home in the centre where the mouse already is; the top half holds app controls (reload, screenshot), the bottom half phone controls (app switcher, rotate); the panel works in landscape. Screens are white. The agent is meant to generate marketing content like graphics and videos; one design was explored as a board (284:13664), and the one used is the chat with the media switcher in the preview panel (284:11583). The right side panel is the “preview panel”: it previews the app, media content, and in the future websites and code. The board allowed easy branching of ideas and prompts, similar to worktrees but easier for non-technical people to understand; an accepted branch is merged back into what it branched off (284:6704). The board was never used in production; Winston still sees it as a good design of an agentic future, and it stays in the design files for potential future use. Style: tell it like a story, concise where it can be, expanding on important details, especially visual design decisions. Start screen history: earlier iterations had a secondary small startup window like Xcode or Android Studio (284:19691); decided against it because they wanted everything in one window, and it was confusing when it opened again over an open project (284:18965). A project organizer, opened from the sidebar, is to be implemented in the future (do not mention that it has no design). Round 4 (Nov 17 2026): the simulator picker and controls are one section, “Simulators panel”, with the picker last. Craft: attention to detail in the blur and glass; the user’s wallpaper should shine through nicely, so he played with different tinting methods to get the blur tint right; corners are concentric so they feel like they belong, and things are aligned properly; shadows are used lightly but give important things a sense of depth; corners are smoothed to feel more polished; everything feels very crisp. Colour restraint moved into Craft. Image: 284:21940. Round 5 (Nov 17 2026): every section opens with a one-paragraph description of what that part of Newly is for, casual but professional, leading smoothly into the section’s story. The summary line never says “I”; it starts with a verb ending in -ing (Nov 2026). Simulators panel (Nov 17 2026): the switcher under the simulator lets you see what the agent is testing on its own simulator, and use your own simulator to test, on iOS, Android and the web. It is a set of expandable/collapsible tabs: clicking Agent expands it to switch between the agent’s iOS or Android simulator and collapses your own simulator options, so there are never too many things at once. No frame shows Agent expanded."
   },
   "fields": {
     "title": "Newly Desktop App",
@@ -161,7 +161,7 @@
         "title": "Sidebar",
         "heading": "Simpler navigation",
         "content": [
-          "The sidebar is how you get around a project. It’s where you start a new session, search, deploy and configure your project, with your pinned sessions and the session list right below. It’s also one of three panes that make up the workspace.",
+          "Getting around a project should take a glance, not a search. The sidebar holds what you need to move around: start a new session, search, deploy and configure your project, with your pinned sessions and the session list right below. It’s also one of three panes that make up the workspace.",
           "With chat chosen, the workspace became a set of panes you can open and collapse: the sidebar on the left, the chat in the middle and the preview panel on the right. I built this layout in code.",
           "I call the right side the preview panel because it previews more than your app. It also shows the media the agent makes, and in the future, websites and code.",
           "At first, app navigation and the session list were separate panes. Both could collapse, and the session list also acted like navigation. People found that a bit confusing, so we merged them into one sidebar.",
@@ -186,7 +186,7 @@
         "title": "Onboarding",
         "heading": "Sign-up to first prompt",
         "content": [
-          "Onboarding is the first thing anyone sees in Newly. It takes you from signing up to your first prompt: it gets to know you a little, shows you how Newly works and, if you want to build locally, gets your Mac ready to run iOS apps.",
+          "Before anyone types their first prompt, Newly gets to know them a little. Onboarding takes you from signing up to that first prompt: a couple of quick questions, a short tour of how Newly works and, if you want to build locally, getting your Mac ready to run iOS apps.",
           "A lot of that flow was designed and then prototyped in Claude Design before it shipped. The clips below are recorded from that prototype, so you can see its micro-interactions and animations.",
           {
             "video": "onb-welcome",
@@ -211,7 +211,7 @@
         "title": "Start screen",
         "heading": "Where chats begin",
         "content": [
-          "The start screen is where every new chat begins. It’s the place you come back to whenever you want to start something, whether that’s a brand new project or a new session in one you already have. From here you type your first prompt, choose where the session runs, use a shortcut or pick up where you left off. It didn’t always live in the main window, though.",
+          "Every new idea in Newly starts in the same place. Whether it’s a brand new project or a new session in one you already have, the start screen is where you type your first prompt, choose where the session runs, use a shortcut or pick up where you left off. It didn’t always live in the main window, though.",
           "Some earlier iterations started in a separate small window, like the startup windows in Xcode or Android Studio: your projects on one side, and Create New Project or Open Existing Project on the other.",
           {
             "gallery": [
@@ -253,14 +253,15 @@
               }
             ],
             "caption": "Two cards from the stack: “Pick up where you left off” outside a project, “Try the Newly Mobile App” inside one."
-          }
+          },
+          "A session can’t switch between remote and local once it starts. Only the model can change, and people rarely change it. So in a new session, location and model sit under the bar where you can’t miss them. Mid-chat, the model moves into the + menu, out of the way, especially for non-technical people."
         ]
       },
       {
         "title": "Prompt bar",
         "heading": "Dynamic prompt bar",
         "content": [
-          "The prompt bar is how you talk to the agent. You describe what you want built or changed, attach files and images or record a voice message, pick a mode and send it off. While the agent works, the bar shows what’s happening and lets you stop it or line up your next message. It shows up all over the workspace, so it had to work at every size.",
+          "If Newly has a steering wheel, it’s the prompt bar. It’s where you describe what you want built or changed, attach files and images or record a voice message, pick a mode and send it off. While the agent works, the bar shows what’s happening and lets you stop it or line up your next message. It shows up all over the workspace, so it had to work at every size.",
           "I built it in React and TypeScript, mostly with Claude Code and Cursor.",
           {
             "h3": "Modes people can find"
@@ -285,26 +286,6 @@
             "caption": "Expanded, stacked, collapsed."
           },
           {
-            "h3": "Set once, at the start"
-          },
-          "A session can’t switch between remote and local once it starts. Only the model can change, and people rarely change it. So in a new session, location and model sit under the bar where you can’t miss them. Mid-chat, the model moves into the + menu, out of the way, especially for non-technical people.",
-          {
-            "h3": "Short copy in the menus"
-          },
-          "These menus had to give clear information without much text. Most options get a name and, at most, one short line:",
-          {
-            "bullets": [
-              "**Location** explains its trade-off: “Runs in the cloud, accessible on any device” or “Runs on your computer, device must stay awake”.",
-              "**Models** say what you’re picking: Newly Agent is “Best all around”, and Codex and Claude each say “Uses your own subscription”. If you haven’t linked one yet, a small “+ LINK” next to it prompts you to link your own.",
-              "**Effort** is a slider with one word for the current level, like “Medium”."
-            ]
-          },
-          {
-            "image": "bar-settings",
-            "alt": "Three popovers from the Newly prompt bar: Remote or Local session, Effort and Model, and the + menu with the model submenu",
-            "caption": "The location menu, and the effort and model menu, at the start; the + menu mid-chat."
-          },
-          {
             "h3": "While the agent works"
           },
           {
@@ -318,6 +299,22 @@
             "image": "bar-states",
             "alt": "Eight states of the Newly prompt bar: drop files, attached images, audio message, stop, connecting, fixing bugs, and messages in queue",
             "caption": "Drop files, images, voice, stop, connecting, fixing bugs and the queue."
+          },
+          {
+            "h3": "Short copy in the menus"
+          },
+          "The menus around the bar had to give clear information without much text. Most options get a name and, at most, one short line:",
+          {
+            "bullets": [
+              "**Location** explains its trade-off: “Runs in the cloud, accessible on any device” or “Runs on your computer, device must stay awake”.",
+              "**Models** say what you’re picking: Newly Agent is “Best all around”, and Codex and Claude each say “Uses your own subscription”. If you haven’t linked one yet, a small “+ LINK” next to it prompts you to link your own.",
+              "**Effort** is a slider with one word for the current level, like “Medium”."
+            ]
+          },
+          {
+            "image": "bar-settings",
+            "alt": "Three popovers from the Newly prompt bar: Remote or Local session, Effort and Model, and the + menu with the model submenu",
+            "caption": "The location menu, and the effort and model menu, at the start; the + menu mid-chat."
           }
         ]
       },
@@ -325,7 +322,7 @@
         "title": "Conversation",
         "heading": "Chatting with the agent",
         "content": [
-          "The conversation is where the agent talks back. It explains what it’s doing, shows the work behind each change, like the commands it ran and the code it wrote, and asks you questions when it needs a decision. Fitting all of that into one chat starts with what you see first.",
+          "You ask, and the agent talks back. In the chat, it explains what it’s doing, shows the work behind each change, like the commands it ran and the code it wrote, and asks you questions when it needs a decision. Fitting all of that into one chat starts with what you see first.",
           "The agent’s work folds into one line, like “Worked for 3m, used 3 tools”.",
           {
             "bullets": [
@@ -359,11 +356,21 @@
         ]
       },
       {
-        "title": "Simulators panel",
-        "heading": "Controls on hover",
+        "title": "Simulators",
+        "heading": "One panel for every simulator",
         "content": [
-          "The simulators panel is where you see your app actually running. It lives in the preview panel and runs your app on an iPhone simulator, in the cloud or on your computer, so you can try out what the agent builds. It has a picker for choosing the device and iOS version, plus controls for both your app and the phone, like going home or taking a screenshot.",
-          "There are a lot of those controls, but you don’t always need them. So they’re hidden. Two small dots on the side of the phone hint that there’s something there to hover.",
+          "Nothing beats seeing your app actually run. The simulators panel sits in the preview panel and shows two things: what the agent is testing on its own simulator, and your own simulator for trying the app yourself, on iOS, Android or the web.",
+          "Both live in the switcher under the simulator, a set of tabs that expand and collapse. Click Agent, for example, and it opens to let you switch between the agent’s iOS and Android simulators, while your own simulator options fold away. That way there are never too many things on screen at once.",
+          {
+            "image": "sim-switcher",
+            "size": "content",
+            "alt": "The switcher under the Newly simulator: iOS, Android and web tabs open on the left, with Agent and Media collapsed next to them",
+            "caption": "Your simulators open, with Agent and Media folded away."
+          },
+          {
+            "h3": "Controls when you need them"
+          },
+          "The simulator also comes with a lot of controls, but you don’t always need them. So they’re hidden. Two small dots on the side of the phone hint that there’s something there to hover.",
           {
             "gallery": [
               {
@@ -413,7 +420,7 @@
         "title": "Craft",
         "heading": "Glass, corners, shadows",
         "content": [
-          "Craft is about the visual details that run through the whole workspace. None of them are features on their own, but they shape how Newly feels to use. Here’s where most of the attention went:",
+          "Some of the work doesn’t show up as a feature at all. It’s in the visual details that run through the whole workspace, and together they shape how Newly feels to use. Here’s where most of the attention went:",
           {
             "bullets": [
               "**Glass.** I wanted your wallpaper to shine through the workspace nicely, so I played with different tinting methods until the blur tint felt right.",
@@ -434,7 +441,7 @@
         "title": "Also shipped",
         "heading": "Deploy and web",
         "content": [
-          "Deploy is where your app leaves Newly, whether it’s headed to TestFlight and the App Store, Android or the web. Newly also runs in the browser, so you can get back to your projects without the desktop app. I designed and built the screens for both, and they’re live.",
+          "Building an app is only half the job; at some point it has to ship. Deploy is where your app leaves Newly, whether it’s headed to TestFlight and the App Store, Android or the web. Newly also runs in the browser, so you can get back to your projects without the desktop app. I designed and built the screens for both, and they’re live.",
           {
             "bullets": [
               "**Deploy** groups destinations by platform. The App Store card shows a short checklist and the details already filled in.",
@@ -614,17 +621,19 @@
       "path": "assets/newly-cs2-start-home.png",
       "sourceNodeIds": [
         "335:7662",
-        "284:36751"
+        "345:5388",
+        "295:41173"
       ],
-      "note": "Desktop/Welcome/Empty cropped from a 2x export of its section, so the section’s wallpaper shows through the window glass (like sidebar-after)."
+      "note": "The final window copied onto the Newly Desktop Demo wallpaper at its normal scale (copy 345:5388 in the “Portfolio exports” section, made from 295:41173); cropped from the 2x export."
     },
     "start-project": {
       "path": "assets/newly-cs2-start-project.png",
       "sourceNodeIds": [
         "284:37196",
-        "284:37195"
+        "345:5845",
+        "295:41173"
       ],
-      "note": "MacBook Air - 73 cropped from a 2x export of its section, so the section’s wallpaper shows through the window glass (like sidebar-after)."
+      "note": "The final window copied onto the Newly Desktop Demo wallpaper at its normal scale (copy 345:5845 in the “Portfolio exports” section, made from 295:41173); cropped from the 2x export."
     },
     "chat-experiments": {
       "path": "assets/newly-cs2-chat-experiments.jpg",
@@ -730,6 +739,13 @@
         "284:21940"
       ],
       "note": "The Newly Designs detail frame at 2x; its white background is made transparent (flood fill from the edges, colour-to-alpha on the anti-aliased edge) so the tiles sit on the page in light and dark themes."
+    },
+    "sim-switcher": {
+      "path": "assets/newly-cs2-sim-switcher.png",
+      "sourceNodeIds": [
+        "336:8149"
+      ],
+      "note": "Close-up of the switcher under the simulator, cropped from the 2x window (wallpaper showing through)."
     }
   }
 }
