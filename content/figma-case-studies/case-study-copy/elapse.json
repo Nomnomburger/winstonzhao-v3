@@ -73,7 +73,7 @@
         "title": "Plan vs. release",
         "heading": "From plan to release",
         "content": [
-          "The 2023 plan was bigger than what we launched. We cut it back because teams needed other things more, like scouting.",
+          "The 2023 plan was bigger than what we launched. We cut it back to focus on what teams needed most.",
           {
             "bullets": [
               "**Planned:** an organizer portal for delays and announcements, a chatbot, and a web app for phones, tablets and computers.",
@@ -180,7 +180,7 @@
         "title": "Outcome",
         "heading": "After launch",
         "content": [
-          "Elapse reached 4,000+ accounts with a 4.8-star rating. In our automated tests, which clicked through competitor apps and Elapse to reach the same data, Elapse was 3x faster. After launch, feedback led to fixes, not design changes.",
+          "In our automated tests, which clicked through competitor apps and Elapse to reach the same data, Elapse was 3x faster. After launch, feedback led to fixes.",
           "The ScoutSheet tab on each team’s page came in a later update.",
           {
             "image": "scoutsheets",
@@ -200,8 +200,8 @@
           {
             "h3": "Summary"
           },
-          "Elapse started from problems I ran into while competing: a schedule spread across screens, matches running late, and announcements that were easy to miss. As co-founder and the only designer, working with seven developers, I designed an app that puts your next match first, shows delays instead of hiding them, and switches into a mode built for tournament day.",
-          "It launched on iOS in November 2024 and is also on Android."
+          "Elapse started from problems I ran into while competing. The official app spread the schedule across screens, and schedules didn’t update when matches ran late. I was co-founder and the only designer, working with seven developers. I designed an app that puts your next match first, updates the schedule when matches run late, and has a mode built for tournament day.",
+          "It launched on iOS in November 2024, is also on Android, and has 4,000+ accounts and a 4.8-star rating."
         ]
       }
     ]

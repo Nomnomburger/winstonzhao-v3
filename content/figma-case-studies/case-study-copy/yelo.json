@@ -243,16 +243,16 @@
           },
           {
             "bullets": [
-              "**Old habits inform design.** How people used the iMessage version shaped what we kept and what we dropped.",
+              "**Old habits inform design.** People already reacted to each other’s ride requests in the iMessage version, and that’s where reactions came from.",
               "**Booking first, social second.** Social signals only help if they don’t slow down getting a ride.",
-              "**Simplify a crowded home.** Redesigning a live app is mostly deciding what to remove."
+              "**Simplify a crowded home.** A lot of the work was deciding what to leave out, like reaction counts and the status-tinted sky."
             ]
           },
           {
             "h3": "Summary"
           },
-          "Yelo’s earlier app was live, but its home was crowded, social features felt bolted on, and the look was dated. As the only designer, I explored four home directions, and the founders chose B’s booking-first layout, combined with parts of A. I reworked the feed cards and ride options so getting a ride comes first and the social side supports it, and redesigned onboarding with fewer steps.",
-          "The redesign is live on iOS."
+          "Yelo’s earlier app was live, but its home was crowded, social features felt bolted on, and the look was dated. I explored four home directions, and the founders went with B’s layout, combined with parts of A, so booking stays first.",
+          "I reworked the feed cards so mixed card types are easy to scan. I swapped Exclusive and Shared for named vehicle classes that match the real fleet. And sign-up got shorter, with a profile that fills itself in from your school account. Search now sits at the top of home, and the feed underneath shows where people are headed, who got tickets and what’s trending."
         ]
       }
     ]

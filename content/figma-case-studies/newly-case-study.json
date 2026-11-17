@@ -430,7 +430,7 @@
                 "_type": "span",
                 "_key": "newly-s-3-b-2-s",
                 "marks": [],
-                "text": "In the old product, Build, Plan and Ask sat in a dropdown. PostHog showed people weren’t using Plan or Ask because they were hidden, and some support requests asked for a mode that only answers questions without editing anything. That mode already existed. People just couldn’t find it."
+                "text": "In the old product, Build, Plan and Ask sat in a dropdown. PostHog showed people rarely used Plan or Ask, and some support requests asked for a mode that only answers questions without editing anything. That mode already existed. People just couldn’t find it."
               }
             ]
           },
@@ -751,13 +751,13 @@
                 "marks": [
                   "strong"
                 ],
-                "text": "Most people don’t need the commands."
+                "text": "Not everyone needs the commands."
               },
               {
                 "_type": "span",
                 "_key": "newly-s-4-b-1-0-s1",
                 "marks": [],
-                "text": " Many Newly users aren’t technical."
+                "text": " Newly is for non-technical people too."
               }
             ],
             "listItem": "bullet",
@@ -1078,7 +1078,7 @@
                 "marks": [
                   "strong"
                 ],
-                "text": "Changed because of feedback:"
+                "text": "Shaped by feedback:"
               },
               {
                 "_type": "span",
@@ -1108,7 +1108,7 @@
                 "_type": "span",
                 "_key": "newly-s-7-b-2-1-s1",
                 "marks": [],
-                "text": " people stopped running into those problems."
+                "text": " people stopped getting stuck on the simulator picker."
               }
             ],
             "listItem": "bullet",
@@ -1184,7 +1184,7 @@
                 "_type": "span",
                 "_key": "newly-s-7-b-6-s",
                 "marks": [],
-                "text": "Newly had to work for technical and non-technical people alike. As the only designer, I designed the workspace, the prompt bar, the deploy flow and the web app, and built them in code. When feedback showed something wasn’t working, I changed course: chat replaced the board, two panes became one sidebar, and the simulator picker went through eight versions."
+                "text": "One prompt in Newly drives sessions, a simulator, models and App Store releases, for technical and non-technical people. As the only designer, I designed the workspace around that prompt bar. I also built the layout, the prompt bar, and the deploy and web screens in React and TypeScript."
               }
             ]
           },
@@ -1198,7 +1198,7 @@
                 "_type": "span",
                 "_key": "newly-s-7-b-7-s",
                 "marks": [],
-                "text": "The work shipped on desktop and web, and helped grow Newly’s revenue."
+                "text": "Feedback and the team’s priorities changed the plan more than once along the way. What shipped helped grow Newly’s revenue."
               }
             ]
           }

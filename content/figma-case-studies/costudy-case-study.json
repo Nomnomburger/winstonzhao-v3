@@ -242,7 +242,7 @@
             "_key": "costudy-s-1-b-7",
             "localAssetKey": "session-cards",
             "alt": "A close-up of CoStudy session cards: two tinted live sessions with course icons, and a plain upcoming session",
-            "caption": "Live and your sessions are tinted; upcoming ones stay plain.",
+            "caption": "Live sessions and yours are tinted; other upcoming ones stay plain.",
             "size": "full"
           }
         ]
@@ -352,28 +352,28 @@
           {
             "_type": "block",
             "_key": "costudy-s-4-b-0",
-            "style": "normal",
+            "style": "h3",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
                 "_key": "costudy-s-4-b-0-s",
                 "marks": [],
-                "text": "We won 1st place at the UW Blueprint Designathon 2025."
+                "text": "Summary"
               }
             ]
           },
           {
             "_type": "block",
             "_key": "costudy-s-4-b-1",
-            "style": "h3",
+            "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
                 "_key": "costudy-s-4-b-1-s",
                 "marks": [],
-                "text": "Summary"
+                "text": "CoStudy started from a broad prompt about helping people connect, care and thrive. In one day, our team of four went from about 16 ideas to a clickable prototype and a pitch deck: an app for finding and joining study sessions for your courses on campus."
               }
             ]
           },
@@ -387,21 +387,7 @@
                 "_type": "span",
                 "_key": "costudy-s-4-b-2-s",
                 "marks": [],
-                "text": "CoStudy started from a broad prompt about helping people connect, care and thrive. In one day, our team of four went from about 16 ideas to a clickable prototype and a pitch deck for an app that helps students find and join study sessions for their courses on campus."
-              }
-            ]
-          },
-          {
-            "_type": "block",
-            "_key": "costudy-s-4-b-3",
-            "style": "normal",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "costudy-s-4-b-3-s",
-                "marks": [],
-                "text": "We designed a split home with a map of who’s studying where, stacked course icons for busy buildings, course colours that tie the app together, and a sign-up that pre-fills your courses."
+                "text": "We designed a split home with a map of who’s studying where, stacked course icons for busy buildings, course colours that tie the app together, and a sign-up that pre-fills your courses. It won 1st place at the UW Blueprint Designathon 2025."
               }
             ]
           }

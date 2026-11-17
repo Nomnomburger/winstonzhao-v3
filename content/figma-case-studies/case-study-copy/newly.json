@@ -142,7 +142,7 @@
           {
             "h3": "Modes people can find"
           },
-          "In the old product, Build, Plan and Ask sat in a dropdown. PostHog showed people weren’t using Plan or Ask because they were hidden, and some support requests asked for a mode that only answers questions without editing anything. That mode already existed. People just couldn’t find it.",
+          "In the old product, Build, Plan and Ask sat in a dropdown. PostHog showed people rarely used Plan or Ask, and some support requests asked for a mode that only answers questions without editing anything. That mode already existed. People just couldn’t find it.",
           "So the modes moved into the bar as a segmented control, and only the active one shows its label:",
           {
             "bullets": [
@@ -208,7 +208,7 @@
           "The agent’s work folds into one line, like “Worked for 3m, used 3 tools”.",
           {
             "bullets": [
-              "**Most people don’t need the commands.** Many Newly users aren’t technical.",
+              "**Not everyone needs the commands.** Newly is for non-technical people too.",
               "**The chat stays readable** instead of turning into a log.",
               "**It’s still there to check.** Expanded, each step gets an icon, and code and commands sit in their own containers."
             ]
@@ -280,8 +280,8 @@
           },
           {
             "bullets": [
-              "**Changed because of feedback:** chat over the board, one sidebar instead of two, and Apply & Run in the simulator picker.",
-              "**After shipping:** people stopped running into those problems."
+              "**Shaped by feedback:** chat over the board, one sidebar instead of two, and Apply & Run in the simulator picker.",
+              "**After shipping:** people stopped getting stuck on the simulator picker."
             ]
           },
           {
@@ -296,8 +296,8 @@
           {
             "h3": "Summary"
           },
-          "Newly had to work for technical and non-technical people alike. As the only designer, I designed the workspace, the prompt bar, the deploy flow and the web app, and built them in code. When feedback showed something wasn’t working, I changed course: chat replaced the board, two panes became one sidebar, and the simulator picker went through eight versions.",
-          "The work shipped on desktop and web, and helped grow Newly’s revenue."
+          "One prompt in Newly drives sessions, a simulator, models and App Store releases, for technical and non-technical people. As the only designer, I designed the workspace around that prompt bar. I also built the layout, the prompt bar, and the deploy and web screens in React and TypeScript.",
+          "Feedback and the team’s priorities changed the plan more than once along the way. What shipped helped grow Newly’s revenue."
         ]
       }
     ]

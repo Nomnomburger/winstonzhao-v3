@@ -1057,7 +1057,7 @@
                 "_type": "span",
                 "_key": "yelo-s-6-b-2-0-s1",
                 "marks": [],
-                "text": " How people used the iMessage version shaped what we kept and what we dropped."
+                "text": " People already reacted to each other’s ride requests in the iMessage version, and that’s where reactions came from."
               }
             ],
             "listItem": "bullet",
@@ -1105,7 +1105,7 @@
                 "_type": "span",
                 "_key": "yelo-s-6-b-2-2-s1",
                 "marks": [],
-                "text": " Redesigning a live app is mostly deciding what to remove."
+                "text": " A lot of the work was deciding what to leave out, like reaction counts and the status-tinted sky."
               }
             ],
             "listItem": "bullet",
@@ -1135,7 +1135,7 @@
                 "_type": "span",
                 "_key": "yelo-s-6-b-4-s",
                 "marks": [],
-                "text": "Yelo’s earlier app was live, but its home was crowded, social features felt bolted on, and the look was dated. As the only designer, I explored four home directions, and the founders chose B’s booking-first layout, combined with parts of A. I reworked the feed cards and ride options so getting a ride comes first and the social side supports it, and redesigned onboarding with fewer steps."
+                "text": "Yelo’s earlier app was live, but its home was crowded, social features felt bolted on, and the look was dated. I explored four home directions, and the founders went with B’s layout, combined with parts of A, so booking stays first."
               }
             ]
           },
@@ -1149,7 +1149,7 @@
                 "_type": "span",
                 "_key": "yelo-s-6-b-5-s",
                 "marks": [],
-                "text": "The redesign is live on iOS."
+                "text": "I reworked the feed cards so mixed card types are easy to scan. I swapped Exclusive and Shared for named vehicle classes that match the real fleet. And sign-up got shorter, with a profile that fills itself in from your school account. Search now sits at the top of home, and the feed underneath shows where people are headed, who got tickets and what’s trending."
               }
             ]
           }

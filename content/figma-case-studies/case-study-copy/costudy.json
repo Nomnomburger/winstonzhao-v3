@@ -93,7 +93,7 @@
           {
             "image": "session-cards",
             "alt": "A close-up of CoStudy session cards: two tinted live sessions with course icons, and a plain upcoming session",
-            "caption": "Live and your sessions are tinted; upcoming ones stay plain."
+            "caption": "Live sessions and yours are tinted; other upcoming ones stay plain."
           }
         ]
       },
@@ -134,12 +134,11 @@
         "title": "Outcome",
         "heading": "First place in one day",
         "content": [
-          "We won 1st place at the UW Blueprint Designathon 2025.",
           {
             "h3": "Summary"
           },
-          "CoStudy started from a broad prompt about helping people connect, care and thrive. In one day, our team of four went from about 16 ideas to a clickable prototype and a pitch deck for an app that helps students find and join study sessions for their courses on campus.",
-          "We designed a split home with a map of who’s studying where, stacked course icons for busy buildings, course colours that tie the app together, and a sign-up that pre-fills your courses."
+          "CoStudy started from a broad prompt about helping people connect, care and thrive. In one day, our team of four went from about 16 ideas to a clickable prototype and a pitch deck: an app for finding and joining study sessions for your courses on campus.",
+          "We designed a split home with a map of who’s studying where, stacked course icons for busy buildings, course colours that tie the app together, and a sign-up that pre-fills your courses. It won 1st place at the UW Blueprint Designathon 2025."
         ]
       }
     ]
