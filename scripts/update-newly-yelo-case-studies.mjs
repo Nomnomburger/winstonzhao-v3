@@ -12,9 +12,9 @@
  * blocks in `fields` point at them with localAssetKey, which this script
  * swaps for a reference to the uploaded Sanity asset.
  *
- * The existing documents are patched in place: title, slug, year, order and
- * featured are never touched, so the home page order and page addresses stay
- * the same. The previous state of both documents is saved first, so the
+ * The existing documents are patched in place: slug, year, order and featured
+ * are never touched, so the home page order and page addresses stay the same.
+ * The title only changes when a case study file sets fields.title. The previous state of both documents is saved first, so the
  * update can be reverted.
  */
 import fs from 'node:fs';
@@ -39,10 +39,10 @@ const SPECS = [
 // Fields the case study files may change. Everything else on the document is
 // left exactly as it is.
 const ALLOWED = [
-  'description', 'client', 'discipline', 'link', 'intro', 'hero', 'coverImage',
+  'title', 'description', 'client', 'discipline', 'link', 'intro', 'hero', 'coverImage',
   'summary', 'details', 'overview', 'impact', 'sections', 'showSideMenu',
 ];
-const PROTECTED = ['title', 'slug', 'year', 'order', 'featured'];
+const PROTECTED = ['slug', 'year', 'order', 'featured'];
 
 const args = process.argv.slice(2);
 let apply = false;
@@ -85,6 +85,7 @@ function validate(spec, copy) {
   for (const key of Object.keys(fields)) {
     if (!ALLOWED.includes(key)) throw new Error(`${where}: fields.${key} is not allowed (protected or unknown).`);
   }
+  if ('title' in fields && (typeof fields.title !== 'string' || !fields.title.trim())) throw new Error(`${where}: title must be a non-empty string when set.`);
   if (typeof fields.description !== 'string' || !fields.description.trim()) throw new Error(`${where}: description is required.`);
   if (fields.description.length > 160) throw new Error(`${where}: description must be 160 characters or fewer.`);
   if (fields.showSideMenu !== true) throw new Error(`${where}: showSideMenu must be true (section navigation).`);

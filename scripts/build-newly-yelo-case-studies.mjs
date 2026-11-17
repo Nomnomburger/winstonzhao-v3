@@ -56,6 +56,7 @@ function expand(copy, slug) {
 
   const f = copy.fields;
   const fields = {
+    ...(f.title ? { title: f.title } : {}),
     description: f.description,
     client: f.client,
     discipline: f.discipline,
