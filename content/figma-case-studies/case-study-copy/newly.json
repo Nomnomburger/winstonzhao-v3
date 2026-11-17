@@ -8,7 +8,7 @@
       "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W/Winston-Design-Demo?node-id=284-16034",
       "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W/Winston-Design-Demo?node-id=284-16320"
     ],
-    "facts": "Confirmed by Winston (Nov 2026): contract Design Engineer, May–Oct 2026, only designer; founders + a team of 6+ (roles not stated); built the prompt bar, workspace layout, deploy and web screens in React/TypeScript, mostly with Claude Code and Cursor; the board was his idea, people found it slightly confusing (more used to chatting with an agent), it was too much to build, and the founders/team chose chat-first; the board may return; dual sidebar consolidated after people found two collapsible panes a bit confusing; 8 picker frames are 8 iterations, changed after tester feedback and own critique (unclear what Apply did, unclear what was selected); after the changes shipped people stopped hitting those problems; colour restraint was his call; workspace, prompt bar, deploy and web app are live; the work helped grow ARR (user count private); audience is technical and non-technical people. Takeaways he chose: 'states, not screens' and 'right idea, wrong time'. Depth round (Nov 2026): modes moved out of a dropdown after PostHog showed Plan/Ask were rarely used and support asked for an ask-only mode that already existed; only the active mode is labelled to stay narrow, say what will happen and reduce noise; agent work is folded for non-technical users and readability, expanded logs give each step an icon and code/commands their own containers; remote/local can't change after a session starts and the model rarely changes, so both sit under the bar only at the start; new sessions get a taller bar to feel balanced and important; the queue exists because runs take minutes, people wanted to line up the next change, and it keeps them in control. Title: Winston asked for 'Newly Desktop App' (Nov 2026); the slug stays as is."
+    "facts": "Confirmed by Winston (Nov 2026): contract Design Engineer, May–Oct 2026, only designer; founders + a team of 6+ (roles not stated); built the prompt bar, workspace layout, deploy and web screens in React/TypeScript, mostly with Claude Code and Cursor; the board was his idea, people found it slightly confusing (more used to chatting with an agent), it was too much to build, and the founders/team chose chat-first; the board may return; dual sidebar consolidated after people found two collapsible panes a bit confusing; 8 picker frames are 8 iterations, changed after tester feedback and own critique (unclear what Apply did, unclear what was selected); after the changes shipped people stopped hitting those problems; colour restraint was his call; workspace, prompt bar, deploy and web app are live; the work helped grow ARR (user count private); audience is technical and non-technical people. Takeaways he chose: 'states, not screens' and 'right idea, wrong time'. Depth round (Nov 2026): modes moved out of a dropdown after PostHog showed Plan/Ask were rarely used and support asked for an ask-only mode that already existed; only the active mode is labelled to stay narrow, say what will happen and reduce noise; agent work is folded for non-technical users and readability, expanded logs give each step an icon and code/commands their own containers; remote/local can't change after a session starts and the model rarely changes, so both sit under the bar only at the start; new sessions get a taller bar to feel balanced and important; the queue exists because runs take minutes, people wanted to line up the next change, and it keeps them in control. Title: Winston asked for 'Newly Desktop App' (Nov 2026); the slug stays as is. Copy round (Nov 2026): never say 'assumed' or that numbers are missing; just leave it out. Each case ends with a short Summary that doesn't mention what's missing or assumed."
   },
   "fields": {
     "title": "Newly Desktop App",
@@ -276,13 +276,12 @@
         "content": [
           "The workspace, the prompt bar and its states, the deploy flow and the web app are all live.",
           {
-            "h3": "What feedback showed"
+            "h3": "What feedback changed"
           },
           {
             "bullets": [
               "**Changed because of feedback:** chat over the board, one sidebar instead of two, and Apply & Run in the simulator picker.",
-              "**Checked after shipping:** people stopped running into those problems.",
-              "**Not measured:** I don’t have numbers for any single change."
+              "**After shipping:** people stopped running into those problems."
             ]
           },
           {
@@ -293,7 +292,12 @@
               "Designing for an agent is mostly states, not screens.",
               "A good idea can still be wrong for the timeline. The board may come back."
             ]
-          }
+          },
+          {
+            "h3": "Summary"
+          },
+          "Newly had to work for technical and non-technical people alike. As the only designer, I designed the workspace, the prompt bar, the deploy flow and the web app, and built them in code. When feedback showed something wasn’t working, I changed course: chat replaced the board, two panes became one sidebar, and the simulator picker went through eight versions.",
+          "The work shipped on desktop and web, and helped grow Newly’s revenue."
         ]
       }
     ]

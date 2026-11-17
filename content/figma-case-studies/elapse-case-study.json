@@ -871,6 +871,48 @@
             ],
             "listItem": "bullet",
             "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "elapse-s-6-b-5",
+            "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "elapse-s-6-b-5-s",
+                "marks": [],
+                "text": "Summary"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "elapse-s-6-b-6",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "elapse-s-6-b-6-s",
+                "marks": [],
+                "text": "Elapse started from problems I ran into while competing: a schedule spread across screens, matches running late, and announcements that were easy to miss. As co-founder and the only designer, working with seven developers, I designed an app that puts your next match first, shows delays instead of hiding them, and switches into a mode built for tournament day."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "elapse-s-6-b-7",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "elapse-s-6-b-7-s",
+                "marks": [],
+                "text": "It launched on iOS in November 2024 and is also on Android."
+              }
+            ]
           }
         ]
       }

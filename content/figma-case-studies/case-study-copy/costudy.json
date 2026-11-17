@@ -6,7 +6,7 @@
       "https://www.figma.com/design/ftcxLE1aKCaG3S61G5EI5e/Canvas-Designathons?node-id=0-1",
       "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W/Winston-Design-Demo?node-id=1-15596"
     ],
-    "facts": "Confirmed by Winston (Nov 2026): 1st place, UW Blueprint Designathon 2025; one-day event; team of four (Ishan, Raghav, Lily, Winston); brainstormed together, picked the idea after brainstorming, then split screens; Winston worked on bits of everything and it was a group effort, so the case study should not say who did what; submitted a clickable prototype and a pitch deck; no specific judge feedback; the move from automatic matching to student-hosted sessions was not a deliberate decision; map-first home because location matters and it is visually engaging; the polished screens ('Final WINSTON') were made by Winston after the event. Prompt: 'How might we design solutions that help people connect, care, and thrive empowering the individual and the community?' Follow-up: never tested with students; joining-is-one-tap, map-from-real-maps and a Role line were not confirmed. Depth round: use the polished screens where they exist and don't mention the polish; home is a split view (half and half by default, both interactive, resize or tap to go full screen) rather than two tabs, because both show the same sessions; stacked course icons expand on zoom or tap, for busy buildings, a cleaner map and showing activity; course colours help spot your courses fast, tie features together and add personality."
+    "facts": "Confirmed by Winston (Nov 2026): 1st place, UW Blueprint Designathon 2025; one-day event; team of four (Ishan, Raghav, Lily, Winston); brainstormed together, picked the idea after brainstorming, then split screens; Winston worked on bits of everything and it was a group effort, so the case study should not say who did what; submitted a clickable prototype and a pitch deck; no specific judge feedback; the move from automatic matching to student-hosted sessions was not a deliberate decision; map-first home because location matters and it is visually engaging; the polished screens ('Final WINSTON') were made by Winston after the event. Prompt: 'How might we design solutions that help people connect, care, and thrive empowering the individual and the community?' Follow-up: never tested with students; joining-is-one-tap, map-from-real-maps and a Role line were not confirmed. Depth round: use the polished screens where they exist and don't mention the polish; home is a split view (half and half by default, both interactive, resize or tap to go full screen) rather than two tabs, because both show the same sessions; stacked course icons expand on zoom or tap, for busy buildings, a cleaner map and showing activity; course colours help spot your courses fast, tie features together and add personality. Copy round (Nov 2026): don't say 'assumed', 'never tested' or 'no specific feedback'; describe it as designed. Each case ends with a short Summary."
   },
   "fields": {
     "description": "A campus study app concept that won 1st place at the UW Blueprint Designathon 2025.",
@@ -132,20 +132,14 @@
       },
       {
         "title": "Outcome",
-        "heading": "Result and what’s still assumed",
+        "heading": "First place in one day",
         "content": [
-          "We won 1st place, but we didn’t get any specific feedback beyond the result, and the design was never tested with students.",
+          "We won 1st place at the UW Blueprint Designathon 2025.",
           {
-            "h3": "Still assumed"
+            "h3": "Summary"
           },
-          {
-            "bullets": [
-              "Students will host sessions.",
-              "There are enough sessions to fill the map.",
-              "Students are comfortable showing where they study.",
-              "The app can get a student’s courses from the school."
-            ]
-          }
+          "CoStudy started from a broad prompt about helping people connect, care and thrive. In one day, our team of four went from about 16 ideas to a clickable prototype and a pitch deck for an app that helps students find and join study sessions for their courses on campus.",
+          "We designed a split home with a map of who’s studying where, stacked course icons for busy buildings, course colours that tie the app together, and a sign-up that pre-fills your courses."
         ]
       }
     ]

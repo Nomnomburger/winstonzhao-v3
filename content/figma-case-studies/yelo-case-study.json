@@ -1021,7 +1021,7 @@
                 "_type": "span",
                 "_key": "yelo-s-6-b-0-s",
                 "marks": [],
-                "text": "Home and feed, search and map, ride options and onboarding are live. I don’t have usage numbers."
+                "text": "Home and feed, search and map, ride options and onboarding are live."
               }
             ]
           },
@@ -1110,6 +1110,48 @@
             ],
             "listItem": "bullet",
             "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "yelo-s-6-b-3",
+            "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "yelo-s-6-b-3-s",
+                "marks": [],
+                "text": "Summary"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "yelo-s-6-b-4",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "yelo-s-6-b-4-s",
+                "marks": [],
+                "text": "Yelo’s earlier app was live, but its home was crowded, social features felt bolted on, and the look was dated. As the only designer, I explored four home directions, and the founders chose B’s booking-first layout, combined with parts of A. I reworked the feed cards and ride options so getting a ride comes first and the social side supports it, and redesigned onboarding with fewer steps."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "yelo-s-6-b-5",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "yelo-s-6-b-5-s",
+                "marks": [],
+                "text": "The redesign is live on iOS."
+              }
+            ]
           }
         ]
       }

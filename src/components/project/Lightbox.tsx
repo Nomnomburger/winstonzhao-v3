@@ -44,6 +44,10 @@ export default function Lightbox({ image, children }: { image: ImageSource; chil
     setClosing(false);
     setOpen(true);
     dialog.showModal();
+    // showModal focuses the close button, and Safari then draws a focus ring
+    // on it even after a mouse click. Focus the dialog itself instead (no
+    // ring); keyboard users can still Tab to the close button.
+    dialog.focus();
   };
 
   const close = useCallback(() => {
@@ -82,6 +86,7 @@ export default function Lightbox({ image, children }: { image: ImageSource; chil
       </button>
       <dialog
         ref={dialogRef}
+        tabIndex={-1}
         aria-label={image.alt || 'Image'}
         data-closing={closing ? '' : undefined}
         data-lenis-prevent

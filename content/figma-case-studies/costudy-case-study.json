@@ -347,7 +347,7 @@
         "_type": "projectSection",
         "_key": "costudy-section-4",
         "title": "Outcome",
-        "heading": "Result and what’s still assumed",
+        "heading": "First place in one day",
         "content": [
           {
             "_type": "block",
@@ -359,7 +359,7 @@
                 "_type": "span",
                 "_key": "costudy-s-4-b-0-s",
                 "marks": [],
-                "text": "We won 1st place, but we didn’t get any specific feedback beyond the result, and the design was never tested with students."
+                "text": "We won 1st place at the UW Blueprint Designathon 2025."
               }
             ]
           },
@@ -373,73 +373,37 @@
                 "_type": "span",
                 "_key": "costudy-s-4-b-1-s",
                 "marks": [],
-                "text": "Still assumed"
+                "text": "Summary"
               }
             ]
           },
           {
             "_type": "block",
-            "_key": "costudy-s-4-b-2-0",
+            "_key": "costudy-s-4-b-2",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "costudy-s-4-b-2-0-s",
+                "_key": "costudy-s-4-b-2-s",
                 "marks": [],
-                "text": "Students will host sessions."
+                "text": "CoStudy started from a broad prompt about helping people connect, care and thrive. In one day, our team of four went from about 16 ideas to a clickable prototype and a pitch deck for an app that helps students find and join study sessions for their courses on campus."
               }
-            ],
-            "listItem": "bullet",
-            "level": 1
+            ]
           },
           {
             "_type": "block",
-            "_key": "costudy-s-4-b-2-1",
+            "_key": "costudy-s-4-b-3",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "costudy-s-4-b-2-1-s",
+                "_key": "costudy-s-4-b-3-s",
                 "marks": [],
-                "text": "There are enough sessions to fill the map."
+                "text": "We designed a split home with a map of who’s studying where, stacked course icons for busy buildings, course colours that tie the app together, and a sign-up that pre-fills your courses."
               }
-            ],
-            "listItem": "bullet",
-            "level": 1
-          },
-          {
-            "_type": "block",
-            "_key": "costudy-s-4-b-2-2",
-            "style": "normal",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "costudy-s-4-b-2-2-s",
-                "marks": [],
-                "text": "Students are comfortable showing where they study."
-              }
-            ],
-            "listItem": "bullet",
-            "level": 1
-          },
-          {
-            "_type": "block",
-            "_key": "costudy-s-4-b-2-3",
-            "style": "normal",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "costudy-s-4-b-2-3-s",
-                "marks": [],
-                "text": "The app can get a student’s courses from the school."
-              }
-            ],
-            "listItem": "bullet",
-            "level": 1
+            ]
           }
         ]
       }

@@ -1062,7 +1062,7 @@
                 "_type": "span",
                 "_key": "newly-s-7-b-1-s",
                 "marks": [],
-                "text": "What feedback showed"
+                "text": "What feedback changed"
               }
             ]
           },
@@ -1102,37 +1102,13 @@
                 "marks": [
                   "strong"
                 ],
-                "text": "Checked after shipping:"
+                "text": "After shipping:"
               },
               {
                 "_type": "span",
                 "_key": "newly-s-7-b-2-1-s1",
                 "marks": [],
                 "text": " people stopped running into those problems."
-              }
-            ],
-            "listItem": "bullet",
-            "level": 1
-          },
-          {
-            "_type": "block",
-            "_key": "newly-s-7-b-2-2",
-            "style": "normal",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "newly-s-7-b-2-2-s",
-                "marks": [
-                  "strong"
-                ],
-                "text": "Not measured:"
-              },
-              {
-                "_type": "span",
-                "_key": "newly-s-7-b-2-2-s1",
-                "marks": [],
-                "text": " I don’t have numbers for any single change."
               }
             ],
             "listItem": "bullet",
@@ -1183,6 +1159,48 @@
             ],
             "listItem": "bullet",
             "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-7-b-5",
+            "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-7-b-5-s",
+                "marks": [],
+                "text": "Summary"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-7-b-6",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-7-b-6-s",
+                "marks": [],
+                "text": "Newly had to work for technical and non-technical people alike. As the only designer, I designed the workspace, the prompt bar, the deploy flow and the web app, and built them in code. When feedback showed something wasn’t working, I changed course: chat replaced the board, two panes became one sidebar, and the simulator picker went through eight versions."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-7-b-7",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-7-b-7-s",
+                "marks": [],
+                "text": "The work shipped on desktop and web, and helped grow Newly’s revenue."
+              }
+            ]
           }
         ]
       }
