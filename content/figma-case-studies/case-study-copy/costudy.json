@@ -43,12 +43,12 @@
       }
     ],
     "cover": {
-      "asset": "hero",
+      "asset": "cover",
       "alt": "CoStudy home: a campus map with course icons above your live sessions"
     },
     "hero": {
       "image": "hero",
-      "alt": "CoStudy home: a campus map with course icons above your live sessions"
+      "alt": "Three CoStudy screens on iPhones: the welcome screen, the home map above your sessions, and a profile with attended sessions"
     },
     "sections": [
       {
@@ -151,10 +151,19 @@
     ]
   },
   "assets": {
-    "hero": {
+    "cover": {
       "path": "assets/costudy-hero-live.jpg",
       "existingAssetId": "image-773f7bd3030ef819e60ece8aaf6f4b5921a7f016-716x717-png",
-      "note": "Winston's current hero and thumbnail in Sanity, kept as is."
+      "note": "Winston's current thumbnail in Sanity, kept as is."
+    },
+    "hero": {
+      "path": "assets/costudy-cs3-hero.jpg",
+      "sourceNodeIds": [
+        "316:7097",
+        "9:1861",
+        "9:2033"
+      ],
+      "note": "Final WINSTON welcome, home and profile screens in Apple's iPhone 16 Pro (White Titanium) bezel, laid out like the Yelo hero on a soft CoStudy-colour gradient."
     },
     "ideas": {
       "path": "assets/costudy-cs3-ideas.png",
