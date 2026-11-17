@@ -29,8 +29,10 @@ const port = Number(process.env.PREVIEW_PORT || 4545);
 // Only the fields the home page order and the page header need; the rest
 // comes from the case study file.
 const BASE = {
-  newly: { _id: 'figma-portfolio-newly', title: 'Newly', slug: 'newly', year: 2026, order: 5, featured: false },
-  yelo: { _id: 'figma-portfolio-yelo', title: 'Yelo', slug: 'yelo', year: 2026, order: 7, featured: false },
+  newly: { _id: 'figma-portfolio-newly', title: 'Newly Desktop App', slug: 'newly', year: 2026, order: 5, featured: false },
+  yelo: { _id: 'figma-portfolio-yelo', title: 'Yelo App', slug: 'yelo', year: 2026, order: 2, featured: true },
+  elapse: { _id: 'legacy-portfolio-elapsedesign', title: 'Elapse App', slug: 'elapse-app-design', year: 2023, order: 3, featured: true },
+  costudy: { _id: 'figma-portfolio-costudy', title: 'CoStudy', slug: 'costudy', year: 2025, order: 5, featured: false },
 };
 
 const slugs = process.argv.slice(2).length ? process.argv.slice(2) : Object.keys(BASE);

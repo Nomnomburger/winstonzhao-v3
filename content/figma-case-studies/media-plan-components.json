@@ -1,0 +1,235 @@
+[
+ {
+  "out": "out-cmp/yelo-cmp-search-live.png",
+  "stroke": 0,
+  "radius": 120,
+  "smoothing": 0,
+  "minWidth": 2400,
+  "items": [
+   {
+    "src": "../exports/yelo/1-7130.png",
+    "crop": [
+     24,
+     432,
+     1158,
+     240
+    ]
+   }
+  ]
+ },
+ {
+  "out": "out-cmp/yelo-cmp-feed-cards.png",
+  "stroke": 0,
+  "radius": 96,
+  "smoothing": 0.6,
+  "gap": 96,
+  "items": [
+   {
+    "src": "../exports/yelo/1-7130.png",
+    "crop": [
+     30,
+     1284,
+     1146,
+     690
+    ]
+   },
+   {
+    "src": "../exports/yelo/1-8132.png",
+    "crop": [
+     30,
+     1284,
+     1146,
+     720
+    ]
+   }
+  ]
+ },
+ {
+  "out": "out-cmp/yelo-cmp-ride-options.png",
+  "stroke": 0,
+  "radius": 96,
+  "smoothing": 0.6,
+  "gap": 96,
+  "items": [
+   {
+    "src": "../exports/yelo/1-6840.png",
+    "crop": [
+     30,
+     852,
+     1146,
+     726
+    ]
+   },
+   {
+    "src": "../exports/yelo/1-6840.png",
+    "crop": [
+     30,
+     1566,
+     1146,
+     633
+    ]
+   }
+  ]
+ },
+ {
+  "out": "out-cmp/elapse-cmp-next-card.png",
+  "stroke": 0,
+  "radius": 54,
+  "smoothing": 0,
+  "minWidth": 2100,
+  "items": [
+   {
+    "src": "../exports/elapse-filled/157-29648.png",
+    "crop": [
+     69,
+     606,
+     1032,
+     738
+    ]
+   }
+  ]
+ },
+ {
+  "out": "out-cmp/elapse-cmp-result-cards.png",
+  "stroke": 0,
+  "radius": 54,
+  "smoothing": 0,
+  "gap": 96,
+  "items": [
+   {
+    "src": "../exports/elapse/157-29740.png",
+    "crop": [
+     69,
+     606,
+     1032,
+     738
+    ]
+   },
+   {
+    "src": "../exports/elapse/157-29626.png",
+    "crop": [
+     69,
+     606,
+     1032,
+     618
+    ]
+   }
+  ]
+ },
+ {
+  "out": "out-cmp/elapse-cmp-schedule-rows.png",
+  "stroke": 0,
+  "radius": 54,
+  "smoothing": 0,
+  "gap": 96,
+  "items": [
+   {
+    "src": "../exports/elapse-filled/157-28944.png",
+    "crop": [
+     45,
+     945,
+     1125,
+     660
+    ]
+   },
+   {
+    "src": "../exports/elapse-filled/157-28944.png",
+    "crop": [
+     45,
+     1600,
+     1125,
+     640
+    ]
+   }
+  ]
+ },
+ {
+  "out": "out-cmp/costudy-cmp-stacked-pins.png",
+  "stroke": 0,
+  "radius": 72,
+  "smoothing": 0.6,
+  "minWidth": 2100,
+  "items": [
+   {
+    "src": "../exports/costudy/9-1861.png",
+    "crop": [
+     120,
+     450,
+     990,
+     600
+    ]
+   }
+  ]
+ },
+ {
+  "out": "out-cmp/costudy-cmp-session-cards.png",
+  "stroke": 0,
+  "radius": 108,
+  "smoothing": 0.6,
+  "gap": 96,
+  "items": [
+   {
+    "src": "../exports/costudy/9-2054.png",
+    "crop": [
+     0,
+     645,
+     1206,
+     918
+    ]
+   },
+   {
+    "src": "../exports/costudy/9-2054.png",
+    "crop": [
+     0,
+     1635,
+     1206,
+     567
+    ]
+   }
+  ]
+ },
+ {
+  "out": "out-cmp/costudy-cmp-courses.png",
+  "stroke": 0,
+  "radius": 72,
+  "smoothing": 0,
+  "gap": 96,
+  "items": [
+   {
+    "src": "../exports/costudy/316-7211.png",
+    "crop": [
+     36,
+     861,
+     1035,
+     504
+    ]
+   },
+   {
+    "src": "../exports/costudy/316-7211.png",
+    "crop": [
+     36,
+     1437,
+     1035,
+     504
+    ]
+   }
+  ]
+ },
+ {
+  "out": "out-cmp/newly-cmp-conversation.png",
+  "stroke": 0,
+  "radius": 28,
+  "smoothing": 0.6,
+  "items": [
+   {
+    "src": "../exports/n33716.png",
+    "crop": [
+     480,
+     260,
+     980,
+     740
+    ]
+   }
+  ]
+ }
+]

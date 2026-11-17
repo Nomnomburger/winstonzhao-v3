@@ -5,6 +5,7 @@ import mediaVideo from './objects/mediaVideo'
 import mediaGallery from './objects/mediaGallery'
 import detailItem from './objects/detailItem'
 import projectSection from './objects/projectSection'
+import stickyBoard from './objects/stickyBoard'
 
 export const schemaTypes = [
   project,
@@ -14,4 +15,5 @@ export const schemaTypes = [
   mediaGallery,
   detailItem,
   projectSection,
+  stickyBoard,
 ]

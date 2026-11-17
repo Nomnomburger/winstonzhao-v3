@@ -2,6 +2,7 @@ import { PortableText, type PortableTextComponents } from 'next-sanity';
 import type { BodyBlock, ProjectSection, TextBlock } from '@/lib/projects';
 import { GalleryFigure, ImageFigure, VideoFigure } from './Media';
 import SectionNav from './SectionNav';
+import StickyBoard from './StickyBoard';
 
 export const sectionId = (title: string, index: number) =>
   `${
@@ -28,6 +29,9 @@ const textComponents: PortableTextComponents = {
     number: ({ children }) => <ol className="list-decimal ps-6">{children}</ol>,
   },
   marks: {
+    // Book (450) body text, so bold is one step up at Medium (500) instead of
+    // the browser's default 700.
+    strong: ({ children }) => <strong className="font-medium">{children}</strong>,
     link: ({ children, value }) => {
       const href = (value as { href?: string } | undefined)?.href ?? '#';
       const external = /^https?:\/\//.test(href);
@@ -90,7 +94,9 @@ export default function ProjectSections({ sections, showSideMenu }: ProjectSecti
         </aside>
       )}
 
-      <div className={`flex flex-col gap-24 md:gap-36 ${showSideMenu ? 'md:col-span-2' : 'md:col-span-3'}`}>
+      {/* Desktop (md+): an extra 36px on the right only, so the content ends 72px
+          from the edge while the grid, its left edge and the side menu stay put. */}
+      <div className={`flex flex-col gap-24 md:gap-36 md:pr-9 ${showSideMenu ? 'md:col-span-2' : 'md:col-span-3'}`}>
         {sections.map((section, i) => {
           const chunks = chunk(section.content ?? []);
           return (
@@ -124,20 +130,22 @@ export default function ProjectSections({ sections, showSideMenu }: ProjectSecti
                   <div
                     key={c.block._key}
                     className={`${spaced} ${
-                      c.block._type !== 'mediaGallery' && c.block.size === 'content' ? textColumn : 'w-full'
+                      'size' in c.block && c.block.size === 'content' ? textColumn : 'w-full'
                     }`}
                   >
                     {c.block._type === 'mediaImage' && (
                       <ImageFigure
                         image={c.block}
+                        labels={c.block.labels}
                         caption={c.block.caption}
                         sizes={c.block.size === 'content' ? contentSizes : fullSizes}
                       />
                     )}
                     {c.block._type === 'mediaVideo' && <VideoFigure video={c.block} />}
                     {c.block._type === 'mediaGallery' && (
-                      <GalleryFigure images={c.block.images ?? []} caption={c.block.caption} />
+                      <GalleryFigure images={c.block.images ?? []} caption={c.block.caption} arrows={c.block.arrows} />
                     )}
+                    {c.block._type === 'stickyBoard' && <StickyBoard board={c.block} />}
                   </div>
                 );
               })}

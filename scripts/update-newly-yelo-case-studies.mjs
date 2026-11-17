@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Publish the expanded Newly and Yelo case studies to Sanity.
+ * Publish the Newly, Yelo, Elapse and CoStudy case studies to Sanity.
  *
  * Preview: node scripts/update-newly-yelo-case-studies.mjs
  * Apply:   node scripts/update-newly-yelo-case-studies.mjs --apply
@@ -12,10 +12,11 @@
  * blocks in `fields` point at them with localAssetKey, which this script
  * swaps for a reference to the uploaded Sanity asset.
  *
- * The existing documents are patched in place: title, slug, year, order and
- * featured are never touched, so the home page order and page addresses stay
- * the same. The previous state of both documents is saved first, so the
- * update can be reverted.
+ * The existing documents are patched in place: slug, year, order and featured
+ * are never touched, so the home page order and page addresses stay the same.
+ * The title only changes when a case study file sets fields.title (the dry
+ * run shows old → new). The previous state of every document is saved first,
+ * so the update can be reverted.
  */
 import fs from 'node:fs';
 import os from 'node:os';
@@ -33,14 +34,16 @@ const save = (name, value) => fs.writeFileSync(path.join(folder, name), `${JSON.
 const SPECS = [
   { slug: 'newly', file: 'newly-case-study.json', id: 'figma-portfolio-newly' },
   { slug: 'yelo', file: 'yelo-case-study.json', id: 'figma-portfolio-yelo' },
+  { slug: 'elapse', file: 'elapse-case-study.json', id: 'legacy-portfolio-elapsedesign' },
+  { slug: 'costudy', file: 'costudy-case-study.json', id: 'figma-portfolio-costudy' },
 ];
 // Fields the case study files may change. Everything else on the document is
 // left exactly as it is.
 const ALLOWED = [
-  'description', 'client', 'discipline', 'link', 'intro', 'hero', 'coverImage',
+  'title', 'description', 'client', 'discipline', 'link', 'intro', 'hero', 'coverImage',
   'summary', 'details', 'overview', 'impact', 'sections', 'showSideMenu',
 ];
-const PROTECTED = ['title', 'slug', 'year', 'order', 'featured'];
+const PROTECTED = ['slug', 'year', 'order', 'featured'];
 
 const args = process.argv.slice(2);
 let apply = false;
@@ -51,7 +54,7 @@ for (let i = 0; i < args.length; i++) {
   else if (args[i] === '--dry-run') apply = false;
   else if (args[i] === '--offline') offline = true;
   else if (args[i] === '--only') only = args[++i];
-  else throw new Error(`Unknown option ${args[i]}. Usage: node scripts/update-newly-yelo-case-studies.mjs [--apply | --offline] [--only newly|yelo]`);
+  else throw new Error(`Unknown option ${args[i]}. Usage: node scripts/update-newly-yelo-case-studies.mjs [--apply | --offline] [--only newly|yelo|elapse|costudy]`);
 }
 if (apply && offline) throw new Error('--offline only validates the files; it cannot be combined with --apply.');
 const specs = SPECS.filter((spec) => !only || spec.slug === only);
@@ -83,6 +86,7 @@ function validate(spec, copy) {
   for (const key of Object.keys(fields)) {
     if (!ALLOWED.includes(key)) throw new Error(`${where}: fields.${key} is not allowed (protected or unknown).`);
   }
+  if ('title' in fields && (typeof fields.title !== 'string' || !fields.title.trim() || fields.title !== fields.title.trim())) throw new Error(`${where}: title must be a non-empty string without leading or trailing spaces when set.`);
   if (typeof fields.description !== 'string' || !fields.description.trim()) throw new Error(`${where}: description is required.`);
   if (fields.description.length > 160) throw new Error(`${where}: description must be 160 characters or fewer.`);
   if (fields.showSideMenu !== true) throw new Error(`${where}: showSideMenu must be true (section navigation).`);
@@ -99,7 +103,8 @@ function validate(spec, copy) {
     const abs = path.join(folder, asset.path);
     if (!fs.existsSync(abs) || fs.statSync(abs).size === 0) throw new Error(`${where}: asset ${key} is missing at ${asset.path}.`);
     if (!/\.(png|jpe?g|webp|gif|mp4|webm)$/i.test(abs)) throw new Error(`${where}: unsupported asset type for ${key}.`);
-    if (!asset.sourceNodeIds?.length && !asset.sourceUrl) throw new Error(`${where}: asset ${key} needs Figma provenance (sourceNodeIds or sourceUrl).`);
+    if (asset.existingAssetId && !/^(image|file)-[0-9a-f]{40}-/.test(asset.existingAssetId)) throw new Error(`${where}: asset ${key} has a malformed existingAssetId.`);
+    if (!asset.sourceNodeIds?.length && !asset.sourceUrl && !asset.existingAssetId) throw new Error(`${where}: asset ${key} needs provenance (sourceNodeIds, sourceUrl or existingAssetId).`);
   }
   const used = new Set();
   walk(fields, (value, location) => {
@@ -111,6 +116,40 @@ function validate(spec, copy) {
     if (value._type === 'mediaImage' || value._type === 'image') {
       if (!value.localAssetKey && !value.asset?._ref) throw new Error(`${where}: ${location} has no image.`);
       if (value._type === 'mediaImage' && !value.alt?.trim()) throw new Error(`${where}: ${location} needs alt text.`);
+    }
+    if (value._type === 'mediaImage' && 'labels' in value) {
+      if (!Array.isArray(value.labels)) throw new Error(`${where}: ${location} labels must be a list.`);
+      for (const l of value.labels) {
+        const ok = l && l._type === 'imageLabel' && l._key && typeof l.text === 'string' && l.text.trim() && l.text.length <= 24
+          && typeof l.x === 'number' && l.x >= 0 && l.x <= 1 && (l.y === undefined || (typeof l.y === 'number' && l.y >= 0 && l.y <= 1));
+        if (!ok) throw new Error(`${where}: ${location} has a label without text, or with a position outside 0–1.`);
+      }
+    }
+    if (value._type === 'image' && 'label' in value && (typeof value.label !== 'string' || !value.label.trim() || value.label.length > 24)) {
+      throw new Error(`${where}: ${location} label must be short non-empty text.`);
+    }
+    if (value._type === 'stickyBoard') {
+      const optionalText = (obj, keys, what) => {
+        for (const k of keys) {
+          if (k in obj && (typeof obj[k] !== 'string' || !obj[k].trim())) throw new Error(`${where}: ${location} ${what}${k} must be non-empty text when set.`);
+        }
+      };
+      const unknown = Object.keys(value).filter((k) => !['_type', '_key', 'label', 'prompt', 'notes', 'caption'].includes(k));
+      if (unknown.length) throw new Error(`${where}: ${location} has unknown fields ${unknown.join(', ')}.`);
+      optionalText(value, ['label', 'prompt', 'caption'], '');
+      if (!Array.isArray(value.notes) || value.notes.length === 0) throw new Error(`${where}: ${location} needs at least one note.`);
+      const keys = new Set();
+      for (const note of value.notes) {
+        if (!note || typeof note !== 'object' || note._type !== 'stickyNote' || !note._key) throw new Error(`${where}: ${location} has a malformed note.`);
+        if (keys.has(note._key)) throw new Error(`${where}: ${location} repeats note key ${note._key}.`);
+        keys.add(note._key);
+        const extra = Object.keys(note).filter((k) => !['_type', '_key', 'text', 'color', 'tag', 'highlight'].includes(k));
+        if (extra.length) throw new Error(`${where}: ${location} note ${note._key} has unknown fields ${extra.join(', ')}.`);
+        if (typeof note.text !== 'string' || !note.text.trim()) throw new Error(`${where}: ${location} has a note without text.`);
+        if (!['yellow', 'pink', 'blue', 'green'].includes(note.color)) throw new Error(`${where}: ${location} has a note with unknown colour ${note.color}.`);
+        optionalText(note, ['tag', 'highlight'], `note ${note._key} `);
+        if (note.highlight && note.highlight.length > 16) throw new Error(`${where}: ${location} note ${note._key} highlight is longer than 16 characters.`);
+      }
     }
     if (value._type === 'mediaVideo' && !value.file?.localAssetKey && !value.file?.asset?._ref && !value.url) {
       throw new Error(`${where}: ${location} needs a video file or url.`);
@@ -159,6 +198,10 @@ for (const { spec } of prepared) {
 const assetCount = prepared.reduce((n, p) => n + Object.keys(p.assets).length, 0);
 console.table(prepared.map(({ spec, fields, assets }) => ({
   project: spec.slug,
+  title: (() => {
+    const current = before.find((doc) => doc._id === spec.id).title;
+    return fields.title && fields.title !== current ? `${current} → ${fields.title}` : `${current} (unchanged)`;
+  })(),
   sections: fields.sections.length,
   sectionTitles: fields.sections.map((s) => s.title).join(' · '),
   images: Object.values(assets).filter((a) => !/\.(mp4|webm)$/i.test(a.path)).length,
@@ -166,16 +209,23 @@ console.table(prepared.map(({ spec, fields, assets }) => ({
 })));
 
 if (!apply) {
-  console.log(`Dry run: both files validated against the live documents; ${assetCount} assets ready to upload. Re-run with --apply to publish.`);
+  console.log(`Dry run: ${specs.length} file(s) validated against the live documents; ${assetCount} assets ready to upload. Re-run with --apply to publish.`);
   process.exit(0);
 }
 
-save('sanity-before-newly-yelo-update.json', { savedAt: new Date().toISOString(), projectId: '7k8ajlip', dataset: 'production', documents: before });
+save(`sanity-before-${specs.map((s) => s.slug).join('-')}-update.json`, { savedAt: new Date().toISOString(), projectId: '7k8ajlip', dataset: 'production', documents: before });
 
 // Upload every asset once (Sanity de-duplicates identical files by content hash).
 const uploaded = new Map();
 for (const { spec, assets } of prepared) {
   for (const [key, asset] of Object.entries(assets)) {
+    // Already in Sanity (e.g. an image Winston uploaded in Studio): reference it
+    // as is. The local file is only a copy for the offline preview.
+    if (asset.existingAssetId) {
+      asset.assetId = asset.existingAssetId;
+      console.log(`Kept ${spec.slug}/${key} → ${asset.assetId}`);
+      continue;
+    }
     const abs = path.join(folder, asset.path);
     const buffer = fs.readFileSync(abs);
     const sha1 = createHash('sha1').update(buffer).digest('hex');
@@ -221,7 +271,7 @@ for (const { doc, set } of sets) {
   }
 }
 
-save('newly-yelo-update-result.json', {
+save(`${specs.map((s) => s.slug).join('-')}-update-result.json`, {
   publishedAt: new Date().toISOString(),
   transactionId: result.transactionId,
   projects: prepared.map(({ spec, fields, assets }) => ({

@@ -16,11 +16,27 @@ export default defineType({
         defineArrayMember({
           type: 'image',
           options: {hotspot: true},
-          fields: [defineField({name: 'alt', title: 'Alt text', type: 'string'})],
+          fields: [
+            defineField({name: 'alt', title: 'Alt text', type: 'string'}),
+            defineField({
+              name: 'label',
+              title: 'Label above image (optional)',
+              type: 'string',
+              description: 'A short word above the image, e.g. Before or After.',
+              validation: (Rule) => Rule.max(24),
+            }),
+          ],
         }),
       ],
       options: {layout: 'grid'},
       validation: (Rule) => Rule.min(2).max(3),
+    }),
+    defineField({
+      name: 'arrows',
+      title: 'Arrows between images',
+      type: 'boolean',
+      description: 'Show small arrows between the images, for a sequence such as before and after, or versions in order.',
+      initialValue: false,
     }),
     defineField({
       name: 'caption',

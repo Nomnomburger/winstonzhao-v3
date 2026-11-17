@@ -4,8 +4,8 @@
  *
  *   node scripts/build-newly-yelo-case-studies.mjs
  *
- * Reads content/figma-case-studies/case-study-copy/{newly,yelo}.json and
- * writes content/figma-case-studies/{newly,yelo}-case-study.json, the files
+ * Reads content/figma-case-studies/case-study-copy/{newly,yelo,elapse,costudy}.json
+ * and writes content/figma-case-studies/<slug>-case-study.json, the files
  * that scripts/update-newly-yelo-case-studies.mjs publishes.
  *
  * Compact format (per project):
@@ -20,7 +20,9 @@
  *       "sections": [{"title", "heading", "content": [
  *         "a paragraph",
  *         {"h3": "subheading"}, {"quote": "..."}, {"bullets": ["..."]},
- *         {"image": "assetKey", "alt": "...", "caption": "...", "size": "full" | "content"},
+ *         {"image": "assetKey", "alt": "...", "caption": "...", "size": "full" | "content",
+ *          "labels": [{"text": "Before", "x": 0.34, "y": 0.04}]},   (x, y: fractions of the image)
+ *         {"board": {"label", "prompt", "notes": [{"text", "color", "tag", "highlight"}]}, "caption"},
  *         {"video": "assetKey", "poster": "assetKey", "caption": "...", "autoplay": true},
  *         {"gallery": [{"image": "assetKey", "alt": "..."}], "caption": "..."}
  *       ]}]
@@ -37,21 +39,49 @@ const folder = path.join(root, 'content/figma-case-studies');
 
 function expand(copy, slug) {
   const key = (...parts) => `${slug}-${parts.join('-')}`;
-  const span = (k, text) => ({ _type: 'span', _key: `${k}-s`, marks: [], text });
-  const block = (k, text, style = 'normal', extra = {}) => ({ _type: 'block', _key: k, style, markDefs: [], children: [span(k, text)], ...extra });
-  const image = (k, item) => ({ _type: 'mediaImage', _key: k, localAssetKey: item.image, alt: item.alt, ...(item.caption ? { caption: item.caption } : {}), size: item.size ?? 'full' });
+  // **bold** in the copy becomes a span with the strong decorator.
+  const spans = (k, text) => text.split(/(\*\*[^*]+\*\*)/).filter(Boolean).map((part, n) => {
+    const bold = part.startsWith('**') && part.endsWith('**');
+    return { _type: 'span', _key: n === 0 ? `${k}-s` : `${k}-s${n}`, marks: bold ? ['strong'] : [], text: bold ? part.slice(2, -2) : part };
+  });
+  const block = (k, text, style = 'normal', extra = {}) => ({ _type: 'block', _key: k, style, markDefs: [], children: spans(k, text), ...extra });
+  const image = (k, item) => ({
+    _type: 'mediaImage', _key: k, localAssetKey: item.image, alt: item.alt, ...(item.caption ? { caption: item.caption } : {}), size: item.size ?? 'full',
+    ...(item.labels ? { labels: item.labels.map((l, i) => ({ _type: 'imageLabel', _key: `${k}-l${i}`, text: l.text, x: l.x, ...(l.y != null ? { y: l.y } : {}) })) } : {}),
+  });
   const video = (k, item) => ({
     _type: 'mediaVideo', _key: k, file: { _type: 'file', localAssetKey: item.video },
     ...(item.poster ? { poster: { _type: 'image', localAssetKey: item.poster } } : {}),
     autoplay: item.autoplay ?? true, ...(item.caption ? { caption: item.caption } : {}), size: item.size ?? 'full',
   });
+  const NOTE_KEYS = ['text', 'color', 'tag', 'highlight'];
+  const checkBoard = (k, item) => {
+    if (!Array.isArray(item.board?.notes) || item.board.notes.length === 0) throw new Error(`${slug}: board ${k} needs a notes array.`);
+    for (const [i, n] of item.board.notes.entries()) {
+      const extra = Object.keys(n ?? {}).filter((key) => !NOTE_KEYS.includes(key));
+      if (!n || typeof n.text !== 'string' || extra.length) throw new Error(`${slug}: board ${k} note ${i} needs text and only ${NOTE_KEYS.join(', ')}${extra.length ? ` (found ${extra.join(', ')})` : ''}.`);
+    }
+    const boardExtra = Object.keys(item.board).filter((key) => !['label', 'prompt', 'notes'].includes(key));
+    if (boardExtra.length) throw new Error(`${slug}: board ${k} has unknown fields ${boardExtra.join(', ')} (put caption next to board, not inside it).`);
+  };
+  const board = (k, item) => (checkBoard(k, item), {
+    _type: 'stickyBoard', _key: k,
+    ...(item.board.label ? { label: item.board.label } : {}),
+    ...(item.board.prompt ? { prompt: item.board.prompt } : {}),
+    notes: item.board.notes.map((n, i) => ({
+      _type: 'stickyNote', _key: `${k}-n${i}`, text: n.text, color: n.color ?? 'yellow',
+      ...(n.tag ? { tag: n.tag } : {}), ...(n.highlight ? { highlight: n.highlight } : {}),
+    })),
+    ...(item.caption ? { caption: item.caption } : {}),
+  });
   const gallery = (k, item) => ({
-    _type: 'mediaGallery', _key: k, ...(item.caption ? { caption: item.caption } : {}),
-    images: item.gallery.map((g, i) => ({ _type: 'image', _key: `${k}-${i}`, localAssetKey: g.image, alt: g.alt })),
+    _type: 'mediaGallery', _key: k, ...(item.caption ? { caption: item.caption } : {}), ...(item.arrows ? { arrows: true } : {}),
+    images: item.gallery.map((g, i) => ({ _type: 'image', _key: `${k}-${i}`, localAssetKey: g.image, alt: g.alt, ...(g.label ? { label: g.label } : {}) })),
   });
 
   const f = copy.fields;
   const fields = {
+    ...(f.title ? { title: f.title } : {}),
     description: f.description,
     client: f.client,
     discipline: f.discipline,
@@ -78,6 +108,7 @@ function expand(copy, slug) {
         if (item.image) return [image(k, item)];
         if (item.video) return [video(k, item)];
         if (item.gallery) return [gallery(k, item)];
+        if (item.board) return [board(k, item)];
         throw new Error(`${slug}: unknown content item in section "${s.title}" at index ${j}`);
       }),
     })),
@@ -85,7 +116,7 @@ function expand(copy, slug) {
   return { documentId: copy.documentId, generatedFrom: `case-study-copy/${slug}.json`, fields, assets: copy.assets };
 }
 
-for (const slug of ['newly', 'yelo']) {
+for (const slug of ['newly', 'yelo', 'elapse', 'costudy']) {
   const source = path.join(folder, 'case-study-copy', `${slug}.json`);
   if (!fs.existsSync(source)) {
     console.log(`${slug}: no ${path.relative(root, source)} yet, skipped.`);

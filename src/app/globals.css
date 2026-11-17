@@ -134,6 +134,136 @@ body {
   clip-path: inset(-0.15em -200% -0.2em -0.5em);
 }
 
+/* Image lightbox on project pages (Lightbox.tsx). The dialog fills the
+   viewport and blurs the page behind it. The tint and blur sit on the dialog
+   rather than ::backdrop so the theme colour variables apply in every
+   browser; text colour is inherited, so it fades with theme changes like the
+   rest of the page. Clicking anywhere closes it, hence the zoom-out cursor.
+   --lightbox-pad-y is the vertical padding the image is fitted inside. */
+.lightbox {
+  --lightbox-pad-y: 104px;
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  /* The dialog itself never scrolls; .lightbox-scroll inside it does. The
+     blur makes the dialog the containing block for the fixed close button,
+     so if the dialog scrolled, the button would scroll away with a tall
+     image instead of staying at the bottom of the screen. */
+  overflow: hidden;
+  /* Browsers give dialogs their own text colour (CanvasText), which stays
+     black on a dark page; inherit the page's instead, so the close button
+     and image labels follow the theme and fade with it. */
+  color: inherit;
+  background-color: color-mix(in srgb, var(--background) 55%, transparent);
+  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(24px);
+  cursor: zoom-out;
+}
+
+.lightbox-scroll {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  /* Phones: edge to edge, so wide images get every pixel of width. */
+  padding: 24px 0 80px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+@media (min-width: 768px) {
+  .lightbox {
+    --lightbox-pad-y: 132px;
+  }
+
+  .lightbox-scroll {
+    padding: 36px 36px 96px;
+  }
+}
+
+.lightbox[open] {
+  display: block;
+  animation: lightbox-fade-in 200ms ease-out;
+}
+
+/* The close button stays put while a tall image scrolls under it, so it
+   sits on a soft patch of the page colour to stay readable. */
+.lightbox-close {
+  border-radius: 9999px;
+  background-color: color-mix(in srgb, var(--background) 72%, transparent);
+}
+
+.lightbox::backdrop {
+  background: transparent;
+}
+
+/* The dialog takes focus when opened with a click (so the close button
+   doesn't show a focus ring); it needs no ring of its own. */
+.lightbox:focus,
+.lightbox:focus-visible {
+  outline: none;
+}
+
+.lightbox[data-closing] {
+  animation: lightbox-fade-out 180ms ease-in forwards;
+}
+
+/* Width and aspect ratio are set inline (Lightbox.tsx). Auto margins centre
+   it, and collapse when it's taller than the viewport so the dialog scrolls
+   from the top. The inline image stands in as a background until the large
+   one loads. */
+.lightbox-image {
+  display: block;
+  flex: none;
+  height: auto;
+  margin: auto;
+  background-size: 100% 100%;
+  animation: lightbox-image-in 260ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.lightbox[data-closing] .lightbox-image {
+  animation: lightbox-image-out 180ms ease-in forwards;
+}
+
+@keyframes lightbox-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes lightbox-fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes lightbox-image-in {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+}
+
+@keyframes lightbox-image-out {
+  to {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lightbox,
+  .lightbox-image {
+    animation: none !important;
+  }
+}
+
 /* Scrollable but without visible scrollbars (resume viewer) */
 .no-scrollbar {
   scrollbar-width: none;

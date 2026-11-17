@@ -2,7 +2,7 @@ import 'server-only';
 import { groq } from 'next-sanity';
 import { client } from '../../sanity/lib/client';
 import { buildMockProjects, type MockAsset } from '../../sanity/mock/projects';
-import type { ImageCrop, ImageHotspot } from './image';
+import type { ImageCrop, ImageHotspot, ImageLabel } from './image';
 import { sortHomeProjects } from './project-order';
 
 // ---------------------------------------------------------------------------
@@ -19,6 +19,7 @@ export interface SanityImage {
   crop?: ImageCrop;
   hotspot?: ImageHotspot;
   alt?: string;
+  label?: string;
 }
 
 export interface MediaImage extends SanityImage {
@@ -26,6 +27,7 @@ export interface MediaImage extends SanityImage {
   _key: string;
   caption?: string;
   size?: 'content' | 'full';
+  labels?: ImageLabel[];
 }
 
 export interface MediaVideo {
@@ -44,6 +46,8 @@ export interface MediaGallery {
   _key: string;
   images?: SanityImage[];
   caption?: string;
+  // Arrows between the images, for a sequence (before/after, versions).
+  arrows?: boolean;
 }
 
 export interface TextBlock {
@@ -52,7 +56,24 @@ export interface TextBlock {
   [key: string]: unknown;
 }
 
-export type BodyBlock = TextBlock | MediaImage | MediaVideo | MediaGallery;
+export interface StickyNote {
+  _key?: string;
+  text?: string;
+  color?: 'yellow' | 'pink' | 'blue' | 'green';
+  tag?: string;
+  highlight?: string;
+}
+
+export interface StickyBoard {
+  _type: 'stickyBoard';
+  _key: string;
+  label?: string;
+  prompt?: string;
+  notes?: StickyNote[];
+  caption?: string;
+}
+
+export type BodyBlock = TextBlock | MediaImage | MediaVideo | MediaGallery | StickyBoard;
 
 export interface ProjectSection {
   _key: string;

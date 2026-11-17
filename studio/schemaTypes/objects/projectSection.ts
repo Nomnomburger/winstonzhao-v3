@@ -28,7 +28,7 @@ export default defineType({
       name: 'content',
       title: 'Content',
       type: 'array',
-      description: 'Write text and add images, videos or a row of images with the + button.',
+      description: 'Write text and add images, videos, a row of images or sticky notes with the + button.',
       of: [
         defineArrayMember({
           type: 'block',
@@ -59,6 +59,7 @@ export default defineType({
         defineArrayMember({type: 'mediaImage'}),
         defineArrayMember({type: 'mediaVideo'}),
         defineArrayMember({type: 'mediaGallery'}),
+        defineArrayMember({type: 'stickyBoard'}),
       ],
     }),
   ],
