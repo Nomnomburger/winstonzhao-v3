@@ -8,7 +8,7 @@
     "discipline": "Product Design",
     "link": {
       "url": "https://www.elapseapp.com/",
-      "label": "DOWNLOAD NOW"
+      "label": "Download"
     },
     "intro": "I co-founded Elapse, an app that shows VEX Robotics teams their next match, a live schedule and scouting. I was the only designer, working with seven developers.",
     "summary": "Co-founding Elapse and designing it end to end, from your next match to a mode for tournament day.",
@@ -43,12 +43,6 @@
       {
         "_type": "detailItem",
         "_key": "elapse-detail-4",
-        "label": "Shipped",
-        "value": "Upcoming matches · Live timing\nTournament mode · Scouting\nScoutSheet tab (later update)"
-      },
-      {
-        "_type": "detailItem",
-        "_key": "elapse-detail-5",
         "label": "Tools",
         "value": "Figma"
       }

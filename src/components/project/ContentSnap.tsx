@@ -10,11 +10,40 @@ import {
   type SnapDirection, type WheelGesture,
 } from '@/lib/scroll-snap';
 
+const ELASTIC_THRESHOLD = 120; // wheel input past the snap point that snaps over
+const ELASTIC_RANGE = 140; // the stretch approaches this, never reaching it
+const ELASTIC_IDLE_MS = 200; // no input for this long counts as letting go
+const ELASTIC_MEMORY_MS = 1200; // a push within this carries on from the last
+
+// The stretch for an amount of pull, and back. The same curve as iOS's
+// rubber band: it gives easily at first and stiffens as it goes.
+const stretch = (pull: number) => ELASTIC_RANGE * (1 - 1 / ((pull * 0.55) / ELASTIC_RANGE + 1));
+const unstretch = (offset: number) => {
+  const fraction = Math.min(offset / ELASTIC_RANGE, 0.99);
+  return (ELASTIC_RANGE / 0.55) * (1 / (1 - fraction) - 1);
+};
+
+interface Elastic {
+  direction: SnapDirection;
+  edge: number;
+  pull: number;
+  peak: number;
+  y: number;
+  lastInput: number;
+  frame: number;
+}
+
 // Desktop only: the project page snaps between its overview (title, hero,
 // summary) and the case study below it, with the home page's snap. Scrolling
 // down to where the case study comes into view carries it up to the top of
 // the screen; scrolling back up from there returns to the end of the overview.
 // The rest of the page scrolls freely.
+//
+// A push at the snap point first stretches the page a little past it,
+// against growing resistance, like a rubber band. Pushing on past
+// ELASTIC_THRESHOLD of wheel input snaps over; letting go springs back. A
+// second push soon after carries on from the first, so slow wheel notches
+// get there too.
 //
 // Momentum never snaps, in either direction. A fling that fades out after the
 // fingers lift coasts to a stop at the snap point instead: at the end of the
@@ -48,6 +77,8 @@ export default function ContentSnap({ contentId, overviewId }: { contentId: stri
     let upwardMomentum = false;
     let downwardMomentumUntil = 0;
     let gesture: WheelGesture | null = null;
+    let elastic: Elastic | null = null;
+    let lastStretch = { direction: 1 as SnapDirection, pull: 0, at: 0 };
     let lastScrollY = window.scrollY;
     let frame = 0;
 
@@ -76,11 +107,27 @@ export default function ContentSnap({ contentId, overviewId }: { contentId: stri
     const updateFade = () => {
       if (!overview) return;
       const faded = enabled() && canDock && (snapDirection === 1 ||
-        (snapDirection === null && window.scrollY >= contentTop - 2));
+        (snapDirection === null && (window.scrollY >= contentTop - 2 || elastic?.direction === -1)));
       overview.toggleAttribute('data-faded', faded);
     };
 
+    const stopElastic = () => {
+      if (!elastic) return;
+      cancelAnimationFrame(elastic.frame);
+      elastic = null;
+    };
+
+    // Letting go springs back, but remembers how far the push got: another
+    // push soon after, even mid-spring, carries on from there.
+    const releaseElastic = (e: Elastic) => {
+      if (e.pull > 0) lastStretch = { direction: e.direction, pull: e.peak, at: performance.now() };
+      e.pull = 0;
+    };
+    const recall = (direction: SnapDirection, now: number) =>
+      lastStretch.direction === direction && now - lastStretch.at < ELASTIC_MEMORY_MS ? lastStretch.pull : 0;
+
     const cancelSnap = () => {
+      stopElastic();
       animation?.stop();
       animation = null;
       snapDirection = null;
@@ -148,6 +195,48 @@ export default function ContentSnap({ contentId, overviewId }: { contentId: stri
       });
     };
 
+    // Each frame, the page eases toward the stretch for the current pull.
+    // Without fresh input the pull drops to nothing and it springs back.
+    const elasticFrame = () => {
+      const e = elastic;
+      if (!e) return;
+      if (e.pull > 0 && performance.now() - e.lastInput > ELASTIC_IDLE_MS) releaseElastic(e);
+      const target = e.edge + e.direction * stretch(e.pull);
+      e.y += (target - e.y) * (e.pull > 0 ? 0.25 : 0.2);
+      if (e.pull === 0 && Math.abs(target - e.y) < 0.5) {
+        stopElastic();
+        scrollInstantly(target);
+        updateFade();
+        return;
+      }
+      scrollInstantly(e.y);
+      e.frame = requestAnimationFrame(elasticFrame);
+    };
+
+    // Adds `amount` of wheel input past `edge`, starting the stretch if needed.
+    const pushElastic = (direction: SnapDirection, edge: number, amount: number) => {
+      const now = performance.now();
+      if (!elastic) {
+        // Take over from wherever the smooth scroll has got to.
+        scrollInstantly(window.scrollY);
+        elastic = {
+          direction, edge, pull: 0, peak: 0, y: window.scrollY, lastInput: now,
+          frame: requestAnimationFrame(elasticFrame),
+        };
+      }
+      const e = elastic;
+      // Carry on from the current stretch, or from a push just let go of.
+      const current = unstretch(Math.max(0, (e.y - e.edge) * e.direction));
+      e.pull = Math.max(e.pull, current, recall(direction, now)) + Math.max(0, amount);
+      e.peak = Math.max(e.peak, e.pull);
+      e.lastInput = now;
+      if (e.pull >= ELASTIC_THRESHOLD) {
+        snapTo(direction);
+        // Snapped over: the next stretch starts afresh.
+        lastStretch = { direction, pull: 0, at: 0 };
+      }
+    };
+
     // A click starts any scroll that follows (the section menu, a link), so
     // it ends the wheel's intent: an upward scroll to a section must not be
     // taken for a push back to the overview.
@@ -158,35 +247,45 @@ export default function ContentSnap({ contentId, overviewId }: { contentId: stri
     };
 
     // `distance` is how far the input would scroll the page on its own.
-    // `paging` is a whole-screen step (Page Down, Space).
-    const handleDirection = (direction: SnapDirection, event: Event, distance: number, momentum = false, paging = false) => {
+    // `momentum`: a fling's fading tail. `paging`: a whole-screen step (Page
+    // Down, Space). `wheel`: a wheel push, which stretches before it snaps.
+    const handleDirection = (
+      direction: SnapDirection,
+      event: Event,
+      distance: number,
+      { momentum = false, paging = false, wheel = false } = {},
+    ) => {
       if (snapDirection !== null) {
         if (event.cancelable) event.preventDefault();
         if (direction !== snapDirection) snapTo(direction);
         return;
       }
       const y = window.scrollY;
+      // Lenis may already be heading further than the visible position.
+      const smoothScroll = getSmoothScroll();
+      const from = smoothScroll?.isScrolling === 'smooth' ? smoothScroll.targetScroll : y;
       if (direction === -1) {
         downwardMomentumUntil = 0;
         upwardIntentUntil = performance.now() + UPWARD_INTENT_MS;
         upwardMomentum = momentum;
         if (!momentum && y > overviewEnd + 1 && y <= contentTop + DOCK_TOLERANCE) {
           if (event.cancelable) event.preventDefault();
-          snapTo(-1);
+          // At the top of the case study, a wheel push stretches first.
+          if (wheel && y >= contentTop - 1) pushElastic(-1, contentTop, contentTop - (from - distance));
+          else snapTo(-1);
         }
       } else {
         upwardIntentUntil = 0;
         upwardMomentum = false;
         if (!momentum) downwardMomentumUntil = 0;
-        // Lenis may already be heading further than the visible position.
-        const smoothScroll = getSmoothScroll();
-        const from = smoothScroll?.isScrolling === 'smooth' ? smoothScroll.targetScroll : y;
         if (!snapped && y < contentTop - 1 && from + distance > overviewEnd + 1) {
           if (event.cancelable) event.preventDefault();
-          // Still pushing: snap. Only coasting: stop at the snap point. A page
-          // step that would skip the end of the overview stops there first.
+          // Coasting: stop at the snap point. A page step that would skip the
+          // end of the overview stops there first. A wheel push stretches
+          // past the snap point before it snaps; anything else snaps.
           if (paging && y < overviewEnd - 1) stopAtOverviewEnd(true);
           else if (momentum && y <= overviewEnd + 1) stopAtOverviewEnd(!!smoothScroll);
+          else if (wheel && y <= overviewEnd + 1) pushElastic(1, overviewEnd, from + distance - overviewEnd);
           else snapTo(1);
         }
       }
@@ -206,13 +305,29 @@ export default function ContentSnap({ contentId, overviewId }: { contentId: stri
       downwardMomentumUntil = direction === 1 && gesture.momentum
         ? performance.now() + WHEEL_GESTURE_IDLE_MS : 0;
 
+      // While stretched, the wheel only works the stretch: pushing on adds to
+      // it, pulling back or letting go (momentum) lets it spring back.
+      if (elastic && snapDirection === null) {
+        if (event.cancelable) event.preventDefault();
+        if (direction !== elastic.direction) {
+          // Pulling back lets go for good.
+          elastic.pull = Math.max(0, elastic.pull - delta);
+          lastStretch = { direction: elastic.direction, pull: 0, at: 0 };
+        } else if (gesture.momentum) {
+          releaseElastic(elastic);
+          gesture.consumed = true;
+        } else pushElastic(direction, elastic.edge, delta);
+        return;
+      }
+
       // Trackpad momentum can outlast the snap. Keep consuming the fading
       // tail; a renewed push, pause or reversal starts a fresh gesture.
       if (gesture.consumed && snapDirection === null) {
         if (event.cancelable) event.preventDefault();
         return;
       }
-      handleDirection(direction, event, delta * (smoothScroll?.options.wheelMultiplier ?? 1), gesture.momentum);
+      handleDirection(direction, event, delta * (smoothScroll?.options.wheelMultiplier ?? 1),
+        { momentum: gesture.momentum, wheel: true });
       if (direction === -1 && gesture.momentum && snapDirection === null &&
           window.scrollY >= contentTop &&
           (smoothScroll ? smoothScroll.targetScroll - delta * smoothScroll.options.wheelMultiplier :
@@ -241,7 +356,7 @@ export default function ContentSnap({ contentId, overviewId }: { contentId: stri
       }
       if (event.shiftKey) return;
       if (event.key === 'ArrowDown') handleDirection(1, event, 40);
-      else if (event.key === 'PageDown' || event.key === ' ') handleDirection(1, event, page, false, true);
+      else if (event.key === 'PageDown' || event.key === ' ') handleDirection(1, event, page, { paging: true });
     };
 
     const onScroll = () => {
@@ -252,7 +367,7 @@ export default function ContentSnap({ contentId, overviewId }: { contentId: stri
       updateFade();
       // Back at the overview starts a new visit.
       if (y <= overviewEnd + 1 && snapDirection === null) snapped = false;
-      if (!active() || snapDirection !== null) return;
+      if (!active() || snapDirection !== null || elastic) return;
       if (!movingUp) {
         // Catch a fading fling the wheel handler could not cancel.
         if (y > previousY && performance.now() < downwardMomentumUntil && !snapped &&
@@ -286,7 +401,7 @@ export default function ContentSnap({ contentId, overviewId }: { contentId: stri
     const onResize = () => {
       if (window.innerWidth !== lastWidth) {
         lastWidth = window.innerWidth;
-        if (snapDirection !== null) cancelSnap();
+        if (snapDirection !== null || elastic) cancelSnap();
       }
       cancelAnimationFrame(frame);
       frame = requestAnimationFrame(measureAndFade);
@@ -325,6 +440,7 @@ export default function ContentSnap({ contentId, overviewId }: { contentId: stri
       observer.disconnect();
       cancelAnimationFrame(frame);
       animation?.stop();
+      stopElastic();
       overview?.removeAttribute('data-faded');
       window.removeEventListener('wheel', onWheel, { capture: true });
       window.removeEventListener('keydown', onKey);
