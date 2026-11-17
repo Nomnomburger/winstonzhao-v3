@@ -281,3 +281,16 @@ body {
 .pdf-gesturing .react-pdf__Page__annotations {
   visibility: hidden;
 }
+
+/* Printing shows every project page reveal in its final state, and the
+   overview even if the page was printed from the case study. */
+@media print {
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+  }
+  #overview[data-faded] {
+    opacity: 1 !important;
+  }
+}

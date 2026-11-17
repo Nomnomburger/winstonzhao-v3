@@ -9,7 +9,7 @@ import {
   ScrambleText,
   formatTorontoTime,
   useCurrentTime,
-  NewlyRole,
+  PrevDesignRole,
   FigmaRole,
   WZLogo,
   LanguageGlobe,
@@ -930,12 +930,12 @@ export default function HomePanel({
                         }}
                         className="flex flex-wrap gap-x-3 gap-y-1 items-center"
                       >
-                        <NewlyRole large label={roleLabel(t.designAt, fromT.designAt)} />
                         <FigmaRole large label={roleLabel(t.campusLeaderAt, fromT.campusLeaderAt)} />
+                        <PrevDesignRole large label={roleLabel(t.prevDesignAt, fromT.prevDesignAt)} separator={t.listSeparator} />
                       </motion.div>
                     ) : (
                       <div className="opacity-0 flex gap-3 items-center">
-                        <p className="font-normal text-[14px] tracking-[-0.28px] leading-[1.2] whitespace-nowrap">Design at Newly</p>
+                        <p className="font-normal text-[14px] tracking-[-0.28px] leading-[1.2] whitespace-nowrap">Campus Leader at Figma</p>
                       </div>
                     )}
                   </motion.div>

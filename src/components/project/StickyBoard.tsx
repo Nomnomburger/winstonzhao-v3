@@ -39,7 +39,7 @@ export default function StickyBoard({ board }: { board: StickyBoardData }) {
       {(label || prompt) && (
         <div className={`mx-auto max-w-[780px] text-center ${prompt ? 'mb-8 md:mb-11' : 'mb-5 md:mb-6'}`}>
           {label && (
-            <p className="mb-2 text-[12px] md:text-[14px] tracking-[0.02em] leading-[1.2] opacity-60">{label}</p>
+            <p className="mb-2 text-[14px] tracking-[-0.02em] leading-[1.2] opacity-60">{label}</p>
           )}
           {prompt && (
             <p className="text-[20px] md:text-[28px] tracking-[-0.02em] leading-[1.2] whitespace-pre-line">{prompt}</p>
@@ -85,7 +85,7 @@ export default function StickyBoard({ board }: { board: StickyBoardData }) {
         })}
       </ul>
       {caption && (
-        <figcaption className="mt-4 md:mt-5 text-[12px] md:text-[14px] tracking-[-0.02em] leading-[1.2]">{caption}</figcaption>
+        <figcaption className="mt-4 md:mt-5 text-[14px] leading-[1.2] opacity-60">{caption}</figcaption>
       )}
     </figure>
   );

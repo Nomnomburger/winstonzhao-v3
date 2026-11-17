@@ -29,6 +29,12 @@ The dry run shows each title as old → new before you apply.
   re-uploaded.
 - `media-plan-newly-v2.json`, `media-plan-phones-v3.json`: how the images
   were rendered from Figma exports.
+- Newly's chat experiments image and the three onboarding clips
+  (`newly-cs2-onboarding-*.mp4`, with posters) come from Winston's Claude
+  Design canvases ("Chat screen design experiments" and "Newly App
+  Onboarding Flow", linked as `sourceUrl` in `newly.json`). The clips were
+  recorded frame by frame at 30 fps from the prototype, with its variant
+  switcher hidden and a cursor drawn in.
 - Elapse uses sample-data copies of seven screens, in the Figma section
   "Portfolio copies (sample data)" (node 307:8347) on the Elapse page; the
   original frames are unchanged.

@@ -4,14 +4,14 @@
   "fields": {
     "title": "Newly Desktop App",
     "description": "One prompt bar, a live iPhone preview and a path to the App Store.",
-    "client": "Newly",
-    "discipline": "Product Design · Design Engineering",
+    "client": "Newly · Small Scale Labs AB",
+    "discipline": "Product Design Engineering",
     "link": {
       "url": "https://newly.app",
       "label": "Visit"
     },
-    "intro": "Newly is an AI agent that turns a conversation into a real iOS, Android or web app. As a contract design engineer and the only designer, I designed the desktop and web workspace and built parts of it in React and TypeScript.",
-    "summary": "I designed the workspace where people build apps with Newly’s agent, from the prompt bar to deploying to the App Store.",
+    "intro": "Newly is an AI agent that turns a conversation into a real iOS, Android or web app. As a contract design engineer and the only designer, I designed the desktop and web workspace and built parts of the frontend.",
+    "summary": "Designing the workspace where people build apps with Newly’s agent, from the prompt bar to deploying to the App Store.",
     "overview": "Newly is for technical and non-technical people alike. I worked with the founders and a team of six-plus, and changed course when feedback showed something wasn’t working.",
     "impact": "Shipped on desktop and web, and helped grow Newly’s revenue.",
     "showSideMenu": true,
@@ -20,7 +20,7 @@
         "_type": "detailItem",
         "_key": "newly-detail-0",
         "label": "Role",
-        "value": "Design Engineer (Contract)"
+        "value": "Design Engineer"
       },
       {
         "_type": "detailItem",
@@ -43,14 +43,8 @@
       {
         "_type": "detailItem",
         "_key": "newly-detail-4",
-        "label": "Built in code",
-        "value": "Prompt bar · Workspace layout\nDeploy · Web screens"
-      },
-      {
-        "_type": "detailItem",
-        "_key": "newly-detail-5",
         "label": "Tools",
-        "value": "Figma · React · TypeScript\nClaude Code · Cursor"
+        "value": "Figma · Claude Design\nClaude Code · Cursor"
       }
     ],
     "coverImage": {
@@ -84,7 +78,7 @@
                 "_type": "span",
                 "_key": "newly-s-0-b-0-s",
                 "marks": [],
-                "text": "One text box drives local and cloud sessions, a simulator, git branches, model choices and releases to TestFlight and the App Store."
+                "text": "Behind one text box sit local and cloud sessions, a simulator, git branches, model choices and releases to TestFlight and the App Store. That’s a lot to put in front of someone who has never written code, and a lot to keep in view for someone who has."
               }
             ]
           },
@@ -165,7 +159,7 @@
       {
         "_type": "projectSection",
         "_key": "newly-section-1",
-        "title": "Board vs. chat",
+        "title": "Exploration",
         "heading": "Board or chat",
         "content": [
           {
@@ -178,7 +172,7 @@
                 "_type": "span",
                 "_key": "newly-s-1-b-0-s",
                 "marks": [],
-                "text": "I explored a few ways of working with the agent."
+                "text": "Before any screen was final, there was a bigger question to answer: should working with Newly’s agent feel like managing a project, or like having a conversation? I explored a few directions before we picked one."
               }
             ]
           },
@@ -206,8 +200,7 @@
                 "color": "yellow",
                 "highlight": "Chosen"
               }
-            ],
-            "caption": "The board was my idea. The founders and team chose chat-first."
+            ]
           },
           {
             "_type": "block",
@@ -241,31 +234,53 @@
                 "_type": "span",
                 "_key": "newly-s-1-b-4-s",
                 "marks": [],
+                "text": "The board also made branching easy. Each feature card had a branch button, so you could split off a new idea with its own prompt. It worked a lot like a git worktree, but in a form non-technical people could understand more easily. Once a branch was accepted, it merged back into the card it came from."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "newly-s-1-b-5",
+            "localAssetKey": "board-branching",
+            "alt": "The Newly board with feature cards joined by lines: Dedicated Profile Tab is complete and ready to merge, and a New Idea card with its own prompt branches off Liquid Glass Styling",
+            "caption": "A new idea branching off a card, next to one that’s ready to merge.",
+            "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-1-b-6",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-1-b-6-s",
+                "marks": [],
                 "text": "Another version put a prompt bar above the board."
               }
             ]
           },
           {
             "_type": "mediaGallery",
-            "_key": "newly-s-1-b-5",
+            "_key": "newly-s-1-b-7",
             "caption": "Board, then board with a prompt bar, then the chat-first direction that shipped.",
             "arrows": true,
             "images": [
               {
                 "_type": "image",
-                "_key": "newly-s-1-b-5-0",
+                "_key": "newly-s-1-b-7-0",
                 "localAssetKey": "board-flat",
                 "alt": "Newly home as a three-column board of proposed features"
               },
               {
                 "_type": "image",
-                "_key": "newly-s-1-b-5-1",
+                "_key": "newly-s-1-b-7-1",
                 "localAssetKey": "board-hybrid",
                 "alt": "Newly home with a Welcome Back prompt bar above the feature board"
               },
               {
                 "_type": "image",
-                "_key": "newly-s-1-b-5-2",
+                "_key": "newly-s-1-b-7-2",
                 "localAssetKey": "chat-first",
                 "alt": "The chat-first Newly workspace with sessions, conversation and a running iPhone simulator"
               }
@@ -273,13 +288,13 @@
           },
           {
             "_type": "block",
-            "_key": "newly-s-1-b-6",
+            "_key": "newly-s-1-b-8",
             "style": "h3",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "newly-s-1-b-6-s",
+                "_key": "newly-s-1-b-8-s",
                 "marks": [],
                 "text": "Why we went with chat"
               }
@@ -287,13 +302,13 @@
           },
           {
             "_type": "block",
-            "_key": "newly-s-1-b-7-0",
+            "_key": "newly-s-1-b-9-0",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "newly-s-1-b-7-0-s",
+                "_key": "newly-s-1-b-9-0-s",
                 "marks": [
                   "strong"
                 ],
@@ -301,7 +316,7 @@
               },
               {
                 "_type": "span",
-                "_key": "newly-s-1-b-7-0-s1",
+                "_key": "newly-s-1-b-9-0-s1",
                 "marks": [],
                 "text": " They were more used to just chatting with an agent."
               }
@@ -311,13 +326,13 @@
           },
           {
             "_type": "block",
-            "_key": "newly-s-1-b-7-1",
+            "_key": "newly-s-1-b-9-1",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "newly-s-1-b-7-1-s",
+                "_key": "newly-s-1-b-9-1-s",
                 "marks": [
                   "strong"
                 ],
@@ -325,7 +340,7 @@
               },
               {
                 "_type": "span",
-                "_key": "newly-s-1-b-7-1-s1",
+                "_key": "newly-s-1-b-9-1-s1",
                 "marks": [],
                 "text": " in the time we had."
               }
@@ -335,13 +350,13 @@
           },
           {
             "_type": "block",
-            "_key": "newly-s-1-b-7-2",
+            "_key": "newly-s-1-b-9-2",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "newly-s-1-b-7-2-s",
+                "_key": "newly-s-1-b-9-2-s",
                 "marks": [
                   "strong"
                 ],
@@ -349,7 +364,7 @@
               },
               {
                 "_type": "span",
-                "_key": "newly-s-1-b-7-2-s1",
+                "_key": "newly-s-1-b-9-2-s1",
                 "marks": [],
                 "text": " and I designed the workspace around it."
               }
@@ -359,15 +374,65 @@
           },
           {
             "_type": "block",
-            "_key": "newly-s-1-b-8",
+            "_key": "newly-s-1-b-10",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "newly-s-1-b-8-s",
+                "_key": "newly-s-1-b-10-s",
                 "marks": [],
-                "text": "The board is still in the file, and we might bring it back."
+                "text": "The board never made it into production. I still think it’s a good picture of an agentic future, and it stays in the design files in case we come back to it."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-1-b-11",
+            "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-1-b-11-s",
+                "marks": [],
+                "text": "Marketing, too"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-1-b-12",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-1-b-12-s",
+                "marks": [],
+                "text": "The agent was also meant to make marketing content for your app, like graphics and videos. I explored that on the board first, where media lived in a Marketing column and opened on the right with Publish and Download. The direction we went with is the chat: the agent shares the media in the conversation, and a switcher at the bottom of the preview panel flips between App and Images."
+              }
+            ]
+          },
+          {
+            "_type": "mediaGallery",
+            "_key": "newly-s-1-b-13",
+            "caption": "Marketing content on the board, then in the chat, with a media switcher in the preview panel.",
+            "arrows": true,
+            "images": [
+              {
+                "_type": "image",
+                "_key": "newly-s-1-b-13-0",
+                "localAssetKey": "marketing-board",
+                "alt": "The Newly board with a Marketing column of IG Slideshow and Video cards, and an IG Slideshow panel on the right with Publish, Download, four images and the agent’s reasoning",
+                "label": "Board"
+              },
+              {
+                "_type": "image",
+                "_key": "newly-s-1-b-13-1",
+                "localAssetKey": "marketing-chat",
+                "alt": "The Newly chat with the agent sharing an Instagram carousel, and the preview panel showing one of its images above an App and Images switcher",
+                "label": "Chat"
               }
             ]
           }
@@ -377,7 +442,7 @@
         "_type": "projectSection",
         "_key": "newly-section-2",
         "title": "Sidebar",
-        "heading": "One sidebar instead of two",
+        "heading": "Simpler navigation",
         "content": [
           {
             "_type": "block",
@@ -389,7 +454,7 @@
                 "_type": "span",
                 "_key": "newly-s-2-b-0-s",
                 "marks": [],
-                "text": "The workspace is made of panes you can open and collapse: sessions, chat and the app preview. I built this layout in code."
+                "text": "Once you’re inside a project, you need a way to get around it. The sidebar is where you start a new session, search, deploy and configure your project, with your pinned sessions and the session list right below. It’s also one of three panes that make up the workspace."
               }
             ]
           },
@@ -403,25 +468,53 @@
                 "_type": "span",
                 "_key": "newly-s-2-b-1-s",
                 "marks": [],
+                "text": "With chat chosen, the workspace became a set of panes you can open and collapse: the sidebar on the left, the chat in the middle and the preview panel on the right. I built this layout in code."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-2-b-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-2-b-2-s",
+                "marks": [],
+                "text": "I call the right side the preview panel because it previews more than your app. It also shows the media the agent makes, and in the future, websites and code."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-2-b-3",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-2-b-3-s",
+                "marks": [],
                 "text": "At first, app navigation and the session list were separate panes. Both could collapse, and the session list also acted like navigation. People found that a bit confusing, so we merged them into one sidebar."
               }
             ]
           },
           {
             "_type": "mediaGallery",
-            "_key": "newly-s-2-b-2",
+            "_key": "newly-s-2-b-4",
             "caption": "Two collapsible panes, then one sidebar.",
             "images": [
               {
                 "_type": "image",
-                "_key": "newly-s-2-b-2-0",
+                "_key": "newly-s-2-b-4-0",
                 "localAssetKey": "sidebar-before",
                 "alt": "Earlier Newly layout with an app navigation pane (Create, Deploy, Analytics, Settings) next to a separate Sessions pane",
                 "label": "Before"
               },
               {
                 "_type": "image",
-                "_key": "newly-s-2-b-2-1",
+                "_key": "newly-s-2-b-4-1",
                 "localAssetKey": "sidebar-after",
                 "alt": "Final Newly layout with one sidebar: New Session, Search, Deploy and Configure above pinned sessions and the session list, next to the chat and app preview",
                 "label": "After"
@@ -433,8 +526,8 @@
       {
         "_type": "projectSection",
         "_key": "newly-section-3",
-        "title": "Prompt bar",
-        "heading": "One prompt bar, three layouts",
+        "title": "Onboarding",
+        "heading": "Sign-up to first prompt",
         "content": [
           {
             "_type": "block",
@@ -446,37 +539,38 @@
                 "_type": "span",
                 "_key": "newly-s-3-b-0-s",
                 "marks": [],
-                "text": "I built the prompt bar in React and TypeScript, mostly with Claude Code and Cursor. It appears across the workspace and changes with the space it has and what the agent is doing."
+                "text": "Newly’s first few screens have plenty to do. Onboarding takes you from signing up to your first prompt: it gets to know you a little, shows you how Newly works and, if you want to build locally, gets your Mac ready to run iOS apps."
               }
             ]
           },
           {
             "_type": "block",
             "_key": "newly-s-3-b-1",
-            "style": "h3",
+            "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
                 "_key": "newly-s-3-b-1-s",
                 "marks": [],
-                "text": "Modes people can find"
+                "text": "A lot of that flow was designed and then prototyped in Claude Design before it shipped. The clips below are recorded from that prototype, so you can see its micro-interactions and animations."
               }
             ]
           },
           {
-            "_type": "block",
+            "_type": "mediaVideo",
             "_key": "newly-s-3-b-2",
-            "style": "normal",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "newly-s-3-b-2-s",
-                "marks": [],
-                "text": "In the old product, Build, Plan and Ask sat in a dropdown. PostHog showed people rarely used Plan or Ask, and some support requests asked for a mode that only answers questions without editing anything. That mode already existed. People just couldn’t find it."
-              }
-            ]
+            "file": {
+              "_type": "file",
+              "localAssetKey": "onb-welcome"
+            },
+            "poster": {
+              "_type": "image",
+              "localAssetKey": "onb-welcome-poster"
+            },
+            "autoplay": true,
+            "caption": "The welcome screen cycles through things you could make, then sign-up.",
+            "size": "full"
           },
           {
             "_type": "block",
@@ -488,277 +582,52 @@
                 "_type": "span",
                 "_key": "newly-s-3-b-3-s",
                 "marks": [],
-                "text": "So the modes moved into the bar as a segmented control, and only the active one shows its label:"
+                "text": "Two quick questions come next: what you want to build, and how much of this you’ve done before. Either one can be skipped. Then a three-card tour: say it once in plain English, change anything by asking, ship it to the App Store."
               }
             ]
           },
           {
-            "_type": "block",
-            "_key": "newly-s-3-b-4-0",
-            "style": "normal",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "newly-s-3-b-4-0-s",
-                "marks": [
-                  "strong"
-                ],
-                "text": "It stays narrow"
-              },
-              {
-                "_type": "span",
-                "_key": "newly-s-3-b-4-0-s1",
-                "marks": [],
-                "text": " enough for every width."
-              }
-            ],
-            "listItem": "bullet",
-            "level": 1
+            "_type": "mediaVideo",
+            "_key": "newly-s-3-b-4",
+            "file": {
+              "_type": "file",
+              "localAssetKey": "onb-setup"
+            },
+            "poster": {
+              "_type": "image",
+              "localAssetKey": "onb-setup-poster"
+            },
+            "autoplay": true,
+            "caption": "What you’re building, how much you’ve done before, and the tour.",
+            "size": "full"
           },
           {
             "_type": "block",
-            "_key": "newly-s-3-b-4-1",
-            "style": "normal",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "newly-s-3-b-4-1-s",
-                "marks": [
-                  "strong"
-                ],
-                "text": "It always says what will happen"
-              },
-              {
-                "_type": "span",
-                "_key": "newly-s-3-b-4-1-s1",
-                "marks": [],
-                "text": " when you send."
-              }
-            ],
-            "listItem": "bullet",
-            "level": 1
-          },
-          {
-            "_type": "block",
-            "_key": "newly-s-3-b-4-2",
-            "style": "normal",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "newly-s-3-b-4-2-s",
-                "marks": [
-                  "strong"
-                ],
-                "text": "There’s less noise"
-              },
-              {
-                "_type": "span",
-                "_key": "newly-s-3-b-4-2-s1",
-                "marks": [],
-                "text": " next to what you’re typing."
-              }
-            ],
-            "listItem": "bullet",
-            "level": 1
-          },
-          {
-            "_type": "mediaImage",
             "_key": "newly-s-3-b-5",
-            "localAssetKey": "bar-modes",
-            "alt": "Three Newly prompt bars in Build, Plan and Ask mode, with only the active mode labelled",
-            "caption": "Build, Plan and Ask. Only the active mode carries a label.",
-            "size": "full"
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-3-b-5-s",
+                "marks": [],
+                "text": "Local development needs Xcode and an iPhone simulator. Newly installs Xcode and boots the simulator for you, one step at a time, and shows each step as it runs. “Set this up later” skips straight to the workspace."
+              }
+            ]
           },
           {
-            "_type": "mediaImage",
+            "_type": "mediaVideo",
             "_key": "newly-s-3-b-6",
-            "localAssetKey": "bar-layouts",
-            "alt": "The Newly prompt bar in expanded, stacked and collapsed layouts",
-            "caption": "Expanded, stacked, collapsed.",
-            "size": "full"
-          },
-          {
-            "_type": "block",
-            "_key": "newly-s-3-b-7",
-            "style": "h3",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "newly-s-3-b-7-s",
-                "marks": [],
-                "text": "Set once, at the start"
-              }
-            ]
-          },
-          {
-            "_type": "block",
-            "_key": "newly-s-3-b-8",
-            "style": "normal",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "newly-s-3-b-8-s",
-                "marks": [],
-                "text": "A session can’t switch between remote and local once it starts. Only the model can change, and people rarely change it. So in a new session, location and model sit under the bar where you can’t miss them. Mid-chat, the model moves into the + menu, out of the way, especially for non-technical people."
-              }
-            ]
-          },
-          {
-            "_type": "block",
-            "_key": "newly-s-3-b-9",
-            "style": "normal",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "newly-s-3-b-9-s",
-                "marks": [],
-                "text": "New sessions also get a taller bar, so starting a chat feels balanced and important."
-              }
-            ]
-          },
-          {
-            "_type": "mediaGallery",
-            "_key": "newly-s-3-b-10",
-            "caption": "New sessions get the taller bar: with no project open, and inside a project.",
-            "images": [
-              {
-                "_type": "image",
-                "_key": "newly-s-3-b-10-0",
-                "localAssetKey": "new-session-empty",
-                "alt": "Newly with no project open: a tall prompt bar under Let’s make something new, with Remote Session and Newly Agent below it"
-              },
-              {
-                "_type": "image",
-                "_key": "newly-s-3-b-10-1",
-                "localAssetKey": "new-session-project",
-                "alt": "Newly inside a project: a tall prompt bar under Hey Winston! Ready to build?, with branch, Remote Session and Newly Agent below it"
-              }
-            ]
-          },
-          {
-            "_type": "mediaImage",
-            "_key": "newly-s-3-b-11",
-            "localAssetKey": "bar-settings",
-            "alt": "Three popovers from the Newly prompt bar: Remote or Local session, Effort and Model, and the + menu with the model submenu",
-            "caption": "Session location explains its trade-off in one line, like “Runs on your computer, device must stay awake”.",
-            "size": "full"
-          },
-          {
-            "_type": "block",
-            "_key": "newly-s-3-b-12",
-            "style": "h3",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "newly-s-3-b-12-s",
-                "marks": [],
-                "text": "While the agent works"
-              }
-            ]
-          },
-          {
-            "_type": "block",
-            "_key": "newly-s-3-b-13-0",
-            "style": "normal",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "newly-s-3-b-13-0-s",
-                "marks": [],
-                "text": "A "
-              },
-              {
-                "_type": "span",
-                "_key": "newly-s-3-b-13-0-s1",
-                "marks": [
-                  "strong"
-                ],
-                "text": "stop"
-              },
-              {
-                "_type": "span",
-                "_key": "newly-s-3-b-13-0-s2",
-                "marks": [],
-                "text": " button while it runs."
-              }
-            ],
-            "listItem": "bullet",
-            "level": 1
-          },
-          {
-            "_type": "block",
-            "_key": "newly-s-3-b-13-1",
-            "style": "normal",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "newly-s-3-b-13-1-s",
-                "marks": [],
-                "text": "A "
-              },
-              {
-                "_type": "span",
-                "_key": "newly-s-3-b-13-1-s1",
-                "marks": [
-                  "strong"
-                ],
-                "text": "status line"
-              },
-              {
-                "_type": "span",
-                "_key": "newly-s-3-b-13-1-s2",
-                "marks": [],
-                "text": " while it connects or fixes a bug."
-              }
-            ],
-            "listItem": "bullet",
-            "level": 1
-          },
-          {
-            "_type": "block",
-            "_key": "newly-s-3-b-13-2",
-            "style": "normal",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "newly-s-3-b-13-2-s",
-                "marks": [],
-                "text": "A "
-              },
-              {
-                "_type": "span",
-                "_key": "newly-s-3-b-13-2-s1",
-                "marks": [
-                  "strong"
-                ],
-                "text": "queue"
-              },
-              {
-                "_type": "span",
-                "_key": "newly-s-3-b-13-2-s2",
-                "marks": [],
-                "text": ", so you don’t lose your next thought. Runs can take minutes, and people wanted to line up their next change instead of waiting. Queued messages sit above the bar, where you can see and remove them."
-              }
-            ],
-            "listItem": "bullet",
-            "level": 1
-          },
-          {
-            "_type": "mediaImage",
-            "_key": "newly-s-3-b-14",
-            "localAssetKey": "bar-states",
-            "alt": "Eight states of the Newly prompt bar: drop files, attached images, audio message, stop, connecting, fixing bugs, and messages in queue",
-            "caption": "Drop files, images, voice, stop, connecting, fixing bugs and the queue.",
+            "file": {
+              "_type": "file",
+              "localAssetKey": "onb-local"
+            },
+            "poster": {
+              "_type": "image",
+              "localAssetKey": "onb-local-poster"
+            },
+            "autoplay": true,
+            "caption": "Xcode and the simulator set up, then the workspace opens.",
             "size": "full"
           }
         ]
@@ -766,8 +635,8 @@
       {
         "_type": "projectSection",
         "_key": "newly-section-4",
-        "title": "Conversation",
-        "heading": "Showing the agent’s work",
+        "title": "Start screen",
+        "heading": "Where chats begin",
         "content": [
           {
             "_type": "block",
@@ -779,97 +648,205 @@
                 "_type": "span",
                 "_key": "newly-s-4-b-0-s",
                 "marks": [],
-                "text": "The agent’s work folds into one line, like “Worked for 3m, used 3 tools”."
+                "text": "Every new chat in Newly starts in the same place, whether it’s in a brand new project or one you already have. The start screen is where you type your first prompt, choose where the session runs or use a shortcut, and with no project open, pick up where you left off. It didn’t always live in the main window, though."
               }
             ]
           },
           {
             "_type": "block",
-            "_key": "newly-s-4-b-1-0",
+            "_key": "newly-s-4-b-1",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "newly-s-4-b-1-0-s",
-                "marks": [
-                  "strong"
-                ],
-                "text": "Not everyone needs the commands."
-              },
-              {
-                "_type": "span",
-                "_key": "newly-s-4-b-1-0-s1",
+                "_key": "newly-s-4-b-1-s",
                 "marks": [],
-                "text": " Newly is for non-technical people too."
+                "text": "Some earlier iterations started in a separate small window, like the startup windows in Xcode or Android Studio: your projects on one side, and Create New Project or Open Existing Project on the other."
               }
-            ],
-            "listItem": "bullet",
-            "level": 1
+            ]
           },
           {
-            "_type": "block",
-            "_key": "newly-s-4-b-1-1",
-            "style": "normal",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "newly-s-4-b-1-1-s",
-                "marks": [
-                  "strong"
-                ],
-                "text": "The chat stays readable"
-              },
-              {
-                "_type": "span",
-                "_key": "newly-s-4-b-1-1-s1",
-                "marks": [],
-                "text": " instead of turning into a log."
-              }
-            ],
-            "listItem": "bullet",
-            "level": 1
-          },
-          {
-            "_type": "block",
-            "_key": "newly-s-4-b-1-2",
-            "style": "normal",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "newly-s-4-b-1-2-s",
-                "marks": [
-                  "strong"
-                ],
-                "text": "It’s still there to check."
-              },
-              {
-                "_type": "span",
-                "_key": "newly-s-4-b-1-2-s1",
-                "marks": [],
-                "text": " Expanded, each step gets an icon, and code and commands sit in their own containers."
-              }
-            ],
-            "listItem": "bullet",
-            "level": 1
-          },
-          {
-            "_type": "mediaImage",
+            "_type": "mediaGallery",
             "_key": "newly-s-4-b-2",
-            "localAssetKey": "conversation",
-            "alt": "A close-up of a Newly conversation: the user’s message, the agent’s reply, and its work folded into the line Worked for 3m, used 3 tools",
-            "caption": "The agent’s work, folded into one line.",
-            "size": "full"
+            "caption": "An earlier startup window, and the same window opening again over an open project.",
+            "images": [
+              {
+                "_type": "image",
+                "_key": "newly-s-4-b-2-0",
+                "localAssetKey": "startwin-alone",
+                "alt": "An early Newly startup window, Welcome to Newly, with a list of projects on the left and Create New Project and Open Existing Project on the right, floating on a blue wallpaper",
+                "label": "On its own"
+              },
+              {
+                "_type": "image",
+                "_key": "newly-s-4-b-2-1",
+                "localAssetKey": "startwin-over",
+                "alt": "The same startup window opened again on top of the Newly workspace with a project already open",
+                "label": "Over a project"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-4-b-3",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-4-b-3-s",
+                "marks": [],
+                "text": "We decided against it. We wanted everything in one window, and it was a bit confusing when the startup window opened again over a project that was already open."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-4-b-4",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-4-b-4-s",
+                "marks": [],
+                "text": "In the final design, the start screen lives in the main window, and onboarding ends there. It works with or without a project open, and the biggest difference between the two is the sidebar:"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-4-b-5-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-4-b-5-0-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "No project open:"
+              },
+              {
+                "_type": "span",
+                "_key": "newly-s-4-b-5-0-s1",
+                "marks": [],
+                "text": " Home, Open Existing Project and Docs, then Projects (All Projects, Created by me, Shared with me) and Recents."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-4-b-5-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-4-b-5-1-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Inside a project:"
+              },
+              {
+                "_type": "span",
+                "_key": "newly-s-4-b-5-1-s1",
+                "marks": [],
+                "text": " the project, New Session, Search, Deploy and Configure, then pinned sessions and the session list."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-4-b-6",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-4-b-6-s",
+                "marks": [],
+                "text": "A project organizer that opens from the sidebar is planned for the future."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-4-b-7",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-4-b-7-s",
+                "marks": [],
+                "text": "The prompt bar is taller here than mid-chat, to draw your attention and make starting a chat feel balanced and important."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-4-b-8",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-4-b-8-s",
+                "marks": [],
+                "text": "Below it there’s room for a stack of cards: a way back into a recent project, or an action worth promoting, like getting the mobile app."
+              }
+            ]
+          },
+          {
+            "_type": "mediaGallery",
+            "_key": "newly-s-4-b-9",
+            "caption": "Two cards from the stack: “Pick up where you left off” outside a project, “Try the Newly Mobile App” inside one.",
+            "images": [
+              {
+                "_type": "image",
+                "_key": "newly-s-4-b-9-0",
+                "localAssetKey": "start-home",
+                "alt": "Newly with no project open: a sidebar with Home, Open Existing Project, Docs, projects and recents, a tall prompt bar under Let’s make something new, and a Summer Project card to pick up where you left off",
+                "label": "No project"
+              },
+              {
+                "_type": "image",
+                "_key": "newly-s-4-b-9-1",
+                "localAssetKey": "start-project",
+                "alt": "Newly inside the Travel App project: a sidebar with New Session, Search, Deploy, Configure, pinned sessions and sessions, a tall prompt bar under Hey Winston! Ready to build?, and a card to try the Newly mobile app",
+                "label": "In a project"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-4-b-10",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-4-b-10-s",
+                "marks": [],
+                "text": "Where a session runs is a choice you only make here, because a session can’t switch between remote and local once it starts. Only the model can change, and people rarely change it. So in a new session, location and model sit under the bar where you can’t miss them. Mid-chat, the model moves into the + menu, out of the way, especially for non-technical people."
+              }
+            ]
           }
         ]
       },
       {
         "_type": "projectSection",
         "_key": "newly-section-5",
-        "title": "Simulator picker",
-        "heading": "A clearer simulator picker",
+        "title": "Prompt bar",
+        "heading": "Dynamic prompt bar",
         "content": [
           {
             "_type": "block",
@@ -881,7 +858,7 @@
                 "_type": "span",
                 "_key": "newly-s-5-b-0-s",
                 "marks": [],
-                "text": "The preview runs your app on an iPhone simulator, in the cloud or on your computer. The simulator picker went through eight versions."
+                "text": "If Newly has a steering wheel, it’s the prompt bar. It’s where you describe what you want built or changed, attach files and images or record a voice message, pick a mode and send it off. While the agent works, the bar shows what’s happening and lets you stop it or line up your next message. It shows up all over the workspace, so it had to work at every size."
               }
             ]
           },
@@ -895,29 +872,71 @@
                 "_type": "span",
                 "_key": "newly-s-5-b-1-s",
                 "marks": [],
-                "text": "Tester feedback and my own critique pointed to two problems:"
+                "text": "I also built parts of its frontend, mostly with Claude Code and Cursor."
               }
             ]
           },
           {
             "_type": "block",
-            "_key": "newly-s-5-b-2-0",
+            "_key": "newly-s-5-b-2",
+            "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-5-b-2-s",
+                "marks": [],
+                "text": "Modes people can find"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-5-b-3",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "newly-s-5-b-2-0-s",
+                "_key": "newly-s-5-b-3-s",
+                "marks": [],
+                "text": "In the old product, Build, Plan and Ask sat in a dropdown. PostHog showed people rarely used Plan or Ask, and some support requests asked for a mode that only answers questions without editing anything. That mode already existed. People just couldn’t find it."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-5-b-4",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-5-b-4-s",
+                "marks": [],
+                "text": "So the modes moved into the bar as a segmented control, and only the active one shows its label:"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-5-b-5-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-5-b-5-0-s",
                 "marks": [
                   "strong"
                 ],
-                "text": "Unclear what was selected →"
+                "text": "It stays narrow"
               },
               {
                 "_type": "span",
-                "_key": "newly-s-5-b-2-0-s1",
+                "_key": "newly-s-5-b-5-0-s1",
                 "marks": [],
-                "text": " Cloud and Local got their own column, and the columns got labels: Type, Device, Version."
+                "text": " enough for every width."
               }
             ],
             "listItem": "bullet",
@@ -925,23 +944,47 @@
           },
           {
             "_type": "block",
-            "_key": "newly-s-5-b-2-1",
+            "_key": "newly-s-5-b-5-1",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "newly-s-5-b-2-1-s",
+                "_key": "newly-s-5-b-5-1-s",
                 "marks": [
                   "strong"
                 ],
-                "text": "Unclear what Apply did →"
+                "text": "It always says what will happen"
               },
               {
                 "_type": "span",
-                "_key": "newly-s-5-b-2-1-s1",
+                "_key": "newly-s-5-b-5-1-s1",
                 "marks": [],
-                "text": " it re-runs the app, so Apply became Apply & Run."
+                "text": " when you send."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-5-b-5-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-5-b-5-2-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "There’s less noise"
+              },
+              {
+                "_type": "span",
+                "_key": "newly-s-5-b-5-2-s1",
+                "marks": [],
+                "text": " next to what you’re typing."
               }
             ],
             "listItem": "bullet",
@@ -949,10 +992,238 @@
           },
           {
             "_type": "mediaImage",
-            "_key": "newly-s-5-b-3",
-            "localAssetKey": "picker-versions",
-            "alt": "Four versions of the iOS simulator picker, from a footer Cloud/Local toggle and an Apply button to labelled Type, Device and Version columns with Apply & Run",
-            "caption": "Four of the eight versions.",
+            "_key": "newly-s-5-b-6",
+            "localAssetKey": "bar-modes",
+            "alt": "Three Newly prompt bars in Build, Plan and Ask mode, with only the active mode labelled",
+            "caption": "Build, Plan and Ask. Only the active mode carries a label.",
+            "size": "full"
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "newly-s-5-b-7",
+            "localAssetKey": "bar-layouts",
+            "alt": "The Newly prompt bar in expanded, stacked and collapsed layouts",
+            "caption": "Expanded, stacked, collapsed.",
+            "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-5-b-8",
+            "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-5-b-8-s",
+                "marks": [],
+                "text": "While the agent works"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-5-b-9-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-5-b-9-0-s",
+                "marks": [],
+                "text": "A "
+              },
+              {
+                "_type": "span",
+                "_key": "newly-s-5-b-9-0-s1",
+                "marks": [
+                  "strong"
+                ],
+                "text": "stop"
+              },
+              {
+                "_type": "span",
+                "_key": "newly-s-5-b-9-0-s2",
+                "marks": [],
+                "text": " button while it runs."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-5-b-9-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-5-b-9-1-s",
+                "marks": [],
+                "text": "A "
+              },
+              {
+                "_type": "span",
+                "_key": "newly-s-5-b-9-1-s1",
+                "marks": [
+                  "strong"
+                ],
+                "text": "status line"
+              },
+              {
+                "_type": "span",
+                "_key": "newly-s-5-b-9-1-s2",
+                "marks": [],
+                "text": " while it connects or fixes a bug."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-5-b-9-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-5-b-9-2-s",
+                "marks": [],
+                "text": "A "
+              },
+              {
+                "_type": "span",
+                "_key": "newly-s-5-b-9-2-s1",
+                "marks": [
+                  "strong"
+                ],
+                "text": "queue"
+              },
+              {
+                "_type": "span",
+                "_key": "newly-s-5-b-9-2-s2",
+                "marks": [],
+                "text": ", so you don’t lose your next thought. Runs can take minutes, and people wanted to line up their next change instead of waiting. Queued messages sit above the bar, where you can see and remove them."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "newly-s-5-b-10",
+            "localAssetKey": "bar-states",
+            "alt": "Eight states of the Newly prompt bar: drop files, attached images, audio message, stop, connecting, fixing bugs, and messages in queue",
+            "caption": "Drop files, images, voice, stop, connecting, fixing bugs and the queue.",
+            "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-5-b-11",
+            "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-5-b-11-s",
+                "marks": [],
+                "text": "Short copy in the menus"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-5-b-12",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-5-b-12-s",
+                "marks": [],
+                "text": "The menus around the bar had to give clear information without much text. Most options get a name and, at most, one short line:"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-5-b-13-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-5-b-13-0-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Location"
+              },
+              {
+                "_type": "span",
+                "_key": "newly-s-5-b-13-0-s1",
+                "marks": [],
+                "text": " explains its trade-off: “Runs in the cloud, accessible on any device” or “Runs on your computer, device must stay awake”."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-5-b-13-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-5-b-13-1-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Models"
+              },
+              {
+                "_type": "span",
+                "_key": "newly-s-5-b-13-1-s1",
+                "marks": [],
+                "text": " say what you’re picking: Newly Agent is “Best all around”, and Codex and Claude each say “Uses your own subscription”. If you haven’t linked one yet, a small “+ LINK” next to it prompts you to link your own."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-5-b-13-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-5-b-13-2-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Effort"
+              },
+              {
+                "_type": "span",
+                "_key": "newly-s-5-b-13-2-s1",
+                "marks": [],
+                "text": " is a slider with one word for the current level, like “Medium”."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "newly-s-5-b-14",
+            "localAssetKey": "bar-settings",
+            "alt": "Three popovers from the Newly prompt bar: Remote or Local session, Effort and Model, and the + menu with the model submenu",
+            "caption": "The location menu, and the effort and model menu, at the start; the + menu mid-chat.",
             "size": "full"
           }
         ]
@@ -960,8 +1231,8 @@
       {
         "_type": "projectSection",
         "_key": "newly-section-6",
-        "title": "Also shipped",
-        "heading": "Deploy, web and colour",
+        "title": "Conversation",
+        "heading": "Chatting with the agent",
         "content": [
           {
             "_type": "block",
@@ -973,114 +1244,243 @@
                 "_type": "span",
                 "_key": "newly-s-6-b-0-s",
                 "marks": [],
-                "text": "I designed and built the deploy and web screens, and both are live."
+                "text": "You ask, and the agent talks back. In the chat, it explains what it’s doing, shows the work behind each change, like the commands it ran and the code it wrote, and asks you questions when it needs a decision. Fitting all of that into one chat starts with what you see first."
               }
             ]
           },
           {
             "_type": "block",
-            "_key": "newly-s-6-b-1-0",
+            "_key": "newly-s-6-b-1",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "newly-s-6-b-1-0-s",
-                "marks": [
-                  "strong"
-                ],
-                "text": "Deploy"
-              },
-              {
-                "_type": "span",
-                "_key": "newly-s-6-b-1-0-s1",
+                "_key": "newly-s-6-b-1-s",
                 "marks": [],
-                "text": " groups destinations by platform. The App Store card shows a short checklist and the details already filled in."
-              }
-            ],
-            "listItem": "bullet",
-            "level": 1
-          },
-          {
-            "_type": "block",
-            "_key": "newly-s-6-b-1-1",
-            "style": "normal",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "newly-s-6-b-1-1-s",
-                "marks": [
-                  "strong"
-                ],
-                "text": "The web app"
-              },
-              {
-                "_type": "span",
-                "_key": "newly-s-6-b-1-1-s1",
-                "marks": [],
-                "text": " opens with a “Pick up where you left off” card to reopen your last project."
-              }
-            ],
-            "listItem": "bullet",
-            "level": 1
-          },
-          {
-            "_type": "block",
-            "_key": "newly-s-6-b-1-2",
-            "style": "normal",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "newly-s-6-b-1-2-s",
-                "marks": [
-                  "strong"
-                ],
-                "text": "Colour"
-              },
-              {
-                "_type": "span",
-                "_key": "newly-s-6-b-1-2-s1",
-                "marks": [],
-                "text": " is held back in the workspace. Blue only marks the active mode, the main action and anything running, so your own app stands out."
-              }
-            ],
-            "listItem": "bullet",
-            "level": 1
-          },
-          {
-            "_type": "mediaGallery",
-            "_key": "newly-s-6-b-2",
-            "caption": "The Deploy hub, the App Store release card and the web welcome screen.",
-            "images": [
-              {
-                "_type": "image",
-                "_key": "newly-s-6-b-2-0",
-                "localAssetKey": "deploy-hub",
-                "alt": "The Newly Deploy hub with iOS, Android and Web destinations"
-              },
-              {
-                "_type": "image",
-                "_key": "newly-s-6-b-2-1",
-                "localAssetKey": "deploy-release",
-                "alt": "The App Store release card with a checklist and an Automatically Completed list"
-              },
-              {
-                "_type": "image",
-                "_key": "newly-s-6-b-2-2",
-                "localAssetKey": "web-welcome",
-                "alt": "Newly on the web: the welcome screen with a filled prompt and a Pick up where you left off card"
+                "text": "The agent’s work folds into one line, like “Worked for 3m, used 3 tools”."
               }
             ]
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-6-b-2-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-6-b-2-0-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Not everyone needs the commands."
+              },
+              {
+                "_type": "span",
+                "_key": "newly-s-6-b-2-0-s1",
+                "marks": [],
+                "text": " Newly is for non-technical people too."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-6-b-2-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-6-b-2-1-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "The chat stays readable"
+              },
+              {
+                "_type": "span",
+                "_key": "newly-s-6-b-2-1-s1",
+                "marks": [],
+                "text": " instead of turning into a log."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-6-b-2-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-6-b-2-2-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "It’s still there to check."
+              },
+              {
+                "_type": "span",
+                "_key": "newly-s-6-b-2-2-s1",
+                "marks": [],
+                "text": " Expanded, each step gets an icon, and code and commands sit in their own containers."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "newly-s-6-b-3",
+            "localAssetKey": "conversation",
+            "alt": "The Newly chat panel on the blue wallpaper: the user’s message, the agent’s reply with its work folded into Worked for 3m, used 3 tools, and the prompt bar at the bottom",
+            "caption": "The agent’s work, folded into one line, with the prompt bar below.",
+            "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-6-b-4",
+            "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-6-b-4-s",
+                "marks": [],
+                "text": "Prototyped in Claude Design"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-6-b-5",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-6-b-5-s",
+                "marks": [],
+                "text": "I used Claude Design to prototype the chat’s interactions and layouts, because I could simulate typing and chatting with the agent while I iterated on the designs. The four experiments below all shipped:"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-6-b-6-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-6-b-6-0-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Markdown"
+              },
+              {
+                "_type": "span",
+                "_key": "newly-s-6-b-6-0-s1",
+                "marks": [],
+                "text": " in replies: headings, lists, inline code, tables and links."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-6-b-6-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-6-b-6-1-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Code and terminal"
+              },
+              {
+                "_type": "span",
+                "_key": "newly-s-6-b-6-1-s1",
+                "marks": [],
+                "text": " blocks: a live terminal, code with its filename, and diffs."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-6-b-6-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-6-b-6-2-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "The tool list, expanded:"
+              },
+              {
+                "_type": "span",
+                "_key": "newly-s-6-b-6-2-s1",
+                "marks": [],
+                "text": " each tool with an icon and how long it took, and steps still running."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-6-b-6-3",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-6-b-6-3-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Questions in the prompt bar:"
+              },
+              {
+                "_type": "span",
+                "_key": "newly-s-6-b-6-3-s1",
+                "marks": [],
+                "text": " when the agent needs an answer, the bar turns into options to pick from."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "newly-s-6-b-7",
+            "localAssetKey": "chat-experiments",
+            "alt": "Four Newly chat experiments as selected frames on a dot grid: markdown in a reply, code and terminal blocks, the expanded tool list, and a question in the prompt bar",
+            "caption": "The four chat experiments in Claude Design.",
+            "size": "full"
           }
         ]
       },
       {
         "_type": "projectSection",
         "_key": "newly-section-7",
-        "title": "Outcome",
-        "heading": "What shipped and what I learned",
+        "title": "Simulators",
+        "heading": "One panel for every simulator",
         "content": [
           {
             "_type": "block",
@@ -1092,71 +1492,31 @@
                 "_type": "span",
                 "_key": "newly-s-7-b-0-s",
                 "marks": [],
-                "text": "The workspace, the prompt bar and its states, the deploy flow and the web app are all live."
+                "text": "Nothing beats seeing your app actually run. The simulators panel sits in the preview panel and shows two things: what the agent is testing on its own simulator, and your own simulator for trying the app yourself, on iOS, Android or the web."
               }
             ]
           },
           {
             "_type": "block",
             "_key": "newly-s-7-b-1",
-            "style": "h3",
+            "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
                 "_key": "newly-s-7-b-1-s",
                 "marks": [],
-                "text": "What feedback changed"
+                "text": "Both live in the switcher under the simulator, a set of tabs that expand and collapse. Click Agent, for example, and it opens to let you switch between the agent’s iOS and Android simulators, while your own simulator options fold away. That way there are never too many things on screen at once."
               }
             ]
           },
           {
-            "_type": "block",
-            "_key": "newly-s-7-b-2-0",
-            "style": "normal",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "newly-s-7-b-2-0-s",
-                "marks": [
-                  "strong"
-                ],
-                "text": "Shaped by feedback:"
-              },
-              {
-                "_type": "span",
-                "_key": "newly-s-7-b-2-0-s1",
-                "marks": [],
-                "text": " chat over the board, one sidebar instead of two, and Apply & Run in the simulator picker."
-              }
-            ],
-            "listItem": "bullet",
-            "level": 1
-          },
-          {
-            "_type": "block",
-            "_key": "newly-s-7-b-2-1",
-            "style": "normal",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "newly-s-7-b-2-1-s",
-                "marks": [
-                  "strong"
-                ],
-                "text": "After shipping:"
-              },
-              {
-                "_type": "span",
-                "_key": "newly-s-7-b-2-1-s1",
-                "marks": [],
-                "text": " people stopped getting stuck on the simulator picker."
-              }
-            ],
-            "listItem": "bullet",
-            "level": 1
+            "_type": "mediaImage",
+            "_key": "newly-s-7-b-2",
+            "localAssetKey": "sim-switcher",
+            "alt": "The switcher under the Newly simulator: iOS, Android and web tabs open on the left, with Agent and Media collapsed next to them",
+            "caption": "Your simulators open, with Agent and Media folded away.",
+            "size": "content"
           },
           {
             "_type": "block",
@@ -1168,53 +1528,43 @@
                 "_type": "span",
                 "_key": "newly-s-7-b-3-s",
                 "marks": [],
-                "text": "What I learned"
+                "text": "Controls when you need them"
               }
             ]
           },
           {
             "_type": "block",
-            "_key": "newly-s-7-b-4-0",
+            "_key": "newly-s-7-b-4",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "newly-s-7-b-4-0-s",
+                "_key": "newly-s-7-b-4-s",
                 "marks": [],
-                "text": "Designing for an agent is mostly states, not screens."
+                "text": "The simulator also comes with a lot of controls, but you don’t always need them. So they’re hidden. Two small dots on the side of the phone hint that there’s something there to hover."
               }
-            ],
-            "listItem": "bullet",
-            "level": 1
+            ]
           },
           {
-            "_type": "block",
-            "_key": "newly-s-7-b-4-1",
-            "style": "normal",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "newly-s-7-b-4-1-s",
-                "marks": [],
-                "text": "A good idea can still be wrong for the timeline. The board may come back."
-              }
-            ],
-            "listItem": "bullet",
-            "level": 1
-          },
-          {
-            "_type": "block",
+            "_type": "mediaGallery",
             "_key": "newly-s-7-b-5",
-            "style": "h3",
-            "markDefs": [],
-            "children": [
+            "caption": "Two dots at rest. On hover, the backplate expands with the controls.",
+            "arrows": true,
+            "images": [
               {
-                "_type": "span",
-                "_key": "newly-s-7-b-5-s",
-                "marks": [],
-                "text": "Summary"
+                "_type": "image",
+                "_key": "newly-s-7-b-5-0",
+                "localAssetKey": "sim-resting",
+                "alt": "The Newly preview panel with an iPhone simulator and two small dots beside the phone",
+                "label": "Resting"
+              },
+              {
+                "_type": "image",
+                "_key": "newly-s-7-b-5-1",
+                "localAssetKey": "sim-hover",
+                "alt": "The same preview panel on hover: a backplate behind the phone has expanded, with a rail of controls on its right",
+                "label": "On hover"
               }
             ]
           },
@@ -1228,19 +1578,526 @@
                 "_type": "span",
                 "_key": "newly-s-7-b-6-s",
                 "marks": [],
-                "text": "One prompt in Newly drives sessions, a simulator, models and App Store releases, for technical and non-technical people. As the only designer, I designed the workspace around that prompt bar. I also built the layout, the prompt bar, and the deploy and web screens in React and TypeScript."
+                "text": "On hover, the backplate under the phone expands, and a rail of controls appears on its right. Home sits in the centre, right where your mouse already is after hovering the dots. The top half holds controls for your app, like reloading it or taking a screenshot. The bottom half holds controls for the phone, like the app switcher and rotating it."
               }
             ]
           },
           {
-            "_type": "block",
+            "_type": "mediaImage",
             "_key": "newly-s-7-b-7",
+            "localAssetKey": "sim-portrait",
+            "alt": "The Newly workspace on a pale yellow-green wallpaper: the sidebar, a new chat, and the preview panel with the simulator’s backplate and control rail out",
+            "caption": "The controls out, in the preview panel.",
+            "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-7-b-8",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "newly-s-7-b-7-s",
+                "_key": "newly-s-7-b-8-s",
+                "marks": [],
+                "text": "The panel works in landscape too."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "newly-s-7-b-9",
+            "localAssetKey": "sim-landscape",
+            "alt": "The Newly workspace with a landscape iPhone simulator in the preview panel, its backplate expanded and the control rail on the right",
+            "caption": "In landscape, the rail stays on the right.",
+            "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-7-b-10",
+            "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-7-b-10-s",
+                "marks": [],
+                "text": "A clearer picker"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-7-b-11",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-7-b-11-s",
+                "marks": [],
+                "text": "The simulator picker went through eight versions. Tester feedback and my own critique pointed to two problems:"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-7-b-12-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-7-b-12-0-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Unclear what was selected →"
+              },
+              {
+                "_type": "span",
+                "_key": "newly-s-7-b-12-0-s1",
+                "marks": [],
+                "text": " Cloud and Local got their own column, and the columns got labels: Type, Device, Version."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-7-b-12-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-7-b-12-1-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Unclear what Apply did →"
+              },
+              {
+                "_type": "span",
+                "_key": "newly-s-7-b-12-1-s1",
+                "marks": [],
+                "text": " it re-runs the app, so Apply became Apply & Run."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "newly-s-7-b-13",
+            "localAssetKey": "picker-versions",
+            "alt": "Four versions of the iOS simulator picker, from a footer Cloud/Local toggle and an Apply button to labelled Type, Device and Version columns with Apply & Run",
+            "caption": "Four of the eight versions.",
+            "size": "full"
+          }
+        ]
+      },
+      {
+        "_type": "projectSection",
+        "_key": "newly-section-8",
+        "title": "Craft",
+        "heading": "Glass, corners, shadows",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "newly-s-8-b-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-8-b-0-s",
+                "marks": [],
+                "text": "Some of the work doesn’t show up as a feature at all. It’s in the visual details that run through the whole workspace and shape how Newly feels to use. Here’s where most of the attention went:"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-8-b-1-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-8-b-1-0-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Glass."
+              },
+              {
+                "_type": "span",
+                "_key": "newly-s-8-b-1-0-s1",
+                "marks": [],
+                "text": " I wanted your wallpaper to shine through the workspace nicely, so I played with different tinting methods until the blur tint felt right."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-8-b-1-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-8-b-1-1-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Corners"
+              },
+              {
+                "_type": "span",
+                "_key": "newly-s-8-b-1-1-s1",
+                "marks": [],
+                "text": " are concentric, so shapes inside each other feel like they belong together, and everything lines up. They’re also smoothed, which makes the whole thing feel more polished."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-8-b-1-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-8-b-1-2-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Shadows"
+              },
+              {
+                "_type": "span",
+                "_key": "newly-s-8-b-1-2-s1",
+                "marks": [],
+                "text": " are used lightly, just enough to give the important things a sense of depth."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-8-b-1-3",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-8-b-1-3-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Colour"
+              },
+              {
+                "_type": "span",
+                "_key": "newly-s-8-b-1-3-s1",
+                "marks": [],
+                "text": " is held back in the workspace. Blue only marks the active mode, the main action and anything running, so your own app stands out."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-8-b-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-8-b-2-s",
+                "marks": [],
+                "text": "Together, it all feels crisp."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "newly-s-8-b-3",
+            "localAssetKey": "craft",
+            "alt": "Four close-ups of Newly: a smoothed corner, glass panes with the wallpaper coming through, a window over a blue wallpaper, and the Build, Plan and Ask control next to the send button, with nested corners and a soft shadow",
+            "caption": "Smoothed corners, the wallpaper through the glass, and concentric corners with light shadows.",
+            "size": "full"
+          }
+        ]
+      },
+      {
+        "_type": "projectSection",
+        "_key": "newly-section-9",
+        "title": "Also shipped",
+        "heading": "Deploy and web",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "newly-s-9-b-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-9-b-0-s",
+                "marks": [],
+                "text": "Building an app is only half the job; at some point it has to ship. Deploy is where your app leaves Newly, whether it’s headed to TestFlight and the App Store, Android or the web. Newly also runs in the browser, so you can get back to your projects without the desktop app. I designed and built the screens for both, and they’re live."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-9-b-1-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-9-b-1-0-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Deploy"
+              },
+              {
+                "_type": "span",
+                "_key": "newly-s-9-b-1-0-s1",
+                "marks": [],
+                "text": " groups destinations by platform. The App Store card shows a short checklist and the details already filled in."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-9-b-1-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-9-b-1-1-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "The web app"
+              },
+              {
+                "_type": "span",
+                "_key": "newly-s-9-b-1-1-s1",
+                "marks": [],
+                "text": " opens with a “Pick up where you left off” card to reopen your last project."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "mediaGallery",
+            "_key": "newly-s-9-b-2",
+            "caption": "The Deploy hub, the App Store release card and the web welcome screen.",
+            "images": [
+              {
+                "_type": "image",
+                "_key": "newly-s-9-b-2-0",
+                "localAssetKey": "deploy-hub",
+                "alt": "The Newly Deploy hub with iOS, Android and Web destinations"
+              },
+              {
+                "_type": "image",
+                "_key": "newly-s-9-b-2-1",
+                "localAssetKey": "deploy-release",
+                "alt": "The App Store release card with a checklist and an Automatically Completed list"
+              },
+              {
+                "_type": "image",
+                "_key": "newly-s-9-b-2-2",
+                "localAssetKey": "web-welcome",
+                "alt": "Newly on the web: the welcome screen with a filled prompt and a Pick up where you left off card"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "_type": "projectSection",
+        "_key": "newly-section-10",
+        "title": "Outcome",
+        "heading": "Results and lessons",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "newly-s-10-b-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-10-b-0-s",
+                "marks": [],
+                "text": "The workspace, onboarding, the prompt bar and its states, the new chat features, the deploy flow and the web app are all live."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-10-b-1",
+            "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-10-b-1-s",
+                "marks": [],
+                "text": "What feedback changed"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-10-b-2-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-10-b-2-0-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Shaped by feedback:"
+              },
+              {
+                "_type": "span",
+                "_key": "newly-s-10-b-2-0-s1",
+                "marks": [],
+                "text": " chat over the board, one sidebar instead of two, and Apply & Run in the simulator picker."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-10-b-2-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-10-b-2-1-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "After shipping:"
+              },
+              {
+                "_type": "span",
+                "_key": "newly-s-10-b-2-1-s1",
+                "marks": [],
+                "text": " people stopped getting stuck on the simulator picker."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-10-b-3",
+            "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-10-b-3-s",
+                "marks": [],
+                "text": "What I learned"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-10-b-4-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-10-b-4-0-s",
+                "marks": [],
+                "text": "Designing for an agent is mostly states, not screens."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-10-b-4-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-10-b-4-1-s",
+                "marks": [],
+                "text": "A good idea can still be wrong for the timeline. The board may come back."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-10-b-5",
+            "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-10-b-5-s",
+                "marks": [],
+                "text": "Summary"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-10-b-6",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-10-b-6-s",
+                "marks": [],
+                "text": "One prompt in Newly drives sessions, a simulator, models and App Store releases, for technical and non-technical people. As the only designer, I designed the workspace around that prompt bar, from onboarding to the preview panel. I also built parts of the frontend and prototyped the chat and much of the onboarding in Claude Design."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-10-b-7",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-10-b-7-s",
                 "marks": [],
                 "text": "Feedback and the team’s priorities changed the plan more than once along the way. What shipped helped grow Newly’s revenue."
               }
@@ -1272,9 +2129,9 @@
     "board-hybrid": {
       "path": "assets/newly-cs2-board-hybrid.png",
       "sourceNodeIds": [
-        "284:7224"
+        "284:7226"
       ],
-      "note": "Window cropped from the Newly Desktop Demo composition."
+      "note": "The window (MacBook Air - 17) exported on its own, without the composition’s wallpaper, so it matches the other two; the frame around the main panel takes the same light grey as the standalone windows."
     },
     "chat-first": {
       "path": "assets/newly-cs2-chat-first.png",
@@ -1353,18 +2210,6 @@
         "284:39266"
       ]
     },
-    "new-session-empty": {
-      "path": "assets/newly-cs2-new-session-empty.png",
-      "sourceNodeIds": [
-        "284:36752"
-      ]
-    },
-    "new-session-project": {
-      "path": "assets/newly-cs2-new-session-project.png",
-      "sourceNodeIds": [
-        "284:37196"
-      ]
-    },
     "bar-modes": {
       "path": "assets/newly-cs-bar-modes.jpg",
       "sourceNodeIds": [
@@ -1374,11 +2219,141 @@
       ]
     },
     "conversation": {
-      "path": "assets/newly-cmp-conversation.png",
+      "path": "assets/newly-cs2-conversation.jpg",
       "sourceNodeIds": [
-        "284:33716"
+        "295:41173"
       ],
-      "note": "Close-up crop of the conversation."
+      "note": "The chat panel with its prompt bar, cropped from the 2x composition export, given back its corner radius and a soft shadow, on the Newly wallpaper (the section fill image)."
+    },
+    "start-home": {
+      "path": "assets/newly-cs2-start-home.png",
+      "sourceNodeIds": [
+        "335:7662",
+        "345:5388",
+        "295:41173"
+      ],
+      "note": "The final window copied onto the Newly Desktop Demo wallpaper at its normal scale (copy 345:5388 in the “Portfolio exports” section, made from 295:41173); cropped from the 2x export."
+    },
+    "start-project": {
+      "path": "assets/newly-cs2-start-project.png",
+      "sourceNodeIds": [
+        "284:37196",
+        "345:5845",
+        "295:41173"
+      ],
+      "note": "The final window copied onto the Newly Desktop Demo wallpaper at its normal scale (copy 345:5845 in the “Portfolio exports” section, made from 295:41173); cropped from the 2x export."
+    },
+    "chat-experiments": {
+      "path": "assets/newly-cs2-chat-experiments.jpg",
+      "note": "The four options on Winston’s Claude Design canvas “Chat screen design experiments” (claude.ai artifact XDVqFK5p4eybsazAfQ2gM7), as selected frames on a dot grid like the Yelo iterations.",
+      "sourceUrl": "https://claude.ai/artifact/XDVqFK5p4eybsazAfQ2gM7"
+    },
+    "onb-welcome": {
+      "path": "assets/newly-cs2-onboarding-welcome.mp4",
+      "note": "Recorded frame by frame at 30 fps from Winston’s Claude Design canvas “Newly App Onboarding Flow” (claude.ai artifact Keh7AEJawGQ1RPkqysUzGH). The prototype’s variant switcher is hidden and a cursor is drawn in.",
+      "sourceUrl": "https://claude.ai/artifact/Keh7AEJawGQ1RPkqysUzGH"
+    },
+    "onb-welcome-poster": {
+      "path": "assets/newly-cs2-onboarding-welcome-poster.jpg",
+      "note": "A frame from the clip.",
+      "sourceUrl": "https://claude.ai/artifact/Keh7AEJawGQ1RPkqysUzGH"
+    },
+    "onb-setup": {
+      "path": "assets/newly-cs2-onboarding-setup.mp4",
+      "note": "Recorded frame by frame at 30 fps from Winston’s Claude Design canvas “Newly App Onboarding Flow” (claude.ai artifact Keh7AEJawGQ1RPkqysUzGH). The prototype’s variant switcher is hidden and a cursor is drawn in.",
+      "sourceUrl": "https://claude.ai/artifact/Keh7AEJawGQ1RPkqysUzGH"
+    },
+    "onb-setup-poster": {
+      "path": "assets/newly-cs2-onboarding-setup-poster.jpg",
+      "note": "A frame from the clip.",
+      "sourceUrl": "https://claude.ai/artifact/Keh7AEJawGQ1RPkqysUzGH"
+    },
+    "onb-local": {
+      "path": "assets/newly-cs2-onboarding-local.mp4",
+      "note": "Recorded frame by frame at 30 fps from Winston’s Claude Design canvas “Newly App Onboarding Flow” (claude.ai artifact Keh7AEJawGQ1RPkqysUzGH). The prototype’s variant switcher is hidden and a cursor is drawn in.",
+      "sourceUrl": "https://claude.ai/artifact/Keh7AEJawGQ1RPkqysUzGH"
+    },
+    "onb-local-poster": {
+      "path": "assets/newly-cs2-onboarding-local-poster.jpg",
+      "note": "A frame from the clip.",
+      "sourceUrl": "https://claude.ai/artifact/Keh7AEJawGQ1RPkqysUzGH"
+    },
+    "board-branching": {
+      "path": "assets/newly-cs2-board-branching.png",
+      "sourceNodeIds": [
+        "284:6704"
+      ],
+      "note": "Window cropped from a 2x export of its Newly Desktop Demo composition, so the wallpaper shows through the glass."
+    },
+    "marketing-board": {
+      "path": "assets/newly-cs2-marketing-board.png",
+      "sourceNodeIds": [
+        "284:13665"
+      ],
+      "note": "Window cropped from a 2x export of its Newly Desktop Demo composition, so the wallpaper shows through the glass. From the Marketing section (284:13664)."
+    },
+    "marketing-chat": {
+      "path": "assets/newly-cs2-marketing-chat.png",
+      "sourceNodeIds": [
+        "284:11584"
+      ],
+      "note": "Window cropped from a 2x export of its Newly Desktop Demo composition, so the wallpaper shows through the glass. From the Marketing with Chat section (284:11583)."
+    },
+    "sim-portrait": {
+      "path": "assets/newly-cs2-sim-portrait.png",
+      "sourceNodeIds": [
+        "336:7832"
+      ],
+      "note": "Window cropped from a 2x export of its Newly Desktop Demo composition, so the wallpaper shows through the glass. From the New Preview section (336:7831), with the white screens."
+    },
+    "sim-landscape": {
+      "path": "assets/newly-cs2-sim-landscape.png",
+      "sourceNodeIds": [
+        "336:7990"
+      ],
+      "note": "Window cropped from a 2x export of its Newly Desktop Demo composition, so the wallpaper shows through the glass. From the New Preview section (336:7831), with the white screens."
+    },
+    "sim-resting": {
+      "path": "assets/newly-cs2-sim-resting.png",
+      "sourceNodeIds": [
+        "336:8149"
+      ],
+      "note": "Close-up of the preview panel, cropped from the 2x window (wallpaper showing through)."
+    },
+    "sim-hover": {
+      "path": "assets/newly-cs2-sim-hover.png",
+      "sourceNodeIds": [
+        "336:7832"
+      ],
+      "note": "Close-up of the preview panel on hover, cropped from the 2x window (wallpaper showing through)."
+    },
+    "startwin-alone": {
+      "path": "assets/newly-cs2-startwin-alone.png",
+      "sourceNodeIds": [
+        "284:19691"
+      ],
+      "note": "The composition’s window area cropped from a 2x export, so the small startup window floats on the wallpaper."
+    },
+    "startwin-over": {
+      "path": "assets/newly-cs2-startwin-over.png",
+      "sourceNodeIds": [
+        "284:18965"
+      ],
+      "note": "Window cropped from a 2x export of its composition, with the startup window on top."
+    },
+    "craft": {
+      "path": "assets/newly-cs2-craft.png",
+      "sourceNodeIds": [
+        "284:21940"
+      ],
+      "note": "The Newly Designs detail frame at 2x; its white background is made transparent (flood fill from the edges, colour-to-alpha on the anti-aliased edge) so the tiles sit on the page in light and dark themes."
+    },
+    "sim-switcher": {
+      "path": "assets/newly-cs2-sim-switcher.png",
+      "sourceNodeIds": [
+        "336:8149"
+      ],
+      "note": "Close-up of the switcher under the simulator, cropped from the 2x window (wallpaper showing through)."
     }
   }
 }
