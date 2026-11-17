@@ -52,6 +52,14 @@ uploads new images, patches the document in one transaction, saves the
 previous state to `sanity-before-<slug>-update.json` (so it can be
 reverted) and verifies the result. `--offline` validates without network.
 
+The ideation boards use a new "Sticky notes" block. The site shows them as
+soon as the content is published, but to see and edit them in Sanity
+Studio, deploy the Studio once with the new schema:
+
+```sh
+cd studio && npm install && npm run deploy
+```
+
 ## Preview before publishing
 
 ```sh
