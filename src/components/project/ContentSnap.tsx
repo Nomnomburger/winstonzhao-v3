@@ -10,9 +10,14 @@ import {
   type SnapDirection, type WheelGesture,
 } from '@/lib/scroll-snap';
 
-const ELASTIC_THRESHOLD = 220; // wheel input past the snap point that snaps over (~125px of stretch)
+const ELASTIC_THRESHOLD = 170; // wheel input past the snap point that snaps over (~110px of stretch)
 const ELASTIC_RANGE = 360; // the stretch approaches this, never reaching it
-const ELASTIC_GIVE = 0.85; // how freely it gives at first: px of stretch per px of input
+const ELASTIC_GIVE = 0.95; // how freely it gives at first: px of stretch per px of input
+// How quickly the page closes the gap to the stretch, per second, so it moves
+// the same on a 60Hz and a 120Hz screen. Following a push is close to Lenis's
+// own smoothing, so taking over from it doesn't jolt.
+const FOLLOW_RATE = 12;
+const SPRING_RATE = 9;
 const ELASTIC_IDLE_MS = 300; // no input for this long counts as letting go; a slow scroll's pauses are shorter
 const ELASTIC_MEMORY_MS = 1200; // a wheel notch within this carries on from the last
 const NOTCH_DELTA = 40; // a single wheel event this big is a mouse notch, not a trackpad
@@ -33,6 +38,7 @@ interface Elastic {
   peak: number;
   y: number;
   lastInput: number;
+  lastFrame: number;
   frame: number;
 }
 
@@ -203,10 +209,13 @@ export default function ContentSnap({ contentId, overviewId }: { contentId: stri
     const elasticFrame = () => {
       const e = elastic;
       if (!e) return;
-      if (e.pull > 0 && performance.now() - e.lastInput > ELASTIC_IDLE_MS) releaseElastic(e);
+      const now = performance.now();
+      if (e.pull > 0 && now - e.lastInput > ELASTIC_IDLE_MS) releaseElastic(e);
       const target = e.edge + e.direction * stretch(e.pull);
-      // Follows the push closely, and springs back gently.
-      e.y += (target - e.y) * (e.pull > 0 ? 0.3 : 0.16);
+      // Follows the push, and springs back gently, by time rather than frames.
+      const dt = Math.min(0.05, (now - e.lastFrame) / 1000);
+      e.lastFrame = now;
+      e.y += (target - e.y) * (1 - Math.exp(-(e.pull > 0 ? FOLLOW_RATE : SPRING_RATE) * dt));
       if (e.pull === 0 && Math.abs(target - e.y) < 0.5) {
         stopElastic();
         scrollInstantly(target);
@@ -229,7 +238,7 @@ export default function ContentSnap({ contentId, overviewId }: { contentId: stri
         // Take over from wherever the smooth scroll has got to.
         scrollInstantly(window.scrollY);
         elastic = {
-          direction, edge, pull: 0, peak: 0, y: window.scrollY, lastInput: now,
+          direction, edge, pull: 0, peak: 0, y: window.scrollY, lastInput: now, lastFrame: now,
           frame: requestAnimationFrame(elasticFrame),
         };
       }
@@ -332,8 +341,9 @@ export default function ContentSnap({ contentId, overviewId }: { contentId: stri
           elastic.pull = Math.max(0, elastic.pull - delta);
           lastStretch = { direction: elastic.direction, pull: 0, at: 0 };
         } else if (gesture.momentum) {
+          // Fingers lifted, or easing off: spring back, but keep listening, so
+          // a push that picks up again carries on from here.
           releaseElastic(elastic);
-          gesture.consumed = true;
         } else pushElastic(direction, elastic.edge, delta, delta >= NOTCH_DELTA);
         return;
       }

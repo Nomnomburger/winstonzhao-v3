@@ -136,8 +136,10 @@ export default async function ProjectPage({ params }: { params: Params }) {
           </RevealArea>
         )}
 
-        {/* Summary and overview, below the hero; "Read ↓" lands here. */}
-        <div id="read" tabIndex={-1} className="scroll-mt-[104px] focus:outline-none">
+        {/* Summary and overview, below the hero; "Read ↓" lands here. On desktop
+            it ends with extra room above the screen's bottom edge where the page
+            rests before the case study. */}
+        <div id="read" tabIndex={-1} className="scroll-mt-[104px] md:pb-9 focus:outline-none">
           {/* Summary statement and key details */}
           {(project.summary || details.length > 0) && (
             <RevealArea
