@@ -184,37 +184,41 @@ export default function Lightbox({
         className="lightbox"
       >
         {open && (
-          // The box carries the size, the stand-in background and the
-          // animation; the image and any labels fill it.
-          <div
-            className="lightbox-image relative"
-            style={{
-              aspectRatio: aspect,
-              // Fit the viewport, but never smaller than the image was inline;
-              // a taller result scrolls inside the dialog.
-              width: `max(min(100%, calc((100dvh - var(--lightbox-pad-y)) * ${aspect.toFixed(4)})), ${Math.round(inlineWidth)}px)`,
-              maxWidth: dimensions?.width ? `min(100%, ${dimensions.width}px)` : '100%',
-              backgroundImage: !loaded && placeholder ? `url("${placeholder}")` : undefined,
-            }}
-          >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src={src}
-              srcSet={srcSet}
-              sizes={aspect < 1 ? `calc((100vh - 132px) * ${aspect.toFixed(3)})` : '100vw'}
-              alt={image.alt ?? ''}
-              decoding="async"
-              onLoad={() => setLoaded(true)}
-              className="absolute inset-0 block h-full w-full"
-            />
-            <ImageLabels labels={labels} className="text-[12px] md:text-[16px]" />
+          // The scroller holds the image, so a tall one scrolls under the
+          // close button instead of taking the button with it.
+          <div className="lightbox-scroll">
+            {/* The box carries the size, the stand-in background and the
+                animation; the image and any labels fill it. */}
+            <div
+              className="lightbox-image relative"
+              style={{
+                aspectRatio: aspect,
+                // Fit the viewport, but never smaller than the image was
+                // inline; a taller result scrolls.
+                width: `max(min(100%, calc((100dvh - var(--lightbox-pad-y)) * ${aspect.toFixed(4)})), ${Math.round(inlineWidth)}px)`,
+                maxWidth: dimensions?.width ? `min(100%, ${dimensions.width}px)` : '100%',
+                backgroundImage: !loaded && placeholder ? `url("${placeholder}")` : undefined,
+              }}
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={src}
+                srcSet={srcSet}
+                sizes={aspect < 1 ? `calc((100vh - 132px) * ${aspect.toFixed(3)})` : '100vw'}
+                alt={image.alt ?? ''}
+                decoding="async"
+                onLoad={() => setLoaded(true)}
+                className="absolute inset-0 block h-full w-full"
+              />
+              <ImageLabels labels={labels} className="text-[12px] md:text-[16px]" />
+            </div>
           </div>
         )}
         <button
           ref={closeButtonRef}
           type="button"
           // Its click bubbles to the dialog, which closes it.
-          className="fixed bottom-6 md:bottom-9 left-1/2 -translate-x-1/2 flex items-center gap-1.5 px-3 py-2 cursor-pointer font-normal text-[12px] tracking-[-0.24px] leading-normal focus-visible:outline focus-visible:outline-1 focus-visible:outline-foreground"
+          className="lightbox-close absolute bottom-6 md:bottom-9 left-1/2 -translate-x-1/2 flex items-center gap-1.5 px-3 py-2 cursor-pointer font-normal text-[12px] tracking-[-0.24px] leading-normal focus-visible:outline focus-visible:outline-1 focus-visible:outline-foreground"
         >
           <svg width="9" height="9" viewBox="0 0 9 9" fill="none" aria-hidden="true">
             <path d="M1 1L8 8M8 1L1 8" stroke="currentColor" strokeWidth="0.75" />

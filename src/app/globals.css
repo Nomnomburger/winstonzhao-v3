@@ -149,12 +149,13 @@ body {
   max-width: none;
   max-height: none;
   margin: 0;
-  /* Phones: edge to edge, so wide images get every pixel of width. */
-  padding: 24px 0 80px;
+  padding: 0;
   border: 0;
-  overflow-x: hidden;
-  overflow-y: auto;
-  overscroll-behavior: contain;
+  /* The dialog itself never scrolls; .lightbox-scroll inside it does. The
+     blur makes the dialog the containing block for the fixed close button,
+     so if the dialog scrolled, the button would scroll away with a tall
+     image instead of staying at the bottom of the screen. */
+  overflow: hidden;
   /* Browsers give dialogs their own text colour (CanvasText), which stays
      black on a dark page; inherit the page's instead, so the close button
      and image labels follow the theme and fade with it. */
@@ -165,16 +166,37 @@ body {
   cursor: zoom-out;
 }
 
+.lightbox-scroll {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  /* Phones: edge to edge, so wide images get every pixel of width. */
+  padding: 24px 0 80px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
 @media (min-width: 768px) {
   .lightbox {
     --lightbox-pad-y: 132px;
+  }
+
+  .lightbox-scroll {
     padding: 36px 36px 96px;
   }
 }
 
 .lightbox[open] {
-  display: flex;
+  display: block;
   animation: lightbox-fade-in 200ms ease-out;
+}
+
+/* The close button stays put while a tall image scrolls under it, so it
+   sits on a soft patch of the page colour to stay readable. */
+.lightbox-close {
+  border-radius: 9999px;
+  background-color: color-mix(in srgb, var(--background) 72%, transparent);
 }
 
 .lightbox::backdrop {
