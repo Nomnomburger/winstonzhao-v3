@@ -75,7 +75,7 @@
           "My early sketches asked one question: what’s the best way to show that a place is popular?",
           {
             "board": {
-              "label": "Ideas from my early sketches",
+              "label": "Three ideas from the sketches",
               "notes": [
                 {
                   "text": "Profile-picture bubbles",
@@ -88,14 +88,9 @@
                 {
                   "text": "A trending icon",
                   "color": "pink"
-                },
-                {
-                  "text": "Switch the colour depending on the type of location",
-                  "color": "green"
                 }
               ]
-            },
-            "caption": "Ideas for marking a popular place."
+            }
           },
           {
             "image": "sketches",

@@ -202,12 +202,12 @@
               {
                 "_type": "stickyNote",
                 "_key": "newly-s-1-b-1-n2",
-                "text": "Chat-first, like talking to an agent",
-                "color": "green",
+                "text": "Chat-first: just chat with the agent",
+                "color": "yellow",
                 "highlight": "Chosen"
               }
             ],
-            "caption": "The ways of working with the agent I explored, and the one the team chose."
+            "caption": "The board was my idea. The founders and team chose chat-first."
           },
           {
             "_type": "block",

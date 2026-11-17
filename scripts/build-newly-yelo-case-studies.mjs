@@ -50,7 +50,17 @@ function expand(copy, slug) {
     ...(item.poster ? { poster: { _type: 'image', localAssetKey: item.poster } } : {}),
     autoplay: item.autoplay ?? true, ...(item.caption ? { caption: item.caption } : {}), size: item.size ?? 'full',
   });
-  const board = (k, item) => ({
+  const NOTE_KEYS = ['text', 'color', 'tag', 'highlight'];
+  const checkBoard = (k, item) => {
+    if (!Array.isArray(item.board?.notes) || item.board.notes.length === 0) throw new Error(`${slug}: board ${k} needs a notes array.`);
+    for (const [i, n] of item.board.notes.entries()) {
+      const extra = Object.keys(n ?? {}).filter((key) => !NOTE_KEYS.includes(key));
+      if (!n || typeof n.text !== 'string' || extra.length) throw new Error(`${slug}: board ${k} note ${i} needs text and only ${NOTE_KEYS.join(', ')}${extra.length ? ` (found ${extra.join(', ')})` : ''}.`);
+    }
+    const boardExtra = Object.keys(item.board).filter((key) => !['label', 'prompt', 'notes'].includes(key));
+    if (boardExtra.length) throw new Error(`${slug}: board ${k} has unknown fields ${boardExtra.join(', ')} (put caption next to board, not inside it).`);
+  };
+  const board = (k, item) => (checkBoard(k, item), {
     _type: 'stickyBoard', _key: k,
     ...(item.board.label ? { label: item.board.label } : {}),
     ...(item.board.prompt ? { prompt: item.board.prompt } : {}),

@@ -94,7 +94,7 @@
                   "tag": "Shipped in v1.0"
                 },
                 {
-                  "text": "Basic scouting on each team’s sheet",
+                  "text": "Robot specs on each team’s sheet",
                   "color": "green",
                   "tag": "Shipped in v1.0"
                 },
@@ -109,7 +109,7 @@
                   "tag": "Designed, not shipped"
                 },
                 {
-                  "text": "An onboarding flow",
+                  "text": "A new onboarding flow",
                   "color": "yellow",
                   "tag": "Designed, not shipped"
                 },
@@ -129,8 +129,7 @@
                   "tag": "Cut"
                 }
               ]
-            },
-            "caption": "The 2023 plan, and what happened to each idea."
+            }
           }
         ]
       },

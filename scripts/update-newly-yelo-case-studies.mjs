@@ -118,10 +118,26 @@ function validate(spec, copy) {
       if (value._type === 'mediaImage' && !value.alt?.trim()) throw new Error(`${where}: ${location} needs alt text.`);
     }
     if (value._type === 'stickyBoard') {
+      const optionalText = (obj, keys, what) => {
+        for (const k of keys) {
+          if (k in obj && (typeof obj[k] !== 'string' || !obj[k].trim())) throw new Error(`${where}: ${location} ${what}${k} must be non-empty text when set.`);
+        }
+      };
+      const unknown = Object.keys(value).filter((k) => !['_type', '_key', 'label', 'prompt', 'notes', 'caption'].includes(k));
+      if (unknown.length) throw new Error(`${where}: ${location} has unknown fields ${unknown.join(', ')}.`);
+      optionalText(value, ['label', 'prompt', 'caption'], '');
       if (!Array.isArray(value.notes) || value.notes.length === 0) throw new Error(`${where}: ${location} needs at least one note.`);
+      const keys = new Set();
       for (const note of value.notes) {
-        if (note._type !== 'stickyNote' || !note._key || typeof note.text !== 'string' || !note.text.trim()) throw new Error(`${where}: ${location} has a note without text.`);
+        if (!note || typeof note !== 'object' || note._type !== 'stickyNote' || !note._key) throw new Error(`${where}: ${location} has a malformed note.`);
+        if (keys.has(note._key)) throw new Error(`${where}: ${location} repeats note key ${note._key}.`);
+        keys.add(note._key);
+        const extra = Object.keys(note).filter((k) => !['_type', '_key', 'text', 'color', 'tag', 'highlight'].includes(k));
+        if (extra.length) throw new Error(`${where}: ${location} note ${note._key} has unknown fields ${extra.join(', ')}.`);
+        if (typeof note.text !== 'string' || !note.text.trim()) throw new Error(`${where}: ${location} has a note without text.`);
         if (!['yellow', 'pink', 'blue', 'green'].includes(note.color)) throw new Error(`${where}: ${location} has a note with unknown colour ${note.color}.`);
+        optionalText(note, ['tag', 'highlight'], `note ${note._key} `);
+        if (note.highlight && note.highlight.length > 16) throw new Error(`${where}: ${location} note ${note._key} highlight is longer than 16 characters.`);
       }
     }
     if (value._type === 'mediaVideo' && !value.file?.localAssetKey && !value.file?.asset?._ref && !value.url) {

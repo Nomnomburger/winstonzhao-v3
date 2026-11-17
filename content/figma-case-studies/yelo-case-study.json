@@ -164,7 +164,7 @@
           {
             "_type": "stickyBoard",
             "_key": "yelo-s-1-b-1",
-            "label": "Ideas from my early sketches",
+            "label": "Three ideas from the sketches",
             "notes": [
               {
                 "_type": "stickyNote",
@@ -183,15 +183,8 @@
                 "_key": "yelo-s-1-b-1-n2",
                 "text": "A trending icon",
                 "color": "pink"
-              },
-              {
-                "_type": "stickyNote",
-                "_key": "yelo-s-1-b-1-n3",
-                "text": "Switch the colour depending on the type of location",
-                "color": "green"
               }
-            ],
-            "caption": "Ideas for marking a popular place."
+            ]
           },
           {
             "_type": "mediaImage",

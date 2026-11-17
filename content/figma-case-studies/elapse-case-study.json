@@ -201,7 +201,7 @@
               {
                 "_type": "stickyNote",
                 "_key": "elapse-s-1-b-1-n3",
-                "text": "Basic scouting on each team’s sheet",
+                "text": "Robot specs on each team’s sheet",
                 "color": "green",
                 "tag": "Shipped in v1.0"
               },
@@ -222,7 +222,7 @@
               {
                 "_type": "stickyNote",
                 "_key": "elapse-s-1-b-1-n6",
-                "text": "An onboarding flow",
+                "text": "A new onboarding flow",
                 "color": "yellow",
                 "tag": "Designed, not shipped"
               },
@@ -247,8 +247,7 @@
                 "color": "pink",
                 "tag": "Cut"
               }
-            ],
-            "caption": "The 2023 plan, and what happened to each idea."
+            ]
           }
         ]
       },
