@@ -8,7 +8,7 @@
       "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W/Winston-Design-Demo?node-id=284-16034",
       "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W/Winston-Design-Demo?node-id=284-16320"
     ],
-    "facts": "Confirmed by Winston (Nov 2026): contract Design Engineer, May–Oct 2026, only designer; founders + a team of 6+ (roles not stated); built the prompt bar, workspace layout, deploy and web screens in React/TypeScript, mostly with Claude Code and Cursor; the board was his idea, people found it slightly confusing (more used to chatting with an agent), it was too much to build, and the founders/team chose chat-first; the board may return; dual sidebar consolidated after people found two collapsible panes a bit confusing; 8 picker frames are 8 iterations, changed after tester feedback and own critique (unclear what Apply did, unclear what was selected); after the changes shipped people stopped hitting those problems; colour restraint was his call; workspace, prompt bar, deploy and web app are live; the work helped grow ARR (user count private); audience is technical and non-technical people. Takeaways he chose: 'states, not screens' and 'right idea, wrong time'. Depth round (Nov 2026): modes moved out of a dropdown after PostHog showed Plan/Ask were rarely used and support asked for an ask-only mode that already existed; only the active mode is labelled to stay narrow, say what will happen and reduce noise; agent work is folded for non-technical users and readability, expanded logs give each step an icon and code/commands their own containers; remote/local can't change after a session starts and the model rarely changes, so both sit under the bar only at the start; new sessions get a taller bar to feel balanced and important; the queue exists because runs take minutes, people wanted to line up the next change, and it keeps them in control. Title: Winston asked for 'Newly Desktop App' (Nov 2026); the slug stays as is. Copy round (Nov 2026): never say 'assumed' or that numbers are missing; just leave it out. Each case ends with a short Summary that doesn't mention what's missing or assumed. Layout (Nov 2026): per Winston's V3 design, the How might we statement is the heading of the first content section, titled 'Problem Statement'; the summary field is a short line on what he did. Round 2 (Nov 17 2026): the board-with-prompt-bar image is shown without its wallpaper; the board caption is removed. Start screen (335:7662 no project, 284:37196 in a project): the sidebar differs in and out of a project; the taller prompt bar is for attention; there is space for a card stack to resume projects or promote actions like downloading the mobile app. Menus had to give clear information without much text: one-line location trade-offs, the effort slider, and a small LINK button that prompts people to link their own agents. He used Claude Design to prototype the chat interactions and layouts, because he could simulate typing and chatting with the agent while iterating (canvas: Chat screen design experiments). A lot of the onboarding was designed and then prototyped in Claude Design (canvas: Newly App Onboarding Flow); the clips are recorded from that prototype. Round 3 (Nov 17 2026): the onboarding shipped, and the four chat experiments (markdown, code and terminal blocks, the expanded tool list, questions in the chat bar) shipped. Simulator controls (336:7831): there are a lot of controls but they are not always used, so they are hidden under two dots on the side, telling people they can hover there; on hover the backplate under the phone expands and a rail of controls shows on its right, with Home in the centre where the mouse already is; the top half holds app controls (reload, screenshot), the bottom half phone controls (app switcher, rotate); the panel works in landscape. Screens are white. The agent is meant to generate marketing content like graphics and videos; one design was explored as a board (284:13664), and the one used is the chat with the media switcher in the preview panel (284:11583). The right side panel is the “preview panel”: it previews the app, media content, and in the future websites and code. The board allowed easy branching of ideas and prompts, similar to worktrees but easier for non-technical people to understand; an accepted branch is merged back into what it branched off (284:6704). The board was never used in production; Winston still sees it as a good design of an agentic future, and it stays in the design files for potential future use. Style: tell it like a story, concise where it can be, expanding on important details, especially visual design decisions. Start screen history: earlier iterations had a secondary small startup window like Xcode or Android Studio (284:19691); decided against it because they wanted everything in one window, and it was confusing when it opened again over an open project (284:18965). A project organizer, opened from the sidebar, is to be implemented in the future (do not mention that it has no design)."
+    "facts": "Confirmed by Winston (Nov 2026): contract Design Engineer, May–Oct 2026, only designer; founders + a team of 6+ (roles not stated); built the prompt bar, workspace layout, deploy and web screens in React/TypeScript, mostly with Claude Code and Cursor; the board was his idea, people found it slightly confusing (more used to chatting with an agent), it was too much to build, and the founders/team chose chat-first; the board may return; dual sidebar consolidated after people found two collapsible panes a bit confusing; 8 picker frames are 8 iterations, changed after tester feedback and own critique (unclear what Apply did, unclear what was selected); after the changes shipped people stopped hitting those problems; colour restraint was his call; workspace, prompt bar, deploy and web app are live; the work helped grow ARR (user count private); audience is technical and non-technical people. Takeaways he chose: 'states, not screens' and 'right idea, wrong time'. Depth round (Nov 2026): modes moved out of a dropdown after PostHog showed Plan/Ask were rarely used and support asked for an ask-only mode that already existed; only the active mode is labelled to stay narrow, say what will happen and reduce noise; agent work is folded for non-technical users and readability, expanded logs give each step an icon and code/commands their own containers; remote/local can't change after a session starts and the model rarely changes, so both sit under the bar only at the start; new sessions get a taller bar to feel balanced and important; the queue exists because runs take minutes, people wanted to line up the next change, and it keeps them in control. Title: Winston asked for 'Newly Desktop App' (Nov 2026); the slug stays as is. Copy round (Nov 2026): never say 'assumed' or that numbers are missing; just leave it out. Each case ends with a short Summary that doesn't mention what's missing or assumed. Layout (Nov 2026): per Winston's V3 design, the How might we statement is the heading of the first content section, titled 'Problem Statement'; the summary field is a short line on what he did. Round 2 (Nov 17 2026): the board-with-prompt-bar image is shown without its wallpaper; the board caption is removed. Start screen (335:7662 no project, 284:37196 in a project): the sidebar differs in and out of a project; the taller prompt bar is for attention; there is space for a card stack to resume projects or promote actions like downloading the mobile app. Menus had to give clear information without much text: one-line location trade-offs, the effort slider, and a small LINK button that prompts people to link their own agents. He used Claude Design to prototype the chat interactions and layouts, because he could simulate typing and chatting with the agent while iterating (canvas: Chat screen design experiments). A lot of the onboarding was designed and then prototyped in Claude Design (canvas: Newly App Onboarding Flow); the clips are recorded from that prototype. Round 3 (Nov 17 2026): the onboarding shipped, and the four chat experiments (markdown, code and terminal blocks, the expanded tool list, questions in the chat bar) shipped. Simulator controls (336:7831): there are a lot of controls but they are not always used, so they are hidden under two dots on the side, telling people they can hover there; on hover the backplate under the phone expands and a rail of controls shows on its right, with Home in the centre where the mouse already is; the top half holds app controls (reload, screenshot), the bottom half phone controls (app switcher, rotate); the panel works in landscape. Screens are white. The agent is meant to generate marketing content like graphics and videos; one design was explored as a board (284:13664), and the one used is the chat with the media switcher in the preview panel (284:11583). The right side panel is the “preview panel”: it previews the app, media content, and in the future websites and code. The board allowed easy branching of ideas and prompts, similar to worktrees but easier for non-technical people to understand; an accepted branch is merged back into what it branched off (284:6704). The board was never used in production; Winston still sees it as a good design of an agentic future, and it stays in the design files for potential future use. Style: tell it like a story, concise where it can be, expanding on important details, especially visual design decisions. Start screen history: earlier iterations had a secondary small startup window like Xcode or Android Studio (284:19691); decided against it because they wanted everything in one window, and it was confusing when it opened again over an open project (284:18965). A project organizer, opened from the sidebar, is to be implemented in the future (do not mention that it has no design). Round 4 (Nov 17 2026): the simulator picker and controls are one section, “Simulators panel”, with the picker last. Craft: attention to detail in the blur and glass; the user’s wallpaper should shine through nicely, so he played with different tinting methods to get the blur tint right; corners are concentric so they feel like they belong, and things are aligned properly; shadows are used lightly but give important things a sense of depth; corners are smoothed to feel more polished; everything feels very crisp. Colour restraint moved into Craft. Image: 284:21940."
   },
   "fields": {
     "title": "Newly Desktop App",
@@ -358,29 +358,10 @@
         ]
       },
       {
-        "title": "Simulator picker",
-        "heading": "A clearer simulator picker",
-        "content": [
-          "The preview panel runs your app on an iPhone simulator, in the cloud or on your computer. The simulator picker went through eight versions.",
-          "Tester feedback and my own critique pointed to two problems:",
-          {
-            "bullets": [
-              "**Unclear what was selected →** Cloud and Local got their own column, and the columns got labels: Type, Device, Version.",
-              "**Unclear what Apply did →** it re-runs the app, so Apply became Apply & Run."
-            ]
-          },
-          {
-            "image": "picker-versions",
-            "alt": "Four versions of the iOS simulator picker, from a footer Cloud/Local toggle and an Apply button to labelled Type, Device and Version columns with Apply & Run",
-            "caption": "Four of the eight versions."
-          }
-        ]
-      },
-      {
-        "title": "Simulator controls",
+        "title": "Simulators panel",
         "heading": "Controls that wait until you need them",
         "content": [
-          "A simulator comes with a lot of controls, but you don’t always need them. So they’re hidden. Two small dots on the side of the phone hint that there’s something there to hover.",
+          "The preview panel runs your app on an iPhone simulator, in the cloud or on your computer. A simulator comes with a lot of controls, but you don’t always need them. So they’re hidden. Two small dots on the side of the phone hint that there’s something there to hover.",
           {
             "gallery": [
               {
@@ -408,19 +389,54 @@
             "image": "sim-landscape",
             "alt": "The Newly workspace with a landscape iPhone simulator in the preview panel, its backplate expanded and the control rail on the right",
             "caption": "In landscape, the rail stays on the right."
+          },
+          {
+            "h3": "A clearer picker"
+          },
+          "The simulator picker went through eight versions. Tester feedback and my own critique pointed to two problems:",
+          {
+            "bullets": [
+              "**Unclear what was selected →** Cloud and Local got their own column, and the columns got labels: Type, Device, Version.",
+              "**Unclear what Apply did →** it re-runs the app, so Apply became Apply & Run."
+            ]
+          },
+          {
+            "image": "picker-versions",
+            "alt": "Four versions of the iOS simulator picker, from a footer Cloud/Local toggle and an Apply button to labelled Type, Device and Version columns with Apply & Run",
+            "caption": "Four of the eight versions."
+          }
+        ]
+      },
+      {
+        "title": "Craft",
+        "heading": "Glass, corners and light shadows",
+        "content": [
+          "A lot of the polish is in the details:",
+          {
+            "bullets": [
+              "**Glass.** I wanted your wallpaper to shine through the workspace nicely, so I played with different tinting methods until the blur tint felt right.",
+              "**Corners** are concentric, so shapes inside each other feel like they belong together, and everything lines up. They’re also smoothed, which makes the whole thing feel more polished.",
+              "**Shadows** are used lightly, just enough to give the important things a sense of depth.",
+              "**Colour** is held back in the workspace. Blue only marks the active mode, the main action and anything running, so your own app stands out."
+            ]
+          },
+          "Together, it all feels crisp.",
+          {
+            "image": "craft",
+            "alt": "Four close-ups of Newly: a smoothed corner, glass panes with the wallpaper coming through, a window over a blue wallpaper, and the Build, Plan and Ask control next to the send button, with nested corners and a soft shadow",
+            "caption": "Smoothed corners, the wallpaper through the glass, and concentric corners with light shadows."
           }
         ]
       },
       {
         "title": "Also shipped",
-        "heading": "Deploy, web and colour",
+        "heading": "Deploy and web",
         "content": [
           "I designed and built the deploy and web screens, and both are live.",
           {
             "bullets": [
               "**Deploy** groups destinations by platform. The App Store card shows a short checklist and the details already filled in.",
-              "**The web app** opens with a “Pick up where you left off” card to reopen your last project.",
-              "**Colour** is held back in the workspace. Blue only marks the active mode, the main action and anything running, so your own app stands out."
+              "**The web app** opens with a “Pick up where you left off” card to reopen your last project."
             ]
           },
           {
@@ -705,6 +721,13 @@
         "284:18965"
       ],
       "note": "Window cropped from a 2x export of its composition, with the startup window on top."
+    },
+    "craft": {
+      "path": "assets/newly-cs2-craft.png",
+      "sourceNodeIds": [
+        "284:21940"
+      ],
+      "note": "The Newly Designs detail frame at 2x; its white background is made transparent (flood fill from the edges, colour-to-alpha on the anti-aliased edge) so the tiles sit on the page in light and dark themes."
     }
   }
 }

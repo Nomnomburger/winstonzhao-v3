@@ -1429,8 +1429,8 @@
       {
         "_type": "projectSection",
         "_key": "newly-section-7",
-        "title": "Simulator picker",
-        "heading": "A clearer simulator picker",
+        "title": "Simulators panel",
+        "heading": "Controls that wait until you need them",
         "content": [
           {
             "_type": "block",
@@ -1442,33 +1442,113 @@
                 "_type": "span",
                 "_key": "newly-s-7-b-0-s",
                 "marks": [],
-                "text": "The preview panel runs your app on an iPhone simulator, in the cloud or on your computer. The simulator picker went through eight versions."
+                "text": "The preview panel runs your app on an iPhone simulator, in the cloud or on your computer. A simulator comes with a lot of controls, but you don’t always need them. So they’re hidden. Two small dots on the side of the phone hint that there’s something there to hover."
               }
             ]
           },
           {
-            "_type": "block",
+            "_type": "mediaGallery",
             "_key": "newly-s-7-b-1",
-            "style": "normal",
-            "markDefs": [],
-            "children": [
+            "caption": "Two dots at rest. On hover, the backplate expands with the controls.",
+            "arrows": true,
+            "images": [
               {
-                "_type": "span",
-                "_key": "newly-s-7-b-1-s",
-                "marks": [],
-                "text": "Tester feedback and my own critique pointed to two problems:"
+                "_type": "image",
+                "_key": "newly-s-7-b-1-0",
+                "localAssetKey": "sim-resting",
+                "alt": "The Newly preview panel with an iPhone simulator and two small dots beside the phone",
+                "label": "Resting"
+              },
+              {
+                "_type": "image",
+                "_key": "newly-s-7-b-1-1",
+                "localAssetKey": "sim-hover",
+                "alt": "The same preview panel on hover: a backplate behind the phone has expanded, with a rail of controls on its right",
+                "label": "On hover"
               }
             ]
           },
           {
             "_type": "block",
-            "_key": "newly-s-7-b-2-0",
+            "_key": "newly-s-7-b-2",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "newly-s-7-b-2-0-s",
+                "_key": "newly-s-7-b-2-s",
+                "marks": [],
+                "text": "On hover, the backplate under the phone expands, and a rail of controls appears on its right. Home sits in the centre, right where your mouse already is after hovering the dots. The top half holds controls for your app, like reloading it or taking a screenshot. The bottom half holds controls for the phone, like the app switcher and rotating it."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "newly-s-7-b-3",
+            "localAssetKey": "sim-portrait",
+            "alt": "The Newly workspace on a pale yellow-green wallpaper: the sidebar, a new chat, and the preview panel with the simulator’s backplate and control rail out",
+            "caption": "The controls out, in the preview panel.",
+            "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-7-b-4",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-7-b-4-s",
+                "marks": [],
+                "text": "The panel works in landscape too."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "newly-s-7-b-5",
+            "localAssetKey": "sim-landscape",
+            "alt": "The Newly workspace with a landscape iPhone simulator in the preview panel, its backplate expanded and the control rail on the right",
+            "caption": "In landscape, the rail stays on the right.",
+            "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-7-b-6",
+            "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-7-b-6-s",
+                "marks": [],
+                "text": "A clearer picker"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-7-b-7",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-7-b-7-s",
+                "marks": [],
+                "text": "The simulator picker went through eight versions. Tester feedback and my own critique pointed to two problems:"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-7-b-8-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-7-b-8-0-s",
                 "marks": [
                   "strong"
                 ],
@@ -1476,7 +1556,7 @@
               },
               {
                 "_type": "span",
-                "_key": "newly-s-7-b-2-0-s1",
+                "_key": "newly-s-7-b-8-0-s1",
                 "marks": [],
                 "text": " Cloud and Local got their own column, and the columns got labels: Type, Device, Version."
               }
@@ -1486,13 +1566,13 @@
           },
           {
             "_type": "block",
-            "_key": "newly-s-7-b-2-1",
+            "_key": "newly-s-7-b-8-1",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "newly-s-7-b-2-1-s",
+                "_key": "newly-s-7-b-8-1-s",
                 "marks": [
                   "strong"
                 ],
@@ -1500,7 +1580,7 @@
               },
               {
                 "_type": "span",
-                "_key": "newly-s-7-b-2-1-s1",
+                "_key": "newly-s-7-b-8-1-s1",
                 "marks": [],
                 "text": " it re-runs the app, so Apply became Apply & Run."
               }
@@ -1510,7 +1590,7 @@
           },
           {
             "_type": "mediaImage",
-            "_key": "newly-s-7-b-3",
+            "_key": "newly-s-7-b-9",
             "localAssetKey": "picker-versions",
             "alt": "Four versions of the iOS simulator picker, from a footer Cloud/Local toggle and an Apply button to labelled Type, Device and Version columns with Apply & Run",
             "caption": "Four of the eight versions.",
@@ -1521,8 +1601,8 @@
       {
         "_type": "projectSection",
         "_key": "newly-section-8",
-        "title": "Simulator controls",
-        "heading": "Controls that wait until you need them",
+        "title": "Craft",
+        "heading": "Glass, corners and light shadows",
         "content": [
           {
             "_type": "block",
@@ -1534,31 +1614,105 @@
                 "_type": "span",
                 "_key": "newly-s-8-b-0-s",
                 "marks": [],
-                "text": "A simulator comes with a lot of controls, but you don’t always need them. So they’re hidden. Two small dots on the side of the phone hint that there’s something there to hover."
+                "text": "A lot of the polish is in the details:"
               }
             ]
           },
           {
-            "_type": "mediaGallery",
-            "_key": "newly-s-8-b-1",
-            "caption": "Two dots at rest. On hover, the backplate expands with the controls.",
-            "arrows": true,
-            "images": [
+            "_type": "block",
+            "_key": "newly-s-8-b-1-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
               {
-                "_type": "image",
-                "_key": "newly-s-8-b-1-0",
-                "localAssetKey": "sim-resting",
-                "alt": "The Newly preview panel with an iPhone simulator and two small dots beside the phone",
-                "label": "Resting"
+                "_type": "span",
+                "_key": "newly-s-8-b-1-0-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Glass."
               },
               {
-                "_type": "image",
-                "_key": "newly-s-8-b-1-1",
-                "localAssetKey": "sim-hover",
-                "alt": "The same preview panel on hover: a backplate behind the phone has expanded, with a rail of controls on its right",
-                "label": "On hover"
+                "_type": "span",
+                "_key": "newly-s-8-b-1-0-s1",
+                "marks": [],
+                "text": " I wanted your wallpaper to shine through the workspace nicely, so I played with different tinting methods until the blur tint felt right."
               }
-            ]
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-8-b-1-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-8-b-1-1-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Corners"
+              },
+              {
+                "_type": "span",
+                "_key": "newly-s-8-b-1-1-s1",
+                "marks": [],
+                "text": " are concentric, so shapes inside each other feel like they belong together, and everything lines up. They’re also smoothed, which makes the whole thing feel more polished."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-8-b-1-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-8-b-1-2-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Shadows"
+              },
+              {
+                "_type": "span",
+                "_key": "newly-s-8-b-1-2-s1",
+                "marks": [],
+                "text": " are used lightly, just enough to give the important things a sense of depth."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "newly-s-8-b-1-3",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "newly-s-8-b-1-3-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Colour"
+              },
+              {
+                "_type": "span",
+                "_key": "newly-s-8-b-1-3-s1",
+                "marks": [],
+                "text": " is held back in the workspace. Blue only marks the active mode, the main action and anything running, so your own app stands out."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
           },
           {
             "_type": "block",
@@ -1570,38 +1724,16 @@
                 "_type": "span",
                 "_key": "newly-s-8-b-2-s",
                 "marks": [],
-                "text": "On hover, the backplate under the phone expands, and a rail of controls appears on its right. Home sits in the centre, right where your mouse already is after hovering the dots. The top half holds controls for your app, like reloading it or taking a screenshot. The bottom half holds controls for the phone, like the app switcher and rotating it."
+                "text": "Together, it all feels crisp."
               }
             ]
           },
           {
             "_type": "mediaImage",
             "_key": "newly-s-8-b-3",
-            "localAssetKey": "sim-portrait",
-            "alt": "The Newly workspace on a pale yellow-green wallpaper: the sidebar, a new chat, and the preview panel with the simulator’s backplate and control rail out",
-            "caption": "The controls out, in the preview panel.",
-            "size": "full"
-          },
-          {
-            "_type": "block",
-            "_key": "newly-s-8-b-4",
-            "style": "normal",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "newly-s-8-b-4-s",
-                "marks": [],
-                "text": "The panel works in landscape too."
-              }
-            ]
-          },
-          {
-            "_type": "mediaImage",
-            "_key": "newly-s-8-b-5",
-            "localAssetKey": "sim-landscape",
-            "alt": "The Newly workspace with a landscape iPhone simulator in the preview panel, its backplate expanded and the control rail on the right",
-            "caption": "In landscape, the rail stays on the right.",
+            "localAssetKey": "craft",
+            "alt": "Four close-ups of Newly: a smoothed corner, glass panes with the wallpaper coming through, a window over a blue wallpaper, and the Build, Plan and Ask control next to the send button, with nested corners and a soft shadow",
+            "caption": "Smoothed corners, the wallpaper through the glass, and concentric corners with light shadows.",
             "size": "full"
           }
         ]
@@ -1610,7 +1742,7 @@
         "_type": "projectSection",
         "_key": "newly-section-9",
         "title": "Also shipped",
-        "heading": "Deploy, web and colour",
+        "heading": "Deploy and web",
         "content": [
           {
             "_type": "block",
@@ -1669,30 +1801,6 @@
                 "_key": "newly-s-9-b-1-1-s1",
                 "marks": [],
                 "text": " opens with a “Pick up where you left off” card to reopen your last project."
-              }
-            ],
-            "listItem": "bullet",
-            "level": 1
-          },
-          {
-            "_type": "block",
-            "_key": "newly-s-9-b-1-2",
-            "style": "normal",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "newly-s-9-b-1-2-s",
-                "marks": [
-                  "strong"
-                ],
-                "text": "Colour"
-              },
-              {
-                "_type": "span",
-                "_key": "newly-s-9-b-1-2-s1",
-                "marks": [],
-                "text": " is held back in the workspace. Blue only marks the active mode, the main action and anything running, so your own app stands out."
               }
             ],
             "listItem": "bullet",
@@ -2130,6 +2238,13 @@
         "284:18965"
       ],
       "note": "Window cropped from a 2x export of its composition, with the startup window on top."
+    },
+    "craft": {
+      "path": "assets/newly-cs2-craft.png",
+      "sourceNodeIds": [
+        "284:21940"
+      ],
+      "note": "The Newly Designs detail frame at 2x; its white background is made transparent (flood fill from the edges, colour-to-alpha on the anti-aliased edge) so the tiles sit on the page in light and dark themes."
     }
   }
 }
