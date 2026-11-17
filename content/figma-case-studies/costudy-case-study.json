@@ -397,14 +397,14 @@
                 "_type": "imageLabel",
                 "_key": "costudy-s-3-b-1-l0",
                 "text": "Before",
-                "x": 0.3428,
+                "x": 0.358,
                 "y": 0.0434
               },
               {
                 "_type": "imageLabel",
                 "_key": "costudy-s-3-b-1-l1",
                 "text": "After",
-                "x": 0.6572,
+                "x": 0.642,
                 "y": 0.0434
               }
             ]

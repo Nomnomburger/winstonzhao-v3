@@ -155,8 +155,7 @@
                 "label": "After"
               }
             ],
-            "caption": "Two collapsible panes, then one sidebar.",
-            "arrows": true
+            "caption": "Two collapsible panes, then one sidebar."
           }
         ]
       },

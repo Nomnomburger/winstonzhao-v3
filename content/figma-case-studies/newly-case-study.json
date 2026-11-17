@@ -411,7 +411,6 @@
             "_type": "mediaGallery",
             "_key": "newly-s-2-b-2",
             "caption": "Two collapsible panes, then one sidebar.",
-            "arrows": true,
             "images": [
               {
                 "_type": "image",
