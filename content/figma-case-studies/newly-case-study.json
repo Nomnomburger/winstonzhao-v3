@@ -380,7 +380,7 @@
                 "_type": "image",
                 "_key": "newly-s-2-b-2-1",
                 "localAssetKey": "sidebar-after",
-                "alt": "Final Newly layout with one sidebar: New Session, Search, Deploy and Configure above pinned and recent sessions"
+                "alt": "Final Newly layout with one sidebar: New Session, Search, Deploy and Configure above pinned sessions and the session list, next to the chat and app preview"
               }
             ]
           }
@@ -1230,8 +1230,9 @@
     "sidebar-after": {
       "path": "assets/newly-cs2-sidebar-after.png",
       "sourceNodeIds": [
-        "284:25426"
-      ]
+        "295:42937"
+      ],
+      "note": "Winston's chosen one-sidebar window (MacBook Air - 60), cropped to the 1280x832 window like sidebar-before; 14pt rounded corners, no outline."
     },
     "bar-layouts": {
       "path": "assets/newly-cs-bar-layouts.jpg",
