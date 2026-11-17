@@ -44,6 +44,8 @@ export interface MediaGallery {
   _key: string;
   images?: SanityImage[];
   caption?: string;
+  // Arrows between the images, for a sequence (before/after, versions).
+  arrows?: boolean;
 }
 
 export interface TextBlock {

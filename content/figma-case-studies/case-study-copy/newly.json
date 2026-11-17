@@ -120,7 +120,8 @@
                 "alt": "The chat-first Newly workspace with sessions, conversation and a running iPhone simulator"
               }
             ],
-            "caption": "Board, then board with a prompt bar, then the chat-first direction that shipped."
+            "caption": "Board, then board with a prompt bar, then the chat-first direction that shipped.",
+            "arrows": true
           },
           {
             "h3": "Why we went with chat"
@@ -152,7 +153,8 @@
                 "alt": "Final Newly layout with one sidebar: New Session, Search, Deploy and Configure above pinned sessions and the session list, next to the chat and app preview"
               }
             ],
-            "caption": "Before: two collapsible panes. After: one sidebar."
+            "caption": "Before: two collapsible panes. After: one sidebar.",
+            "arrows": true
           }
         ]
       },

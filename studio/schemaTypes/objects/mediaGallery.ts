@@ -23,6 +23,13 @@ export default defineType({
       validation: (Rule) => Rule.min(2).max(3),
     }),
     defineField({
+      name: 'arrows',
+      title: 'Arrows between images',
+      type: 'boolean',
+      description: 'Show small arrows between the images, for a sequence such as before and after, or versions in order.',
+      initialValue: false,
+    }),
+    defineField({
       name: 'caption',
       title: 'Caption (optional)',
       type: 'string',

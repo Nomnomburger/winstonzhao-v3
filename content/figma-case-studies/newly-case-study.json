@@ -249,6 +249,7 @@
             "_type": "mediaGallery",
             "_key": "newly-s-1-b-5",
             "caption": "Board, then board with a prompt bar, then the chat-first direction that shipped.",
+            "arrows": true,
             "images": [
               {
                 "_type": "image",
@@ -410,6 +411,7 @@
             "_type": "mediaGallery",
             "_key": "newly-s-2-b-2",
             "caption": "Before: two collapsible panes. After: one sidebar.",
+            "arrows": true,
             "images": [
               {
                 "_type": "image",

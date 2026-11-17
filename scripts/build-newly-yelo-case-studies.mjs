@@ -71,7 +71,7 @@ function expand(copy, slug) {
     ...(item.caption ? { caption: item.caption } : {}),
   });
   const gallery = (k, item) => ({
-    _type: 'mediaGallery', _key: k, ...(item.caption ? { caption: item.caption } : {}),
+    _type: 'mediaGallery', _key: k, ...(item.caption ? { caption: item.caption } : {}), ...(item.arrows ? { arrows: true } : {}),
     images: item.gallery.map((g, i) => ({ _type: 'image', _key: `${k}-${i}`, localAssetKey: g.image, alt: g.alt })),
   });
 

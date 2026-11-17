@@ -142,7 +142,7 @@ export default function ProjectSections({ sections, showSideMenu }: ProjectSecti
                     )}
                     {c.block._type === 'mediaVideo' && <VideoFigure video={c.block} />}
                     {c.block._type === 'mediaGallery' && (
-                      <GalleryFigure images={c.block.images ?? []} caption={c.block.caption} />
+                      <GalleryFigure images={c.block.images ?? []} caption={c.block.caption} arrows={c.block.arrows} />
                     )}
                     {c.block._type === 'stickyBoard' && <StickyBoard board={c.block} />}
                   </div>
