@@ -48,7 +48,7 @@
     },
     "hero": {
       "image": "hero",
-      "alt": "Three CoStudy screens on iPhones: the home map above your sessions, threads for your courses, and a profile with attended sessions"
+      "alt": "Three CoStudy screens on iPhones: threads for your courses, the home map above your sessions, and a profile with attended sessions"
     },
     "sections": [
       {
@@ -152,11 +152,11 @@
     "hero": {
       "path": "assets/costudy-cs3-hero.jpg",
       "sourceNodeIds": [
-        "9:1861",
         "9:2108",
+        "9:1861",
         "9:2033"
       ],
-      "note": "Final WINSTON home, threads and profile screens in Apple's iPhone 16 Pro (White Titanium) bezel, laid out like the Yelo hero on a soft CoStudy-colour gradient."
+      "note": "Final WINSTON threads, home (centre) and profile screens in Apple's iPhone 16 Pro (White Titanium) bezel, laid out like the Yelo hero on a soft CoStudy-colour gradient."
     },
     "ideas": {
       "path": "assets/costudy-cs3-ideas.png",
