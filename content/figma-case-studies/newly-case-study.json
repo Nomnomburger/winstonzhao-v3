@@ -442,7 +442,7 @@
         "_type": "projectSection",
         "_key": "newly-section-2",
         "title": "Sidebar",
-        "heading": "One sidebar, not two",
+        "heading": "Simpler navigation",
         "content": [
           {
             "_type": "block",
@@ -832,7 +832,7 @@
         "_type": "projectSection",
         "_key": "newly-section-5",
         "title": "Prompt bar",
-        "heading": "One bar, many states",
+        "heading": "Dynamic prompt bar",
         "content": [
           {
             "_type": "block",
@@ -1246,7 +1246,7 @@
         "_type": "projectSection",
         "_key": "newly-section-6",
         "title": "Conversation",
-        "heading": "Showing the work",
+        "heading": "Chatting with the agent",
         "content": [
           {
             "_type": "block",

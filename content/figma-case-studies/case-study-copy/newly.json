@@ -159,7 +159,7 @@
       },
       {
         "title": "Sidebar",
-        "heading": "One sidebar, not two",
+        "heading": "Simpler navigation",
         "content": [
           "The sidebar is how you get around a project. It’s where you start a new session, search, deploy and configure your project, with your pinned sessions and the session list right below. It’s also one of three panes that make up the workspace.",
           "With chat chosen, the workspace became a set of panes you can open and collapse: the sidebar on the left, the chat in the middle and the preview panel on the right. I built this layout in code.",
@@ -258,7 +258,7 @@
       },
       {
         "title": "Prompt bar",
-        "heading": "One bar, many states",
+        "heading": "Dynamic prompt bar",
         "content": [
           "The prompt bar is how you talk to the agent. You describe what you want built or changed, attach files and images or record a voice message, pick a mode and send it off. While the agent works, the bar shows what’s happening and lets you stop it or line up your next message. It shows up all over the workspace, so it had to work at every size.",
           "I built it in React and TypeScript, mostly with Claude Code and Cursor.",
@@ -323,7 +323,7 @@
       },
       {
         "title": "Conversation",
-        "heading": "Showing the work",
+        "heading": "Chatting with the agent",
         "content": [
           "The conversation is where the agent talks back. It explains what it’s doing, shows the work behind each change, like the commands it ran and the code it wrote, and asks you questions when it needs a decision. Fitting all of that into one chat starts with what you see first.",
           "The agent’s work folds into one line, like “Worked for 3m, used 3 tools”.",
