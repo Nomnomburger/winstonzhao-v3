@@ -5,6 +5,7 @@
 // the home page would start downloading its full-size hero.
 import { imageUrl, imageAspect, type ImageSource } from '@/lib/image';
 import AutoplayVideo from './AutoplayVideo';
+import Lightbox from './Lightbox';
 
 const SRCSET_WIDTHS = [640, 1000, 1400, 2000, 2800];
 
@@ -28,9 +29,10 @@ export function ResponsiveImage({ image, sizes, className = '', priority = false
 
   // No placeholder fill: the box sits on the page background from the start,
   // so images with transparency (device mockups, close-ups) never flash grey.
-  // The aspect ratio still reserves the space while the image loads.
+  // The aspect ratio still reserves the space while the image loads. A span
+  // (display: block) so it can sit inside the lightbox button.
   return (
-    <div className={`relative w-full overflow-hidden ${className}`} style={{ aspectRatio: ratio }}>
+    <span className={`relative block w-full overflow-hidden ${className}`} style={{ aspectRatio: ratio }}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
         src={src}
@@ -41,7 +43,7 @@ export function ResponsiveImage({ image, sizes, className = '', priority = false
         fetchPriority={priority ? 'high' : undefined}
         className="absolute inset-0 w-full h-full object-cover"
       />
-    </div>
+    </span>
   );
 }
 
@@ -67,7 +69,9 @@ export function ImageFigure({
 }) {
   return (
     <figure className="w-full">
-      <ResponsiveImage image={image} sizes={sizes} priority={priority} />
+      <Lightbox image={image}>
+        <ResponsiveImage image={image} sizes={sizes} priority={priority} />
+      </Lightbox>
       <Caption>{caption}</Caption>
     </figure>
   );
@@ -112,12 +116,13 @@ export function GalleryFigure({ images, caption }: { images: ImageSource[]; capt
     <figure className="w-full">
       <div className={`grid gap-4 ${GALLERY_COLUMNS[shown.length] ?? 'grid-cols-2'}`}>
         {shown.map((image, i) => (
-          <ResponsiveImage
-            key={i}
-            image={image}
-            aspect={aspect}
-            sizes={`(min-width: 768px) ${Math.round(100 / shown.length)}vw, 100vw`}
-          />
+          <Lightbox key={i} image={image}>
+            <ResponsiveImage
+              image={image}
+              aspect={aspect}
+              sizes={`(min-width: 768px) ${Math.round(100 / shown.length)}vw, 100vw`}
+            />
+          </Lightbox>
         ))}
       </div>
       <Caption>{caption}</Caption>

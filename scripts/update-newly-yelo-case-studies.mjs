@@ -16,8 +16,7 @@
  * are never touched, so the home page order and page addresses stay the same.
  * The title only changes when a case study file sets fields.title (the dry
  * run shows old → new). The previous state of every document is saved first,
- * so the
- * update can be reverted.
+ * so the update can be reverted.
  */
 import fs from 'node:fs';
 import os from 'node:os';
