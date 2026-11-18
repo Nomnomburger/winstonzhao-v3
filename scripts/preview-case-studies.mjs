@@ -33,9 +33,17 @@ const BASE = {
   yelo: { _id: 'figma-portfolio-yelo', title: 'Yelo App', slug: 'yelo', year: 2026, order: 2, featured: true },
   elapse: { _id: 'legacy-portfolio-elapsedesign', title: 'Elapse App', slug: 'elapse-app-design', year: 2023, order: 3, featured: true },
   costudy: { _id: 'figma-portfolio-costudy', title: 'CoStudy', slug: 'costudy', year: 2025, order: 5, featured: false },
+  'heatmap': { _id: 'legacy-portfolio-heatmap', title: 'Heatmap Portal Redesign', slug: 'heatmap-portal-redesign', year: 2024, order: 4, featured: true },
+  'villio-ai': { _id: 'figma-portfolio-villio-ai', title: 'Villio AI', slug: 'villio-ai', year: 2025, order: 9, featured: false },
+  'arca': { _id: 'figma-portfolio-arca', title: 'Arca', slug: 'arca', year: 2025, order: 10, featured: false },
+  'sparks': { _id: 'figma-portfolio-sparks', title: 'Sparks', slug: 'sparks', year: 2025, order: 11, featured: false },
+  'smartbasket': { _id: 'figma-portfolio-smartbasket', title: 'SmartBasket', slug: 'smartbasket', year: 2025, order: 12, featured: false },
+  'cocart': { _id: 'figma-portfolio-cocart', title: 'CoCart', slug: 'cocart', year: 2024, order: 14, featured: false },
+  'hopper-hangout': { _id: 'legacy-portfolio-hopperhangout', title: 'Hopper Hangout', slug: 'hopper-hangout', year: 2023, order: 19, featured: false },
 };
 
-const slugs = process.argv.slice(2).length ? process.argv.slice(2) : Object.keys(BASE);
+const slugs = process.argv.slice(2).length ? process.argv.slice(2)
+  : Object.keys(BASE).filter((slug) => fs.existsSync(path.join(folder, `${slug}-case-study.json`)));
 
 // Width and height from a PNG or JPEG header (enough for aspect-ratio boxes).
 function imageSize(file) {

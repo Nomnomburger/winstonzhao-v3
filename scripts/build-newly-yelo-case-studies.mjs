@@ -4,7 +4,9 @@
  *
  *   node scripts/build-newly-yelo-case-studies.mjs
  *
- * Reads content/figma-case-studies/case-study-copy/{newly,yelo,elapse,costudy}.json
+ * Reads content/figma-case-studies/case-study-copy/<slug>.json for each case study
+ * (Newly, Yelo, Elapse, CoStudy, Heatmap, Villio AI, Arca, Sparks, SmartBasket,
+ * CoCart, Hopper Hangout); a slug without a copy file yet is skipped,
  * and writes content/figma-case-studies/<slug>-case-study.json, the files
  * that scripts/update-newly-yelo-case-studies.mjs publishes.
  *
@@ -116,7 +118,7 @@ function expand(copy, slug) {
   return { documentId: copy.documentId, generatedFrom: `case-study-copy/${slug}.json`, fields, assets: copy.assets };
 }
 
-for (const slug of ['newly', 'yelo', 'elapse', 'costudy']) {
+for (const slug of ['newly', 'yelo', 'elapse', 'costudy', 'heatmap', 'villio-ai', 'arca', 'sparks', 'smartbasket', 'cocart', 'hopper-hangout']) {
   const source = path.join(folder, 'case-study-copy', `${slug}.json`);
   if (!fs.existsSync(source)) {
     console.log(`${slug}: no ${path.relative(root, source)} yet, skipped.`);

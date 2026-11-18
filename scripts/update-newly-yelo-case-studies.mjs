@@ -1,6 +1,8 @@
 #!/usr/bin/env node
 /**
- * Publish the Newly, Yelo, Elapse and CoStudy case studies to Sanity.
+ * Publish the rewritten case studies to Sanity (Newly, Yelo, Elapse, CoStudy,
+ * Heatmap, Villio AI, Arca, Sparks, SmartBasket, CoCart, Hopper Hangout).
+ * A case study whose file isn't written yet is skipped.
  *
  * Preview: node scripts/update-newly-yelo-case-studies.mjs
  * Apply:   node scripts/update-newly-yelo-case-studies.mjs --apply
@@ -36,6 +38,13 @@ const SPECS = [
   { slug: 'yelo', file: 'yelo-case-study.json', id: 'figma-portfolio-yelo' },
   { slug: 'elapse', file: 'elapse-case-study.json', id: 'legacy-portfolio-elapsedesign' },
   { slug: 'costudy', file: 'costudy-case-study.json', id: 'figma-portfolio-costudy' },
+  { slug: 'heatmap', file: 'heatmap-case-study.json', id: 'legacy-portfolio-heatmap' },
+  { slug: 'villio-ai', file: 'villio-ai-case-study.json', id: 'figma-portfolio-villio-ai' },
+  { slug: 'arca', file: 'arca-case-study.json', id: 'figma-portfolio-arca' },
+  { slug: 'sparks', file: 'sparks-case-study.json', id: 'figma-portfolio-sparks' },
+  { slug: 'smartbasket', file: 'smartbasket-case-study.json', id: 'figma-portfolio-smartbasket' },
+  { slug: 'cocart', file: 'cocart-case-study.json', id: 'figma-portfolio-cocart' },
+  { slug: 'hopper-hangout', file: 'hopper-hangout-case-study.json', id: 'legacy-portfolio-hopperhangout' },
 ];
 // Fields the case study files may change. Everything else on the document is
 // left exactly as it is.
@@ -54,11 +63,15 @@ for (let i = 0; i < args.length; i++) {
   else if (args[i] === '--dry-run') apply = false;
   else if (args[i] === '--offline') offline = true;
   else if (args[i] === '--only') only = args[++i];
-  else throw new Error(`Unknown option ${args[i]}. Usage: node scripts/update-newly-yelo-case-studies.mjs [--apply | --offline] [--only newly|yelo|elapse|costudy]`);
+  else throw new Error(`Unknown option ${args[i]}. Usage: node scripts/update-newly-yelo-case-studies.mjs [--apply | --offline] [--only ${SPECS.map((s) => s.slug).join('|')}]`);
 }
 if (apply && offline) throw new Error('--offline only validates the files; it cannot be combined with --apply.');
-const specs = SPECS.filter((spec) => !only || spec.slug === only);
-if (specs.length === 0) throw new Error(`--only must be one of ${SPECS.map((s) => s.slug).join(', ')}`);
+if (only && !SPECS.some((spec) => spec.slug === only)) throw new Error(`--only must be one of ${SPECS.map((s) => s.slug).join(', ')}`);
+const specs = SPECS.filter((spec) => (!only || spec.slug === only) && fs.existsSync(path.join(folder, spec.file)));
+for (const spec of SPECS) {
+  if ((!only || spec.slug === only) && !specs.includes(spec)) console.log(`${spec.slug}: no ${spec.file} yet, skipped.`);
+}
+if (specs.length === 0) throw new Error('Nothing to publish: no case study file found.');
 
 function getToken() {
   if (process.env.SANITY_API_TOKEN) return process.env.SANITY_API_TOKEN;
