@@ -2,7 +2,7 @@
 /**
  * Expand the compact case-study copy into Sanity documents.
  *
- *   node scripts/build-newly-yelo-case-studies.mjs
+ *   node scripts/build-newly-yelo-case-studies.mjs [slug ...]
  *
  * Reads content/figma-case-studies/case-study-copy/<slug>.json for each case study
  * (Newly, Yelo, Elapse, CoStudy, Heatmap, Villio AI, Arca, Sparks, SmartBasket,
@@ -118,7 +118,11 @@ function expand(copy, slug) {
   return { documentId: copy.documentId, generatedFrom: `case-study-copy/${slug}.json`, fields, assets: copy.assets };
 }
 
-for (const slug of ['newly', 'yelo', 'elapse', 'costudy', 'heatmap', 'villio-ai', 'arca', 'sparks', 'smartbasket', 'cocart', 'hopper-hangout']) {
+const ALL = ['newly', 'yelo', 'elapse', 'costudy', 'heatmap', 'villio-ai', 'arca', 'sparks', 'smartbasket', 'cocart', 'hopper-hangout'];
+// Optional slugs on the command line build just those case studies.
+const wanted = process.argv.slice(2);
+for (const name of wanted) if (!ALL.includes(name)) throw new Error(`Unknown case study "${name}". Use one of ${ALL.join(', ')}.`);
+for (const slug of wanted.length ? wanted : ALL) {
   const source = path.join(folder, 'case-study-copy', `${slug}.json`);
   if (!fs.existsSync(source)) {
     console.log(`${slug}: no ${path.relative(root, source)} yet, skipped.`);
