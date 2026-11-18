@@ -1,0 +1,1541 @@
+{
+  "documentId": "figma-portfolio-sparks",
+  "generatedFrom": "case-study-copy/sparks.json",
+  "fields": {
+    "description": "Posts tagged with where you are, reactions without counts, and a nudge when someone compatible is nearby.",
+    "client": "Product Design Sprint 2025",
+    "discipline": "Product Design",
+    "intro": "Sparks is an iOS app concept for keeping up with old friends and meeting new ones, built around where people are. In a team of four at the Product Design Sprint 2025, I made the early directions and designed the final hi-fi screens and the prototype.",
+    "summary": "Turning a weekend brief about connection into a location-based social app, from map sketches to a wired prototype that opens with a nudge on the lock screen.",
+    "overview": "Sparks is for people who want to stay close to old friends and make new ones nearby. I worked with Ivy, Derrick and Stella over one weekend. We submitted a wired Figma prototype and a pitch deck, and didn’t place.",
+    "showSideMenu": true,
+    "details": [
+      {
+        "_type": "detailItem",
+        "_key": "sparks-detail-0",
+        "label": "Event",
+        "value": "Product Design Sprint 2025\nWestern Founders Network"
+      },
+      {
+        "_type": "detailItem",
+        "_key": "sparks-detail-1",
+        "label": "Role",
+        "value": "Product Designer\nEarly directions · Hi-fi · Prototype"
+      },
+      {
+        "_type": "detailItem",
+        "_key": "sparks-detail-2",
+        "label": "Team",
+        "value": "Ivy, Derrick, Stella and Winston"
+      },
+      {
+        "_type": "detailItem",
+        "_key": "sparks-detail-3",
+        "label": "Timeline",
+        "value": "February 28 – March 2, 2025"
+      },
+      {
+        "_type": "detailItem",
+        "_key": "sparks-detail-4",
+        "label": "Platform",
+        "value": "iOS app concept"
+      },
+      {
+        "_type": "detailItem",
+        "_key": "sparks-detail-5",
+        "label": "Tools",
+        "value": "Figma"
+      }
+    ],
+    "coverImage": {
+      "_type": "image",
+      "localAssetKey": "cover",
+      "alt": "The Sparks Updates feed on an iPhone, with Location selected and ivy c.’s post “I’m doing PDS at Western” at Ontario Hall"
+    },
+    "hero": [
+      {
+        "_type": "mediaImage",
+        "_key": "sparks-hero",
+        "localAssetKey": "hero",
+        "alt": "Three Sparks screens on iPhones: the Map tab with posts on a campus map, the Updates feed by location, and maxim’s profile with 92% compatible with Max and Find things to do!",
+        "size": "full"
+      }
+    ],
+    "sections": [
+      {
+        "_type": "projectSection",
+        "_key": "sparks-section-0",
+        "title": "Problem Statement",
+        "heading": "How might we help people build deeper connections with old friends and new ones?",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "sparks-s-0-b-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "sparks-s-0-b-0-s",
+                "marks": [],
+                "text": "That’s a shortened version of the brief at the Product Design Sprint 2025, run by Western Founders Network at Western University. Ivy, Derrick, Stella and I had one weekend to answer it. The organizer’s full question was longer:"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "sparks-s-0-b-1",
+            "style": "blockquote",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "sparks-s-0-b-1-s",
+                "marks": [],
+                "text": "How might we redesign our digital and social environments to help people build deeper, more meaningful connections despite the challenges of maintaining contact with old friends and creating ones with new acquaintances?"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "sparks-s-0-b-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "sparks-s-0-b-2-s",
+                "marks": [],
+                "text": "The brief asked for a digital product that helps people make meaningful connections, keep in touch with old friends and form new relationships. Our own notes put the problem more bluntly: “more connections than ever but lonelier”, with friendship turned into “just numbers on a screen”."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "sparks-s-0-b-3-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "sparks-s-0-b-3-0-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Who:"
+              },
+              {
+                "_type": "span",
+                "_key": "sparks-s-0-b-3-0-s1",
+                "marks": [],
+                "text": " people trying to stay close to old friends and make new ones."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "sparks-s-0-b-3-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "sparks-s-0-b-3-1-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Where:"
+              },
+              {
+                "_type": "span",
+                "_key": "sparks-s-0-b-3-1-s1",
+                "marks": [],
+                "text": " an iOS app."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "sparks-s-0-b-3-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "sparks-s-0-b-3-2-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Constraint:"
+              },
+              {
+                "_type": "span",
+                "_key": "sparks-s-0-b-3-2-s1",
+                "marks": [],
+                "text": " one weekend, with a Figma prototype and a PDF deck due Sunday morning."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          }
+        ]
+      },
+      {
+        "_type": "projectSection",
+        "_key": "sparks-section-1",
+        "title": "Idea",
+        "heading": "Borrowed from familiar apps",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "sparks-s-1-b-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "sparks-s-1-b-0-s",
+                "marks": [],
+                "text": "Our brainstorm, titled “Idea: ripples”, borrowed from apps people already use:"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "sparks-s-1-b-1-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "sparks-s-1-b-1-0-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Strava’s kudos:"
+              },
+              {
+                "_type": "span",
+                "_key": "sparks-s-1-b-1-0-s1",
+                "marks": [],
+                "text": " a quick, casual reaction."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "sparks-s-1-b-1-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "sparks-s-1-b-1-1-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "BeReal’s friends of friends:"
+              },
+              {
+                "_type": "span",
+                "_key": "sparks-s-1-b-1-1-s1",
+                "marks": [],
+                "text": " meeting people through the ones you know."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "sparks-s-1-b-1-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "sparks-s-1-b-1-2-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "last.fm and Airbuds:"
+              },
+              {
+                "_type": "span",
+                "_key": "sparks-s-1-b-1-2-s1",
+                "marks": [],
+                "text": " how compatible two people are."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "sparks-s-1-b-1-3",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "sparks-s-1-b-1-3-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Bounce,"
+              },
+              {
+                "_type": "span",
+                "_key": "sparks-s-1-b-1-3-s1",
+                "marks": [],
+                "text": " the app Western used for orientation week: seeing who’s going."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "sparks-s-1-b-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "sparks-s-1-b-2-s",
+                "marks": [],
+                "text": "Then we wrote a short list of what to go with:"
+              }
+            ]
+          },
+          {
+            "_type": "stickyBoard",
+            "_key": "sparks-s-1-b-3",
+            "label": "Our “Go” list",
+            "notes": [
+              {
+                "_type": "stickyNote",
+                "_key": "sparks-s-1-b-3-n0",
+                "text": "location",
+                "color": "green",
+                "tag": "In the prototype"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "sparks-s-1-b-3-n1",
+                "text": "friends of friends",
+                "color": "blue",
+                "tag": "In Post Visibility"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "sparks-s-1-b-3-n2",
+                "text": "add contacts",
+                "color": "pink",
+                "tag": "Left out"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "sparks-s-1-b-3-n3",
+                "text": "react to location (emoji)",
+                "color": "green",
+                "tag": "In the prototype"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "sparks-s-1-b-3-n4",
+                "text": "No numbers!!",
+                "color": "green",
+                "tag": "In the prototype"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "sparks-s-1-b-3-n5",
+                "text": "memories?",
+                "color": "yellow"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "sparks-s-1-b-3-n6",
+                "text": "who’s going",
+                "color": "pink",
+                "tag": "Left out"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "sparks-s-1-b-3-n7",
+                "text": "centralized feed",
+                "color": "green",
+                "tag": "In the prototype"
+              }
+            ],
+            "caption": "Our “Go” list, and where each idea ended up."
+          },
+          {
+            "_type": "block",
+            "_key": "sparks-s-1-b-4",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "sparks-s-1-b-4-s",
+                "marks": [],
+                "text": "A note on our Figma canvas also spells out the whole demo, step by step:"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "sparks-s-1-b-5",
+            "style": "blockquote",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "sparks-s-1-b-5-s",
+                "marks": [],
+                "text": "max is nearby. he wants friends. / prompts yoou to take a photo and write about ur day … / see max’s profile / activities throughout the day + compatability test (x%) / suggest things tp do near"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "sparks-s-1-b-6",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "sparks-s-1-b-6-s",
+                "marks": [],
+                "text": "The final prototype follows that note closely, from the nudge to the plan. My early screens started somewhere else, though: on a map."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "_type": "projectSection",
+        "_key": "sparks-section-2",
+        "title": "Directions",
+        "heading": "Starting on a map",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "sparks-s-2-b-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "sparks-s-2-b-0-s",
+                "marks": [],
+                "text": "Our brainstorm already had a sketch of a pin at a mall with chat bubbles over it. My lo-fi screens started there, with posts as speech bubbles on the place itself: on a pin, and over a map of Western’s campus next to people’s faces."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "sparks-s-2-b-1",
+            "localAssetKey": "lofi",
+            "alt": "Two lo-fi iPhone screens: a pink pin for markville mall with the speech bubbles “bruhhhh” and “i just ate chicken!!!!!”, and a map of Western’s campus with two profile pins and the same bubbles",
+            "caption": "Lo-fi: posts as speech bubbles on a pin, and on a map of campus.",
+            "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "sparks-s-2-b-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "sparks-s-2-b-2-s",
+                "marks": [],
+                "text": "My other early direction gave it colour: a blue sky with clouds, built around a profile. On maxim’s, the live tab shows where he is on a map, with his latest post and big emoji reactions floating over it. The history tab lays out his posts as a timeline of places and times. On your own profile, a + pin on your map with “Say something...” is where you post."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "sparks-s-2-b-3",
+            "localAssetKey": "blue-sky",
+            "alt": "Three iPhones in the blue-sky direction: maxim’s profile with a live map of a mall and floating emoji reactions, his history as a timeline of posts with places and times, and ivy c.’s own profile with a plus pin and Say something...",
+            "caption": "The blue-sky direction: maxim’s live map, his history, and your own profile.",
+            "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "sparks-s-2-b-4",
+            "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "sparks-s-2-b-4-s",
+                "marks": [],
+                "text": "From profile to feed"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "sparks-s-2-b-5",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "sparks-s-2-b-5-s",
+                "marks": [],
+                "text": "In this direction, home was a profile. We moved away from it for two reasons:"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "sparks-s-2-b-6-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "sparks-s-2-b-6-0-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "A feed is easier to scan."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "sparks-s-2-b-6-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "sparks-s-2-b-6-1-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "A profile-first home felt too much like a dating app."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "sparks-s-2-b-7",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "sparks-s-2-b-7-s",
+                "marks": [],
+                "text": "So home became Updates, a feed of posts, and the map moved into it as one of three tabs."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "sparks-s-2-b-8",
+            "localAssetKey": "home-change",
+            "alt": "Two iPhones: the blue-sky home with maxim’s profile and live map, and the final Updates feed with Location, Map and Friends tabs and ivy c.’s post at Ontario Hall",
+            "caption": "The profile-first home, and the feed that replaced it.",
+            "size": "full",
+            "labels": [
+              {
+                "_type": "imageLabel",
+                "_key": "sparks-s-2-b-8-l0",
+                "text": "Before",
+                "x": 0.358,
+                "y": 0.0434
+              },
+              {
+                "_type": "imageLabel",
+                "_key": "sparks-s-2-b-8-l1",
+                "text": "After",
+                "x": 0.642,
+                "y": 0.0434
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "_type": "projectSection",
+        "_key": "sparks-section-3",
+        "title": "Feed",
+        "heading": "One feed, three lenses",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "sparks-s-3-b-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "sparks-s-3-b-0-s",
+                "marks": [],
+                "text": "Every post in Sparks belongs to a place, and Updates is where they come together. Getting its layout right took a few tries. The feed went through four versions in the file:"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "sparks-s-3-b-1-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "sparks-s-3-b-1-0-s",
+                "marks": [],
+                "text": "Posts grouped under the place they came from, with cards staggered left and right and a black “New Update” button."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "sparks-s-3-b-1-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "sparks-s-3-b-1-1-s",
+                "marks": [],
+                "text": "A soft gradient behind the posts, and four icons in the nav."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "sparks-s-3-b-1-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "sparks-s-3-b-1-2-s",
+                "marks": [],
+                "text": "The feed as a sheet over a full-bleed landscape photo."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "sparks-s-3-b-1-3",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "sparks-s-3-b-1-3-s",
+                "marks": [],
+                "text": "White again, with Location, Map and Friends at the top and a floating nav with a blue + button."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "sparks-s-3-b-2",
+            "localAssetKey": "feed-versions",
+            "alt": "Four versions of the Sparks feed: a white feed grouped under Markville Mall with a black New Update button, the same on a soft green gradient with four nav tabs, the feed as a sheet over a landscape photo, and a white feed with Location, Map and Friends tabs and a blue plus button",
+            "caption": "Four feed versions, in the order they’re numbered in the file.",
+            "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "sparks-s-3-b-3",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "sparks-s-3-b-3-s",
+                "marks": [],
+                "text": "In the final design, the three tabs are three ways to look at what’s been posted:"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "sparks-s-3-b-4-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "sparks-s-3-b-4-0-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Location"
+              },
+              {
+                "_type": "span",
+                "_key": "sparks-s-3-b-4-0-s1",
+                "marks": [],
+                "text": " groups posts under the place they were posted, like Ontario Hall."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "sparks-s-3-b-4-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "sparks-s-3-b-4-1-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Map"
+              },
+              {
+                "_type": "span",
+                "_key": "sparks-s-3-b-4-1-s1",
+                "marks": [],
+                "text": " shows them as bubbles on a map of campus, around your own blue dot."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "sparks-s-3-b-4-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "sparks-s-3-b-4-2-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Friends"
+              },
+              {
+                "_type": "span",
+                "_key": "sparks-s-3-b-4-2-s1",
+                "marks": [],
+                "text": " groups them by person, with a row of posts for each friend."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "sparks-s-3-b-5",
+            "localAssetKey": "lenses",
+            "alt": "Three iPhones showing the Updates tabs: Location with ivy c.’s posts at Ontario Hall, Map with post bubbles and reactions on a campus map, and Friends with rows of posts from maxim and nomnomburger",
+            "caption": "The three lenses on the final feed.",
+            "size": "full",
+            "labels": [
+              {
+                "_type": "imageLabel",
+                "_key": "sparks-s-3-b-5-l0",
+                "text": "Location",
+                "x": 0.1383,
+                "y": 0.0434
+              },
+              {
+                "_type": "imageLabel",
+                "_key": "sparks-s-3-b-5-l1",
+                "text": "Map",
+                "x": 0.5,
+                "y": 0.0434
+              },
+              {
+                "_type": "imageLabel",
+                "_key": "sparks-s-3-b-5-l2",
+                "text": "Friends",
+                "x": 0.8617,
+                "y": 0.0434
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "sparks-s-3-b-6",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "sparks-s-3-b-6-s",
+                "marks": [],
+                "text": "The map never went away. Besides its own tab, it sits at the top of each place page and fills the Live tab on each profile."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "_type": "projectSection",
+        "_key": "sparks-section-4",
+        "title": "Posting",
+        "heading": "Sharing where you are",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "sparks-s-4-b-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "sparks-s-4-b-0-s",
+                "marks": [],
+                "text": "None of this works unless people post. Our demo note named the problem: “ppl don’t have much info about their friends”. Posting changed a few times along the way."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "sparks-s-4-b-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "sparks-s-4-b-1-s",
+                "marks": [],
+                "text": "One version asked outright: a “Take a Photo!” sheet to “Update your network”, with a selfie camera, Dismiss and Next, and a step to confirm the photo. It felt pushy."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "sparks-s-4-b-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "sparks-s-4-b-2-s",
+                "marks": [],
+                "text": "In the final design, that sheet is gone. A blue + in the nav, on every main screen, opens a small composer for a Zap: a line of text, a photo if you want one, and a placeholder that tells you up front: “Zap. Location will be shared.”"
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "sparks-s-4-b-3",
+            "localAssetKey": "posting-change",
+            "alt": "The earlier Take a Photo! sheet with a selfie, Dismiss and Next, and the final composer on an iPhone with Zap. Location will be shared., Add photo and Post",
+            "caption": "The “Take a Photo!” sheet, and the composer that replaced it.",
+            "size": "full",
+            "labels": [
+              {
+                "_type": "imageLabel",
+                "_key": "sparks-s-4-b-3-l0",
+                "text": "Before",
+                "x": 0.358,
+                "y": 0.0434
+              },
+              {
+                "_type": "imageLabel",
+                "_key": "sparks-s-4-b-3-l1",
+                "text": "After",
+                "x": 0.642,
+                "y": 0.0434
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "sparks-s-4-b-4",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "sparks-s-4-b-4-s",
+                "marks": [],
+                "text": "Add photo opens the camera, and the photo joins your Zap."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "sparks-s-4-b-5",
+            "localAssetKey": "composer",
+            "alt": "Three iPhones: the empty composer with Zap. Location will be shared., the camera with a photo of friends in a study room, and the composer with I’m doing PDS at Western and the photo attached",
+            "caption": "Write a Zap, add a photo, post.",
+            "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "sparks-s-4-b-6",
+            "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "sparks-s-4-b-6-s",
+                "marks": [],
+                "text": "Who sees it"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "sparks-s-4-b-7",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "sparks-s-4-b-7-s",
+                "marks": [],
+                "text": "Two settings decide what others see:"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "sparks-s-4-b-8-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "sparks-s-4-b-8-0-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Ghost Mode"
+              },
+              {
+                "_type": "span",
+                "_key": "sparks-s-4-b-8-0-s1",
+                "marks": [],
+                "text": " turns off your live location."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "sparks-s-4-b-8-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "sparks-s-4-b-8-1-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Post Visibility"
+              },
+              {
+                "_type": "span",
+                "_key": "sparks-s-4-b-8-1-s1",
+                "marks": [],
+                "text": " picks who sees your posts: Friends, Friends of friends or Public, each with how many people that reaches."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "sparks-s-4-b-9",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "sparks-s-4-b-9-s",
+                "marks": [],
+                "text": "Every post also shows who can see it, with a small icon next to its time."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "sparks-s-4-b-10",
+            "localAssetKey": "privacy",
+            "alt": "Two iPhones showing Privacy settings: Ghost Mode with Disable Live Location, and Post Visibility opened to Friends, 4 people, Friends of friends, 200+ people, and Public, All Users",
+            "caption": "Ghost Mode and Post Visibility, closed and open.",
+            "size": "full"
+          }
+        ]
+      },
+      {
+        "_type": "projectSection",
+        "_key": "sparks-section-5",
+        "title": "Reactions",
+        "heading": "Who reacted",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "sparks-s-5-b-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "sparks-s-5-b-0-s",
+                "marks": [],
+                "text": "A reaction is the smallest way to start a conversation. We borrowed the idea from Strava’s kudos: something that “breaks the ice” and is “more casual than replying to IG stories”. A friend’s post carries a row of them, 🍴, 😋, 😭 and 💀, with a button to add your own and “Send a reply” underneath."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "sparks-s-5-b-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "sparks-s-5-b-1-s",
+                "marks": [],
+                "text": "What a post never shows is a count. Open one, and each reaction appears as a chip with the name of the person who left it. No post or profile in the prototype counts reactions, friends or followers. That came straight from our list: “No numbers!!”"
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "sparks-s-5-b-2",
+            "localAssetKey": "post-detail",
+            "alt": "Two iPhones: the Friends tab with maxim’s post i just ate chicken!!, and the post opened, with each reaction shown as a chip with a name, a React! button and a reply bar",
+            "caption": "Tap a post to see who reacted, by name.",
+            "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "sparks-s-5-b-3",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "sparks-s-5-b-3-s",
+                "marks": [],
+                "text": "The card changed along the way. In the feed versions, Reply and the reactions sat in one row under the post. In the final card, the reactions moved inside it, “Send a reply” sits below, and the time and who can see the post sit in the corner."
+              }
+            ]
+          },
+          {
+            "_type": "mediaGallery",
+            "_key": "sparks-s-5-b-4",
+            "caption": "maxim’s post in an earlier feed version, and in the final design.",
+            "arrows": true,
+            "images": [
+              {
+                "_type": "image",
+                "_key": "sparks-s-5-b-4-0",
+                "localAssetKey": "card-before",
+                "alt": "An earlier Sparks post card: maxim, i just ate chicken!!, with Reply and four emoji reactions in a row underneath",
+                "label": "Earlier"
+              },
+              {
+                "_type": "image",
+                "_key": "sparks-s-5-b-4-1",
+                "localAssetKey": "card-after",
+                "alt": "The final post card: maxim, 2h and an audience icon, i just ate chicken!!, four emoji reactions and an add-reaction button inside the card, and Send a reply below",
+                "label": "Final"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "_type": "projectSection",
+        "_key": "sparks-section-6",
+        "title": "Meeting",
+        "heading": "From nearby to a plan",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "sparks-s-6-b-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "sparks-s-6-b-0-s",
+                "marks": [],
+                "text": "Meeting someone new is the other half of the brief, and in Sparks it starts on your lock screen: “👀 Psst... maxim is nearby!” and “✨ You and maxim have a high compatibility!”"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "sparks-s-6-b-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "sparks-s-6-b-1-s",
+                "marks": [],
+                "text": "That nudge is where our demo begins. It opens Sparks straight into the composer, and after you post, you land on maxim’s profile: where he is right now, “92% compatible with Max” and a big “Find things to do!” button."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "sparks-s-6-b-2",
+            "localAssetKey": "meet-flow",
+            "alt": "Three iPhones: the lock screen with the notification Psst... maxim is nearby!, maxim’s profile with a live map, 92% compatible with Max and Find things to do!, and Things to do with nearby suggestions",
+            "caption": "The nudge, maxim’s profile and Things to do. In the demo, you post a Zap in between.",
+            "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "sparks-s-6-b-3",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "sparks-s-6-b-3-s",
+                "marks": [],
+                "text": "Things to do lists places nearby, each with how far away it is and why it’s suggested for the two of you. Our demo note already had that idea, in a much wilder form:"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "sparks-s-6-b-4",
+            "style": "blockquote",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "sparks-s-6-b-4-s",
+                "marks": [],
+                "text": "ur both adventorouous! maybe u should go skinny dipping in thames.."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "sparks-s-6-b-5",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "sparks-s-6-b-5-s",
+                "marks": [],
+                "text": "In the prototype, it became real places nearby: bouldering at the Junction Climbing Centre, “Suggested because: you are both active”, or a bagelwich at The Spoke for two coffee lovers."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "sparks-s-6-b-6",
+            "localAssetKey": "activity",
+            "alt": "Two Things to do cards: Junction Climbing Centre, 3km, Go bouldering at the Junction for only $35!, suggested because you are both active, and The Spoke, 0.5km, Go grab a bagelwich or coffee at the spoke!, suggested because you are both coffee lovers",
+            "caption": "Every suggestion says why.",
+            "size": "content"
+          },
+          {
+            "_type": "block",
+            "_key": "sparks-s-6-b-7",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "sparks-s-6-b-7-s",
+                "marks": [],
+                "text": "The prototype doesn’t show how the compatibility score is worked out. Our note ties matches to your preferences, “change ur preferences to see ur matches”, and Settings has a Friend Preferences page with an age range, distance, hobbies and what you’re looking for, from a Gym Bro to a Study Buddy."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "_type": "projectSection",
+        "_key": "sparks-section-7",
+        "title": "Old friends",
+        "heading": "Keeping in touch",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "sparks-s-7-b-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "sparks-s-7-b-0-s",
+                "marks": [],
+                "text": "Not every friend is nearby. The brief also asked about keeping in touch with old friends, and in Sparks that happens in Messages: your friends as a cloud of faces, with the latest message peeking out beside one of them."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "sparks-s-7-b-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "sparks-s-7-b-1-s",
+                "marks": [],
+                "text": "Tap a face, and the chat opens. In the demo chat, one friend has just got back to Toronto and asks how the prep for the competition is going. The answer: “i’ll update you through the day so it feels like you’re doing it with us”."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "sparks-s-7-b-2",
+            "localAssetKey": "messages",
+            "alt": "Two iPhones: Messages with friends as round photos and a preview bubble, and a chat with emily with a photo, blue message bubbles and a reply about PDS",
+            "caption": "Messages as faces, then a chat.",
+            "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "sparks-s-7-b-3",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "sparks-s-7-b-3-s",
+                "marks": [],
+                "text": "Settings also has a Best Friends list. Add someone to it, and you get more notifications from their activity."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "_type": "projectSection",
+        "_key": "sparks-section-8",
+        "title": "Outcome",
+        "heading": "Results and lessons",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "sparks-s-8-b-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "sparks-s-8-b-0-s",
+                "marks": [],
+                "text": "We submitted the wired prototype and our pitch deck by the Sunday morning deadline. Sparks didn’t place. The final screens on this page are exactly what we submitted, with no polish after."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "sparks-s-8-b-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "sparks-s-8-b-1-s",
+                "marks": [],
+                "text": "It’s a concept from one weekend. The people, places, scores and suggestions in the screens are sample data."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "sparks-s-8-b-2",
+            "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "sparks-s-8-b-2-s",
+                "marks": [],
+                "text": "What I learned"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "sparks-s-8-b-3-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "sparks-s-8-b-3-0-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Who, not how many."
+              },
+              {
+                "_type": "span",
+                "_key": "sparks-s-8-b-3-0-s1",
+                "marks": [],
+                "text": " Show who reacted, never a count. “No numbers!!” was on our list from the start, and it held all the way to the final screens."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "sparks-s-8-b-3-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "sparks-s-8-b-3-1-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "The home sets the tone."
+              },
+              {
+                "_type": "span",
+                "_key": "sparks-s-8-b-3-1-s1",
+                "marks": [],
+                "text": " With a profile first, Sparks felt like a dating app. A feed was easier to scan."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "sparks-s-8-b-3-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "sparks-s-8-b-3-2-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Ask lightly."
+              },
+              {
+                "_type": "span",
+                "_key": "sparks-s-8-b-3-2-s1",
+                "marks": [],
+                "text": " The “Take a Photo!” sheet felt pushy. The final composer asks for a line of text, and a photo only if you want one."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "sparks-s-8-b-4",
+            "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "sparks-s-8-b-4-s",
+                "marks": [],
+                "text": "Summary"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "sparks-s-8-b-5",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "sparks-s-8-b-5-s",
+                "marks": [],
+                "text": "Sparks answered a weekend brief about connection with an app built around where people are. Posts carry a place, reactions show names instead of counts, and a nudge on the lock screen leads to someone compatible nearby and a list of things to do together."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "sparks-s-8-b-6",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "sparks-s-8-b-6-s",
+                "marks": [],
+                "text": "In a team with Ivy, Derrick and Stella, I made the early map and blue-sky directions, then designed the final screens and the wired prototype."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "assets": {
+    "cover": {
+      "path": "assets/sparks-cover-live.jpg",
+      "existingAssetId": "image-5529dafe72c6cc8f8462b5d6a2612238d6af9b0c-716x717-png",
+      "note": "Winston's current home-page thumbnail in Sanity (the Home - Location screen 358:37367's design in an older iPhone frame, from Portfolio V3 595:1026), kept as is. The local file is a JPG copy for the preview."
+    },
+    "hero": {
+      "path": "assets/sparks-cs4-hero.jpg",
+      "sourceNodeIds": [
+        "358:37711",
+        "358:37367",
+        "358:37799"
+      ],
+      "note": "Final Home - Map, Home - Location (centre) and Profile - Live (Not Friend) from the Final Prototype section 358:45743 at 3x, in Apple's iPhone 16 Pro (White Titanium) bezel, laid out like the Yelo and SmartBasket heroes on a soft blue-to-green gradient. Replaces the old 716 px hero, which reused the cover."
+    },
+    "lofi": {
+      "path": "assets/sparks-cs4-lofi.png",
+      "sourceNodeIds": [
+        "358:38074",
+        "358:38217"
+      ],
+      "note": "Winston's lo-fi frames (iPhone 16, 393x852, no status bar) at 3x in the bezel. No arrow: the file doesn't date one before the other."
+    },
+    "blue-sky": {
+      "path": "assets/sparks-cs4-blue-sky.png",
+      "sourceNodeIds": [
+        "358:38081",
+        "358:38232",
+        "358:38192"
+      ],
+      "note": "Winston's blue-sky direction at 3x in the bezel (spread). 358:38232 is a 393x1164 scroll; the bezel shows its top. Downscaled to 2000 px wide to stay under 1.5 MB."
+    },
+    "home-change": {
+      "path": "assets/sparks-cs4-home-change.png",
+      "sourceNodeIds": [
+        "358:38081",
+        "358:37367"
+      ],
+      "note": "Blue-sky profile home, then the final Updates feed, in the bezel with an arrow. Before/after confirmed by Winston (Round 8)."
+    },
+    "feed-versions": {
+      "path": "assets/sparks-cs4-feed-versions.png",
+      "sourceNodeIds": [
+        "358:37252",
+        "358:37960",
+        "358:38017",
+        "358:37303"
+      ],
+      "note": "The four feed frames 'iPhone 16 Pro - 2' to '- 5' in name order, in the bezel with arrows (spread). The order follows the frame names; the file has no dates."
+    },
+    "lenses": {
+      "path": "assets/sparks-cs4-lenses.png",
+      "sourceNodeIds": [
+        "358:37367",
+        "358:37711",
+        "358:37446"
+      ],
+      "note": "Final Home - Location, Home - Map and Home - Friends at 3x in the bezel (spread), labelled by tab."
+    },
+    "posting-change": {
+      "path": "assets/sparks-cs4-posting-change.png",
+      "sourceNodeIds": [
+        "358:39309",
+        "358:39775"
+      ],
+      "note": "The 'Take a Photo!' sheet (Frame 42, 511x484) cut off the grey canvas beside it (x 0-393 pt) with its flat bottom edge given the same 40 pt corner radius, shown at the same 3x scale as the phone, next to the final composer in the bezel. Composed locally (sparks-tools/posting_change.py); the Figma file is unchanged."
+    },
+    "composer": {
+      "path": "assets/sparks-cs4-composer.png",
+      "sourceNodeIds": [
+        "358:39775",
+        "358:39833",
+        "358:39791"
+      ],
+      "note": "Create post, camera, and Create post with photo, as wired in the prototype, in the bezel with arrows (spread)."
+    },
+    "privacy": {
+      "path": "assets/sparks-cs4-privacy.png",
+      "sourceNodeIds": [
+        "358:39907",
+        "358:39933"
+      ],
+      "note": "Settings - Privacy, then Post Visibility opened (wired in the prototype), in the bezel with an arrow."
+    },
+    "post-detail": {
+      "path": "assets/sparks-cs4-post-detail.png",
+      "sourceNodeIds": [
+        "358:37446",
+        "358:37633"
+      ],
+      "note": "Home - Friends, then the Post detail it links to in the prototype, in the bezel with an arrow."
+    },
+    "card-before": {
+      "path": "assets/sparks-cs4-card-before.png",
+      "sourceNodeIds": [
+        "358:37303"
+      ],
+      "note": "Close-up of maxim's post card (Post Card Type=2, instance 358:37340) cropped from the 3x export of feed version 5, white background flood-filled to transparent, centred on the same canvas as card-after."
+    },
+    "card-after": {
+      "path": "assets/sparks-cs4-card-after.png",
+      "sourceNodeIds": [
+        "358:37446"
+      ],
+      "note": "Close-up of maxim's post card (Post Card Type=Friend, instance 358:37461) cropped from the 3x export of the final Home - Friends, white background flood-filled to transparent."
+    },
+    "meet-flow": {
+      "path": "assets/sparks-cs4-meet-flow.png",
+      "sourceNodeIds": [
+        "358:38896",
+        "358:38887",
+        "358:37799",
+        "358:37491"
+      ],
+      "note": "Lock screen with the notification overlay placed where the prototype puts it (16, 306 pt), then Profile - Live (Not Friend) and Things to do, in the bezel with arrows (spread). The notification's card is translucent with a background blur, so its export picked up Figma's grey canvas; the card is rebuilt locally over the blurred wallpaper (sparks-tools/lock_notif.py). In the prototype the composer steps sit between the nudge and the profile."
+    },
+    "activity": {
+      "path": "assets/sparks-cs4-activity.png",
+      "sourceNodeIds": [
+        "358:37491"
+      ],
+      "note": "Close-up of the first two Activity Cards (358:37501, 358:37502) cropped from the 3x Things to do export, white background flood-filled to transparent."
+    },
+    "messages": {
+      "path": "assets/sparks-cs4-messages.png",
+      "sourceNodeIds": [
+        "358:37506",
+        "358:37529"
+      ],
+      "note": "Messages, then the chat it links to in the prototype, in the bezel with an arrow. Photos of real people: Winston confirmed they're fine to show (Round 10)."
+    }
+  }
+}

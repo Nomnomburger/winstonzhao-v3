@@ -1,0 +1,1060 @@
+{
+  "documentId": "figma-portfolio-villio-ai",
+  "generatedFrom": "case-study-copy/villio-ai.json",
+  "fields": {
+    "description": "A city’s services behind one AI prompt, with answers that come back as cards you can act on.",
+    "client": "Villio AI",
+    "discipline": "Product Design",
+    "intro": "Villio AI was a startup that put a city’s services behind one AI prompt, so residents could book a room or report a pothole just by asking. As a co-founder and product designer, I designed the resident app, the landing page and the pitch deck.",
+    "summary": "Co-founding Villio AI and designing its resident app around one prompt, from a feed of what’s on today to replies you can act on.",
+    "overview": "Villio was for residents and the city staff who serve them. I co-founded it with two others, in a team of eight. We held pilot talks with the City of Richmond Hill, but the pilot didn’t go ahead, and we wound Villio down.",
+    "impact": "Reached pilot talks with the City of Richmond Hill before winding down.",
+    "showSideMenu": true,
+    "details": [
+      {
+        "_type": "detailItem",
+        "_key": "villio-ai-detail-0",
+        "label": "Role",
+        "value": "Co-founder · Product Designer"
+      },
+      {
+        "_type": "detailItem",
+        "_key": "villio-ai-detail-1",
+        "label": "Team",
+        "value": "Co-founders · Team of 8"
+      },
+      {
+        "_type": "detailItem",
+        "_key": "villio-ai-detail-2",
+        "label": "Timeline",
+        "value": "Started May 2025"
+      },
+      {
+        "_type": "detailItem",
+        "_key": "villio-ai-detail-3",
+        "label": "Platform",
+        "value": "Mobile app · Website"
+      },
+      {
+        "_type": "detailItem",
+        "_key": "villio-ai-detail-4",
+        "label": "Tools",
+        "value": "Figma · Figma Slides"
+      }
+    ],
+    "coverImage": {
+      "_type": "image",
+      "localAssetKey": "cover",
+      "alt": "An iPhone showing the Villio home: garbage day, a volleyball court booking in two hours, and the Ask Villio bar"
+    },
+    "hero": [
+      {
+        "_type": "mediaImage",
+        "_key": "villio-ai-hero",
+        "localAssetKey": "hero",
+        "alt": "Three Villio screens on iPhones: Discover with suggested actions, the home feed with the Ask Villio sheet, and a study room booking returned as a card",
+        "size": "full"
+      }
+    ],
+    "sections": [
+      {
+        "_type": "projectSection",
+        "_key": "villio-ai-section-0",
+        "title": "Problem Statement",
+        "heading": "How might we bring a city’s scattered services into one place, for residents and staff?",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "villio-ai-s-0-b-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "villio-ai-s-0-b-0-s",
+                "marks": [],
+                "text": "Booking a study room, reporting a pothole and checking garbage day are all city services, but each one lives somewhere different. Our pitch deck split the problem in two: the residents who use those services, and the cities that run them."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "villio-ai-s-0-b-1-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "villio-ai-s-0-b-1-0-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Residents:"
+              },
+              {
+                "_type": "span",
+                "_key": "villio-ai-s-0-b-1-0-s1",
+                "marks": [],
+                "text": " services scattered across websites and phone lines, slow and unclear request status, and a poor mobile experience."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "villio-ai-s-0-b-1-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "villio-ai-s-0-b-1-1-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Cities:"
+              },
+              {
+                "_type": "span",
+                "_key": "villio-ai-s-0-b-1-1-s1",
+                "marks": [],
+                "text": " disconnected tools for recreation, 311 and updates, higher costs and delays, and a hard time setting up digital infrastructure in smaller cities."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "villio-ai-s-0-b-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "villio-ai-s-0-b-2-s",
+                "marks": [],
+                "text": "Villio’s answer was one platform for both sides, starting with three kinds of services: recreation, 311 and community updates. My part was the resident app, the landing page and the pitch deck."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "_type": "projectSection",
+        "_key": "villio-ai-section-1",
+        "title": "Origin",
+        "heading": "From hackathon to startup",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "villio-ai-s-1-b-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "villio-ai-s-1-b-0-s",
+                "marks": [],
+                "text": "Villio’s idea is older than the company. At YRHacks 2024, a teammate and I designed YRConnect, a concept app for York Region. We wanted to meet for volleyball and study sessions, but booking a court or a room at Cornell Library meant going through a series of pages and forms. YRConnect won second place."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "villio-ai-s-1-b-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "villio-ai-s-1-b-1-s",
+                "marks": [],
+                "text": "It already had a home you could take in at a glance: your next booking, a poll, a filed report and upcoming events. Everything else sat behind a tab bar and forms. Booking a study room meant picking a date, setting filters and choosing from a list of time slots."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "villio-ai-s-1-b-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "villio-ai-s-1-b-2-s",
+                "marks": [],
+                "text": "When I co-founded Villio in May 2025, we rebuilt the same idea as a startup. Villio kept the glanceable home and swapped the tab bar and the forms for one prompt: “Ask Villio”."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "villio-ai-s-1-b-3",
+            "localAssetKey": "origin",
+            "alt": "Four iPhones: YRConnect’s home with bookings, a poll, a filed report and events above a tab bar, and its Book Study Room form with a date strip, filters and time slots; then Villio’s home feed with the Ask Villio sheet, and a study room booked by typing one sentence",
+            "caption": "YRConnect’s home and booking form, then Villio’s home and a booking made by asking.",
+            "size": "full",
+            "labels": [
+              {
+                "_type": "imageLabel",
+                "_key": "villio-ai-s-1-b-3-l0",
+                "text": "YRConnect, 2024",
+                "x": 0.2426,
+                "y": 0.0484
+              },
+              {
+                "_type": "imageLabel",
+                "_key": "villio-ai-s-1-b-3-l1",
+                "text": "Villio, 2025",
+                "x": 0.7574,
+                "y": 0.0484
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "villio-ai-s-1-b-4",
+            "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "villio-ai-s-1-b-4-s",
+                "marks": [],
+                "text": "Why one prompt"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "villio-ai-s-1-b-5-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "villio-ai-s-1-b-5-0-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Residents don’t know which department handles what."
+              },
+              {
+                "_type": "span",
+                "_key": "villio-ai-s-1-b-5-0-s1",
+                "marks": [],
+                "text": " Asking is easier than finding the right page."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "villio-ai-s-1-b-5-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "villio-ai-s-1-b-5-1-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Asking is faster than filling in a form."
+              },
+              {
+                "_type": "span",
+                "_key": "villio-ai-s-1-b-5-1-s1",
+                "marks": [],
+                "text": " One sentence stands in for a date picker, filters and a list of slots."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          }
+        ]
+      },
+      {
+        "_type": "projectSection",
+        "_key": "villio-ai-section-2",
+        "title": "Home",
+        "heading": "What matters today",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "villio-ai-s-2-b-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "villio-ai-s-2-b-0-s",
+                "marks": [],
+                "text": "Open Villio and you see your day before you see a chat. The home is a feed in time order: today first, then the next seven days, then links to city resources."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "villio-ai-s-2-b-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "villio-ai-s-2-b-1-s",
+                "marks": [],
+                "text": "A booking gets a countdown, the time and place, and a Manage booking button. Garbage day gets a single row."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "villio-ai-s-2-b-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "villio-ai-s-2-b-2-s",
+                "marks": [],
+                "text": "Ask Villio sits in a sheet docked under the feed, with “Hi there”, the prompt bar and a big voice button. In the prototype, tapping the feed tucks the sheet down to one line, and more of your week shows above it. The expand button opens it into a full-screen chat."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "villio-ai-s-2-b-3",
+            "localAssetKey": "sheet",
+            "alt": "Two iPhones showing the Villio home: first with the Hi there sheet docked under the feed, then with the sheet tucked down to one line and a Study Room card from the next seven days showing above it",
+            "caption": "The docked sheet, then tucked down to one line.",
+            "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "villio-ai-s-2-b-4",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "villio-ai-s-2-b-4-s",
+                "marks": [],
+                "text": "I docked the assistant this way so today’s feed, with your bookings and notices, stays visible, and the chat is always one tap away."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "_type": "projectSection",
+        "_key": "villio-ai-section-3",
+        "title": "Assistant",
+        "heading": "One prompt away",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "villio-ai-s-3-b-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "villio-ai-s-3-b-0-s",
+                "marks": [],
+                "text": "Ask Villio is where requests start. You can type one, say it, or pick a suggestion."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "villio-ai-s-3-b-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "villio-ai-s-3-b-1-s",
+                "marks": [],
+                "text": "Expand the sheet and the assistant fills the screen. Discover sorts services into Recreational, 311 and Events, and suggested actions like “Book a study room” and “Report pothole” sit above the bar. Start typing and the suggestions stay above the keyboard, while the voice button turns into send."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "villio-ai-s-3-b-2",
+            "localAssetKey": "ask",
+            "alt": "Two iPhones: the full-screen Villio assistant with Discover tiles for Recreational, 311 and Events and suggested actions above the Ask Villio bar, then the same screen with the keyboard up, suggestions above the field and a send button",
+            "caption": "Discover and suggested actions, then typing a request.",
+            "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "villio-ai-s-3-b-3",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "villio-ai-s-3-b-3-s",
+                "marks": [],
+                "text": "I also tried a second version of Discover, which is still hidden in the chat frames: rows of example prompts under each category. The prototype uses the tiles."
+              }
+            ]
+          },
+          {
+            "_type": "stickyBoard",
+            "_key": "villio-ai-s-3-b-4",
+            "label": "The hidden Discover rows",
+            "notes": [
+              {
+                "_type": "stickyNote",
+                "_key": "villio-ai-s-3-b-4-n0",
+                "text": "Book a study room",
+                "color": "green",
+                "tag": "Recreational"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "villio-ai-s-3-b-4-n1",
+                "text": "Volleyball courts",
+                "color": "green",
+                "tag": "Recreational"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "villio-ai-s-3-b-4-n2",
+                "text": "Study room for 3 hours",
+                "color": "green",
+                "tag": "Recreational"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "villio-ai-s-3-b-4-n3",
+                "text": "Report a broken streetlamp",
+                "color": "yellow",
+                "tag": "City 311"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "villio-ai-s-3-b-4-n4",
+                "text": "There’s a pothole here",
+                "color": "yellow",
+                "tag": "City 311"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "villio-ai-s-3-b-4-n5",
+                "text": "Request large item pickup",
+                "color": "yellow",
+                "tag": "City 311"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "villio-ai-s-3-b-4-n6",
+                "text": "Events tonight",
+                "color": "blue",
+                "tag": "Community"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "villio-ai-s-3-b-4-n7",
+                "text": "Parking permit",
+                "color": "blue",
+                "tag": "Community"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "villio-ai-s-3-b-4-n8",
+                "text": "Where is construction",
+                "color": "blue",
+                "tag": "Community"
+              }
+            ],
+            "caption": "Example prompts from the hidden version of Discover."
+          },
+          {
+            "_type": "block",
+            "_key": "villio-ai-s-3-b-5",
+            "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "villio-ai-s-3-b-5-s",
+                "marks": [],
+                "text": "Voice gets the big button"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "villio-ai-s-3-b-6",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "villio-ai-s-3-b-6-s",
+                "marks": [],
+                "text": "In the bar, voice is a large green circle next to a plain text field. Our pitch deck named residents with low digital literacy as a risk, and promoted voice mode and visual cards for accessibility in response."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "villio-ai-s-3-b-7",
+            "localAssetKey": "voice",
+            "alt": "Close-up of the Villio sheet: Hi there, Access Markham’s services, an expand button, and the Ask Villio field next to a large green voice button",
+            "caption": "Voice is the biggest control in the bar.",
+            "size": "content"
+          }
+        ]
+      },
+      {
+        "_type": "projectSection",
+        "_key": "villio-ai-section-4",
+        "title": "Answers",
+        "heading": "Replies you can act on",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "villio-ai-s-4-b-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "villio-ai-s-4-b-0-s",
+                "marks": [],
+                "text": "An answer only helps if you can do something with it. When you ask Villio for something, the reply comes back as a card, in the same style as the bookings on your home feed."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "villio-ai-s-4-b-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "villio-ai-s-4-b-1-s",
+                "marks": [],
+                "text": "Type “Book a study room at cornell at 4pm today”, and Villio answers with one short line and a booking card: the room, the date and time, and the community centre."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "villio-ai-s-4-b-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "villio-ai-s-4-b-2-s",
+                "marks": [],
+                "text": "The card isn’t the same everywhere it appears. In the prototype, it only shows the booking. In the chat on our August 2025 pitch deck, it has a Manage booking button. On the landing page, it has Manage booking and Add to Calendar."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "villio-ai-s-4-b-3",
+            "localAssetKey": "card-phones",
+            "alt": "Two iPhones: a Villio chat where a study room request returns a booking card with no buttons, and the same chat from the pitch deck, with a Manage booking button on the card and Thanks! typed in the bar",
+            "caption": "The booking card in the prototype, and in the pitch deck with Manage booking.",
+            "size": "full",
+            "labels": [
+              {
+                "_type": "imageLabel",
+                "_key": "villio-ai-s-4-b-3-l0",
+                "text": "Prototype",
+                "x": 0.358,
+                "y": 0.0434
+              },
+              {
+                "_type": "imageLabel",
+                "_key": "villio-ai-s-4-b-3-l1",
+                "text": "Pitch deck",
+                "x": 0.642,
+                "y": 0.0434
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "villio-ai-s-4-b-4",
+            "localAssetKey": "card-web",
+            "alt": "The booking card from the Villio landing page: Hi there, the typed request, Sure! Here’s your booking, and a Study Room card with Manage booking and Add to Calendar buttons",
+            "caption": "The landing page version, with Manage booking and Add to Calendar.",
+            "size": "content"
+          }
+        ]
+      },
+      {
+        "_type": "projectSection",
+        "_key": "villio-ai-section-5",
+        "title": "Pitch",
+        "heading": "Taking it to cities",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "villio-ai-s-5-b-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "villio-ai-s-5-b-0-s",
+                "marks": [],
+                "text": "Residents would use Villio, but cities would pay for it. The landing page and the pitch deck made that case, and I designed both."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "villio-ai-s-5-b-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "villio-ai-s-5-b-1-s",
+                "marks": [],
+                "text": "The landing page leads with “City services powered by AI, designed for easy access”, a button to join the waitlist, and the booking card as the demo."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "villio-ai-s-5-b-2",
+            "localAssetKey": "landing-hero",
+            "alt": "The top of the Villio landing page: a navigation bar with For residents and For cities, a Demos available chip, the headline City services powered by AI, designed for easy access, a Join our waitlist button, and the booking card",
+            "caption": "The top of the landing page, with links for residents and for cities.",
+            "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "villio-ai-s-5-b-3",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "villio-ai-s-5-b-3-s",
+                "marks": [],
+                "text": "Both the site and the deck start with three kinds of service, the same three groups YRConnect covered. The deck gave five examples for each:"
+              }
+            ]
+          },
+          {
+            "_type": "stickyBoard",
+            "_key": "villio-ai-s-5-b-4",
+            "label": "Starting with 3 service categories",
+            "notes": [
+              {
+                "_type": "stickyNote",
+                "_key": "villio-ai-s-5-b-4-n0",
+                "text": "Book study rooms",
+                "color": "green",
+                "tag": "Recreational"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "villio-ai-s-5-b-4-n1",
+                "text": "Book sports facilities",
+                "color": "green",
+                "tag": "Recreational"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "villio-ai-s-5-b-4-n2",
+                "text": "Sign up for programs",
+                "color": "green",
+                "tag": "Recreational"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "villio-ai-s-5-b-4-n3",
+                "text": "Register for summer camp",
+                "color": "green",
+                "tag": "Recreational"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "villio-ai-s-5-b-4-n4",
+                "text": "Purchase gym membership",
+                "color": "green",
+                "tag": "Recreational"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "villio-ai-s-5-b-4-n5",
+                "text": "Report potholes",
+                "color": "yellow",
+                "tag": "311 Reporting"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "villio-ai-s-5-b-4-n6",
+                "text": "Report fallen trees",
+                "color": "yellow",
+                "tag": "311 Reporting"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "villio-ai-s-5-b-4-n7",
+                "text": "Request garbage collection",
+                "color": "yellow",
+                "tag": "311 Reporting"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "villio-ai-s-5-b-4-n8",
+                "text": "Noise complaints",
+                "color": "yellow",
+                "tag": "311 Reporting"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "villio-ai-s-5-b-4-n9",
+                "text": "Bylaw violations",
+                "color": "yellow",
+                "tag": "311 Reporting"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "villio-ai-s-5-b-4-n10",
+                "text": "Construction notices",
+                "color": "blue",
+                "tag": "Community"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "villio-ai-s-5-b-4-n11",
+                "text": "Municipal notices",
+                "color": "blue",
+                "tag": "Community"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "villio-ai-s-5-b-4-n12",
+                "text": "Community events",
+                "color": "blue",
+                "tag": "Community"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "villio-ai-s-5-b-4-n13",
+                "text": "Garbage days",
+                "color": "blue",
+                "tag": "Community"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "villio-ai-s-5-b-4-n14",
+                "text": "Citywide reminders",
+                "color": "blue",
+                "tag": "Community"
+              }
+            ],
+            "caption": "The three starting categories, from the deck."
+          },
+          {
+            "_type": "block",
+            "_key": "villio-ai-s-5-b-5",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "villio-ai-s-5-b-5-s",
+                "marks": [],
+                "text": "On the landing page, each service gets its own illustrated block, and a note at the end says more services, like permits and taxes, are in the works."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "villio-ai-s-5-b-6",
+            "localAssetKey": "landing-services",
+            "alt": "The dark services section of the Villio landing page: Scalable and smart city service management, Starting with three types of services, and a 311 block with an illustration of a truck and a flag",
+            "caption": "The services section, starting with 311.",
+            "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "villio-ai-s-5-b-7",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "villio-ai-s-5-b-7-s",
+                "marks": [],
+                "text": "The deck, from August 2025, covered the problem, our solution, the three starting categories, the market, the risks and a budget for a pilot."
+              }
+            ]
+          },
+          {
+            "_type": "mediaGallery",
+            "_key": "villio-ai-s-5-b-8",
+            "caption": "Two slides from the deck: the opening line and the solution for residents.",
+            "images": [
+              {
+                "_type": "image",
+                "_key": "villio-ai-s-5-b-8-0",
+                "localAssetKey": "deck-cover",
+                "alt": "Villio pitch deck slide: the villio.ai logo, One platform to manage and access municipal services, and The future of city services. One prompt away."
+              },
+              {
+                "_type": "image",
+                "_key": "villio-ai-s-5-b-8-1",
+                "localAssetKey": "deck-residents",
+                "alt": "Villio pitch deck slide: Our Solution, For Residents, with a list of benefits next to the home screen and a chat with a booking card"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "_type": "projectSection",
+        "_key": "villio-ai-section-6",
+        "title": "Outcome",
+        "heading": "Results and lessons",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "villio-ai-s-6-b-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "villio-ai-s-6-b-0-s",
+                "marks": [],
+                "text": "We met with municipalities and investors, and held pilot talks with the City of Richmond Hill, in York Region. The pilot didn’t go ahead, and we wound Villio down: as students, getting government contracts was hard and time consuming."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "villio-ai-s-6-b-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "villio-ai-s-6-b-1-s",
+                "marks": [],
+                "text": "I designed the MVP of the resident app, which exists as a clickable prototype in Figma, along with the landing page and the pitch deck. There are no usage numbers to share."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "villio-ai-s-6-b-2",
+            "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "villio-ai-s-6-b-2-s",
+                "marks": [],
+                "text": "What I learned"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "villio-ai-s-6-b-3-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "villio-ai-s-6-b-3-0-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Answers you can act on."
+              },
+              {
+                "_type": "span",
+                "_key": "villio-ai-s-6-b-3-0-s1",
+                "marks": [],
+                "text": " Show replies as cards people can use, not paragraphs they have to read."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "villio-ai-s-6-b-3-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "villio-ai-s-6-b-3-1-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Selling to cities is slow."
+              },
+              {
+                "_type": "span",
+                "_key": "villio-ai-s-6-b-3-1-s1",
+                "marks": [],
+                "text": " Government procurement is a different game, especially as students."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "villio-ai-s-6-b-4",
+            "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "villio-ai-s-6-b-4-s",
+                "marks": [],
+                "text": "Summary"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "villio-ai-s-6-b-5",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "villio-ai-s-6-b-5-s",
+                "marks": [],
+                "text": "Villio started as YRConnect, a hackathon concept for York Region’s bookings, service requests and community updates, and came back a year later as a startup built around one prompt. I designed the resident app: a home feed of what matters today, an assistant docked underneath it, and replies that come back as cards you can act on. I also designed the landing page and the pitch deck."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "villio-ai-s-6-b-6",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "villio-ai-s-6-b-6-s",
+                "marks": [],
+                "text": "We reached pilot talks with the City of Richmond Hill, but the pilot didn’t go ahead, and we wound Villio down."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "assets": {
+    "cover": {
+      "path": "assets/villio-ai-cover-live.jpg",
+      "existingAssetId": "image-a9a1516f1788362fdb0e0e9b71f97b9c1760d7fb-716x717-png",
+      "note": "Winston's current home-page thumbnail in Sanity, kept as is. The local file is a copy for the preview."
+    },
+    "hero": {
+      "path": "assets/villio-ai-cs4-hero.jpg",
+      "sourceNodeIds": [
+        "1:1466",
+        "1:961",
+        "1:1685"
+      ],
+      "note": "Discover, Home and the booking reply from the Main App section at 3x, in Apple's iPhone 16 Pro (White Titanium) bezel on a pale mint gradient, laid out like the Yelo and CoStudy heroes (2400×1350)."
+    },
+    "origin": {
+      "path": "assets/villio-ai-cs4-origin.png",
+      "sourceNodeIds": [
+        "1:8106",
+        "1:9251",
+        "1:961",
+        "1:1685"
+      ],
+      "note": "YRConnect Home and Book Study Room (MuniSync page 1:7779, YRHacks 2024) next to Villio Home and the booking reply, at 3x in Apple's iPhone 16 Pro (White Titanium) bezel, grouped in pairs with one arrow between the groups."
+    },
+    "sheet": {
+      "path": "assets/villio-ai-cs4-sheet.png",
+      "sourceNodeIds": [
+        "1:961",
+        "1:1239"
+      ],
+      "note": "Home - Default and Home - Collapsed PromptBar at 3x in Apple's iPhone 16 Pro (White Titanium) bezel, with an arrow (the prototype link from 1:962)."
+    },
+    "ask": {
+      "path": "assets/villio-ai-cs4-ask.png",
+      "sourceNodeIds": [
+        "1:1466",
+        "1:1531"
+      ],
+      "note": "Chat (Discover) and Chat (typing) at 3x in Apple's iPhone 16 Pro (White Titanium) bezel, with an arrow. Follows the prototype links 1:1082 → 1:1466 and 1:1835 → 1:1531."
+    },
+    "voice": {
+      "path": "assets/villio-ai-cs4-voice.png",
+      "sourceNodeIds": [
+        "1:961"
+      ],
+      "note": "Close-up crop of the docked sheet from a 4x export of Home (inside the sheet's rounded top, so the feed behind it doesn't show), rounded corners and a light grey outline."
+    },
+    "card-phones": {
+      "path": "assets/villio-ai-cs4-card-phones.png",
+      "sourceNodeIds": [
+        "1:1685",
+        "54:84"
+      ],
+      "note": "Chat (booking result) at 3x, then the 'Chat 2' bitmap from deck slide 10 (Figma Slides file hq9GPrqUNKbONjTk6pUZBT, node 54:84), downloaded as its original 1206×2622 image fill (the bitmap has no status bar, as designed). Both in Apple's iPhone 16 Pro (White Titanium) bezel, side by side with no arrow, because the order of the versions isn't known; labelled Prototype and Pitch deck on the page."
+    },
+    "card-web": {
+      "path": "assets/villio-ai-cs4-card-web.png",
+      "sourceNodeIds": [
+        "101:5054"
+      ],
+      "note": "The landing page's demo card bitmap, downloaded as its original 2528×1520 image fill; it already has its own outline and transparent corners."
+    },
+    "landing-hero": {
+      "path": "assets/villio-ai-cs4-landing-hero.png",
+      "sourceNodeIds": [
+        "101:5033",
+        "101:5523"
+      ],
+      "note": "Landing page hero (Main Container) at 2x with the demo card's overflow, with the page's floating Header Container (101:5523, also exported at 2x) composited on top where it sits in the page, rounded corners and a light grey outline."
+    },
+    "landing-services": {
+      "path": "assets/villio-ai-cs4-landing-services.png",
+      "sourceNodeIds": [
+        "101:5148"
+      ],
+      "note": "Top 1440 px of the dark services section at 2x (heading and the 311 block), rounded corners and a dark grey outline."
+    },
+    "deck-cover": {
+      "path": "assets/villio-ai-cs4-deck-cover.png",
+      "sourceNodeIds": [
+        "10:11"
+      ],
+      "note": "Slide 2 of the pitch deck (Figma Slides file hq9GPrqUNKbONjTk6pUZBT) at 2x, scaled to 2400 wide, rounded corners and a light grey outline. The title slide (23:431) was skipped because it names teammates."
+    },
+    "deck-residents": {
+      "path": "assets/villio-ai-cs4-deck-residents.png",
+      "sourceNodeIds": [
+        "41:615"
+      ],
+      "note": "Slide 10 'Our Solution / For Residents' of the pitch deck (Figma Slides file hq9GPrqUNKbONjTk6pUZBT) at 2x, scaled to 2400 wide, rounded corners and a light grey outline."
+    }
+  }
+}

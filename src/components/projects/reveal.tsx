@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, useInView, useReducedMotion, type UseInViewOptions } from 'framer-motion';
-import { createContext, useContext, useRef, type ReactNode } from 'react';
+import { createContext, useContext, useRef, useSyncExternalStore, type ReactNode } from 'react';
 
 // Scroll reveals for the work section on the home page. Photos and list text play once,
 // when it scrolls into view, but not before the page's intro has finished
@@ -12,6 +12,15 @@ export const RevealContext = createContext({ ready: true, skip: false, captionsA
 
 export const REVEAL_EASE = [0.22, 1, 0.36, 1] as const;
 
+// Reduced motion, read only after hydration: the server can't know the
+// setting, so the first render always matches its HTML.
+const noSubscription = () => () => {};
+export function useStillMotion() {
+  const prefersStill = useReducedMotion();
+  const hydrated = useSyncExternalStore(noSubscription, () => true, () => false);
+  return hydrated && !!prefersStill;
+}
+
 export function useReveal<T extends Element>(
   amount: number | 'some' = 0.2,
   margin?: UseInViewOptions['margin'],
@@ -19,7 +28,7 @@ export function useReveal<T extends Element>(
   const ref = useRef<T>(null);
   const inView = useInView(ref, { once: true, amount, margin });
   const { ready, skip } = useContext(RevealContext);
-  const still = !!useReducedMotion();
+  const still = useStillMotion();
   return { ref, shown: skip || (ready && (still || inView)), still };
 }
 
@@ -29,7 +38,7 @@ export function useCaptionReveal<T extends Element>() {
   const ref = useRef<T>(null);
   const inView = useInView(ref, { once: true, amount: 0.2 });
   const { ready, skip, captionsActive } = useContext(RevealContext);
-  const still = !!useReducedMotion();
+  const still = useStillMotion();
   return { ref, shown: (ready || skip) && captionsActive && (still || inView), still };
 }
 

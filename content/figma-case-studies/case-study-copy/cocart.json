@@ -1,0 +1,452 @@
+{
+  "documentId": "figma-portfolio-cocart",
+  "source": {
+    "figmaFile": "qDdxlqtBxVpaAOUMITle4W",
+    "url": "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W/Winston-Design-Demo?node-id=1-13590",
+    "page": "CoCart (1:13590): High Fidelity (1:13596), Ideas (358:48144) with Low Fidelity (358:48261), Chrome Extension Mockups (358:48898)",
+    "facts": "Confirmed by Winston (Nov 2026): team of four, Winston, Sophia, Andrew and Emily (names can be used); Winston did the hi-fi and the prototype and helped with the other parts; the extension is the product and the app was a later idea, so the hi-fi is shown in the browser, not in phones; the Problem Statement heading is the designathon's prompt word for word, with 'Community Centered Design' as the theme under it; co-op packaging was picked mainly for packaging waste, but real people would also use it for lower shipping fees; lobby became cart because 'cart' is clearer for shoppers than 'lobby', and counts plus a deadline set expectations for when the order ships; both host models still work (suburban: anyone can host at their house or walk around and distribute; denser areas: condo or residence management as the distributor), and the hi-fi shows the residence front desk case; lessons he chose: borrow from odd places (a game lobby gave the joining pattern), use words people know ('cart' beat 'lobby'), set expectations for the wait (counts and a deadline make a delayed order feel OK). Result: 1st place, UWUX FUSE Designathon 2024 (one-day event, 23 November 2024, per the organiser's announcement in consumer-dates.json). Prices, savings, points and CO2 in the screens are sample data, never results. The Create Cart card in 1:13936 sits below the frame's clip and can't be exported without editing the file, so it is quoted in the text instead. Review (Nov 18 2026): the Create Cart card (1:14048) is clipped in every copy of 2 Cart Selection (1:13936, Demo 3 1:14521, Mac 1 358:48902); the copy avoids the screens' inconsistent sample numbers ('2 other people' in 1:14212, item prices that differ between 1:14115 and 1:13782)."
+  },
+  "fields": {
+    "description": "A shared-cart browser extension concept that won 1st place at the UWUX FUSE Designathon 2024.",
+    "client": "UWUX FUSE Designathon 2024",
+    "discipline": "Product Design",
+    "intro": "CoCart is a browser extension concept where people nearby join a shared cart for the same store, so their orders ship together in one package. In a team of four, I designed the hi-fi screens and the clickable prototype, and we won 1st place at the UWUX FUSE Designathon 2024.",
+    "summary": "Taking a one-day shared-cart concept from a game-lobby idea to hi-fi screens and a clickable prototype on a real store page.",
+    "overview": "CoCart is for people who shop online and live close together, on a suburban street or in a condo or residence. I worked with Sophia, Andrew and Emily: I did the hi-fi and the prototype, and helped with the rest. Our concept won 1st place.",
+    "impact": "1st place, UWUX FUSE Designathon 2024.",
+    "details": [
+      {
+        "label": "Event",
+        "value": "UWUX FUSE Designathon 2024"
+      },
+      {
+        "label": "Result",
+        "value": "1st place"
+      },
+      {
+        "label": "Role",
+        "value": "Product Designer\nHi-fi · Prototype"
+      },
+      {
+        "label": "Team",
+        "value": "Sophia, Andrew, Emily and Winston"
+      },
+      {
+        "label": "Timeline",
+        "value": "One day · November 2024"
+      },
+      {
+        "label": "Platform",
+        "value": "Browser extension"
+      },
+      {
+        "label": "Tools",
+        "value": "Figma"
+      }
+    ],
+    "cover": {
+      "asset": "cover",
+      "alt": "A laptop on a perforated metal stand, showing the CoCart pop-up open over an H&M product page, with a cart near Student Village 1"
+    },
+    "hero": {
+      "image": "hero",
+      "alt": "Three CoCart pop-ups: a V-Neck Cardigan from H&M with Add to My Cart, open carts near Student Village 1 with shoppers and time left, and a pending H&M cart with 4/5 shoppers"
+    },
+    "sections": [
+      {
+        "title": "Problem Statement",
+        "heading": "How might we empower communities to adopt sustainable habits that reduce environmental impact?",
+        "content": [
+          "This was the prompt at the UWUX FUSE Designathon 2024, a one-day event, with “Community Centered Design” as the theme under it: designing solutions that foster collaboration and a sense of community. Four of us had the day to answer it.",
+          "We ended up pointing it at online shopping. Every order ships in its own package, even when your neighbours buy from the same store. That means more packaging waste, and everyone pays their own shipping.",
+          {
+            "bullets": [
+              "**Who:** people who shop online and live close together.",
+              "**Where:** a browser extension, on the store’s own website.",
+              "**Constraint:** one day, four people."
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Idea",
+        "heading": "Landing on co-op packaging",
+        "content": [
+          "Before anything was drawn, we filled a board with ideas for the prompt. They ranged from local food to student recycling:",
+          {
+            "board": {
+              "label": "From our brainstorm",
+              "notes": [
+                {
+                  "text": "Local farmers markets: support farmers markets",
+                  "color": "green"
+                },
+                {
+                  "text": "Crops in season type of app",
+                  "color": "yellow"
+                },
+                {
+                  "text": "Community gamification: city metrics, incentives",
+                  "color": "blue"
+                },
+                {
+                  "text": "Recycling in students: reusable cookware, lots of packaging",
+                  "color": "pink"
+                },
+                {
+                  "text": "Co-op packaging",
+                  "color": "yellow",
+                  "highlight": "Picked"
+                }
+              ]
+            }
+          },
+          "We went with co-op packaging, mainly for the packaging waste. But real people would also use it for the lower shipping fees.",
+          "Both sides were already on the board. “Lots of packaging” sat under recycling for students, and our co-op packaging note lists a few online brands with terrible shipping prices."
+        ]
+      },
+      {
+        "title": "Concept",
+        "heading": "A lobby for online orders",
+        "content": [
+          "Sharing a delivery means people nearby have to find the same order and join it. We borrowed that part from a video game. Our first notes on co-op packaging read:",
+          {
+            "board": {
+              "label": "Co-op packaging, in our first notes",
+              "notes": [
+                {
+                  "text": "It’s a plug-in for websites",
+                  "color": "yellow"
+                },
+                {
+                  "text": "Lobby setting (like Among Us), dependent on location and e-commerce website",
+                  "color": "pink"
+                },
+                {
+                  "text": "Sends package to host. Like an Uber, there are reviews",
+                  "color": "blue"
+                },
+                {
+                  "text": "Anyone can be a host: you pick up from the host’s house",
+                  "color": "green"
+                },
+                {
+                  "text": "Apartments can be a host",
+                  "color": "green"
+                },
+                {
+                  "text": "The app splits up the payment",
+                  "color": "yellow"
+                }
+              ]
+            }
+          },
+          "The lobby came from Among Us. Its lobby list shows open games and how many players have joined each one, like 8/15. Our first wireframe used the same shape for stores near you, like SHEIN 1/5 and IKEA 6/10: each one a shared cart waiting for more people.",
+          {
+            "image": "lobby-reference",
+            "alt": "An Among Us lobby list with player counts like 8/15, next to an early CoCart wireframe listing stores near you with counts like SHEIN 1/5 and IKEA 6/10",
+            "caption": "The Among Us lobby list, and our first wireframe."
+          },
+          "The other half of the idea was the plug-in. A note over our product wireframe says it “automatically detects what product ur on the website”, so CoCart works right on the store’s own page. We sketched a mobile app too, but the extension is the product. The app was a later idea."
+        ]
+      },
+      {
+        "title": "Iterations",
+        "heading": "From lobby to cart",
+        "content": [
+          "We sketched the flow together in grey wireframes, then I took it to hi-fi. A few things changed between the two, starting with one word.",
+          {
+            "h3": "Words shoppers know"
+          },
+          "The lo-fi talked about lobbies: “IKEA Lobby”, “3/5 buyers in lobby”. In the hi-fi, it’s a cart: “Join Cart”, “3/5 shoppers in cart”. The lobby was a useful idea for us, but “cart” is clearer for shoppers.",
+          {
+            "image": "lobby-to-cart",
+            "alt": "Two CoCart product screens: a grey wireframe for an IKEA HEKTOGRAM with 3/5 buyers in lobby and Add to cart, and the hi-fi H&M V-Neck Cardigan with 3/5 shoppers in cart and a pink Add to My Cart button",
+            "caption": "The product step, from “buyers in lobby” to “shoppers in cart”.",
+            "labels": [
+              {
+                "text": "Lo-fi",
+                "x": 0.3136,
+                "y": 0.0393
+              },
+              {
+                "text": "Hi-fi",
+                "x": 0.6822,
+                "y": 0.0393
+              }
+            ]
+          },
+          {
+            "h3": "Shoppers and a deadline"
+          },
+          "The lo-fi had a pop-up for each store with two bars, “10 more hours to add to cart” and “$100 more for free shipping!”, then Yes or No, and small print saying a fee would apply if you cancelled.",
+          "In the hi-fi, that extra pop-up is gone, and so are the dollar goal and the cancel fee. Each cart is a card with two bars: how many shoppers have joined, and how long is left to join. Counts and a deadline set expectations for when the order ships.",
+          {
+            "image": "goal-to-count",
+            "alt": "Two CoCart screens: a grey wireframe pop-up for IKEA with 10 more hours to add to cart, $100 more for free shipping and Yes or No buttons, and the hi-fi carts for H&M with a Student Village 1 card showing 3/5 shoppers and 10 hrs left to join",
+            "caption": "A free-shipping goal in a pop-up, then shoppers and time left on every cart.",
+            "labels": [
+              {
+                "text": "Lo-fi",
+                "x": 0.3136,
+                "y": 0.0393
+              },
+              {
+                "text": "Hi-fi",
+                "x": 0.6822,
+                "y": 0.0393
+              }
+            ]
+          },
+          {
+            "h3": "One screen, three passes"
+          },
+          "The delivery range screen took three passes. The lo-fi put a distance slider above stores grouped by how far away they are. The mid-fi added a map. In the hi-fi, the map shows your range as a circle, the screen lists “Other Carts in this range” by store, and the carts for the store you’re on moved to their own screen.",
+          "The “150 pts” in the lo-fi header is gone by the mid-fi. Points moved to a card on Home.",
+          {
+            "image": "range-passes",
+            "alt": "Three versions of the CoCart delivery range screen: a grey wireframe with a 0 to 50 km slider and stores by distance, a mid-fi with a map, a slider and store logos with pink counts, and the hi-fi with a pink range circle on a map, a pink slider and other carts in this range",
+            "caption": "The delivery range screen, from slider to map.",
+            "labels": [
+              {
+                "text": "Lo-fi",
+                "x": 0.1452,
+                "y": 0.0393
+              },
+              {
+                "text": "Mid-fi",
+                "x": 0.4959,
+                "y": 0.0393
+              },
+              {
+                "text": "Hi-fi",
+                "x": 0.8507,
+                "y": 0.0393
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Joining",
+        "heading": "Carts for the store you’re on",
+        "content": [
+          "Most of CoCart happens in a small pop-up on top of the store you’re already shopping at. Open it on H&M and it knows two things straight away: the store, and the product you’re looking at.",
+          {
+            "image": "browser-product",
+            "alt": "A browser on an H&M product page for a V-Neck Cardigan, with the CoCart pop-up open on the right showing the same cardigan, savings on delivery fees, 3/5 shoppers in cart and a pink Add to My Cart button",
+            "caption": "The pop-up on an H&M product page, with the cardigan you’re looking at."
+          },
+          "Joining takes three steps. Pick a cart near your delivery spot, add the product you’re on, then check out from your cart for that store.",
+          {
+            "image": "join-flow",
+            "alt": "Three CoCart pop-ups: carts for H&M near Student Village 1 with a Join Cart button, the V-Neck Cardigan with Add to My Cart, and My H&M Cart with three items, a subtotal and Checkout",
+            "caption": "Choose a cart, add the product, check out."
+          },
+          {
+            "h3": "A prototype on a real page"
+          },
+          "I built the clickable prototype on top of a screenshot of a real H&M product page. Click the CoCart icon in the browser’s toolbar and the pop-up opens over the page. From there it clicks through choosing a cart, adding the cardigan, checking out and waiting for the cart to fill."
+        ]
+      },
+      {
+        "title": "Hosts",
+        "heading": "Who holds the package",
+        "content": [
+          "One package for a whole cart only works if someone receives it and hands the orders out. That person is the host, and the hi-fi names them right on your order.",
+          "Our first notes said anyone can be a host: you pick up from their house, and hosts get reviews, like on Uber. Apartments could host too. Both models still work:",
+          {
+            "bullets": [
+              "**In suburban neighbourhoods,** anyone can host at their house, or walk around and hand the packages out.",
+              "**In denser areas,** condo or residence management can be the distributor."
+            ]
+          },
+          "The hi-fi shows the second case. The order ships to Student Village 1, a residence, and the host is the front desk.",
+          {
+            "image": "host-card",
+            "alt": "A CoCart order card for H&M with three clothing items, Ships to Student Village 1, Waterloo ON, Host: Front Desk with a small map, and View Details",
+            "caption": "Your order on Home, with where it ships and who’s hosting."
+          },
+          "If there’s no cart near you, you can start one. Under the open carts, a Create Cart card reads: “No convenient location? A host will need to be in the new location to receive orders.”"
+        ]
+      },
+      {
+        "title": "Waiting",
+        "heading": "Making the wait clear",
+        "content": [
+          "Checking out doesn’t ship anything yet. Your order waits until the cart fills up, so the screens after checkout had to make that wait feel OK.",
+          "In the lo-fi, one Lobby screen said “Your package will ship after order is full”. The hi-fi spreads it across three screens:",
+          {
+            "bullets": [
+              "**Order placed:** your order will ship once more people join and buy something with this cart.",
+              "**Cart pending:** your items, who else is in the cart, the points you’re earning, how full the cart is, and “Order will ship after more shoppers join”.",
+              "**Home:** your active order comes first, with where it ships and who’s hosting it."
+            ]
+          },
+          {
+            "image": "wait-flow",
+            "alt": "Three CoCart pop-ups: Order Placed with a check mark and a pink Done button, the pending H&M cart with three items, 3 other people in this cart, Earning 300 points and 4/5 shoppers, and Home with the recent H&M order first",
+            "caption": "Order placed, the pending cart, and Home with your active order."
+          },
+          {
+            "h3": "Points for carbon saved"
+          },
+          "Rewards follow a note we left over the wireframes: “cash back on carbon emissions not cash spent”. You earn points by reducing CO2, use them to save on shopping, and level up on Home.",
+          {
+            "image": "points-card",
+            "alt": "A CoCart points card: 450 pts, Earn points by reducing CO2. Use points to save on shopping!, a star medal and a pink bar with 350 pts to level 3",
+            "caption": "The points card on Home."
+          }
+        ]
+      },
+      {
+        "title": "Brand",
+        "heading": "Clean, simple, colourful",
+        "content": [
+          "Even a one-day concept needs a name and a look. Our logo and branding ideas started with one line: “Clean simplistic but colourful”.",
+          "We set the name in nine typefaces, from Helvetica to Rock Salt, and tried the logo in four colourways. The pink mark with a black wordmark in Helvetica Neue went into the hi-fi.",
+          {
+            "image": "logos",
+            "size": "content",
+            "alt": "Four CoCart logo colourways: all black, all pink, all green, and a pink mark with a black wordmark",
+            "caption": "Four colourways. The pink mark with a black wordmark is the one in the hi-fi."
+          },
+          "In the screens, pink marks the logo, two buttons (Add to My Cart and Done), and the time and points bars. Green fills the shopper bars. The other main buttons, like Change and Checkout, are black.",
+          {
+            "image": "cart-card",
+            "alt": "A CoCart cart card for Student Village 1 with a green bar for 3/5 shoppers, a pink bar for 10 hrs left to join, the address and Join Cart",
+            "caption": "Shoppers in green, time left in pink."
+          }
+        ]
+      },
+      {
+        "title": "Outcome",
+        "heading": "Results and lessons",
+        "content": [
+          "CoCart won 1st place at the UWUX FUSE Designathon 2024.",
+          "It’s a concept from one day. The prototype runs in Figma on a screenshot of a store page, so it isn’t a working extension. The prices, savings, points and people in the screens are sample data.",
+          {
+            "h3": "What I learned"
+          },
+          {
+            "bullets": [
+              "**Borrow from odd places.** A game lobby gave us the pattern for joining a cart.",
+              "**Use words people know.** “Cart” beat “lobby” because it’s clearer for shoppers.",
+              "**Set expectations for the wait.** Counts and a deadline make a delayed order feel OK."
+            ]
+          },
+          {
+            "h3": "Summary"
+          },
+          "Given a broad prompt about sustainable habits in communities, our team of four had one day to answer it. We landed on co-op packaging: a browser extension where people nearby join a shared cart for the same store, and one package ships to a host who hands the orders out.",
+          "I designed the hi-fi screens and built the clickable prototype on a screenshot of a real H&M page. Along the way, lobbies became carts, a free-shipping goal became shoppers and a deadline on every cart, and one waiting screen became three. It won 1st place."
+        ]
+      }
+    ]
+  },
+  "assets": {
+    "cover": {
+      "path": "assets/cocart-cover-live.jpg",
+      "existingAssetId": "image-44c6d1212c2d534f12e540db0a24be692a197fa5-2500x1875-png",
+      "note": "Winston's current home-page thumbnail in Sanity (the extension over an H&M page on a laptop), kept as is. The local file is a downscaled copy for the preview."
+    },
+    "hero": {
+      "path": "assets/cocart-cs4-hero.jpg",
+      "sourceNodeIds": [
+        "1:14058",
+        "1:13936",
+        "1:13782"
+      ],
+      "note": "Final Product Page, Cart Selection (centre) and Cart Pending pop-ups at 2x, frame stroke trimmed, rounded corners with a light outline (outline.mjs), on a soft pink-to-cream gradient like the Yelo and CoStudy heroes. Replaces the old phone-frame hero."
+    },
+    "lobby-reference": {
+      "path": "assets/cocart-cs4-lobby-reference.png",
+      "sourceNodeIds": [
+        "358:48242",
+        "358:48262"
+      ],
+      "note": "The Among Us lobby-list screenshot the team placed next to the first lo-fi (Ideas section), then that wireframe, outlined, with a sequence arrow."
+    },
+    "lobby-to-cart": {
+      "path": "assets/cocart-cs4-lobby-to-cart.png",
+      "sourceNodeIds": [
+        "358:48333",
+        "1:14058"
+      ],
+      "note": "Lo-fi product step and hi-fi Product Page at the same 2x scale, outlined, with an arrow; Lo-fi / Hi-fi labels on the page."
+    },
+    "goal-to-count": {
+      "path": "assets/cocart-cs4-goal-to-count.png",
+      "sourceNodeIds": [
+        "358:48307",
+        "1:13936"
+      ],
+      "note": "Lo-fi store pop-up with the free-shipping goal, then hi-fi Cart Selection, same 2x scale, outlined, with an arrow."
+    },
+    "range-passes": {
+      "path": "assets/cocart-cs4-range-passes.png",
+      "sourceNodeIds": [
+        "358:48262",
+        "358:48534",
+        "1:13865"
+      ],
+      "note": "Lo-fi range screen, mid-fi Frame 15 and hi-fi Delivery Range at 2x, outlined, with arrows. The map is a stock image in the file; it is not captioned as a real place."
+    },
+    "browser-product": {
+      "path": "assets/cocart-cs4-browser-product.png",
+      "sourceNodeIds": [
+        "358:48904"
+      ],
+      "note": "Mac 3 from Chrome Extension Mockups at 2x, a sliver of another window trimmed from the top, rounded corners with a light outline, scaled to 2200 px wide."
+    },
+    "join-flow": {
+      "path": "assets/cocart-cs4-join-flow.png",
+      "sourceNodeIds": [
+        "1:13936",
+        "1:14058",
+        "1:14115"
+      ],
+      "note": "Hi-fi pop-ups 2, 4 and 5 at 2x, frame stroke trimmed, outlined, with arrows."
+    },
+    "host-card": {
+      "path": "assets/cocart-cs4-host-card.png",
+      "sourceNodeIds": [
+        "1:13674"
+      ],
+      "note": "Close-up crop of the Recent Orders card from 8 Home at 2x, outlined, centred on a wider transparent canvas so it shows at a readable size."
+    },
+    "wait-flow": {
+      "path": "assets/cocart-cs4-wait-flow.png",
+      "sourceNodeIds": [
+        "1:14212",
+        "1:13782",
+        "1:13674"
+      ],
+      "note": "Hi-fi pop-ups 6 (Order Placed), 7 (Cart Pending) and 8 (Home) at 2x, frame stroke trimmed, outlined, with arrows."
+    },
+    "points-card": {
+      "path": "assets/cocart-cs4-points-card.png",
+      "sourceNodeIds": [
+        "1:13597"
+      ],
+      "note": "Close-up crop of the points card from 1 Home at 2x, outlined, centred on a wider transparent canvas so it shows at a readable size."
+    },
+    "logos": {
+      "path": "assets/cocart-cs4-logos.png",
+      "sourceNodeIds": [
+        "358:48515",
+        "358:48524",
+        "358:48521",
+        "358:48527"
+      ],
+      "note": "The four logo colourway groups from the Low Fidelity section at 2x (each has its own light fill), outlined, in a 2 x 2 grid in canvas order."
+    },
+    "cart-card": {
+      "path": "assets/cocart-cs4-cart-card.png",
+      "sourceNodeIds": [
+        "1:13936"
+      ],
+      "note": "Close-up crop of the Student Village 1 cart card from 2 Cart Selection at 2x, outlined, centred on a wider transparent canvas so it shows at a readable size."
+    }
+  }
+}

@@ -1,0 +1,1271 @@
+{
+  "documentId": "figma-portfolio-cocart",
+  "generatedFrom": "case-study-copy/cocart.json",
+  "fields": {
+    "description": "A shared-cart browser extension concept that won 1st place at the UWUX FUSE Designathon 2024.",
+    "client": "UWUX FUSE Designathon 2024",
+    "discipline": "Product Design",
+    "intro": "CoCart is a browser extension concept where people nearby join a shared cart for the same store, so their orders ship together in one package. In a team of four, I designed the hi-fi screens and the clickable prototype, and we won 1st place at the UWUX FUSE Designathon 2024.",
+    "summary": "Taking a one-day shared-cart concept from a game-lobby idea to hi-fi screens and a clickable prototype on a real store page.",
+    "overview": "CoCart is for people who shop online and live close together, on a suburban street or in a condo or residence. I worked with Sophia, Andrew and Emily: I did the hi-fi and the prototype, and helped with the rest. Our concept won 1st place.",
+    "impact": "1st place, UWUX FUSE Designathon 2024.",
+    "showSideMenu": true,
+    "details": [
+      {
+        "_type": "detailItem",
+        "_key": "cocart-detail-0",
+        "label": "Event",
+        "value": "UWUX FUSE Designathon 2024"
+      },
+      {
+        "_type": "detailItem",
+        "_key": "cocart-detail-1",
+        "label": "Result",
+        "value": "1st place"
+      },
+      {
+        "_type": "detailItem",
+        "_key": "cocart-detail-2",
+        "label": "Role",
+        "value": "Product Designer\nHi-fi · Prototype"
+      },
+      {
+        "_type": "detailItem",
+        "_key": "cocart-detail-3",
+        "label": "Team",
+        "value": "Sophia, Andrew, Emily and Winston"
+      },
+      {
+        "_type": "detailItem",
+        "_key": "cocart-detail-4",
+        "label": "Timeline",
+        "value": "One day · November 2024"
+      },
+      {
+        "_type": "detailItem",
+        "_key": "cocart-detail-5",
+        "label": "Platform",
+        "value": "Browser extension"
+      },
+      {
+        "_type": "detailItem",
+        "_key": "cocart-detail-6",
+        "label": "Tools",
+        "value": "Figma"
+      }
+    ],
+    "coverImage": {
+      "_type": "image",
+      "localAssetKey": "cover",
+      "alt": "A laptop on a perforated metal stand, showing the CoCart pop-up open over an H&M product page, with a cart near Student Village 1"
+    },
+    "hero": [
+      {
+        "_type": "mediaImage",
+        "_key": "cocart-hero",
+        "localAssetKey": "hero",
+        "alt": "Three CoCart pop-ups: a V-Neck Cardigan from H&M with Add to My Cart, open carts near Student Village 1 with shoppers and time left, and a pending H&M cart with 4/5 shoppers",
+        "size": "full"
+      }
+    ],
+    "sections": [
+      {
+        "_type": "projectSection",
+        "_key": "cocart-section-0",
+        "title": "Problem Statement",
+        "heading": "How might we empower communities to adopt sustainable habits that reduce environmental impact?",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "cocart-s-0-b-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "cocart-s-0-b-0-s",
+                "marks": [],
+                "text": "This was the prompt at the UWUX FUSE Designathon 2024, a one-day event, with “Community Centered Design” as the theme under it: designing solutions that foster collaboration and a sense of community. Four of us had the day to answer it."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "cocart-s-0-b-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "cocart-s-0-b-1-s",
+                "marks": [],
+                "text": "We ended up pointing it at online shopping. Every order ships in its own package, even when your neighbours buy from the same store. That means more packaging waste, and everyone pays their own shipping."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "cocart-s-0-b-2-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "cocart-s-0-b-2-0-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Who:"
+              },
+              {
+                "_type": "span",
+                "_key": "cocart-s-0-b-2-0-s1",
+                "marks": [],
+                "text": " people who shop online and live close together."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "cocart-s-0-b-2-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "cocart-s-0-b-2-1-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Where:"
+              },
+              {
+                "_type": "span",
+                "_key": "cocart-s-0-b-2-1-s1",
+                "marks": [],
+                "text": " a browser extension, on the store’s own website."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "cocart-s-0-b-2-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "cocart-s-0-b-2-2-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Constraint:"
+              },
+              {
+                "_type": "span",
+                "_key": "cocart-s-0-b-2-2-s1",
+                "marks": [],
+                "text": " one day, four people."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          }
+        ]
+      },
+      {
+        "_type": "projectSection",
+        "_key": "cocart-section-1",
+        "title": "Idea",
+        "heading": "Landing on co-op packaging",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "cocart-s-1-b-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "cocart-s-1-b-0-s",
+                "marks": [],
+                "text": "Before anything was drawn, we filled a board with ideas for the prompt. They ranged from local food to student recycling:"
+              }
+            ]
+          },
+          {
+            "_type": "stickyBoard",
+            "_key": "cocart-s-1-b-1",
+            "label": "From our brainstorm",
+            "notes": [
+              {
+                "_type": "stickyNote",
+                "_key": "cocart-s-1-b-1-n0",
+                "text": "Local farmers markets: support farmers markets",
+                "color": "green"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "cocart-s-1-b-1-n1",
+                "text": "Crops in season type of app",
+                "color": "yellow"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "cocart-s-1-b-1-n2",
+                "text": "Community gamification: city metrics, incentives",
+                "color": "blue"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "cocart-s-1-b-1-n3",
+                "text": "Recycling in students: reusable cookware, lots of packaging",
+                "color": "pink"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "cocart-s-1-b-1-n4",
+                "text": "Co-op packaging",
+                "color": "yellow",
+                "highlight": "Picked"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "cocart-s-1-b-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "cocart-s-1-b-2-s",
+                "marks": [],
+                "text": "We went with co-op packaging, mainly for the packaging waste. But real people would also use it for the lower shipping fees."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "cocart-s-1-b-3",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "cocart-s-1-b-3-s",
+                "marks": [],
+                "text": "Both sides were already on the board. “Lots of packaging” sat under recycling for students, and our co-op packaging note lists a few online brands with terrible shipping prices."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "_type": "projectSection",
+        "_key": "cocart-section-2",
+        "title": "Concept",
+        "heading": "A lobby for online orders",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "cocart-s-2-b-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "cocart-s-2-b-0-s",
+                "marks": [],
+                "text": "Sharing a delivery means people nearby have to find the same order and join it. We borrowed that part from a video game. Our first notes on co-op packaging read:"
+              }
+            ]
+          },
+          {
+            "_type": "stickyBoard",
+            "_key": "cocart-s-2-b-1",
+            "label": "Co-op packaging, in our first notes",
+            "notes": [
+              {
+                "_type": "stickyNote",
+                "_key": "cocart-s-2-b-1-n0",
+                "text": "It’s a plug-in for websites",
+                "color": "yellow"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "cocart-s-2-b-1-n1",
+                "text": "Lobby setting (like Among Us), dependent on location and e-commerce website",
+                "color": "pink"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "cocart-s-2-b-1-n2",
+                "text": "Sends package to host. Like an Uber, there are reviews",
+                "color": "blue"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "cocart-s-2-b-1-n3",
+                "text": "Anyone can be a host: you pick up from the host’s house",
+                "color": "green"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "cocart-s-2-b-1-n4",
+                "text": "Apartments can be a host",
+                "color": "green"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "cocart-s-2-b-1-n5",
+                "text": "The app splits up the payment",
+                "color": "yellow"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "cocart-s-2-b-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "cocart-s-2-b-2-s",
+                "marks": [],
+                "text": "The lobby came from Among Us. Its lobby list shows open games and how many players have joined each one, like 8/15. Our first wireframe used the same shape for stores near you, like SHEIN 1/5 and IKEA 6/10: each one a shared cart waiting for more people."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "cocart-s-2-b-3",
+            "localAssetKey": "lobby-reference",
+            "alt": "An Among Us lobby list with player counts like 8/15, next to an early CoCart wireframe listing stores near you with counts like SHEIN 1/5 and IKEA 6/10",
+            "caption": "The Among Us lobby list, and our first wireframe.",
+            "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "cocart-s-2-b-4",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "cocart-s-2-b-4-s",
+                "marks": [],
+                "text": "The other half of the idea was the plug-in. A note over our product wireframe says it “automatically detects what product ur on the website”, so CoCart works right on the store’s own page. We sketched a mobile app too, but the extension is the product. The app was a later idea."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "_type": "projectSection",
+        "_key": "cocart-section-3",
+        "title": "Iterations",
+        "heading": "From lobby to cart",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "cocart-s-3-b-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "cocart-s-3-b-0-s",
+                "marks": [],
+                "text": "We sketched the flow together in grey wireframes, then I took it to hi-fi. A few things changed between the two, starting with one word."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "cocart-s-3-b-1",
+            "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "cocart-s-3-b-1-s",
+                "marks": [],
+                "text": "Words shoppers know"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "cocart-s-3-b-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "cocart-s-3-b-2-s",
+                "marks": [],
+                "text": "The lo-fi talked about lobbies: “IKEA Lobby”, “3/5 buyers in lobby”. In the hi-fi, it’s a cart: “Join Cart”, “3/5 shoppers in cart”. The lobby was a useful idea for us, but “cart” is clearer for shoppers."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "cocart-s-3-b-3",
+            "localAssetKey": "lobby-to-cart",
+            "alt": "Two CoCart product screens: a grey wireframe for an IKEA HEKTOGRAM with 3/5 buyers in lobby and Add to cart, and the hi-fi H&M V-Neck Cardigan with 3/5 shoppers in cart and a pink Add to My Cart button",
+            "caption": "The product step, from “buyers in lobby” to “shoppers in cart”.",
+            "size": "full",
+            "labels": [
+              {
+                "_type": "imageLabel",
+                "_key": "cocart-s-3-b-3-l0",
+                "text": "Lo-fi",
+                "x": 0.3136,
+                "y": 0.0393
+              },
+              {
+                "_type": "imageLabel",
+                "_key": "cocart-s-3-b-3-l1",
+                "text": "Hi-fi",
+                "x": 0.6822,
+                "y": 0.0393
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "cocart-s-3-b-4",
+            "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "cocart-s-3-b-4-s",
+                "marks": [],
+                "text": "Shoppers and a deadline"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "cocart-s-3-b-5",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "cocart-s-3-b-5-s",
+                "marks": [],
+                "text": "The lo-fi had a pop-up for each store with two bars, “10 more hours to add to cart” and “$100 more for free shipping!”, then Yes or No, and small print saying a fee would apply if you cancelled."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "cocart-s-3-b-6",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "cocart-s-3-b-6-s",
+                "marks": [],
+                "text": "In the hi-fi, that extra pop-up is gone, and so are the dollar goal and the cancel fee. Each cart is a card with two bars: how many shoppers have joined, and how long is left to join. Counts and a deadline set expectations for when the order ships."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "cocart-s-3-b-7",
+            "localAssetKey": "goal-to-count",
+            "alt": "Two CoCart screens: a grey wireframe pop-up for IKEA with 10 more hours to add to cart, $100 more for free shipping and Yes or No buttons, and the hi-fi carts for H&M with a Student Village 1 card showing 3/5 shoppers and 10 hrs left to join",
+            "caption": "A free-shipping goal in a pop-up, then shoppers and time left on every cart.",
+            "size": "full",
+            "labels": [
+              {
+                "_type": "imageLabel",
+                "_key": "cocart-s-3-b-7-l0",
+                "text": "Lo-fi",
+                "x": 0.3136,
+                "y": 0.0393
+              },
+              {
+                "_type": "imageLabel",
+                "_key": "cocart-s-3-b-7-l1",
+                "text": "Hi-fi",
+                "x": 0.6822,
+                "y": 0.0393
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "cocart-s-3-b-8",
+            "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "cocart-s-3-b-8-s",
+                "marks": [],
+                "text": "One screen, three passes"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "cocart-s-3-b-9",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "cocart-s-3-b-9-s",
+                "marks": [],
+                "text": "The delivery range screen took three passes. The lo-fi put a distance slider above stores grouped by how far away they are. The mid-fi added a map. In the hi-fi, the map shows your range as a circle, the screen lists “Other Carts in this range” by store, and the carts for the store you’re on moved to their own screen."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "cocart-s-3-b-10",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "cocart-s-3-b-10-s",
+                "marks": [],
+                "text": "The “150 pts” in the lo-fi header is gone by the mid-fi. Points moved to a card on Home."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "cocart-s-3-b-11",
+            "localAssetKey": "range-passes",
+            "alt": "Three versions of the CoCart delivery range screen: a grey wireframe with a 0 to 50 km slider and stores by distance, a mid-fi with a map, a slider and store logos with pink counts, and the hi-fi with a pink range circle on a map, a pink slider and other carts in this range",
+            "caption": "The delivery range screen, from slider to map.",
+            "size": "full",
+            "labels": [
+              {
+                "_type": "imageLabel",
+                "_key": "cocart-s-3-b-11-l0",
+                "text": "Lo-fi",
+                "x": 0.1452,
+                "y": 0.0393
+              },
+              {
+                "_type": "imageLabel",
+                "_key": "cocart-s-3-b-11-l1",
+                "text": "Mid-fi",
+                "x": 0.4959,
+                "y": 0.0393
+              },
+              {
+                "_type": "imageLabel",
+                "_key": "cocart-s-3-b-11-l2",
+                "text": "Hi-fi",
+                "x": 0.8507,
+                "y": 0.0393
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "_type": "projectSection",
+        "_key": "cocart-section-4",
+        "title": "Joining",
+        "heading": "Carts for the store you’re on",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "cocart-s-4-b-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "cocart-s-4-b-0-s",
+                "marks": [],
+                "text": "Most of CoCart happens in a small pop-up on top of the store you’re already shopping at. Open it on H&M and it knows two things straight away: the store, and the product you’re looking at."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "cocart-s-4-b-1",
+            "localAssetKey": "browser-product",
+            "alt": "A browser on an H&M product page for a V-Neck Cardigan, with the CoCart pop-up open on the right showing the same cardigan, savings on delivery fees, 3/5 shoppers in cart and a pink Add to My Cart button",
+            "caption": "The pop-up on an H&M product page, with the cardigan you’re looking at.",
+            "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "cocart-s-4-b-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "cocart-s-4-b-2-s",
+                "marks": [],
+                "text": "Joining takes three steps. Pick a cart near your delivery spot, add the product you’re on, then check out from your cart for that store."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "cocart-s-4-b-3",
+            "localAssetKey": "join-flow",
+            "alt": "Three CoCart pop-ups: carts for H&M near Student Village 1 with a Join Cart button, the V-Neck Cardigan with Add to My Cart, and My H&M Cart with three items, a subtotal and Checkout",
+            "caption": "Choose a cart, add the product, check out.",
+            "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "cocart-s-4-b-4",
+            "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "cocart-s-4-b-4-s",
+                "marks": [],
+                "text": "A prototype on a real page"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "cocart-s-4-b-5",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "cocart-s-4-b-5-s",
+                "marks": [],
+                "text": "I built the clickable prototype on top of a screenshot of a real H&M product page. Click the CoCart icon in the browser’s toolbar and the pop-up opens over the page. From there it clicks through choosing a cart, adding the cardigan, checking out and waiting for the cart to fill."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "_type": "projectSection",
+        "_key": "cocart-section-5",
+        "title": "Hosts",
+        "heading": "Who holds the package",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "cocart-s-5-b-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "cocart-s-5-b-0-s",
+                "marks": [],
+                "text": "One package for a whole cart only works if someone receives it and hands the orders out. That person is the host, and the hi-fi names them right on your order."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "cocart-s-5-b-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "cocart-s-5-b-1-s",
+                "marks": [],
+                "text": "Our first notes said anyone can be a host: you pick up from their house, and hosts get reviews, like on Uber. Apartments could host too. Both models still work:"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "cocart-s-5-b-2-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "cocart-s-5-b-2-0-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "In suburban neighbourhoods,"
+              },
+              {
+                "_type": "span",
+                "_key": "cocart-s-5-b-2-0-s1",
+                "marks": [],
+                "text": " anyone can host at their house, or walk around and hand the packages out."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "cocart-s-5-b-2-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "cocart-s-5-b-2-1-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "In denser areas,"
+              },
+              {
+                "_type": "span",
+                "_key": "cocart-s-5-b-2-1-s1",
+                "marks": [],
+                "text": " condo or residence management can be the distributor."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "cocart-s-5-b-3",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "cocart-s-5-b-3-s",
+                "marks": [],
+                "text": "The hi-fi shows the second case. The order ships to Student Village 1, a residence, and the host is the front desk."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "cocart-s-5-b-4",
+            "localAssetKey": "host-card",
+            "alt": "A CoCart order card for H&M with three clothing items, Ships to Student Village 1, Waterloo ON, Host: Front Desk with a small map, and View Details",
+            "caption": "Your order on Home, with where it ships and who’s hosting.",
+            "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "cocart-s-5-b-5",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "cocart-s-5-b-5-s",
+                "marks": [],
+                "text": "If there’s no cart near you, you can start one. Under the open carts, a Create Cart card reads: “No convenient location? A host will need to be in the new location to receive orders.”"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "_type": "projectSection",
+        "_key": "cocart-section-6",
+        "title": "Waiting",
+        "heading": "Making the wait clear",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "cocart-s-6-b-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "cocart-s-6-b-0-s",
+                "marks": [],
+                "text": "Checking out doesn’t ship anything yet. Your order waits until the cart fills up, so the screens after checkout had to make that wait feel OK."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "cocart-s-6-b-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "cocart-s-6-b-1-s",
+                "marks": [],
+                "text": "In the lo-fi, one Lobby screen said “Your package will ship after order is full”. The hi-fi spreads it across three screens:"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "cocart-s-6-b-2-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "cocart-s-6-b-2-0-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Order placed:"
+              },
+              {
+                "_type": "span",
+                "_key": "cocart-s-6-b-2-0-s1",
+                "marks": [],
+                "text": " your order will ship once more people join and buy something with this cart."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "cocart-s-6-b-2-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "cocart-s-6-b-2-1-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Cart pending:"
+              },
+              {
+                "_type": "span",
+                "_key": "cocart-s-6-b-2-1-s1",
+                "marks": [],
+                "text": " your items, who else is in the cart, the points you’re earning, how full the cart is, and “Order will ship after more shoppers join”."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "cocart-s-6-b-2-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "cocart-s-6-b-2-2-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Home:"
+              },
+              {
+                "_type": "span",
+                "_key": "cocart-s-6-b-2-2-s1",
+                "marks": [],
+                "text": " your active order comes first, with where it ships and who’s hosting it."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "cocart-s-6-b-3",
+            "localAssetKey": "wait-flow",
+            "alt": "Three CoCart pop-ups: Order Placed with a check mark and a pink Done button, the pending H&M cart with three items, 3 other people in this cart, Earning 300 points and 4/5 shoppers, and Home with the recent H&M order first",
+            "caption": "Order placed, the pending cart, and Home with your active order.",
+            "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "cocart-s-6-b-4",
+            "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "cocart-s-6-b-4-s",
+                "marks": [],
+                "text": "Points for carbon saved"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "cocart-s-6-b-5",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "cocart-s-6-b-5-s",
+                "marks": [],
+                "text": "Rewards follow a note we left over the wireframes: “cash back on carbon emissions not cash spent”. You earn points by reducing CO2, use them to save on shopping, and level up on Home."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "cocart-s-6-b-6",
+            "localAssetKey": "points-card",
+            "alt": "A CoCart points card: 450 pts, Earn points by reducing CO2. Use points to save on shopping!, a star medal and a pink bar with 350 pts to level 3",
+            "caption": "The points card on Home.",
+            "size": "full"
+          }
+        ]
+      },
+      {
+        "_type": "projectSection",
+        "_key": "cocart-section-7",
+        "title": "Brand",
+        "heading": "Clean, simple, colourful",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "cocart-s-7-b-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "cocart-s-7-b-0-s",
+                "marks": [],
+                "text": "Even a one-day concept needs a name and a look. Our logo and branding ideas started with one line: “Clean simplistic but colourful”."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "cocart-s-7-b-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "cocart-s-7-b-1-s",
+                "marks": [],
+                "text": "We set the name in nine typefaces, from Helvetica to Rock Salt, and tried the logo in four colourways. The pink mark with a black wordmark in Helvetica Neue went into the hi-fi."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "cocart-s-7-b-2",
+            "localAssetKey": "logos",
+            "alt": "Four CoCart logo colourways: all black, all pink, all green, and a pink mark with a black wordmark",
+            "caption": "Four colourways. The pink mark with a black wordmark is the one in the hi-fi.",
+            "size": "content"
+          },
+          {
+            "_type": "block",
+            "_key": "cocart-s-7-b-3",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "cocart-s-7-b-3-s",
+                "marks": [],
+                "text": "In the screens, pink marks the logo, two buttons (Add to My Cart and Done), and the time and points bars. Green fills the shopper bars. The other main buttons, like Change and Checkout, are black."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "cocart-s-7-b-4",
+            "localAssetKey": "cart-card",
+            "alt": "A CoCart cart card for Student Village 1 with a green bar for 3/5 shoppers, a pink bar for 10 hrs left to join, the address and Join Cart",
+            "caption": "Shoppers in green, time left in pink.",
+            "size": "full"
+          }
+        ]
+      },
+      {
+        "_type": "projectSection",
+        "_key": "cocart-section-8",
+        "title": "Outcome",
+        "heading": "Results and lessons",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "cocart-s-8-b-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "cocart-s-8-b-0-s",
+                "marks": [],
+                "text": "CoCart won 1st place at the UWUX FUSE Designathon 2024."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "cocart-s-8-b-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "cocart-s-8-b-1-s",
+                "marks": [],
+                "text": "It’s a concept from one day. The prototype runs in Figma on a screenshot of a store page, so it isn’t a working extension. The prices, savings, points and people in the screens are sample data."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "cocart-s-8-b-2",
+            "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "cocart-s-8-b-2-s",
+                "marks": [],
+                "text": "What I learned"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "cocart-s-8-b-3-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "cocart-s-8-b-3-0-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Borrow from odd places."
+              },
+              {
+                "_type": "span",
+                "_key": "cocart-s-8-b-3-0-s1",
+                "marks": [],
+                "text": " A game lobby gave us the pattern for joining a cart."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "cocart-s-8-b-3-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "cocart-s-8-b-3-1-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Use words people know."
+              },
+              {
+                "_type": "span",
+                "_key": "cocart-s-8-b-3-1-s1",
+                "marks": [],
+                "text": " “Cart” beat “lobby” because it’s clearer for shoppers."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "cocart-s-8-b-3-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "cocart-s-8-b-3-2-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Set expectations for the wait."
+              },
+              {
+                "_type": "span",
+                "_key": "cocart-s-8-b-3-2-s1",
+                "marks": [],
+                "text": " Counts and a deadline make a delayed order feel OK."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "cocart-s-8-b-4",
+            "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "cocart-s-8-b-4-s",
+                "marks": [],
+                "text": "Summary"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "cocart-s-8-b-5",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "cocart-s-8-b-5-s",
+                "marks": [],
+                "text": "Given a broad prompt about sustainable habits in communities, our team of four had one day to answer it. We landed on co-op packaging: a browser extension where people nearby join a shared cart for the same store, and one package ships to a host who hands the orders out."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "cocart-s-8-b-6",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "cocart-s-8-b-6-s",
+                "marks": [],
+                "text": "I designed the hi-fi screens and built the clickable prototype on a screenshot of a real H&M page. Along the way, lobbies became carts, a free-shipping goal became shoppers and a deadline on every cart, and one waiting screen became three. It won 1st place."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "assets": {
+    "cover": {
+      "path": "assets/cocart-cover-live.jpg",
+      "existingAssetId": "image-44c6d1212c2d534f12e540db0a24be692a197fa5-2500x1875-png",
+      "note": "Winston's current home-page thumbnail in Sanity (the extension over an H&M page on a laptop), kept as is. The local file is a downscaled copy for the preview."
+    },
+    "hero": {
+      "path": "assets/cocart-cs4-hero.jpg",
+      "sourceNodeIds": [
+        "1:14058",
+        "1:13936",
+        "1:13782"
+      ],
+      "note": "Final Product Page, Cart Selection (centre) and Cart Pending pop-ups at 2x, frame stroke trimmed, rounded corners with a light outline (outline.mjs), on a soft pink-to-cream gradient like the Yelo and CoStudy heroes. Replaces the old phone-frame hero."
+    },
+    "lobby-reference": {
+      "path": "assets/cocart-cs4-lobby-reference.png",
+      "sourceNodeIds": [
+        "358:48242",
+        "358:48262"
+      ],
+      "note": "The Among Us lobby-list screenshot the team placed next to the first lo-fi (Ideas section), then that wireframe, outlined, with a sequence arrow."
+    },
+    "lobby-to-cart": {
+      "path": "assets/cocart-cs4-lobby-to-cart.png",
+      "sourceNodeIds": [
+        "358:48333",
+        "1:14058"
+      ],
+      "note": "Lo-fi product step and hi-fi Product Page at the same 2x scale, outlined, with an arrow; Lo-fi / Hi-fi labels on the page."
+    },
+    "goal-to-count": {
+      "path": "assets/cocart-cs4-goal-to-count.png",
+      "sourceNodeIds": [
+        "358:48307",
+        "1:13936"
+      ],
+      "note": "Lo-fi store pop-up with the free-shipping goal, then hi-fi Cart Selection, same 2x scale, outlined, with an arrow."
+    },
+    "range-passes": {
+      "path": "assets/cocart-cs4-range-passes.png",
+      "sourceNodeIds": [
+        "358:48262",
+        "358:48534",
+        "1:13865"
+      ],
+      "note": "Lo-fi range screen, mid-fi Frame 15 and hi-fi Delivery Range at 2x, outlined, with arrows. The map is a stock image in the file; it is not captioned as a real place."
+    },
+    "browser-product": {
+      "path": "assets/cocart-cs4-browser-product.png",
+      "sourceNodeIds": [
+        "358:48904"
+      ],
+      "note": "Mac 3 from Chrome Extension Mockups at 2x, a sliver of another window trimmed from the top, rounded corners with a light outline, scaled to 2200 px wide."
+    },
+    "join-flow": {
+      "path": "assets/cocart-cs4-join-flow.png",
+      "sourceNodeIds": [
+        "1:13936",
+        "1:14058",
+        "1:14115"
+      ],
+      "note": "Hi-fi pop-ups 2, 4 and 5 at 2x, frame stroke trimmed, outlined, with arrows."
+    },
+    "host-card": {
+      "path": "assets/cocart-cs4-host-card.png",
+      "sourceNodeIds": [
+        "1:13674"
+      ],
+      "note": "Close-up crop of the Recent Orders card from 8 Home at 2x, outlined, centred on a wider transparent canvas so it shows at a readable size."
+    },
+    "wait-flow": {
+      "path": "assets/cocart-cs4-wait-flow.png",
+      "sourceNodeIds": [
+        "1:14212",
+        "1:13782",
+        "1:13674"
+      ],
+      "note": "Hi-fi pop-ups 6 (Order Placed), 7 (Cart Pending) and 8 (Home) at 2x, frame stroke trimmed, outlined, with arrows."
+    },
+    "points-card": {
+      "path": "assets/cocart-cs4-points-card.png",
+      "sourceNodeIds": [
+        "1:13597"
+      ],
+      "note": "Close-up crop of the points card from 1 Home at 2x, outlined, centred on a wider transparent canvas so it shows at a readable size."
+    },
+    "logos": {
+      "path": "assets/cocart-cs4-logos.png",
+      "sourceNodeIds": [
+        "358:48515",
+        "358:48524",
+        "358:48521",
+        "358:48527"
+      ],
+      "note": "The four logo colourway groups from the Low Fidelity section at 2x (each has its own light fill), outlined, in a 2 x 2 grid in canvas order."
+    },
+    "cart-card": {
+      "path": "assets/cocart-cs4-cart-card.png",
+      "sourceNodeIds": [
+        "1:13936"
+      ],
+      "note": "Close-up crop of the Student Village 1 cart card from 2 Cart Selection at 2x, outlined, centred on a wider transparent canvas so it shows at a readable size."
+    }
+  }
+}
