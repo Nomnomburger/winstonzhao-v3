@@ -380,8 +380,8 @@
             "caption": "A fourth tab, then a rail on the right edge.",
             "arrows": true
           },
-          "In the final version, that rail opens a Heatmap Insights panel right beside the heatmap, and folds back into the rail when you’re done.",
-          "Insights make the most sense next to the heatmap they’re about, so a panel lets you read both at once. They also aren’t a view of the data like the three tabs are. They’re advice, so they didn’t belong among them. Feedback from the team and the client led there too.",
+          "In the final version, that rail opens a Heatmap Insights panel, and folds back into the rail when you’re done.",
+          "Insights make sense next to the heatmap they’re about, and a panel lets you read both at once. They also aren’t a view of the data like the three tabs are. They’re advice, so they didn’t belong among them. Feedback from the team and the client led there too.",
           {
             "image": "ai-final",
             "alt": "The final Heatmap viewer with the nav expanded, a mobile heatmap of the Jellybee home page, and the Heatmap Insights panel open on the right with suggestions such as Shorten Button Text and Change Button Color",
@@ -449,10 +449,10 @@
         "title": "Dashboard",
         "heading": "Signals at a glance",
         "content": [
-          "Before you open a single heatmap, the dashboard gives you the big picture: whether tracking is live, a few key numbers, and how your pages are doing. I started with sketches, and wrote down why each detail was there.",
+          "Before you open a single heatmap, the dashboard gives you the big picture: whether tracking is live, a few key numbers, and how your pages are doing. I sketched it and wrote down why each detail was there.",
           {
             "image": "dash-sketches",
-            "alt": "Four notebook pages of dashboard sketches dated August 20, 2024, with notes on engaged sessions, site speed, page traffic and error messages with a Heatmap Translator",
+            "alt": "Four notebook pages of dashboard sketches, with notes on engaged sessions, site speed, page traffic and error messages with a Heatmap Translator",
             "caption": "My dashboard sketches, with notes on each detail."
           },
           "The old dashboard already had most of the pieces: live snippet status, four key numbers with sparklines, page traffic, rage clicks and site speed. I kept them and worked on how they read. From my notes:",

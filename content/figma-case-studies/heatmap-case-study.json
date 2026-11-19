@@ -1183,7 +1183,7 @@
                 "_type": "span",
                 "_key": "heatmap-s-4-b-5-s",
                 "marks": [],
-                "text": "In the final version, that rail opens a Heatmap Insights panel right beside the heatmap, and folds back into the rail when you’re done."
+                "text": "In the final version, that rail opens a Heatmap Insights panel, and folds back into the rail when you’re done."
               }
             ]
           },
@@ -1197,7 +1197,7 @@
                 "_type": "span",
                 "_key": "heatmap-s-4-b-6-s",
                 "marks": [],
-                "text": "Insights make the most sense next to the heatmap they’re about, so a panel lets you read both at once. They also aren’t a view of the data like the three tabs are. They’re advice, so they didn’t belong among them. Feedback from the team and the client led there too."
+                "text": "Insights make sense next to the heatmap they’re about, and a panel lets you read both at once. They also aren’t a view of the data like the three tabs are. They’re advice, so they didn’t belong among them. Feedback from the team and the client led there too."
               }
             ]
           },
@@ -1355,7 +1355,7 @@
                 "_type": "span",
                 "_key": "heatmap-s-6-b-0-s",
                 "marks": [],
-                "text": "Before you open a single heatmap, the dashboard gives you the big picture: whether tracking is live, a few key numbers, and how your pages are doing. I started with sketches, and wrote down why each detail was there."
+                "text": "Before you open a single heatmap, the dashboard gives you the big picture: whether tracking is live, a few key numbers, and how your pages are doing. I sketched it and wrote down why each detail was there."
               }
             ]
           },
@@ -1363,7 +1363,7 @@
             "_type": "mediaImage",
             "_key": "heatmap-s-6-b-1",
             "localAssetKey": "dash-sketches",
-            "alt": "Four notebook pages of dashboard sketches dated August 20, 2024, with notes on engaged sessions, site speed, page traffic and error messages with a Heatmap Translator",
+            "alt": "Four notebook pages of dashboard sketches, with notes on engaged sessions, site speed, page traffic and error messages with a Heatmap Translator",
             "caption": "My dashboard sketches, with notes on each detail.",
             "size": "full"
           },

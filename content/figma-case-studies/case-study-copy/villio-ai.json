@@ -76,17 +76,17 @@
         "heading": "What matters today",
         "content": [
           "Open Villio and you see your day before you see a chat. The home is a feed in time order: today first, then the next seven days, then links to city resources. It took a few rounds to get there.",
-          "My wireframes already had both halves: a “For you” feed with an upcoming booking, a 311 request in progress and a Discover section, and a prompt bar at the bottom asking “What do you want to do?”. In the chat, the reply came with a booking card.",
+          "My wireframes already had both halves: a “For you” feed with an upcoming booking, a 311 request in progress and a Discover section, and a prompt bar at the bottom asking “What do you want to do?” In the chat, the reply came with a booking card.",
           {
             "image": "wireframes",
             "alt": "Two grey wireframes on iPhones: a Welcome to Villio home with For you cards for an upcoming booking at 5:00PM and a 311 tree removal request, a Discover card and a What do you want to do? bar; then a chat where a prompt gets a message and an upcoming booking card",
             "caption": "My wireframes: the home, and a chat that answers with a card."
           },
-          "In my early designs, the greeting led: a big “Hi there” and “Access Markham’s services”, with suggestions and a prompt bar under placeholder cards for the feed. Then the greeting moved into a white sheet over the cards, and the placeholders became a real feed: your events, then updates from the city.",
+          "My early designs put the greeting in different places. In one, a big “Hi there” and “Access Markham’s services” sit under a mint placeholder block, with suggestions and a prompt bar below. In others, the greeting sits in a white sheet, over placeholder cards or over a real feed of your events and updates from the city.",
           {
             "image": "early-home",
             "alt": "Three early Villio designs on iPhones: a big Hi there greeting under a mint placeholder block, with suggestions and a mic button; the greeting in a white sheet over empty cards; and the sheet over a feed of your events and updates from the city",
-            "caption": "The greeting first, then a sheet over the cards, then a real feed behind it."
+            "caption": "Three early homes: the greeting on its own, in a sheet over placeholder cards, and over a real feed."
           },
           "In the final home, a booking gets a countdown, the time and place, and a Manage booking button. Garbage day gets a single row.",
           "Ask Villio sits in a sheet docked under the feed, with “Hi there”, the prompt bar and a big voice button. In the prototype, tapping the feed tucks the sheet down to one line, and more of your week shows above it. The expand button opens it into a full-screen chat.",
@@ -115,7 +115,7 @@
             "alt": "Two iPhones: the full-screen Villio assistant with Discover tiles for Recreational, 311 and Events and suggested actions above the Ask Villio bar, then the same screen with the keyboard up, suggestions above the field and a send button",
             "caption": "Discover and suggested actions, then typing a request."
           },
-          "A fuller set of rows is still hidden in the prototype’s chat frames:",
+          "A fuller set of rows is hidden in the prototype’s chat frames:",
           {
             "board": {
               "label": "The hidden Discover rows",
@@ -134,11 +134,11 @@
             "caption": "Example prompts from the hidden version of Discover."
           },
           { "h3": "Voice gets the big button" },
-          "The bar took the most tries. In some versions, voice led the row, and typing hid behind a keyboard button. I tried eight arrangements on the same feed, from a row of round buttons to one card with everything inside it.",
+          "The bar went through many versions. In some, voice led the row, and typing hid behind a keyboard button. I tried eight arrangements on the same feed, including a row of round buttons with no text field and one card with everything inside it.",
           {
             "image": "bars",
             "alt": "Eight versions of the Villio sheet’s prompt bar: rows of round voice, keyboard and Discover buttons, Ask villio fields with the voice button inside or beside them, and one card holding the field and every button",
-            "caption": "Eight prompt bars on the same feed. The last is closest to the final."
+            "caption": "Eight prompt bars from my early designs. The last, a text field with a big voice button, is closest to the final."
           },
           "The final keeps it simple: a plain text field, and voice as a large green circle beside it. Our pitch deck named residents with low digital literacy as a risk, and promoted voice mode and visual cards for accessibility in response.",
           {
@@ -159,7 +159,7 @@
           {
             "image": "card-phones",
             "alt": "Two iPhones: a Villio chat where a study room request returns a booking card with no buttons, and the same chat from the pitch deck, with a Manage booking button on the card and Thanks! typed in the bar",
-            "caption": "The booking card on its own, and with Manage booking.",
+            "caption": "The booking card with no buttons, and with Manage booking.",
             "labels": [
               { "text": "Prototype", "x": 0.358, "y": 0.0434 },
               { "text": "Pitch deck", "x": 0.642, "y": 0.0434 }
@@ -259,7 +259,7 @@
     "early-home": {
       "path": "assets/villio-ai-cs5-early-home.png",
       "sourceNodeIds": ["421:51162", "421:51556", "421:51856"],
-      "note": "Three early home designs from “winston v1” (421:51141): greeting first under a mint placeholder, the greeting in a sheet over empty cards, then the sheet over a real feed (Your Events, From the City), at 3x in Apple’s iPhone 16 Pro (White Titanium) bezel on a transparent background (phones.py), spread, with arrows."
+      "note": "Three early home designs from “winston v1” (421:51141): greeting first under a mint placeholder, the greeting in a sheet over empty cards, then the sheet over a real feed (Your Events, From the City), at 3x in Apple’s iPhone 16 Pro (White Titanium) bezel on a transparent background (phones.py), spread, no arrows (the canvas gives no order)."
     },
     "early-expanded": {
       "path": "assets/villio-ai-cs5-early-expanded.png",

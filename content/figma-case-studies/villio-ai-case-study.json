@@ -311,7 +311,7 @@
                 "_type": "span",
                 "_key": "villio-ai-s-2-b-1-s",
                 "marks": [],
-                "text": "My wireframes already had both halves: a “For you” feed with an upcoming booking, a 311 request in progress and a Discover section, and a prompt bar at the bottom asking “What do you want to do?”. In the chat, the reply came with a booking card."
+                "text": "My wireframes already had both halves: a “For you” feed with an upcoming booking, a 311 request in progress and a Discover section, and a prompt bar at the bottom asking “What do you want to do?” In the chat, the reply came with a booking card."
               }
             ]
           },
@@ -333,7 +333,7 @@
                 "_type": "span",
                 "_key": "villio-ai-s-2-b-3-s",
                 "marks": [],
-                "text": "In my early designs, the greeting led: a big “Hi there” and “Access Markham’s services”, with suggestions and a prompt bar under placeholder cards for the feed. Then the greeting moved into a white sheet over the cards, and the placeholders became a real feed: your events, then updates from the city."
+                "text": "My early designs put the greeting in different places. In one, a big “Hi there” and “Access Markham’s services” sit under a mint placeholder block, with suggestions and a prompt bar below. In others, the greeting sits in a white sheet, over placeholder cards or over a real feed of your events and updates from the city."
               }
             ]
           },
@@ -342,7 +342,7 @@
             "_key": "villio-ai-s-2-b-4",
             "localAssetKey": "early-home",
             "alt": "Three early Villio designs on iPhones: a big Hi there greeting under a mint placeholder block, with suggestions and a mic button; the greeting in a white sheet over empty cards; and the sheet over a feed of your events and updates from the city",
-            "caption": "The greeting first, then a sheet over the cards, then a real feed behind it.",
+            "caption": "Three early homes: the greeting on its own, in a sheet over placeholder cards, and over a real feed.",
             "size": "full"
           },
           {
@@ -471,7 +471,7 @@
                 "_type": "span",
                 "_key": "villio-ai-s-3-b-5-s",
                 "marks": [],
-                "text": "A fuller set of rows is still hidden in the prototype’s chat frames:"
+                "text": "A fuller set of rows is hidden in the prototype’s chat frames:"
               }
             ]
           },
@@ -570,7 +570,7 @@
                 "_type": "span",
                 "_key": "villio-ai-s-3-b-8-s",
                 "marks": [],
-                "text": "The bar took the most tries. In some versions, voice led the row, and typing hid behind a keyboard button. I tried eight arrangements on the same feed, from a row of round buttons to one card with everything inside it."
+                "text": "The bar went through many versions. In some, voice led the row, and typing hid behind a keyboard button. I tried eight arrangements on the same feed, including a row of round buttons with no text field and one card with everything inside it."
               }
             ]
           },
@@ -579,7 +579,7 @@
             "_key": "villio-ai-s-3-b-9",
             "localAssetKey": "bars",
             "alt": "Eight versions of the Villio sheet’s prompt bar: rows of round voice, keyboard and Discover buttons, Ask villio fields with the voice button inside or beside them, and one card holding the field and every button",
-            "caption": "Eight prompt bars on the same feed. The last is closest to the final.",
+            "caption": "Eight prompt bars from my early designs. The last, a text field with a big voice button, is closest to the final.",
             "size": "full"
           },
           {
@@ -659,7 +659,7 @@
             "_key": "villio-ai-s-4-b-3",
             "localAssetKey": "card-phones",
             "alt": "Two iPhones: a Villio chat where a study room request returns a booking card with no buttons, and the same chat from the pitch deck, with a Manage booking button on the card and Thanks! typed in the bar",
-            "caption": "The booking card on its own, and with Manage booking.",
+            "caption": "The booking card with no buttons, and with Manage booking.",
             "size": "full",
             "labels": [
               {
@@ -1072,7 +1072,7 @@
         "421:51556",
         "421:51856"
       ],
-      "note": "Three early home designs from “winston v1” (421:51141): greeting first under a mint placeholder, the greeting in a sheet over empty cards, then the sheet over a real feed (Your Events, From the City), at 3x in Apple’s iPhone 16 Pro (White Titanium) bezel on a transparent background (phones.py), spread, with arrows."
+      "note": "Three early home designs from “winston v1” (421:51141): greeting first under a mint placeholder, the greeting in a sheet over empty cards, then the sheet over a real feed (Your Events, From the City), at 3x in Apple’s iPhone 16 Pro (White Titanium) bezel on a transparent background (phones.py), spread, no arrows (the canvas gives no order)."
     },
     "early-expanded": {
       "path": "assets/villio-ai-cs5-early-expanded.png",
