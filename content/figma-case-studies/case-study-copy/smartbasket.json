@@ -113,7 +113,7 @@
           },
           {
             "image": "home-open",
-            "alt": "Two iPhones: the SmartBasket home with Today, Your SmartBasket and Points cards, then the Today card opened full screen with nearby products and four stores with sales",
+            "alt": "Two iPhones: the SmartBasket home with Today, Your SmartBasket and Points cards, then the Today card opened full screen with nearby products and six stores with sales: Walmart, No Frills, Loblaws, Costco, T&T and Metro",
             "caption": "Today’s card opens in place, with the stores that have sales."
           },
           "In the Figma prototype, each card opens with Smart Animate, and an X closes it back into the stack."
@@ -259,7 +259,7 @@
         "358:49822",
         "358:50151"
       ],
-      "note": "Home, then Today opened, in the bezel with an arrow. In 358:49822 the third row of store tiles repeats the Loblaws / Costco row (a placeholder); it is painted out locally in the card's mint, using the card's bottom-corner mask from 358:50151 (same card shape, empty bottom). The Figma file is unchanged."
+      "note": "Home, then Today opened, in the bezel with an arrow. In 358:49822 the third row of store tiles repeats the Loblaws / Costco row (a placeholder); at Winston’s request (Nov 2026) it is redrawn locally as T&T (3km away, 2 items) and Metro (5km away, 1 item): row 2’s tiles as the template, text in Onest at the tiles’ own sizes and colours, and the logos Winston supplied cut to the 42pt circle of the Store Icon frames (sb2/replace_row.py). The Figma file is unchanged."
     },
     "add-item": {
       "path": "assets/smartbasket-cs4-add-item.png",
