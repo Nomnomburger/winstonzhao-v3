@@ -5,7 +5,7 @@
     "url": "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W/Winston-Design-Demo?node-id=1-325",
     "page": "Villio AI (1:325): Main App (1:960), Landing Page (101:5032); MuniSync (1:7779) for the YRConnect screens",
     "slides": "Pitch deck, Figma Slides file hq9GPrqUNKbONjTk6pUZBT (18 slides, Aug 2025)",
-    "facts": "Confirmed by Winston (Nov 2026): Villio is YRConnect (YRHacks 2024) rebuilt as a startup around one AI prompt; he designed the resident app, the landing page and the pitch deck (not the staff portal, which is left out entirely); no teammates are named: co-founders and a team of eight (deck 10:37, 10:99: 3 co-founders + 5); pilot discussions with the City of Richmond Hill didn't go ahead; Villio wound down 'because as students, getting government contracts is hard and time consuming'. One prompt, his reasons: residents don't know which department handles what, so asking beats finding the right page; asking is faster than filling in forms. Docked sheet: keeps today's feed (bookings, notices) visible with chat one tap away. HMW (round 7): 'How might we bring a city's scattered services into one place, for residents and staff?'. Lessons he chose: answers you can act on (cards you can use, not paragraphs to read); selling to cities is slow (government procurement is a different game, especially as students). Older resume (157:41485, 157:41492): Co-Founder / Product Designer, May 2025; designed the MVP; met with municipalities + VCs. Voice and visual cards: the deck's risks slide (60:305) promotes 'voice mode and visual card navigation for accessibility' for residents with low digital literacy; no other reason is stated. YRConnect facts from his older site copy (yrconnect-expanded-copy.json): a concept by Winston and one teammate, born from the Cornell Library booking frustration, second place at YRHacks 2024. The order of the three booking-card versions (prototype, deck, landing page) is not known, so the copy and images don't claim one. YC (Nov 19 2026): Villio applied to Y Combinator for its Fall 2025 batch; youtu.be/mYBE8UWUMUQ is the founder video from the application; the result is left unsaid, and Winston’s part in the application isn’t mentioned."
+    "facts": "Confirmed by Winston (Nov 2026): Villio is YRConnect (YRHacks 2024) rebuilt as a startup around one AI prompt; he designed the resident app, the landing page and the pitch deck (not the staff portal, which is left out entirely); no teammates are named: co-founders and a team of eight (deck 10:37, 10:99: 3 co-founders + 5); pilot discussions with the City of Richmond Hill didn't go ahead; Villio wound down 'because as students, getting government contracts is hard and time consuming'. One prompt, his reasons: residents don't know which department handles what, so asking beats finding the right page; asking is faster than filling in forms. Docked sheet: keeps today's feed (bookings, notices) visible with chat one tap away. HMW (round 7): 'How might we bring a city's scattered services into one place, for residents and staff?'. Lessons he chose: answers you can act on (cards you can use, not paragraphs to read); selling to cities is slow (government procurement is a different game, especially as students). Older resume (157:41485, 157:41492): Co-Founder / Product Designer, May 2025; designed the MVP; met with municipalities + VCs. Voice and visual cards: the deck's risks slide (60:305) promotes 'voice mode and visual card navigation for accessibility' for residents with low digital literacy; no other reason is stated. YRConnect facts from his older site copy (yrconnect-expanded-copy.json): a concept by Winston and one teammate, born from the Cornell Library booking frustration, second place at YRHacks 2024. The order of the three booking-card versions (prototype, deck, landing page) is not known, so the copy and images don't claim one. YC (Nov 19 2026): Villio applied to Y Combinator for its Fall 2025 batch; youtu.be/mYBE8UWUMUQ is the founder video from the application; the result is left unsaid, and Winston’s part in the application isn’t mentioned. Page wording (Nov 19 2026): don’t mention the pilot not going ahead or Villio winding down anywhere on the page; keep the Outcome positive."
   },
   "fields": {
     "description": "A city’s services behind one AI prompt, with answers that come back as cards you can act on.",
@@ -14,7 +14,7 @@
     "link": { "url": "https://villio.ai", "label": "Visit" },
     "intro": "Villio AI was a startup that put a city’s services behind one AI prompt, so residents could book a room or report a pothole just by asking. As a co-founder and product designer, I designed the resident app, the landing page and the pitch deck.",
     "summary": "Co-founding Villio AI and designing its resident app around one prompt, from a feed of what’s on today to replies you can act on.",
-    "overview": "Villio was for residents and the city staff who serve them. I co-founded it with two others, in a team of eight. We held pilot talks with the City of Richmond Hill.",
+    "overview": "Villio was for residents and the city staff who serve them. I co-founded it with two others, in a team of eight.",
     "impact": "Met with municipalities and investors, and held pilot talks with the City of Richmond Hill.",
     "details": [
       { "label": "Role", "value": "Co-founder · Product Designer" },
@@ -234,7 +234,7 @@
         "title": "Outcome",
         "heading": "Results and lessons",
         "content": [
-          "We met with municipalities and investors, and held pilot talks with the City of Richmond Hill, in York Region. The pilot didn’t go ahead, and we wound Villio down: as students, getting government contracts was hard and time consuming.",
+          "We met with municipalities and investors, and held pilot talks with the City of Richmond Hill, in York Region.",
           "I designed the MVP of the resident app, along with the landing page and the pitch deck.",
           { "h3": "Applying to Y Combinator" },
           "We applied to Y Combinator for its Fall 2025 batch, with a founder video as part of the application. [Watch our application video](https://youtu.be/mYBE8UWUMUQ).",
@@ -242,7 +242,7 @@
           {
             "bullets": [
               "**Answers you can act on.** Show replies as cards people can use, not paragraphs they have to read.",
-              "**Selling to cities is slow.** Government procurement is a different game, especially as students."
+              "**Selling to cities takes time.** Government procurement is a different game."
             ]
           },
           { "h3": "Summary" },
