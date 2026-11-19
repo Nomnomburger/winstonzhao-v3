@@ -54,7 +54,7 @@
     },
     "hero": {
       "image": "hero",
-      "alt": "Three Hopper Hangout screens on iPhones: the welcome screen with a coral rabbit, the home screen and a hangout plan, the last two with a dark action bar above the tabs"
+      "alt": "An iPhone lying on perforated metal tiles, showing the Hopper Hangout home screen with upcoming hangouts, quick search, friend groups as teacups and the action bar"
     },
     "sections": [
       {
@@ -146,7 +146,12 @@
             "alt": "Three dark action bars stacked: plus Start a new hangout with a Search pill, a plus with a wide Search for places pill, and Add a hop with a Search pill",
             "caption": "Top to bottom: Home, Map and a plan."
           },
-          "Under the bar, we kept to three tabs, with simplicity as our guiding principle: Home for upcoming hangouts, friend groups and suggestions, Map for places nearby with category filters, and Profile for your groups, hangouts and friends."
+          "Under the bar, we kept to three tabs, with simplicity as our guiding principle: Home for upcoming hangouts, friend groups and suggestions, Map for places nearby with category filters, and Profile for your groups, hangouts and friends.",
+          {
+            "image": "profile-map",
+            "alt": "Hopper Hangout’s Profile screen, with Anita’s cat avatar, friend groups and upcoming hangouts, next to the Nearby map, on two tilted iPhones",
+            "caption": "Profile and the Nearby map."
+          }
         ]
       },
       {
@@ -266,6 +271,10 @@
         "heading": "Results and lessons",
         "content": [
           "Hopper Hangout won Best Design at Alicehacks 2023.",
+          {
+            "image": "plan-mockup",
+            "alt": "The Arcade Night hangout plan, with its map, friends, time and Add a hop bar, on a tilted iPhone floating over a ribbed ledge"
+          },
           "We linked the screens into a clickable Figma prototype, with animations between pages. It even remembers where you started a new hangout: close it, and you’re back on Home, Map or Profile. For the closing ceremony, Andrew made a state diagram of how the features and interactions connect, and we presented with a slideshow narrated by Anita, plus videos on our Devpost.",
           "It’s a concept from one hackathon, and the problem came from our own hangouts. The recommendations and sponsored listings only exist as screens and copy, nothing was built in code, and the prototype stops at the edges: picking a mood in Add a hop just leads back to the plan.",
           {
@@ -296,13 +305,9 @@
       "note": "Winston’s current home-page thumbnail in Sanity (Home on an iPhone on perforated metal tiles), kept as is. The local file is a JPG copy for the preview."
     },
     "hero": {
-      "path": "assets/hopper-hangout-cs4-hero.jpg",
-      "sourceNodeIds": [
-        "1:4650",
-        "1:3676",
-        "1:3884"
-      ],
-      "note": "Welcome (onboarding), Home (centre) and Hangout Plan at 3x in Apple’s iPhone 16 Pro (White Titanium) bezel, laid out like the Yelo and Arca heroes on a pale pink-to-lavender gradient. Replaces the old hero, which was the cover image; uses Welcome instead of Map so it doesn’t repeat the Home / Map / In a plan image in the Action bar section."
+      "path": "assets/hopper-hangout-cover-live.jpg",
+      "existingAssetId": "image-d1924b828288ce077645d4d6e7dcf21c51f0aeae-1440x1080-png",
+      "note": "Winston’s old hero mockup (the Home screen on an iPhone on perforated metal tiles), kept at his request (Nov 2026). The same Sanity image as the cover; the local file is the cover’s JPG copy for the preview."
     },
     "value-props": {
       "path": "assets/hopper-hangout-cs4-value-props.png",
@@ -311,7 +316,7 @@
         "1:5243",
         "1:5293"
       ],
-      "note": "The three onboarding intro screens (Anita’s) at 3x in the iPhone 16 Pro bezel, spread, with arrows."
+      "note": "The three onboarding intro screens (Anita’s) at 3x in the iPhone 16 Pro bezel, spread, with arrows. Each screen has an iOS status bar (9:41, signal, Wi-Fi, battery) added locally (hopper-sb/statusbar.py), since the frames have none; nothing in the frames moved. Saved at 2400×1500."
     },
     "home-iterations": {
       "path": "assets/hopper-hangout-cs4-home-iterations.jpg",
@@ -321,7 +326,7 @@
         "1:3654",
         "1:3676"
       ],
-      "note": "Early Home frames iPhone 14 & 15 Pro - 1, - 3 and - 4, then the final Home, as selected wireframe frames on a dot grid with arrows, like the Yelo home iterations. Frames - 2, - 5 and - 6 are left out (- 5 and - 6 reshape the tab bar, not the action)."
+      "note": "Early Home frames iPhone 14 & 15 Pro - 1, - 3 and - 4, then the final Home, as selected wireframe frames on a dot grid with arrows, like the Yelo home iterations. Frames - 2, - 5 and - 6 are left out (- 5 and - 6 reshape the tab bar, not the action). The three early frames have an iOS status bar added locally (hopper-sb/statusbar.py), like the final Home."
     },
     "bar-screens": {
       "path": "assets/hopper-hangout-cs4-bar-screens.png",
@@ -330,7 +335,7 @@
         "1:3824",
         "1:3884"
       ],
-      "note": "Home, Map and Hangout Plan at 3x in the iPhone 16 Pro bezel, spread; Home / Map / In a plan labels on the page."
+      "note": "Home, Map and Hangout Plan at 3x in the iPhone 16 Pro bezel, spread; Home / Map / In a plan labels on the page. Each screen has an iOS status bar (9:41, signal, Wi-Fi, battery) added locally (hopper-sb/statusbar.py), since the frames have none; nothing in the frames moved. Saved at 2400×1500."
     },
     "action-bars": {
       "path": "assets/hopper-hangout-cs4-action-bars.png",
@@ -348,7 +353,7 @@
         "1:4151",
         "1:5437"
       ],
-      "note": "New Hangout steps 1–3 at 3x in the iPhone 16 Pro bezel, spread, with arrows."
+      "note": "New Hangout steps 1–3 at 3x in the iPhone 16 Pro bezel, spread, with arrows. Each screen has an iOS status bar (9:41, signal, Wi-Fi, battery) added locally (hopper-sb/statusbar.py), since the frames have none; nothing in the frames moved. Saved at 2400×1500."
     },
     "flow-2": {
       "path": "assets/hopper-hangout-cs4-flow-2.png",
@@ -357,7 +362,7 @@
         "1:5497",
         "1:3992"
       ],
-      "note": "New Hangout steps 4–5 and the resulting Group Dinner plan at 3x in the iPhone 16 Pro bezel, spread, with arrows."
+      "note": "New Hangout steps 4–5 and the resulting Group Dinner plan at 3x in the iPhone 16 Pro bezel, spread, with arrows. Each screen has an iOS status bar (9:41, signal, Wi-Fi, battery) added locally (hopper-sb/statusbar.py), since the frames have none; nothing in the frames moved. Saved at 2400×1500."
     },
     "hops-final": {
       "path": "assets/hopper-hangout-cs4-hops-final.png",
@@ -380,7 +385,7 @@
         "1:4288",
         "1:6404"
       ],
-      "note": "New Friend Group: avatar, colour and the new group page at 3x in the iPhone 16 Pro bezel, spread, with arrows (the name and invite steps are described in the text). The event card title reads “Holidy Magic 2023” as in the file."
+      "note": "New Friend Group: avatar, colour and the new group page at 3x in the iPhone 16 Pro bezel, spread, with arrows (the name and invite steps are described in the text). The event card title reads “Holidy Magic 2023” as in the file. Each screen has an iOS status bar (9:41, signal, Wi-Fi, battery) added locally (hopper-sb/statusbar.py), since the frames have none; nothing in the frames moved. Saved at 2400×1500."
     },
     "members": {
       "path": "assets/hopper-hangout-cs4-members.png",
@@ -388,7 +393,7 @@
         "1:6180",
         "1:5601"
       ],
-      "note": "Friend Group and the Members overlay at 3x in the iPhone 16 Pro bezel, with an arrow. The Spotify reference screenshot (1:5780) is not shown: it has real names and photos."
+      "note": "Friend Group and the Members overlay at 3x in the iPhone 16 Pro bezel, with an arrow. The Spotify reference screenshot (1:5780) is not shown: it has real names and photos. Each screen has an iOS status bar (9:41, signal, Wi-Fi, battery) added locally (hopper-sb/statusbar.py), since the frames have none; nothing in the frames moved. Saved at 2400×1500."
     },
     "onboarding": {
       "path": "assets/hopper-hangout-cs4-onboarding.png",
@@ -397,7 +402,7 @@
         "1:4843",
         "1:4731"
       ],
-      "note": "Create account, Your tastes and All done at 3x in the iPhone 16 Pro bezel, spread, with arrows."
+      "note": "Create account, Your tastes and All done at 3x in the iPhone 16 Pro bezel, spread, with arrows. Each screen has an iOS status bar (9:41, signal, Wi-Fi, battery) added locally (hopper-sb/statusbar.py), since the frames have none; nothing in the frames moved. Saved at 2400×1500."
     },
     "tastes": {
       "path": "assets/hopper-hangout-cs4-tastes.png",
@@ -422,6 +427,16 @@
         "1:6519"
       ],
       "note": "The avatars sheet (Anita’s drawings) at 3x. A WIP Cat sticker from another file (1:6712) in its corner is whited out, and the characters and teacups are placed side by side instead of stacked; drawings unchanged. Scaled to 3200 px, rounded corners."
+    },
+    "profile-map": {
+      "path": "assets/hopper-hangout-live-profile-map.jpg",
+      "existingAssetId": "image-6bd1f56159332180c28e8041a1008d3676359050-2000x1500-png",
+      "note": "Winston’s own mockup from the old Hopper Hangout page (Profile and the Nearby map on two tilted iPhones), kept as is at his request. The local file is a JPG copy for the preview."
+    },
+    "plan-mockup": {
+      "path": "assets/hopper-hangout-live-plan.jpg",
+      "existingAssetId": "image-e5f2439d90bf88727a2c09c8940f01fb3382a0c6-2000x1500-png",
+      "note": "Winston’s own mockup from the old Hopper Hangout page (the Arcade Night hangout plan on a tilted iPhone), kept as is at his request. The local file is a JPG copy for the preview."
     }
   }
 }
