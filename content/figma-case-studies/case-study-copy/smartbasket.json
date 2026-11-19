@@ -4,7 +4,7 @@
     "figmaFile": "qDdxlqtBxVpaAOUMITle4W",
     "url": "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W/Winston-Design-Demo?node-id=1-12424",
     "page": "SmartBasket (1:12424): loose hi-fi frames with the prototype (1:12432 … 1:13349), App section (358:50476) with status-bar copies, Slides section (358:51140)",
-    "facts": "Confirmed by Winston (Nov 2026): solo, he designed and built all of it; a mobile web app in the browser, built close to the Figma screens; live for the demo, offline now; no award; no link (devpost.com/software/smartbasket is someone else's project). Drop the 73% stat; use his resume's framing instead: finding the best deals “in a time of tariffs and high costs” (in-file resume 157:41545, where he spelled it “tarrifs”). The hackathon theme was something Canada related; don't name or quote the theme beyond “Canada”. HMW from his Round 7 answer. Cards: they keep the whole app on one home, opening in place; the Contribute card rises when you're at a store; the stack puts what's most relevant now first; it keeps the app simple. Everything worked end to end in the demo: the price finder (SerpAPI + Gemini), crowdsourced deals (photo → Gemini), trip worth / public-transit saving, and Firebase login + points. Lessons he chose: design first paid off (designing in Figma before coding made the solo build faster); familiar objects (hide the AI behind a list, a card, a yes/no); one-tap contributing (crowdsourcing only works if adding a deal is one tap). From the files: the five features (slide 358:50632), “AI + Crowdsourcing” (358:50627), “design first / figma!” (358:50995), the three pipelines (358:51015, 358:51018, 358:51021, text exact), the stack slides (358:50999–358:51011), “canada’s issues...” (358:50612). Not known, so not claimed: why the list has two views, why the New item sheet carries its note, why Walmart is highlighted on the item, how points are earned, what Nope does, whether the slides were presented, the exact event dates. Prices, distances, points and names in the screens are sample data, never results."
+    "facts": "Confirmed by Winston (Nov 2026): solo, he designed and built all of it; a mobile web app in the browser, built close to the Figma screens; live for the demo, offline now; no award; no link (devpost.com/software/smartbasket is someone else's project). Drop the 73% stat; use his resume's framing instead: finding the best deals “in a time of tariffs and high costs” (in-file resume 157:41545, where he spelled it “tarrifs”). The hackathon theme was something Canada related; don't name or quote the theme beyond “Canada”. HMW from his Round 7 answer. Cards: they keep the whole app on one home, opening in place; the Contribute card rises when you're at a store; the stack puts what's most relevant now first; it keeps the app simple. Everything worked end to end in the demo: the price finder (SerpAPI + Gemini), crowdsourced deals (photo → Gemini), trip worth / public-transit saving, and Firebase login + points. Lessons he chose: design first paid off (designing in Figma before coding made the solo build faster); familiar objects (hide the AI behind a list, a card, a yes/no); one-tap contributing (crowdsourcing only works if adding a deal is one tap). From the files: the five features (slide 358:50632), “AI + Crowdsourcing” (358:50627), “design first / figma!” (358:50995), the three pipelines (358:51015, 358:51018, 358:51021, text exact), the stack slides (358:50999–358:51011), “canada’s issues...” (358:50612). Not known, so not claimed: why the list has two views, why the New item sheet carries its note, why Walmart is highlighted on the item, how points are earned, what Nope does, whether the slides were presented, the exact event dates. Prices, distances, points and names in the screens are sample data, never results. Details (Nov 19 2026): Hack Canada 2025 was one weekend; deliverables are the working web app and the Figma prototype; no Result row (no award)."
   },
   "fields": {
     "description": "A shopping list that finds the best local price, designed and built solo at Hack Canada 2025.",
@@ -17,23 +17,19 @@
     "details": [
       {
         "label": "Event",
-        "value": "Hack Canada 2025"
-      },
-      {
-        "label": "Role",
-        "value": "Product Designer\nFull-stack Developer"
+        "value": "Hack Canada 2025\nOne weekend · February 2025"
       },
       {
         "label": "Team",
         "value": "Solo"
       },
       {
-        "label": "Timeline",
-        "value": "February 2025"
+        "label": "Deliverables",
+        "value": "Working web app · Figma prototype"
       },
       {
         "label": "Platform",
-        "value": "Mobile web app"
+        "value": "Mobile web"
       },
       {
         "label": "Tools",

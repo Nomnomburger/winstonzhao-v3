@@ -4,15 +4,15 @@
     "figmaFile": "qDdxlqtBxVpaAOUMITle4W",
     "url": "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W/Winston-Design-Demo?node-id=1-2648",
     "page": "Hopper Hangout (1:2648): early Home frames (1:3640, 1:3646, 1:3654), final screens, flows, components and the avatar sheet (1:6519). The Contents page (101:3100) notes each page holds only snippets of a larger project.",
-    "facts": "Confirmed by Winston (Nov 2026): his part was the sketches and flows, the action bar and the Home, Map and Hangout Plan screens, the visual system (components, type, colours, cards), and leading the team (the idea, the task board, splitting the work); Anita drew the Alice in Wonderland characters, teacups and rabbit, and did onboarding and the taste cards; the award is 'Best Design, Alicehacks 2023'; the Problem Statement heading is his How Might We; the action bar reasons are his: thumb reach (main action at the bottom), two actions without an extra row, the right actions per screen (Home, Map, plan) in the same place, and a dynamically changing UI where the main action for that screen is bigger; the lessons are his own from his older copy (plan the experience first, iterate on paper, build components early, share one vision, and the 'spark of brilliance'). From his older copy: second hackathon, online, Alice in Wonderland theme, design only, team Andrew Chu, Anita Du and Laison Tao, FigJam session for user needs and features, kanban board, paper sketches with his reasons, Koulen and Manrope with his reasons, Material Icons, no mid-fidelity phase, sponsored listings as the proposed business model, three tabs, onboarding goals, Andrew's state diagram, a slideshow narrated by Anita and Devpost videos. Not stated anywhere and left out: who designed the friend-group screens, Profile, Search and the prototype wiring; why the planning flow has one question per screen; how votes and Confirm (1/4) were meant to work; why sliders; the old copy's 'higher click-through rate' (never measured). The old copy's 'primary turquoise' does not match the final screens (coral pink, dark green-grey, grey-blue, lavender), so the palette is described from the files. No research or user testing. Sample data in the screens (dates, names, places) is not a result. Frame 5 (1:5808), four coral “Location” buttons from a component used nowhere else (1:5824) beside the note “dunno what color for these buttons” (1:5813), is not tied to hops anywhere in the file, so it is mentioned only as an open colour question, not as an earlier form of the hop cards."
+    "facts": "Confirmed by Winston (Nov 2026): his part was the sketches and flows, the action bar and the Home, Map and Hangout Plan screens, the visual system (components, type, colours, cards), and leading the team (the idea, the task board, splitting the work); Anita drew the Alice in Wonderland characters, teacups and rabbit, and did onboarding and the taste cards; the award is 'Best Design, Alicehacks 2023'; the Problem Statement heading is his How Might We; the action bar reasons are his: thumb reach (main action at the bottom), two actions without an extra row, the right actions per screen (Home, Map, plan) in the same place, and a dynamically changing UI where the main action for that screen is bigger; the lessons are his own from his older copy (plan the experience first, iterate on paper, build components early, share one vision, and the 'spark of brilliance'). From his older copy: second hackathon, online, Alice in Wonderland theme, design only, team Andrew Chu, Anita Du and Laison Tao, FigJam session for user needs and features, kanban board, paper sketches with his reasons, Koulen and Manrope with his reasons, Material Icons, no mid-fidelity phase, sponsored listings as the proposed business model, three tabs, onboarding goals, Andrew's state diagram, a slideshow narrated by Anita and Devpost videos. Not stated anywhere and left out: who designed the friend-group screens, Profile, Search and the prototype wiring; why the planning flow has one question per screen; how votes and Confirm (1/4) were meant to work; why sliders; the old copy's 'higher click-through rate' (never measured). The old copy's 'primary turquoise' does not match the final screens (coral pink, dark green-grey, grey-blue, lavender), so the palette is described from the files. No research or user testing. Sample data in the screens (dates, names, places) is not a result. Frame 5 (1:5808), four coral “Location” buttons from a component used nowhere else (1:5824) beside the note “dunno what color for these buttons” (1:5813), is not tied to hops anywhere in the file, so it is mentioned only as an open colour question, not as an earlier form of the hop cards. Details (Nov 19 2026): Alicehacks 2023 was one weekend; deliverables are the clickable prototype and a demo video; the link is the demo video on YouTube (https://youtu.be/gSIzYFChlvQ), labelled “Watch demo”, in place of Devpost."
   },
   "fields": {
     "description": "An app concept that plans a day out around a friend group’s tastes. Best Design at Alicehacks 2023.",
     "client": "Alicehacks 2023",
     "discipline": "Product Design",
     "link": {
-      "url": "https://devpost.com/software/hopper-hangout",
-      "label": "Devpost"
+      "url": "https://youtu.be/gSIzYFChlvQ",
+      "label": "Watch demo"
     },
     "intro": "Hopper Hangout is an iOS app concept that plans a day out for a group of friends from everyone’s tastes, as a string of stops called hops. I led our team of four at Alicehacks 2023 and designed the flows, the action bar and the visual system.",
     "summary": "Leading a four-person, design-only hackathon team from an everyday planning problem to a clickable prototype, with an action bar that adapts to each screen.",
@@ -21,27 +21,23 @@
     "details": [
       {
         "label": "Event",
-        "value": "Alicehacks 2023\nOnline · Design only"
+        "value": "Alicehacks 2023\nOne weekend · November 2023"
       },
       {
         "label": "Result",
         "value": "Best Design"
       },
       {
-        "label": "Role",
-        "value": "Lead Designer\nFlows · Action bar · Visual system"
-      },
-      {
         "label": "Team",
         "value": "Anita, Andrew, Laison and Winston"
       },
       {
-        "label": "Timeline",
-        "value": "November 2023"
+        "label": "Deliverables",
+        "value": "Clickable prototype · Demo video"
       },
       {
         "label": "Platform",
-        "value": "iOS concept"
+        "value": "Mobile"
       },
       {
         "label": "Tools",

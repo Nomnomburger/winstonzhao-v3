@@ -14,35 +14,29 @@
         "_type": "detailItem",
         "_key": "sparks-detail-0",
         "label": "Event",
-        "value": "Product Design Sprint 2025\nWestern Founders Network"
+        "value": "Product Design Sprint 2025\nOne weekend · March 2025"
       },
       {
         "_type": "detailItem",
         "_key": "sparks-detail-1",
-        "label": "Role",
-        "value": "Product Designer\nEarly directions · Hi-fi · Prototype"
-      },
-      {
-        "_type": "detailItem",
-        "_key": "sparks-detail-2",
         "label": "Team",
         "value": "Ivy, Derrick, Stella and Winston"
       },
       {
         "_type": "detailItem",
+        "_key": "sparks-detail-2",
+        "label": "Deliverables",
+        "value": "Clickable prototype · Pitch deck"
+      },
+      {
+        "_type": "detailItem",
         "_key": "sparks-detail-3",
-        "label": "Timeline",
-        "value": "March 2025"
+        "label": "Platform",
+        "value": "Mobile"
       },
       {
         "_type": "detailItem",
         "_key": "sparks-detail-4",
-        "label": "Platform",
-        "value": "iOS app concept"
-      },
-      {
-        "_type": "detailItem",
-        "_key": "sparks-detail-5",
         "label": "Tools",
         "value": "Figma"
       }

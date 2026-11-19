@@ -15,35 +15,29 @@
         "_type": "detailItem",
         "_key": "smartbasket-detail-0",
         "label": "Event",
-        "value": "Hack Canada 2025"
+        "value": "Hack Canada 2025\nOne weekend · February 2025"
       },
       {
         "_type": "detailItem",
         "_key": "smartbasket-detail-1",
-        "label": "Role",
-        "value": "Product Designer\nFull-stack Developer"
-      },
-      {
-        "_type": "detailItem",
-        "_key": "smartbasket-detail-2",
         "label": "Team",
         "value": "Solo"
       },
       {
         "_type": "detailItem",
+        "_key": "smartbasket-detail-2",
+        "label": "Deliverables",
+        "value": "Working web app · Figma prototype"
+      },
+      {
+        "_type": "detailItem",
         "_key": "smartbasket-detail-3",
-        "label": "Timeline",
-        "value": "February 2025"
+        "label": "Platform",
+        "value": "Mobile web"
       },
       {
         "_type": "detailItem",
         "_key": "smartbasket-detail-4",
-        "label": "Platform",
-        "value": "Mobile web app"
-      },
-      {
-        "_type": "detailItem",
-        "_key": "smartbasket-detail-5",
         "label": "Tools",
         "value": "Figma · Next.js · Firebase\nGemini API · SerpAPI · Google Maps · OpenWeather"
       }

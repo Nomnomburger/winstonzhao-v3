@@ -15,7 +15,7 @@
         "_type": "detailItem",
         "_key": "arca-detail-0",
         "label": "Event",
-        "value": "UXL Designathon 2025"
+        "value": "UXL Designathon 2025\nOne weekend · March 2025"
       },
       {
         "_type": "detailItem",
@@ -26,30 +26,24 @@
       {
         "_type": "detailItem",
         "_key": "arca-detail-2",
-        "label": "Role",
-        "value": "Product Designer\nApp · Website · Email"
+        "label": "Team",
+        "value": "Sophia, Gaurav and Winston"
       },
       {
         "_type": "detailItem",
         "_key": "arca-detail-3",
-        "label": "Team",
-        "value": "Team of 3"
+        "label": "Deliverables",
+        "value": "Clickable prototype · Pitch deck"
       },
       {
         "_type": "detailItem",
         "_key": "arca-detail-4",
-        "label": "Timeline",
-        "value": "March 2025"
+        "label": "Platform",
+        "value": "Mobile · Web · Email"
       },
       {
         "_type": "detailItem",
         "_key": "arca-detail-5",
-        "label": "Platform",
-        "value": "iOS · Web · Email"
-      },
-      {
-        "_type": "detailItem",
-        "_key": "arca-detail-6",
         "label": "Tools",
         "value": "Figma"
       }

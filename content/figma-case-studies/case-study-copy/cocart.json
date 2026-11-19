@@ -4,7 +4,7 @@
     "figmaFile": "qDdxlqtBxVpaAOUMITle4W",
     "url": "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W/Winston-Design-Demo?node-id=1-13590",
     "page": "CoCart (1:13590): High Fidelity (1:13596), Ideas (358:48144) with Low Fidelity (358:48261), Chrome Extension Mockups (358:48898)",
-    "facts": "Confirmed by Winston (Nov 2026): team of four, Winston, Sophia, Andrew and Emily (names can be used); Winston did the hi-fi and the prototype and helped with the other parts; the extension is the product and the app was a later idea, so the hi-fi is shown in the browser, not in phones; the Problem Statement heading is the designathon's prompt word for word, with 'Community Centered Design' as the theme under it; co-op packaging was picked mainly for packaging waste, but real people would also use it for lower shipping fees; lobby became cart because 'cart' is clearer for shoppers than 'lobby', and counts plus a deadline set expectations for when the order ships; both host models still work (suburban: anyone can host at their house or walk around and distribute; denser areas: condo or residence management as the distributor), and the hi-fi shows the residence front desk case; lessons he chose: borrow from odd places (a game lobby gave the joining pattern), use words people know ('cart' beat 'lobby'), set expectations for the wait (counts and a deadline make a delayed order feel OK). Result: 1st place, UWUX FUSE Designathon 2024 (one-day event, 23 November 2024, per the organiser's announcement in consumer-dates.json). Prices, savings, points and CO2 in the screens are sample data, never results. The Create Cart card in 1:13936 sits below the frame's clip and can't be exported without editing the file, so it is quoted in the text instead. Review (Nov 18 2026): the Create Cart card (1:14048) is clipped in every copy of 2 Cart Selection (1:13936, Demo 3 1:14521, Mac 1 358:48902); the copy avoids the screens' inconsistent sample numbers ('2 other people' in 1:14212, item prices that differ between 1:14115 and 1:13782)."
+    "facts": "Confirmed by Winston (Nov 2026): team of four, Winston, Sophia, Andrew and Emily (names can be used); Winston did the hi-fi and the prototype and helped with the other parts; the extension is the product and the app was a later idea, so the hi-fi is shown in the browser, not in phones; the Problem Statement heading is the designathon's prompt word for word, with 'Community Centered Design' as the theme under it; co-op packaging was picked mainly for packaging waste, but real people would also use it for lower shipping fees; lobby became cart because 'cart' is clearer for shoppers than 'lobby', and counts plus a deadline set expectations for when the order ships; both host models still work (suburban: anyone can host at their house or walk around and distribute; denser areas: condo or residence management as the distributor), and the hi-fi shows the residence front desk case; lessons he chose: borrow from odd places (a game lobby gave the joining pattern), use words people know ('cart' beat 'lobby'), set expectations for the wait (counts and a deadline make a delayed order feel OK). Result: 1st place, UWUX FUSE Designathon 2024 (one-day event, 23 November 2024, per the organiser's announcement in consumer-dates.json). Prices, savings, points and CO2 in the screens are sample data, never results. The Create Cart card in 1:13936 sits below the frame's clip and can't be exported without editing the file, so it is quoted in the text instead. Review (Nov 18 2026): the Create Cart card (1:14048) is clipped in every copy of 2 Cart Selection (1:13936, Demo 3 1:14521, Mac 1 358:48902); the copy avoids the screens' inconsistent sample numbers ('2 other people' in 1:14212, item prices that differ between 1:14115 and 1:13782). Details (Nov 19 2026): deliverables are the clickable prototype and a pitch (no deck confirmed)."
   },
   "fields": {
     "description": "A shared-cart browser extension concept that won 1st place at the UWUX FUSE Designathon 2024.",
@@ -17,23 +17,19 @@
     "details": [
       {
         "label": "Event",
-        "value": "UWUX FUSE Designathon 2024"
+        "value": "UWUX FUSE Designathon 2024\nOne day · November 2024"
       },
       {
         "label": "Result",
         "value": "1st place"
       },
       {
-        "label": "Role",
-        "value": "Product Designer\nHi-fi · Prototype"
-      },
-      {
         "label": "Team",
         "value": "Sophia, Andrew, Emily and Winston"
       },
       {
-        "label": "Timeline",
-        "value": "One day · November 2024"
+        "label": "Deliverables",
+        "value": "Clickable prototype · Pitch"
       },
       {
         "label": "Platform",

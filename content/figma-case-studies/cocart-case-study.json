@@ -15,7 +15,7 @@
         "_type": "detailItem",
         "_key": "cocart-detail-0",
         "label": "Event",
-        "value": "UWUX FUSE Designathon 2024"
+        "value": "UWUX FUSE Designathon 2024\nOne day · November 2024"
       },
       {
         "_type": "detailItem",
@@ -26,30 +26,24 @@
       {
         "_type": "detailItem",
         "_key": "cocart-detail-2",
-        "label": "Role",
-        "value": "Product Designer\nHi-fi · Prototype"
-      },
-      {
-        "_type": "detailItem",
-        "_key": "cocart-detail-3",
         "label": "Team",
         "value": "Sophia, Andrew, Emily and Winston"
       },
       {
         "_type": "detailItem",
-        "_key": "cocart-detail-4",
-        "label": "Timeline",
-        "value": "One day · November 2024"
+        "_key": "cocart-detail-3",
+        "label": "Deliverables",
+        "value": "Clickable prototype · Pitch"
       },
       {
         "_type": "detailItem",
-        "_key": "cocart-detail-5",
+        "_key": "cocart-detail-4",
         "label": "Platform",
         "value": "Browser extension"
       },
       {
         "_type": "detailItem",
-        "_key": "cocart-detail-6",
+        "_key": "cocart-detail-5",
         "label": "Tools",
         "value": "Figma"
       }

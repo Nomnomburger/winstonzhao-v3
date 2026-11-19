@@ -6,8 +6,8 @@
     "client": "Alicehacks 2023",
     "discipline": "Product Design",
     "link": {
-      "url": "https://devpost.com/software/hopper-hangout",
-      "label": "Devpost"
+      "url": "https://youtu.be/gSIzYFChlvQ",
+      "label": "Watch demo"
     },
     "intro": "Hopper Hangout is an iOS app concept that plans a day out for a group of friends from everyone’s tastes, as a string of stops called hops. I led our team of four at Alicehacks 2023 and designed the flows, the action bar and the visual system.",
     "summary": "Leading a four-person, design-only hackathon team from an everyday planning problem to a clickable prototype, with an action bar that adapts to each screen.",
@@ -19,7 +19,7 @@
         "_type": "detailItem",
         "_key": "hopper-hangout-detail-0",
         "label": "Event",
-        "value": "Alicehacks 2023\nOnline · Design only"
+        "value": "Alicehacks 2023\nOne weekend · November 2023"
       },
       {
         "_type": "detailItem",
@@ -30,30 +30,24 @@
       {
         "_type": "detailItem",
         "_key": "hopper-hangout-detail-2",
-        "label": "Role",
-        "value": "Lead Designer\nFlows · Action bar · Visual system"
-      },
-      {
-        "_type": "detailItem",
-        "_key": "hopper-hangout-detail-3",
         "label": "Team",
         "value": "Anita, Andrew, Laison and Winston"
       },
       {
         "_type": "detailItem",
+        "_key": "hopper-hangout-detail-3",
+        "label": "Deliverables",
+        "value": "Clickable prototype · Demo video"
+      },
+      {
+        "_type": "detailItem",
         "_key": "hopper-hangout-detail-4",
-        "label": "Timeline",
-        "value": "November 2023"
+        "label": "Platform",
+        "value": "Mobile"
       },
       {
         "_type": "detailItem",
         "_key": "hopper-hangout-detail-5",
-        "label": "Platform",
-        "value": "iOS concept"
-      },
-      {
-        "_type": "detailItem",
-        "_key": "hopper-hangout-detail-6",
         "label": "Tools",
         "value": "Figma · FigJam\nPaper sketches"
       }
