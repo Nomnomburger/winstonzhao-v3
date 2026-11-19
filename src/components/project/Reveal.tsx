@@ -1,9 +1,9 @@
 'use client';
 
-import { motion, useInView, useReducedMotion } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 import { createContext, useContext, useEffect, useRef, useState, type CSSProperties, type ReactNode, type RefObject } from 'react';
 import { getSmoothScroll } from '@/lib/smooth-scroll';
-import { REVEAL_EASE, TEXT_HIDDEN_Y } from '@/components/projects/reveal';
+import { REVEAL_EASE, TEXT_HIDDEN_Y, useStillMotion } from '@/components/projects/reveal';
 
 // Project page reveals. A RevealArea is one block of the page (the title, a
 // section): it plays once, as a whole, when the block reaches the screen, or
@@ -45,7 +45,7 @@ export function RevealArea({
   // Long sections are taller than the screen, so 'some' (any pixel) with the
   // bottom tenth of the screen excluded: the block plays as it comes up.
   const inView = useInView(ref, { once: true, amount: 'some', margin: '0px 0px -10% 0px' });
-  const still = !!useReducedMotion();
+  const still = useStillMotion();
   // `immediate` waits one frame after mount so the hidden state paints first.
   const [mounted, setMounted] = useState(false);
   useEffect(() => {

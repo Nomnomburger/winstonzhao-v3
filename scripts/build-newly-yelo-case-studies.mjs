@@ -2,9 +2,11 @@
 /**
  * Expand the compact case-study copy into Sanity documents.
  *
- *   node scripts/build-newly-yelo-case-studies.mjs
+ *   node scripts/build-newly-yelo-case-studies.mjs [slug ...]
  *
- * Reads content/figma-case-studies/case-study-copy/{newly,yelo,elapse,costudy}.json
+ * Reads content/figma-case-studies/case-study-copy/<slug>.json for each case study
+ * (Newly, Yelo, Elapse, CoStudy, Heatmap, Villio AI, Arca, Sparks, SmartBasket,
+ * CoCart, Hopper Hangout); a slug without a copy file yet is skipped,
  * and writes content/figma-case-studies/<slug>-case-study.json, the files
  * that scripts/update-newly-yelo-case-studies.mjs publishes.
  *
@@ -18,7 +20,7 @@
  *       "cover": {"asset": "cover", "alt": "..."},
  *       "hero": {"image": "cover", "alt": "..."} | {"video": "clip", "poster": "clip-poster", "caption"},
  *       "sections": [{"title", "heading", "content": [
- *         "a paragraph",
+ *         "a paragraph, with **bold** and [links](https://example.com)",
  *         {"h3": "subheading"}, {"quote": "..."}, {"bullets": ["..."]},
  *         {"image": "assetKey", "alt": "...", "caption": "...", "size": "full" | "content",
  *          "labels": [{"text": "Before", "x": 0.34, "y": 0.04}]},   (x, y: fractions of the image)
@@ -39,12 +41,27 @@ const folder = path.join(root, 'content/figma-case-studies');
 
 function expand(copy, slug) {
   const key = (...parts) => `${slug}-${parts.join('-')}`;
-  // **bold** in the copy becomes a span with the strong decorator.
-  const spans = (k, text) => text.split(/(\*\*[^*]+\*\*)/).filter(Boolean).map((part, n) => {
-    const bold = part.startsWith('**') && part.endsWith('**');
-    return { _type: 'span', _key: n === 0 ? `${k}-s` : `${k}-s${n}`, marks: bold ? ['strong'] : [], text: bold ? part.slice(2, -2) : part };
-  });
-  const block = (k, text, style = 'normal', extra = {}) => ({ _type: 'block', _key: k, style, markDefs: [], children: spans(k, text), ...extra });
+  // **bold** in the copy becomes a span with the strong decorator, and
+  // [text](https://…) a span with a link annotation.
+  const block = (k, text, style = 'normal', extra = {}) => {
+    const children = [];
+    const markDefs = [];
+    const span = (part, marks) => children.push({ _type: 'span', _key: children.length === 0 ? `${k}-s` : `${k}-s${children.length}`, marks, text: part });
+    const pattern = /\*\*([^*]+)\*\*|\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g;
+    let last = 0;
+    for (const m of text.matchAll(pattern)) {
+      if (m.index > last) span(text.slice(last, m.index), []);
+      if (m[1] != null) span(m[1], ['strong']);
+      else {
+        const mark = `${k}-link${markDefs.length}`;
+        markDefs.push({ _type: 'link', _key: mark, href: m[3] });
+        span(m[2], [mark]);
+      }
+      last = m.index + m[0].length;
+    }
+    if (last < text.length) span(text.slice(last), []);
+    return { _type: 'block', _key: k, style, markDefs, children, ...extra };
+  };
   const image = (k, item) => ({
     _type: 'mediaImage', _key: k, localAssetKey: item.image, alt: item.alt, ...(item.caption ? { caption: item.caption } : {}), size: item.size ?? 'full',
     ...(item.labels ? { labels: item.labels.map((l, i) => ({ _type: 'imageLabel', _key: `${k}-l${i}`, text: l.text, x: l.x, ...(l.y != null ? { y: l.y } : {}) })) } : {}),
@@ -116,7 +133,11 @@ function expand(copy, slug) {
   return { documentId: copy.documentId, generatedFrom: `case-study-copy/${slug}.json`, fields, assets: copy.assets };
 }
 
-for (const slug of ['newly', 'yelo', 'elapse', 'costudy']) {
+const ALL = ['newly', 'yelo', 'elapse', 'costudy', 'heatmap', 'villio-ai', 'arca', 'sparks', 'smartbasket', 'cocart', 'hopper-hangout'];
+// Optional slugs on the command line build just those case studies.
+const wanted = process.argv.slice(2);
+for (const name of wanted) if (!ALL.includes(name)) throw new Error(`Unknown case study "${name}". Use one of ${ALL.join(', ')}.`);
+for (const slug of wanted.length ? wanted : ALL) {
   const source = path.join(folder, 'case-study-copy', `${slug}.json`);
   if (!fs.existsSync(source)) {
     console.log(`${slug}: no ${path.relative(root, source)} yet, skipped.`);

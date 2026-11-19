@@ -1,0 +1,337 @@
+{
+  "documentId": "figma-portfolio-villio-ai",
+  "source": {
+    "figmaFile": "qDdxlqtBxVpaAOUMITle4W",
+    "url": "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W/Winston-Design-Demo?node-id=1-325",
+    "page": "Villio AI (1:325): Main App (1:960), Landing Page (101:5032); MuniSync (1:7779) for the YRConnect screens",
+    "slides": "Pitch deck, Figma Slides file hq9GPrqUNKbONjTk6pUZBT (18 slides, Aug 2025)",
+    "facts": "Confirmed by Winston (Nov 2026): Villio is YRConnect (YRHacks 2024) rebuilt as a startup around one AI prompt; he designed the resident app, the landing page and the pitch deck (not the staff portal, which is left out entirely); no teammates are named: co-founders and a team of eight (deck 10:37, 10:99: 3 co-founders + 5); pilot discussions with the City of Richmond Hill didn't go ahead; Villio wound down 'because as students, getting government contracts is hard and time consuming'. One prompt, his reasons: residents don't know which department handles what, so asking beats finding the right page; asking is faster than filling in forms. Docked sheet: keeps today's feed (bookings, notices) visible with chat one tap away. HMW (round 7): 'How might we bring a city's scattered services into one place, for residents and staff?'. Lessons he chose: answers you can act on (cards you can use, not paragraphs to read); selling to cities is slow (government procurement is a different game, especially as students). Older resume (157:41485, 157:41492): Co-Founder / Product Designer, May 2025; designed the MVP; met with municipalities + VCs. Voice and visual cards: the deck's risks slide (60:305) promotes 'voice mode and visual card navigation for accessibility' for residents with low digital literacy; no other reason is stated. YRConnect facts from his older site copy (yrconnect-expanded-copy.json): a concept by Winston and one teammate, born from the Cornell Library booking frustration, second place at YRHacks 2024. The order of the three booking-card versions (prototype, deck, landing page) is not known, so the copy and images don't claim one. YC (Nov 19 2026): Villio applied to Y Combinator for its Fall 2025 batch; youtu.be/mYBE8UWUMUQ is the founder video from the application; the result is left unsaid, and Winston’s part in the application isn’t mentioned. Page wording (Nov 19 2026): don’t mention the pilot not going ahead or Villio winding down anywhere on the page; keep the Outcome positive."
+  },
+  "fields": {
+    "description": "A city’s services behind one AI prompt, with answers that come back as cards you can act on.",
+    "client": "Villio AI",
+    "discipline": "Product Design",
+    "link": { "url": "https://villio.ai", "label": "Visit" },
+    "intro": "Villio AI was a startup that put a city’s services behind one AI prompt, so residents could book a room or report a pothole just by asking. As a co-founder and product designer, I designed the resident app, the landing page and the pitch deck.",
+    "summary": "Co-founding Villio AI and designing its resident app around one prompt, from a feed of what’s on today to replies you can act on.",
+    "overview": "Villio was for residents and the city staff who serve them. I co-founded it with two others, in a team of eight. We applied to Y Combinator’s Fall 2025 batch.",
+    "impact": "Met with municipalities and investors, and held pilot talks with the City of Richmond Hill.",
+    "details": [
+      { "label": "Role", "value": "Co-founder · Product Designer" },
+      { "label": "Team", "value": "Co-founders · Team of 8" },
+      { "label": "Timeline", "value": "4 months" },
+      { "label": "Platform", "value": "Mobile · Web" },
+      { "label": "Tools", "value": "Figma · Figma Slides" }
+    ],
+    "cover": {
+      "asset": "cover",
+      "alt": "An iPhone showing the Villio home: garbage day, a volleyball court booking in two hours, and the Ask Villio bar"
+    },
+    "hero": {
+      "image": "hero",
+      "alt": "Three Villio screens on iPhones: Discover with suggested actions, the home feed with the Ask Villio sheet, and a study room booking returned as a card"
+    },
+    "sections": [
+      {
+        "title": "Problem Statement",
+        "heading": "How might we bring a city’s scattered services into one place, for residents and staff?",
+        "content": [
+          "Booking a study room, reporting a pothole and checking garbage day are all city services, but each one lives somewhere different. Our pitch deck split the problem in two: the residents who use those services, and the cities that run them.",
+          {
+            "bullets": [
+              "**Residents:** services scattered across websites and phone lines, slow and unclear request status, and a poor mobile experience.",
+              "**Cities:** disconnected tools for recreation, 311 and updates, higher costs and delays, and a hard time setting up digital infrastructure in smaller cities."
+            ]
+          },
+          "Villio’s answer was one platform for both sides, starting with three kinds of services: recreation, 311 and community updates. My part was the resident app, the landing page and the pitch deck."
+        ]
+      },
+      {
+        "title": "Origin",
+        "heading": "From hackathon to startup",
+        "content": [
+          "Villio’s idea is older than the company. At YRHacks 2024, a teammate and I designed YRConnect, a concept app for York Region. We wanted to meet for volleyball and study sessions, but booking a court or a room at Cornell Library meant going through a series of pages and forms. YRConnect won second place.",
+          "It already had a home you could take in at a glance: your next booking, a poll, a filed report and upcoming events. Everything else sat behind a tab bar and forms. Booking a study room meant picking a date, setting filters and choosing from a list of time slots.",
+          "When I co-founded Villio in May 2025, we rebuilt the same idea as a startup. Villio kept the glanceable home and swapped the tab bar and the forms for one prompt: “Ask Villio”.",
+          {
+            "image": "origin",
+            "alt": "Four iPhones: YRConnect’s home with bookings, a poll, a filed report and events above a tab bar, and its Book Study Room form with a date strip, filters and time slots; then Villio’s home feed with the Ask Villio sheet, and a study room booked by typing one sentence",
+            "caption": "YRConnect’s home and booking form, then Villio’s home and a booking made by asking.",
+            "labels": [
+              { "text": "YRConnect, 2024", "x": 0.2426, "y": 0.0484 },
+              { "text": "Villio, 2025", "x": 0.7574, "y": 0.0484 }
+            ]
+          },
+          { "h3": "Why one prompt" },
+          {
+            "bullets": [
+              "**Residents don’t know which department handles what.** Asking is easier than finding the right page.",
+              "**Asking is faster than filling in a form.** One sentence stands in for a date picker, filters and a list of slots."
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Home",
+        "heading": "What matters today",
+        "content": [
+          "Open Villio and you see your day before you see a chat. The home is a feed in time order: today first, then the next seven days, then links to city resources. It took a few rounds to get there.",
+          "My wireframes already had both halves: a “For you” feed with an upcoming booking, a 311 request in progress and a Discover section, and a prompt bar at the bottom asking “What do you want to do?” In the chat, the reply came with a booking card.",
+          {
+            "image": "wireframes",
+            "alt": "Two grey wireframes on iPhones: a Welcome to Villio home with For you cards for an upcoming booking at 5:00PM and a 311 tree removal request, a Discover card and a What do you want to do? bar; then a chat where a prompt gets a message and an upcoming booking card",
+            "caption": "My wireframes: the home, and a chat that answers with a card."
+          },
+          "My early designs put the greeting in different places. In one, a big “Hi there” and “Access Markham’s services” sit under a mint placeholder block, with suggestions and a prompt bar below. In others, the greeting sits in a white sheet, over placeholder cards or over a real feed of your events and updates from the city.",
+          {
+            "image": "early-home",
+            "alt": "Three early Villio designs on iPhones: a big Hi there greeting under a mint placeholder block, with suggestions and a mic button; the greeting in a white sheet over empty cards; and the sheet over a feed of your events and updates from the city",
+            "caption": "Three early homes: the greeting on its own, in a sheet over placeholder cards, and over a real feed."
+          },
+          "In the final home, a booking gets a countdown, the time and place, and a Manage booking button. Garbage day gets a single row.",
+          "Ask Villio sits in a sheet docked under the feed, with “Hi there”, the prompt bar and a big voice button. In the prototype, tapping the feed tucks the sheet down to one line, and more of your week shows above it. The expand button opens it into a full-screen chat.",
+          {
+            "image": "sheet",
+            "alt": "Two iPhones showing the Villio home: first with the Hi there sheet docked under the feed, then with the sheet tucked down to one line and a Study Room card from the next seven days showing above it",
+            "caption": "The docked sheet, then tucked down to one line."
+          },
+          "I docked the assistant this way so today’s feed, with your bookings and notices, stays visible, and the chat is always one tap away."
+        ]
+      },
+      {
+        "title": "Assistant",
+        "heading": "One prompt away",
+        "content": [
+          "Ask Villio is where requests start. You can type one, say it, or pick a suggestion.",
+          "In my early designs, expanding the sheet showed your recent prompts, and Discover opened as rows of example prompts under each category, like Recreational and City 311.",
+          {
+            "image": "early-expanded",
+            "alt": "Three early Villio screens on iPhones: the Hi there sheet docked over the Today feed; the sheet expanded to a list of past prompts; and Discover with rows of example prompts under Recreational and City 311",
+            "caption": "The early sheet, expanded to recent prompts, then Discover as rows."
+          },
+          "In the prototype, the expanded assistant leads with Discover as tiles for Recreational, 311 and Events, and suggested actions like “Book a study room” and “Report pothole” sit above the bar. Start typing and the suggestions stay above the keyboard, while the voice button turns into send.",
+          {
+            "image": "ask",
+            "alt": "Two iPhones: the full-screen Villio assistant with Discover tiles for Recreational, 311 and Events and suggested actions above the Ask Villio bar, then the same screen with the keyboard up, suggestions above the field and a send button",
+            "caption": "Discover and suggested actions, then typing a request."
+          },
+          "A fuller set of rows is hidden in the prototype’s chat frames:",
+          {
+            "board": {
+              "label": "The hidden Discover rows",
+              "notes": [
+                { "text": "Book a study room", "color": "green", "tag": "Recreational" },
+                { "text": "Volleyball courts", "color": "green", "tag": "Recreational" },
+                { "text": "Study room for 3 hours", "color": "green", "tag": "Recreational" },
+                { "text": "Report a broken streetlamp", "color": "yellow", "tag": "City 311" },
+                { "text": "There’s a pothole here", "color": "yellow", "tag": "City 311" },
+                { "text": "Request large item pickup", "color": "yellow", "tag": "City 311" },
+                { "text": "Events tonight", "color": "blue", "tag": "Community" },
+                { "text": "Parking permit", "color": "blue", "tag": "Community" },
+                { "text": "Where is construction", "color": "blue", "tag": "Community" }
+              ]
+            },
+            "caption": "Example prompts from the hidden version of Discover."
+          },
+          { "h3": "Voice gets the big button" },
+          "The bar went through many versions. In some, voice led the row, and typing hid behind a keyboard button. I tried eight arrangements on the same feed, including a row of round buttons with no text field and one card with everything inside it.",
+          {
+            "image": "bars",
+            "alt": "Eight versions of the Villio sheet’s prompt bar: rows of round voice, keyboard and Discover buttons, Ask villio fields with the voice button inside or beside them, and one card holding the field and every button",
+            "caption": "Eight prompt bars from my early designs. The last, a text field with a big voice button, is closest to the final."
+          },
+          "The final keeps it simple: a plain text field, and voice as a large green circle beside it. Our pitch deck named residents with low digital literacy as a risk, and promoted voice mode and visual cards for accessibility in response.",
+          {
+            "image": "voice",
+            "size": "content",
+            "alt": "Close-up of the Villio sheet: Hi there, Access Markham’s services, an expand button, and the Ask Villio field next to a large green voice button",
+            "caption": "Voice is the biggest control in the bar."
+          }
+        ]
+      },
+      {
+        "title": "Answers",
+        "heading": "Replies you can act on",
+        "content": [
+          "An answer only helps if you can do something with it. When you ask Villio for something, the reply comes back as a card, in the same style as the bookings on your home feed.",
+          "Type “Book a study room at cornell at 4pm today”, and Villio answers with one short line and a booking card: the room, the date and time, and the community centre.",
+          "The card has a few modes. It can simply confirm the booking, or carry actions like Manage booking and Add to Calendar.",
+          {
+            "image": "card-phones",
+            "alt": "Two iPhones: a Villio chat where a study room request returns a booking card with no buttons, and the same chat from the pitch deck, with a Manage booking button on the card and Thanks! typed in the bar",
+            "caption": "The booking card with no buttons, and with Manage booking.",
+            "labels": [
+              { "text": "Prototype", "x": 0.358, "y": 0.0434 },
+              { "text": "Pitch deck", "x": 0.642, "y": 0.0434 }
+            ]
+          },
+          {
+            "image": "card-web",
+            "size": "content",
+            "alt": "The booking card from the Villio landing page: Hi there, the typed request, Sure! Here’s your booking, and a Study Room card with Manage booking and Add to Calendar buttons",
+            "caption": "On the landing page, with Manage booking and Add to Calendar."
+          }
+        ]
+      },
+      {
+        "title": "Pitch",
+        "heading": "Taking it to cities",
+        "content": [
+          "Residents would use Villio for free, as long as their city was on it. Cities would pay for it. The landing page and the pitch deck made that case, and I designed both.",
+          "The landing page leads with “City services powered by AI, designed for easy access”, a button to join the waitlist, and the booking card as the demo.",
+          {
+            "image": "landing-hero",
+            "alt": "The top of the Villio landing page: a navigation bar with For residents and For cities, a Demos available chip, the headline City services powered by AI, designed for easy access, a Join our waitlist button, and the booking card",
+            "caption": "The top of the landing page, with links for residents and for cities."
+          },
+          "Both the site and the deck start with three kinds of service, the same three groups YRConnect covered. The deck gave five examples for each:",
+          {
+            "board": {
+              "label": "Starting with 3 service categories",
+              "notes": [
+                { "text": "Book study rooms", "color": "green", "tag": "Recreational" },
+                { "text": "Book sports facilities", "color": "green", "tag": "Recreational" },
+                { "text": "Sign up for programs", "color": "green", "tag": "Recreational" },
+                { "text": "Register for summer camp", "color": "green", "tag": "Recreational" },
+                { "text": "Purchase gym membership", "color": "green", "tag": "Recreational" },
+                { "text": "Report potholes", "color": "yellow", "tag": "311 Reporting" },
+                { "text": "Report fallen trees", "color": "yellow", "tag": "311 Reporting" },
+                { "text": "Request garbage collection", "color": "yellow", "tag": "311 Reporting" },
+                { "text": "Noise complaints", "color": "yellow", "tag": "311 Reporting" },
+                { "text": "Bylaw violations", "color": "yellow", "tag": "311 Reporting" },
+                { "text": "Construction notices", "color": "blue", "tag": "Community" },
+                { "text": "Municipal notices", "color": "blue", "tag": "Community" },
+                { "text": "Community events", "color": "blue", "tag": "Community" },
+                { "text": "Garbage days", "color": "blue", "tag": "Community" },
+                { "text": "Citywide reminders", "color": "blue", "tag": "Community" }
+              ]
+            },
+            "caption": "The three starting categories, from the deck."
+          },
+          "On the landing page, each service gets its own illustrated block, and a note at the end says more services, like permits and taxes, are in the works.",
+          {
+            "image": "landing-services",
+            "alt": "The dark services section of the Villio landing page: Scalable and smart city service management, Starting with three types of services, and a 311 block with an illustration of a truck and a flag",
+            "caption": "The services section, starting with 311."
+          },
+          "The deck, from August 2025, covered the problem, our solution, the three starting categories, the market, the risks and a budget for a pilot.",
+          {
+            "gallery": [
+              {
+                "image": "deck-cover",
+                "alt": "Villio pitch deck slide: the villio.ai logo, One platform to manage and access municipal services, and The future of city services. One prompt away."
+              },
+              {
+                "image": "deck-residents",
+                "alt": "Villio pitch deck slide: Our Solution, For Residents, with a list of benefits next to the home screen and a chat with a booking card"
+              }
+            ],
+            "caption": "Two slides from the deck: the opening line and the solution for residents."
+          }
+        ]
+      },
+      {
+        "title": "Outcome",
+        "heading": "Results and lessons",
+        "content": [
+          "We met with municipalities and investors, and held pilot talks with the City of Richmond Hill, in York Region.",
+          "I designed the MVP of the resident app, along with the landing page and the pitch deck.",
+          { "h3": "Applying to Y Combinator" },
+          "We applied to Y Combinator for its Fall 2025 batch, with a founder video as part of the application. [Watch our application video](https://youtu.be/mYBE8UWUMUQ).",
+          { "h3": "What I learned" },
+          {
+            "bullets": [
+              "**Answers you can act on.** Show replies as cards people can use, not paragraphs they have to read.",
+              "**Selling to cities takes time.** Government procurement is a different game."
+            ]
+          },
+          { "h3": "Summary" },
+          "Villio started as YRConnect, a hackathon concept for York Region’s bookings, service requests and community updates, and came back a year later as a startup built around one prompt. I designed the resident app: a home feed of what matters today, an assistant docked underneath it, and replies that come back as cards you can act on. I also designed the landing page and the pitch deck.",
+          "We reached pilot talks with the City of Richmond Hill."
+        ]
+      }
+    ]
+  },
+  "assets": {
+    "wireframes": {
+      "path": "assets/villio-ai-cs5-wireframes.png",
+      "sourceNodeIds": ["421:51142", "421:51843"],
+      "note": "Winston’s wireframes from the “winston v1” section (421:51141): the Welcome to Villio home and the prompt/message chat with a booking card, at 3x in Apple’s iPhone 16 Pro (White Titanium) bezel on a transparent background (phones.py)."
+    },
+    "early-home": {
+      "path": "assets/villio-ai-cs5-early-home.png",
+      "sourceNodeIds": ["421:51162", "421:51556", "421:51856"],
+      "note": "Three early home designs from “winston v1” (421:51141): greeting first under a mint placeholder, the greeting in a sheet over empty cards, then the sheet over a real feed (Your Events, From the City), at 3x in Apple’s iPhone 16 Pro (White Titanium) bezel on a transparent background (phones.py), spread, no arrows (the canvas gives no order)."
+    },
+    "early-expanded": {
+      "path": "assets/villio-ai-cs5-early-expanded.png",
+      "sourceNodeIds": ["421:53075", "421:53289", "421:53423"],
+      "note": "“Section 1” of “winston v1”: the docked sheet over Today, the expanded sheet with prompt history, and Discover as rows (Recreational, City 311), at 3x in Apple’s iPhone 16 Pro (White Titanium) bezel on a transparent background (phones.py), spread, with arrows."
+    },
+    "bars": {
+      "path": "assets/villio-ai-cs5-bars.png",
+      "sourceNodeIds": ["421:52217", "421:52426", "421:52324", "421:52529", "421:52864", "421:52753", "421:52640", "421:52975"],
+      "note": "The eight frames of the “Prompt Bars” section (421:52216) at 3x, each cropped to its bottom sheet (y 1840–2622 px), rounded corners and a light grey outline (outline-villio.mjs), in two rows of four in canvas order, scaled to 3200 wide."
+    },
+    "cover": {
+      "path": "assets/villio-ai-cover-live.jpg",
+      "existingAssetId": "image-a9a1516f1788362fdb0e0e9b71f97b9c1760d7fb-716x717-png",
+      "note": "Winston's current home-page thumbnail in Sanity, kept as is. The local file is a copy for the preview."
+    },
+    "hero": {
+      "path": "assets/villio-ai-cs4-hero.jpg",
+      "sourceNodeIds": ["1:1466", "1:961", "1:1685"],
+      "note": "Discover, Home and the booking reply from the Main App section at 3x, in Apple's iPhone 16 Pro (White Titanium) bezel on a pale mint gradient, laid out like the Yelo and CoStudy heroes (2400×1350)."
+    },
+    "origin": {
+      "path": "assets/villio-ai-cs4-origin.png",
+      "sourceNodeIds": ["1:8106", "1:9251", "1:961", "1:1685"],
+      "note": "YRConnect Home and Book Study Room (MuniSync page 1:7779, YRHacks 2024) next to Villio Home and the booking reply, at 3x in Apple's iPhone 16 Pro (White Titanium) bezel, grouped in pairs with one arrow between the groups."
+    },
+    "sheet": {
+      "path": "assets/villio-ai-cs4-sheet.png",
+      "sourceNodeIds": ["1:961", "1:1239"],
+      "note": "Home - Default and Home - Collapsed PromptBar at 3x in Apple's iPhone 16 Pro (White Titanium) bezel, with an arrow (the prototype link from 1:962)."
+    },
+    "ask": {
+      "path": "assets/villio-ai-cs4-ask.png",
+      "sourceNodeIds": ["1:1466", "1:1531"],
+      "note": "Chat (Discover) and Chat (typing) at 3x in Apple's iPhone 16 Pro (White Titanium) bezel, with an arrow. Follows the prototype links 1:1082 → 1:1466 and 1:1835 → 1:1531."
+    },
+    "voice": {
+      "path": "assets/villio-ai-cs4-voice.png",
+      "sourceNodeIds": ["1:961"],
+      "note": "Close-up crop of the docked sheet from a 4x export of Home (inside the sheet's rounded top, so the feed behind it doesn't show), rounded corners and a light grey outline."
+    },
+    "card-phones": {
+      "path": "assets/villio-ai-cs4-card-phones.png",
+      "sourceNodeIds": ["1:1685", "54:84"],
+      "note": "Chat (booking result) at 3x, then the 'Chat 2' bitmap from deck slide 10 (Figma Slides file hq9GPrqUNKbONjTk6pUZBT, node 54:84), downloaded as its original 1206×2622 image fill (the bitmap has no status bar, as designed). Both in Apple's iPhone 16 Pro (White Titanium) bezel, side by side with no arrow, because the order of the versions isn't known; labelled Prototype and Pitch deck on the page."
+    },
+    "card-web": {
+      "path": "assets/villio-ai-cs4-card-web.png",
+      "sourceNodeIds": ["101:5054"],
+      "note": "The landing page's demo card bitmap, downloaded as its original 2528×1520 image fill; it already has its own outline and transparent corners."
+    },
+    "landing-hero": {
+      "path": "assets/villio-ai-cs4-landing-hero.png",
+      "sourceNodeIds": ["101:5033", "101:5523"],
+      "note": "Landing page hero (Main Container) at 2x with the demo card's overflow, with the page's floating Header Container (101:5523, also exported at 2x) composited on top where it sits in the page, rounded corners and a light grey outline."
+    },
+    "landing-services": {
+      "path": "assets/villio-ai-cs4-landing-services.png",
+      "sourceNodeIds": ["101:5148"],
+      "note": "Top 1440 px of the dark services section at 2x (heading and the 311 block), rounded corners and a dark grey outline."
+    },
+    "deck-cover": {
+      "path": "assets/villio-ai-cs4-deck-cover.png",
+      "sourceNodeIds": ["10:11"],
+      "note": "Slide 2 of the pitch deck (Figma Slides file hq9GPrqUNKbONjTk6pUZBT) at 2x, scaled to 2400 wide, rounded corners and a light grey outline. The title slide (23:431) was skipped because it names teammates."
+    },
+    "deck-residents": {
+      "path": "assets/villio-ai-cs4-deck-residents.png",
+      "sourceNodeIds": ["41:615"],
+      "note": "Slide 10 'Our Solution / For Residents' of the pitch deck (Figma Slides file hq9GPrqUNKbONjTk6pUZBT) at 2x, scaled to 2400 wide, rounded corners and a light grey outline."
+    }
+  }
+}

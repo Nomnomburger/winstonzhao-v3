@@ -1,0 +1,301 @@
+{
+  "documentId": "figma-portfolio-smartbasket",
+  "source": {
+    "figmaFile": "qDdxlqtBxVpaAOUMITle4W",
+    "url": "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W/Winston-Design-Demo?node-id=1-12424",
+    "page": "SmartBasket (1:12424): loose hi-fi frames with the prototype (1:12432 … 1:13349), App section (358:50476) with status-bar copies, Slides section (358:51140)",
+    "facts": "Confirmed by Winston (Nov 2026): solo, he designed and built all of it; a mobile web app in the browser, built close to the Figma screens; live for the demo, offline now; no award; no link (devpost.com/software/smartbasket is someone else's project). Drop the 73% stat; use his resume's framing instead: finding the best deals “in a time of tariffs and high costs” (in-file resume 157:41545, where he spelled it “tarrifs”). The hackathon theme was something Canada related; don't name or quote the theme beyond “Canada”. HMW from his Round 7 answer. Cards: they keep the whole app on one home, opening in place; the Contribute card rises when you're at a store; the stack puts what's most relevant now first; it keeps the app simple. Everything worked end to end in the demo: the price finder (SerpAPI + Gemini), crowdsourced deals (photo → Gemini), trip worth / public-transit saving, and Firebase login + points. Lessons he chose: design first paid off (designing in Figma before coding made the solo build faster); familiar objects (hide the AI behind a list, a card, a yes/no); one-tap contributing (crowdsourcing only works if adding a deal is one tap). From the files: the five features (slide 358:50632), “AI + Crowdsourcing” (358:50627), “design first / figma!” (358:50995), the three pipelines (358:51015, 358:51018, 358:51021, text exact), the stack slides (358:50999–358:51011), “canada’s issues...” (358:50612). Not known, so not claimed: why the list has two views, why the New item sheet carries its note, why Walmart is highlighted on the item, how points are earned, what Nope does, whether the slides were presented, the exact event dates. Prices, distances, points and names in the screens are sample data, never results. Details (Nov 19 2026): Hack Canada 2025 was one weekend; deliverables are the working web app and the Figma prototype; no Result row (no award)."
+  },
+  "fields": {
+    "description": "A shopping list that finds the best local price, designed and built solo at Hack Canada 2025.",
+    "client": "Hack Canada 2025",
+    "discipline": "Product Design · Development",
+    "intro": "SmartBasket is a mobile web app that finds the best local prices for what’s on your shopping list, with in-store deals shared by other shoppers. I designed and built it on my own at Hack Canada 2025.",
+    "summary": "Designing and building a smarter shopping list solo, from Figma screens to a working web app that compares prices at stores nearby.",
+    "overview": "SmartBasket is for Canadians trying to save on groceries. I worked solo, designing the screens in Figma first and then building the app close to them. Everything worked end to end in the demo.",
+    "impact": "Worked end to end in the Hack Canada 2025 demo, designed and built solo.",
+    "details": [
+      {
+        "label": "Event",
+        "value": "Hack Canada 2025\nOne weekend · February 2025"
+      },
+      {
+        "label": "Team",
+        "value": "Solo"
+      },
+      {
+        "label": "Deliverables",
+        "value": "Working web app · Figma prototype"
+      },
+      {
+        "label": "Platform",
+        "value": "Mobile web"
+      },
+      {
+        "label": "Tools",
+        "value": "Figma · Next.js · Firebase\nGemini API · SerpAPI · Google Maps · OpenWeather"
+      }
+    ],
+    "cover": {
+      "asset": "cover",
+      "alt": "The SmartBasket home screen on an iPhone: today’s sales nearby, your basket and your points"
+    },
+    "hero": {
+      "image": "hero",
+      "alt": "Three SmartBasket screens on iPhones: the shopping list grouped by store, the home screen with Today, basket and points cards, and an item’s prices at four stores"
+    },
+    "sections": [
+      {
+        "title": "Problem Statement",
+        "heading": "How might we help Canadians save on groceries without checking every store themselves?",
+        "content": [
+          "Hack Canada 2025 had a Canada-related theme, and my slides open on two words: “canada’s issues...” The one SmartBasket takes on is the cost of shopping: finding the best deals in a time of tariffs and high costs. It’s a shopping list that helps you save money and time when you buy from local stores.",
+          {
+            "bullets": [
+              "**Who:** Canadians buying groceries at stores near them.",
+              "**Where:** a mobile web app, in the browser.",
+              "**Constraint:** one hackathon, and I was on my own for the design and the code."
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Idea",
+        "heading": "More than a shopping list",
+        "content": [
+          "On the surface, SmartBasket is a shopping list: you add what you need, and it keeps track. Underneath, two things do the work, and my slides summed them up as “AI + Crowdsourcing”. AI helps find prices online, and shoppers add the in-store deals they spot. Together they cover five features:",
+          {
+            "board": {
+              "label": "Five features, from my slides",
+              "notes": [
+                {
+                  "text": "Online price comparisons",
+                  "color": "green"
+                },
+                {
+                  "text": "Best store finder",
+                  "color": "yellow"
+                },
+                {
+                  "text": "In store deals crowdsourcing",
+                  "color": "blue"
+                },
+                {
+                  "text": "Trip worth calculation",
+                  "color": "pink"
+                },
+                {
+                  "text": "Natural language shopping list",
+                  "color": "green"
+                }
+              ]
+            }
+          },
+          "None of it looks like AI on screen. It sits behind things people already know: a list, a card and a yes-or-no question. That starts on the home screen."
+        ]
+      },
+      {
+        "title": "Home",
+        "heading": "One home of cards",
+        "content": [
+          "Everything in SmartBasket starts from one screen. Home is a stack of cards: Today shows products on sale near you, with + chips to add them to your list. Your SmartBasket counts what’s on your list and what’s on sale, with the price, store and distance for each deal. Points tracks your rewards points and level.",
+          "Why a stack of cards:",
+          {
+            "bullets": [
+              "**One home for the whole app.** Tap a card’s arrow and it opens in place, then closes back into the stack.",
+              "**What matters now comes first.** The stack puts what’s most relevant on top. At a store, that’s the Contribute card (more on that below).",
+              "**It keeps the app simple.**"
+            ]
+          },
+          {
+            "image": "home-open",
+            "alt": "Two iPhones: the SmartBasket home with Today, Your SmartBasket and Points cards, then the Today card opened full screen with nearby products and six stores with sales: Walmart, No Frills, Loblaws, Costco, T&T and Metro",
+            "caption": "Today’s card opens in place, with the stores that have sales."
+          },
+          "In the Figma prototype, each card opens with Smart Animate, and an X closes it back into the stack."
+        ]
+      },
+      {
+        "title": "List",
+        "heading": "Type it, then compare",
+        "content": [
+          "Adding an item works like any list you’ve used: you type what you need, in plain words. Then SmartBasket does the comparing for you, and the New item sheet says so up front: pricing and the best store will appear after you add the item.",
+          "Once it’s added, the price finder looks it up, and the item shows its price at stores nearby, each with its distance.",
+          {
+            "image": "add-item",
+            "alt": "Two iPhones: the New item sheet over the basket, with an Auto price comparison note and a Type something field, then Granola bars with prices at Walmart, No Frills, Loblaws and Costco",
+            "caption": "Type an item, then see its price at stores nearby."
+          },
+          {
+            "h3": "By item or by store"
+          },
+          "The shopping list has two views, switched with two small icons next to its title. By item, it’s a checklist with a price on each item, and sale prices in green. By store, it’s a grid of stores with how far away each one is and how many of your items it has. Tap a store, and its tile grows into a view of just that store.",
+          {
+            "image": "list-views",
+            "alt": "Three iPhones: the shopping list as a checklist with prices, the same list as a grid of Walmart, No Frills, Loblaws and Costco with distances and item counts, and the Walmart tile opened with its items and a public transit card",
+            "caption": "By item, by store, then one store opened."
+          },
+          {
+            "h3": "Worth the trip?"
+          },
+          "“Trip worth calculation” was one of the five features, and it lives on each store: how far away it is, a nudge to save with public transit, and a button for directions. Behind it are your location and Google Maps.",
+          {
+            "image": "transit",
+            "alt": "A close-up of the SmartBasket store view: a light blue card reading 2km away, Save with public transit, with a mint directions button",
+            "caption": "Distance and a public transit option, right on the store.",
+            "size": "content"
+          }
+        ]
+      },
+      {
+        "title": "Crowdsourcing",
+        "heading": "Deals in one tap",
+        "content": [
+          "Not every deal in SmartBasket comes from the web. Some come from other shoppers: when you spot a sale in a store, you can add it, so people nearby can find it too. That only works if adding a deal takes next to no effort, so contributing is one question with two buttons:",
+          {
+            "bullets": [
+              "**At a store,** the Contribute card rises to the top of home and asks: “See anything on sale at Walmart?”",
+              "**Yes! or Nope.** Yes! has a camera on it: you snap the sale, and Gemini turns the photo into a deal the app saves."
+            ]
+          },
+          {
+            "image": "contribute",
+            "alt": "Two iPhones: the SmartBasket home with the Today card on top, then the same home with a Contribute card on top asking See anything on sale at Walmart?, with Yes! and Nope buttons",
+            "caption": "At a store, Contribute moves to the top of home."
+          },
+          "Items ask too. On an item’s page, the same card asks: “Are these still on sale?”",
+          {
+            "image": "contribute-item",
+            "alt": "An iPhone showing Granola bars with prices at four stores and a Contribute card asking Are these still on sale?, with Yes! and Nope buttons",
+            "caption": "On an item: “Are these still on sale?”"
+          }
+        ]
+      },
+      {
+        "title": "Build",
+        "heading": "From Figma to a working app",
+        "content": [
+          "There was no handoff on this one: I designed SmartBasket and built it too. My slides sum up the approach as “design first”, then “figma!”. I designed the screens in Figma before writing any code, then built a mobile web app that ran in the browser, close to those screens.",
+          "Next.js ran the app, and Firebase handled login, points and the data. Three pipelines did the rest, written in my slides like this:",
+          {
+            "board": {
+              "label": "Pipelines, from my slides",
+              "notes": [
+                {
+                  "text": "price finder\ntext => serpapi => json => gemini => cleaned json => fs\nlocalized with openweather reverse geocoding",
+                  "color": "yellow",
+                  "tag": "Worked in the demo"
+                },
+                {
+                  "text": "crowdsourcing\nlocation detection => image => gemini => json => fs",
+                  "color": "blue",
+                  "tag": "Worked in the demo"
+                },
+                {
+                  "text": "travel cost\nlocation detection => gcp maps api",
+                  "color": "green",
+                  "tag": "Worked in the demo"
+                }
+              ]
+            }
+          },
+          {
+            "bullets": [
+              "**Price finder:** the item you typed went to SerpAPI, Gemini cleaned up what came back, and OpenWeather’s reverse geocoding kept it local. It filled in the prices on each item.",
+              "**Crowdsourcing:** the app detected your location, then Gemini turned your photo into a deal. It sat behind the Yes! button.",
+              "**Travel cost:** your location and Google Maps. It sat behind the distance and public transit card on each store."
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Outcome",
+        "heading": "Results and lessons",
+        "content": [
+          "By demo time, SmartBasket worked end to end: the price finder, crowdsourced deals from a photo, the trip-worth check with public transit, and login with points.",
+          {
+            "h3": "What I learned"
+          },
+          {
+            "bullets": [
+              "**Design first paid off.** Designing in Figma before coding made the solo build faster.",
+              "**Familiar objects.** The AI hides behind a list, a card and a yes-or-no question.",
+              "**One-tap contributing.** Crowdsourcing only works if adding a deal takes one tap."
+            ]
+          },
+          {
+            "h3": "Summary"
+          },
+          "SmartBasket started from a Canada-related theme and a simple goal: help Canadians save on groceries without checking every store themselves. Working solo at Hack Canada 2025, I designed it in Figma first, then built it as a mobile web app close to those screens.",
+          "Behind a familiar list and a stack of cards, it finds prices with SerpAPI and Gemini, lets shoppers add in-store deals with a photo, and shows whether a trip is worth it. Everything worked end to end in the demo."
+        ]
+      }
+    ]
+  },
+  "assets": {
+    "cover": {
+      "path": "assets/smartbasket-cover-live.jpg",
+      "existingAssetId": "image-23386ead098cc79561243b37decc1ace6cdac7ac-716x717-png",
+      "note": "Winston's current home-page thumbnail in Sanity (the home screen in an older iPhone frame, from Figma file r2Feu1tLXWg8ApMcINffew node 595:1020), kept as is. The local file is a JPG copy for the preview."
+    },
+    "hero": {
+      "path": "assets/smartbasket-cs4-hero.jpg",
+      "sourceNodeIds": [
+        "358:49920",
+        "358:49548",
+        "358:49967"
+      ],
+      "note": "Final basket by store, Home (centre) and item price screens from the App section at 3x, in Apple's iPhone 16 Pro (White Titanium) bezel, laid out like the Yelo and Villio heroes on a soft mint-to-blue gradient. Replaces the old 716 px hero, which reused the cover."
+    },
+    "home-open": {
+      "path": "assets/smartbasket-cs4-home-open.png",
+      "sourceNodeIds": [
+        "358:49548",
+        "358:49822",
+        "358:50151"
+      ],
+      "note": "Home, then Today opened, in the bezel with an arrow. In 358:49822 the third row of store tiles repeats the Loblaws / Costco row (a placeholder); at Winston’s request (Nov 2026) it is redrawn locally as T&T (3km away, 2 items) and Metro (5km away, 1 item): row 2’s tiles as the template, text in Onest at the tiles’ own sizes and colours, and the logos Winston supplied cut to the 42pt circle of the Store Icon frames (sb2/replace_row.py). The Figma file is unchanged."
+    },
+    "add-item": {
+      "path": "assets/smartbasket-cs4-add-item.png",
+      "sourceNodeIds": [
+        "1:12974",
+        "1:12930",
+        "358:49920",
+        "358:49967"
+      ],
+      "note": "The New item sheet, then the item's prices (the sheet's text field links to the item in the prototype). 1:12974 has no status bar, so it is rebuilt locally in the App section layout: the App copy 358:49920 with the same ~50% #171717 dim overlay, and the sheet cut out of 1:12974 (difference against the dimmed 1:12930 underneath) and moved up 40pt so it ends where the App layout's card ends."
+    },
+    "list-views": {
+      "path": "assets/smartbasket-cs4-list-views.png",
+      "sourceNodeIds": [
+        "1:13069",
+        "358:49920",
+        "358:50151"
+      ],
+      "note": "List view, store view, then the Walmart tile opened, in the bezel with arrows (spread). 1:13069 has no status bar, so it is given the App section layout locally: the status bar and home indicator from 358:49920, the card's top moved down 40pt and its bottom bar up 40pt. The same steps rebuild 1:12930 into a near pixel match of its App copy 358:49920."
+    },
+    "transit": {
+      "path": "assets/smartbasket-cs4-transit.png",
+      "sourceNodeIds": [
+        "358:50151"
+      ],
+      "note": "Close-up crop of the transit card from the 3x store view, cut off its white background (flood fill, colour-to-alpha on the rim) and centred on a transparent canvas with a little room on each side (1400×258), shown at text width."
+    },
+    "contribute": {
+      "path": "assets/smartbasket-cs4-contribute.png",
+      "sourceNodeIds": [
+        "358:49548",
+        "358:49658"
+      ],
+      "note": "Home, then Home with the Contribute card first, in the bezel with an arrow."
+    },
+    "contribute-item": {
+      "path": "assets/smartbasket-cs4-contribute-item.png",
+      "sourceNodeIds": [
+        "358:50045"
+      ],
+      "note": "The item with the Contribute card, one phone in the bezel."
+    }
+  }
+}

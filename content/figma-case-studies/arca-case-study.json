@@ -1,0 +1,1512 @@
+{
+  "documentId": "figma-portfolio-arca",
+  "generatedFrom": "case-study-copy/arca.json",
+  "fields": {
+    "description": "A monthly kit for making traditional art at home, guided by an app. Best Pitch at the UXL Designathon 2025.",
+    "client": "UXL Designathon 2025",
+    "discipline": "Product Design",
+    "link": {
+      "url": "https://youtu.be/wHs0IzYVrHw",
+      "label": "Watch pitch"
+    },
+    "intro": "Arca is a concept for a monthly kit that teaches one traditional craft at a time, with an app that guides you through making it. In a team of three, I designed the app and its prototype, the website and the order email.",
+    "summary": "Turning a broad designathon prompt into a monthly art kit, then designing the website, order email and app that take someone from first click to finished piece.",
+    "overview": "Arca is for empty nesters like our parents who want to try a traditional craft at home. I designed the app, website and email, and my two teammates made the box, the knowledge card and the pitch deck. Our pitch, told through an empty-nester persona named Sarah, won Best Pitch.",
+    "impact": "Best Pitch, UXL Designathon 2025.",
+    "showSideMenu": true,
+    "details": [
+      {
+        "_type": "detailItem",
+        "_key": "arca-detail-0",
+        "label": "Event",
+        "value": "UXL Designathon 2025\nOne weekend · March 2025"
+      },
+      {
+        "_type": "detailItem",
+        "_key": "arca-detail-1",
+        "label": "Result",
+        "value": "Best Pitch"
+      },
+      {
+        "_type": "detailItem",
+        "_key": "arca-detail-2",
+        "label": "Team",
+        "value": "Sophia, Gaurav and Winston"
+      },
+      {
+        "_type": "detailItem",
+        "_key": "arca-detail-3",
+        "label": "Deliverables",
+        "value": "Clickable prototype · Pitch deck"
+      },
+      {
+        "_type": "detailItem",
+        "_key": "arca-detail-4",
+        "label": "Platform",
+        "value": "Mobile · Web · Email"
+      },
+      {
+        "_type": "detailItem",
+        "_key": "arca-detail-5",
+        "label": "Tools",
+        "value": "Figma"
+      }
+    ],
+    "coverImage": {
+      "_type": "image",
+      "localAssetKey": "cover",
+      "alt": "An iPhone showing the Arca home screen: a delivered Rogan Art kit card and a Scan Kit button"
+    },
+    "hero": [
+      {
+        "_type": "mediaImage",
+        "_key": "arca-hero",
+        "localAssetKey": "hero",
+        "alt": "Three Arca screens on iPhones: the Rogan Art kit page, the home screen with a delivered kit, and step 1 of the guide",
+        "size": "full"
+      }
+    ],
+    "sections": [
+      {
+        "_type": "projectSection",
+        "_key": "arca-section-0",
+        "title": "Problem Statement",
+        "heading": "How might we leverage technology to enhance the connection between global artists and audiences, while fostering meaningful and engaging experiences?",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "arca-s-0-b-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "arca-s-0-b-0-s",
+                "marks": [],
+                "text": "A prompt this broad could point almost anywhere. At the UXL Designathon in March 2025, my team of three rewrote three parts of it in words we could design for:"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "arca-s-0-b-1-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "arca-s-0-b-1-0-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Global artists → traditional artists,"
+              },
+              {
+                "_type": "span",
+                "_key": "arca-s-0-b-1-0-s1",
+                "marks": [],
+                "text": " whose work carries generations of culture, story and skill."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "arca-s-0-b-1-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "arca-s-0-b-1-1-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Audiences → our parents,"
+              },
+              {
+                "_type": "span",
+                "_key": "arca-s-0-b-1-1-s1",
+                "marks": [],
+                "text": " a familiar place to start."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "arca-s-0-b-1-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "arca-s-0-b-1-2-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Engaging experiences → creating the art."
+              },
+              {
+                "_type": "span",
+                "_key": "arca-s-0-b-1-2-s1",
+                "marks": [],
+                "text": " The experience is making it yourself."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "arca-s-0-b-2",
+            "localAssetKey": "prompt",
+            "alt": "The designathon prompt on a slide from our team’s pitch deck, with sticky notes rewriting global artists as traditional artists, audiences as our parents and engaging experiences as creating the art",
+            "caption": "From our pitch deck: the prompt and our three rewrites.",
+            "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "arca-s-0-b-3",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "arca-s-0-b-3-s",
+                "marks": [],
+                "text": "The problem we pitched fit on one slide: “Thousands of these art forms are being lost to the pages of history.” Many are kept alive by a single artisan or one family, and it’s hard to make a living from an art that’s fading."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "_type": "projectSection",
+        "_key": "arca-section-1",
+        "title": "Exploration",
+        "heading": "Choosing lost art",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "arca-s-1-b-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "arca-s-1-b-0-s",
+                "marks": [],
+                "text": "“Art” covers a lot, from poetry to indie games. On sticky notes, we listed twelve kinds and picked one: lost art."
+              }
+            ]
+          },
+          {
+            "_type": "stickyBoard",
+            "_key": "arca-s-1-b-1",
+            "label": "Art forms",
+            "notes": [
+              {
+                "_type": "stickyNote",
+                "_key": "arca-s-1-b-1-n0",
+                "text": "Lost art",
+                "color": "yellow",
+                "highlight": "Picked"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "arca-s-1-b-1-n1",
+                "text": "Poetry",
+                "color": "blue"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "arca-s-1-b-1-n2",
+                "text": "Traditional art",
+                "color": "pink"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "arca-s-1-b-1-n3",
+                "text": "Music",
+                "color": "green"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "arca-s-1-b-1-n4",
+                "text": "Film",
+                "color": "blue"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "arca-s-1-b-1-n5",
+                "text": "3D (AR, VR)",
+                "color": "yellow"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "arca-s-1-b-1-n6",
+                "text": "Indie games",
+                "color": "pink"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "arca-s-1-b-1-n7",
+                "text": "Photo",
+                "color": "green"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "arca-s-1-b-1-n8",
+                "text": "Merchandise",
+                "color": "yellow"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "arca-s-1-b-1-n9",
+                "text": "Textiles",
+                "color": "blue"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "arca-s-1-b-1-n10",
+                "text": "Jewellery",
+                "color": "green"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "arca-s-1-b-1-n11",
+                "text": "Creative writing",
+                "color": "pink"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "arca-s-1-b-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "arca-s-1-b-2-s",
+                "marks": [],
+                "text": "Then we wrote down its pros and cons. Some of the cons were hard questions:"
+              }
+            ]
+          },
+          {
+            "_type": "stickyBoard",
+            "_key": "arca-s-1-b-3",
+            "label": "Lost art: pros and cons",
+            "notes": [
+              {
+                "_type": "stickyNote",
+                "_key": "arca-s-1-b-3-n0",
+                "text": "Fits the theme of global + connections",
+                "color": "green",
+                "tag": "Pro"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "arca-s-1-b-3-n1",
+                "text": "Morals good: “saving lost art”",
+                "color": "green",
+                "tag": "Pro"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "arca-s-1-b-3-n2",
+                "text": "Unique art forms and methods can be shared",
+                "color": "green",
+                "tag": "Pro"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "arca-s-1-b-3-n3",
+                "text": "Connect globally to small places with niche art",
+                "color": "green",
+                "tag": "Pro"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "arca-s-1-b-3-n4",
+                "text": "People don’t have access",
+                "color": "pink",
+                "tag": "Con"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "arca-s-1-b-3-n5",
+                "text": "Is it the app’s responsibility to find these “lost arts”?",
+                "color": "pink",
+                "tag": "Con"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "arca-s-1-b-3-n6",
+                "text": "Value-centred design: would these people want their art shared with the world?",
+                "color": "pink",
+                "tag": "Con"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "arca-s-1-b-3-n7",
+                "text": "What if they use special methods? They might not be accessible to general audiences",
+                "color": "pink",
+                "tag": "Con"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "arca-s-1-b-3-n8",
+                "text": "How does the art get integrated?",
+                "color": "pink",
+                "tag": "Con"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "arca-s-1-b-3-n9",
+                "text": "Why will people want to learn this? What makes people return?",
+                "color": "pink",
+                "tag": "Con"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "arca-s-1-b-4",
+            "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "arca-s-1-b-4-s",
+                "marks": [],
+                "text": "Who it’s for"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "arca-s-1-b-5",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "arca-s-1-b-5-s",
+                "marks": [],
+                "text": "For the audience, we started close to home: our parents, and empty nesters like them. To understand them better, we interviewed one and built our persona, Sarah:"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "arca-s-1-b-6-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "arca-s-1-b-6-0-s",
+                "marks": [],
+                "text": "An empty nester with a hybrid 9-to-5 job. Her kids are away at university."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "arca-s-1-b-6-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "arca-s-1-b-6-1-s",
+                "marks": [],
+                "text": "She has the freedom to explore new interests, but her work schedule still limits travel."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "arca-s-1-b-6-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "arca-s-1-b-6-2-s",
+                "marks": [],
+                "text": "She likes learning about other cultures, is artsy but a beginner, and likes low-effort things."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "arca-s-1-b-6-3",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "arca-s-1-b-6-3-s",
+                "marks": [],
+                "text": "She’d rather explore from the comfort of her own home."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          }
+        ]
+      },
+      {
+        "_type": "projectSection",
+        "_key": "arca-section-2",
+        "title": "Concept",
+        "heading": "A kit with a guide",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "arca-s-2-b-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "arca-s-2-b-0-s",
+                "marks": [],
+                "text": "Each month, Arca brings one traditional craft into your home, from one artisan. The box holds the materials, a printed card tells the craft’s story, and an app walks you through making it. Our demo month is Rogan art, from the Kutch region of Gujarat, India."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "arca-s-2-b-1",
+            "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "arca-s-2-b-1-s",
+                "marks": [],
+                "text": "Why a kit and an app"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "arca-s-2-b-2-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "arca-s-2-b-2-0-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Making it is the engaging experience."
+              },
+              {
+                "_type": "span",
+                "_key": "arca-s-2-b-2-0-s1",
+                "marks": [],
+                "text": " Working with real materials is the point."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "arca-s-2-b-2-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "arca-s-2-b-2-1-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "The kit supports the artisans."
+              },
+              {
+                "_type": "span",
+                "_key": "arca-s-2-b-2-1-s1",
+                "marks": [],
+                "text": " It carries their real materials, and a portion of every kit goes to them."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "arca-s-2-b-2-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "arca-s-2-b-2-2-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Tech supports the art."
+              },
+              {
+                "_type": "span",
+                "_key": "arca-s-2-b-2-2-s1",
+                "marks": [],
+                "text": " The app guides you; it doesn’t replace the art. We wrote the same rule on our whiteboard: “Design should not take away from the art.”"
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "arca-s-2-b-3",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "arca-s-2-b-3-s",
+                "marks": [],
+                "text": "Our features brainstorm shows where the pieces came from. Most of them made it into the designs, and two became ideas for later:"
+              }
+            ]
+          },
+          {
+            "_type": "stickyBoard",
+            "_key": "arca-s-2-b-4",
+            "label": "Features",
+            "notes": [
+              {
+                "_type": "stickyNote",
+                "_key": "arca-s-2-b-4-n0",
+                "text": "Box → QR code",
+                "color": "pink",
+                "tag": "Designed"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "arca-s-2-b-4-n1",
+                "text": "QR code → AR",
+                "color": "pink",
+                "tag": "Future idea"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "arca-s-2-b-4-n2",
+                "text": "Every month, we add to the collection – you can buy",
+                "color": "yellow",
+                "tag": "Designed"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "arca-s-2-b-4-n3",
+                "text": "Monthly subscription → older people will buy this",
+                "color": "yellow",
+                "tag": "Designed"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "arca-s-2-b-4-n4",
+                "text": "Step-by-step guide on app",
+                "color": "blue",
+                "tag": "Designed"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "arca-s-2-b-4-n5",
+                "text": "Take a photo for feedback: see if you’re on the right track",
+                "color": "blue",
+                "tag": "Future idea"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "_type": "projectSection",
+        "_key": "arca-section-3",
+        "title": "Journey",
+        "heading": "One flow, many touchpoints",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "arca-s-3-b-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "arca-s-3-b-0-s",
+                "marks": [],
+                "text": "Sarah doesn’t start in an app. She might start with a video about the art and end up doing a kit every month with a friend. We drew her whole path on a whiteboard, and it showed us which screens we needed and what each one had to do."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "arca-s-3-b-1",
+            "localAssetKey": "flow",
+            "alt": "A whiteboard user flow: watch a YouTube video about the art, come across the website, learn about this month’s art, the box and older months, the box page, buy, an email, download the app, wait for the box, get the box and read the card, scan the box, open the step-by-step guide, tell friends, buy a subscription together and upgrade to premium",
+            "caption": "Our user flow, from a YouTube video to a monthly habit.",
+            "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "arca-s-3-b-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "arca-s-3-b-2-s",
+                "marks": [],
+                "text": "Most of the steps became something to design, and we split them up:"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "arca-s-3-b-3-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "arca-s-3-b-3-0-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "I designed"
+              },
+              {
+                "_type": "span",
+                "_key": "arca-s-3-b-3-0-s1",
+                "marks": [],
+                "text": " the website, the order email and the app."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "arca-s-3-b-3-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "arca-s-3-b-3-1-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "My two teammates made"
+              },
+              {
+                "_type": "span",
+                "_key": "arca-s-3-b-3-1-s1",
+                "marks": [],
+                "text": " the box, the knowledge card, the brochure, and the pitch deck and its animation."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "mediaGallery",
+            "_key": "arca-s-3-b-4",
+            "caption": "The box and the knowledge card, both by my teammates.",
+            "images": [
+              {
+                "_type": "image",
+                "_key": "arca-s-3-b-4-0",
+                "localAssetKey": "kit-box",
+                "alt": "A black Arca mailer box with pink and green floral line art and the Arca logo",
+                "label": "Box"
+              },
+              {
+                "_type": "image",
+                "_key": "arca-s-3-b-4-1",
+                "localAssetKey": "kit-card",
+                "alt": "The Rogan art knowledge card: a photo of an artisan at work, the craft’s history, a map of India with Gujarat marked and a QR code to the app",
+                "label": "Knowledge card"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "arca-s-3-b-5",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "arca-s-3-b-5-s",
+                "marks": [],
+                "text": "Both lead back to the app. The card has a QR code next to “Follow step-by-step instructions on our app!”, and the app scans the box itself."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "_type": "projectSection",
+        "_key": "arca-section-4",
+        "title": "Website",
+        "heading": "Where Sarah finds it",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "arca-s-4-b-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "arca-s-4-b-0-s",
+                "marks": [],
+                "text": "After the video, Sarah’s first stop is the website, and it has a lot to do: introduce a craft she’s probably never heard of, show her the box and past months, then sell her the kit. I designed two pages for that: a home page and a box page."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "arca-s-4-b-1",
+            "localAssetKey": "web-home",
+            "alt": "The Arca home page: Connecting you to traditional art from around the world, with Get this month’s box and About Rogan art buttons above a video of Rogan art being painted",
+            "caption": "The home page opens with this month’s craft.",
+            "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "arca-s-4-b-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "arca-s-4-b-2-s",
+                "marks": [],
+                "text": "The whiteboard even set the home page’s order: this month’s art, then the box, then older months. A video about Rogan art leads, “What is an arca?” explains the box, and “Previous Arcas” lists past months you can still buy, next to “Get our monthly subscription”."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "arca-s-4-b-3",
+            "localAssetKey": "web-collection",
+            "alt": "The Previous Arcas row: Madhubani Painting, Japanese Kintsugi, Ukrainian Pysanky, Aztec Amate Art and Turkish Ebru, each with Buy now and Learn more, next to Get our monthly subscription",
+            "caption": "Previous Arcas: past months you can still buy.",
+            "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "arca-s-4-b-4",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "arca-s-4-b-4-s",
+                "marks": [],
+                "text": "The box page follows the flow too: a synopsis of the craft and a video, a quote from the artist, what’s provided in the kit and what you need to bring, and Arca Premium, which adds a sample of the artist’s original work."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "arca-s-4-b-5",
+            "localAssetKey": "web-box",
+            "alt": "The Rogan Art box page: a video and synopsis, a quote from the artist, the kit’s provided and required materials, Requires 3 hours, and Arca Premium",
+            "caption": "The box page: the craft, the artist, the kit and Premium.",
+            "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "arca-s-4-b-6",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "arca-s-4-b-6-s",
+                "marks": [],
+                "text": "Checkout sits at the bottom. The flow’s “only 12 left (in the UI)” became “Upgrade to premium (only 12 left in stock)”, right next to Buy Now. In the prototype, a click fills in Sarah’s details."
+              }
+            ]
+          },
+          {
+            "_type": "mediaGallery",
+            "_key": "arca-s-4-b-7",
+            "caption": "Checkout, empty and filled in.",
+            "arrows": true,
+            "images": [
+              {
+                "_type": "image",
+                "_key": "arca-s-4-b-7-0",
+                "localAssetKey": "checkout-empty",
+                "alt": "The Rogan Arca Kit checkout card with empty delivery and payment fields, Buy Now and Upgrade to premium (only 12 left in stock)",
+                "label": "Empty"
+              },
+              {
+                "_type": "image",
+                "_key": "arca-s-4-b-7-1",
+                "localAssetKey": "checkout-filled",
+                "alt": "The same checkout card filled in with Sarah’s name, email, Waterloo address and card details",
+                "label": "Filled in"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "_type": "projectSection",
+        "_key": "arca-section-5",
+        "title": "Email",
+        "heading": "From checkout to the app",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "arca-s-5-b-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "arca-s-5-b-0-s",
+                "marks": [],
+                "text": "Right after Sarah buys, an email lands in her inbox. Our whiteboard asked it to carry shipping info, a synopsis, a button to download the app and an option to upgrade to Premium."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "arca-s-5-b-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "arca-s-5-b-1-s",
+                "marks": [],
+                "text": "The email I designed thanks her by name, lists the order and the shipping address, and asks her to download the app “to explore tutorials, artist stories, and care instructions for your kit.” Upgrade to Premium sits below, then links to change the address or cancel the order."
+              }
+            ]
+          },
+          {
+            "_type": "mediaGallery",
+            "_key": "arca-s-5-b-2",
+            "caption": "The order email, top and bottom.",
+            "images": [
+              {
+                "_type": "image",
+                "_key": "arca-s-5-b-2-0",
+                "localAssetKey": "email-top",
+                "alt": "The top of the Arca order email: Thank you for your purchase!, a note to Sarah, the box and the order details"
+              },
+              {
+                "_type": "image",
+                "_key": "arca-s-5-b-2-1",
+                "localAssetKey": "email-bottom",
+                "alt": "The bottom of the Arca order email: Download app and Copy download link, Upgrade to Premium, Change Shipping Address and Cancel Order, and a sign-off from the Arca Team"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "_type": "projectSection",
+        "_key": "arca-section-6",
+        "title": "Scan",
+        "heading": "Scan to start",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "arca-s-6-b-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "arca-s-6-b-0-s",
+                "marks": [],
+                "text": "Scan Kit is the main button on the home screen and the Rogan Art page, and it’s there for a reason: scanning the box unlocks the guide, so opening the box becomes the start of the experience."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "arca-s-6-b-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "arca-s-6-b-1-s",
+                "marks": [],
+                "text": "In our flow, Sarah downloads the app before her box arrives. Until it does, the Rogan Art page tracks it. Once it’s delivered, the same page explains the scan in three steps: press Scan Kit, point your camera at the box, unlock step-by-step instructions."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "arca-s-6-b-2",
+            "localAssetKey": "delivery",
+            "alt": "Two iPhones: the Rogan Art page with an In transit shipping bar, and the same page once delivered, with Ready to start this project? and three steps to scan the kit",
+            "caption": "The Rogan Art page while the box is on its way, and once it’s arrived.",
+            "size": "full",
+            "labels": [
+              {
+                "_type": "imageLabel",
+                "_key": "arca-s-6-b-2-l0",
+                "text": "In transit",
+                "x": 0.358,
+                "y": 0.0434
+              },
+              {
+                "_type": "imageLabel",
+                "_key": "arca-s-6-b-2-l1",
+                "text": "Delivered",
+                "x": 0.642,
+                "y": 0.0434
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "arca-s-6-b-3",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "arca-s-6-b-3-s",
+                "marks": [],
+                "text": "Scanning opens the camera, with “Can’t scan? Enter code” underneath. After the scan, the kit opens: Start Creating, then the materials, split into what’s provided in the kit and what you bring yourself."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "arca-s-6-b-4",
+            "localAssetKey": "scan",
+            "alt": "Two iPhones: the camera pointed at the Arca box with a shutter button and Can’t scan? Enter code, then the Rogan Art kit page with Start Creating and Materials",
+            "caption": "Scan the box, and the kit opens.",
+            "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "arca-s-6-b-5",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "arca-s-6-b-5-s",
+                "marks": [],
+                "text": "The brainstorm went one step further: the QR code could open an AR view. We kept that as an idea for later."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "_type": "projectSection",
+        "_key": "arca-section-7",
+        "title": "Guide",
+        "heading": "One step at a time",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "arca-s-7-b-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "arca-s-7-b-0-s",
+                "marks": [],
+                "text": "Everything so far leads here, to making the art. The guide walks you through the kit while the art stays in your hands, one step per screen:"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "arca-s-7-b-1-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "arca-s-7-b-1-0-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "A progress bar"
+              },
+              {
+                "_type": "span",
+                "_key": "arca-s-7-b-1-0-s1",
+                "marks": [],
+                "text": " across the top: Step 1 of 10."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "arca-s-7-b-1-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "arca-s-7-b-1-1-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "One instruction,"
+              },
+              {
+                "_type": "span",
+                "_key": "arca-s-7-b-1-1-s1",
+                "marks": [],
+                "text": " with a photo to match."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "arca-s-7-b-1-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "arca-s-7-b-1-2-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "A pro tip,"
+              },
+              {
+                "_type": "span",
+                "_key": "arca-s-7-b-1-2-s1",
+                "marks": [],
+                "text": " like “Tight fabric makes smoother lines and cleaner designs.”"
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "arca-s-7-b-1-3",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "arca-s-7-b-1-3-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "“Your progress is saved automatically”"
+              },
+              {
+                "_type": "span",
+                "_key": "arca-s-7-b-1-3-s1",
+                "marks": [],
+                "text": " under the title. The button in the corner folds the guide away, back to the kit."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "arca-s-7-b-1-4",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "arca-s-7-b-1-4-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Next Step"
+              },
+              {
+                "_type": "span",
+                "_key": "arca-s-7-b-1-4-s1",
+                "marks": [],
+                "text": " at the bottom."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "arca-s-7-b-2",
+            "localAssetKey": "steps",
+            "alt": "Three iPhones showing the first three steps of the Rogan Art guide, each with a progress bar, one instruction, a photo, a pro tip and a Next Step button",
+            "caption": "The first three steps.",
+            "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "arca-s-7-b-3",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "arca-s-7-b-3-s",
+                "marks": [],
+                "text": "The last screen celebrates with “Kit complete! Congratulations” and suggests three articles to learn more about the art form."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "arca-s-7-b-4",
+            "localAssetKey": "done",
+            "alt": "An iPhone showing Kit complete! Congratulations over a Rogan art photo with confetti, a Done button and three articles under Learn more about this art form",
+            "caption": "The finish, with more to read about the craft.",
+            "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "arca-s-7-b-5",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "arca-s-7-b-5-s",
+                "marks": [],
+                "text": "The brainstorm also had a photo check: take a picture of your work to see if you’re on the right track. We kept that as a future idea too."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "_type": "projectSection",
+        "_key": "arca-section-8",
+        "title": "Outcome",
+        "heading": "Results and lessons",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "arca-s-8-b-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "arca-s-8-b-0-s",
+                "marks": [],
+                "text": "We won Best Pitch at the UXL Designathon 2025, and the story is what carried it. We built the pitch around Sarah, and near the end, our script comes back to her: “With Arca, Sarah has found a new hobby that excites her and reconnects her with her love of art.”"
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "arca-s-8-b-1",
+            "localAssetKey": "solution",
+            "alt": "The solution slide from our pitch: the Arca kit, the app on a phone, knowledge cards, step-by-step guidance and the Arca logo",
+            "caption": "The solution slide from our pitch deck.",
+            "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "arca-s-8-b-2",
+            "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "arca-s-8-b-2-s",
+                "marks": [],
+                "text": "What I learned"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "arca-s-8-b-3-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "arca-s-8-b-3-0-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Reframe the prompt."
+              },
+              {
+                "_type": "span",
+                "_key": "arca-s-8-b-3-0-s1",
+                "marks": [],
+                "text": " A broad prompt gets easier once you turn it into words you can design for, like “traditional artists” and “our parents”."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "arca-s-8-b-3-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "arca-s-8-b-3-1-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Design the whole journey."
+              },
+              {
+                "_type": "span",
+                "_key": "arca-s-8-b-3-1-s1",
+                "marks": [],
+                "text": " The app was one touchpoint of many, next to the site, the email, the box and the card."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "arca-s-8-b-3-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "arca-s-8-b-3-2-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Story wins the room."
+              },
+              {
+                "_type": "span",
+                "_key": "arca-s-8-b-3-2-s1",
+                "marks": [],
+                "text": " A clear story built around one person, Sarah, carried the pitch."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "arca-s-8-b-4",
+            "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "arca-s-8-b-4-s",
+                "marks": [],
+                "text": "Summary"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "arca-s-8-b-5",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "arca-s-8-b-5-s",
+                "marks": [],
+                "text": "Arca started from a broad designathon prompt. My team of three reframed it around traditional artists, our parents and making the art yourself, and turned it into a monthly kit that teaches one craft at a time, demoed with Rogan art from Gujarat, India."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "arca-s-8-b-6",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "arca-s-8-b-6-s",
+                "marks": [],
+                "text": "I designed three parts of Sarah’s journey: the website where she finds and buys the kit, the email that sends her to the app, and the app that tracks the box, starts with a scan and guides her one step at a time. Our pitch, built around her story, won Best Pitch at the UXL Designathon 2025."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "assets": {
+    "cover": {
+      "path": "assets/arca-cs4-cover.jpg",
+      "sourceNodeIds": [
+        "0:131"
+      ],
+      "note": "Winston’s live thumbnail (the in-transit home, 0:41, in a dark bezel on light grey) with the card and status row replaced by the delivered home (0:131), so the card shows the real Rogan art description instead of the Figma placeholder. Same framing and size as the live thumbnail (716×717)."
+    },
+    "hero": {
+      "path": "assets/arca-cs4-hero.jpg",
+      "sourceNodeIds": [
+        "0:405",
+        "0:131",
+        "0:499"
+      ],
+      "note": "Kit page, delivered home (centre) and guide step 1 at 3x in Apple’s iPhone 16 Pro (White Titanium) bezel, laid out like the Yelo and Villio heroes on a pale plum gradient. Replaces the old hero, which was the cover image with placeholder copy."
+    },
+    "prompt": {
+      "path": "assets/arca-cs4-prompt.png",
+      "sourceNodeIds": [
+        "358:31515"
+      ],
+      "note": "Final pitch deck slide 08 (the team’s deck, not Winston’s) at 2x, rounded corners and a light grey outline."
+    },
+    "flow": {
+      "path": "assets/arca-cs4-flow.png",
+      "sourceNodeIds": [
+        "358:32390"
+      ],
+      "note": "Whiteboard photo IMG_1384 (the team’s user flow) at 1x, rounded corners and a light grey outline, 2200 px wide, 256-colour palette."
+    },
+    "kit-box": {
+      "path": "assets/arca-cs4-kit-box.png",
+      "sourceNodeIds": [
+        "358:35944"
+      ],
+      "note": "The teammates’ mailer box mockup (its transparent source image) centred on a light grey panel the size of the knowledge card, rounded with a light grey outline."
+    },
+    "kit-card": {
+      "path": "assets/arca-cs4-kit-card.png",
+      "sourceNodeIds": [
+        "358:36037"
+      ],
+      "note": "The teammates’ knowledge card (grey-map version) at 1x, cropped to the card, rounded with a light grey outline."
+    },
+    "web-home": {
+      "path": "assets/arca-cs4-web-home.png",
+      "sourceNodeIds": [
+        "358:36323"
+      ],
+      "note": "Dark homepage at 2x, cropped to the hero and video (y 0–1310 pt), rounded with a dark grey outline, 2400 px wide, 256-colour palette."
+    },
+    "web-collection": {
+      "path": "assets/arca-cs4-web-collection.png",
+      "sourceNodeIds": [
+        "358:36323"
+      ],
+      "note": "Dark homepage at 2x, cropped to the Previous Arcas row (y 2465–3235 pt), rounded with a dark grey outline."
+    },
+    "web-box": {
+      "path": "assets/arca-cs4-web-box.png",
+      "sourceNodeIds": [
+        "358:36570"
+      ],
+      "note": "Dark box page at 2x, cropped from the top through Arca Premium (y 0–1665 pt), rounded with a dark grey outline."
+    },
+    "checkout-empty": {
+      "path": "assets/arca-cs4-checkout-empty.png",
+      "sourceNodeIds": [
+        "358:36639",
+        "358:36638"
+      ],
+      "note": "Default variant of the checkout component set, cropped from a 2x export of the set and given rounded corners (no outline)."
+    },
+    "checkout-filled": {
+      "path": "assets/arca-cs4-checkout-filled.png",
+      "sourceNodeIds": [
+        "358:36707",
+        "358:36638"
+      ],
+      "note": "Filled-in variant (Variant2) of the checkout component set, which the prototype switches to on click; cropped from a 2x export of the set, rounded corners."
+    },
+    "email-top": {
+      "path": "assets/arca-cs4-email-top.png",
+      "sourceNodeIds": [
+        "358:31372"
+      ],
+      "note": "Order email at 2x, split at the divider under the order details (y 0–850 pt), rounded with a dark grey outline."
+    },
+    "email-bottom": {
+      "path": "assets/arca-cs4-email-bottom.png",
+      "sourceNodeIds": [
+        "358:31372"
+      ],
+      "note": "Order email at 2x, from the app section to the sign-off (y 882–1596 pt), rounded with a dark grey outline and padded with transparency to match the top half."
+    },
+    "delivery": {
+      "path": "assets/arca-cs4-delivery.png",
+      "sourceNodeIds": [
+        "0:291",
+        "0:337"
+      ],
+      "note": "Art page in transit and delivered, at 3x in Apple’s iPhone 16 Pro (White Titanium) bezel, with an arrow. As designed: on 0:337 the floating Scan Kit button sits over the Delivered row."
+    },
+    "scan": {
+      "path": "assets/arca-cs4-scan.png",
+      "sourceNodeIds": [
+        "0:906",
+        "0:405"
+      ],
+      "note": "Scan and the kit page (Activity), at 3x in Apple’s iPhone 16 Pro (White Titanium) bezel, with an arrow. 0:405 has its status bar hidden in the file."
+    },
+    "steps": {
+      "path": "assets/arca-cs4-steps.png",
+      "sourceNodeIds": [
+        "0:499",
+        "0:570",
+        "0:641"
+      ],
+      "note": "Guide steps 1–3 at 3x in Apple’s iPhone 16 Pro (White Titanium) bezel, spread, with arrows. Status bars are hidden in the file."
+    },
+    "done": {
+      "path": "assets/arca-cs4-done.png",
+      "sourceNodeIds": [
+        "0:712"
+      ],
+      "note": "Completion screen (Activity Step 4) at 3x in Apple’s iPhone 16 Pro (White Titanium) bezel."
+    },
+    "solution": {
+      "path": "assets/arca-cs4-solution.png",
+      "sourceNodeIds": [
+        "358:31446"
+      ],
+      "note": "Final pitch deck slide 19 (the team’s deck, not Winston’s) at 2x, rounded with a dark grey outline, 256-colour palette."
+    }
+  }
+}

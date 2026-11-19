@@ -1,0 +1,774 @@
+{
+  "documentId": "legacy-portfolio-heatmap",
+  "source": {
+    "figmaFile": "qDdxlqtBxVpaAOUMITle4W",
+    "page": "Heatmap.com (101:5544)",
+    "url": "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W/Winston-Design-Demo?node-id=101-5544",
+    "facts": "Confirmed by Winston (Nov 2026, ANSWERS.md): Full Sprint is a design studio/agency and Heatmap was its client; he was one of a few design interns, owned most of the portal, and a colleague did the AI insights (the colleague designed the insight cards and content; Winston decided where they live in the viewer: icon button, labelled button, tab, side rail, Heatmap Insights panel). Dates for this project: July – August 2024. Outcome: after more iterations after he left, based on the designs he had already created, it was built, and the resume numbers are real (10x easier navigation, 4x faster load times, higher product ROI); he did not do the later iterations. Nav (top bar + separate nav card): room for global actions (account, global actions); team/client preference. Starred lists: the full list was cramped in the nav; recents belong on the dashboard, favourites in the nav. HMW drafted from his explanation (growing product, new features scattered and bolted on, redesign aimed to integrate them and make it more scalable); to be confirmed in review. Lessons he chose: structure before polish; a system holds it together. Other claims come from his earlier live copy (competitive and platform audit, no user testing before the redesign, public preview page as the style source, presentation to Full Sprint and Heatmap with feedback on starring discoverability and the default dashboard layout), his resume (32 new components) and the Figma page (sandboxes, iterations, prototype with 300+ reactions, sticky notes, sketch notes). The before screens exist only in his live before/after images."
+  },
+  "fields": {
+    "description": "One nav, one heatmap viewer and a place for AI in a growing analytics portal.",
+    "client": "Heatmap · Full Sprint",
+    "discipline": "Product Design",
+    "link": {
+      "url": "https://heatmap.com",
+      "label": "Visit"
+    },
+    "intro": "Heatmap is an analytics tool that shows online stores where visitors click and scroll, with screen recordings, site speed and AI insights. As a product design intern at Full Sprint, a design studio, I redesigned most of Heatmap’s portal.",
+    "summary": "Redesigning Heatmap’s analytics portal: one nav, a tabbed heatmap viewer, a place for AI insights and recordings beside their list.",
+    "overview": "Heatmap is for small businesses that sell online. It was a client of Full Sprint, where I was one of a few design interns; a colleague designed the AI insight cards. After I left, the redesign went through more iterations and was built on my designs.",
+    "impact": "Built after my internship, on my designs: 10x easier navigation, 4x faster load times and higher product ROI.",
+    "details": [
+      {
+        "label": "Role",
+        "value": "Product Design Intern"
+      },
+      {
+        "label": "Team",
+        "value": "A few design interns\nat Full Sprint"
+      },
+      {
+        "label": "Timeline",
+        "value": "July – August 2024"
+      },
+      {
+        "label": "Platform",
+        "value": "Web (desktop)"
+      },
+      {
+        "label": "Tools",
+        "value": "Figma"
+      }
+    ],
+    "cover": {
+      "asset": "cover",
+      "alt": "A laptop on a desk next to an orange lamp, showing the redesigned Heatmap dashboard"
+    },
+    "hero": {
+      "image": "cover",
+      "alt": "A laptop on a desk next to an orange lamp, showing the redesigned Heatmap dashboard"
+    },
+    "sections": [
+      {
+        "title": "Problem Statement",
+        "heading": "How might we bring Heatmap’s scattered new features into one portal that can keep growing?",
+        "content": [
+          "Heatmap was a growing product, and new features kept arriving. By the summer of 2024, the tools around its heatmaps (scrollmaps, a data table, screen recordings, site speed and AI) were scattered across the portal and felt bolted on. The redesign set out to pull them together and leave room for whatever came next.",
+          "In the old viewer, you picked a page from a URL dropdown, opened the data table from a separate button and switched map types in a dropdown on the other side. The dashboard already had an AI Insights column in one table, and also listed AI Insights under “Upcoming Features”, next to a Chrome extension and split testing.",
+          {
+            "gallery": [
+              {
+                "image": "before-viewer",
+                "label": "Viewer",
+                "alt": "The old Heatmap viewer: a URL dropdown at the top, Data table, 30 days, Add filter and Create Custom Box buttons, desktop, mobile and tablet icons and a Clickmap dropdown above a store page with heat spots"
+              },
+              {
+                "image": "before-dashboard",
+                "label": "Dashboard",
+                "alt": "The old Heatmap dashboard, scrolled down: average site speed, rage clicks, a device type chart and an Upcoming Features card listing AI Insights, Chrome Extension and Split Testing"
+              }
+            ],
+            "caption": "The portal before the redesign."
+          },
+          {
+            "bullets": [
+              "**Who:** small businesses that sell online.",
+              "**Where:** a desktop web portal.",
+              "**Timeframe:** two summer months."
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Research",
+        "heading": "Learning from other tools",
+        "content": [
+          "Other analytics tools face the same challenge: lots of features, and one place to find them all. Before designing anything, I looked at how they handle it, then went through Heatmap’s own portal, mapping where every feature lived and how you got from one to the next.",
+          "The competitive audit covered Amplitude, Sprig, June, Plausible and PostHog, grouped by navigation, dashboards, heatmaps and data, and video playback.",
+          {
+            "image": "audit",
+            "alt": "A competitive audit board with screenshots of Amplitude, Sprig, June, Plausible and PostHog, grouped under Navigation, Dashboard, Heatmap/Data and Video Playback",
+            "caption": "The competitive audit, one board per part of the portal."
+          },
+          "Three patterns kept coming up:",
+          {
+            "board": {
+              "label": "Patterns from other tools",
+              "notes": [
+                {
+                  "text": "Clear, collapsible navigation",
+                  "color": "yellow"
+                },
+                {
+                  "text": "Split views that show data alongside a list",
+                  "color": "blue"
+                },
+                {
+                  "text": "Modular dashboards with at-a-glance metrics",
+                  "color": "green"
+                }
+              ]
+            }
+          },
+          {
+            "h3": "What the portal audit found"
+          },
+          {
+            "bullets": [
+              "**Scattered features:** related insights lived in separate, unconnected places.",
+              "**Inconsistent patterns:** new features brought their own buttons, cards and icons.",
+              "**Navigation bottlenecks:** switching heatmap views or applying a filter took several steps.",
+              "**No room to grow:** the structure wasn’t built for more features."
+            ]
+          },
+          "For the look, I didn’t start from scratch. Heatmap already had a public preview page, approved by stakeholders, with a newer colour palette and type, and I carried that style through the whole portal."
+        ]
+      },
+      {
+        "title": "Navigation",
+        "heading": "A nav with room to grow",
+        "content": [
+          "Every tool in Heatmap is one click away from the nav, and it’s where I started, on paper. It had to hold today’s pages, a list of the pages you care about, and space for features that didn’t exist yet.",
+          "I sketched two structures: a nav column that runs the full height of the window, and a nav card that sits under a full-width top bar.",
+          {
+            "gallery": [
+              {
+                "image": "sketch-full-height",
+                "label": "Full-height nav",
+                "alt": "A notebook sketch of a full-height navigation column with notes: 16px radius, secondary navigation, expand/collapse navbar, rounded nav column, full height nav, knocked out colours"
+              },
+              {
+                "image": "sketch-top-bar",
+                "label": "Top bar and nav card",
+                "alt": "A notebook sketch of a nav card under a full-width top bar with notes: actions can be placed here, header or CTA, section dividers, and if CTA is present, where to locate expand button"
+              }
+            ],
+            "caption": "My two structures. On the second, the top bar is where “actions can be placed”."
+          },
+          "The top bar won. It gave the account and other global actions a home outside the nav, and it was what the team and the client preferred. The rounded nav column from the first sketch stayed.",
+          {
+            "h3": "Which list belongs in the nav"
+          },
+          "Under the main links, the nav holds a list of pages. Two more sketches asked what that list should be, and where adding a page fits.",
+          {
+            "gallery": [
+              {
+                "image": "sketch-add-page",
+                "label": "Add Page in the list",
+                "alt": "A notebook sketch of a nav with Add Page at the top and a page list, noting: maybe add page should be in the heatmaps pages list still"
+              },
+              {
+                "image": "sketch-swap",
+                "label": "A list for each page",
+                "alt": "A notebook sketch of a nav with panels for recently accessed, your heatmaps and screen recordings, noting: swappable instance based on page, dashboard to recents, heatmaps to heatmaps list, screen recordings to recents"
+              }
+            ],
+            "caption": "Add Page inside the list, and a list that swaps with the page."
+          },
+          "In the sandbox, it took a few rounds:",
+          {
+            "bullets": [
+              "**V1:** a fixed Starred list, with View All.",
+              "**V2:** a list that changes with the page, as in the sketch: Recently Accessed on the Dashboard, all your heatmaps on Heatmaps.",
+              "**V3:** the same lists, with Add Page moved from the top of the nav into the list’s header.",
+              "**Final:** starred heatmaps or starred recordings, with the full list on its own Heatmaps page (and Add New Page with it), and recents on the dashboard."
+            ]
+          },
+          {
+            "image": "nav-versions",
+            "alt": "Four versions of the Heatmap nav side by side: V1 with Add Page and a Starred list, V2 with Your Heatmaps, V3 with Welcome, Dylan and an add button in the list header, and the final nav with Starred Heatmaps",
+            "caption": "V1, V2 and V3 from the nav sandbox, then the final nav on the Heatmaps page.",
+            "labels": [
+              {
+                "text": "V1",
+                "x": 0.1111,
+                "y": 0.0427
+              },
+              {
+                "text": "V2",
+                "x": 0.377,
+                "y": 0.0427
+              },
+              {
+                "text": "V3",
+                "x": 0.6429,
+                "y": 0.0427
+              },
+              {
+                "text": "Final",
+                "x": 0.8988,
+                "y": 0.0427
+              }
+            ]
+          },
+          "I came back to starring because the full list was cramped in the nav. Recents belong on the dashboard, and favourites stay in the nav. The nav also folds down to a rail of icons, with a chevron next to the greeting.",
+          {
+            "h3": "A note to myself"
+          },
+          {
+            "quote": "It would be better for the selected nav item’s icon to be a filled variant."
+          },
+          "I left that sticky note next to my first version, then made the change: the page you’re on now gets a filled icon and green text.",
+          {
+            "gallery": [
+              {
+                "image": "nav-icon-before",
+                "label": "Before",
+                "alt": "The sandbox nav with Dashboard selected, shown only by brighter text next to an outlined icon"
+              },
+              {
+                "image": "nav-icon-after",
+                "label": "After",
+                "alt": "The next nav with Dashboard selected, shown by a filled green icon and green text"
+              }
+            ],
+            "caption": "The selected Dashboard item in the sandbox, then with the filled icon.",
+            "arrows": true
+          }
+        ]
+      },
+      {
+        "title": "Heatmap viewer",
+        "heading": "One viewer, three tabs",
+        "content": [
+          "Open a heatmap and there are three ways to read the same page: where people click, how far they scroll, and a table of numbers for every element on it. In the old portal those sat behind separate buttons and dropdowns, so I set out to build one viewer that held all three.",
+          "I tried the layouts side by side in a sandbox: a split view with the list next to the heatmap, a collapsed version of it, a full-page list, and tabs.",
+          {
+            "gallery": [
+              {
+                "image": "viewer-split",
+                "label": "Split",
+                "alt": "A sandbox layout with the list of heatmaps in the nav next to a dark placeholder for the heatmap"
+              },
+              {
+                "image": "viewer-list",
+                "label": "List",
+                "alt": "A sandbox layout with a full-page table of heatmaps: title, URL, two metrics and revenue"
+              },
+              {
+                "image": "viewer-tabs",
+                "label": "Tabs",
+                "alt": "A sandbox layout with a back arrow, the page name and tabs for Heatmap, Scrollmap, Data Table and AI Insights above a heatmap of a supplement page"
+              }
+            ],
+            "caption": "Three of the sandbox layouts."
+          },
+          "The split view didn’t carry forward for heatmaps; it ended up in recordings instead. The full list moved out of the nav onto its own Heatmaps page, and the viewer got tabs: Heatmap, Scrollmap and Data Table became three views of one page, which made the structure clearer.",
+          {
+            "image": "viewer-final",
+            "alt": "The final Heatmap viewer with the nav collapsed: the title Heatmaps: Homepage, Heatmap, Scrollmap and Data Table tabs, device, date and filter controls, and a heatmap of the Jellybee home page",
+            "caption": "The final viewer, with the nav folded into a rail."
+          },
+          {
+            "h3": "Controls around the map"
+          },
+          "The controls that used to be spread around got fixed places:",
+          {
+            "bullets": [
+              "**The title is the page switcher.** Early versions had a “Back to list” link, then a back arrow, then a breadcrumb. From Iteration 1 the title read “Heatmaps: Homepage”, and by Iteration 3 clicking it opened a searchable table of your pages, so you can jump to another heatmap without leaving the viewer.",
+              "**Devices became a segmented control,** with a count for desktop, tablet and mobile.",
+              "**Date range and filters** sit next to them. Data Mode and Interactive Mode sit in a bar at the bottom, with Compare Data."
+            ]
+          },
+          {
+            "image": "viewer-switcher",
+            "size": "content",
+            "alt": "The page switcher open under the title Heatmaps: Homepage: a date range, Add Filter and search above a table of pages with URL, metrics and revenue, with Landing Page TheJellyBee highlighted",
+            "caption": "The page switcher, opened from the title."
+          },
+          {
+            "h3": "The data table"
+          },
+          "Before, the data table slid over the page from a button. Now it’s a tab: the full table, with a preview of the page next to it, for mobile or desktop, that you can fold away.",
+          {
+            "gallery": [
+              {
+                "image": "table-before",
+                "label": "Before",
+                "alt": "The old data table sliding over the left half of the page, with Featured and Deleted tabs and rows of sessions, purchases and revenue"
+              },
+              {
+                "image": "table-after",
+                "label": "After",
+                "alt": "The new Data Table tab: a full table of clicks, purchases, revenue and conversion rate for each element, with a mobile preview of the page on the right"
+              }
+            ],
+            "caption": "A slide-over, then a tab with its own preview.",
+            "arrows": true
+          },
+          {
+            "h3": "Comparing visitors"
+          },
+          "Filters got their own system. You can filter by session data, like entry page, traffic source or rage clicks, or by e-commerce data, like purchasers or average order value. Or you can compare two groups, such as returning and new users. There are two ways in: through Add Filter, or straight from the Compare Data button.",
+          "The chips that show what you’re comparing changed too. I tried a filled pill first, then an underline like the main tabs. The next version added “+ Add Comparison”.",
+          {
+            "image": "compare-chips",
+            "size": "content",
+            "alt": "Three versions of the compare chips: a filled pill for Total Pages Visited next to Non Purchasers, the same with an underline, and Purchasers, Non Purchasers and Add Comparison",
+            "caption": "A pill, an underline, then room for more groups.",
+            "labels": [
+              {
+                "text": "V1",
+                "x": 0.0997,
+                "y": 0.1074
+              },
+              {
+                "text": "V2",
+                "x": 0.0997,
+                "y": 0.5
+              },
+              {
+                "text": "V3",
+                "x": 0.0997,
+                "y": 0.8926
+              }
+            ]
+          },
+          {
+            "gallery": [
+              {
+                "image": "compare-filter",
+                "label": "Filter",
+                "alt": "The All Filters panel: session data, e-commerce data and custom filters, with Clear Filters, Compare and Apply"
+              },
+              {
+                "image": "compare-panel",
+                "label": "Compare",
+                "alt": "The compare panel: Compare Returning Users to New Users, with the same filter lists and Clear Comparison and Compare buttons"
+              }
+            ],
+            "caption": "The filter and compare panels."
+          }
+        ]
+      },
+      {
+        "title": "AI insights",
+        "heading": "Finding AI a place",
+        "content": [
+          "AI was the newest arrival in Heatmap: Heatmap Insights give you AI-generated recommendations to improve your site, like “Shorten Button Text”. My colleague designed the insight cards and what they say. My part was deciding where they live in the viewer, and that took five tries.",
+          "In Iteration 1, insights sat behind a small sparkle icon at the bottom right. Iteration 2 gave it a label: “AI Insights”.",
+          {
+            "gallery": [
+              {
+                "image": "ai-1",
+                "label": "Iteration 1",
+                "alt": "The viewer in Iteration 1, with a small sparkle icon button at the bottom right, after Data Mode and Interactive Mode"
+              },
+              {
+                "image": "ai-2",
+                "label": "Iteration 2",
+                "alt": "The viewer in Iteration 2, with a labelled AI Insights button at the bottom right"
+              }
+            ],
+            "caption": "A sparkle icon, then a labelled button, both at the bottom right.",
+            "arrows": true
+          },
+          "Iteration 3 made AI Insights a fourth tab, next to Heatmap, Scrollmap and Data Table. In Iteration 4 the tab was gone, and a thin rail ran down the right edge with the sparkle at the top.",
+          {
+            "gallery": [
+              {
+                "image": "ai-3",
+                "label": "Iteration 3",
+                "alt": "The viewer in Iteration 3, with AI Insights as a fourth tab after Heatmap, Scrollmap and Data Table"
+              },
+              {
+                "image": "ai-4",
+                "label": "Iteration 4",
+                "alt": "The viewer in Iteration 4, with no AI tab and a thin rail on the right edge holding a sparkle icon"
+              }
+            ],
+            "caption": "A fourth tab, then a rail on the right edge.",
+            "arrows": true
+          },
+          "In the final version, that rail opens a Heatmap Insights panel, and folds back into the rail when you’re done.",
+          "Insights make sense next to the heatmap they’re about, and a panel lets you read both at once. They also aren’t a view of the data like the three tabs are. They’re advice, so they didn’t belong among them. Feedback from the team and the client led there too.",
+          {
+            "image": "ai-final",
+            "alt": "The final Heatmap viewer with the nav expanded, a mobile heatmap of the Jellybee home page, and the Heatmap Insights panel open on the right with suggestions such as Shorten Button Text and Change Button Color",
+            "caption": "The final viewer, with Heatmap Insights open next to the map."
+          }
+        ]
+      },
+      {
+        "title": "Recordings",
+        "heading": "Recordings beside the list",
+        "content": [
+          "Sometimes a heatmap isn’t enough and you want to watch what one visitor actually did. Screen recordings play back real sessions on your store. In the old portal, each recording opened on its own page, and you went “Back to Recordings” to find the next one.",
+          "Split views were one of the patterns from the audit, and this is where it stuck: the list on the left, the recording on the right with Previous and Next, and an Overview and Timeline underneath.",
+          {
+            "gallery": [
+              {
+                "image": "rec-before",
+                "label": "Before",
+                "alt": "The old recording page: Back to Recordings, a video player with playback controls, an event timeline on the right and session info below"
+              },
+              {
+                "image": "rec-after",
+                "label": "After",
+                "alt": "The new Screen Recordings page: a list of sessions on the left, the recording on the right with Previous and Next, and Overview and Timeline below it"
+              }
+            ],
+            "caption": "A page for each recording, then the list and recording side by side.",
+            "arrows": true
+          },
+          "Under the recording, I tried two layouts: Overview and Timeline side by side (Layout A), or the timeline as a strip above the Overview (Layout B). Layout A is the one in the final prototype.",
+          {
+            "gallery": [
+              {
+                "image": "rec-layout-a",
+                "label": "Layout A",
+                "alt": "Screen recordings with Overview and Timeline side by side under the recording"
+              },
+              {
+                "image": "rec-layout-b",
+                "label": "Layout B",
+                "alt": "Screen recordings with the Timeline as a horizontal strip above the Overview"
+              }
+            ],
+            "caption": "Layout A made it into the prototype."
+          },
+          "I also designed the in-between states: nothing selected yet, no starred recordings (“Add stars to get started”), and the list folded away so the recording gets the full width.",
+          {
+            "gallery": [
+              {
+                "image": "rec-empty",
+                "label": "Nothing selected",
+                "alt": "Screen recordings with the list on the left and an empty viewer that says Select a recording to view it here"
+              },
+              {
+                "image": "rec-collapsed",
+                "label": "List collapsed",
+                "alt": "Screen recordings with the nav and list collapsed, so the recording, Overview and Timeline fill the width"
+              }
+            ],
+            "caption": "An empty state, and the list folded away."
+          }
+        ]
+      },
+      {
+        "title": "Dashboard",
+        "heading": "Signals at a glance",
+        "content": [
+          "Before you open a single heatmap, the dashboard gives you the big picture: whether tracking is live, a few key numbers, and how your pages are doing. I sketched it and wrote down why each detail was there.",
+          {
+            "image": "dash-sketches",
+            "alt": "Four notebook pages of dashboard sketches, with notes on engaged sessions, site speed, page traffic and error messages with a Heatmap Translator",
+            "caption": "My dashboard sketches, with notes on each detail."
+          },
+          "The old dashboard already had most of the pieces: live snippet status, four key numbers with sparklines, page traffic, rage clicks and site speed. I kept them and worked on how they read. From my notes:",
+          {
+            "bullets": [
+              "**A dot at the end of each line** shows the data is live.",
+              "**Green and red percentages** give a quick comparison with the previous day, week or month.",
+              "**Visitors inline, larger titles and more defined rows** make the tables cleaner and the hierarchy clearer.",
+              "**Tabs in the site speed card** switch between charts."
+            ]
+          },
+          "In Figma, a greybox came first: the key numbers and a new Recently Accessed table in full, with grey placeholders for everything below. The full design followed.",
+          {
+            "gallery": [
+              {
+                "image": "dash-greybox",
+                "label": "Greybox",
+                "alt": "The dashboard greybox: key number cards and a Recently Accessed table above grey placeholder bars for page traffic, rage clicks and site speed"
+              },
+              {
+                "image": "dash-hifi",
+                "label": "Full design",
+                "alt": "The full dashboard: LIVE snippet status, four key numbers with green and red changes, Recently Accessed, and page traffic and rage clicks under Site Performance"
+              }
+            ],
+            "caption": "The top of the dashboard, before and after the details went in.",
+            "arrows": true
+          },
+          "Further down, site speed got Data and Ratings views with suggestions beside the chart. Error Messages and the Heatmap Translator were features Heatmap already had, and I redesigned them too: each error’s raw console text sits next to the Translator’s plain-language explanation.",
+          {
+            "image": "dash-details",
+            "alt": "The lower half of the dashboard: a Site Speed card with metrics, a chart and suggestions, and Error Messages with a list of errors, a terminal view and a Heatmap Translator explanation",
+            "caption": "Site speed with suggestions, and an error explained by the Heatmap Translator."
+          }
+        ]
+      },
+      {
+        "title": "Outcome",
+        "heading": "Results and lessons",
+        "content": [
+          "Toward the end of my internship, I presented the high-fidelity prototype to the Full Sprint and Heatmap team. Behind it was a design system of 32 new components, and the prototype had over 300 interactions, from folding the nav to switching tabs and opening the filters.",
+          "The response was positive about the unified style and the simpler navigation.",
+          "After I left, there were more iterations on top of my designs, and then the redesign was built. The built redesign brought 10x easier navigation, 4x faster load times and higher product ROI.",
+          {
+            "image": "overhead",
+            "alt": "Overhead view of a laptop on a wooden desk with an apple and a notepad, showing the final Heatmap viewer with Heatmap Insights open"
+          },
+          {
+            "h3": "What I learned"
+          },
+          {
+            "bullets": [
+              "**Structure before polish.** Fixing the navigation and layout mattered more than restyling screens.",
+              "**A system holds it together.** Components kept a big redesign consistent and easy to build on."
+            ]
+          },
+          {
+            "h3": "Summary"
+          },
+          "Heatmap kept adding features, and its portal showed it. As one of a few design interns at Full Sprint, I redesigned most of it: a nav under a top bar with starred lists, one viewer with tabs and a page switcher, a place for AI insights next to the heatmap, recordings beside their list, and a dashboard built around live numbers.",
+          "The redesign was built after my internship, on my designs, with 10x easier navigation and 4x faster load times."
+        ]
+      }
+    ]
+  },
+  "assets": {
+    "cover": {
+      "path": "assets/heatmap-cover-live.jpg",
+      "existingAssetId": "image-661612863671ffa444405207c2f6d8777494c3f6-2000x1500-png",
+      "note": "Winston's current cover and hero in Sanity (laptop on a desk showing the final dashboard), kept as is. The local file is a JPG copy for the preview."
+    },
+    "before-viewer": {
+      "path": "assets/heatmap-cs4-before-viewer.png",
+      "sourceUrl": "https://cdn.sanity.io/images/7k8ajlip/production/e85c10f2547a0142a2dfe3262b3d8e643386b20c-5091x1861.png",
+      "note": "The Before half of Winston's live before/after image e85c10f2 (the old UI is not in the Figma file), cropped inside its frame without the BEFORE caption, with rounded corners and a light hairline."
+    },
+    "before-dashboard": {
+      "path": "assets/heatmap-cs4-before-dashboard.png",
+      "sourceUrl": "https://cdn.sanity.io/images/7k8ajlip/production/59a7423f542a5cb974c9217f8ff52d8523c08b48-5091x1786.gif",
+      "note": "The Before half of the first frame of Winston's live before/after GIF 59a7423f (old dashboard with Upcoming Features), cropped to the viewer image's proportions (blank left margin trimmed), with rounded corners and a light hairline."
+    },
+    "audit": {
+      "path": "assets/heatmap-cs4-audit.png",
+      "sourceUrl": "https://cdn.sanity.io/images/7k8ajlip/production/98116904bd6b0c3826844524797c2e9399a91c53-3978x1382.png",
+      "note": "Winston's competitive audit board from the live page (not in Figma), given rounded corners and a light hairline; downscaled to 2400 px."
+    },
+    "sketch-full-height": {
+      "path": "assets/heatmap-cs4-sketch-full-height.png",
+      "sourceNodeIds": [
+        "101:6321"
+      ],
+      "sourceUrl": "https://cdn.sanity.io/images/7k8ajlip/production/b4adeb9a26c997802f9354b9aed937ab0208276d-4513x1912.png",
+      "note": "Sketch 1 (\"Style 2\") cropped from Winston's cleaned-up live strip b4adeb9a, which matches the notebook photo 101:6321 without the table background."
+    },
+    "sketch-top-bar": {
+      "path": "assets/heatmap-cs4-sketch-top-bar.png",
+      "sourceNodeIds": [
+        "101:6322"
+      ],
+      "sourceUrl": "https://cdn.sanity.io/images/7k8ajlip/production/b4adeb9a26c997802f9354b9aed937ab0208276d-4513x1912.png",
+      "note": "Sketch 2 cropped from the live strip b4adeb9a, matching the notebook photo 101:6322."
+    },
+    "sketch-add-page": {
+      "path": "assets/heatmap-cs4-sketch-add-page.png",
+      "sourceUrl": "https://cdn.sanity.io/images/7k8ajlip/production/b4adeb9a26c997802f9354b9aed937ab0208276d-4513x1912.png",
+      "note": "Sketch 3 (Add Page in the list) cropped from the live strip b4adeb9a; this sketch exists only on the live page, not in Figma."
+    },
+    "sketch-swap": {
+      "path": "assets/heatmap-cs4-sketch-swap.png",
+      "sourceNodeIds": [
+        "101:6345"
+      ],
+      "sourceUrl": "https://cdn.sanity.io/images/7k8ajlip/production/b4adeb9a26c997802f9354b9aed937ab0208276d-4513x1912.png",
+      "note": "Sketch 4 (swappable list) cropped from the live strip b4adeb9a, matching the notebook photo 101:6345 without the phone shadow."
+    },
+    "nav-versions": {
+      "path": "assets/heatmap-cs4-nav-versions.png",
+      "sourceNodeIds": [
+        "101:6360",
+        "101:6499",
+        "101:6539",
+        "101:36071"
+      ],
+      "note": "Nav columns cropped from 2x exports of Navigation Sandbox V1 (101:6360), V2 Heatmaps (101:6499), V3 Heatmaps (101:6539) and the final Heatmap Mobile frame (101:36071), outlined in a row with arrows; a transparent band on top holds the page labels."
+    },
+    "nav-icon-before": {
+      "path": "assets/heatmap-cs4-nav-icon-before.png",
+      "sourceNodeIds": [
+        "101:6395"
+      ],
+      "note": "Top of the Navigation Sandbox V2 Dashboard nav (outlined selected icon), 2x crop."
+    },
+    "nav-icon-after": {
+      "path": "assets/heatmap-cs4-nav-icon-after.png",
+      "sourceNodeIds": [
+        "101:6728"
+      ],
+      "note": "Top of the V1 Navigation Dashboard nav (filled selected icon, per sticky note 101:6625), same 2x crop."
+    },
+    "viewer-split": {
+      "path": "assets/heatmap-cs4-viewer-split.png",
+      "sourceNodeIds": [
+        "101:11406"
+      ],
+      "note": "Heatmaps Sandbox, Split Layout."
+    },
+    "viewer-list": {
+      "path": "assets/heatmap-cs4-viewer-list.png",
+      "sourceNodeIds": [
+        "101:12233"
+      ],
+      "note": "Heatmaps Sandbox, List (Heatmap List)."
+    },
+    "viewer-tabs": {
+      "path": "assets/heatmap-cs4-viewer-tabs.png",
+      "sourceNodeIds": [
+        "101:11559"
+      ],
+      "note": "Heatmaps Sandbox, Tabs Layout \"V4 - Good\"."
+    },
+    "viewer-final": {
+      "path": "assets/heatmap-cs4-viewer-final.png",
+      "sourceNodeIds": [
+        "101:35208"
+      ],
+      "note": "Prototype 1, Heatmap Desktop, 2x export with rounded corners and a light hairline."
+    },
+    "viewer-switcher": {
+      "path": "assets/heatmap-cs4-viewer-switcher.png",
+      "sourceNodeIds": [
+        "101:16538"
+      ],
+      "note": "Iteration 3 Dropdown Selector, cropped to the title and the open switcher."
+    },
+    "table-before": {
+      "path": "assets/heatmap-cs4-table-before.png",
+      "sourceUrl": "https://cdn.sanity.io/images/7k8ajlip/production/23d16b90a40c96f2823f99d6138b4667f903e4bc-5091x2011.png",
+      "note": "The Before half of Winston's live before/after image 23d16b90 (old slide-over data table), cropped inside its frame."
+    },
+    "table-after": {
+      "path": "assets/heatmap-cs4-table-after.png",
+      "sourceNodeIds": [
+        "101:35714"
+      ],
+      "sourceUrl": "https://cdn.sanity.io/images/7k8ajlip/production/23d16b90a40c96f2823f99d6138b4667f903e4bc-5091x2011.png",
+      "note": "The After half of the live image 23d16b90, cropped inside its frame so it pairs with the Before half; it shows the Data Table Mobile design (101:35714)."
+    },
+    "compare-chips": {
+      "path": "assets/heatmap-cs4-compare-chips.png",
+      "sourceNodeIds": [
+        "101:14122",
+        "101:14203",
+        "101:18381"
+      ],
+      "note": "Compare chips cropped from Compare V1 (101:14122), \"Compare V2 (Better)\" (101:14203) and Compare V3 (101:18381), stacked with down arrows; the transparent left column holds the version labels."
+    },
+    "compare-filter": {
+      "path": "assets/heatmap-cs4-compare-filter.png",
+      "sourceNodeIds": [
+        "101:36405"
+      ],
+      "note": "Filter component (All Filters panel), 2x."
+    },
+    "compare-panel": {
+      "path": "assets/heatmap-cs4-compare-panel.png",
+      "sourceNodeIds": [
+        "101:36452"
+      ],
+      "note": "Compare component (Compare Returning Users to New Users), 2x."
+    },
+    "ai-1": {
+      "path": "assets/heatmap-cs4-ai-1.png",
+      "sourceNodeIds": [
+        "101:12674"
+      ],
+      "note": "Iteration 1 Expanded Nav, cropped to the area right of the nav."
+    },
+    "ai-2": {
+      "path": "assets/heatmap-cs4-ai-2.png",
+      "sourceNodeIds": [
+        "101:14481"
+      ],
+      "note": "Iteration 2 Expanded Nav, same crop as Iteration 1."
+    },
+    "ai-3": {
+      "path": "assets/heatmap-cs4-ai-3.png",
+      "sourceNodeIds": [
+        "101:16433"
+      ],
+      "note": "Iteration 3 Expanded Nav, cropped to the area right of the (narrower) nav."
+    },
+    "ai-4": {
+      "path": "assets/heatmap-cs4-ai-4.png",
+      "sourceNodeIds": [
+        "101:19769"
+      ],
+      "note": "Iteration 4 Expanded Nav (titled \"Iteration 3\" in the file, with the right-hand AI rail), same crop as Iteration 3."
+    },
+    "ai-final": {
+      "path": "assets/heatmap-cs4-ai-final.png",
+      "sourceNodeIds": [
+        "101:36071"
+      ],
+      "note": "Heatmap Mobile frame with the Heatmap Insights panel open, 2x export with rounded corners and a light hairline."
+    },
+    "rec-before": {
+      "path": "assets/heatmap-cs4-rec-before.png",
+      "sourceUrl": "https://cdn.sanity.io/images/7k8ajlip/production/db612adfec04bd6d476f610f6c67424b7a8f60aa-5091x2011.png",
+      "note": "The Before half of Winston's live before/after image db612adf (old recording page), cropped inside its frame."
+    },
+    "rec-after": {
+      "path": "assets/heatmap-cs4-rec-after.png",
+      "sourceNodeIds": [
+        "101:35294"
+      ],
+      "sourceUrl": "https://cdn.sanity.io/images/7k8ajlip/production/db612adfec04bd6d476f610f6c67424b7a8f60aa-5091x2011.png",
+      "note": "The After half of the live image db612adf, cropped inside its frame; it shows Prototype 1 Screen Recordings (101:35294)."
+    },
+    "rec-layout-a": {
+      "path": "assets/heatmap-cs4-rec-layout-a.png",
+      "sourceNodeIds": [
+        "101:28197"
+      ],
+      "note": "Screen Recording Iteration 1, Layout A (All Expanded)."
+    },
+    "rec-layout-b": {
+      "path": "assets/heatmap-cs4-rec-layout-b.png",
+      "sourceNodeIds": [
+        "101:29008"
+      ],
+      "note": "Screen Recording Iteration 1, Layout B."
+    },
+    "rec-empty": {
+      "path": "assets/heatmap-cs4-rec-empty.png",
+      "sourceNodeIds": [
+        "101:28471"
+      ],
+      "note": "Screen Recording Iteration 1, empty state (Select a recording to view it here)."
+    },
+    "rec-collapsed": {
+      "path": "assets/heatmap-cs4-rec-collapsed.png",
+      "sourceNodeIds": [
+        "101:35419"
+      ],
+      "note": "Prototype 1, Screen Recordings Collapsed."
+    },
+    "dash-sketches": {
+      "path": "assets/heatmap-cs4-dash-sketches.png",
+      "sourceUrl": "https://cdn.sanity.io/images/7k8ajlip/production/9e1ac8653178c6d25b653d95bd24e458e44f2e56-4492x1911.png",
+      "note": "The four dashboard sketch pages from Winston's live strip 9e1ac865 (not in Figma), cropped without the baked-in title and set in a row with rounded corners on a transparent background."
+    },
+    "dash-greybox": {
+      "path": "assets/heatmap-cs4-dash-greybox.png",
+      "sourceNodeIds": [
+        "101:7538"
+      ],
+      "note": "Dashboard Iteration 1 greybox, top 1195 pt (same crop as the full design)."
+    },
+    "dash-hifi": {
+      "path": "assets/heatmap-cs4-dash-hifi.png",
+      "sourceNodeIds": [
+        "101:7819"
+      ],
+      "note": "Dashboard Iteration 1 full design, top 1195 pt (KPIs, Recently Accessed, Site Performance)."
+    },
+    "dash-details": {
+      "path": "assets/heatmap-cs4-dash-details.png",
+      "sourceNodeIds": [
+        "101:7819"
+      ],
+      "note": "Lower part of the full dashboard 101:7819: Site Speed and Error Messages with the Heatmap Translator (Recent AI Insights, the colleague's cards, left out)."
+    },
+    "overhead": {
+      "path": "assets/heatmap-cs4-overhead-live.jpg",
+      "existingAssetId": "image-1aa0840e5e8ba2d74128f0b92caa31eec8c78e1e-2000x1500-png",
+      "note": "Winston's existing overhead laptop mockup from the live page, kept as is. The local file is a JPG copy for the preview."
+    }
+  }
+}

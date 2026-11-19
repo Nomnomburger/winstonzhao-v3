@@ -1,0 +1,1390 @@
+{
+  "documentId": "legacy-portfolio-hopperhangout",
+  "generatedFrom": "case-study-copy/hopper-hangout.json",
+  "fields": {
+    "description": "An app concept that plans a day out around a friend group’s tastes. Best Design at Alicehacks 2023.",
+    "client": "Alicehacks 2023",
+    "discipline": "Product Design",
+    "link": {
+      "url": "https://youtu.be/gSIzYFChlvQ",
+      "label": "Watch demo"
+    },
+    "intro": "Hopper Hangout is an iOS app concept that plans a day out for a group of friends from everyone’s tastes, as a string of stops called hops. I led our team of four at Alicehacks 2023 and designed the flows, the action bar and the visual system.",
+    "summary": "Leading a four-person, design-only hackathon team from an everyday planning problem to a clickable prototype, with an action bar that adapts to each screen.",
+    "overview": "Hopper Hangout is for teens and their friend groups. I led a team of four with Anita, Andrew and Laison: Anita drew the characters and designed onboarding, and Andrew mapped the app in a state diagram. We went design-only and won Best Design.",
+    "impact": "Best Design, Alicehacks 2023.",
+    "showSideMenu": true,
+    "details": [
+      {
+        "_type": "detailItem",
+        "_key": "hopper-hangout-detail-0",
+        "label": "Event",
+        "value": "Alicehacks 2023\nOne weekend · November 2023"
+      },
+      {
+        "_type": "detailItem",
+        "_key": "hopper-hangout-detail-1",
+        "label": "Result",
+        "value": "Best Design"
+      },
+      {
+        "_type": "detailItem",
+        "_key": "hopper-hangout-detail-2",
+        "label": "Team",
+        "value": "Anita, Andrew, Laison and Winston"
+      },
+      {
+        "_type": "detailItem",
+        "_key": "hopper-hangout-detail-3",
+        "label": "Deliverables",
+        "value": "Clickable prototype · Demo video"
+      },
+      {
+        "_type": "detailItem",
+        "_key": "hopper-hangout-detail-4",
+        "label": "Platform",
+        "value": "Mobile"
+      },
+      {
+        "_type": "detailItem",
+        "_key": "hopper-hangout-detail-5",
+        "label": "Tools",
+        "value": "Figma · FigJam\nPaper sketches"
+      }
+    ],
+    "coverImage": {
+      "_type": "image",
+      "localAssetKey": "cover",
+      "alt": "An iPhone lying on perforated metal tiles, showing the Hopper Hangout home screen with upcoming hangouts, quick search, friend groups as teacups and the action bar"
+    },
+    "hero": [
+      {
+        "_type": "mediaImage",
+        "_key": "hopper-hangout-hero",
+        "localAssetKey": "hero",
+        "alt": "An iPhone lying on perforated metal tiles, showing the Hopper Hangout home screen with upcoming hangouts, quick search, friend groups as teacups and the action bar",
+        "size": "full"
+      }
+    ],
+    "sections": [
+      {
+        "_type": "projectSection",
+        "_key": "hopper-hangout-section-0",
+        "title": "Problem Statement",
+        "heading": "How might we help a group of friends plan a day out that everyone will enjoy?",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "hopper-hangout-s-0-b-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-0-b-0-s",
+                "marks": [],
+                "text": "Planning a day out with friends, full of things everyone is happy with, is slow and hard. We’ve all been there: one friend hates a certain cuisine, another groans at too much walking (yesterday was leg day), and so on."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "hopper-hangout-s-0-b-1-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-0-b-1-0-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Who:"
+              },
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-0-b-1-0-s1",
+                "marks": [],
+                "text": " teens and their friend groups. We were teens ourselves, so the problem came from our own hangouts."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "hopper-hangout-s-0-b-1-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-0-b-1-1-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Where:"
+              },
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-0-b-1-1-s1",
+                "marks": [],
+                "text": " an iPhone app."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "hopper-hangout-s-0-b-1-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-0-b-1-2-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Constraint:"
+              },
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-0-b-1-2-s1",
+                "marks": [],
+                "text": " one online hackathon, design only, with an Alice in Wonderland theme."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          }
+        ]
+      },
+      {
+        "_type": "projectSection",
+        "_key": "hopper-hangout-section-1",
+        "title": "Idea",
+        "heading": "Tastes in, a plan out",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "hopper-hangout-s-1-b-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-1-b-0-s",
+                "marks": [],
+                "text": "Each friend rates what they like, and Hopper Hangout finds places that suit the whole group, then strings them into one plan. The idea started in a shared doc, a few hours before Alicehacks kicked off that evening."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "hopper-hangout-s-1-b-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-1-b-1-s",
+                "marks": [],
+                "text": "Alicehacks was my second hackathon, and I teamed up with three friends, Anita, Andrew and Laison, to go for Best Design. We went design-only: all of our time went into the product and the experience, without the fuss of code."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "hopper-hangout-s-1-b-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-1-b-2-s",
+                "marks": [],
+                "text": "A plan is a hangout, and each stop in it is a hop. Behind the scenes, an AI curation system would use what’s online to build the itinerary from everyone’s tastes. Anita’s onboarding pitches it in three screens:"
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "hopper-hangout-s-1-b-3",
+            "localAssetKey": "value-props",
+            "alt": "Three iPhones from onboarding: Plan with your friends, with a crowd of Alice in Wonderland characters; Create adventures, with a rabbit hopping across lily pads; and Accurate recommendations, with a rabbit holding a magnifying glass over a dashboard",
+            "caption": "Plan with your friends, create adventures, get recommendations.",
+            "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "hopper-hangout-s-1-b-4",
+            "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-1-b-4-s",
+                "marks": [],
+                "text": "Planning it as a team"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "hopper-hangout-s-1-b-5",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-1-b-5-s",
+                "marks": [],
+                "text": "Once the hackathon was underway, we mapped the user needs and features in a FigJam session, and a few extra features came out of it too. I led the team, from the idea to a kanban board of tasks and splitting the work between us."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "hopper-hangout-s-1-b-6",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-1-b-6-s",
+                "marks": [],
+                "text": "Naming it was a highlight. There were lots of different opinions, but we settled on one we all loved: Hopper Hangout."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "hopper-hangout-s-1-b-7",
+            "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-1-b-7-s",
+                "marks": [],
+                "text": "How it would pay for itself"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "hopper-hangout-s-1-b-8",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-1-b-8-s",
+                "marks": [],
+                "text": "We also thought about how it would make money. Businesses and events could pay to be featured, but the app would still find the best matches for the group first. A sponsor would only come first when several similar places fit. On Home, they’d show up under Upcoming Promotions."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "_type": "projectSection",
+        "_key": "hopper-hangout-section-2",
+        "title": "Action bar",
+        "heading": "One bar, two actions",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "hopper-hangout-s-2-b-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-2-b-0-s",
+                "marks": [],
+                "text": "Each main screen has one thing you’re most likely to do next: start a hangout, look for a place or add a stop. The action bar keeps that thing within reach, floating just above the tabs, and it took a few tries to get there."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "hopper-hangout-s-2-b-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-2-b-1-s",
+                "marks": [],
+                "text": "My first wireframes were on paper, in a sketchbook. Paper is quick to iterate on without software getting in the way, and in a hackathon, ideas need to reach the team fast. We skipped the usual mid-fidelity phase to keep pace with the hackathon, so the early Home frames in Figma jump from grey boxes straight to colour. The action bar took shape there."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "hopper-hangout-s-2-b-2",
+            "localAssetKey": "home-iterations",
+            "alt": "Four Home screen frames on a dot grid with arrows between them: grey placeholder boxes under Welcome back, a green header with a search pill and a round plus button beside it, the same header with the plus button moved to the bottom, and the final Home with the dark action bar",
+            "caption": "Early Home frames: grey boxes, a + beside the search bar, the + moved to the bottom, then the final Home.",
+            "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "hopper-hangout-s-2-b-3",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-2-b-3-s",
+                "marks": [],
+                "text": "The + moved first. It started at the top, next to the search bar, then dropped to the bottom of the screen, docked on the tab bar. By the final Home, the + and search sit together in one dark bar, floating above the tabs."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "hopper-hangout-s-2-b-4",
+            "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-2-b-4-s",
+                "marks": [],
+                "text": "Why a bar"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "hopper-hangout-s-2-b-5-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-2-b-5-0-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Thumb reach."
+              },
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-2-b-5-0-s1",
+                "marks": [],
+                "text": " The main action sits at the bottom, where your thumb already is."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "hopper-hangout-s-2-b-5-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-2-b-5-1-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Two actions, one row."
+              },
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-2-b-5-1-s1",
+                "marks": [],
+                "text": " A second action, like Search, fits next to the main one without adding another row."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "hopper-hangout-s-2-b-5-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-2-b-5-2-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Same place, right actions."
+              },
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-2-b-5-2-s1",
+                "marks": [],
+                "text": " Home, Map and a plan each get the actions that fit them, always in the same spot."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "hopper-hangout-s-2-b-5-3",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-2-b-5-3-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "The main action gets more room."
+              },
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-2-b-5-3-s1",
+                "marks": [],
+                "text": " The bar changes with the screen, so whatever matters most there is bigger."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "hopper-hangout-s-2-b-6",
+            "localAssetKey": "bar-screens",
+            "alt": "Three iPhones: Home with Start a new hangout and a small Search pill, Map with a small plus and a wide Search for places pill, and a hangout plan with Add a hop and a small Search pill",
+            "caption": "The same bar on Home, on Map and inside a plan.",
+            "size": "full",
+            "labels": [
+              {
+                "_type": "imageLabel",
+                "_key": "hopper-hangout-s-2-b-6-l0",
+                "text": "Home",
+                "x": 0.1246,
+                "y": 0.0434
+              },
+              {
+                "_type": "imageLabel",
+                "_key": "hopper-hangout-s-2-b-6-l1",
+                "text": "Map",
+                "x": 0.5,
+                "y": 0.0434
+              },
+              {
+                "_type": "imageLabel",
+                "_key": "hopper-hangout-s-2-b-6-l2",
+                "text": "In a plan",
+                "x": 0.8754,
+                "y": 0.0434
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "hopper-hangout-s-2-b-7",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-2-b-7-s",
+                "marks": [],
+                "text": "On Home, “Start a new hangout” fills the bar and Search shrinks to a small pill. On Map, they swap roles: “Search for places” takes the wide pill, and the + shrinks to an icon. Inside a plan, “Add a hop” takes the lead."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "hopper-hangout-s-2-b-8",
+            "localAssetKey": "action-bars",
+            "alt": "Three dark action bars stacked: plus Start a new hangout with a Search pill, a plus with a wide Search for places pill, and Add a hop with a Search pill",
+            "caption": "Top to bottom: Home, Map and a plan.",
+            "size": "content"
+          },
+          {
+            "_type": "block",
+            "_key": "hopper-hangout-s-2-b-9",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-2-b-9-s",
+                "marks": [],
+                "text": "Under the bar, we kept to three tabs, with simplicity as our guiding principle: Home for upcoming hangouts, friend groups and suggestions, Map for places nearby with category filters, and Profile for your groups, hangouts and friends."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "hopper-hangout-s-2-b-10",
+            "localAssetKey": "profile-map",
+            "alt": "Hopper Hangout’s Profile screen, with Anita’s cat avatar, friend groups and upcoming hangouts, next to the Nearby map, on two tilted iPhones",
+            "caption": "Profile and the Nearby map.",
+            "size": "full"
+          }
+        ]
+      },
+      {
+        "_type": "projectSection",
+        "_key": "hopper-hangout-section-3",
+        "title": "Planning",
+        "heading": "A day in hops",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "hopper-hangout-s-3-b-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-3-b-0-s",
+                "marks": [],
+                "text": "Think of a hangout as a small itinerary: who’s coming, when, and a string of stops called hops. Getting from “let’s hang out” to a plan takes a handful of quick questions."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "hopper-hangout-s-3-b-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-3-b-1-s",
+                "marks": [],
+                "text": "Start a hangout from Home, Map, a profile or a group page, and the flow slides in over the screen. It asks one thing at a time: which friend group, what you’re in the mood for, and where. Those first three steps take a single tap each, with no Next button."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "hopper-hangout-s-3-b-2",
+            "localAssetKey": "flow-1",
+            "alt": "Three iPhones from the New Hangout flow: Choose a friend group with four teacups, What are you in the mood for with six round options from Lunch to Study, and Choose a location option",
+            "caption": "A friend group, a mood and a location option.",
+            "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "hopper-hangout-s-3-b-3",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-3-b-3-s",
+                "marks": [],
+                "text": "The location options are “Closest to everyone”, “Within the city” and “Doesn’t matter”, which gets a shrug. Then you propose a date and time, give the hangout a name, and land on its plan."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "hopper-hangout-s-3-b-4",
+            "localAssetKey": "flow-2",
+            "alt": "Three iPhones: Propose a date and time with a date, start and end, Give your hangout a name with Group Dinner, and the new Group Dinner hangout plan with a map, friends, date, time and one hop",
+            "caption": "A date and time, a name, and the plan.",
+            "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "hopper-hangout-s-3-b-5",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-3-b-5-s",
+                "marks": [],
+                "text": "The plan puts the map, the friends, the time and the hops on one screen. “Add a hop” in the action bar asks what you’re in the mood for again, to add another stop."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "hopper-hangout-s-3-b-6",
+            "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-3-b-6-s",
+                "marks": [],
+                "text": "Hops as cards"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "hopper-hangout-s-3-b-7",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-3-b-7-s",
+                "marks": [],
+                "text": "Each hop is a photo card with its time along the side, its address and a button for directions. On a brand-new plan, the hop also gets a thumbs down and a thumbs up, and below the hops, a button reads Confirm (1/4)."
+              }
+            ]
+          },
+          {
+            "_type": "mediaGallery",
+            "_key": "hopper-hangout-s-3-b-8",
+            "caption": "A hop in an upcoming plan, and one in a new plan, with votes.",
+            "images": [
+              {
+                "_type": "image",
+                "_key": "hopper-hangout-s-3-b-8-0",
+                "localAssetKey": "hops-final",
+                "alt": "Hops in this hangout from the Arcade Night plan: a photo card for Claw & Kitty at 123 Epic Road, with 6:30 on a timeline beside it and a directions button",
+                "label": "Upcoming"
+              },
+              {
+                "_type": "image",
+                "_key": "hopper-hangout-s-3-b-8-1",
+                "localAssetKey": "hop-votes",
+                "alt": "Hops in this hangout from a new plan: a photo card for Yummy Hot Pot at 46 Alice Blvd with thumbs down, thumbs up and directions buttons",
+                "label": "New"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "_type": "projectSection",
+        "_key": "hopper-hangout-section-4",
+        "title": "Friend groups",
+        "heading": "A teacup for every group",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "hopper-hangout-s-4-b-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-4-b-0-s",
+                "marks": [],
+                "text": "Groups come first: every hangout starts by picking one. Each friend group gets its own teacup, colour and name, and the teacup follows it around the app, from Home to Profile to the badge on its hangout cards."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "hopper-hangout-s-4-b-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-4-b-1-s",
+                "marks": [],
+                "text": "You make a group from the + next to Friend Groups on your profile: pick a teacup, pick one of twelve colours, name it, and invite friends with a link or from your friends list. The new group’s page shows its teacup and colour."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "hopper-hangout-s-4-b-2",
+            "localAssetKey": "new-group",
+            "alt": "Three iPhones: Select a group avatar with five teacups and a teapot, Choose a group colour with twelve pastel circles, and the new uoft hacks group page in peach with an orange teacup",
+            "caption": "Picking a teacup and a colour, then the finished group.",
+            "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "hopper-hangout-s-4-b-3",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-4-b-3-s",
+                "marks": [],
+                "text": "A group’s page suggests activities to try, lists upcoming hangouts and has its own Start a new hangout. Tap the members’ faces and a pop-up lists everyone, with a link to invite more friends. In our file, a screenshot of a Spotify collaborative playlist’s “Shared with” sheet sits under a note: “the pop up for friends in group”."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "hopper-hangout-s-4-b-4",
+            "localAssetKey": "members",
+            "alt": "Two iPhones: the Alicehax friend group page with suggested activities and the action bar, and the Members pop-up with Invite more friends and four members shown as Alice in Wonderland characters",
+            "caption": "A friend group’s page, then its members.",
+            "size": "full"
+          }
+        ]
+      },
+      {
+        "_type": "projectSection",
+        "_key": "hopper-hangout-section-5",
+        "title": "Onboarding",
+        "heading": "Learning your tastes",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "hopper-hangout-s-5-b-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-5-b-0-s",
+                "marks": [],
+                "text": "First impressions start in onboarding, and ours had two jobs: explain what Hopper Hangout is for, and learn what you like before your first plan. Anita designed it, along with the taste cards, early the next morning."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "hopper-hangout-s-5-b-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-5-b-1-s",
+                "marks": [],
+                "text": "After the intro screens, you create an account, rate your tastes, add friends with a QR code, and you’re done: “All done, all saved”."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "hopper-hangout-s-5-b-2",
+            "localAssetKey": "onboarding",
+            "alt": "Three iPhones: Create account with username, email and password, Your tastes with a Movies in a theatre card and a Hate it to Love it slider, and All done, all saved with a Queen of Hearts teacup",
+            "caption": "Creating an account, the taste cards, and the last screen.",
+            "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "hopper-hangout-s-5-b-3",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-5-b-3-s",
+                "marks": [],
+                "text": "The taste questions are simple and concrete: Movies in a theatre, Chinese food, Italian food, Going on hikes. Each card has a slider from “Hate it” to “Love it”, its own pastel colour and an icon, and you slide through them one at a time while the next card peeks in from the side."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "hopper-hangout-s-5-b-4",
+            "localAssetKey": "tastes",
+            "alt": "Four taste cards side by side, each headed Rate the following: Movies in a theatre in lavender, Chinese food in peach, Italian food in pink and Going on hikes in green, each with a Hate it to Love it slider and an icon",
+            "caption": "The four taste cards.",
+            "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "hopper-hangout-s-5-b-5",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-5-b-5-s",
+                "marks": [],
+                "text": "Back, Skip and Next stay at the bottom. Skip moves past one question, not the whole set."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "_type": "projectSection",
+        "_key": "hopper-hangout-section-6",
+        "title": "Visual system",
+        "heading": "A hand-drawn Wonderland",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "hopper-hangout-s-6-b-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-6-b-0-s",
+                "marks": [],
+                "text": "Alicehacks had an Alice in Wonderland theme, and we let it run through the whole look of the app. I put together the visual system around it: the type, the colours, the components and the cards."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "hopper-hangout-s-6-b-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-6-b-1-s",
+                "marks": [],
+                "text": "We were designing for people our own age, so questions like which colours, graphics and typefaces teens like were easy to answer."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "hopper-hangout-s-6-b-2-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-6-b-2-0-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Koulen"
+              },
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-6-b-2-0-s1",
+                "marks": [],
+                "text": " as the primary typeface, for its tall, rounded geometric letters."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "hopper-hangout-s-6-b-2-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-6-b-2-1-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Manrope"
+              },
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-6-b-2-1-s1",
+                "marks": [],
+                "text": " as the secondary typeface. It’s easy to read at small sizes and still looks modern."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "hopper-hangout-s-6-b-2-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-6-b-2-2-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Colours"
+              },
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-6-b-2-2-s1",
+                "marks": [],
+                "text": " bolder than pastels, but neutral enough to feel friendly to everyone: a dark grey for the action bar and main buttons, a grey-blue for search, and coral pink, lavender and green as accents."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "hopper-hangout-s-6-b-2-3",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-6-b-2-3-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Material Icons"
+              },
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-6-b-2-3-s1",
+                "marks": [],
+                "text": " for their simplicity, and because they fit the style."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "hopper-hangout-s-6-b-2-4",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-6-b-2-4-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Components from scratch."
+              },
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-6-b-2-4-s1",
+                "marks": [],
+                "text": " Buttons, switches and cards were all our own, set up as components so we could move fast."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "hopper-hangout-s-6-b-3",
+            "localAssetKey": "map-filters",
+            "alt": "Four versions of the dark map filter rail, each highlighting a different icon in coral pink: all, food, movies and explore",
+            "caption": "The map’s filter rail: one component, four states.",
+            "size": "content"
+          },
+          {
+            "_type": "block",
+            "_key": "hopper-hangout-s-6-b-4",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-6-b-4-s",
+                "marks": [],
+                "text": "Colour took a few rounds. The early Home frames tried a green header, and next to a set of coral buttons that never made it into a final screen, a note on the canvas reads “dunno what color for these buttons”."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "hopper-hangout-s-6-b-5",
+            "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-6-b-5-s",
+                "marks": [],
+                "text": "Drawn by hand"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "hopper-hangout-s-6-b-6",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-6-b-6-s",
+                "marks": [],
+                "text": "Anita drew the characters, teacups and rabbit by hand during the hackathon. The characters became profile pictures, the teacups became friend groups, and the rabbit hops through onboarding."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "hopper-hangout-s-6-b-7",
+            "localAssetKey": "characters",
+            "alt": "Hand-drawn Alice in Wonderland characters, including a frog, the Cheshire Cat, the Mad Hatter, a Tweedle, the Dormouse, the Queen of Hearts and the White Rabbit, next to five teacups and a teapot",
+            "caption": "Anita’s characters and teacups.",
+            "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "hopper-hangout-s-6-b-8",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-6-b-8-s",
+                "marks": [],
+                "text": "In our screens, we each got one: Anita is the Cheshire Cat, Laison the White Rabbit, Andrew the Frog Footman, and I’m a Tweedle."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "_type": "projectSection",
+        "_key": "hopper-hangout-section-7",
+        "title": "Outcome",
+        "heading": "Results and lessons",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "hopper-hangout-s-7-b-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-7-b-0-s",
+                "marks": [],
+                "text": "Hopper Hangout won Best Design at Alicehacks 2023."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "hopper-hangout-s-7-b-1",
+            "localAssetKey": "plan-mockup",
+            "alt": "The Arcade Night hangout plan, with its map, friends, time and Add a hop bar, on a tilted iPhone floating over a ribbed ledge",
+            "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "hopper-hangout-s-7-b-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-7-b-2-s",
+                "marks": [],
+                "text": "We linked the screens into a clickable Figma prototype, with animations between pages. It even remembers where you started a new hangout: close it, and you’re back on Home, Map or Profile. For the closing ceremony, Andrew made a state diagram of how the features and interactions connect, and we presented with a slideshow narrated by Anita, plus videos on our Devpost."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "hopper-hangout-s-7-b-3",
+            "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-7-b-3-s",
+                "marks": [],
+                "text": "What I learned"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "hopper-hangout-s-7-b-4",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-7-b-4-s",
+                "marks": [],
+                "text": "A great hackathon project needs a spark of brilliance: an idea that’s creative, but also solves a real problem people relate to. For the design itself:"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "hopper-hangout-s-7-b-5-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-7-b-5-0-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Plan the experience first."
+              },
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-7-b-5-0-s1",
+                "marks": [],
+                "text": " Mapping user needs and features before any screens gave us a clear goal to work toward."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "hopper-hangout-s-7-b-5-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-7-b-5-1-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Iterate on paper."
+              },
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-7-b-5-1-s1",
+                "marks": [],
+                "text": " Sketching is the quickest way to try ideas and share them with the team."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "hopper-hangout-s-7-b-5-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-7-b-5-2-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Build components early."
+              },
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-7-b-5-2-s1",
+                "marks": [],
+                "text": " Setting up buttons, switches and cards as components made the rest of the work faster."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "hopper-hangout-s-7-b-5-3",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-7-b-5-3-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Share one vision."
+              },
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-7-b-5-3-s1",
+                "marks": [],
+                "text": " Above all, a shared vision and proper planning with your teammates ties it all together."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "hopper-hangout-s-7-b-6",
+            "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-7-b-6-s",
+                "marks": [],
+                "text": "Summary"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "hopper-hangout-s-7-b-7",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-7-b-7-s",
+                "marks": [],
+                "text": "Hopper Hangout started from a problem we’d all been through: planning a day out that everyone will enjoy. At Alicehacks 2023, our team of four went design-only and turned it into an app concept that learns each friend’s tastes and builds a plan of stops called hops."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "hopper-hangout-s-7-b-8",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-7-b-8-s",
+                "marks": [],
+                "text": "I led the team, sketched the flows, and designed Home, Map, the hangout plan, the action bar that ties them together, and the visual system. Anita drew the characters and designed onboarding. It won Best Design."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "assets": {
+    "cover": {
+      "path": "assets/hopper-hangout-cover-live.jpg",
+      "existingAssetId": "image-d1924b828288ce077645d4d6e7dcf21c51f0aeae-1440x1080-png",
+      "note": "Winston’s current home-page thumbnail in Sanity (Home on an iPhone on perforated metal tiles), kept as is. The local file is a JPG copy for the preview."
+    },
+    "hero": {
+      "path": "assets/hopper-hangout-cover-live.jpg",
+      "existingAssetId": "image-d1924b828288ce077645d4d6e7dcf21c51f0aeae-1440x1080-png",
+      "note": "Winston’s old hero mockup (the Home screen on an iPhone on perforated metal tiles), kept at his request (Nov 2026). The same Sanity image as the cover; the local file is the cover’s JPG copy for the preview."
+    },
+    "value-props": {
+      "path": "assets/hopper-hangout-cs4-value-props.png",
+      "sourceNodeIds": [
+        "1:5093",
+        "1:5243",
+        "1:5293"
+      ],
+      "note": "The three onboarding intro screens (Anita’s) at 3x in the iPhone 16 Pro bezel, spread, with arrows. Each screen has an iOS status bar (9:41, signal, Wi-Fi, battery) added locally (hopper-sb/statusbar.py), since the frames have none; nothing in the frames moved. Saved at 2400×1500."
+    },
+    "home-iterations": {
+      "path": "assets/hopper-hangout-cs4-home-iterations.jpg",
+      "sourceNodeIds": [
+        "1:3640",
+        "1:3646",
+        "1:3654",
+        "1:3676"
+      ],
+      "note": "Early Home frames iPhone 14 & 15 Pro - 1, - 3 and - 4, then the final Home, as selected wireframe frames on a dot grid with arrows, like the Yelo home iterations. Frames - 2, - 5 and - 6 are left out (- 5 and - 6 reshape the tab bar, not the action). The three early frames have an iOS status bar added locally (hopper-sb/statusbar.py), like the final Home."
+    },
+    "bar-screens": {
+      "path": "assets/hopper-hangout-cs4-bar-screens.png",
+      "sourceNodeIds": [
+        "1:3676",
+        "1:3824",
+        "1:3884"
+      ],
+      "note": "Home, Map and Hangout Plan at 3x in the iPhone 16 Pro bezel, spread; Home / Map / In a plan labels on the page. Each screen has an iOS status bar (9:41, signal, Wi-Fi, battery) added locally (hopper-sb/statusbar.py), since the frames have none; nothing in the frames moved. Saved at 2400×1500."
+    },
+    "action-bars": {
+      "path": "assets/hopper-hangout-cs4-action-bars.png",
+      "sourceNodeIds": [
+        "1:3810",
+        "1:3865",
+        "1:3980"
+      ],
+      "note": "The Actionbar groups from Home, Map and Hangout Plan at 3x, stacked on a white panel with rounded corners (outline.mjs, no stroke)."
+    },
+    "flow-1": {
+      "path": "assets/hopper-hangout-cs4-flow-1.png",
+      "sourceNodeIds": [
+        "1:4098",
+        "1:4151",
+        "1:5437"
+      ],
+      "note": "New Hangout steps 1–3 at 3x in the iPhone 16 Pro bezel, spread, with arrows. Each screen has an iOS status bar (9:41, signal, Wi-Fi, battery) added locally (hopper-sb/statusbar.py), since the frames have none; nothing in the frames moved. Saved at 2400×1500."
+    },
+    "flow-2": {
+      "path": "assets/hopper-hangout-cs4-flow-2.png",
+      "sourceNodeIds": [
+        "1:5368",
+        "1:5497",
+        "1:3992"
+      ],
+      "note": "New Hangout steps 4–5 and the resulting Group Dinner plan at 3x in the iPhone 16 Pro bezel, spread, with arrows. Each screen has an iOS status bar (9:41, signal, Wi-Fi, battery) added locally (hopper-sb/statusbar.py), since the frames have none; nothing in the frames moved. Saved at 2400×1500."
+    },
+    "hops-final": {
+      "path": "assets/hopper-hangout-cs4-hops-final.png",
+      "sourceNodeIds": [
+        "1:3938"
+      ],
+      "note": "Hops in this hangout from the Arcade Night plan at 3x (as clipped by the plan’s scroll frame), cropped to the header and the first hop, on a white panel with rounded corners. Paired with hop-votes in a gallery."
+    },
+    "hop-votes": {
+      "path": "assets/hopper-hangout-cs4-hop-votes.png",
+      "sourceNodeIds": [
+        "1:4046"
+      ],
+      "note": "Hops in this hangout from the new Group Dinner plan at 3x, cropped to the header and the hop card; the Confirm (1/4) button (1:4070) is clipped by the scroll frame in every export, so it is quoted in the text."
+    },
+    "new-group": {
+      "path": "assets/hopper-hangout-cs4-new-group.png",
+      "sourceNodeIds": [
+        "1:4231",
+        "1:4288",
+        "1:6404"
+      ],
+      "note": "New Friend Group: avatar, colour and the new group page at 3x in the iPhone 16 Pro bezel, spread, with arrows (the name and invite steps are described in the text). The event card title reads “Holidy Magic 2023” as in the file. Each screen has an iOS status bar (9:41, signal, Wi-Fi, battery) added locally (hopper-sb/statusbar.py), since the frames have none; nothing in the frames moved. Saved at 2400×1500."
+    },
+    "members": {
+      "path": "assets/hopper-hangout-cs4-members.png",
+      "sourceNodeIds": [
+        "1:6180",
+        "1:5601"
+      ],
+      "note": "Friend Group and the Members overlay at 3x in the iPhone 16 Pro bezel, with an arrow. The Spotify reference screenshot (1:5780) is not shown: it has real names and photos. Each screen has an iOS status bar (9:41, signal, Wi-Fi, battery) added locally (hopper-sb/statusbar.py), since the frames have none; nothing in the frames moved. Saved at 2400×1500."
+    },
+    "onboarding": {
+      "path": "assets/hopper-hangout-cs4-onboarding.png",
+      "sourceNodeIds": [
+        "1:4784",
+        "1:4843",
+        "1:4731"
+      ],
+      "note": "Create account, Your tastes and All done at 3x in the iPhone 16 Pro bezel, spread, with arrows. Each screen has an iOS status bar (9:41, signal, Wi-Fi, battery) added locally (hopper-sb/statusbar.py), since the frames have none; nothing in the frames moved. Saved at 2400×1500."
+    },
+    "tastes": {
+      "path": "assets/hopper-hangout-cs4-tastes.png",
+      "sourceNodeIds": [
+        "1:5039"
+      ],
+      "note": "The Taste Match component at 3x, rebuilt with clean transparent gaps: each card (Rectangle 37, 315×386, 14pt radius) cut out with an antialiased rounded mask and its outer edge painted in the card’s own fill, so no canvas grey bleeds in; scaled to 3200 px."
+    },
+    "map-filters": {
+      "path": "assets/hopper-hangout-cs4-map-filters.png",
+      "sourceNodeIds": [
+        "1:6881",
+        "1:6895",
+        "1:6909",
+        "1:6923"
+      ],
+      "note": "The four variants of the Map Filters component set (1:6880) at 3x, each pill cut out of the canvas grey, in a row on a white panel with rounded corners."
+    },
+    "characters": {
+      "path": "assets/hopper-hangout-cs4-characters.png",
+      "sourceNodeIds": [
+        "1:6519"
+      ],
+      "note": "The avatars sheet (Anita’s drawings) at 3x. A WIP Cat sticker from another file (1:6712) in its corner is whited out, and the characters and teacups are placed side by side instead of stacked; drawings unchanged. Scaled to 3200 px, rounded corners."
+    },
+    "profile-map": {
+      "path": "assets/hopper-hangout-live-profile-map.jpg",
+      "existingAssetId": "image-6bd1f56159332180c28e8041a1008d3676359050-2000x1500-png",
+      "note": "Winston’s own mockup from the old Hopper Hangout page (Profile and the Nearby map on two tilted iPhones), kept as is at his request. The local file is a JPG copy for the preview."
+    },
+    "plan-mockup": {
+      "path": "assets/hopper-hangout-live-plan.jpg",
+      "existingAssetId": "image-e5f2439d90bf88727a2c09c8940f01fb3382a0c6-2000x1500-png",
+      "note": "Winston’s own mockup from the old Hopper Hangout page (the Arcade Night hangout plan on a tilted iPhone), kept as is at his request. The local file is a JPG copy for the preview."
+    }
+  }
+}

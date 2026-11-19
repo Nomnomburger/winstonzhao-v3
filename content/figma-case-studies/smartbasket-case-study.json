@@ -1,0 +1,921 @@
+{
+  "documentId": "figma-portfolio-smartbasket",
+  "generatedFrom": "case-study-copy/smartbasket.json",
+  "fields": {
+    "description": "A shopping list that finds the best local price, designed and built solo at Hack Canada 2025.",
+    "client": "Hack Canada 2025",
+    "discipline": "Product Design · Development",
+    "intro": "SmartBasket is a mobile web app that finds the best local prices for what’s on your shopping list, with in-store deals shared by other shoppers. I designed and built it on my own at Hack Canada 2025.",
+    "summary": "Designing and building a smarter shopping list solo, from Figma screens to a working web app that compares prices at stores nearby.",
+    "overview": "SmartBasket is for Canadians trying to save on groceries. I worked solo, designing the screens in Figma first and then building the app close to them. Everything worked end to end in the demo.",
+    "impact": "Worked end to end in the Hack Canada 2025 demo, designed and built solo.",
+    "showSideMenu": true,
+    "details": [
+      {
+        "_type": "detailItem",
+        "_key": "smartbasket-detail-0",
+        "label": "Event",
+        "value": "Hack Canada 2025\nOne weekend · February 2025"
+      },
+      {
+        "_type": "detailItem",
+        "_key": "smartbasket-detail-1",
+        "label": "Team",
+        "value": "Solo"
+      },
+      {
+        "_type": "detailItem",
+        "_key": "smartbasket-detail-2",
+        "label": "Deliverables",
+        "value": "Working web app · Figma prototype"
+      },
+      {
+        "_type": "detailItem",
+        "_key": "smartbasket-detail-3",
+        "label": "Platform",
+        "value": "Mobile web"
+      },
+      {
+        "_type": "detailItem",
+        "_key": "smartbasket-detail-4",
+        "label": "Tools",
+        "value": "Figma · Next.js · Firebase\nGemini API · SerpAPI · Google Maps · OpenWeather"
+      }
+    ],
+    "coverImage": {
+      "_type": "image",
+      "localAssetKey": "cover",
+      "alt": "The SmartBasket home screen on an iPhone: today’s sales nearby, your basket and your points"
+    },
+    "hero": [
+      {
+        "_type": "mediaImage",
+        "_key": "smartbasket-hero",
+        "localAssetKey": "hero",
+        "alt": "Three SmartBasket screens on iPhones: the shopping list grouped by store, the home screen with Today, basket and points cards, and an item’s prices at four stores",
+        "size": "full"
+      }
+    ],
+    "sections": [
+      {
+        "_type": "projectSection",
+        "_key": "smartbasket-section-0",
+        "title": "Problem Statement",
+        "heading": "How might we help Canadians save on groceries without checking every store themselves?",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "smartbasket-s-0-b-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "smartbasket-s-0-b-0-s",
+                "marks": [],
+                "text": "Hack Canada 2025 had a Canada-related theme, and my slides open on two words: “canada’s issues...” The one SmartBasket takes on is the cost of shopping: finding the best deals in a time of tariffs and high costs. It’s a shopping list that helps you save money and time when you buy from local stores."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "smartbasket-s-0-b-1-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "smartbasket-s-0-b-1-0-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Who:"
+              },
+              {
+                "_type": "span",
+                "_key": "smartbasket-s-0-b-1-0-s1",
+                "marks": [],
+                "text": " Canadians buying groceries at stores near them."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "smartbasket-s-0-b-1-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "smartbasket-s-0-b-1-1-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Where:"
+              },
+              {
+                "_type": "span",
+                "_key": "smartbasket-s-0-b-1-1-s1",
+                "marks": [],
+                "text": " a mobile web app, in the browser."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "smartbasket-s-0-b-1-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "smartbasket-s-0-b-1-2-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Constraint:"
+              },
+              {
+                "_type": "span",
+                "_key": "smartbasket-s-0-b-1-2-s1",
+                "marks": [],
+                "text": " one hackathon, and I was on my own for the design and the code."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          }
+        ]
+      },
+      {
+        "_type": "projectSection",
+        "_key": "smartbasket-section-1",
+        "title": "Idea",
+        "heading": "More than a shopping list",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "smartbasket-s-1-b-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "smartbasket-s-1-b-0-s",
+                "marks": [],
+                "text": "On the surface, SmartBasket is a shopping list: you add what you need, and it keeps track. Underneath, two things do the work, and my slides summed them up as “AI + Crowdsourcing”. AI helps find prices online, and shoppers add the in-store deals they spot. Together they cover five features:"
+              }
+            ]
+          },
+          {
+            "_type": "stickyBoard",
+            "_key": "smartbasket-s-1-b-1",
+            "label": "Five features, from my slides",
+            "notes": [
+              {
+                "_type": "stickyNote",
+                "_key": "smartbasket-s-1-b-1-n0",
+                "text": "Online price comparisons",
+                "color": "green"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "smartbasket-s-1-b-1-n1",
+                "text": "Best store finder",
+                "color": "yellow"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "smartbasket-s-1-b-1-n2",
+                "text": "In store deals crowdsourcing",
+                "color": "blue"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "smartbasket-s-1-b-1-n3",
+                "text": "Trip worth calculation",
+                "color": "pink"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "smartbasket-s-1-b-1-n4",
+                "text": "Natural language shopping list",
+                "color": "green"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "smartbasket-s-1-b-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "smartbasket-s-1-b-2-s",
+                "marks": [],
+                "text": "None of it looks like AI on screen. It sits behind things people already know: a list, a card and a yes-or-no question. That starts on the home screen."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "_type": "projectSection",
+        "_key": "smartbasket-section-2",
+        "title": "Home",
+        "heading": "One home of cards",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "smartbasket-s-2-b-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "smartbasket-s-2-b-0-s",
+                "marks": [],
+                "text": "Everything in SmartBasket starts from one screen. Home is a stack of cards: Today shows products on sale near you, with + chips to add them to your list. Your SmartBasket counts what’s on your list and what’s on sale, with the price, store and distance for each deal. Points tracks your rewards points and level."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "smartbasket-s-2-b-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "smartbasket-s-2-b-1-s",
+                "marks": [],
+                "text": "Why a stack of cards:"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "smartbasket-s-2-b-2-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "smartbasket-s-2-b-2-0-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "One home for the whole app."
+              },
+              {
+                "_type": "span",
+                "_key": "smartbasket-s-2-b-2-0-s1",
+                "marks": [],
+                "text": " Tap a card’s arrow and it opens in place, then closes back into the stack."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "smartbasket-s-2-b-2-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "smartbasket-s-2-b-2-1-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "What matters now comes first."
+              },
+              {
+                "_type": "span",
+                "_key": "smartbasket-s-2-b-2-1-s1",
+                "marks": [],
+                "text": " The stack puts what’s most relevant on top. At a store, that’s the Contribute card (more on that below)."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "smartbasket-s-2-b-2-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "smartbasket-s-2-b-2-2-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "It keeps the app simple."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "smartbasket-s-2-b-3",
+            "localAssetKey": "home-open",
+            "alt": "Two iPhones: the SmartBasket home with Today, Your SmartBasket and Points cards, then the Today card opened full screen with nearby products and six stores with sales: Walmart, No Frills, Loblaws, Costco, T&T and Metro",
+            "caption": "Today’s card opens in place, with the stores that have sales.",
+            "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "smartbasket-s-2-b-4",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "smartbasket-s-2-b-4-s",
+                "marks": [],
+                "text": "In the Figma prototype, each card opens with Smart Animate, and an X closes it back into the stack."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "_type": "projectSection",
+        "_key": "smartbasket-section-3",
+        "title": "List",
+        "heading": "Type it, then compare",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "smartbasket-s-3-b-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "smartbasket-s-3-b-0-s",
+                "marks": [],
+                "text": "Adding an item works like any list you’ve used: you type what you need, in plain words. Then SmartBasket does the comparing for you, and the New item sheet says so up front: pricing and the best store will appear after you add the item."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "smartbasket-s-3-b-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "smartbasket-s-3-b-1-s",
+                "marks": [],
+                "text": "Once it’s added, the price finder looks it up, and the item shows its price at stores nearby, each with its distance."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "smartbasket-s-3-b-2",
+            "localAssetKey": "add-item",
+            "alt": "Two iPhones: the New item sheet over the basket, with an Auto price comparison note and a Type something field, then Granola bars with prices at Walmart, No Frills, Loblaws and Costco",
+            "caption": "Type an item, then see its price at stores nearby.",
+            "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "smartbasket-s-3-b-3",
+            "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "smartbasket-s-3-b-3-s",
+                "marks": [],
+                "text": "By item or by store"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "smartbasket-s-3-b-4",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "smartbasket-s-3-b-4-s",
+                "marks": [],
+                "text": "The shopping list has two views, switched with two small icons next to its title. By item, it’s a checklist with a price on each item, and sale prices in green. By store, it’s a grid of stores with how far away each one is and how many of your items it has. Tap a store, and its tile grows into a view of just that store."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "smartbasket-s-3-b-5",
+            "localAssetKey": "list-views",
+            "alt": "Three iPhones: the shopping list as a checklist with prices, the same list as a grid of Walmart, No Frills, Loblaws and Costco with distances and item counts, and the Walmart tile opened with its items and a public transit card",
+            "caption": "By item, by store, then one store opened.",
+            "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "smartbasket-s-3-b-6",
+            "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "smartbasket-s-3-b-6-s",
+                "marks": [],
+                "text": "Worth the trip?"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "smartbasket-s-3-b-7",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "smartbasket-s-3-b-7-s",
+                "marks": [],
+                "text": "“Trip worth calculation” was one of the five features, and it lives on each store: how far away it is, a nudge to save with public transit, and a button for directions. Behind it are your location and Google Maps."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "smartbasket-s-3-b-8",
+            "localAssetKey": "transit",
+            "alt": "A close-up of the SmartBasket store view: a light blue card reading 2km away, Save with public transit, with a mint directions button",
+            "caption": "Distance and a public transit option, right on the store.",
+            "size": "content"
+          }
+        ]
+      },
+      {
+        "_type": "projectSection",
+        "_key": "smartbasket-section-4",
+        "title": "Crowdsourcing",
+        "heading": "Deals in one tap",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "smartbasket-s-4-b-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "smartbasket-s-4-b-0-s",
+                "marks": [],
+                "text": "Not every deal in SmartBasket comes from the web. Some come from other shoppers: when you spot a sale in a store, you can add it, so people nearby can find it too. That only works if adding a deal takes next to no effort, so contributing is one question with two buttons:"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "smartbasket-s-4-b-1-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "smartbasket-s-4-b-1-0-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "At a store,"
+              },
+              {
+                "_type": "span",
+                "_key": "smartbasket-s-4-b-1-0-s1",
+                "marks": [],
+                "text": " the Contribute card rises to the top of home and asks: “See anything on sale at Walmart?”"
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "smartbasket-s-4-b-1-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "smartbasket-s-4-b-1-1-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Yes! or Nope."
+              },
+              {
+                "_type": "span",
+                "_key": "smartbasket-s-4-b-1-1-s1",
+                "marks": [],
+                "text": " Yes! has a camera on it: you snap the sale, and Gemini turns the photo into a deal the app saves."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "smartbasket-s-4-b-2",
+            "localAssetKey": "contribute",
+            "alt": "Two iPhones: the SmartBasket home with the Today card on top, then the same home with a Contribute card on top asking See anything on sale at Walmart?, with Yes! and Nope buttons",
+            "caption": "At a store, Contribute moves to the top of home.",
+            "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "smartbasket-s-4-b-3",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "smartbasket-s-4-b-3-s",
+                "marks": [],
+                "text": "Items ask too. On an item’s page, the same card asks: “Are these still on sale?”"
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "smartbasket-s-4-b-4",
+            "localAssetKey": "contribute-item",
+            "alt": "An iPhone showing Granola bars with prices at four stores and a Contribute card asking Are these still on sale?, with Yes! and Nope buttons",
+            "caption": "On an item: “Are these still on sale?”",
+            "size": "full"
+          }
+        ]
+      },
+      {
+        "_type": "projectSection",
+        "_key": "smartbasket-section-5",
+        "title": "Build",
+        "heading": "From Figma to a working app",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "smartbasket-s-5-b-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "smartbasket-s-5-b-0-s",
+                "marks": [],
+                "text": "There was no handoff on this one: I designed SmartBasket and built it too. My slides sum up the approach as “design first”, then “figma!”. I designed the screens in Figma before writing any code, then built a mobile web app that ran in the browser, close to those screens."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "smartbasket-s-5-b-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "smartbasket-s-5-b-1-s",
+                "marks": [],
+                "text": "Next.js ran the app, and Firebase handled login, points and the data. Three pipelines did the rest, written in my slides like this:"
+              }
+            ]
+          },
+          {
+            "_type": "stickyBoard",
+            "_key": "smartbasket-s-5-b-2",
+            "label": "Pipelines, from my slides",
+            "notes": [
+              {
+                "_type": "stickyNote",
+                "_key": "smartbasket-s-5-b-2-n0",
+                "text": "price finder\ntext => serpapi => json => gemini => cleaned json => fs\nlocalized with openweather reverse geocoding",
+                "color": "yellow",
+                "tag": "Worked in the demo"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "smartbasket-s-5-b-2-n1",
+                "text": "crowdsourcing\nlocation detection => image => gemini => json => fs",
+                "color": "blue",
+                "tag": "Worked in the demo"
+              },
+              {
+                "_type": "stickyNote",
+                "_key": "smartbasket-s-5-b-2-n2",
+                "text": "travel cost\nlocation detection => gcp maps api",
+                "color": "green",
+                "tag": "Worked in the demo"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "smartbasket-s-5-b-3-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "smartbasket-s-5-b-3-0-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Price finder:"
+              },
+              {
+                "_type": "span",
+                "_key": "smartbasket-s-5-b-3-0-s1",
+                "marks": [],
+                "text": " the item you typed went to SerpAPI, Gemini cleaned up what came back, and OpenWeather’s reverse geocoding kept it local. It filled in the prices on each item."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "smartbasket-s-5-b-3-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "smartbasket-s-5-b-3-1-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Crowdsourcing:"
+              },
+              {
+                "_type": "span",
+                "_key": "smartbasket-s-5-b-3-1-s1",
+                "marks": [],
+                "text": " the app detected your location, then Gemini turned your photo into a deal. It sat behind the Yes! button."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "smartbasket-s-5-b-3-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "smartbasket-s-5-b-3-2-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Travel cost:"
+              },
+              {
+                "_type": "span",
+                "_key": "smartbasket-s-5-b-3-2-s1",
+                "marks": [],
+                "text": " your location and Google Maps. It sat behind the distance and public transit card on each store."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          }
+        ]
+      },
+      {
+        "_type": "projectSection",
+        "_key": "smartbasket-section-6",
+        "title": "Outcome",
+        "heading": "Results and lessons",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "smartbasket-s-6-b-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "smartbasket-s-6-b-0-s",
+                "marks": [],
+                "text": "By demo time, SmartBasket worked end to end: the price finder, crowdsourced deals from a photo, the trip-worth check with public transit, and login with points."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "smartbasket-s-6-b-1",
+            "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "smartbasket-s-6-b-1-s",
+                "marks": [],
+                "text": "What I learned"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "smartbasket-s-6-b-2-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "smartbasket-s-6-b-2-0-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Design first paid off."
+              },
+              {
+                "_type": "span",
+                "_key": "smartbasket-s-6-b-2-0-s1",
+                "marks": [],
+                "text": " Designing in Figma before coding made the solo build faster."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "smartbasket-s-6-b-2-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "smartbasket-s-6-b-2-1-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Familiar objects."
+              },
+              {
+                "_type": "span",
+                "_key": "smartbasket-s-6-b-2-1-s1",
+                "marks": [],
+                "text": " The AI hides behind a list, a card and a yes-or-no question."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "smartbasket-s-6-b-2-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "smartbasket-s-6-b-2-2-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "One-tap contributing."
+              },
+              {
+                "_type": "span",
+                "_key": "smartbasket-s-6-b-2-2-s1",
+                "marks": [],
+                "text": " Crowdsourcing only works if adding a deal takes one tap."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "smartbasket-s-6-b-3",
+            "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "smartbasket-s-6-b-3-s",
+                "marks": [],
+                "text": "Summary"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "smartbasket-s-6-b-4",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "smartbasket-s-6-b-4-s",
+                "marks": [],
+                "text": "SmartBasket started from a Canada-related theme and a simple goal: help Canadians save on groceries without checking every store themselves. Working solo at Hack Canada 2025, I designed it in Figma first, then built it as a mobile web app close to those screens."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "smartbasket-s-6-b-5",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "smartbasket-s-6-b-5-s",
+                "marks": [],
+                "text": "Behind a familiar list and a stack of cards, it finds prices with SerpAPI and Gemini, lets shoppers add in-store deals with a photo, and shows whether a trip is worth it. Everything worked end to end in the demo."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "assets": {
+    "cover": {
+      "path": "assets/smartbasket-cover-live.jpg",
+      "existingAssetId": "image-23386ead098cc79561243b37decc1ace6cdac7ac-716x717-png",
+      "note": "Winston's current home-page thumbnail in Sanity (the home screen in an older iPhone frame, from Figma file r2Feu1tLXWg8ApMcINffew node 595:1020), kept as is. The local file is a JPG copy for the preview."
+    },
+    "hero": {
+      "path": "assets/smartbasket-cs4-hero.jpg",
+      "sourceNodeIds": [
+        "358:49920",
+        "358:49548",
+        "358:49967"
+      ],
+      "note": "Final basket by store, Home (centre) and item price screens from the App section at 3x, in Apple's iPhone 16 Pro (White Titanium) bezel, laid out like the Yelo and Villio heroes on a soft mint-to-blue gradient. Replaces the old 716 px hero, which reused the cover."
+    },
+    "home-open": {
+      "path": "assets/smartbasket-cs4-home-open.png",
+      "sourceNodeIds": [
+        "358:49548",
+        "358:49822",
+        "358:50151"
+      ],
+      "note": "Home, then Today opened, in the bezel with an arrow. In 358:49822 the third row of store tiles repeats the Loblaws / Costco row (a placeholder); at Winston’s request (Nov 2026) it is redrawn locally as T&T (3km away, 2 items) and Metro (5km away, 1 item): row 2’s tiles as the template, text in Onest at the tiles’ own sizes and colours, and the logos Winston supplied cut to the 42pt circle of the Store Icon frames (sb2/replace_row.py). The Figma file is unchanged."
+    },
+    "add-item": {
+      "path": "assets/smartbasket-cs4-add-item.png",
+      "sourceNodeIds": [
+        "1:12974",
+        "1:12930",
+        "358:49920",
+        "358:49967"
+      ],
+      "note": "The New item sheet, then the item's prices (the sheet's text field links to the item in the prototype). 1:12974 has no status bar, so it is rebuilt locally in the App section layout: the App copy 358:49920 with the same ~50% #171717 dim overlay, and the sheet cut out of 1:12974 (difference against the dimmed 1:12930 underneath) and moved up 40pt so it ends where the App layout's card ends."
+    },
+    "list-views": {
+      "path": "assets/smartbasket-cs4-list-views.png",
+      "sourceNodeIds": [
+        "1:13069",
+        "358:49920",
+        "358:50151"
+      ],
+      "note": "List view, store view, then the Walmart tile opened, in the bezel with arrows (spread). 1:13069 has no status bar, so it is given the App section layout locally: the status bar and home indicator from 358:49920, the card's top moved down 40pt and its bottom bar up 40pt. The same steps rebuild 1:12930 into a near pixel match of its App copy 358:49920."
+    },
+    "transit": {
+      "path": "assets/smartbasket-cs4-transit.png",
+      "sourceNodeIds": [
+        "358:50151"
+      ],
+      "note": "Close-up crop of the transit card from the 3x store view, cut off its white background (flood fill, colour-to-alpha on the rim) and centred on a transparent canvas with a little room on each side (1400×258), shown at text width."
+    },
+    "contribute": {
+      "path": "assets/smartbasket-cs4-contribute.png",
+      "sourceNodeIds": [
+        "358:49548",
+        "358:49658"
+      ],
+      "note": "Home, then Home with the Contribute card first, in the bezel with an arrow."
+    },
+    "contribute-item": {
+      "path": "assets/smartbasket-cs4-contribute-item.png",
+      "sourceNodeIds": [
+        "358:50045"
+      ],
+      "note": "The item with the Contribute card, one phone in the bezel."
+    }
+  }
+}
