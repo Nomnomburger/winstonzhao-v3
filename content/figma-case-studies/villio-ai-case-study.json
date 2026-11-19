@@ -5,6 +5,10 @@
     "description": "A city’s services behind one AI prompt, with answers that come back as cards you can act on.",
     "client": "Villio AI",
     "discipline": "Product Design",
+    "link": {
+      "url": "https://villio.ai",
+      "label": "Visit"
+    },
     "intro": "Villio AI was a startup that put a city’s services behind one AI prompt, so residents could book a room or report a pothole just by asking. As a co-founder and product designer, I designed the resident app, the landing page and the pitch deck.",
     "summary": "Co-founding Villio AI and designing its resident app around one prompt, from a feed of what’s on today to replies you can act on.",
     "overview": "Villio was for residents and the city staff who serve them. I co-founded it with two others, in a team of eight. We held pilot talks with the City of Richmond Hill, but the pilot didn’t go ahead, and we wound Villio down.",
@@ -293,7 +297,7 @@
                 "_type": "span",
                 "_key": "villio-ai-s-2-b-0-s",
                 "marks": [],
-                "text": "Open Villio and you see your day before you see a chat. The home is a feed in time order: today first, then the next seven days, then links to city resources."
+                "text": "Open Villio and you see your day before you see a chat. The home is a feed in time order: today first, then the next seven days, then links to city resources. It took a few rounds to get there."
               }
             ]
           },
@@ -307,19 +311,63 @@
                 "_type": "span",
                 "_key": "villio-ai-s-2-b-1-s",
                 "marks": [],
-                "text": "A booking gets a countdown, the time and place, and a Manage booking button. Garbage day gets a single row."
+                "text": "My wireframes already had both halves: a “For you” feed with an upcoming booking, a 311 request in progress and a Discover section, and a prompt bar at the bottom asking “What do you want to do?”. In the chat, the reply came with a booking card."
               }
             ]
           },
           {
-            "_type": "block",
+            "_type": "mediaImage",
             "_key": "villio-ai-s-2-b-2",
+            "localAssetKey": "wireframes",
+            "alt": "Two grey wireframes on iPhones: a Welcome to Villio home with For you cards for an upcoming booking at 5:00PM and a 311 tree removal request, a Discover card and a What do you want to do? bar; then a chat where a prompt gets a message and an upcoming booking card",
+            "caption": "My wireframes: the home, and a chat that answers with a card.",
+            "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "villio-ai-s-2-b-3",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "villio-ai-s-2-b-2-s",
+                "_key": "villio-ai-s-2-b-3-s",
+                "marks": [],
+                "text": "In my early designs, the greeting led: a big “Hi there” and “Access Markham’s services”, with suggestions and a prompt bar under placeholder cards for the feed. Then the greeting moved into a white sheet over the cards, and the placeholders became a real feed: your events, then updates from the city."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "villio-ai-s-2-b-4",
+            "localAssetKey": "early-home",
+            "alt": "Three early Villio designs on iPhones: a big Hi there greeting under a mint placeholder block, with suggestions and a mic button; the greeting in a white sheet over empty cards; and the sheet over a feed of your events and updates from the city",
+            "caption": "The greeting first, then a sheet over the cards, then a real feed behind it.",
+            "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "villio-ai-s-2-b-5",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "villio-ai-s-2-b-5-s",
+                "marks": [],
+                "text": "In the final home, a booking gets a countdown, the time and place, and a Manage booking button. Garbage day gets a single row."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "villio-ai-s-2-b-6",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "villio-ai-s-2-b-6-s",
                 "marks": [],
                 "text": "Ask Villio sits in a sheet docked under the feed, with “Hi there”, the prompt bar and a big voice button. In the prototype, tapping the feed tucks the sheet down to one line, and more of your week shows above it. The expand button opens it into a full-screen chat."
               }
@@ -327,7 +375,7 @@
           },
           {
             "_type": "mediaImage",
-            "_key": "villio-ai-s-2-b-3",
+            "_key": "villio-ai-s-2-b-7",
             "localAssetKey": "sheet",
             "alt": "Two iPhones showing the Villio home: first with the Hi there sheet docked under the feed, then with the sheet tucked down to one line and a Study Room card from the next seven days showing above it",
             "caption": "The docked sheet, then tucked down to one line.",
@@ -335,13 +383,13 @@
           },
           {
             "_type": "block",
-            "_key": "villio-ai-s-2-b-4",
+            "_key": "villio-ai-s-2-b-8",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "villio-ai-s-2-b-4-s",
+                "_key": "villio-ai-s-2-b-8-s",
                 "marks": [],
                 "text": "I docked the assistant this way so today’s feed, with your bookings and notices, stays visible, and the chat is always one tap away."
               }
@@ -379,16 +427,16 @@
                 "_type": "span",
                 "_key": "villio-ai-s-3-b-1-s",
                 "marks": [],
-                "text": "Expand the sheet and the assistant fills the screen. Discover sorts services into Recreational, 311 and Events, and suggested actions like “Book a study room” and “Report pothole” sit above the bar. Start typing and the suggestions stay above the keyboard, while the voice button turns into send."
+                "text": "In my early designs, expanding the sheet showed your recent prompts, and Discover opened as rows of example prompts under each category, like Recreational and City 311."
               }
             ]
           },
           {
             "_type": "mediaImage",
             "_key": "villio-ai-s-3-b-2",
-            "localAssetKey": "ask",
-            "alt": "Two iPhones: the full-screen Villio assistant with Discover tiles for Recreational, 311 and Events and suggested actions above the Ask Villio bar, then the same screen with the keyboard up, suggestions above the field and a send button",
-            "caption": "Discover and suggested actions, then typing a request.",
+            "localAssetKey": "early-expanded",
+            "alt": "Three early Villio screens on iPhones: the Hi there sheet docked over the Today feed; the sheet expanded to a list of past prompts; and Discover with rows of example prompts under Recreational and City 311",
+            "caption": "The early sheet, expanded to recent prompts, then Discover as rows.",
             "size": "full"
           },
           {
@@ -401,74 +449,96 @@
                 "_type": "span",
                 "_key": "villio-ai-s-3-b-3-s",
                 "marks": [],
-                "text": "I also tried a second version of Discover, which is still hidden in the chat frames: rows of example prompts under each category. The prototype uses the tiles."
+                "text": "In the prototype, the expanded assistant leads with Discover as tiles for Recreational, 311 and Events, and suggested actions like “Book a study room” and “Report pothole” sit above the bar. Start typing and the suggestions stay above the keyboard, while the voice button turns into send."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "villio-ai-s-3-b-4",
+            "localAssetKey": "ask",
+            "alt": "Two iPhones: the full-screen Villio assistant with Discover tiles for Recreational, 311 and Events and suggested actions above the Ask Villio bar, then the same screen with the keyboard up, suggestions above the field and a send button",
+            "caption": "Discover and suggested actions, then typing a request.",
+            "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "villio-ai-s-3-b-5",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "villio-ai-s-3-b-5-s",
+                "marks": [],
+                "text": "A fuller set of rows is still hidden in the prototype’s chat frames:"
               }
             ]
           },
           {
             "_type": "stickyBoard",
-            "_key": "villio-ai-s-3-b-4",
+            "_key": "villio-ai-s-3-b-6",
             "label": "The hidden Discover rows",
             "notes": [
               {
                 "_type": "stickyNote",
-                "_key": "villio-ai-s-3-b-4-n0",
+                "_key": "villio-ai-s-3-b-6-n0",
                 "text": "Book a study room",
                 "color": "green",
                 "tag": "Recreational"
               },
               {
                 "_type": "stickyNote",
-                "_key": "villio-ai-s-3-b-4-n1",
+                "_key": "villio-ai-s-3-b-6-n1",
                 "text": "Volleyball courts",
                 "color": "green",
                 "tag": "Recreational"
               },
               {
                 "_type": "stickyNote",
-                "_key": "villio-ai-s-3-b-4-n2",
+                "_key": "villio-ai-s-3-b-6-n2",
                 "text": "Study room for 3 hours",
                 "color": "green",
                 "tag": "Recreational"
               },
               {
                 "_type": "stickyNote",
-                "_key": "villio-ai-s-3-b-4-n3",
+                "_key": "villio-ai-s-3-b-6-n3",
                 "text": "Report a broken streetlamp",
                 "color": "yellow",
                 "tag": "City 311"
               },
               {
                 "_type": "stickyNote",
-                "_key": "villio-ai-s-3-b-4-n4",
+                "_key": "villio-ai-s-3-b-6-n4",
                 "text": "There’s a pothole here",
                 "color": "yellow",
                 "tag": "City 311"
               },
               {
                 "_type": "stickyNote",
-                "_key": "villio-ai-s-3-b-4-n5",
+                "_key": "villio-ai-s-3-b-6-n5",
                 "text": "Request large item pickup",
                 "color": "yellow",
                 "tag": "City 311"
               },
               {
                 "_type": "stickyNote",
-                "_key": "villio-ai-s-3-b-4-n6",
+                "_key": "villio-ai-s-3-b-6-n6",
                 "text": "Events tonight",
                 "color": "blue",
                 "tag": "Community"
               },
               {
                 "_type": "stickyNote",
-                "_key": "villio-ai-s-3-b-4-n7",
+                "_key": "villio-ai-s-3-b-6-n7",
                 "text": "Parking permit",
                 "color": "blue",
                 "tag": "Community"
               },
               {
                 "_type": "stickyNote",
-                "_key": "villio-ai-s-3-b-4-n8",
+                "_key": "villio-ai-s-3-b-6-n8",
                 "text": "Where is construction",
                 "color": "blue",
                 "tag": "Community"
@@ -478,13 +548,13 @@
           },
           {
             "_type": "block",
-            "_key": "villio-ai-s-3-b-5",
+            "_key": "villio-ai-s-3-b-7",
             "style": "h3",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "villio-ai-s-3-b-5-s",
+                "_key": "villio-ai-s-3-b-7-s",
                 "marks": [],
                 "text": "Voice gets the big button"
               }
@@ -492,21 +562,43 @@
           },
           {
             "_type": "block",
-            "_key": "villio-ai-s-3-b-6",
+            "_key": "villio-ai-s-3-b-8",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "villio-ai-s-3-b-6-s",
+                "_key": "villio-ai-s-3-b-8-s",
                 "marks": [],
-                "text": "In the bar, voice is a large green circle next to a plain text field. Our pitch deck named residents with low digital literacy as a risk, and promoted voice mode and visual cards for accessibility in response."
+                "text": "The bar took the most tries. In some versions, voice led the row, and typing hid behind a keyboard button. I tried eight arrangements on the same feed, from a row of round buttons to one card with everything inside it."
               }
             ]
           },
           {
             "_type": "mediaImage",
-            "_key": "villio-ai-s-3-b-7",
+            "_key": "villio-ai-s-3-b-9",
+            "localAssetKey": "bars",
+            "alt": "Eight versions of the Villio sheet’s prompt bar: rows of round voice, keyboard and Discover buttons, Ask villio fields with the voice button inside or beside them, and one card holding the field and every button",
+            "caption": "Eight prompt bars on the same feed. The last is closest to the final.",
+            "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "villio-ai-s-3-b-10",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "villio-ai-s-3-b-10-s",
+                "marks": [],
+                "text": "The final keeps it simple: a plain text field, and voice as a large green circle beside it. Our pitch deck named residents with low digital literacy as a risk, and promoted voice mode and visual cards for accessibility in response."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "villio-ai-s-3-b-11",
             "localAssetKey": "voice",
             "alt": "Close-up of the Villio sheet: Hi there, Access Markham’s services, an expand button, and the Ask Villio field next to a large green voice button",
             "caption": "Voice is the biggest control in the bar.",
@@ -558,7 +650,7 @@
                 "_type": "span",
                 "_key": "villio-ai-s-4-b-2-s",
                 "marks": [],
-                "text": "The card isn’t the same everywhere it appears. In the prototype, it only shows the booking. In the chat on our August 2025 pitch deck, it has a Manage booking button. On the landing page, it has Manage booking and Add to Calendar."
+                "text": "The card has a few modes. It can simply confirm the booking, or carry actions like Manage booking and Add to Calendar."
               }
             ]
           },
@@ -567,7 +659,7 @@
             "_key": "villio-ai-s-4-b-3",
             "localAssetKey": "card-phones",
             "alt": "Two iPhones: a Villio chat where a study room request returns a booking card with no buttons, and the same chat from the pitch deck, with a Manage booking button on the card and Thanks! typed in the bar",
-            "caption": "The booking card in the prototype, and in the pitch deck with Manage booking.",
+            "caption": "The booking card on its own, and with Manage booking.",
             "size": "full",
             "labels": [
               {
@@ -591,7 +683,7 @@
             "_key": "villio-ai-s-4-b-4",
             "localAssetKey": "card-web",
             "alt": "The booking card from the Villio landing page: Hi there, the typed request, Sure! Here’s your booking, and a Study Room card with Manage booking and Add to Calendar buttons",
-            "caption": "The landing page version, with Manage booking and Add to Calendar.",
+            "caption": "On the landing page, with Manage booking and Add to Calendar.",
             "size": "content"
           }
         ]
@@ -612,7 +704,7 @@
                 "_type": "span",
                 "_key": "villio-ai-s-5-b-0-s",
                 "marks": [],
-                "text": "Residents would use Villio, but cities would pay for it. The landing page and the pitch deck made that case, and I designed both."
+                "text": "Residents would use Villio for free, as long as their city was on it. Cities would pay for it. The landing page and the pitch deck made that case, and I designed both."
               }
             ]
           },
@@ -965,6 +1057,46 @@
     ]
   },
   "assets": {
+    "wireframes": {
+      "path": "assets/villio-ai-cs5-wireframes.png",
+      "sourceNodeIds": [
+        "421:51142",
+        "421:51843"
+      ],
+      "note": "Winston’s wireframes from the “winston v1” section (421:51141): the Welcome to Villio home and the prompt/message chat with a booking card, at 3x in Apple’s iPhone 16 Pro (White Titanium) bezel on a transparent background (phones.py)."
+    },
+    "early-home": {
+      "path": "assets/villio-ai-cs5-early-home.png",
+      "sourceNodeIds": [
+        "421:51162",
+        "421:51556",
+        "421:51856"
+      ],
+      "note": "Three early home designs from “winston v1” (421:51141): greeting first under a mint placeholder, the greeting in a sheet over empty cards, then the sheet over a real feed (Your Events, From the City), at 3x in Apple’s iPhone 16 Pro (White Titanium) bezel on a transparent background (phones.py), spread, with arrows."
+    },
+    "early-expanded": {
+      "path": "assets/villio-ai-cs5-early-expanded.png",
+      "sourceNodeIds": [
+        "421:53075",
+        "421:53289",
+        "421:53423"
+      ],
+      "note": "“Section 1” of “winston v1”: the docked sheet over Today, the expanded sheet with prompt history, and Discover as rows (Recreational, City 311), at 3x in Apple’s iPhone 16 Pro (White Titanium) bezel on a transparent background (phones.py), spread, with arrows."
+    },
+    "bars": {
+      "path": "assets/villio-ai-cs5-bars.png",
+      "sourceNodeIds": [
+        "421:52217",
+        "421:52426",
+        "421:52324",
+        "421:52529",
+        "421:52864",
+        "421:52753",
+        "421:52640",
+        "421:52975"
+      ],
+      "note": "The eight frames of the “Prompt Bars” section (421:52216) at 3x, each cropped to its bottom sheet (y 1840–2622 px), rounded corners and a light grey outline (outline-villio.mjs), in two rows of four in canvas order, scaled to 3200 wide."
+    },
     "cover": {
       "path": "assets/villio-ai-cover-live.jpg",
       "existingAssetId": "image-a9a1516f1788362fdb0e0e9b71f97b9c1760d7fb-716x717-png",

@@ -22,7 +22,7 @@
       },
       {
         "label": "Timeline",
-        "value": "February 28 – March 2, 2025"
+        "value": "March 2025"
       },
       {
         "label": "Platform",
@@ -178,7 +178,7 @@
         "title": "Feed",
         "heading": "One feed, three lenses",
         "content": [
-          "Every post in Sparks belongs to a place, and Updates is where they come together. Getting its layout right took a few tries. The feed went through four versions in the file:",
+          "Every post in Sparks belongs to a place, and Updates is where they come together. Getting its layout right took a few tries. I designed four versions of the feed:",
           {
             "bullets": [
               "Posts grouped under the place they came from, with cards staggered left and right and a black “New Update” button.",
@@ -344,20 +344,10 @@
       },
       {
         "title": "Outcome",
-        "heading": "Results and lessons",
+        "heading": "What we submitted",
         "content": [
           "We submitted the wired prototype and our pitch deck by the Sunday morning deadline. Sparks didn’t place. The final screens on this page are exactly what we submitted, with no polish after.",
           "It’s a concept from one weekend. The people, places, scores and suggestions in the screens are sample data.",
-          {
-            "h3": "What I learned"
-          },
-          {
-            "bullets": [
-              "**Who, not how many.** Show who reacted, never a count. “No numbers!!” was on our list from the start, and it held all the way to the final screens.",
-              "**The home sets the tone.** With a profile first, Sparks felt like a dating app. A feed was easier to scan.",
-              "**Ask lightly.** The “Take a Photo!” sheet felt pushy. The final composer asks for a line of text, and a photo only if you want one."
-            ]
-          },
           {
             "h3": "Summary"
           },

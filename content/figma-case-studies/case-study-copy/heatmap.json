@@ -37,7 +37,7 @@
       },
       {
         "label": "Tools",
-        "value": "Figma · Mobbin"
+        "value": "Figma"
       }
     ],
     "cover": {
@@ -74,7 +74,7 @@
             "bullets": [
               "**Who:** small businesses that sell online.",
               "**Where:** a desktop web portal.",
-              "**Constraint:** two summer months, and no user testing before the redesign."
+              "**Timeframe:** two summer months."
             ]
           }
         ]
@@ -251,7 +251,7 @@
                 "alt": "A sandbox layout with a back arrow, the page name and tabs for Heatmap, Scrollmap, Data Table and AI Insights above a heatmap of a supplement page"
               }
             ],
-            "caption": "Three of the sandbox layouts. The tabs version is labelled “V4 - Good” in the file."
+            "caption": "Three of the sandbox layouts."
           },
           "The split view didn’t carry forward for heatmaps; it ended up in recordings instead. The full list moved out of the nav onto its own Heatmaps page, and the viewer got tabs: Heatmap, Scrollmap and Data Table became three views of one page, which made the structure clearer.",
           {
@@ -300,7 +300,7 @@
             "h3": "Comparing visitors"
           },
           "Filters got their own system. You can filter by session data, like entry page, traffic source or rage clicks, or by e-commerce data, like purchasers or average order value. Or you can compare two groups, such as returning and new users. There are two ways in: through Add Filter, or straight from the Compare Data button.",
-          "The chips that show what you’re comparing changed too. I tried a filled pill first, then an underline like the main tabs, labelled “Better” in the file. The next version added “+ Add Comparison”.",
+          "The chips that show what you’re comparing changed too. I tried a filled pill first, then an underline like the main tabs. The next version added “+ Add Comparison”.",
           {
             "image": "compare-chips",
             "size": "content",
@@ -313,7 +313,7 @@
                 "y": 0.1074
               },
               {
-                "text": "V2 (Better)",
+                "text": "V2",
                 "x": 0.0997,
                 "y": 0.5
               },
@@ -381,6 +381,7 @@
             "arrows": true
           },
           "In the final version, that rail opens a Heatmap Insights panel right beside the heatmap, and folds back into the rail when you’re done.",
+          "Insights make the most sense next to the heatmap they’re about, so a panel lets you read both at once. They also aren’t a view of the data like the three tabs are. They’re advice, so they didn’t belong among them. Feedback from the team and the client led there too.",
           {
             "image": "ai-final",
             "alt": "The final Heatmap viewer with the nav expanded, a mobile heatmap of the Jellybee home page, and the Heatmap Insights panel open on the right with suggestions such as Shorten Button Text and Change Button Color",
@@ -448,7 +449,7 @@
         "title": "Dashboard",
         "heading": "Signals at a glance",
         "content": [
-          "Before you open a single heatmap, the dashboard gives you the big picture: whether tracking is live, a few key numbers, and how your pages are doing. I sketched it on 20 August 2024, late in the project, and wrote down why each detail was there.",
+          "Before you open a single heatmap, the dashboard gives you the big picture: whether tracking is live, a few key numbers, and how your pages are doing. I started with sketches, and wrote down why each detail was there.",
           {
             "image": "dash-sketches",
             "alt": "Four notebook pages of dashboard sketches dated August 20, 2024, with notes on engaged sessions, site speed, page traffic and error messages with a Heatmap Translator",
@@ -480,7 +481,7 @@
             "caption": "The top of the dashboard, before and after the details went in.",
             "arrows": true
           },
-          "Further down, site speed got Data and Ratings views with suggestions beside the chart. Error Messages show each error’s raw console text next to a Heatmap Translator that explains it in plain language.",
+          "Further down, site speed got Data and Ratings views with suggestions beside the chart. Error Messages and the Heatmap Translator were features Heatmap already had, and I redesigned them too: each error’s raw console text sits next to the Translator’s plain-language explanation.",
           {
             "image": "dash-details",
             "alt": "The lower half of the dashboard: a Site Speed card with metrics, a chart and suggestions, and Error Messages with a list of errors, a terminal view and a Heatmap Translator explanation",
@@ -494,7 +495,7 @@
         "content": [
           "Toward the end of my internship, I presented the high-fidelity prototype to the Full Sprint and Heatmap team. Behind it was a design system of 32 new components, and the prototype had over 300 interactions, from folding the nav to switching tabs and opening the filters.",
           "The response was positive about the unified style and the simpler navigation. Two things were called out as needing more work: how easy starring was to find, and the default dashboard layout.",
-          "After I left, there were more iterations on top of my designs, and then the redesign was built. I wasn’t part of those later rounds. The built redesign brought 10x easier navigation, 4x faster load times and higher product ROI. There was no user testing during my internship.",
+          "After I left, there were more iterations on top of my designs, and then the redesign was built. I wasn’t part of those later rounds. The built redesign brought 10x easier navigation, 4x faster load times and higher product ROI.",
           {
             "image": "overhead",
             "alt": "Overhead view of a laptop on a wooden desk with an apple and a notepad, showing the final Heatmap viewer with Heatmap Insights open"

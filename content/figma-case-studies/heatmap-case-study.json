@@ -43,7 +43,7 @@
         "_type": "detailItem",
         "_key": "heatmap-detail-4",
         "label": "Tools",
-        "value": "Figma · Mobbin"
+        "value": "Figma"
       }
     ],
     "coverImage": {
@@ -176,13 +176,13 @@
                 "marks": [
                   "strong"
                 ],
-                "text": "Constraint:"
+                "text": "Timeframe:"
               },
               {
                 "_type": "span",
                 "_key": "heatmap-s-0-b-3-2-s1",
                 "marks": [],
-                "text": " two summer months, and no user testing before the redesign."
+                "text": " two summer months."
               }
             ],
             "listItem": "bullet",
@@ -780,7 +780,7 @@
           {
             "_type": "mediaGallery",
             "_key": "heatmap-s-3-b-2",
-            "caption": "Three of the sandbox layouts. The tabs version is labelled “V4 - Good” in the file.",
+            "caption": "Three of the sandbox layouts.",
             "images": [
               {
                 "_type": "image",
@@ -1023,7 +1023,7 @@
                 "_type": "span",
                 "_key": "heatmap-s-3-b-14-s",
                 "marks": [],
-                "text": "The chips that show what you’re comparing changed too. I tried a filled pill first, then an underline like the main tabs, labelled “Better” in the file. The next version added “+ Add Comparison”."
+                "text": "The chips that show what you’re comparing changed too. I tried a filled pill first, then an underline like the main tabs. The next version added “+ Add Comparison”."
               }
             ]
           },
@@ -1045,7 +1045,7 @@
               {
                 "_type": "imageLabel",
                 "_key": "heatmap-s-3-b-15-l1",
-                "text": "V2 (Better)",
+                "text": "V2",
                 "x": 0.0997,
                 "y": 0.5
               },
@@ -1188,8 +1188,22 @@
             ]
           },
           {
-            "_type": "mediaImage",
+            "_type": "block",
             "_key": "heatmap-s-4-b-6",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "heatmap-s-4-b-6-s",
+                "marks": [],
+                "text": "Insights make the most sense next to the heatmap they’re about, so a panel lets you read both at once. They also aren’t a view of the data like the three tabs are. They’re advice, so they didn’t belong among them. Feedback from the team and the client led there too."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "heatmap-s-4-b-7",
             "localAssetKey": "ai-final",
             "alt": "The final Heatmap viewer with the nav expanded, a mobile heatmap of the Jellybee home page, and the Heatmap Insights panel open on the right with suggestions such as Shorten Button Text and Change Button Color",
             "caption": "The final viewer, with Heatmap Insights open next to the map.",
@@ -1341,7 +1355,7 @@
                 "_type": "span",
                 "_key": "heatmap-s-6-b-0-s",
                 "marks": [],
-                "text": "Before you open a single heatmap, the dashboard gives you the big picture: whether tracking is live, a few key numbers, and how your pages are doing. I sketched it on 20 August 2024, late in the project, and wrote down why each detail was there."
+                "text": "Before you open a single heatmap, the dashboard gives you the big picture: whether tracking is live, a few key numbers, and how your pages are doing. I started with sketches, and wrote down why each detail was there."
               }
             ]
           },
@@ -1509,7 +1523,7 @@
                 "_type": "span",
                 "_key": "heatmap-s-6-b-6-s",
                 "marks": [],
-                "text": "Further down, site speed got Data and Ratings views with suggestions beside the chart. Error Messages show each error’s raw console text next to a Heatmap Translator that explains it in plain language."
+                "text": "Further down, site speed got Data and Ratings views with suggestions beside the chart. Error Messages and the Heatmap Translator were features Heatmap already had, and I redesigned them too: each error’s raw console text sits next to the Translator’s plain-language explanation."
               }
             ]
           },
@@ -1567,7 +1581,7 @@
                 "_type": "span",
                 "_key": "heatmap-s-7-b-2-s",
                 "marks": [],
-                "text": "After I left, there were more iterations on top of my designs, and then the redesign was built. I wasn’t part of those later rounds. The built redesign brought 10x easier navigation, 4x faster load times and higher product ROI. There was no user testing during my internship."
+                "text": "After I left, there were more iterations on top of my designs, and then the redesign was built. I wasn’t part of those later rounds. The built redesign brought 10x easier navigation, 4x faster load times and higher product ROI."
               }
             ]
           },

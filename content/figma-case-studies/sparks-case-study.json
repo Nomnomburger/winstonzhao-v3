@@ -32,7 +32,7 @@
         "_type": "detailItem",
         "_key": "sparks-detail-3",
         "label": "Timeline",
-        "value": "February 28 – March 2, 2025"
+        "value": "March 2025"
       },
       {
         "_type": "detailItem",
@@ -591,7 +591,7 @@
                 "_type": "span",
                 "_key": "sparks-s-3-b-0-s",
                 "marks": [],
-                "text": "Every post in Sparks belongs to a place, and Updates is where they come together. Getting its layout right took a few tries. The feed went through four versions in the file:"
+                "text": "Every post in Sparks belongs to a place, and Updates is where they come together. Getting its layout right took a few tries. I designed four versions of the feed:"
               }
             ]
           },
@@ -1244,7 +1244,7 @@
         "_type": "projectSection",
         "_key": "sparks-section-8",
         "title": "Outcome",
-        "heading": "Results and lessons",
+        "heading": "What we submitted",
         "content": [
           {
             "_type": "block",
@@ -1284,105 +1284,19 @@
                 "_type": "span",
                 "_key": "sparks-s-8-b-2-s",
                 "marks": [],
-                "text": "What I learned"
-              }
-            ]
-          },
-          {
-            "_type": "block",
-            "_key": "sparks-s-8-b-3-0",
-            "style": "normal",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "sparks-s-8-b-3-0-s",
-                "marks": [
-                  "strong"
-                ],
-                "text": "Who, not how many."
-              },
-              {
-                "_type": "span",
-                "_key": "sparks-s-8-b-3-0-s1",
-                "marks": [],
-                "text": " Show who reacted, never a count. “No numbers!!” was on our list from the start, and it held all the way to the final screens."
-              }
-            ],
-            "listItem": "bullet",
-            "level": 1
-          },
-          {
-            "_type": "block",
-            "_key": "sparks-s-8-b-3-1",
-            "style": "normal",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "sparks-s-8-b-3-1-s",
-                "marks": [
-                  "strong"
-                ],
-                "text": "The home sets the tone."
-              },
-              {
-                "_type": "span",
-                "_key": "sparks-s-8-b-3-1-s1",
-                "marks": [],
-                "text": " With a profile first, Sparks felt like a dating app. A feed was easier to scan."
-              }
-            ],
-            "listItem": "bullet",
-            "level": 1
-          },
-          {
-            "_type": "block",
-            "_key": "sparks-s-8-b-3-2",
-            "style": "normal",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "sparks-s-8-b-3-2-s",
-                "marks": [
-                  "strong"
-                ],
-                "text": "Ask lightly."
-              },
-              {
-                "_type": "span",
-                "_key": "sparks-s-8-b-3-2-s1",
-                "marks": [],
-                "text": " The “Take a Photo!” sheet felt pushy. The final composer asks for a line of text, and a photo only if you want one."
-              }
-            ],
-            "listItem": "bullet",
-            "level": 1
-          },
-          {
-            "_type": "block",
-            "_key": "sparks-s-8-b-4",
-            "style": "h3",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "sparks-s-8-b-4-s",
-                "marks": [],
                 "text": "Summary"
               }
             ]
           },
           {
             "_type": "block",
-            "_key": "sparks-s-8-b-5",
+            "_key": "sparks-s-8-b-3",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "sparks-s-8-b-5-s",
+                "_key": "sparks-s-8-b-3-s",
                 "marks": [],
                 "text": "Sparks answered a weekend brief about connection with an app built around where people are. Posts carry a place, reactions show names instead of counts, and a nudge on the lock screen leads to someone compatible nearby and a list of things to do together."
               }
@@ -1390,13 +1304,13 @@
           },
           {
             "_type": "block",
-            "_key": "sparks-s-8-b-6",
+            "_key": "sparks-s-8-b-4",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "sparks-s-8-b-6-s",
+                "_key": "sparks-s-8-b-4-s",
                 "marks": [],
                 "text": "In a team with Ivy, Derrick and Stella, I made the early map and blue-sky directions, then designed the final screens and the wired prototype."
               }

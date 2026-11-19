@@ -68,7 +68,7 @@
           {
             "image": "prompt",
             "alt": "The designathon prompt on a slide from our team’s pitch deck, with sticky notes rewriting global artists as traditional artists, audiences as our parents and engaging experiences as creating the art",
-            "caption": "From the pitch deck my teammates made: the prompt and our three rewrites."
+            "caption": "From our pitch deck: the prompt and our three rewrites."
           },
           "The problem we pitched fit on one slide: “Thousands of these art forms are being lost to the pages of history.” Many are kept alive by a single artisan or one family, and it’s hard to make a living from an art that’s fading."
         ]
@@ -334,8 +334,7 @@
             ],
             "caption": "Checkout, empty and filled in.",
             "arrows": true
-          },
-          "Both pages also exist in a light version. The dark one is the version wired up to click through, from the home page to a filled-in checkout."
+          }
         ]
       },
       {
@@ -427,7 +426,7 @@
           {
             "image": "solution",
             "alt": "The solution slide from our pitch: the Arca kit, the app on a phone, knowledge cards, step-by-step guidance and the Arca logo",
-            "caption": "The solution slide from our pitch deck, made by my teammates."
+            "caption": "The solution slide from our pitch deck."
           },
           "Arca stayed a concept. No kits were made or sold, our research was a single interview, and the prices, dates and stock in the designs are sample data. Partnering with artisans like the one in our demo is part of the idea.",
           {

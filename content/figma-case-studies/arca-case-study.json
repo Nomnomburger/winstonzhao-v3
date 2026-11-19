@@ -166,7 +166,7 @@
             "_key": "arca-s-0-b-2",
             "localAssetKey": "prompt",
             "alt": "The designathon prompt on a slide from our team’s pitch deck, with sticky notes rewriting global artists as traditional artists, audiences as our parents and engaging experiences as creating the art",
-            "caption": "From the pitch deck my teammates made: the prompt and our three rewrites.",
+            "caption": "From our pitch deck: the prompt and our three rewrites.",
             "size": "full"
           },
           {
@@ -875,20 +875,6 @@
                 "label": "Filled in"
               }
             ]
-          },
-          {
-            "_type": "block",
-            "_key": "arca-s-4-b-8",
-            "style": "normal",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "arca-s-4-b-8-s",
-                "marks": [],
-                "text": "Both pages also exist in a light version. The dark one is the version wired up to click through, from the home page to a filled-in checkout."
-              }
-            ]
           }
         ]
       },
@@ -1254,7 +1240,7 @@
             "_key": "arca-s-8-b-1",
             "localAssetKey": "solution",
             "alt": "The solution slide from our pitch: the Arca kit, the app on a phone, knowledge cards, step-by-step guidance and the Arca logo",
-            "caption": "The solution slide from our pitch deck, made by my teammates.",
+            "caption": "The solution slide from our pitch deck.",
             "size": "full"
           },
           {
