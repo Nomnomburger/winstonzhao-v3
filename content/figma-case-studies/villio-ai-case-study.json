@@ -958,57 +958,43 @@
                 "_type": "span",
                 "_key": "villio-ai-s-6-b-2-s",
                 "marks": [],
-                "text": "What I learned"
+                "text": "Applying to Y Combinator"
               }
             ]
           },
           {
             "_type": "block",
-            "_key": "villio-ai-s-6-b-3-0",
+            "_key": "villio-ai-s-6-b-3",
             "style": "normal",
-            "markDefs": [],
+            "markDefs": [
+              {
+                "_type": "link",
+                "_key": "villio-ai-s-6-b-3-link0",
+                "href": "https://youtu.be/mYBE8UWUMUQ"
+              }
+            ],
             "children": [
               {
                 "_type": "span",
-                "_key": "villio-ai-s-6-b-3-0-s",
-                "marks": [
-                  "strong"
-                ],
-                "text": "Answers you can act on."
+                "_key": "villio-ai-s-6-b-3-s",
+                "marks": [],
+                "text": "We applied to Y Combinator for its Fall 2025 batch, with a founder video as part of the application. "
               },
               {
                 "_type": "span",
-                "_key": "villio-ai-s-6-b-3-0-s1",
-                "marks": [],
-                "text": " Show replies as cards people can use, not paragraphs they have to read."
-              }
-            ],
-            "listItem": "bullet",
-            "level": 1
-          },
-          {
-            "_type": "block",
-            "_key": "villio-ai-s-6-b-3-1",
-            "style": "normal",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "villio-ai-s-6-b-3-1-s",
+                "_key": "villio-ai-s-6-b-3-s1",
                 "marks": [
-                  "strong"
+                  "villio-ai-s-6-b-3-link0"
                 ],
-                "text": "Selling to cities is slow."
+                "text": "Watch our application video"
               },
               {
                 "_type": "span",
-                "_key": "villio-ai-s-6-b-3-1-s1",
+                "_key": "villio-ai-s-6-b-3-s2",
                 "marks": [],
-                "text": " Government procurement is a different game, especially as students."
+                "text": "."
               }
-            ],
-            "listItem": "bullet",
-            "level": 1
+            ]
           },
           {
             "_type": "block",
@@ -1020,19 +1006,81 @@
                 "_type": "span",
                 "_key": "villio-ai-s-6-b-4-s",
                 "marks": [],
+                "text": "What I learned"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "villio-ai-s-6-b-5-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "villio-ai-s-6-b-5-0-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Answers you can act on."
+              },
+              {
+                "_type": "span",
+                "_key": "villio-ai-s-6-b-5-0-s1",
+                "marks": [],
+                "text": " Show replies as cards people can use, not paragraphs they have to read."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "villio-ai-s-6-b-5-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "villio-ai-s-6-b-5-1-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Selling to cities is slow."
+              },
+              {
+                "_type": "span",
+                "_key": "villio-ai-s-6-b-5-1-s1",
+                "marks": [],
+                "text": " Government procurement is a different game, especially as students."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "villio-ai-s-6-b-6",
+            "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "villio-ai-s-6-b-6-s",
+                "marks": [],
                 "text": "Summary"
               }
             ]
           },
           {
             "_type": "block",
-            "_key": "villio-ai-s-6-b-5",
+            "_key": "villio-ai-s-6-b-7",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "villio-ai-s-6-b-5-s",
+                "_key": "villio-ai-s-6-b-7-s",
                 "marks": [],
                 "text": "Villio started as YRConnect, a hackathon concept for York Region’s bookings, service requests and community updates, and came back a year later as a startup built around one prompt. I designed the resident app: a home feed of what matters today, an assistant docked underneath it, and replies that come back as cards you can act on. I also designed the landing page and the pitch deck."
               }
@@ -1040,13 +1088,13 @@
           },
           {
             "_type": "block",
-            "_key": "villio-ai-s-6-b-6",
+            "_key": "villio-ai-s-6-b-8",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "villio-ai-s-6-b-6-s",
+                "_key": "villio-ai-s-6-b-8-s",
                 "marks": [],
                 "text": "We reached pilot talks with the City of Richmond Hill, but the pilot didn’t go ahead, and we wound Villio down."
               }
