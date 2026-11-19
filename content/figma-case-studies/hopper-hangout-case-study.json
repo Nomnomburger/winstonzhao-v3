@@ -1029,7 +1029,7 @@
                 "_type": "span",
                 "_key": "hopper-hangout-s-6-b-8-s",
                 "marks": [],
-                "text": "In our sample screens, we each got one: Anita is the Cheshire Cat, Laison the White Rabbit, Andrew the Frog Footman, and I’m a Tweedle."
+                "text": "In our screens, we each got one: Anita is the Cheshire Cat, Laison the White Rabbit, Andrew the Frog Footman, and I’m a Tweedle."
               }
             ]
           }
@@ -1079,26 +1079,12 @@
           {
             "_type": "block",
             "_key": "hopper-hangout-s-7-b-3",
-            "style": "normal",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "hopper-hangout-s-7-b-3-s",
-                "marks": [],
-                "text": "It’s a concept from one hackathon, and the problem came from our own hangouts. The recommendations and sponsored listings only exist as screens and copy, nothing was built in code, and the prototype stops at the edges: picking a mood in Add a hop just leads back to the plan."
-              }
-            ]
-          },
-          {
-            "_type": "block",
-            "_key": "hopper-hangout-s-7-b-4",
             "style": "h3",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "hopper-hangout-s-7-b-4-s",
+                "_key": "hopper-hangout-s-7-b-3-s",
                 "marks": [],
                 "text": "What I learned"
               }
@@ -1106,13 +1092,13 @@
           },
           {
             "_type": "block",
-            "_key": "hopper-hangout-s-7-b-5",
+            "_key": "hopper-hangout-s-7-b-4",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "hopper-hangout-s-7-b-5-s",
+                "_key": "hopper-hangout-s-7-b-4-s",
                 "marks": [],
                 "text": "A great hackathon project needs a spark of brilliance: an idea that’s creative, but also solves a real problem people relate to. For the design itself:"
               }
@@ -1120,13 +1106,13 @@
           },
           {
             "_type": "block",
-            "_key": "hopper-hangout-s-7-b-6-0",
+            "_key": "hopper-hangout-s-7-b-5-0",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "hopper-hangout-s-7-b-6-0-s",
+                "_key": "hopper-hangout-s-7-b-5-0-s",
                 "marks": [
                   "strong"
                 ],
@@ -1134,7 +1120,7 @@
               },
               {
                 "_type": "span",
-                "_key": "hopper-hangout-s-7-b-6-0-s1",
+                "_key": "hopper-hangout-s-7-b-5-0-s1",
                 "marks": [],
                 "text": " Mapping user needs and features before any screens gave us a clear goal to work toward."
               }
@@ -1144,13 +1130,13 @@
           },
           {
             "_type": "block",
-            "_key": "hopper-hangout-s-7-b-6-1",
+            "_key": "hopper-hangout-s-7-b-5-1",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "hopper-hangout-s-7-b-6-1-s",
+                "_key": "hopper-hangout-s-7-b-5-1-s",
                 "marks": [
                   "strong"
                 ],
@@ -1158,7 +1144,7 @@
               },
               {
                 "_type": "span",
-                "_key": "hopper-hangout-s-7-b-6-1-s1",
+                "_key": "hopper-hangout-s-7-b-5-1-s1",
                 "marks": [],
                 "text": " Sketching is the quickest way to try ideas and share them with the team."
               }
@@ -1168,13 +1154,13 @@
           },
           {
             "_type": "block",
-            "_key": "hopper-hangout-s-7-b-6-2",
+            "_key": "hopper-hangout-s-7-b-5-2",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "hopper-hangout-s-7-b-6-2-s",
+                "_key": "hopper-hangout-s-7-b-5-2-s",
                 "marks": [
                   "strong"
                 ],
@@ -1182,7 +1168,7 @@
               },
               {
                 "_type": "span",
-                "_key": "hopper-hangout-s-7-b-6-2-s1",
+                "_key": "hopper-hangout-s-7-b-5-2-s1",
                 "marks": [],
                 "text": " Setting up buttons, switches and cards as components made the rest of the work faster."
               }
@@ -1192,13 +1178,13 @@
           },
           {
             "_type": "block",
-            "_key": "hopper-hangout-s-7-b-6-3",
+            "_key": "hopper-hangout-s-7-b-5-3",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "hopper-hangout-s-7-b-6-3-s",
+                "_key": "hopper-hangout-s-7-b-5-3-s",
                 "marks": [
                   "strong"
                 ],
@@ -1206,7 +1192,7 @@
               },
               {
                 "_type": "span",
-                "_key": "hopper-hangout-s-7-b-6-3-s1",
+                "_key": "hopper-hangout-s-7-b-5-3-s1",
                 "marks": [],
                 "text": " Above all, a shared vision and proper planning with your teammates ties it all together."
               }
@@ -1216,15 +1202,29 @@
           },
           {
             "_type": "block",
-            "_key": "hopper-hangout-s-7-b-7",
+            "_key": "hopper-hangout-s-7-b-6",
             "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "hopper-hangout-s-7-b-6-s",
+                "marks": [],
+                "text": "Summary"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "hopper-hangout-s-7-b-7",
+            "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
                 "_key": "hopper-hangout-s-7-b-7-s",
                 "marks": [],
-                "text": "Summary"
+                "text": "Hopper Hangout started from a problem we’d all been through: planning a day out that everyone will enjoy. At Alicehacks 2023, our team of four went design-only and turned it into an app concept that learns each friend’s tastes and builds a plan of stops called hops."
               }
             ]
           },
@@ -1237,20 +1237,6 @@
               {
                 "_type": "span",
                 "_key": "hopper-hangout-s-7-b-8-s",
-                "marks": [],
-                "text": "Hopper Hangout started from a problem we’d all been through: planning a day out that everyone will enjoy. At Alicehacks 2023, our team of four went design-only and turned it into an app concept that learns each friend’s tastes and builds a plan of stops called hops."
-              }
-            ]
-          },
-          {
-            "_type": "block",
-            "_key": "hopper-hangout-s-7-b-9",
-            "style": "normal",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "hopper-hangout-s-7-b-9-s",
                 "marks": [],
                 "text": "I led the team, sketched the flows, and designed Home, Map, the hangout plan, the action bar that ties them together, and the visual system. Anita drew the characters and designed onboarding. It won Best Design."
               }

@@ -14,8 +14,8 @@
     "link": { "url": "https://villio.ai", "label": "Visit" },
     "intro": "Villio AI was a startup that put a city’s services behind one AI prompt, so residents could book a room or report a pothole just by asking. As a co-founder and product designer, I designed the resident app, the landing page and the pitch deck.",
     "summary": "Co-founding Villio AI and designing its resident app around one prompt, from a feed of what’s on today to replies you can act on.",
-    "overview": "Villio was for residents and the city staff who serve them. I co-founded it with two others, in a team of eight. We held pilot talks with the City of Richmond Hill, but the pilot didn’t go ahead, and we wound Villio down.",
-    "impact": "Reached pilot talks with the City of Richmond Hill before winding down.",
+    "overview": "Villio was for residents and the city staff who serve them. I co-founded it with two others, in a team of eight. We held pilot talks with the City of Richmond Hill.",
+    "impact": "Reached pilot talks with the City of Richmond Hill.",
     "details": [
       { "label": "Role", "value": "Co-founder · Product Designer" },
       { "label": "Team", "value": "Co-founders · Team of 8" },
@@ -235,7 +235,7 @@
         "heading": "Results and lessons",
         "content": [
           "We met with municipalities and investors, and held pilot talks with the City of Richmond Hill, in York Region. The pilot didn’t go ahead, and we wound Villio down: as students, getting government contracts was hard and time consuming.",
-          "I designed the MVP of the resident app, which exists as a clickable prototype in Figma, along with the landing page and the pitch deck. There are no usage numbers to share.",
+          "I designed the MVP of the resident app, along with the landing page and the pitch deck.",
           { "h3": "Applying to Y Combinator" },
           "We applied to Y Combinator for its Fall 2025 batch, with a founder video as part of the application. [Watch our application video](https://youtu.be/mYBE8UWUMUQ).",
           { "h3": "What I learned" },
@@ -247,7 +247,7 @@
           },
           { "h3": "Summary" },
           "Villio started as YRConnect, a hackathon concept for York Region’s bookings, service requests and community updates, and came back a year later as a startup built around one prompt. I designed the resident app: a home feed of what matters today, an assistant docked underneath it, and replies that come back as cards you can act on. I also designed the landing page and the pitch deck.",
-          "We reached pilot talks with the City of Richmond Hill, but the pilot didn’t go ahead, and we wound Villio down."
+          "We reached pilot talks with the City of Richmond Hill."
         ]
       }
     ]

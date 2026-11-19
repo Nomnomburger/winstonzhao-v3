@@ -259,7 +259,7 @@
             "alt": "Hand-drawn Alice in Wonderland characters, including a frog, the Cheshire Cat, the Mad Hatter, a Tweedle, the Dormouse, the Queen of Hearts and the White Rabbit, next to five teacups and a teapot",
             "caption": "Anita’s characters and teacups."
           },
-          "In our sample screens, we each got one: Anita is the Cheshire Cat, Laison the White Rabbit, Andrew the Frog Footman, and I’m a Tweedle."
+          "In our screens, we each got one: Anita is the Cheshire Cat, Laison the White Rabbit, Andrew the Frog Footman, and I’m a Tweedle."
         ]
       },
       {
@@ -272,7 +272,6 @@
             "alt": "The Arcade Night hangout plan, with its map, friends, time and Add a hop bar, on a tilted iPhone floating over a ribbed ledge"
           },
           "We linked the screens into a clickable Figma prototype, with animations between pages. It even remembers where you started a new hangout: close it, and you’re back on Home, Map or Profile. For the closing ceremony, Andrew made a state diagram of how the features and interactions connect, and we presented with a slideshow narrated by Anita, plus videos on our Devpost.",
-          "It’s a concept from one hackathon, and the problem came from our own hangouts. The recommendations and sponsored listings only exist as screens and copy, nothing was built in code, and the prototype stops at the edges: picking a mood in Add a hop just leads back to the plan.",
           {
             "h3": "What I learned"
           },

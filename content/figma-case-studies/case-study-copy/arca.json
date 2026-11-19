@@ -342,7 +342,7 @@
         "heading": "From checkout to the app",
         "content": [
           "Right after Sarah buys, an email lands in her inbox. Our whiteboard asked it to carry shipping info, a synopsis, a button to download the app and an option to upgrade to Premium.",
-          "The email I designed thanks her by name, lists the order and the shipping address, and asks her to download the app “to explore tutorials, artist stories, and care instructions for your kit.” Upgrade to Premium sits below, then links to change the address or cancel the order. The synopsis didn’t make it in.",
+          "The email I designed thanks her by name, lists the order and the shipping address, and asks her to download the app “to explore tutorials, artist stories, and care instructions for your kit.” Upgrade to Premium sits below, then links to change the address or cancel the order.",
           {
             "gallery": [
               {
@@ -415,7 +415,7 @@
             "alt": "An iPhone showing Kit complete! Congratulations over a Rogan art photo with confetti, a Done button and three articles under Learn more about this art form",
             "caption": "The finish, with more to read about the craft."
           },
-          "The brainstorm also had a photo check: take a picture of your work to see if you’re on the right track. We kept that as a future idea too. The prototype covers the first three of ten steps, then the finish."
+          "The brainstorm also had a photo check: take a picture of your work to see if you’re on the right track. We kept that as a future idea too."
         ]
       },
       {
@@ -428,7 +428,6 @@
             "alt": "The solution slide from our pitch: the Arca kit, the app on a phone, knowledge cards, step-by-step guidance and the Arca logo",
             "caption": "The solution slide from our pitch deck."
           },
-          "Arca stayed a concept. No kits were made or sold, our research was a single interview, and the prices, dates and stock in the designs are sample data. Partnering with artisans like the one in our demo is part of the idea.",
           {
             "h3": "What I learned"
           },

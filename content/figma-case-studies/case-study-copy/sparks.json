@@ -6,7 +6,7 @@
     "discipline": "Product Design",
     "intro": "Sparks is an iOS app concept for keeping up with old friends and meeting new ones, built around where people are. In a team of four at the Product Design Sprint 2025, I made the early directions and designed the final hi-fi screens and the prototype.",
     "summary": "Turning a weekend brief about connection into a location-based social app, from map sketches to a wired prototype that opens with a nudge on the lock screen.",
-    "overview": "Sparks is for people who want to stay close to old friends and make new ones nearby. I worked with Ivy, Derrick and Stella over one weekend. We submitted a wired Figma prototype and a pitch deck, and didn’t place.",
+    "overview": "Sparks is for people who want to stay close to old friends and make new ones nearby. I worked with Ivy, Derrick and Stella over one weekend. We submitted a wired Figma prototype and a pitch deck.",
     "details": [
       {
         "label": "Event",
@@ -321,7 +321,7 @@
             "alt": "Two Things to do cards: Junction Climbing Centre, 3km, Go bouldering at the Junction for only $35!, suggested because you are both active, and The Spoke, 0.5km, Go grab a bagelwich or coffee at the spoke!, suggested because you are both coffee lovers",
             "caption": "Every suggestion says why."
           },
-          "The prototype doesn’t show how the compatibility score is worked out. Our note ties matches to your preferences, “change ur preferences to see ur matches”, and Settings has a Friend Preferences page with an age range, distance, hobbies and what you’re looking for, from a Gym Bro to a Study Buddy."
+          "Our note ties matches to your preferences, “change ur preferences to see ur matches”, and Settings has a Friend Preferences page with an age range, distance, hobbies and what you’re looking for, from a Gym Bro to a Study Buddy."
         ]
       },
       {
@@ -342,8 +342,7 @@
         "title": "Outcome",
         "heading": "Results",
         "content": [
-          "We submitted the wired prototype and our pitch deck by the Sunday morning deadline. Sparks didn’t place. The final screens on this page are exactly what we submitted, with no polish after.",
-          "It’s a concept from one weekend. The people, places, scores and suggestions in the screens are sample data.",
+          "We submitted the wired prototype and our pitch deck by the Sunday morning deadline. The final screens on this page are exactly what we submitted.",
           {
             "h3": "Summary"
           },

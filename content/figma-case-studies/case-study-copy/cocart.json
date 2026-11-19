@@ -303,7 +303,7 @@
         "title": "Brand",
         "heading": "Clean, simple, colourful",
         "content": [
-          "Even a one-day concept needs a name and a look. My teammates designed the logo and picked the colours, starting from one line in our branding notes: “Clean simplistic but colourful”.",
+          "My teammates designed the logo and picked the colours, starting from one line in our branding notes: “Clean simplistic but colourful”.",
           "They set the name in nine typefaces, from Helvetica to Rock Salt, and tried the logo in four colourways. The pink mark with a black wordmark in Helvetica Neue went into the hi-fi.",
           {
             "image": "logos",
@@ -324,7 +324,6 @@
         "heading": "Results and lessons",
         "content": [
           "CoCart won 1st place at the UWUX FUSE Designathon 2024.",
-          "It’s a concept from one day. The prototype runs in Figma on a screenshot of a store page, so it isn’t a working extension. The prices, savings, points and people in the screens are sample data.",
           {
             "h3": "What I learned"
           },

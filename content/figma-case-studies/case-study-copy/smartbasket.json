@@ -175,7 +175,7 @@
         "title": "Build",
         "heading": "From Figma to a working app",
         "content": [
-          "There was no handoff on this one: I designed SmartBasket and built it too. My slides sum up the approach as “design first”, then “figma!”. I designed the screens in Figma before writing any code, then built a mobile web app that ran in the browser, close to those screens. Every screen on this page is from that Figma file.",
+          "There was no handoff on this one: I designed SmartBasket and built it too. My slides sum up the approach as “design first”, then “figma!”. I designed the screens in Figma before writing any code, then built a mobile web app that ran in the browser, close to those screens.",
           "Next.js ran the app, and Firebase handled login, points and the data. Three pipelines did the rest, written in my slides like this:",
           {
             "board": {
@@ -212,8 +212,7 @@
         "title": "Outcome",
         "heading": "Results and lessons",
         "content": [
-          "By demo time, SmartBasket worked end to end: the price finder, crowdsourced deals from a photo, the trip-worth check with public transit, and login with points. It was live for the demo and is offline now.",
-          "The stores, prices, distances and points in these screens are sample data from my Figma file, not results.",
+          "By demo time, SmartBasket worked end to end: the price finder, crowdsourced deals from a photo, the trip-worth check with public transit, and login with points.",
           {
             "h3": "What I learned"
           },

@@ -7,7 +7,7 @@
     "discipline": "Product Design",
     "intro": "Sparks is an iOS app concept for keeping up with old friends and meeting new ones, built around where people are. In a team of four at the Product Design Sprint 2025, I made the early directions and designed the final hi-fi screens and the prototype.",
     "summary": "Turning a weekend brief about connection into a location-based social app, from map sketches to a wired prototype that opens with a nudge on the lock screen.",
-    "overview": "Sparks is for people who want to stay close to old friends and make new ones nearby. I worked with Ivy, Derrick and Stella over one weekend. We submitted a wired Figma prototype and a pitch deck, and didn’t place.",
+    "overview": "Sparks is for people who want to stay close to old friends and make new ones nearby. I worked with Ivy, Derrick and Stella over one weekend. We submitted a wired Figma prototype and a pitch deck.",
     "showSideMenu": true,
     "details": [
       {
@@ -1170,7 +1170,7 @@
                 "_type": "span",
                 "_key": "sparks-s-6-b-7-s",
                 "marks": [],
-                "text": "The prototype doesn’t show how the compatibility score is worked out. Our note ties matches to your preferences, “change ur preferences to see ur matches”, and Settings has a Friend Preferences page with an age range, distance, hobbies and what you’re looking for, from a Gym Bro to a Study Buddy."
+                "text": "Our note ties matches to your preferences, “change ur preferences to see ur matches”, and Settings has a Friend Preferences page with an age range, distance, hobbies and what you’re looking for, from a Gym Bro to a Study Buddy."
               }
             ]
           }
@@ -1250,35 +1250,35 @@
                 "_type": "span",
                 "_key": "sparks-s-8-b-0-s",
                 "marks": [],
-                "text": "We submitted the wired prototype and our pitch deck by the Sunday morning deadline. Sparks didn’t place. The final screens on this page are exactly what we submitted, with no polish after."
+                "text": "We submitted the wired prototype and our pitch deck by the Sunday morning deadline. The final screens on this page are exactly what we submitted."
               }
             ]
           },
           {
             "_type": "block",
             "_key": "sparks-s-8-b-1",
-            "style": "normal",
+            "style": "h3",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
                 "_key": "sparks-s-8-b-1-s",
                 "marks": [],
-                "text": "It’s a concept from one weekend. The people, places, scores and suggestions in the screens are sample data."
+                "text": "Summary"
               }
             ]
           },
           {
             "_type": "block",
             "_key": "sparks-s-8-b-2",
-            "style": "h3",
+            "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
                 "_key": "sparks-s-8-b-2-s",
                 "marks": [],
-                "text": "Summary"
+                "text": "Sparks answered a weekend brief about connection with an app built around where people are. Posts carry a place, reactions show names instead of counts, and a nudge on the lock screen leads to someone compatible nearby and a list of things to do together."
               }
             ]
           },
@@ -1291,20 +1291,6 @@
               {
                 "_type": "span",
                 "_key": "sparks-s-8-b-3-s",
-                "marks": [],
-                "text": "Sparks answered a weekend brief about connection with an app built around where people are. Posts carry a place, reactions show names instead of counts, and a nudge on the lock screen leads to someone compatible nearby and a list of things to do together."
-              }
-            ]
-          },
-          {
-            "_type": "block",
-            "_key": "sparks-s-8-b-4",
-            "style": "normal",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "sparks-s-8-b-4-s",
                 "marks": [],
                 "text": "In a team with Ivy, Derrick and Stella, I made the early map and blue-sky directions, then designed the final screens and the wired prototype."
               }

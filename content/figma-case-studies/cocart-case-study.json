@@ -945,7 +945,7 @@
                 "_type": "span",
                 "_key": "cocart-s-7-b-0-s",
                 "marks": [],
-                "text": "Even a one-day concept needs a name and a look. My teammates designed the logo and picked the colours, starting from one line in our branding notes: “Clean simplistic but colourful”."
+                "text": "My teammates designed the logo and picked the colours, starting from one line in our branding notes: “Clean simplistic but colourful”."
               }
             ]
           },
@@ -1018,26 +1018,12 @@
           {
             "_type": "block",
             "_key": "cocart-s-8-b-1",
-            "style": "normal",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "cocart-s-8-b-1-s",
-                "marks": [],
-                "text": "It’s a concept from one day. The prototype runs in Figma on a screenshot of a store page, so it isn’t a working extension. The prices, savings, points and people in the screens are sample data."
-              }
-            ]
-          },
-          {
-            "_type": "block",
-            "_key": "cocart-s-8-b-2",
             "style": "h3",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "cocart-s-8-b-2-s",
+                "_key": "cocart-s-8-b-1-s",
                 "marks": [],
                 "text": "What I learned"
               }
@@ -1045,13 +1031,13 @@
           },
           {
             "_type": "block",
-            "_key": "cocart-s-8-b-3-0",
+            "_key": "cocart-s-8-b-2-0",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "cocart-s-8-b-3-0-s",
+                "_key": "cocart-s-8-b-2-0-s",
                 "marks": [
                   "strong"
                 ],
@@ -1059,7 +1045,7 @@
               },
               {
                 "_type": "span",
-                "_key": "cocart-s-8-b-3-0-s1",
+                "_key": "cocart-s-8-b-2-0-s1",
                 "marks": [],
                 "text": " A game lobby gave us the pattern for joining a cart."
               }
@@ -1069,13 +1055,13 @@
           },
           {
             "_type": "block",
-            "_key": "cocart-s-8-b-3-1",
+            "_key": "cocart-s-8-b-2-1",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "cocart-s-8-b-3-1-s",
+                "_key": "cocart-s-8-b-2-1-s",
                 "marks": [
                   "strong"
                 ],
@@ -1083,7 +1069,7 @@
               },
               {
                 "_type": "span",
-                "_key": "cocart-s-8-b-3-1-s1",
+                "_key": "cocart-s-8-b-2-1-s1",
                 "marks": [],
                 "text": " “Cart” beat “lobby” because it’s clearer for shoppers."
               }
@@ -1093,13 +1079,13 @@
           },
           {
             "_type": "block",
-            "_key": "cocart-s-8-b-3-2",
+            "_key": "cocart-s-8-b-2-2",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "cocart-s-8-b-3-2-s",
+                "_key": "cocart-s-8-b-2-2-s",
                 "marks": [
                   "strong"
                 ],
@@ -1107,7 +1093,7 @@
               },
               {
                 "_type": "span",
-                "_key": "cocart-s-8-b-3-2-s1",
+                "_key": "cocart-s-8-b-2-2-s1",
                 "marks": [],
                 "text": " Counts and a deadline make a delayed order feel OK."
               }
@@ -1117,15 +1103,29 @@
           },
           {
             "_type": "block",
-            "_key": "cocart-s-8-b-4",
+            "_key": "cocart-s-8-b-3",
             "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "cocart-s-8-b-3-s",
+                "marks": [],
+                "text": "Summary"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "cocart-s-8-b-4",
+            "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
                 "_key": "cocart-s-8-b-4-s",
                 "marks": [],
-                "text": "Summary"
+                "text": "Given a broad prompt about sustainable habits in communities, our team of four had one day to answer it. We landed on co-op packaging: a browser extension where people nearby join a shared cart for the same store, and one package ships to a host who hands the orders out."
               }
             ]
           },
@@ -1138,20 +1138,6 @@
               {
                 "_type": "span",
                 "_key": "cocart-s-8-b-5-s",
-                "marks": [],
-                "text": "Given a broad prompt about sustainable habits in communities, our team of four had one day to answer it. We landed on co-op packaging: a browser extension where people nearby join a shared cart for the same store, and one package ships to a host who hands the orders out."
-              }
-            ]
-          },
-          {
-            "_type": "block",
-            "_key": "cocart-s-8-b-6",
-            "style": "normal",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "cocart-s-8-b-6-s",
                 "marks": [],
                 "text": "I designed the hi-fi screens and built the clickable prototype on a screenshot of a real H&M page. Along the way, lobbies became carts, a free-shipping goal became shoppers and a deadline on every cart, and one waiting screen became three. It won 1st place."
               }

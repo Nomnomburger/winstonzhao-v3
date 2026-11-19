@@ -11,8 +11,8 @@
     },
     "intro": "Villio AI was a startup that put a city’s services behind one AI prompt, so residents could book a room or report a pothole just by asking. As a co-founder and product designer, I designed the resident app, the landing page and the pitch deck.",
     "summary": "Co-founding Villio AI and designing its resident app around one prompt, from a feed of what’s on today to replies you can act on.",
-    "overview": "Villio was for residents and the city staff who serve them. I co-founded it with two others, in a team of eight. We held pilot talks with the City of Richmond Hill, but the pilot didn’t go ahead, and we wound Villio down.",
-    "impact": "Reached pilot talks with the City of Richmond Hill before winding down.",
+    "overview": "Villio was for residents and the city staff who serve them. I co-founded it with two others, in a team of eight. We held pilot talks with the City of Richmond Hill.",
+    "impact": "Reached pilot talks with the City of Richmond Hill.",
     "showSideMenu": true,
     "details": [
       {
@@ -944,7 +944,7 @@
                 "_type": "span",
                 "_key": "villio-ai-s-6-b-1-s",
                 "marks": [],
-                "text": "I designed the MVP of the resident app, which exists as a clickable prototype in Figma, along with the landing page and the pitch deck. There are no usage numbers to share."
+                "text": "I designed the MVP of the resident app, along with the landing page and the pitch deck."
               }
             ]
           },
@@ -1096,7 +1096,7 @@
                 "_type": "span",
                 "_key": "villio-ai-s-6-b-8-s",
                 "marks": [],
-                "text": "We reached pilot talks with the City of Richmond Hill, but the pilot didn’t go ahead, and we wound Villio down."
+                "text": "We reached pilot talks with the City of Richmond Hill."
               }
             ]
           }

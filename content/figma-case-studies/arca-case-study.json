@@ -906,7 +906,7 @@
                 "_type": "span",
                 "_key": "arca-s-5-b-1-s",
                 "marks": [],
-                "text": "The email I designed thanks her by name, lists the order and the shipping address, and asks her to download the app “to explore tutorials, artist stories, and care instructions for your kit.” Upgrade to Premium sits below, then links to change the address or cancel the order. The synopsis didn’t make it in."
+                "text": "The email I designed thanks her by name, lists the order and the shipping address, and asks her to download the app “to explore tutorials, artist stories, and care instructions for your kit.” Upgrade to Premium sits below, then links to change the address or cancel the order."
               }
             ]
           },
@@ -1207,7 +1207,7 @@
                 "_type": "span",
                 "_key": "arca-s-7-b-5-s",
                 "marks": [],
-                "text": "The brainstorm also had a photo check: take a picture of your work to see if you’re on the right track. We kept that as a future idea too. The prototype covers the first three of ten steps, then the finish."
+                "text": "The brainstorm also had a photo check: take a picture of your work to see if you’re on the right track. We kept that as a future idea too."
               }
             ]
           }
@@ -1244,26 +1244,12 @@
           {
             "_type": "block",
             "_key": "arca-s-8-b-2",
-            "style": "normal",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "arca-s-8-b-2-s",
-                "marks": [],
-                "text": "Arca stayed a concept. No kits were made or sold, our research was a single interview, and the prices, dates and stock in the designs are sample data. Partnering with artisans like the one in our demo is part of the idea."
-              }
-            ]
-          },
-          {
-            "_type": "block",
-            "_key": "arca-s-8-b-3",
             "style": "h3",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "arca-s-8-b-3-s",
+                "_key": "arca-s-8-b-2-s",
                 "marks": [],
                 "text": "What I learned"
               }
@@ -1271,13 +1257,13 @@
           },
           {
             "_type": "block",
-            "_key": "arca-s-8-b-4-0",
+            "_key": "arca-s-8-b-3-0",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "arca-s-8-b-4-0-s",
+                "_key": "arca-s-8-b-3-0-s",
                 "marks": [
                   "strong"
                 ],
@@ -1285,7 +1271,7 @@
               },
               {
                 "_type": "span",
-                "_key": "arca-s-8-b-4-0-s1",
+                "_key": "arca-s-8-b-3-0-s1",
                 "marks": [],
                 "text": " A broad prompt gets easier once you turn it into words you can design for, like “traditional artists” and “our parents”."
               }
@@ -1295,13 +1281,13 @@
           },
           {
             "_type": "block",
-            "_key": "arca-s-8-b-4-1",
+            "_key": "arca-s-8-b-3-1",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "arca-s-8-b-4-1-s",
+                "_key": "arca-s-8-b-3-1-s",
                 "marks": [
                   "strong"
                 ],
@@ -1309,7 +1295,7 @@
               },
               {
                 "_type": "span",
-                "_key": "arca-s-8-b-4-1-s1",
+                "_key": "arca-s-8-b-3-1-s1",
                 "marks": [],
                 "text": " The app was one touchpoint of many, next to the site, the email, the box and the card."
               }
@@ -1319,13 +1305,13 @@
           },
           {
             "_type": "block",
-            "_key": "arca-s-8-b-4-2",
+            "_key": "arca-s-8-b-3-2",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "arca-s-8-b-4-2-s",
+                "_key": "arca-s-8-b-3-2-s",
                 "marks": [
                   "strong"
                 ],
@@ -1333,7 +1319,7 @@
               },
               {
                 "_type": "span",
-                "_key": "arca-s-8-b-4-2-s1",
+                "_key": "arca-s-8-b-3-2-s1",
                 "marks": [],
                 "text": " A clear story built around one person, Sarah, carried the pitch."
               }
@@ -1343,15 +1329,29 @@
           },
           {
             "_type": "block",
-            "_key": "arca-s-8-b-5",
+            "_key": "arca-s-8-b-4",
             "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "arca-s-8-b-4-s",
+                "marks": [],
+                "text": "Summary"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "arca-s-8-b-5",
+            "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
                 "_key": "arca-s-8-b-5-s",
                 "marks": [],
-                "text": "Summary"
+                "text": "Arca started from a broad designathon prompt. My team of three reframed it around traditional artists, our parents and making the art yourself, and turned it into a monthly kit that teaches one craft at a time, demoed with Rogan art from Gujarat, India."
               }
             ]
           },
@@ -1364,20 +1364,6 @@
               {
                 "_type": "span",
                 "_key": "arca-s-8-b-6-s",
-                "marks": [],
-                "text": "Arca started from a broad designathon prompt. My team of three reframed it around traditional artists, our parents and making the art yourself, and turned it into a monthly kit that teaches one craft at a time, demoed with Rogan art from Gujarat, India."
-              }
-            ]
-          },
-          {
-            "_type": "block",
-            "_key": "arca-s-8-b-7",
-            "style": "normal",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "arca-s-8-b-7-s",
                 "marks": [],
                 "text": "I designed three parts of Sarah’s journey: the website where she finds and buys the kit, the email that sends her to the app, and the app that tracks the box, starts with a scan and guides her one step at a time. Our pitch, built around her story, won Best Pitch at the UXL Designathon 2025."
               }

@@ -580,7 +580,7 @@
                 "_type": "span",
                 "_key": "smartbasket-s-5-b-0-s",
                 "marks": [],
-                "text": "There was no handoff on this one: I designed SmartBasket and built it too. My slides sum up the approach as “design first”, then “figma!”. I designed the screens in Figma before writing any code, then built a mobile web app that ran in the browser, close to those screens. Every screen on this page is from that Figma file."
+                "text": "There was no handoff on this one: I designed SmartBasket and built it too. My slides sum up the approach as “design first”, then “figma!”. I designed the screens in Figma before writing any code, then built a mobile web app that ran in the browser, close to those screens."
               }
             ]
           },
@@ -716,33 +716,19 @@
                 "_type": "span",
                 "_key": "smartbasket-s-6-b-0-s",
                 "marks": [],
-                "text": "By demo time, SmartBasket worked end to end: the price finder, crowdsourced deals from a photo, the trip-worth check with public transit, and login with points. It was live for the demo and is offline now."
+                "text": "By demo time, SmartBasket worked end to end: the price finder, crowdsourced deals from a photo, the trip-worth check with public transit, and login with points."
               }
             ]
           },
           {
             "_type": "block",
             "_key": "smartbasket-s-6-b-1",
-            "style": "normal",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "smartbasket-s-6-b-1-s",
-                "marks": [],
-                "text": "The stores, prices, distances and points in these screens are sample data from my Figma file, not results."
-              }
-            ]
-          },
-          {
-            "_type": "block",
-            "_key": "smartbasket-s-6-b-2",
             "style": "h3",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "smartbasket-s-6-b-2-s",
+                "_key": "smartbasket-s-6-b-1-s",
                 "marks": [],
                 "text": "What I learned"
               }
@@ -750,13 +736,13 @@
           },
           {
             "_type": "block",
-            "_key": "smartbasket-s-6-b-3-0",
+            "_key": "smartbasket-s-6-b-2-0",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "smartbasket-s-6-b-3-0-s",
+                "_key": "smartbasket-s-6-b-2-0-s",
                 "marks": [
                   "strong"
                 ],
@@ -764,7 +750,7 @@
               },
               {
                 "_type": "span",
-                "_key": "smartbasket-s-6-b-3-0-s1",
+                "_key": "smartbasket-s-6-b-2-0-s1",
                 "marks": [],
                 "text": " Designing in Figma before coding made the solo build faster."
               }
@@ -774,13 +760,13 @@
           },
           {
             "_type": "block",
-            "_key": "smartbasket-s-6-b-3-1",
+            "_key": "smartbasket-s-6-b-2-1",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "smartbasket-s-6-b-3-1-s",
+                "_key": "smartbasket-s-6-b-2-1-s",
                 "marks": [
                   "strong"
                 ],
@@ -788,7 +774,7 @@
               },
               {
                 "_type": "span",
-                "_key": "smartbasket-s-6-b-3-1-s1",
+                "_key": "smartbasket-s-6-b-2-1-s1",
                 "marks": [],
                 "text": " The AI hides behind a list, a card and a yes-or-no question."
               }
@@ -798,13 +784,13 @@
           },
           {
             "_type": "block",
-            "_key": "smartbasket-s-6-b-3-2",
+            "_key": "smartbasket-s-6-b-2-2",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "smartbasket-s-6-b-3-2-s",
+                "_key": "smartbasket-s-6-b-2-2-s",
                 "marks": [
                   "strong"
                 ],
@@ -812,7 +798,7 @@
               },
               {
                 "_type": "span",
-                "_key": "smartbasket-s-6-b-3-2-s1",
+                "_key": "smartbasket-s-6-b-2-2-s1",
                 "marks": [],
                 "text": " Crowdsourcing only works if adding a deal takes one tap."
               }
@@ -822,15 +808,29 @@
           },
           {
             "_type": "block",
-            "_key": "smartbasket-s-6-b-4",
+            "_key": "smartbasket-s-6-b-3",
             "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "smartbasket-s-6-b-3-s",
+                "marks": [],
+                "text": "Summary"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "smartbasket-s-6-b-4",
+            "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
                 "_key": "smartbasket-s-6-b-4-s",
                 "marks": [],
-                "text": "Summary"
+                "text": "SmartBasket started from a Canada-related theme and a simple goal: help Canadians save on groceries without checking every store themselves. Working solo at Hack Canada 2025, I designed it in Figma first, then built it as a mobile web app close to those screens."
               }
             ]
           },
@@ -843,20 +843,6 @@
               {
                 "_type": "span",
                 "_key": "smartbasket-s-6-b-5-s",
-                "marks": [],
-                "text": "SmartBasket started from a Canada-related theme and a simple goal: help Canadians save on groceries without checking every store themselves. Working solo at Hack Canada 2025, I designed it in Figma first, then built it as a mobile web app close to those screens."
-              }
-            ]
-          },
-          {
-            "_type": "block",
-            "_key": "smartbasket-s-6-b-6",
-            "style": "normal",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "smartbasket-s-6-b-6-s",
                 "marks": [],
                 "text": "Behind a familiar list and a stack of cards, it finds prices with SerpAPI and Gemini, lets shoppers add in-store deals with a photo, and shows whether a trip is worth it. Everything worked end to end in the demo."
               }

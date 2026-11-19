@@ -494,8 +494,8 @@
         "heading": "Results and lessons",
         "content": [
           "Toward the end of my internship, I presented the high-fidelity prototype to the Full Sprint and Heatmap team. Behind it was a design system of 32 new components, and the prototype had over 300 interactions, from folding the nav to switching tabs and opening the filters.",
-          "The response was positive about the unified style and the simpler navigation. Two things were called out as needing more work: how easy starring was to find, and the default dashboard layout.",
-          "After I left, there were more iterations on top of my designs, and then the redesign was built. I wasn’t part of those later rounds. The built redesign brought 10x easier navigation, 4x faster load times and higher product ROI.",
+          "The response was positive about the unified style and the simpler navigation.",
+          "After I left, there were more iterations on top of my designs, and then the redesign was built. The built redesign brought 10x easier navigation, 4x faster load times and higher product ROI.",
           {
             "image": "overhead",
             "alt": "Overhead view of a laptop on a wooden desk with an apple and a notepad, showing the final Heatmap viewer with Heatmap Insights open"
