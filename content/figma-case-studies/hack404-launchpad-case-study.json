@@ -3,13 +3,13 @@
   "generatedFrom": "case-study-copy/hack404-launchpad.json",
   "fields": {
     "title": "Hack404 Launchpad",
-    "description": "One hub for Hack404’s hackers to apply, follow the weekend and submit, in a look that feels like the event.",
+    "description": "One hub for Hack404’s hackers to apply and follow the weekend, in a look that feels like the event.",
     "client": "Hack404",
     "discipline": "Product Design",
     "intro": "Launchpad is Hack404’s hacker portal: high school and university students apply through it, then use it all weekend to keep up with the schedule, announcements and the submission deadline. As Hack404’s Design Lead, I designed Launchpad with Anita, and led the design.",
     "summary": "Designing Hack404’s hacker portal, from a magic-link sign-up to a weekend home built around the countdown to the submission deadline.",
-    "overview": "Launchpad is for the students who apply to and hack at Hack404. I designed it with Anita and led the design team, while other designers on the team made other graphics for the hackathon. Our dev team built it, and hackers used it to apply and through the weekend.",
-    "impact": "Built and used at Hack404 2025: hackers applied through Launchpad and used it through the weekend.",
+    "overview": "Launchpad is for the students who apply to and hack at Hack404. Beyond Launchpad, I led Hack404’s design team, and other designers on the team made graphics for the rest of the hackathon.",
+    "impact": "Built and used at Hack404 2025, from applications through the weekend.",
     "showSideMenu": true,
     "details": [
       {
@@ -74,7 +74,7 @@
                 "_type": "span",
                 "_key": "hack404-launchpad-s-0-b-0-s",
                 "marks": [],
-                "text": "Hack404 2025 was a hackathon for 200+ high school and university students in Toronto, from 4 to 6 July 2025. Before the weekend, hackers had to apply. During it, they needed to know what was on, when and where, and how long they had left to submit."
+                "text": "Hack404 2025 was a hackathon for 200+ high school and university students in Toronto, from 4 to 6 July. Before the weekend, hackers had to apply. During it, they needed to know what was on, when and where, and how long they had left to submit."
               }
             ]
           },
@@ -88,7 +88,7 @@
                 "_type": "span",
                 "_key": "hack404-launchpad-s-0-b-1-s",
                 "marks": [],
-                "text": "Launchpad was our answer: a central hub where hackers could find information about the event and the schedule. As Design Lead, I led Hack404’s design team, and designed Launchpad with Anita."
+                "text": "Launchpad was our answer: a central hub where hackers could find information about the event and the schedule."
               }
             ]
           },
@@ -152,35 +152,11 @@
                 "marks": [
                   "strong"
                 ],
-                "text": "Goal:"
-              },
-              {
-                "_type": "span",
-                "_key": "hack404-launchpad-s-0-b-2-2-s1",
-                "marks": [],
-                "text": " one place for information about the event and the schedule."
-              }
-            ],
-            "listItem": "bullet",
-            "level": 1
-          },
-          {
-            "_type": "block",
-            "_key": "hack404-launchpad-s-0-b-2-3",
-            "style": "normal",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "hack404-launchpad-s-0-b-2-3-s",
-                "marks": [
-                  "strong"
-                ],
                 "text": "Look:"
               },
               {
                 "_type": "span",
-                "_key": "hack404-launchpad-s-0-b-2-3-s1",
+                "_key": "hack404-launchpad-s-0-b-2-2-s1",
                 "marks": [],
                 "text": " modern, and consistent with everything else our design team made for the hackathon."
               }
@@ -364,7 +340,7 @@
             "_type": "mediaImage",
             "_key": "hack404-launchpad-s-2-b-2",
             "localAssetKey": "home",
-            "alt": "The Launchpad home on a purple-to-green gradient: a pill nav with Profile and a lime QR Code button, a greeting and a countdown until the submission deadline, then columns for the agenda, announcements, and project submission with a Solo and Team leaderboard",
+            "alt": "The Launchpad home on a purple-to-green gradient: a pill nav, a Profile pill and a lime QR Code button, a greeting and a countdown until the submission deadline, then columns for the agenda, announcements, and project submission with a Solo and Team leaderboard",
             "caption": "The home during the weekend, with the countdown at the top.",
             "size": "full"
           },
@@ -442,7 +418,7 @@
                 "_type": "span",
                 "_key": "hack404-launchpad-s-3-b-0-s",
                 "marks": [],
-                "text": "Three things keep changing all weekend: what’s been announced, how close the deadline is, and who’s ahead. The rest of the home keeps track of them."
+                "text": "Announcements, the submission and the leaderboard fill the rest of the home, and the posts and points keep changing through the weekend."
               }
             ]
           },
@@ -456,7 +432,7 @@
                 "_type": "span",
                 "_key": "hack404-launchpad-s-3-b-1-s",
                 "marks": [],
-                "text": "Each announcement shows a title, a one-line preview and who posted it. Click the expand icon, and the tile opens in place to show the whole message."
+                "text": "Each announcement shows a title, a one-line preview and who posted it. Click one, and the tile opens in place to show the whole message."
               }
             ]
           },
@@ -527,7 +503,7 @@
                 "_type": "image",
                 "_key": "hack404-launchpad-s-3-b-6-0",
                 "localAssetKey": "leaderboard-solo",
-                "alt": "The leaderboard with Solo selected: five ranked hackers, each with an avatar and points, on purple-tinted rows that fade down the list",
+                "alt": "The leaderboard with Solo selected: five ranked hackers, each with an avatar and points, on rows that get darker down the list",
                 "label": "Solo"
               },
               {
@@ -678,7 +654,7 @@
                 "_type": "span",
                 "_key": "hack404-launchpad-s-5-b-3-s",
                 "marks": [],
-                "text": "We tried a few navs for the phone. In one, five icon tabs fill a single bar, and the QR code is a pill next to the countdown. In others, the QR code has its own button, and the tabs become a strip that scrolls sideways, with icons or with words. The one that went live is the icon strip with the round QR button."
+                "text": "We tried a few navs for the phone. In one, five icon tabs fill a single bar, and the QR code is a pill next to the countdown. In the one that went live, the QR code has its own round button, and the icon tabs become a strip that scrolls sideways."
               }
             ]
           },
@@ -686,8 +662,8 @@
             "_type": "mediaImage",
             "_key": "hack404-launchpad-s-5-b-4",
             "localAssetKey": "phone-navs",
-            "alt": "Three phone nav bars stacked: five icon tabs in one bar; a strip of icon tabs fading at its right edge with a round lime QR button beside it; and a strip of text tabs, Home and Agenda first, with the same QR button",
-            "caption": "Three phone navs. The middle one went live.",
+            "alt": "Two phone nav bars stacked: five icon tabs in one bar, and a strip of icon tabs fading at its right edge with a round lime QR button beside it",
+            "caption": "Two phone navs. The bottom one went live.",
             "size": "content",
             "labels": [
               {
@@ -695,21 +671,14 @@
                 "_key": "hack404-launchpad-s-5-b-4-l0",
                 "text": "Five icons",
                 "x": 0.1095,
-                "y": 0.1452
+                "y": 0.225
               },
               {
                 "_type": "imageLabel",
                 "_key": "hack404-launchpad-s-5-b-4-l1",
                 "text": "Icons + QR",
                 "x": 0.1095,
-                "y": 0.5
-              },
-              {
-                "_type": "imageLabel",
-                "_key": "hack404-launchpad-s-5-b-4-l2",
-                "text": "Text tabs",
-                "x": 0.1095,
-                "y": 0.8548
+                "y": 0.775
               }
             ]
           }
@@ -738,26 +707,12 @@
           {
             "_type": "block",
             "_key": "hack404-launchpad-s-6-b-1",
-            "style": "normal",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "hack404-launchpad-s-6-b-1-s",
-                "marks": [],
-                "text": "As Design Lead, I designed Launchpad with Anita, and also led Hack404’s design team; other designers on it designed other graphics for the hackathon."
-              }
-            ]
-          },
-          {
-            "_type": "block",
-            "_key": "hack404-launchpad-s-6-b-2",
             "style": "h3",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "hack404-launchpad-s-6-b-2-s",
+                "_key": "hack404-launchpad-s-6-b-1-s",
                 "marks": [],
                 "text": "What I learned"
               }
@@ -765,13 +720,13 @@
           },
           {
             "_type": "block",
-            "_key": "hack404-launchpad-s-6-b-3-0",
+            "_key": "hack404-launchpad-s-6-b-2-0",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "hack404-launchpad-s-6-b-3-0-s",
+                "_key": "hack404-launchpad-s-6-b-2-0-s",
                 "marks": [
                   "strong"
                 ],
@@ -779,9 +734,9 @@
               },
               {
                 "_type": "span",
-                "_key": "hack404-launchpad-s-6-b-3-0-s1",
+                "_key": "hack404-launchpad-s-6-b-2-0-s1",
                 "marks": [],
-                "text": " In the middle of a hackathon, a hacker needs what’s next, the deadline and the latest post, so those come first."
+                "text": " On the home, what’s next, the deadline and the latest post come first."
               }
             ],
             "listItem": "bullet",
@@ -789,13 +744,13 @@
           },
           {
             "_type": "block",
-            "_key": "hack404-launchpad-s-6-b-3-1",
+            "_key": "hack404-launchpad-s-6-b-2-1",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "hack404-launchpad-s-6-b-3-1-s",
+                "_key": "hack404-launchpad-s-6-b-2-1-s",
                 "marks": [
                   "strong"
                 ],
@@ -803,7 +758,7 @@
               },
               {
                 "_type": "span",
-                "_key": "hack404-launchpad-s-6-b-3-1-s1",
+                "_key": "hack404-launchpad-s-6-b-2-1-s1",
                 "marks": [],
                 "text": " A portal should feel like the event, not like a generic tool."
               }
@@ -813,13 +768,13 @@
           },
           {
             "_type": "block",
-            "_key": "hack404-launchpad-s-6-b-3-2",
+            "_key": "hack404-launchpad-s-6-b-2-2",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "hack404-launchpad-s-6-b-3-2-s",
+                "_key": "hack404-launchpad-s-6-b-2-2-s",
                 "marks": [
                   "strong"
                 ],
@@ -827,7 +782,7 @@
               },
               {
                 "_type": "span",
-                "_key": "hack404-launchpad-s-6-b-3-2-s1",
+                "_key": "hack404-launchpad-s-6-b-2-2-s1",
                 "marks": [],
                 "text": " Our design team paid attention to all aspects of the hackathon, and wanted the design to feel modern and consistent across all surfaces, including the hacker portal."
               }
@@ -837,15 +792,29 @@
           },
           {
             "_type": "block",
-            "_key": "hack404-launchpad-s-6-b-4",
+            "_key": "hack404-launchpad-s-6-b-3",
             "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "hack404-launchpad-s-6-b-3-s",
+                "marks": [],
+                "text": "Summary"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "hack404-launchpad-s-6-b-4",
+            "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
                 "_key": "hack404-launchpad-s-6-b-4-s",
                 "marks": [],
-                "text": "Summary"
+                "text": "Hack404 needed one place where hackers could find information about the event and the schedule. With Anita, I designed Launchpad: a magic-link sign-up and a four-step hacker profile, a home built around the countdown to the submission deadline, an agenda for the whole weekend or a single day, and a phone version with the QR code one tap away, all in glass-like panels over a moving gradient."
               }
             ]
           },
@@ -859,20 +828,6 @@
                 "_type": "span",
                 "_key": "hack404-launchpad-s-6-b-5-s",
                 "marks": [],
-                "text": "Hack404 needed one place where hackers could find information about the event and the schedule. With Anita, I designed Launchpad: a magic-link sign-up and a four-step hacker profile, a home built around the countdown to the submission deadline, an agenda for the whole weekend or a single day, and a phone version with the QR code one tap away, all in glass-like panels over a moving gradient."
-              }
-            ]
-          },
-          {
-            "_type": "block",
-            "_key": "hack404-launchpad-s-6-b-6",
-            "style": "normal",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "hack404-launchpad-s-6-b-6-s",
-                "marks": [],
                 "text": "Our dev team built it, and hackers used it at Hack404 2025."
               }
             ]
@@ -883,11 +838,11 @@
   },
   "assets": {
     "cover": {
-      "path": "assets/hack404-launchpad-cs5-cover.jpg",
+      "path": "assets/hack404-launchpad-cs5-cover-clean.jpg",
       "sourceNodeIds": [
         "101:3256"
       ],
-      "note": "Winston’s laptop mockup of the Final home (101:3256), 2000×1500, used as the cover and as the hero ({\"image\": \"cover\"}), kept as is. Its screen still shows the original placeholder announcements (“ts pmo”, “Yo”, a keyboard mash), small and in perspective. Its sourceNodeIds name the screen it shows; the mockup itself is Winston’s file, set up like the heatmap.json and augwa.json covers."
+      "note": "Portfolio copy of Winston’s laptop mockup of the Final home (101:3256), 2000×1500, used as the cover and as the hero ({\"image\": \"cover\"}). The screen shows the cleaned portfolio copy, the same text as home: only the areas home_clean.py changed are replaced. The screen is a plane, so the frame lands on it through one homography, fitted from about 4,300 local matches between the raw 101:3256 export and the mockup (rms 0.08 px; tools/cover_fit2.py). Around each changed text box the screen is modelled as gain × the warped export, softened to the mockup’s sharpness, plus a smooth offset, and the cleaned export goes through the same model (tools/cover_clean.py). Every other pixel is the mockup’s own, so the notch, bezel, glare and edge shading are unchanged, and the new text is cut off by the bottom bezel where the old text was. Winston’s original mockup stays untouched at assets/hack404-launchpad-cs5-cover.jpg. Its sourceNodeIds name the screen it shows; the mockup itself is Winston’s file, set up like the heatmap.json and augwa.json covers. Replacement text is made up for the portfolio copy and isn’t quoted as event fact."
     },
     "signin": {
       "path": "assets/hack404-launchpad-cs5-signin.png",
@@ -978,10 +933,9 @@
       "path": "assets/hack404-launchpad-cs5-phone-navs.png",
       "sourceNodeIds": [
         "101:3882",
-        "101:4008",
-        "101:4139"
+        "101:4008"
       ],
-      "note": "The bottom of the Home Page frames 101:3882, 101:4008 and 101:4139 (y 755–843 pt) at 3x, cleaned like phone-home, each with rounded corners and a dark grey hairline (radius 36, stroke 3, #2A2A2A), stacked with 60 px gaps; the transparent left column (340 px) holds the labels (centres x 0.1095, y 0.1452 / 0.5 / 0.8548). No arrows, since the files don’t give an order. In 101:3882 the QR Code is a pill beside the countdown, outside this crop. Labels on the page: Five icons, Icons + QR, Text tabs. Only 101:4008 is confirmed as the nav that went live; the order of the three isn’t known. The third tab in 101:4139 and the head icon are the mentor feature, which never shipped; the page doesn’t describe it."
+      "note": "The bottom of the Home Page frames 101:3882 and 101:4008 (y 755–843 pt) at 3x, cleaned like phone-home. The round photo of the first announcement’s sender, which sat just left of the nav in each crop, is painted out from the row’s own background (a smooth fit of the ring around it, the nav container left out of the fit), the way tools/phone_clean.py rebuilds text boxes (tools/nav_rows.py). Each row has rounded corners and a dark grey hairline (radius 36, stroke 3, #2A2A2A), stacked with a 60 px gap; the transparent left column (340 px) holds the labels (centres x 0.1095, y 0.225 / 0.775). No arrows, since the files don’t give an order. In 101:3882 the QR Code is a pill beside the countdown, outside this crop. Labels on the page: Five icons, Icons + QR. Only 101:4008 is confirmed as the nav that went live. The 101:4139 row (text tabs) is left out because its third tab reads “Mentrix”, the mentor feature that never shipped; the head icon in both rows is that feature too, and the page doesn’t describe it."
     }
   }
 }
