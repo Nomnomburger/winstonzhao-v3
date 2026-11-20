@@ -646,7 +646,7 @@
                 "_type": "span",
                 "_key": "hack404-launchpad-s-5-b-2-s",
                 "marks": [],
-                "text": "We tried a few navs for the phone. In one, five icon tabs fill a single bar, and the QR code is a pill next to the countdown. In the one that went live, the QR code has its own round button, and the icon tabs become a strip that scrolls sideways."
+                "text": "We tried a few navs for the phone. In one, five icon tabs fill a single bar, and the QR code is a pill next to the countdown. Another gives the QR code its own round button, beside a strip of text tabs. The one that went live keeps the round button, with the tabs as icons in a strip that scrolls sideways."
               }
             ]
           },
@@ -654,22 +654,29 @@
             "_type": "mediaImage",
             "_key": "hack404-launchpad-s-5-b-3",
             "localAssetKey": "phone-navs-phones",
-            "alt": "Two iPhones side by side showing the Launchpad phone home. On the left, a lime QR Code pill sits beside the countdown and five icon tabs fill one bar at the bottom. On the right, a Details button sits beside the countdown, and at the bottom a strip of icon tabs fades at its right edge, with a round lime QR button beside it.",
-            "caption": "Two phone navs. The one on the right went live.",
+            "alt": "Three iPhones side by side showing the Launchpad phone home. On the left, a lime QR Code pill sits beside the countdown, and five icon tabs fill one bar at the bottom. In the middle, a Details button sits beside the countdown. At the bottom, text tabs Home, Agenda and Mentrix fade at the strip’s right edge, with a round lime QR button beside it. On the right is the same home with a strip of icon tabs fading at its right edge and the same round lime QR button.",
+            "caption": "Three phone navs. The one on the right went live.",
             "size": "full",
             "labels": [
               {
                 "_type": "imageLabel",
                 "_key": "hack404-launchpad-s-5-b-3-l0",
                 "text": "Five icons",
-                "x": 0.358,
+                "x": 0.1246,
                 "y": 0.0434
               },
               {
                 "_type": "imageLabel",
                 "_key": "hack404-launchpad-s-5-b-3-l1",
+                "text": "Text + QR",
+                "x": 0.5,
+                "y": 0.0434
+              },
+              {
+                "_type": "imageLabel",
+                "_key": "hack404-launchpad-s-5-b-3-l2",
                 "text": "Icons + QR",
-                "x": 0.642,
+                "x": 0.8754,
                 "y": 0.0434
               }
             ]
@@ -678,8 +685,8 @@
             "_type": "mediaImage",
             "_key": "hack404-launchpad-s-5-b-4",
             "localAssetKey": "phone-navs",
-            "alt": "Two phone nav bars stacked: five icon tabs in one bar, and a strip of icon tabs fading at its right edge with a round lime QR button beside it",
-            "caption": "The two navs up close.",
+            "alt": "Three phone nav bars stacked: five icon tabs in one bar; text tabs Home, Agenda and Mentrix fading at the strip’s right edge, with a round lime QR button beside it; and a strip of icon tabs fading at its right edge, with the same QR button beside it",
+            "caption": "The three navs up close.",
             "size": "content",
             "labels": [
               {
@@ -687,14 +694,21 @@
                 "_key": "hack404-launchpad-s-5-b-4-l0",
                 "text": "Five icons",
                 "x": 0.1095,
-                "y": 0.225
+                "y": 0.1452
               },
               {
                 "_type": "imageLabel",
                 "_key": "hack404-launchpad-s-5-b-4-l1",
+                "text": "Text + QR",
+                "x": 0.1095,
+                "y": 0.5
+              },
+              {
+                "_type": "imageLabel",
+                "_key": "hack404-launchpad-s-5-b-4-l2",
                 "text": "Icons + QR",
                 "x": 0.1095,
-                "y": 0.775
+                "y": 0.8548
               }
             ]
           }
@@ -942,17 +956,19 @@
       "path": "assets/hack404-launchpad-cs5-phone-navs.png",
       "sourceNodeIds": [
         "101:3882",
+        "101:4139",
         "101:4008"
       ],
-      "note": "The bottom of the Home Page frames 101:3882 and 101:4008 (y 755–843 pt) at 3x, cleaned like phone-home. The round photo of the first announcement’s sender, which sat just left of the nav in each crop, is painted out from the row’s own background (a smooth fit of the ring around it, the nav container left out of the fit), the way tools/phone_clean.py rebuilds text boxes (tools/nav_rows.py). Each row has rounded corners and a dark grey hairline (radius 36, stroke 3, #2A2A2A), stacked with a 60 px gap; the transparent left column (340 px) holds the labels (centres x 0.1095, y 0.225 / 0.775). No arrows, since the files don’t give an order. In 101:3882 the QR Code is a pill beside the countdown, outside this crop. Labels on the page: Five icons, Icons + QR. Only 101:4008 is confirmed as the nav that went live. The 101:4139 row (text tabs) is left out because its third tab reads “Mentrix”, the mentor feature that never shipped; the head icon in both rows is that feature too, and the page doesn’t describe it."
+      "note": "The bottom of the Home Page frames 101:3882, 101:4139 and 101:4008 (y 755–843 pt) at 3x, cleaned like phone-home. Each crop had the round photo of the first announcement’s sender just left of the nav. It is painted out from the row’s own background (a smooth fit of the ring around it, the nav container left out of the fit), the way tools/phone_clean.py rebuilds text boxes (tools/nav_rows.py). Outside the tab strip, 101:4139 is the same frame as 101:4008, so its photo and the ring around it are pixel-identical. It gets the same box, container edge and seed, and an identical patch. Adding the row left the 101:3882 and 101:4008 rows byte-identical. Each row has rounded corners and a dark grey hairline (radius 36, stroke 3, #2A2A2A). The rows are stacked with 60 px gaps, 1552×930 overall. The transparent left column (340 px) holds the labels (centres x 0.1095, y 0.1452 / 0.5 / 0.8548). No arrows, since the files don’t give an order. In 101:3882 the QR Code is a pill beside the countdown, outside this crop. Labels on the page: Five icons, Text + QR, Icons + QR. Only 101:4008 is confirmed as the nav that went live. The 101:4139 row’s text tabs read Home, Agenda and “Mentrix”, kept as designed, next to the round lime QR button. “Mentrix” and the head icon in the other two rows are the mentor feature, which never shipped, and the page doesn’t describe it."
     },
     "phone-navs-phones": {
       "path": "assets/hack404-launchpad-cs5-phone-navs-phones.png",
       "sourceNodeIds": [
         "101:3882",
+        "101:4139",
         "101:4008"
       ],
-      "note": "Home Page frames 101:3882 (Mobile, 101:3881) and 101:4008 (Mobile Nav Experiments, 101:4007, the nav that went live) at 3x in Apple’s iPhone 16 Pro (White Titanium) bezel on a transparent background (phones.py, pad_to 1.6, 3200×2000, the same layout as Augwa’s two-phone images). They sit side by side with no arrow, because the files don’t give an order. The right phone is the same cleaned copy as phone-home (work/phone-4008-sb@3x.png). 101:3882 was cleaned the same way (tools/phone_navs_phones.py, which reuses phone_clean.py): the keyboard-mash preview and the “ts pmo” announcement under the bottom fade are replaced (Dinner is served), drawn in the grey the fade gives each row. A status bar is added (9:41, signal, Wi-Fi, battery, in white): the header and countdown move down 40 pt, and 20 pt of empty space is taken out above and below the greeting, so everything from Upcoming Event down, and the nav, stays where it was. In 101:3882 the countdown row, which has the QR Code pill, is 104 pt tall (100 in 101:4008), so from the greeting down everything sits 4 pt lower and the two cuts are 4 pt lower too. A fresh 3x export of 101:3882 is byte-identical to the earlier one. With the cut offset set to 0, the script reproduces phone-home’s status bar exactly. The transparent band on top holds the labels (centres x 0.358 / 0.642, y 0.0434). Labels on the page: Five icons, Icons + QR. Only 101:4008 is confirmed as the nav that went live. The head-with-question-mark tab in both phones is the mentor feature, which never shipped, and the page doesn’t describe it. Not shown: the 101:4139 text-tab nav, the liquid-glass experiments and the dark home."
+      "note": "Home Page frames 101:3882 (Mobile, 101:3881), 101:4139 and 101:4008 (both Mobile Nav Experiments, 101:4007; 101:4008 is the nav that went live) at 3x in Apple’s iPhone 16 Pro (White Titanium) bezel on a transparent background. Made with phones.py (pad_to 1.6, spread), 3200×2000, the same layout as Villio’s three-phone images: the outer frames sit flush with the image edges and the spare width goes into equal gaps. They sit side by side with no arrows, because the files don’t give an order. The right phone is the same cleaned copy as phone-home (work/phone-4008-sb@3x.png). 101:3882 and 101:4139 were cleaned the same way (tools/phone_navs_phones.py, which reuses phone_clean.py). The keyboard-mash preview and the “ts pmo” announcement under the bottom fade are replaced (Dinner is served) and drawn in the grey the fade gives each row. A status bar is added (9:41, signal, Wi-Fi, battery, in white): the header and countdown move down 40 pt, and 20 pt of empty space is taken out above and below the greeting, so everything from Upcoming Event down, and the nav, stays where it was. In 101:3882 the countdown row, which has the QR Code pill, is 104 pt tall (100 in 101:4008), so from the greeting down everything sits 4 pt lower and the two cuts are 4 pt lower too. 101:4139’s 3x export is pixel-identical to 101:4008’s except for the tab strip (rows 771–827 pt), so its cut offset is 0, like 101:4008’s. The finished 101:4139 phone matches phone-home exactly everywhere but the tab strip. With the cut offset set to 0, the script reproduces phone-home’s status bar exactly. Adding 101:4139 to the tools left the 101:3882 and 101:4008 phones byte-identical. The transparent band on top holds the labels (centres x 0.1246 / 0.5 / 0.8754, y 0.0434). Labels on the page: Five icons, Text + QR, Icons + QR. Only 101:4008 is confirmed as the nav that went live. The middle phone’s text tabs read Home, Agenda and “Mentrix”, kept as designed, next to the round lime QR button. “Mentrix” and the head-with-question-mark tab in the other two phones are the mentor feature, which never shipped, and the page doesn’t describe it. Not shown: the liquid-glass experiments and the dark home."
     }
   }
 }
