@@ -49,6 +49,22 @@
         "title": "Problem Statement",
         "heading": "How might we help a cleaning business get set up in Augwa, then run each day from one clear view?",
         "content": [
+          {
+            "gallery": [
+              {
+                "image": "before-dashboard",
+                "label": "Before",
+                "alt": "The old Augwa dashboard: a flat sidebar from Dashboard, Clients and Bookings down to Time off, Company Profile, Payment Account and Logout, a dark top bar with Winston Zhao Studio, and a stack of setup cards such as Review Business Details and Set Up Payment Account, each with an orange warning icon and a dark button"
+              },
+              {
+                "image": "dashboard-final",
+                "label": "After",
+                "alt": "The final Augwa dashboard: the sidebar with Dashboard selected; Good Afternoon with a date range, an All Clear pill and a bell; four Important cards for overdue bookings, overtime bookings, schedules without bookings and bookings without staff; then Finances with revenue bars by day, Bookings as a pie by status, and Staff Activity with the most and least utilized staff"
+              }
+            ],
+            "caption": "The old dashboard, and the redesign.",
+            "arrows": true
+          },
           "A residential cleaning company works in two places at once. In the office, owners and staff keep track of bookings, clients, schedules, payments and the team. Out in the field, cleaners move from one home to the next.",
           {
             "bullets": [
@@ -61,7 +77,7 @@
           {
             "h3": "Not a blank page"
           },
-          "Augwa already had a web app, and many of its features were there: a setup checklist, a sign-up that gave each business its own web address, and a log-in page for each company. The design held them back:",
+          "Augwa already had a web app, and many of its features were there: a setup checklist, a sign-up that gave each business its own web address, and a log-in page for each company. The design held them back, as the old dashboard above shows:",
           {
             "bullets": [
               "**No consistent component system** across the app.",
@@ -70,11 +86,6 @@
               "**A long, plain sign-up:** four separate form screens on a blue background before you got in.",
               "**A dated, inconsistent look.**"
             ]
-          },
-          {
-            "image": "before-dashboard",
-            "alt": "The old Augwa dashboard: a flat sidebar from Dashboard, Clients and Bookings down to Time off, Company Profile, Payment Account and Logout, a dark top bar with Winston Zhao Studio, and a stack of setup cards such as Review Business Details and Set Up Payment Account, each with an orange warning icon and a dark button",
-            "caption": "The old dashboard: a flat sidebar and a stack of setup cards."
           },
           "Over the summer of 2025, I redesigned the web app’s sidebar, dashboard and setup, signing up and logging in, and the emails, and designed a new phone app for cleaners."
         ]
@@ -646,7 +657,7 @@
       "sourceNodeIds": [
         "460:1883"
       ],
-      "note": "The old Augwa dashboard: the original screen image inside Winston’s MacBook mockup 460:1883 (section “Other” 460:1830), 2548×1780, used without the laptop; rounded corners and a light hairline (outline-villio.mjs, radius 33, stroke 4, #E3E3E3)."
+      "note": "The old Augwa dashboard: the original screen image inside Winston’s MacBook mockup 460:1883 (section “Other” 460:1830), cropped from the top to the final dashboard’s proportions (2548×1549 of 2548×1780) so the pair lines up, with rounded corners and a light hairline (outline-villio.mjs, radius 33, stroke 4, #E3E3E3). Shown as the Before half of the before/after at the top of the Problem Statement, with dashboard-final as After."
     },
     "before-signup": {
       "path": "assets/augwa-cs5-before-signup.png",

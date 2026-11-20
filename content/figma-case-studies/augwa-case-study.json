@@ -64,14 +64,36 @@
         "heading": "How might we help a cleaning business get set up in Augwa, then run each day from one clear view?",
         "content": [
           {
-            "_type": "block",
+            "_type": "mediaGallery",
             "_key": "augwa-s-0-b-0",
+            "caption": "The old dashboard, and the redesign.",
+            "arrows": true,
+            "images": [
+              {
+                "_type": "image",
+                "_key": "augwa-s-0-b-0-0",
+                "localAssetKey": "before-dashboard",
+                "alt": "The old Augwa dashboard: a flat sidebar from Dashboard, Clients and Bookings down to Time off, Company Profile, Payment Account and Logout, a dark top bar with Winston Zhao Studio, and a stack of setup cards such as Review Business Details and Set Up Payment Account, each with an orange warning icon and a dark button",
+                "label": "Before"
+              },
+              {
+                "_type": "image",
+                "_key": "augwa-s-0-b-0-1",
+                "localAssetKey": "dashboard-final",
+                "alt": "The final Augwa dashboard: the sidebar with Dashboard selected; Good Afternoon with a date range, an All Clear pill and a bell; four Important cards for overdue bookings, overtime bookings, schedules without bookings and bookings without staff; then Finances with revenue bars by day, Bookings as a pie by status, and Staff Activity with the most and least utilized staff",
+                "label": "After"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-0-b-1",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "augwa-s-0-b-0-s",
+                "_key": "augwa-s-0-b-1-s",
                 "marks": [],
                 "text": "A residential cleaning company works in two places at once. In the office, owners and staff keep track of bookings, clients, schedules, payments and the team. Out in the field, cleaners move from one home to the next."
               }
@@ -79,13 +101,13 @@
           },
           {
             "_type": "block",
-            "_key": "augwa-s-0-b-1-0",
+            "_key": "augwa-s-0-b-2-0",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "augwa-s-0-b-1-0-s",
+                "_key": "augwa-s-0-b-2-0-s",
                 "marks": [
                   "strong"
                 ],
@@ -93,7 +115,7 @@
               },
               {
                 "_type": "span",
-                "_key": "augwa-s-0-b-1-0-s1",
+                "_key": "augwa-s-0-b-2-0-s1",
                 "marks": [],
                 "text": " owners and office staff on the web app, and cleaners on the phone app."
               }
@@ -103,13 +125,13 @@
           },
           {
             "_type": "block",
-            "_key": "augwa-s-0-b-1-1",
+            "_key": "augwa-s-0-b-2-1",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "augwa-s-0-b-1-1-s",
+                "_key": "augwa-s-0-b-2-1-s",
                 "marks": [
                   "strong"
                 ],
@@ -117,7 +139,7 @@
               },
               {
                 "_type": "span",
-                "_key": "augwa-s-0-b-1-1-s1",
+                "_key": "augwa-s-0-b-2-1-s1",
                 "marks": [],
                 "text": " in talks with cleaning business owners and staff, setup was confusing for new businesses, and staff work on the go, between homes."
               }
@@ -127,13 +149,13 @@
           },
           {
             "_type": "block",
-            "_key": "augwa-s-0-b-1-2",
+            "_key": "augwa-s-0-b-2-2",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "augwa-s-0-b-1-2-s",
+                "_key": "augwa-s-0-b-2-2-s",
                 "marks": [
                   "strong"
                 ],
@@ -141,7 +163,7 @@
               },
               {
                 "_type": "span",
-                "_key": "augwa-s-0-b-1-2-s1",
+                "_key": "augwa-s-0-b-2-2-s1",
                 "marks": [],
                 "text": " every business has its own instance of Augwa, on its own domain."
               }
@@ -151,13 +173,13 @@
           },
           {
             "_type": "block",
-            "_key": "augwa-s-0-b-2",
+            "_key": "augwa-s-0-b-3",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "augwa-s-0-b-2-s",
+                "_key": "augwa-s-0-b-3-s",
                 "marks": [],
                 "text": "I also did a competitive analysis of eight other products’ dashboards, reports and setup pages."
               }
@@ -165,13 +187,13 @@
           },
           {
             "_type": "block",
-            "_key": "augwa-s-0-b-3",
+            "_key": "augwa-s-0-b-4",
             "style": "h3",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "augwa-s-0-b-3-s",
+                "_key": "augwa-s-0-b-4-s",
                 "marks": [],
                 "text": "Not a blank page"
               }
@@ -179,27 +201,27 @@
           },
           {
             "_type": "block",
-            "_key": "augwa-s-0-b-4",
+            "_key": "augwa-s-0-b-5",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "augwa-s-0-b-4-s",
+                "_key": "augwa-s-0-b-5-s",
                 "marks": [],
-                "text": "Augwa already had a web app, and many of its features were there: a setup checklist, a sign-up that gave each business its own web address, and a log-in page for each company. The design held them back:"
+                "text": "Augwa already had a web app, and many of its features were there: a setup checklist, a sign-up that gave each business its own web address, and a log-in page for each company. The design held them back, as the old dashboard above shows:"
               }
             ]
           },
           {
             "_type": "block",
-            "_key": "augwa-s-0-b-5-0",
+            "_key": "augwa-s-0-b-6-0",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "augwa-s-0-b-5-0-s",
+                "_key": "augwa-s-0-b-6-0-s",
                 "marks": [
                   "strong"
                 ],
@@ -207,7 +229,7 @@
               },
               {
                 "_type": "span",
-                "_key": "augwa-s-0-b-5-0-s1",
+                "_key": "augwa-s-0-b-6-0-s1",
                 "marks": [],
                 "text": " across the app."
               }
@@ -217,13 +239,13 @@
           },
           {
             "_type": "block",
-            "_key": "augwa-s-0-b-5-1",
+            "_key": "augwa-s-0-b-6-1",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "augwa-s-0-b-5-1-s",
+                "_key": "augwa-s-0-b-6-1-s",
                 "marks": [
                   "strong"
                 ],
@@ -231,7 +253,7 @@
               },
               {
                 "_type": "span",
-                "_key": "augwa-s-0-b-5-1-s1",
+                "_key": "augwa-s-0-b-6-1-s1",
                 "marks": [],
                 "text": " one long list of 16 items, mixing office pages like Quotes and Invoices with staff pages like Punch clock and Time off."
               }
@@ -241,13 +263,13 @@
           },
           {
             "_type": "block",
-            "_key": "augwa-s-0-b-5-2",
+            "_key": "augwa-s-0-b-6-2",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "augwa-s-0-b-5-2-s",
+                "_key": "augwa-s-0-b-6-2-s",
                 "marks": [
                   "strong"
                 ],
@@ -255,7 +277,7 @@
               },
               {
                 "_type": "span",
-                "_key": "augwa-s-0-b-5-2-s1",
+                "_key": "augwa-s-0-b-6-2-s1",
                 "marks": [],
                 "text": " the dashboard was seven setup cards, each with the same orange warning icon."
               }
@@ -265,13 +287,13 @@
           },
           {
             "_type": "block",
-            "_key": "augwa-s-0-b-5-3",
+            "_key": "augwa-s-0-b-6-3",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "augwa-s-0-b-5-3-s",
+                "_key": "augwa-s-0-b-6-3-s",
                 "marks": [
                   "strong"
                 ],
@@ -279,7 +301,7 @@
               },
               {
                 "_type": "span",
-                "_key": "augwa-s-0-b-5-3-s1",
+                "_key": "augwa-s-0-b-6-3-s1",
                 "marks": [],
                 "text": " four separate form screens on a blue background before you got in."
               }
@@ -289,13 +311,13 @@
           },
           {
             "_type": "block",
-            "_key": "augwa-s-0-b-5-4",
+            "_key": "augwa-s-0-b-6-4",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "augwa-s-0-b-5-4-s",
+                "_key": "augwa-s-0-b-6-4-s",
                 "marks": [
                   "strong"
                 ],
@@ -304,14 +326,6 @@
             ],
             "listItem": "bullet",
             "level": 1
-          },
-          {
-            "_type": "mediaImage",
-            "_key": "augwa-s-0-b-6",
-            "localAssetKey": "before-dashboard",
-            "alt": "The old Augwa dashboard: a flat sidebar from Dashboard, Clients and Bookings down to Time off, Company Profile, Payment Account and Logout, a dark top bar with Winston Zhao Studio, and a stack of setup cards such as Review Business Details and Set Up Payment Account, each with an orange warning icon and a dark button",
-            "caption": "The old dashboard: a flat sidebar and a stack of setup cards.",
-            "size": "full"
           },
           {
             "_type": "block",
@@ -1912,7 +1926,7 @@
       "sourceNodeIds": [
         "460:1883"
       ],
-      "note": "The old Augwa dashboard: the original screen image inside Winston’s MacBook mockup 460:1883 (section “Other” 460:1830), 2548×1780, used without the laptop; rounded corners and a light hairline (outline-villio.mjs, radius 33, stroke 4, #E3E3E3)."
+      "note": "The old Augwa dashboard: the original screen image inside Winston’s MacBook mockup 460:1883 (section “Other” 460:1830), cropped from the top to the final dashboard’s proportions (2548×1549 of 2548×1780) so the pair lines up, with rounded corners and a light hairline (outline-villio.mjs, radius 33, stroke 4, #E3E3E3). Shown as the Before half of the before/after at the top of the Problem Statement, with dashboard-final as After."
     },
     "before-signup": {
       "path": "assets/augwa-cs5-before-signup.png",
