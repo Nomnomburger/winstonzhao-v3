@@ -3,7 +3,7 @@
   "generatedFrom": "case-study-copy/elapse.json",
   "fields": {
     "title": "Elapse Robotics App",
-    "description": "A tournament companion for VEX Robotics teams: next match, live schedule and scouting. 4,000+ accounts.",
+    "description": "Tournament companion for VEX Robotics teams, with 4,000+ accounts.",
     "client": "VEX Robotics Competition",
     "discipline": "Product Design",
     "link": {

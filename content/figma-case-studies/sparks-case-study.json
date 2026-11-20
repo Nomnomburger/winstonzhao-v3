@@ -2,7 +2,7 @@
   "documentId": "figma-portfolio-sparks",
   "generatedFrom": "case-study-copy/sparks.json",
   "fields": {
-    "description": "Posts tagged with where you are, reactions without counts, and a nudge when someone compatible is nearby.",
+    "description": "Location-based social app for old friends and new ones.",
     "client": "Product Design Sprint 2025",
     "discipline": "Product Design",
     "intro": "Sparks is an iOS app concept for keeping up with old friends and meeting new ones, built around where people are. In a team of four at the Product Design Sprint 2025, I made the early directions and designed the final hi-fi screens and the prototype.",

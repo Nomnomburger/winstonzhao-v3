@@ -7,11 +7,11 @@
     "facts": "Confirmed by Winston (Nov 19 2026, ANSWERS.md, Augwa rounds 1–4 and the final round): Augwa is business software for residential cleaning companies; owners and office staff use the web app, cleaners use the phone app. He was the only designer and designed all of it (dashboard and nav, Get started guide, log in and sign-up, emails, phone app), working with the founders and developers; the token library (Augwa Primitives / Augwa Tokens) and the components are his, and so are the new Augwa logo and branding. Live: the desktop dashboard, nav and Get started guide, and the new log-in, sign-up and onboarding flows and the emails. The phone app isn’t confirmed as released, so the page describes its design without saying it shipped (and without a disclaimer). Research: a competitive analysis (the “Similar” board 427:7235, eight products, not named on the page) plus talks with cleaning business owners and staff, which showed that setup was confusing for new businesses and that staff work on the go, between homes. Reasons he gave: Important comes first because owners need to act on problems before reading reports (the only dashboard reason); nav: the flat list was too long (groups keep it short as features grow), each business has its own instance so it should feel like their own (their brand at the top), and no top bar leaves more room on laptops and tablets, which are wide but short; Get started list: every step and your progress at a glance with one clear next step, and it fits under a full dashboard and can be hidden; log in: Style 12 went live (“pretty sure”); find your company first because each business has its own instance and domain, search waits for 4 characters so people can’t list every company, and it was also a developer requirement; emails were made in the order letter → cards → booking card → three templates, and the blue, red and lime are each business’s brand colour; the punch clock sits in the centre of the tab bar because staff use it many times a day and accurate hours matter for pay. The HMW and the three lessons (lead with what needs attention; design the first day too; one system across web, email and phone) are his. Details: Product Design Intern, May – August 2025, Web · Mobile, Figma; no link. Resume: “Sped up developer handoff and kept UI consistent by building a tokenized design system of 20+ new components.” Left out on his instructions: the old app on the sign-up laptop (427:9360), the spec / generated wireframe 427:7244, and the date picker frames with the “Data range” typo (427:7723, 19:3157). Every number, name, date and address on the screens is sample data and isn’t quoted as real. Find Company is shown as version B (the 4-character rule) without calling it the shipped flow, and no domain is named (the file shows two suffixes). The order of the nav and dashboard versions isn’t dated in the file, so the copy calls them versions and explorations, not a timeline. Design facts (layouts, states, the 13 log-in styles, components, prototype wiring) come from the Figma page 9:5277 (research9/augwa.md)."
   },
   "fields": {
-    "description": "Software for cleaning companies: a dashboard that leads with what needs attention, a setup guide and an app for cleaners on the go.",
+    "description": "Redesigning software for residential cleaning companies, on web and phone.",
     "client": "Augwa",
     "discipline": "Product Design",
-    "intro": "Augwa is business software for residential cleaning companies: owners and office staff run the business from the web app, and cleaners use the phone app. As a product design intern and Augwa’s only designer, I designed both, along with signing up and logging in, the emails, a new logo and the design system behind it all.",
-    "summary": "Designing Augwa for residential cleaning companies: sign-up and setup, the office dashboard, the emails and the cleaners’ phone app.",
+    "intro": "Augwa is business software for residential cleaning companies: owners and office staff run the business from the web app, and cleaners use the phone app. As a product design intern and Augwa’s only designer, I redesigned the web app and designed a new phone app, along with signing up and logging in, the emails, a new logo and the design system behind it all.",
+    "summary": "Redesigning Augwa for residential cleaning companies: sign-up and setup, the office dashboard and the emails, plus a new phone app for cleaners.",
     "overview": "Augwa is for the owners and office staff of residential cleaning companies, and the cleaners who work for them. I was the only designer, working with the founders and developers.",
     "impact": "The new dashboard, sidebar, Get started guide, sign-up and log-in flows and emails are live.",
     "details": [
@@ -58,7 +58,25 @@
             ]
           },
           "I also did a competitive analysis of eight other products’ dashboards, reports and setup pages.",
-          "Over the summer of 2025, my work covered both sides of the business: the web app’s sidebar, dashboard and Get started guide, signing up and logging in, the emails, and the phone app."
+          {
+            "h3": "Not a blank page"
+          },
+          "Augwa already had a web app, and many of its features were there: a setup checklist, a sign-up that gave each business its own web address, and a log-in page for each company. The design held them back:",
+          {
+            "bullets": [
+              "**No consistent component system** across the app.",
+              "**A flat sidebar:** one long list of 16 items, mixing office pages like Quotes and Invoices with staff pages like Punch clock and Time off.",
+              "**Everything looked urgent:** the dashboard was seven setup cards, each with the same orange warning icon.",
+              "**A long, plain sign-up:** four separate form screens on a blue background before you got in.",
+              "**A dated, inconsistent look.**"
+            ]
+          },
+          {
+            "image": "before-dashboard",
+            "alt": "The old Augwa dashboard: a flat sidebar from Dashboard, Clients and Bookings down to Time off, Company Profile, Payment Account and Logout, a dark top bar with Winston Zhao Studio, and a stack of setup cards such as Review Business Details and Set Up Payment Account, each with an orange warning icon and a dark button",
+            "caption": "The old dashboard: a flat sidebar and a stack of setup cards."
+          },
+          "Over the summer of 2025, I redesigned the web app’s sidebar, dashboard and setup, signing up and logging in, and the emails, and designed a new phone app for cleaners."
         ]
       },
       {
@@ -66,7 +84,8 @@
         "heading": "A sidebar that feels like theirs",
         "content": [
           "Every page in the web app hangs off the sidebar: clients, bookings and schedules, finances, staff and the company itself. It’s also the first thing that tells you whose Augwa you’re in.",
-          "In the wireframe, a full-width top bar sits above a column of placeholder tabs. In the hi-fi versions, the top bar is gone, the logo moves into the sidebar, and the pages sit under Dashboard and four groups: Operations, Finance, Staff and Company. Each group opens to its pages; Operations, for example, holds Clients, Bookings, Schedules and Import Jobs.",
+          "The old sidebar was one flat list, shown in the old dashboard above. My versions started from a wireframe.",
+          "In that wireframe, a full-width top bar sits above a column of placeholder tabs. In the hi-fi versions, the top bar is gone, the logo moves into the sidebar, and the pages sit under Dashboard and four groups: Operations, Finance, Staff and Company. Each group opens to its pages; Operations, for example, holds Clients, Bookings, Schedules and Import Jobs.",
           {
             "image": "nav-versions",
             "alt": "Four versions of the Augwa sidebar with arrows between them: a wireframe with the old Augwa logo in a top bar over placeholder tabs; a sidebar with the old logo, Dashboard and four groups, Operations, Finance, Staff and Company, over Account, Support and Settings; the same with Company name and a colourful logo at the top; and the final, with Dashboard in a blue pill, Support, Settings, the user’s name and the new Augwa mark at the foot",
@@ -112,6 +131,7 @@
         "heading": "What needs attention first",
         "content": [
           "The dashboard is an owner’s home base: bookings, money and staff on one screen. Before any of that, it has to show what’s gone wrong.",
+          "In the old app, the dashboard was the setup checklist: seven cards, each with the same orange warning icon, so everything looked equally urgent.",
           "So “Important” comes first. Owners need to act on problems before they read reports. Important stays at the top in every version with data in it.",
           "In the explorations, Important was one box of four counts, above bookings listed by time: in progress, later today and the next seven days. One version added a donut of completed, in-progress and upcoming bookings.",
           {
@@ -151,6 +171,7 @@
         "heading": "One clear next step",
         "content": [
           "A new cleaning business has a lot to do before Augwa is useful: check its details, connect payments, add staff and their availability, add clients and set up booking schedules. In our talks, setup was confusing for new businesses. The Get started guide puts every step in one place.",
+          "The tasks were already there, in the old app’s checklist. What changed is how they’re shown. In my sign-up sketches, the last step asked how you wanted to start: add your data, or take a tour. That choice turned into the Get started guide.",
           "I tried three layouts: a horizontal accordion, with one task open and the rest folded into narrow columns; a grid of task cards; and a vertical list.",
           {
             "image": "getstarted-directions",
@@ -209,6 +230,41 @@
           {
             "h3": "Signing up"
           },
+          "The old sign-up took four separate screens on a blue background: your country, your name and email, your business details with its custom web address, then a username, password and referral code.",
+          {
+            "image": "before-signup",
+            "alt": "Four screens of the old Augwa sign-up, each a white Get started card on a blue background: Country with Canada; first name, last name and email (blurred); legal business name, business email, phone, address and a custom web address ending in .augwa.me; and username, password, referral code, terms and Start free trial",
+            "caption": "The old sign-up: four separate screens.",
+            "labels": [
+              {
+                "text": "Country",
+                "x": 0.2456,
+                "y": 0.0176
+              },
+              {
+                "text": "Name and email",
+                "x": 0.7544,
+                "y": 0.0176
+              },
+              {
+                "text": "Business details",
+                "x": 0.2456,
+                "y": 0.5269
+              },
+              {
+                "text": "Account",
+                "x": 0.7544,
+                "y": 0.5269
+              }
+            ]
+          },
+          "I started on paper. My sketches open on a “Try Augwa for free” page with Google or email, then a three-step Create account with a progress bar, business info, and a choice of how to start.",
+          {
+            "image": "sketches",
+            "alt": "Two pages of pencil sketches with orange notes: a Try Augwa for free page with Google, email and Continue, leading to a three-step Create account form with name, email, country and password; then Business info, and a user choice screen asking how do you want to start, with Add data and Take tour, noted as set up Stripe, company, staff and an interactive tour with mock data",
+            "caption": "My sketches for the new sign-up."
+          },
+          "The sketches led to the final sign-up, in three steps.",
           "Owners start from “Get started for free”, then set up in three steps: their profile, their business details and their domain, which can’t be changed later. Staff register a different way, with an invite code from their company.",
           {
             "image": "onboarding",
@@ -240,6 +296,7 @@
           {
             "h3": "Logging in"
           },
+          "The old log-in page put the company’s name above a username and password.",
           "Once you’ve picked your company, the log-in page has to show it, and let you switch if you picked the wrong one. I tried 13 ways to do that, from pills and a dropdown to a card with the domain and a big logo beside the title.",
           {
             "image": "login-styles",
@@ -248,9 +305,21 @@
           },
           "Style 12 went live: a centred white pill with the company’s logo, its name and a swap button, above the form, with the new Augwa logo in the corner.",
           {
-            "image": "login-final",
-            "alt": "The Augwa log-in page: the new Augwa logo top left, a centred white pill with the company’s logo, Company Name and a swap button, then Log in with work email, password, a blue Log in button, a reset link, Continue with Google and Continue with Facebook, and a link to register",
-            "caption": "Style 12, the log-in page that went live."
+            "image": "login-before-after",
+            "alt": "Before and after: the old log-in, a white card on blue with Winston Zhao Studio, LOGIN, username, password and a dark Login button; then Style 12, with the new Augwa logo, a white pill with the company’s logo, Company Name and a swap button, work email, password, a blue Log in button, and Continue with Google and Facebook",
+            "caption": "The old log-in, and Style 12, the one that went live.",
+            "labels": [
+              {
+                "text": "Before",
+                "x": 0.2434,
+                "y": 0.0489
+              },
+              {
+                "text": "After",
+                "x": 0.7566,
+                "y": 0.0489
+              }
+            ]
           }
         ]
       },
@@ -468,13 +537,6 @@
       ],
       "note": "“Log in - STYLE 1, 2, 4, 5, 7, 8, 9, 11, 13” (Login section 427:9323) at 2x, each cropped to x 420–860 pt from y 70 pt down to 24 pt below its lowest company or “Log in” element (so no form field is cut), then extended to the tallest cell (Style 4, 215.5 pt) by repeating its last row; rounded corners and a light hairline (outline-villio.mjs, radius 24, stroke 4, #E3E3E3), three rows of three in style-number order, no arrows. Style 12 (the one Winston says went live) is its own image; Styles 3 (error banner), 6 (two columns) and 10 (company card in the page corner) don’t read in a form-column crop."
     },
-    "login-final": {
-      "path": "assets/augwa-cs5-login-final.png",
-      "sourceNodeIds": [
-        "427:10098"
-      ],
-      "note": "“Log in - STYLE 12” (427:10098, Login section 427:9323), the style Winston says went live, the full 1280×832 frame at 2x, rounded corners and a light hairline (outline-villio.mjs)."
-    },
     "emails-evolution": {
       "path": "assets/augwa-cs5-emails-evolution.png",
       "sourceNodeIds": [
@@ -516,6 +578,39 @@
         "19:4114"
       ],
       "note": "“Shift log” (19:3911) and “Schedule” (19:4114) from App Demo (19:3615) at 3x, with an iOS status bar added (the App Demo frames have none; same overlay as hopper-sb/statusbar.py), in Apple’s iPhone 16 Pro (White Titanium) bezel on a transparent background (phones.py), side by side without an arrow."
+    },
+    "before-dashboard": {
+      "path": "assets/augwa-cs5-before-dashboard.png",
+      "sourceNodeIds": [
+        "460:1883"
+      ],
+      "note": "The old Augwa dashboard: the original screen image inside Winston’s MacBook mockup 460:1883 (section “Other” 460:1830), 2548×1780, used without the laptop; rounded corners and a light hairline (outline-villio.mjs, radius 33, stroke 4, #E3E3E3)."
+    },
+    "before-signup": {
+      "path": "assets/augwa-cs5-before-signup.png",
+      "sourceNodeIds": [
+        "460:1863",
+        "460:1867",
+        "460:1871",
+        "460:1875"
+      ],
+      "note": "The old sign-up screens from Winston’s MacBook mockups 460:1863, 460:1867, 460:1871 and 460:1875 (section 460:1830): the original screen images cropped to the same box around the form card (x 386, y 116, 1775×1547), each with rounded corners and a light hairline, in a 2×2 grid in canvas order with transparent bands for the labels; scaled to 3200 wide. Portfolio copy: Winston’s email in the name-and-email step is blurred, at his request."
+    },
+    "sketches": {
+      "path": "assets/augwa-cs5-sketches.png",
+      "sourceNodeIds": [
+        "460:1888",
+        "460:1889"
+      ],
+      "note": "Winston’s two photos of his sign-up sketches (460:1888, 460:1889 in frame 460:1887), the second scaled to the first’s height (1532 px), rounded corners and a light hairline, side by side."
+    },
+    "login-before-after": {
+      "path": "assets/augwa-cs5-login-before-after.png",
+      "sourceNodeIds": [
+        "460:1879",
+        "427:10098"
+      ],
+      "note": "Before: the old log-in screen image from Winston’s MacBook mockup 460:1879, cropped to Style 12’s proportions. After: Log in STYLE 12 (427:10098) at 2x. Both with rounded corners and a light hairline, an arrow between (outline-villio.mjs), scaled to 3200 wide, with a transparent band on top for the labels."
     }
   }
 }

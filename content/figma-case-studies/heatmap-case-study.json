@@ -2,7 +2,7 @@
   "documentId": "legacy-portfolio-heatmap",
   "generatedFrom": "case-study-copy/heatmap.json",
   "fields": {
-    "description": "One nav, one heatmap viewer and a place for AI in a growing analytics portal.",
+    "description": "One nav and one heatmap viewer for a growing analytics portal.",
     "client": "Heatmap · Full Sprint",
     "discipline": "Product Design",
     "link": {

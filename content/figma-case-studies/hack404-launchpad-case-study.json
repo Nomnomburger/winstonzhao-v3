@@ -3,7 +3,7 @@
   "generatedFrom": "case-study-copy/hack404-launchpad.json",
   "fields": {
     "title": "Hack404 Launchpad",
-    "description": "One hub for Hack404’s hackers to apply and follow the weekend, in a look that feels like the event.",
+    "description": "Hackathon portal for applications, schedules, updates and leaderboards.",
     "client": "Hack404",
     "discipline": "Product Design",
     "intro": "Launchpad is Hack404’s hacker portal: high school and university students apply through it, then use it all weekend to keep up with the schedule, announcements and the submission deadline. As Hack404’s Design Lead, I designed Launchpad with Anita, and led the design.",
