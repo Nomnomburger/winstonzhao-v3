@@ -444,23 +444,17 @@
         "heading": "Tokens under every screen",
         "content": [
           "Augwa’s old app had no consistent component system. Alongside the screens, I built one in Figma: a library of colour tokens, and the components built on it.",
-          "The library has two layers. Augwa Primitives holds 35 raw colours in seven ramps, each named by ramp and step, like color/blue/900. Augwa Tokens holds 20 names that say what a colour is for, and none has a hex value of its own: surface/brand/default points to color/blue/900, and surface/base/border to color/neutral/200. The button tokens go one step further and point to other tokens, so the primary button’s gradient runs through landsurf/brand-tint and landsurf/brand down to two blues.",
+          "The library has two layers. Augwa Primitives holds 35 raw colours in seven ramps, each named by ramp and step, like color/blue/900. Augwa Tokens holds 65 names that say what a colour is for, and none has a hex value of its own. They cover surfaces, text, borders, status, the sidebar, buttons, charts and the landing surfaces: surface/brand/default points to color/blue/900, and status/danger/bg to color/red/200.",
+          {
+            "image": "ds-primitives",
+            "alt": "Augwa Primitives as seven colour ramps with step numbers and hex values: neutral from 0 to 1000, blue and navy from 200 to 1000, and green, lime, yellow and red at three steps each",
+            "caption": "The 35 primitives, in seven ramps."
+          },
+          "Many tokens point to other tokens, so changing one value carries through. text/primary runs through surface/base/contrast to black, nav/item/selected runs through surface/brand/subtle to a pale blue, and the primary landing button’s gradient runs through landsurf/brand-tint and landsurf/brand down to two blues.",
           {
             "image": "ds-tokens",
-            "alt": "A token sheet drawn from Augwa’s Figma variables: Augwa Primitives as seven colour ramps with step numbers and hex values (neutral from 0 to 1000, blue and navy from 200 to 1000, and green, lime, yellow and red at three steps each), then Augwa Tokens in four groups, surface/base, surface/brand, landsurf and buttons, each token with its swatch and the primitive it points to",
-            "caption": "The 35 primitives, and the 20 tokens that point to them.",
-            "labels": [
-              {
-                "text": "Augwa Primitives",
-                "x": 0.5,
-                "y": 0.0218
-              },
-              {
-                "text": "Augwa Tokens",
-                "x": 0.5,
-                "y": 0.4498
-              }
-            ]
+            "alt": "Augwa Tokens in nine groups, each token with its swatch and what it points to: surface/base and surface/brand, text, border, status for success, warning, danger and info, nav, chart, landsurf, and buttons for the portal and the landing page",
+            "caption": "The 65 tokens, each pointing to a primitive or another token."
           },
           "On top of the tokens, I built the sidebar and the dashboard’s status as components with states:",
           {
@@ -708,7 +702,7 @@
       "sourceNodeIds": [
         "9:5277"
       ],
-      "note": "Rendered at 3x in HTML (Inter) from the real values of the remote collections Augwa Primitives (VariableCollectionId:51bc3c74…/8:7) and Augwa Tokens (VariableCollectionId:c5c0f580…/82:7), read with getVariableByIdAsync. No colour, name or alias was invented. Each card is outlined (radius 33, stroke 4, #E3E3E3) and the two are stacked, each under a transparent label band. 2888×3626. Data: scratchpad/augwa-ds/variables.json."
+      "note": "Token card for Augwa Tokens, rendered in HTML at 2.3x (tokens_extended.py, render.cjs) with rounded corners and a light hairline. It shows the 20 tokens from the Figma library (surface/base, surface/brand, landsurf, buttons) plus 45 added at Winston’s request on Nov 20 2026 to make the set complete (surface hover/subtle, text, border, status, nav, more buttons, chart). The added tokens are not in the Figma library; all 65 alias the unchanged 35 primitives, directly or through other tokens (list in scratchpad augwa-ds/work/tokens-extended.json, with inFigma flags)."
     },
     "ds-anatomy": {
       "path": "assets/augwa-cs5-ds-anatomy.png",
@@ -720,6 +714,13 @@
         "427:7441"
       ],
       "note": "The top 320 pt of 427:7415 at 2x, reusing the existing export scratchpad/exports/augwa/work/427-7415-viewport.png. The outlines (#9747FF, placed from the instances’ real bounds), the markers and the legend are drawn only in this image; the Figma file is untouched. Outlined with outline-villio.mjs (radius 33, stroke 4, #E3E3E3). 2568×870. No label band, since the legend is inside the card."
+    },
+    "ds-primitives": {
+      "path": "assets/augwa-cs5-ds-primitives.png",
+      "sourceNodeIds": [
+        "9:5277"
+      ],
+      "note": "A colour-ramp card drawn from the 35 Augwa Primitives variables bound on the Augwa page (read with the Plugin API; values in scratchpad augwa-ds/variables.json), rendered in HTML at 3x (tokens_html.py, render.cjs) with rounded corners and a light hairline (outline-villio.mjs). Values match the file exactly."
     }
   }
 }

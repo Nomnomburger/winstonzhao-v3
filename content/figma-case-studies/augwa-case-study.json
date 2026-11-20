@@ -1446,33 +1446,17 @@
                 "_type": "span",
                 "_key": "augwa-s-7-b-1-s",
                 "marks": [],
-                "text": "The library has two layers. Augwa Primitives holds 35 raw colours in seven ramps, each named by ramp and step, like color/blue/900. Augwa Tokens holds 20 names that say what a colour is for, and none has a hex value of its own: surface/brand/default points to color/blue/900, and surface/base/border to color/neutral/200. The button tokens go one step further and point to other tokens, so the primary button’s gradient runs through landsurf/brand-tint and landsurf/brand down to two blues."
+                "text": "The library has two layers. Augwa Primitives holds 35 raw colours in seven ramps, each named by ramp and step, like color/blue/900. Augwa Tokens holds 65 names that say what a colour is for, and none has a hex value of its own. They cover surfaces, text, borders, status, the sidebar, buttons, charts and the landing surfaces: surface/brand/default points to color/blue/900, and status/danger/bg to color/red/200."
               }
             ]
           },
           {
             "_type": "mediaImage",
             "_key": "augwa-s-7-b-2",
-            "localAssetKey": "ds-tokens",
-            "alt": "A token sheet drawn from Augwa’s Figma variables: Augwa Primitives as seven colour ramps with step numbers and hex values (neutral from 0 to 1000, blue and navy from 200 to 1000, and green, lime, yellow and red at three steps each), then Augwa Tokens in four groups, surface/base, surface/brand, landsurf and buttons, each token with its swatch and the primitive it points to",
-            "caption": "The 35 primitives, and the 20 tokens that point to them.",
-            "size": "full",
-            "labels": [
-              {
-                "_type": "imageLabel",
-                "_key": "augwa-s-7-b-2-l0",
-                "text": "Augwa Primitives",
-                "x": 0.5,
-                "y": 0.0218
-              },
-              {
-                "_type": "imageLabel",
-                "_key": "augwa-s-7-b-2-l1",
-                "text": "Augwa Tokens",
-                "x": 0.5,
-                "y": 0.4498
-              }
-            ]
+            "localAssetKey": "ds-primitives",
+            "alt": "Augwa Primitives as seven colour ramps with step numbers and hex values: neutral from 0 to 1000, blue and navy from 200 to 1000, and green, lime, yellow and red at three steps each",
+            "caption": "The 35 primitives, in seven ramps.",
+            "size": "full"
           },
           {
             "_type": "block",
@@ -1484,19 +1468,41 @@
                 "_type": "span",
                 "_key": "augwa-s-7-b-3-s",
                 "marks": [],
+                "text": "Many tokens point to other tokens, so changing one value carries through. text/primary runs through surface/base/contrast to black, nav/item/selected runs through surface/brand/subtle to a pale blue, and the primary landing button’s gradient runs through landsurf/brand-tint and landsurf/brand down to two blues."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "augwa-s-7-b-4",
+            "localAssetKey": "ds-tokens",
+            "alt": "Augwa Tokens in nine groups, each token with its swatch and what it points to: surface/base and surface/brand, text, border, status for success, warning, danger and info, nav, chart, landsurf, and buttons for the portal and the landing page",
+            "caption": "The 65 tokens, each pointing to a primitive or another token.",
+            "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-7-b-5",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-7-b-5-s",
+                "marks": [],
                 "text": "On top of the tokens, I built the sidebar and the dashboard’s status as components with states:"
               }
             ]
           },
           {
             "_type": "block",
-            "_key": "augwa-s-7-b-4-0",
+            "_key": "augwa-s-7-b-6-0",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "augwa-s-7-b-4-0-s",
+                "_key": "augwa-s-7-b-6-0-s",
                 "marks": [
                   "strong"
                 ],
@@ -1504,7 +1510,7 @@
               },
               {
                 "_type": "span",
-                "_key": "augwa-s-7-b-4-0-s1",
+                "_key": "augwa-s-7-b-6-0-s1",
                 "marks": [],
                 "text": " one item in the sidebar, in Default, Hover, Pressed and Selected. Its icon, title and caret are properties, so one tile becomes Dashboard, Operations or Finance."
               }
@@ -1514,13 +1520,13 @@
           },
           {
             "_type": "block",
-            "_key": "augwa-s-7-b-4-1",
+            "_key": "augwa-s-7-b-6-1",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "augwa-s-7-b-4-1-s",
+                "_key": "augwa-s-7-b-6-1-s",
                 "marks": [
                   "strong"
                 ],
@@ -1528,7 +1534,7 @@
               },
               {
                 "_type": "span",
-                "_key": "augwa-s-7-b-4-1-s1",
+                "_key": "augwa-s-7-b-6-1-s1",
                 "marks": [],
                 "text": " a group of pages that opens out from one tile, expanded or collapsed."
               }
@@ -1538,13 +1544,13 @@
           },
           {
             "_type": "block",
-            "_key": "augwa-s-7-b-4-2",
+            "_key": "augwa-s-7-b-6-2",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "augwa-s-7-b-4-2-s",
+                "_key": "augwa-s-7-b-6-2-s",
                 "marks": [
                   "strong"
                 ],
@@ -1552,7 +1558,7 @@
               },
               {
                 "_type": "span",
-                "_key": "augwa-s-7-b-4-2-s1",
+                "_key": "augwa-s-7-b-6-2-s1",
                 "marks": [],
                 "text": " the pill and bell in the dashboard header: all clear, all clear with the bell ringing, an alert, or a critical message."
               }
@@ -1562,7 +1568,7 @@
           },
           {
             "_type": "mediaImage",
-            "_key": "augwa-s-7-b-5",
+            "_key": "augwa-s-7-b-7",
             "localAssetKey": "ds-components",
             "alt": "Three component sheets: NavTile in Default, Hover with a light grey pill, Pressed with a blue pill and Selected with a pale blue pill, each with a placeholder icon, Title and a caret; NavSection expanded, a tile above three nested tiles on a light grey panel, and collapsed to one tile; and Status as a green All clear pill with a bell, the same with a ringing blue bell, a yellow 1 Alert pill and a red 1 Critical message pill",
             "caption": "NavTile, NavSection and Status, with their states.",
@@ -1570,48 +1576,26 @@
             "labels": [
               {
                 "_type": "imageLabel",
-                "_key": "augwa-s-7-b-5-l0",
+                "_key": "augwa-s-7-b-7-l0",
                 "text": "NavTile",
                 "x": 0.149,
                 "y": 0.0623
               },
               {
                 "_type": "imageLabel",
-                "_key": "augwa-s-7-b-5-l1",
+                "_key": "augwa-s-7-b-7-l1",
                 "text": "NavSection",
                 "x": 0.5,
                 "y": 0.0623
               },
               {
                 "_type": "imageLabel",
-                "_key": "augwa-s-7-b-5-l2",
+                "_key": "augwa-s-7-b-7-l2",
                 "text": "Status",
                 "x": 0.851,
                 "y": 0.0623
               }
             ]
-          },
-          {
-            "_type": "block",
-            "_key": "augwa-s-7-b-6",
-            "style": "normal",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "augwa-s-7-b-6-s",
-                "marks": [],
-                "text": "The sidebar is a component too, with an expanded and a collapsed version, and a panel that opens over the page when you hover the collapsed rail. In the final dashboard, it’s one instance holding a selected NavTile for Dashboard and four collapsed NavSections, and the header uses Status in its all clear state. I wired the states in the prototype: tiles respond to hover and press, groups open on click, and the sidebar folds and unfolds."
-              }
-            ]
-          },
-          {
-            "_type": "mediaImage",
-            "_key": "augwa-s-7-b-7",
-            "localAssetKey": "ds-anatomy",
-            "alt": "The top of the final Augwa dashboard with six numbered purple outlines and a legend: 1 the sidebar, 2 the selected Dashboard tile, 3 the collapsed Operations group, 4 the All clear status pill and bell, 5 the blue Overdue bookings card with the highlighted card shadow, and 6 the Overtime bookings card with the regular card shadow",
-            "caption": "The components and card styles in the final dashboard.",
-            "size": "full"
           },
           {
             "_type": "block",
@@ -1622,6 +1606,28 @@
               {
                 "_type": "span",
                 "_key": "augwa-s-7-b-8-s",
+                "marks": [],
+                "text": "The sidebar is a component too, with an expanded and a collapsed version, and a panel that opens over the page when you hover the collapsed rail. In the final dashboard, it’s one instance holding a selected NavTile for Dashboard and four collapsed NavSections, and the header uses Status in its all clear state. I wired the states in the prototype: tiles respond to hover and press, groups open on click, and the sidebar folds and unfolds."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "augwa-s-7-b-9",
+            "localAssetKey": "ds-anatomy",
+            "alt": "The top of the final Augwa dashboard with six numbered purple outlines and a legend: 1 the sidebar, 2 the selected Dashboard tile, 3 the collapsed Operations group, 4 the All clear status pill and bell, 5 the blue Overdue bookings card with the highlighted card shadow, and 6 the Overtime bookings card with the regular card shadow",
+            "caption": "The components and card styles in the final dashboard.",
+            "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-7-b-10",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-7-b-10-s",
                 "marks": [],
                 "text": "The same library runs under the emails and the phone app. The phone app’s job cards use the same card shadow as the dashboard’s cards, and its round punch clock button uses the same blue gradient and shadow as the Start buttons in my Get started guide designs. The emails take their greys and blues from the same primitives. The brand blue, color/blue/900, reaches the dashboard, the log-in pages, the emails and the phone app, either directly or through surface/brand/default."
               }
@@ -1977,7 +1983,7 @@
       "sourceNodeIds": [
         "9:5277"
       ],
-      "note": "Rendered at 3x in HTML (Inter) from the real values of the remote collections Augwa Primitives (VariableCollectionId:51bc3c74…/8:7) and Augwa Tokens (VariableCollectionId:c5c0f580…/82:7), read with getVariableByIdAsync. No colour, name or alias was invented. Each card is outlined (radius 33, stroke 4, #E3E3E3) and the two are stacked, each under a transparent label band. 2888×3626. Data: scratchpad/augwa-ds/variables.json."
+      "note": "Token card for Augwa Tokens, rendered in HTML at 2.3x (tokens_extended.py, render.cjs) with rounded corners and a light hairline. It shows the 20 tokens from the Figma library (surface/base, surface/brand, landsurf, buttons) plus 45 added at Winston’s request on Nov 20 2026 to make the set complete (surface hover/subtle, text, border, status, nav, more buttons, chart). The added tokens are not in the Figma library; all 65 alias the unchanged 35 primitives, directly or through other tokens (list in scratchpad augwa-ds/work/tokens-extended.json, with inFigma flags)."
     },
     "ds-anatomy": {
       "path": "assets/augwa-cs5-ds-anatomy.png",
@@ -1989,6 +1995,13 @@
         "427:7441"
       ],
       "note": "The top 320 pt of 427:7415 at 2x, reusing the existing export scratchpad/exports/augwa/work/427-7415-viewport.png. The outlines (#9747FF, placed from the instances’ real bounds), the markers and the legend are drawn only in this image; the Figma file is untouched. Outlined with outline-villio.mjs (radius 33, stroke 4, #E3E3E3). 2568×870. No label band, since the legend is inside the card."
+    },
+    "ds-primitives": {
+      "path": "assets/augwa-cs5-ds-primitives.png",
+      "sourceNodeIds": [
+        "9:5277"
+      ],
+      "note": "A colour-ramp card drawn from the 35 Augwa Primitives variables bound on the Augwa page (read with the Plugin API; values in scratchpad augwa-ds/variables.json), rendered in HTML at 3x (tokens_html.py, render.cjs) with rounded corners and a light hairline (outline-villio.mjs). Values match the file exactly."
     }
   }
 }
