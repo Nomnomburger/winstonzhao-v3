@@ -1,0 +1,342 @@
+{
+  "documentId": "figma-portfolio-hack404-launchpad",
+  "source": {
+    "figmaFile": "qDdxlqtBxVpaAOUMITle4W",
+    "url": "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W/Winston-Design-Demo?node-id=9-5338",
+    "page": "Hack404 (9:5338): Home (425:54454) with Final (101:3255), Mobile (101:3881) and Mobile Nav Experiments (101:4007); Sign in/up (425:54455); Agenda (425:56461)",
+    "facts": "Confirmed by Winston (Nov 19 2026, ANSWERS.md, Hack404 rounds 1–4 and the final round): Hack404 2025 was a hackathon for 200+ high school and university students in Toronto, 4–6 July 2025 (200+ describes the event, never Launchpad’s users). Winston was Design Lead (March – August 2025): he designed Launchpad with Anita (the split was even, “a mix”, and he led the design), led the design team in general (other people designed other graphics for the hackathon), and designed the Hack404 logo and brand, which is left out of this case study on his instructions. Launchpad was built by the dev team and used: hackers used it to apply and through the weekend. Why a portal: “a central hub for hackers to find information about the event and the schedule”. The HMW was drafted from his answer (“something about being a central hub and keeping the design unique”). The Final gradient home (101:3256) went live: translucent panels at different opacities meant to read as glass, with tints inspired by stained glass, over a gradient that moved slowly and subtly responded to the cursor. Phone: the live nav is the scrolling icon strip with the round QR button (101:4008); QR gets its own button because it’s used all weekend (check-in, meals, swag); submission and the leaderboard live on other tabs on the phone. Leaderboard points come from attending workshops and side quests. Sign-up: a magic link (no reason given, so none is stated) and a four-step hacker profile, because short steps feel lighter than one long form and each step groups what organizers needed (legal name, food, shirt size). Agenda: the calendar shows the whole weekend and the list is for scanning the day; Your Events are the events you add with Add to my agenda, and Home’s Agenda column shows them. Lessons he chose: design for the busiest moment (what’s next, the deadline, the latest post); bring the event’s look in (the portal should feel like the event, not a generic tool); and, in his words, “Our design team paid attention to all aspects of the hackathon, and wanted the design to feel modern and consistent across all surfaces, including the hacker portal”. Details: Design Lead, March – August 2025, Web · Mobile, Figma; no link; the title stays Hack404 Launchpad. Left out on his instructions: the dark home (101:3412), the liquid-glass experiments (101:3569, 101:4265), the Hack404 brand, and the mentor feature (“Mentor”, “Mentrix”), which never shipped and still shows in some images. Images are portfolio-only copies with the joke placeholder text replaced by plain sample text (names and photos can stay, per his answer); the sample events, names, times, rooms and points are made up and aren’t quoted as fact, and whether “Hack Like a Designer Workshop” was his own workshop is unconfirmed, so it isn’t mentioned. The order of the phone navs isn’t known, so the page doesn’t give one. Design facts (layouts, steps, states, the Solo/Team switcher reused as the Calendar/List toggle, the announcement tile that opens in place) come from the Figma page 9:5338 (research9/hack404-launchpad.md)."
+  },
+  "fields": {
+    "title": "Hack404 Launchpad",
+    "description": "One hub for Hack404’s hackers to apply and follow the weekend, in a look that feels like the event.",
+    "client": "Hack404",
+    "discipline": "Product Design",
+    "intro": "Launchpad is Hack404’s hacker portal: high school and university students apply through it, then use it all weekend to keep up with the schedule, announcements and the submission deadline. As Hack404’s Design Lead, I designed Launchpad with Anita, and led the design.",
+    "summary": "Designing Hack404’s hacker portal, from a magic-link sign-up to a weekend home built around the countdown to the submission deadline.",
+    "overview": "Launchpad is for the students who apply to and hack at Hack404. Besides Launchpad, I led Hack404’s design team, while other designers on it made other graphics for the hackathon. Our dev team built Launchpad.",
+    "impact": "Built and used at Hack404 2025, from applications through the weekend.",
+    "details": [
+      {
+        "label": "Role",
+        "value": "Design Lead"
+      },
+      {
+        "label": "Team",
+        "value": "Designed with Anita\nLed the design team"
+      },
+      {
+        "label": "Timeline",
+        "value": "March – August 2025"
+      },
+      {
+        "label": "Platform",
+        "value": "Web · Mobile"
+      },
+      {
+        "label": "Tools",
+        "value": "Figma"
+      }
+    ],
+    "cover": {
+      "asset": "cover",
+      "alt": "A laptop floating above a purple surface, showing the Launchpad home: a greeting, the countdown to the submission deadline, and columns for the agenda, announcements, project submission and leaderboard"
+    },
+    "hero": {
+      "image": "cover",
+      "alt": "A laptop floating above a purple surface, showing the Launchpad home: a greeting, the countdown to the submission deadline, and columns for the agenda, announcements, project submission and leaderboard"
+    },
+    "sections": [
+      {
+        "title": "Problem Statement",
+        "heading": "How might we give hackers one central hub for Hack404 that still feels like the event?",
+        "content": [
+          "Hack404 2025 was a hackathon for 200+ high school and university students in Toronto, from 4 to 6 July. Before the weekend, hackers had to apply. During it, they needed to know what was on, when and where, and how long they had left to submit.",
+          "Launchpad was our answer: a central hub where hackers could find information about the event and the schedule.",
+          {
+            "bullets": [
+              "**Who:** high school and university students, applying to Hack404 and then hacking at it.",
+              "**When:** before the event, to apply, and through the weekend, to keep up.",
+              "**Look:** modern, and consistent with everything else our design team made for the hackathon."
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Sign-up",
+        "heading": "One email, four short steps",
+        "content": [
+          "Every hacker’s Hack404 starts with an application, and the application starts in Launchpad. Creating a hacker profile is the first step to joining: it gives you access to Launchpad, where you apply, manage your application and, once you’re accepted, find important information and tools during the weekend.",
+          "Getting in takes one field. You enter your email, and Launchpad sends you a magic link. The same screen works for new and returning hackers: “Use the same email to log in each time.”",
+          {
+            "image": "signin",
+            "alt": "The Launchpad sign-in screen on a purple-to-green gradient: Welcome to Hack404 and Launchpad on the left; Create an account, a note that a magic link will be sent, an email field and a lime Continue button on the right",
+            "caption": "One email field, and a magic link to get in."
+          },
+          "Next comes the hacker profile, in four titled steps: Basic Details, Your Education, Hackathon Details and Your Links. A counter shows which step you’re on, and the card grows or shrinks to fit each one. The left half stays the same throughout, with a short note on what the profile is for.",
+          {
+            "image": "profile-steps",
+            "alt": "The four Create your hacker profile steps in two rows with arrows: Basic Details, step 1/4, with legal and preferred first name, last name, age, gender and ethnicity; Your Education, 2/4, with institution and grade or year; Hackathon Details, 3/4, with hackathons attended, T-shirt size, allergies and dietary restrictions; and Your Links, 4/4, with LinkedIn, GitHub, resume and portfolio, and a lime Finish button",
+            "caption": "The hacker profile, one step at a time."
+          },
+          {
+            "h3": "Why four steps"
+          },
+          {
+            "bullets": [
+              "**Short steps feel lighter than one long form.**",
+              "**Each step is one group of what organizers needed,** like your legal name, your allergies and dietary restrictions, or your T-shirt size."
+            ]
+          },
+          "Links come last, and they’re optional. The step says why they’re there: they “may help in your application”, and you can edit them on your profile page before you apply."
+        ]
+      },
+      {
+        "title": "Home",
+        "heading": "The weekend on one screen",
+        "content": [
+          "In the middle of a hackathon, a hacker needs three things fast: what’s next, how long is left, and what was just posted. During the weekend, Launchpad’s home puts all three on one screen.",
+          "A greeting sits on the left, and on the right, a countdown to the submission deadline. Below them are three columns: your agenda, announcements, and the project submission with the leaderboard under it. Your profile and a lime QR Code button stay at the top right.",
+          {
+            "image": "home",
+            "alt": "The Launchpad home on a purple-to-green gradient: a pill nav, a Profile pill and a lime QR Code button, a greeting and a countdown until the submission deadline, then columns for the agenda, announcements, and project submission with a Solo and Team leaderboard",
+            "caption": "The home during the weekend, with the countdown at the top."
+          },
+          "The Agenda column shows your events: the ones you’ve added from the full agenda. Each tile says how soon it starts, when it runs and which room it’s in.",
+          "The agenda, announcements and leaderboard each tint their tiles in their own colour, strongest on the first tile and fading down the list.",
+          {
+            "h3": "Like stained glass"
+          },
+          "We wanted Launchpad to feel like Hack404 itself. The panels are translucent, each at its own opacity, so they read as glass, and their tints are inspired by stained glass. Behind them, the gradient moves slowly and shifts subtly as you move your cursor."
+        ]
+      },
+      {
+        "title": "Updates",
+        "heading": "Posts, deadlines and points",
+        "content": [
+          "Announcements, the submission and the leaderboard fill the rest of the home, and the posts and points keep changing through the weekend.",
+          "Each announcement shows a title, a one-line preview and who posted it. Click one, and the tile opens in place to show the whole message.",
+          {
+            "gallery": [
+              {
+                "image": "announcement-collapsed",
+                "label": "Collapsed",
+                "alt": "An announcement tile titled Sleeping reminder, with a one-line preview cut off by an ellipsis, an expand icon and the sender’s name and photo"
+              },
+              {
+                "image": "announcement-expanded",
+                "label": "Expanded",
+                "alt": "The same announcement tile opened, showing the full three-line message, a collapse icon and the sender’s name and photo"
+              }
+            ],
+            "caption": "An announcement, opened in place.",
+            "arrows": true
+          },
+          "Project Submission shows your project, when it’s due and a Submit on Devpost button, with your team’s avatars beside it.",
+          {
+            "image": "submission",
+            "size": "content",
+            "alt": "The Project Submission block: Standard Track Project with its due time, a cyan Submit on Devpost button and a pill of four team avatars",
+            "caption": "Submission, with your team next to the button."
+          },
+          "Under it, the leaderboard ranks hackers by points, which they earn from workshops and side quests. A Solo and Team switch flips it between people and teams.",
+          {
+            "gallery": [
+              {
+                "image": "leaderboard-solo",
+                "label": "Solo",
+                "alt": "The leaderboard with Solo selected: five ranked hackers, each with an avatar and points, on rows that get darker down the list"
+              },
+              {
+                "image": "leaderboard-team",
+                "label": "Team",
+                "alt": "The same leaderboard with Team selected: five ranked teams and their points, without avatars"
+              }
+            ],
+            "caption": "The leaderboard, for hackers and for teams."
+          }
+        ]
+      },
+      {
+        "title": "Agenda",
+        "heading": "The whole weekend, or just today",
+        "content": [
+          "Finding the schedule was one of the reasons for Launchpad. Hack404 ran from Friday to Sunday, and the Agenda page lays out all three days.",
+          "It has two views. The calendar shows the whole weekend, with a column for each day. The list is for scanning one day, with tabs for Day 1, Day 2 and Day 3.",
+          "Click an event and a card opens with when and where it is, and an “Add to my agenda” button. The events you add show up under Your Events, next to the full calendar, and in the Agenda column on the home.",
+          {
+            "gallery": [
+              {
+                "image": "agenda-calendar",
+                "label": "Calendar",
+                "alt": "The Agenda page in Calendar view: columns for Day 1 Friday, Day 2 Saturday and Day 3 Sunday with event tiles by the hour, an open event card with a cyan Add to my agenda button, and Your Events on the right"
+              },
+              {
+                "image": "agenda-list",
+                "label": "List",
+                "alt": "The Agenda page in List view: Day 1, Day 2 and Day 3 tabs with Day 3 selected, full-width event tiles with times and rooms, and Your Events on the right"
+              }
+            ],
+            "caption": "The calendar with an event open, and the list for one day."
+          },
+          "The Calendar and List toggle is the same switcher as the leaderboard’s Solo and Team, and the event tiles are the same ones the home uses."
+        ]
+      },
+      {
+        "title": "Phone",
+        "heading": "The QR code, one tap away",
+        "content": [
+          "Hackers pull up their QR code all weekend: to check in, and again for meals and swag. On the phone, it gets its own round lime button beside the tabs, so it’s always one tap away.",
+          "The phone home keeps the countdown, the greeting, your next event and announcements. Submission and the leaderboard live on other tabs.",
+          {
+            "image": "phone-home",
+            "alt": "An iPhone showing the Launchpad home: the countdown with a Details button, a greeting, an upcoming event, announcements, and at the bottom a strip of icon tabs with a round lime QR button beside it",
+            "caption": "The phone home, with the QR button beside the tabs."
+          },
+          "We tried a few navs for the phone. In one, five icon tabs fill a single bar, and the QR code is a pill next to the countdown. In the one that went live, the QR code has its own round button, and the icon tabs become a strip that scrolls sideways.",
+          {
+            "image": "phone-navs",
+            "size": "content",
+            "alt": "Two phone nav bars stacked: five icon tabs in one bar, and a strip of icon tabs fading at its right edge with a round lime QR button beside it",
+            "caption": "Two phone navs. The bottom one went live.",
+            "labels": [
+              {
+                "text": "Five icons",
+                "x": 0.1095,
+                "y": 0.225
+              },
+              {
+                "text": "Icons + QR",
+                "x": 0.1095,
+                "y": 0.775
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Outcome",
+        "heading": "Results and lessons",
+        "content": [
+          "Our dev team built Launchpad, and hackers used it at Hack404 2025: first to apply, then through the weekend.",
+          {
+            "h3": "What I learned"
+          },
+          {
+            "bullets": [
+              "**Design for the busiest moment.** On the home, what’s next, the deadline and the latest post come first.",
+              "**Bring the event’s look in.** A portal should feel like the event, not like a generic tool.",
+              "**Every surface counts.** Our design team paid attention to all aspects of the hackathon, and wanted the design to feel modern and consistent across all surfaces, including the hacker portal."
+            ]
+          },
+          {
+            "h3": "Summary"
+          },
+          "Hack404 needed one place where hackers could find information about the event and the schedule. With Anita, I designed Launchpad: a magic-link sign-up and a four-step hacker profile, a home built around the countdown to the submission deadline, an agenda for the whole weekend or a single day, and a phone version with the QR code one tap away, all in glass-like panels over a moving gradient.",
+          "Our dev team built it, and hackers used it at Hack404 2025."
+        ]
+      }
+    ]
+  },
+  "assets": {
+    "cover": {
+      "path": "assets/hack404-launchpad-cs5-cover-clean.jpg",
+      "sourceNodeIds": [
+        "101:3256"
+      ],
+      "note": "Portfolio copy of Winston’s laptop mockup of the Final home (101:3256), 2000×1500, used as the cover and as the hero ({\"image\": \"cover\"}). The screen shows the cleaned portfolio copy, the same text as home: only the areas home_clean.py changed are replaced. The screen is a plane, so the frame lands on it through one homography, fitted from about 4,300 local matches between the raw 101:3256 export and the mockup (rms 0.08 px; tools/cover_fit2.py). Around each changed text box the screen is modelled as gain × the warped export, softened to the mockup’s sharpness, plus a smooth offset, and the cleaned export goes through the same model (tools/cover_clean.py). Every other pixel is the mockup’s own, so the notch, bezel, glare and edge shading are unchanged, and the new text is cut off by the bottom bezel where the old text was. Winston’s original mockup stays untouched at assets/hack404-launchpad-cs5-cover.jpg. Its sourceNodeIds name the screen it shows; the mockup itself is Winston’s file, set up like the heatmap.json and augwa.json covers. Replacement text is made up for the portfolio copy and isn’t quoted as event fact."
+    },
+    "signin": {
+      "path": "assets/hack404-launchpad-cs5-signin.png",
+      "sourceNodeIds": [
+        "425:56233"
+      ],
+      "note": "Sign in (425:56233) at 2x, as exported, with rounded corners and a dark grey hairline (outline.mjs, radius 33, stroke 4, #2A2A2A, which disappears into the dark screen on the white page and keeps an edge on the dark one)."
+    },
+    "profile-steps": {
+      "path": "assets/hack404-launchpad-cs5-profile-steps.png",
+      "sourceNodeIds": [
+        "425:56266",
+        "425:56322",
+        "425:56358",
+        "425:56410"
+      ],
+      "note": "The Create Profile Flow frames 425:56266, 425:56322, 425:56358 and 425:56410 at 2x, as exported, each with rounded corners and a dark grey hairline (radius 33, stroke 4, #2A2A2A), in two rows with arrows and 200 px transparent gaps, scaled to 3200 wide."
+    },
+    "home": {
+      "path": "assets/hack404-launchpad-cs5-home.png",
+      "sourceNodeIds": [
+        "101:3256"
+      ],
+      "note": "Final home 101:3256 (gradient) exported at 4x and cleaned locally, at Winston’s request, as a portfolio-only copy (the Figma file is unchanged): the joke placeholder announcements (“ts pmo / yall need to try harder don’t sleep tongiht”, “Yo / gurt”, the keyboard-mash preview, “Pls come to my nomnomburger workshop…”) are replaced with plain sample text, the unfilled “FirstName LastName” row with Olivia Taylor, and the unsorted sample points with 140–130pts in rank order. Each old string’s box is rebuilt from the panel around it and the new text drawn in DM Sans at the original size, weight, colour and baseline, calibrated on the export (tools/home_clean.py). Scaled to 2x, rounded corners and a dark grey hairline (radius 33, stroke 4, #2A2A2A). All replacement text is made up for the portfolio copy and isn’t quoted as event fact."
+    },
+    "announcement-collapsed": {
+      "path": "assets/hack404-launchpad-cs5-announcement-collapsed.png",
+      "sourceNodeIds": [
+        "101:3352",
+        "101:3233"
+      ],
+      "note": "Announcement Tile instance 101:3352 (Default, 101:3233) cropped from the cleaned 4x home, inside the column’s side strokes, saved at 3x with rounded corners and a dark grey hairline (radius 36, stroke 3, #2A2A2A), top-aligned on a transparent canvas the size of announcement-expanded so the pair shares proportions in a gallery. The message text is made up for the portfolio copy."
+    },
+    "announcement-expanded": {
+      "path": "assets/hack404-launchpad-cs5-announcement-expanded.png",
+      "sourceNodeIds": [
+        "101:3244",
+        "101:3256"
+      ],
+      "note": "Variant2 of Announcement Tile (101:3244), which no frame shows, rebuilt locally on the home’s own gradient: the tile background is fitted from the frame (tile 1, plus tile 2 converted from its 5% to the 10% lime tint), the title, sender line and photo are moved from the frame’s pixels, the collapse icon comes from a 4x export of 101:3244, and the new message is drawn in DM Sans ExtraLight 14 in three lines 18 pt apart, as in the variant (tools/closeups.py). Rebuilt the same way, the collapsed tile matches the export to within 1 level on average. 3x, rounded corners and a dark grey hairline (radius 36, stroke 3, #2A2A2A). The message text is made up for the portfolio copy."
+    },
+    "submission": {
+      "path": "assets/hack404-launchpad-cs5-submission.png",
+      "sourceNodeIds": [
+        "101:3387"
+      ],
+      "note": "Frame 23 (101:3387) cropped from the 4x home inside the column’s strokes, as designed, saved at 3x with rounded corners and a dark grey hairline (radius 36, stroke 3, #2A2A2A)."
+    },
+    "leaderboard-solo": {
+      "path": "assets/hack404-launchpad-cs5-leaderboard-solo.png",
+      "sourceNodeIds": [
+        "101:3411",
+        "101:3123"
+      ],
+      "note": "Leaderboard instance 101:3411 (Solo, 101:3123), header and rows 001–005, cropped from the cleaned 4x home (sample name and points as in home), 3x, rounded corners and a dark grey hairline (radius 36, stroke 3, #2A2A2A). Same size as leaderboard-team. Points are made up for the portfolio copy and sorted by rank."
+    },
+    "leaderboard-team": {
+      "path": "assets/hack404-launchpad-cs5-leaderboard-team.png",
+      "sourceNodeIds": [
+        "101:3182",
+        "101:3117",
+        "101:3411"
+      ],
+      "note": "The Leaderboard Team variant (101:3182) with the switcher’s Variant2 (101:3117), which no frame shows, built on the Solo crop’s own pixels so it sits on the same gradient: each row’s avatar and name are replaced with the variant’s team name in DM Sans Light 16 at its x, and the switcher is redrawn (Team pill solid cyan with #0E1116 text, Solo pill 20% cyan with cyan text) over the backdrop fitted around it. Redrawn the same way, the Solo switcher matches the export to within 0.7 levels on average (tools/closeups.py). Points sorted as in the Solo copy. 3x, rounded corners and a dark grey hairline (radius 36, stroke 3, #2A2A2A)."
+    },
+    "agenda-calendar": {
+      "path": "assets/hack404-launchpad-cs5-agenda-calendar.png",
+      "sourceNodeIds": [
+        "425:56862"
+      ],
+      "note": "Agenda page with the event popover (425:56862) at 2x, cleaned locally like the home (tools/agenda_clean.py): the joke tile titles “How 2 vibe code” and “learn git” become Build Your First API and Git and GitHub Basics, and the popover’s mismatched “8:00AM - 2:00AM / Rm. 2048” now matches its tile (8:00AM - 9:00AM, Rm. 5023); “Goon” (Day 2, 9:00AM) is hidden under the popover. Rounded corners and a dark grey hairline (radius 33, stroke 4, #2A2A2A). Same size as agenda-list. The agenda’s sample events don’t line up across views, so the page describes the structure (Calendar, List, Your Events), not the events."
+    },
+    "agenda-list": {
+      "path": "assets/hack404-launchpad-cs5-agenda-list.png",
+      "sourceNodeIds": [
+        "425:57033"
+      ],
+      "note": "Agenda page, List view (425:57033) at 2x, as exported, with rounded corners and a dark grey hairline (radius 33, stroke 4, #2A2A2A)."
+    },
+    "phone-home": {
+      "path": "assets/hack404-launchpad-cs5-phone-home.png",
+      "sourceNodeIds": [
+        "101:4008"
+      ],
+      "note": "Home Page from Mobile Nav Experiments (101:4008, the nav that went live) at 3x in Apple’s iPhone 16 Pro (White Titanium) bezel on a transparent background (phones.py, pad_to 1.6). Portfolio copy: the keyboard-mash preview and the “ts pmo” announcement under the bottom fade are replaced (Dinner is served), drawn with the grey the fade gives each row. The frame has no status bar, so one is added (9:41, signal, Wi-Fi, battery, in white): the header and countdown move down 40 pt and 20 pt of empty space is taken out above and below the greeting, so everything from Upcoming Event down, and the nav, stays where it was (tools/phone_clean.py). The head-with-question-mark tab is the mentor feature, which never shipped; the page doesn’t describe it."
+    },
+    "phone-navs": {
+      "path": "assets/hack404-launchpad-cs5-phone-navs.png",
+      "sourceNodeIds": [
+        "101:3882",
+        "101:4008"
+      ],
+      "note": "The bottom of the Home Page frames 101:3882 and 101:4008 (y 755–843 pt) at 3x, cleaned like phone-home. The round photo of the first announcement’s sender, which sat just left of the nav in each crop, is painted out from the row’s own background (a smooth fit of the ring around it, the nav container left out of the fit), the way tools/phone_clean.py rebuilds text boxes (tools/nav_rows.py). Each row has rounded corners and a dark grey hairline (radius 36, stroke 3, #2A2A2A), stacked with a 60 px gap; the transparent left column (340 px) holds the labels (centres x 0.1095, y 0.225 / 0.775). No arrows, since the files don’t give an order. In 101:3882 the QR Code is a pill beside the countdown, outside this crop. Labels on the page: Five icons, Icons + QR. Only 101:4008 is confirmed as the nav that went live. The 101:4139 row (text tabs) is left out because its third tab reads “Mentrix”, the mentor feature that never shipped; the head icon in both rows is that feature too, and the page doesn’t describe it."
+    }
+  }
+}
