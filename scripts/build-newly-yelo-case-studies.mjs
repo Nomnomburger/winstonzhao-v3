@@ -6,7 +6,8 @@
  *
  * Reads content/figma-case-studies/case-study-copy/<slug>.json for each case study
  * (Newly, Yelo, Elapse, CoStudy, Heatmap, Villio AI, Arca, Sparks, SmartBasket,
- * CoCart, Hopper Hangout); a slug without a copy file yet is skipped,
+ * CoCart, Hopper Hangout, Augwa, Hack404 Launchpad); a slug without a copy
+ * file yet is skipped,
  * and writes content/figma-case-studies/<slug>-case-study.json, the files
  * that scripts/update-newly-yelo-case-studies.mjs publishes.
  *
@@ -133,7 +134,7 @@ function expand(copy, slug) {
   return { documentId: copy.documentId, generatedFrom: `case-study-copy/${slug}.json`, fields, assets: copy.assets };
 }
 
-const ALL = ['newly', 'yelo', 'elapse', 'costudy', 'heatmap', 'villio-ai', 'arca', 'sparks', 'smartbasket', 'cocart', 'hopper-hangout'];
+const ALL = ['newly', 'yelo', 'elapse', 'costudy', 'heatmap', 'villio-ai', 'arca', 'sparks', 'smartbasket', 'cocart', 'hopper-hangout', 'augwa', 'hack404-launchpad'];
 // Optional slugs on the command line build just those case studies.
 const wanted = process.argv.slice(2);
 for (const name of wanted) if (!ALL.includes(name)) throw new Error(`Unknown case study "${name}". Use one of ${ALL.join(', ')}.`);

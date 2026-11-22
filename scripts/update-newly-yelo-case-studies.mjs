@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 /**
  * Publish the rewritten case studies to Sanity (Newly, Yelo, Elapse, CoStudy,
- * Heatmap, Villio AI, Arca, Sparks, SmartBasket, CoCart, Hopper Hangout).
+ * Heatmap, Villio AI, Arca, Sparks, SmartBasket, CoCart, Hopper Hangout,
+ * Augwa, Hack404 Launchpad).
  * A case study whose file isn't written yet is skipped.
  *
  * Preview: node scripts/update-newly-yelo-case-studies.mjs
@@ -45,6 +46,8 @@ const SPECS = [
   { slug: 'smartbasket', file: 'smartbasket-case-study.json', id: 'figma-portfolio-smartbasket' },
   { slug: 'cocart', file: 'cocart-case-study.json', id: 'figma-portfolio-cocart' },
   { slug: 'hopper-hangout', file: 'hopper-hangout-case-study.json', id: 'legacy-portfolio-hopperhangout' },
+  { slug: 'augwa', file: 'augwa-case-study.json', id: 'figma-portfolio-augwa' },
+  { slug: 'hack404-launchpad', file: 'hack404-launchpad-case-study.json', id: 'figma-portfolio-hack404-launchpad' },
 ];
 // Fields the case study files may change. Everything else on the document is
 // left exactly as it is.

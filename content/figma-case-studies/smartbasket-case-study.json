@@ -2,7 +2,7 @@
   "documentId": "figma-portfolio-smartbasket",
   "generatedFrom": "case-study-copy/smartbasket.json",
   "fields": {
-    "description": "A shopping list that finds the best local price, designed and built solo at Hack Canada 2025.",
+    "description": "Grocery list that finds the best local prices, built solo.",
     "client": "Hack Canada 2025",
     "discipline": "Product Design · Development",
     "intro": "SmartBasket is a mobile web app that finds the best local prices for what’s on your shopping list, with in-store deals shared by other shoppers. I designed and built it on my own at Hack Canada 2025.",

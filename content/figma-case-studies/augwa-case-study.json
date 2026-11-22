@@ -1,0 +1,2007 @@
+{
+  "documentId": "figma-portfolio-augwa",
+  "generatedFrom": "case-study-copy/augwa.json",
+  "fields": {
+    "description": "Redesigning software for residential cleaning companies, on web and phone.",
+    "client": "Augwa",
+    "discipline": "Product Design",
+    "intro": "Augwa is business software for residential cleaning companies: owners and office staff run the business from the web app, and cleaners use the phone app. As a product design intern and Augwa’s only designer, I redesigned the web app and designed a new phone app, along with signing up and logging in, the emails, a new logo and the design system behind it all.",
+    "summary": "Redesigning Augwa for residential cleaning companies: sign-up and setup, the office dashboard and the emails, plus a new phone app for cleaners.",
+    "overview": "Augwa is for the owners and office staff of residential cleaning companies, and the cleaners who work for them. I was the only designer, working with the founders and developers.",
+    "impact": "The new dashboard, sidebar, Get started guide, sign-up and log-in flows and emails are live.",
+    "showSideMenu": true,
+    "details": [
+      {
+        "_type": "detailItem",
+        "_key": "augwa-detail-0",
+        "label": "Role",
+        "value": "Product Design Intern"
+      },
+      {
+        "_type": "detailItem",
+        "_key": "augwa-detail-1",
+        "label": "Team",
+        "value": "Founders · Developers\nOnly designer"
+      },
+      {
+        "_type": "detailItem",
+        "_key": "augwa-detail-2",
+        "label": "Timeline",
+        "value": "May – August 2025"
+      },
+      {
+        "_type": "detailItem",
+        "_key": "augwa-detail-3",
+        "label": "Platform",
+        "value": "Web · Mobile"
+      },
+      {
+        "_type": "detailItem",
+        "_key": "augwa-detail-4",
+        "label": "Tools",
+        "value": "Figma"
+      }
+    ],
+    "coverImage": {
+      "_type": "image",
+      "localAssetKey": "cover",
+      "alt": "An iPad lying on purple cushions, showing the Augwa dashboard with Important cards, finances, bookings and staff activity"
+    },
+    "hero": [
+      {
+        "_type": "mediaImage",
+        "_key": "augwa-hero",
+        "localAssetKey": "cover",
+        "alt": "An iPad lying on purple cushions, showing the Augwa dashboard with Important cards, finances, bookings and staff activity",
+        "size": "full"
+      }
+    ],
+    "sections": [
+      {
+        "_type": "projectSection",
+        "_key": "augwa-section-0",
+        "title": "Problem Statement",
+        "heading": "How might we help a cleaning business get set up in Augwa, then run each day from one clear view?",
+        "content": [
+          {
+            "_type": "mediaGallery",
+            "_key": "augwa-s-0-b-0",
+            "caption": "The old dashboard, and the redesign.",
+            "images": [
+              {
+                "_type": "image",
+                "_key": "augwa-s-0-b-0-0",
+                "localAssetKey": "before-dashboard",
+                "alt": "The old Augwa dashboard: a flat sidebar from Dashboard, Clients and Bookings down to Time off, Company Profile, Payment Account and Logout, a dark top bar with Winston Zhao Studio, and a stack of setup cards such as Review Business Details and Set Up Payment Account, each with an orange warning icon and a dark button",
+                "label": "Before"
+              },
+              {
+                "_type": "image",
+                "_key": "augwa-s-0-b-0-1",
+                "localAssetKey": "dashboard-final",
+                "alt": "The final Augwa dashboard: the sidebar with Dashboard selected; Good Afternoon with a date range, an All Clear pill and a bell; four Important cards for overdue bookings, overtime bookings, schedules without bookings and bookings without staff; then Finances with revenue bars by day, Bookings as a pie by status, and Staff Activity with the most and least utilized staff",
+                "label": "After"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-0-b-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-0-b-1-s",
+                "marks": [],
+                "text": "A residential cleaning company works in two places at once. In the office, owners and staff keep track of bookings, clients, schedules, payments and the team. Out in the field, cleaners move from one home to the next."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-0-b-2-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-0-b-2-0-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Who:"
+              },
+              {
+                "_type": "span",
+                "_key": "augwa-s-0-b-2-0-s1",
+                "marks": [],
+                "text": " owners and office staff on the web app, and cleaners on the phone app."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-0-b-2-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-0-b-2-1-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "What we heard:"
+              },
+              {
+                "_type": "span",
+                "_key": "augwa-s-0-b-2-1-s1",
+                "marks": [],
+                "text": " in talks with cleaning business owners and staff, setup was confusing for new businesses, and staff work on the go, between homes."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-0-b-2-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-0-b-2-2-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Constraint:"
+              },
+              {
+                "_type": "span",
+                "_key": "augwa-s-0-b-2-2-s1",
+                "marks": [],
+                "text": " every business has its own instance of Augwa, on its own domain."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-0-b-3",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-0-b-3-s",
+                "marks": [],
+                "text": "I also did a competitive analysis of eight other products’ dashboards, reports and setup pages."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-0-b-4",
+            "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-0-b-4-s",
+                "marks": [],
+                "text": "Not a blank page"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-0-b-5",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-0-b-5-s",
+                "marks": [],
+                "text": "Augwa already had a web app, and many of its features were there: a setup checklist, a sign-up that gave each business its own web address, and a log-in page for each company. The design held them back, as the old dashboard above shows:"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-0-b-6-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-0-b-6-0-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "No consistent component system"
+              },
+              {
+                "_type": "span",
+                "_key": "augwa-s-0-b-6-0-s1",
+                "marks": [],
+                "text": " across the app."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-0-b-6-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-0-b-6-1-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "A flat sidebar:"
+              },
+              {
+                "_type": "span",
+                "_key": "augwa-s-0-b-6-1-s1",
+                "marks": [],
+                "text": " one long list of 16 items, mixing office pages like Quotes and Invoices with staff pages like Punch clock and Time off."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-0-b-6-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-0-b-6-2-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Everything looked urgent:"
+              },
+              {
+                "_type": "span",
+                "_key": "augwa-s-0-b-6-2-s1",
+                "marks": [],
+                "text": " the dashboard was seven setup cards, each with the same orange warning icon."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-0-b-6-3",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-0-b-6-3-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "A long, plain sign-up:"
+              },
+              {
+                "_type": "span",
+                "_key": "augwa-s-0-b-6-3-s1",
+                "marks": [],
+                "text": " four separate form screens on a blue background before you got in."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-0-b-6-4",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-0-b-6-4-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "A dated, inconsistent look."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-0-b-7",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-0-b-7-s",
+                "marks": [],
+                "text": "Over the summer of 2025, I redesigned the web app’s sidebar, dashboard and setup, signing up and logging in, and the emails, and designed a new phone app for cleaners."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "_type": "projectSection",
+        "_key": "augwa-section-1",
+        "title": "Navigation",
+        "heading": "A sidebar that feels like theirs",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "augwa-s-1-b-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-1-b-0-s",
+                "marks": [],
+                "text": "Every page in the web app hangs off the sidebar: clients, bookings and schedules, finances, staff and the company itself. It’s also the first thing that tells you whose Augwa you’re in."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-1-b-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-1-b-1-s",
+                "marks": [],
+                "text": "The old sidebar was one flat list, shown in the old dashboard above. My versions started from a wireframe."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-1-b-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-1-b-2-s",
+                "marks": [],
+                "text": "In that wireframe, a full-width top bar sits above a column of placeholder tabs. In the hi-fi versions, the top bar is gone, the logo moves into the sidebar, and the pages sit under Dashboard and four groups: Operations, Finance, Staff and Company. Each group opens to its pages; Operations, for example, holds Clients, Bookings, Schedules and Import Jobs."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "augwa-s-1-b-3",
+            "localAssetKey": "nav-versions",
+            "alt": "Four versions of the Augwa sidebar with arrows between them: a wireframe with the old Augwa logo in a top bar over placeholder tabs; a sidebar with the old logo, Dashboard and four groups, Operations, Finance, Staff and Company, over Account, Support and Settings; the same with Company name and a colourful logo at the top; and the final, with Dashboard in a blue pill, Support, Settings, the user’s name and the new Augwa mark at the foot",
+            "caption": "The wireframe, the groups, the business’s name and logo at the top, then the final sidebar.",
+            "size": "full",
+            "labels": [
+              {
+                "_type": "imageLabel",
+                "_key": "augwa-s-1-b-3-l0",
+                "text": "Wireframe",
+                "x": 0.1401,
+                "y": 0.0412
+              },
+              {
+                "_type": "imageLabel",
+                "_key": "augwa-s-1-b-3-l1",
+                "text": "Groups",
+                "x": 0.4296,
+                "y": 0.0412
+              },
+              {
+                "_type": "imageLabel",
+                "_key": "augwa-s-1-b-3-l2",
+                "text": "Company brand",
+                "x": 0.6675,
+                "y": 0.0412
+              },
+              {
+                "_type": "imageLabel",
+                "_key": "augwa-s-1-b-3-l3",
+                "text": "Final",
+                "x": 0.9055,
+                "y": 0.0412
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-1-b-4",
+            "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-1-b-4-s",
+                "marks": [],
+                "text": "Why it changed"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-1-b-5-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-1-b-5-0-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Groups instead of one long list."
+              },
+              {
+                "_type": "span",
+                "_key": "augwa-s-1-b-5-0-s1",
+                "marks": [],
+                "text": " A flat list of pages was too long. Grouping keeps it short, even as Augwa adds features."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-1-b-5-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-1-b-5-1-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "The business’s brand at the top."
+              },
+              {
+                "_type": "span",
+                "_key": "augwa-s-1-b-5-1-s1",
+                "marks": [],
+                "text": " Each business has its own instance of Augwa, so it should feel like their own app. Their name and logo sit at the top, and Augwa’s mark, the new logo I designed, moves to the foot."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-1-b-5-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-1-b-5-2-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "No top bar."
+              },
+              {
+                "_type": "span",
+                "_key": "augwa-s-1-b-5-2-s1",
+                "marks": [],
+                "text": " Laptops and tablets are wide but short, so without a top bar there’s more room for content."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-1-b-6",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-1-b-6-s",
+                "marks": [],
+                "text": "In the final sidebar, the page you’re on sits in a blue pill, and your name replaces Account at the bottom. The sidebar also folds down to a rail of icons, and opens over the page when you hover it. I built it from components with hover, pressed and selected states."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "_type": "projectSection",
+        "_key": "augwa-section-2",
+        "title": "Dashboard",
+        "heading": "What needs attention first",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "augwa-s-2-b-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-2-b-0-s",
+                "marks": [],
+                "text": "The dashboard is an owner’s home base: bookings, money and staff on one screen. Before any of that, it has to show what’s gone wrong."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-2-b-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-2-b-1-s",
+                "marks": [],
+                "text": "In the old app, the dashboard was the setup checklist: seven cards, each with the same orange warning icon, so everything looked equally urgent."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-2-b-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-2-b-2-s",
+                "marks": [],
+                "text": "So “Important” comes first. Owners need to act on problems before they read reports. Important stays at the top in every version with data in it."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-2-b-3",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-2-b-3-s",
+                "marks": [],
+                "text": "In the explorations, Important was one box of four counts, above bookings listed by time: in progress, later today and the next seven days. One version added a donut of completed, in-progress and upcoming bookings."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "augwa-s-2-b-4",
+            "localAssetKey": "dashboard-versions",
+            "alt": "Three versions of the Augwa dashboard with arrows: Important as one box of four counts above booking lists for in progress, later today and the next seven days; the same, with a donut of completed, in-progress and upcoming bookings in place of Later today; and the final, with four Important cards above Finances, Bookings and Staff Activity",
+            "caption": "Two explorations and the final dashboard.",
+            "size": "full",
+            "labels": [
+              {
+                "_type": "imageLabel",
+                "_key": "augwa-s-2-b-4-l0",
+                "text": "Booking lists",
+                "x": 0.1558,
+                "y": 0.1167
+              },
+              {
+                "_type": "imageLabel",
+                "_key": "augwa-s-2-b-4-l1",
+                "text": "With a donut",
+                "x": 0.5,
+                "y": 0.1167
+              },
+              {
+                "_type": "imageLabel",
+                "_key": "augwa-s-2-b-4-l2",
+                "text": "Final",
+                "x": 0.8442,
+                "y": 0.1167
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-2-b-5",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-2-b-5-s",
+                "marks": [],
+                "text": "In the final, Important became four cards, each with an icon: overdue bookings, overtime bookings, schedules without bookings and bookings without staff. Below them, three cards share a row: Finances shows revenue by day, Bookings shows the week’s bookings by status, and Staff Activity shows who worked the most and the least hours."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-2-b-6",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-2-b-6-s",
+                "marks": [],
+                "text": "The header holds a date range, a status pill and a bell. I designed the status in three states: all clear, an alert and a critical message."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "augwa-s-2-b-7",
+            "localAssetKey": "dashboard-final",
+            "alt": "The final Augwa dashboard: the sidebar with Dashboard selected; Good Afternoon with a date range, an All Clear pill and a bell; four Important cards for overdue bookings, overtime bookings, schedules without bookings and bookings without staff; then Finances with revenue bars by day, Bookings as a pie by status, and Staff Activity with the most and least utilized staff",
+            "caption": "The final dashboard, with Important above finances, bookings and staff.",
+            "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-2-b-8",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-2-b-8-s",
+                "marks": [],
+                "text": "Further down come recently accessed items and recent bookings, and at the very bottom, the guide for setting up."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "_type": "projectSection",
+        "_key": "augwa-section-3",
+        "title": "Get started",
+        "heading": "One clear next step",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "augwa-s-3-b-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-3-b-0-s",
+                "marks": [],
+                "text": "A new cleaning business has a lot to do before Augwa is useful: check its details, connect payments, add staff and their availability, add clients and set up booking schedules. In our talks, setup was confusing for new businesses. The Get started guide puts every step in one place."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-3-b-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-3-b-1-s",
+                "marks": [],
+                "text": "The tasks were already there, in the old app’s checklist. What changed is how they’re shown. In my sign-up sketches, the last step asked how you wanted to start: add your data, or take a tour. That choice turned into the Get started guide."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-3-b-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-3-b-2-s",
+                "marks": [],
+                "text": "I tried three layouts: a horizontal accordion, with one task open and the rest folded into narrow columns; a grid of task cards; and a vertical list."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "augwa-s-3-b-3",
+            "localAssetKey": "getstarted-directions",
+            "alt": "Three layouts for the Get started guide under Good Afternoon: a horizontal accordion with one open task card and five folded columns, a grid of six task cards each with a Review button, and a vertical list of six tasks with descriptions",
+            "caption": "Three layouts for the guide.",
+            "size": "full",
+            "labels": [
+              {
+                "_type": "imageLabel",
+                "_key": "augwa-s-3-b-3-l0",
+                "text": "Accordion",
+                "x": 0.1558,
+                "y": 0.1091
+              },
+              {
+                "_type": "imageLabel",
+                "_key": "augwa-s-3-b-3-l1",
+                "text": "Grid",
+                "x": 0.5,
+                "y": 0.1091
+              },
+              {
+                "_type": "imageLabel",
+                "_key": "augwa-s-3-b-3-l2",
+                "text": "List",
+                "x": 0.8442,
+                "y": 0.1091
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-3-b-4",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-3-b-4-s",
+                "marks": [],
+                "text": "The list won, for two reasons:"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-3-b-5-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-3-b-5-0-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Progress at a glance."
+              },
+              {
+                "_type": "span",
+                "_key": "augwa-s-3-b-5-0-s1",
+                "marks": [],
+                "text": " A list shows every step and how far you’ve got at once, with one clear next step."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-3-b-5-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-3-b-5-1-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "It fits the dashboard."
+              },
+              {
+                "_type": "span",
+                "_key": "augwa-s-3-b-5-1-s1",
+                "marks": [],
+                "text": " It sits under a full dashboard, and you can hide it once you’re set up."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-3-b-6",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-3-b-6-s",
+                "marks": [],
+                "text": "In the final guide, a pill counts the finished tasks, and done tasks get a green check. The next task is open, with a short description and a Start button. Hide guide folds the whole thing down to one row."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "augwa-s-3-b-7",
+            "localAssetKey": "getstarted-final",
+            "alt": "The final Get started guide: a progress pill and Hide guide, Review business details checked off in green, Set up payment account open with a line about connecting Stripe and a blue Start button, then four more tasks; beside it, the guide hidden down to one row with Show guide",
+            "caption": "The final guide, open and hidden.",
+            "size": "full",
+            "labels": [
+              {
+                "_type": "imageLabel",
+                "_key": "augwa-s-3-b-7-l0",
+                "text": "Open",
+                "x": 0.2406,
+                "y": 0.0923
+              },
+              {
+                "_type": "imageLabel",
+                "_key": "augwa-s-3-b-7-l1",
+                "text": "Hidden",
+                "x": 0.7594,
+                "y": 0.0923
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "_type": "projectSection",
+        "_key": "augwa-section-4",
+        "title": "Getting in",
+        "heading": "Finding your company first",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "augwa-s-4-b-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-4-b-0-s",
+                "marks": [],
+                "text": "Every cleaning business gets its own instance of Augwa, on its own domain. That shapes the way in: owners set theirs up when they sign up, and everyone has to find their company before they can log in."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-4-b-1",
+            "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-4-b-1-s",
+                "marks": [],
+                "text": "Signing up"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-4-b-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-4-b-2-s",
+                "marks": [],
+                "text": "The old sign-up took four separate screens on a blue background: your country, your name and email, your business details with its custom web address, then a username, password and referral code."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "augwa-s-4-b-3",
+            "localAssetKey": "before-signup",
+            "alt": "Four screens of the old Augwa sign-up, each a white Get started card on a blue background: Country with Canada; first name, last name and email (blurred); legal business name, business email, phone, address and a custom web address ending in .augwa.me; and username, password, referral code, terms and Start free trial",
+            "caption": "The old sign-up: four separate screens.",
+            "size": "full",
+            "labels": [
+              {
+                "_type": "imageLabel",
+                "_key": "augwa-s-4-b-3-l0",
+                "text": "Country",
+                "x": 0.2456,
+                "y": 0.0176
+              },
+              {
+                "_type": "imageLabel",
+                "_key": "augwa-s-4-b-3-l1",
+                "text": "Name and email",
+                "x": 0.7544,
+                "y": 0.0176
+              },
+              {
+                "_type": "imageLabel",
+                "_key": "augwa-s-4-b-3-l2",
+                "text": "Business details",
+                "x": 0.2456,
+                "y": 0.5269
+              },
+              {
+                "_type": "imageLabel",
+                "_key": "augwa-s-4-b-3-l3",
+                "text": "Account",
+                "x": 0.7544,
+                "y": 0.5269
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-4-b-4",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-4-b-4-s",
+                "marks": [],
+                "text": "I started on paper. My sketches open on a “Try Augwa for free” page with Google or email, then a three-step Create account with a progress bar, business info, and a choice of how to start."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "augwa-s-4-b-5",
+            "localAssetKey": "sketches",
+            "alt": "Two pages of pencil sketches with orange notes: a Try Augwa for free page with Google, email and Continue, leading to a three-step Create account form with name, email, country and password; then Business info, and a user choice screen asking how do you want to start, with Add data and Take tour, noted as set up Stripe, company, staff and an interactive tour with mock data",
+            "caption": "My sketches for the new sign-up.",
+            "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-4-b-6",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-4-b-6-s",
+                "marks": [],
+                "text": "The sketches led to the final sign-up, in three steps."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-4-b-7",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-4-b-7-s",
+                "marks": [],
+                "text": "Owners start from “Get started for free”, then set up in three steps: their profile, their business details and their domain, which can’t be changed later. Staff register a different way, with an invite code from their company."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "augwa-s-4-b-8",
+            "localAssetKey": "onboarding",
+            "alt": "Owner sign-up in three steps with arrows: Create your profile with name, phone number and country; Business details with the legal business name, public email and phone, and address; and Your domain, which explains that the business’s instance of Augwa will be hosted there and can’t be changed later",
+            "caption": "Owner sign-up in three steps, ending with the business’s domain.",
+            "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-4-b-9",
+            "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-4-b-9-s",
+                "marks": [],
+                "text": "Company search"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-4-b-10",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-4-b-10-s",
+                "marks": [],
+                "text": "Logging in starts with finding your company. Search waits until you’ve typed at least four characters, so no one can list every company on Augwa. It was also a requirement from the developers. The top match gets its own card with a blue arrow, and other matches sit under “More results”."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "augwa-s-4-b-11",
+            "localAssetKey": "find-company",
+            "alt": "Find your company, twice: a search field above a box that asks for at least 4 characters to start searching, then the results, with the top match in its own card with a blue arrow button and four more results below with chevrons",
+            "caption": "Before you’ve typed four characters, and the results.",
+            "size": "full",
+            "labels": [
+              {
+                "_type": "imageLabel",
+                "_key": "augwa-s-4-b-11-l0",
+                "text": "Before searching",
+                "x": 0.232,
+                "y": 0.0401
+              },
+              {
+                "_type": "imageLabel",
+                "_key": "augwa-s-4-b-11-l1",
+                "text": "Results",
+                "x": 0.768,
+                "y": 0.0401
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-4-b-12",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-4-b-12-s",
+                "marks": [],
+                "text": "I also designed the edge states: a nudge to keep typing, and no results."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-4-b-13",
+            "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-4-b-13-s",
+                "marks": [],
+                "text": "Logging in"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-4-b-14",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-4-b-14-s",
+                "marks": [],
+                "text": "The old log-in page put the company’s name above a username and password."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-4-b-15",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-4-b-15-s",
+                "marks": [],
+                "text": "Once you’ve picked your company, the log-in page has to show it, and let you switch if you picked the wrong one. I tried 13 ways to do that, from pills and a dropdown to a card with the domain and a big logo beside the title."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "augwa-s-4-b-16",
+            "localAssetKey": "login-styles",
+            "alt": "Nine log-in style explorations in a grid, each showing the company differently: a pill beside Log in, a centred pill with a dropdown, the pill opened with Change company, a row with the company’s domain and a switch button, a company card above the form card, a large logo to the right of the title, a small selector with a chevron, a centred pill with a swap button, and a card with a long company name on two lines",
+            "caption": "Nine of the 13 log-in styles, each showing the company a different way.",
+            "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-4-b-17",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-4-b-17-s",
+                "marks": [],
+                "text": "Style 12 went live: a centred white pill with the company’s logo, its name and a swap button, above the form, with the new Augwa logo in the corner."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "augwa-s-4-b-18",
+            "localAssetKey": "login-before-after",
+            "alt": "Before and after: the old log-in, a white card on blue with Winston Zhao Studio, LOGIN, username, password and a dark Login button; then Style 12, with the new Augwa logo, a white pill with the company’s logo, Company Name and a swap button, work email, password, a blue Log in button, and Continue with Google and Facebook",
+            "caption": "The old log-in, and Style 12, the one that went live.",
+            "size": "full",
+            "labels": [
+              {
+                "_type": "imageLabel",
+                "_key": "augwa-s-4-b-18-l0",
+                "text": "Before",
+                "x": 0.2434,
+                "y": 0.0489
+              },
+              {
+                "_type": "imageLabel",
+                "_key": "augwa-s-4-b-18-l1",
+                "text": "After",
+                "x": 0.7566,
+                "y": 0.0489
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "_type": "projectSection",
+        "_key": "augwa-section-5",
+        "title": "Emails",
+        "heading": "Emails in each business’s colour",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "augwa-s-5-b-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-5-b-0-s",
+                "marks": [],
+                "text": "Some of what Augwa does happens in an inbox: a client’s booking confirmation, a password reset, a code to verify your email. Each one carries the cleaning business’s name, logo and brand colour."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-5-b-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-5-b-1-s",
+                "marks": [],
+                "text": "I made them in four steps. First, a plain letter under a coloured header. Then the same email split into cards, with a logo and a footer. Then the booking row became a booking card, with the date and time, the service, the address, notes, and an Add to Calendar button."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "augwa-s-5-b-2",
+            "localAssetKey": "emails-evolution",
+            "alt": "Three versions of the booking confirmation email with arrows: a plain letter under a blue header with a cleaning date and View/Manage; the same email split into cards with a logo, a green check and a footer; and the version with a booking card showing the date and time, Home Cleaning, an address, notes, and Add to Calendar and View/Manage buttons",
+            "caption": "From a plain letter to cards, then a booking card.",
+            "size": "full",
+            "labels": [
+              {
+                "_type": "imageLabel",
+                "_key": "augwa-s-5-b-2-l0",
+                "text": "Letter",
+                "x": 0.1558,
+                "y": 0.0514
+              },
+              {
+                "_type": "imageLabel",
+                "_key": "augwa-s-5-b-2-l1",
+                "text": "Cards",
+                "x": 0.5,
+                "y": 0.0514
+              },
+              {
+                "_type": "imageLabel",
+                "_key": "augwa-s-5-b-2-l2",
+                "text": "Booking card",
+                "x": 0.8442,
+                "y": 0.0514
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-5-b-3",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-5-b-3-s",
+                "marks": [],
+                "text": "Last came three templates on the same layout: booking confirmation, password reset and a one-time code."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "augwa-s-5-b-4",
+            "localAssetKey": "emails-templates",
+            "alt": "Three email templates side by side: a blue booking confirmation with the booking card, a red password reset with a Set a new password button and a note that you’ll be logged out of all devices, and a lime email verification with a one-time code, a reminder not to share it and a Secure account button",
+            "caption": "The three templates, each shown in a different business’s colour.",
+            "size": "full",
+            "labels": [
+              {
+                "_type": "imageLabel",
+                "_key": "augwa-s-5-b-4-l0",
+                "text": "Booking",
+                "x": 0.1558,
+                "y": 0.036
+              },
+              {
+                "_type": "imageLabel",
+                "_key": "augwa-s-5-b-4-l1",
+                "text": "Password reset",
+                "x": 0.5,
+                "y": 0.036
+              },
+              {
+                "_type": "imageLabel",
+                "_key": "augwa-s-5-b-4-l2",
+                "text": "One-time code",
+                "x": 0.8442,
+                "y": 0.036
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "_type": "projectSection",
+        "_key": "augwa-section-6",
+        "title": "Phone app",
+        "heading": "Built around the next job",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "augwa-s-6-b-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-6-b-0-s",
+                "marks": [],
+                "text": "Cleaners don’t work from a desk. They work on the go, between homes. The phone app’s home is their next job: who it’s for, where, when, and a map with directions."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-6-b-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-6-b-1-s",
+                "marks": [],
+                "text": "The buttons on the job card follow the job. Before it starts, you can start the job or notify the client. Once it’s in progress, they become Pause and Complete. A job details screen holds the rest, with notes."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "augwa-s-6-b-2",
+            "localAssetKey": "phone-job-states",
+            "alt": "Two iPhones showing Home in the Augwa staff app: a scheduled job card with the customer, address, time and date, a map with Directions, and Start job and Notify Client buttons; then the same job in progress, with Pause and Complete instead. The tab bar has Home, Shift log, a round stopwatch button, Schedule and Time off",
+            "caption": "The next job, before and after you start it.",
+            "size": "full",
+            "labels": [
+              {
+                "_type": "imageLabel",
+                "_key": "augwa-s-6-b-2-l0",
+                "text": "Scheduled",
+                "x": 0.358,
+                "y": 0.0434
+              },
+              {
+                "_type": "imageLabel",
+                "_key": "augwa-s-6-b-2-l1",
+                "text": "In progress",
+                "x": 0.642,
+                "y": 0.0434
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-6-b-3",
+            "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-6-b-3-s",
+                "marks": [],
+                "text": "A punch clock in the middle"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-6-b-4",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-6-b-4-s",
+                "marks": [],
+                "text": "The tab bar has Home, Shift log, Schedule and Time off, with a round stopwatch button in the centre: the punch clock. Staff use it many times a day, to clock in, travel, take breaks and clock out, and accurate hours matter for pay. So it sits in the middle, one tap away."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-6-b-5",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-6-b-5-s",
+                "marks": [],
+                "text": "It opens over a blurred Home, and what it offers depends on whether you’re in a job. With no job on, it’s just Clock in. During a job, it’s Start travel, Start meal, Start break and Clock out."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "augwa-s-6-b-6",
+            "localAssetKey": "phone-punch-clock",
+            "alt": "Two iPhones with the punch clock open over a blurred Home: with no job, a single Clock in button; in a job, Start travel, Start meal, Start break and a red Clock out",
+            "caption": "The punch clock, opened from the centre button.",
+            "size": "full",
+            "labels": [
+              {
+                "_type": "imageLabel",
+                "_key": "augwa-s-6-b-6-l0",
+                "text": "No job",
+                "x": 0.358,
+                "y": 0.0434
+              },
+              {
+                "_type": "imageLabel",
+                "_key": "augwa-s-6-b-6-l1",
+                "text": "In a job",
+                "x": 0.642,
+                "y": 0.0434
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-6-b-7",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-6-b-7-s",
+                "marks": [],
+                "text": "Shift log and Schedule share a pattern: a month calendar above a list. Shift log lists the day’s clock-ins and breaks, and Schedule lists your jobs with their status."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "augwa-s-6-b-8",
+            "localAssetKey": "phone-shift-schedule",
+            "alt": "Two iPhones: Shift log, with a month calendar above a start of shift and a 30-minute break; and Schedule, with a month calendar with a few days outlined, above job cards marked In Progress and Scheduled",
+            "caption": "Shift log and Schedule.",
+            "size": "full"
+          }
+        ]
+      },
+      {
+        "_type": "projectSection",
+        "_key": "augwa-section-7",
+        "title": "Design system",
+        "heading": "Tokens under every screen",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "augwa-s-7-b-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-7-b-0-s",
+                "marks": [],
+                "text": "Augwa’s old app had no consistent component system. Alongside the screens, I built one in Figma: a library of colour tokens, and the components built on it."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-7-b-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-7-b-1-s",
+                "marks": [],
+                "text": "The library has two layers. Augwa Primitives holds 35 raw colours in seven ramps, each named by ramp and step, like color/blue/900. Augwa Tokens holds 65 names that say what a colour is for, and none has a hex value of its own. They cover surfaces, text, borders, status, the sidebar, buttons, charts and the landing surfaces: surface/brand/default points to color/blue/900, and status/danger/bg to color/red/200."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "augwa-s-7-b-2",
+            "localAssetKey": "ds-primitives",
+            "alt": "Augwa Primitives as seven colour ramps with step numbers and hex values: neutral from 0 to 1000, blue and navy from 200 to 1000, and green, lime, yellow and red at three steps each",
+            "caption": "The 35 primitives, in seven ramps.",
+            "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-7-b-3",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-7-b-3-s",
+                "marks": [],
+                "text": "Many tokens point to other tokens, so changing one value carries through. text/primary runs through surface/base/contrast to black, nav/item/selected runs through surface/brand/subtle to a pale blue, and the primary landing button’s gradient runs through landsurf/brand-tint and landsurf/brand down to two blues."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "augwa-s-7-b-4",
+            "localAssetKey": "ds-tokens",
+            "alt": "Augwa Tokens in nine groups, each token with its swatch and what it points to: surface/base and surface/brand, text, border, status for success, warning, danger and info, nav, chart, landsurf, and buttons for the portal and the landing page",
+            "caption": "The 65 tokens, each pointing to a primitive or another token.",
+            "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-7-b-5",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-7-b-5-s",
+                "marks": [],
+                "text": "On top of the tokens, I built the sidebar and the dashboard’s status as components with states:"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-7-b-6-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-7-b-6-0-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "NavTile:"
+              },
+              {
+                "_type": "span",
+                "_key": "augwa-s-7-b-6-0-s1",
+                "marks": [],
+                "text": " one item in the sidebar, in Default, Hover, Pressed and Selected. Its icon, title and caret are properties, so one tile becomes Dashboard, Operations or Finance."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-7-b-6-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-7-b-6-1-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "NavSection:"
+              },
+              {
+                "_type": "span",
+                "_key": "augwa-s-7-b-6-1-s1",
+                "marks": [],
+                "text": " a group of pages that opens out from one tile, expanded or collapsed."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-7-b-6-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-7-b-6-2-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Status:"
+              },
+              {
+                "_type": "span",
+                "_key": "augwa-s-7-b-6-2-s1",
+                "marks": [],
+                "text": " the pill and bell in the dashboard header: all clear, all clear with the bell ringing, an alert, or a critical message."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "augwa-s-7-b-7",
+            "localAssetKey": "ds-components",
+            "alt": "Three component sheets: NavTile in Default, Hover with a light grey pill, Pressed with a blue pill and Selected with a pale blue pill, each with a placeholder icon, Title and a caret; NavSection expanded, a tile above three nested tiles on a light grey panel, and collapsed to one tile; and Status as a green All clear pill with a bell, the same with a ringing blue bell, a yellow 1 Alert pill and a red 1 Critical message pill",
+            "caption": "NavTile, NavSection and Status, with their states.",
+            "size": "full",
+            "labels": [
+              {
+                "_type": "imageLabel",
+                "_key": "augwa-s-7-b-7-l0",
+                "text": "NavTile",
+                "x": 0.149,
+                "y": 0.0623
+              },
+              {
+                "_type": "imageLabel",
+                "_key": "augwa-s-7-b-7-l1",
+                "text": "NavSection",
+                "x": 0.5,
+                "y": 0.0623
+              },
+              {
+                "_type": "imageLabel",
+                "_key": "augwa-s-7-b-7-l2",
+                "text": "Status",
+                "x": 0.851,
+                "y": 0.0623
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-7-b-8",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-7-b-8-s",
+                "marks": [],
+                "text": "The sidebar is a component too, with an expanded and a collapsed version, and a panel that opens over the page when you hover the collapsed rail. In the final dashboard, it’s one instance holding a selected NavTile for Dashboard and four collapsed NavSections, and the header uses Status in its all clear state. I wired the states in the prototype: tiles respond to hover and press, groups open on click, and the sidebar folds and unfolds."
+              }
+            ]
+          },
+          {
+            "_type": "mediaImage",
+            "_key": "augwa-s-7-b-9",
+            "localAssetKey": "ds-anatomy",
+            "alt": "The top of the final Augwa dashboard with six numbered purple outlines and a legend: 1 the sidebar, 2 the selected Dashboard tile, 3 the collapsed Operations group, 4 the All clear status pill and bell, 5 the blue Overdue bookings card with the highlighted card shadow, and 6 the Overtime bookings card with the regular card shadow",
+            "caption": "The components and card styles in the final dashboard.",
+            "size": "full"
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-7-b-10",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-7-b-10-s",
+                "marks": [],
+                "text": "The same library runs under the emails and the phone app. The phone app’s job cards use the same card shadow as the dashboard’s cards, and its round punch clock button uses the same blue gradient and shadow as the Start buttons in my Get started guide designs. The emails take their greys and blues from the same primitives. The brand blue, color/blue/900, reaches the dashboard, the log-in pages, the emails and the phone app, either directly or through surface/brand/default."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "_type": "projectSection",
+        "_key": "augwa-section-8",
+        "title": "Outcome",
+        "heading": "Results and lessons",
+        "content": [
+          {
+            "_type": "block",
+            "_key": "augwa-s-8-b-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-8-b-0-s",
+                "marks": [],
+                "text": "The new dashboard, sidebar and Get started guide are live in Augwa’s web app, along with the new sign-up, log-in and onboarding flows and the emails."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-8-b-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-8-b-1-s",
+                "marks": [],
+                "text": "Behind all of it is a tokenized design system of 20+ new components that I built. It kept the UI consistent and sped up handoff to the developers. I also designed Augwa’s new logo and branding."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-8-b-2",
+            "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-8-b-2-s",
+                "marks": [],
+                "text": "What I learned"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-8-b-3-0",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-8-b-3-0-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Lead with what needs attention."
+              },
+              {
+                "_type": "span",
+                "_key": "augwa-s-8-b-3-0-s1",
+                "marks": [],
+                "text": " Owners act on problems before they read reports, so the dashboard opens with them."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-8-b-3-1",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-8-b-3-1-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "Design the first day too."
+              },
+              {
+                "_type": "span",
+                "_key": "augwa-s-8-b-3-1-s1",
+                "marks": [],
+                "text": " Signing up, finding your company and the Get started guide are part of the product, as much as the screens a business uses every day."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-8-b-3-2",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-8-b-3-2-s",
+                "marks": [
+                  "strong"
+                ],
+                "text": "One system across web, email and phone."
+              },
+              {
+                "_type": "span",
+                "_key": "augwa-s-8-b-3-2-s1",
+                "marks": [],
+                "text": " One set of tokens and components kept the web app, the emails and the phone app consistent."
+              }
+            ],
+            "listItem": "bullet",
+            "level": 1
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-8-b-4",
+            "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-8-b-4-s",
+                "marks": [],
+                "text": "Summary"
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-8-b-5",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-8-b-5-s",
+                "marks": [],
+                "text": "Augwa is where residential cleaning businesses run their day, from the office to the next home on a cleaner’s list. As its only designer, I designed a sidebar that carries each business’s brand, a dashboard that leads with what needs attention, a guide for the first day, sign-up and log-in, emails in each business’s colour, and a phone app built around the next job and the punch clock, all on one design system."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "augwa-s-8-b-6",
+            "style": "normal",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "augwa-s-8-b-6-s",
+                "marks": [],
+                "text": "The dashboard, sidebar, Get started guide, sign-up and log-in flows and emails are live."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "assets": {
+    "cover": {
+      "path": "assets/augwa-cs5-cover.jpg",
+      "sourceNodeIds": [
+        "429:15824"
+      ],
+      "note": "Winston’s iPad mockup: the image fill of the Figma raster 429:15824 (“iPad Pro (2025)”, 4096×3072, page 9:5277; downloaded read-only), downscaled to 2000×1500 with the same framing as his earlier 1500×1125 copy, showing the final dashboard; used as both cover and hero, like heatmap.json."
+    },
+    "nav-versions": {
+      "path": "assets/augwa-cs5-nav-versions.png",
+      "sourceNodeIds": [
+        "427:8548",
+        "427:8563",
+        "427:8636",
+        "427:7103"
+      ],
+      "note": "Nav columns cropped from 2x exports of the Shell wireframe “Dashboard” (427:8548), “Dashboard - StandardNav” 427:8563 and 427:8636 (Shell section 427:8547) and the final nav component “Property 1=Default” (427:7103, Frame 16), each with rounded corners and a light hairline (outline-villio.mjs), in a row with arrows; a transparent band on top holds the labels. Order read from the frames (the file has no dates)."
+    },
+    "dashboard-versions": {
+      "path": "assets/augwa-cs5-dashboard-versions.png",
+      "sourceNodeIds": [
+        "427:5892",
+        "427:6135",
+        "427:7415"
+      ],
+      "note": "“Dashboard - StandardNav” 427:5892 and 427:6135 (Dashboard Shell 427:5643, canvas order left to right) and the final 427:7415, all cut at the same height (734 pt) in a clean gap: 5892 just under its Bookings card (its Get started guide is left out), 6135 between the second and third Next 7 days rows, 7415 above the Recently Accessed heading and the nav’s Augwa mark. 2x exports scaled to 989×567, rounded corners and a light hairline (outline-villio.mjs, radius 14, stroke 4, #E3E3E3), in a row with arrows; a transparent band on top holds the labels. In 6135 the “1” under Upcoming is clipped by its card in Figma; the clipped digit is painted out with the card’s own white in this copy (the Figma file is unchanged)."
+    },
+    "dashboard-final": {
+      "path": "assets/augwa-cs5-dashboard-final.png",
+      "sourceNodeIds": [
+        "427:7415"
+      ],
+      "note": "“Dashboard - StandardNav” (427:7415, Dashboard section 427:7414) at 2x, cropped to the frame’s own 1280×778 viewport because its content runs past the frame onto the grey section background; rounded corners and a light hairline (outline-villio.mjs, radius 33, stroke 4, #E3E3E3)."
+    },
+    "getstarted-directions": {
+      "path": "assets/augwa-cs5-getstarted-directions.png",
+      "sourceNodeIds": [
+        "427:11253",
+        "427:11539",
+        "427:11943"
+      ],
+      "note": "Dashboard Onboarding (427:11162) frames 427:11253, 427:11539 and 427:11943 at 2x, cropped to the content area so the old Augwa-branded nav is left out, rounded corners and a light hairline (outline-villio.mjs), side by side without arrows; a transparent band on top holds the labels."
+    },
+    "getstarted-final": {
+      "path": "assets/augwa-cs5-getstarted-final.png",
+      "sourceNodeIds": [
+        "427:12167",
+        "427:12413"
+      ],
+      "note": "427:12167 (open) and 427:12413 (hidden) from Dashboard Onboarding (427:11162) at 2x, cropped to the content area without the old nav, rounded corners and a light hairline (outline-villio.mjs), side by side; a transparent band on top holds the labels."
+    },
+    "onboarding": {
+      "path": "assets/augwa-cs5-onboarding.png",
+      "sourceNodeIds": [
+        "427:11029",
+        "427:11075",
+        "427:11121"
+      ],
+      "note": "“Onboarding - STEP 1–3” (427:11029, 427:11075, 427:11121; Login section 427:9323) at 2x, cropped to the form column (x 400–880, y 80–832 pt, keeping the gradient at the bottom), rounded corners and a light hairline (outline-villio.mjs, radius 33, stroke 4, #E3E3E3), with arrows. The end card “Almost there!” (427:11149) is left out."
+    },
+    "find-company": {
+      "path": "assets/augwa-cs5-find-company.png",
+      "sourceNodeIds": [
+        "427:9447",
+        "427:9593"
+      ],
+      "note": "“Find Company - STEP 1” (427:9447) and “Find Company - STEP 4” (427:9593), version B with the 4-character rule, from the Login section (427:9323) at 2x, cropped to the form column, rounded corners and a light hairline (outline-villio.mjs), with an arrow; a transparent band on top holds the labels. Not presented as the shipped flow."
+    },
+    "login-styles": {
+      "path": "assets/augwa-cs5-login-styles.png",
+      "sourceNodeIds": [
+        "427:9872",
+        "427:9925",
+        "427:10502",
+        "427:9980",
+        "427:10382",
+        "427:10270",
+        "427:10325",
+        "427:10040",
+        "427:10151"
+      ],
+      "note": "“Log in - STYLE 1, 2, 4, 5, 7, 8, 9, 11, 13” (Login section 427:9323) at 2x, each cropped to x 420–860 pt from y 70 pt down to 24 pt below its lowest company or “Log in” element (so no form field is cut), then extended to the tallest cell (Style 4, 215.5 pt) by repeating its last row; rounded corners and a light hairline (outline-villio.mjs, radius 24, stroke 4, #E3E3E3), three rows of three in style-number order, no arrows. Style 12 (the one Winston says went live) is its own image; Styles 3 (error banner), 6 (two columns) and 10 (company card in the page corner) don’t read in a form-column crop."
+    },
+    "emails-evolution": {
+      "path": "assets/augwa-cs5-emails-evolution.png",
+      "sourceNodeIds": [
+        "427:12689",
+        "427:12701",
+        "427:12720"
+      ],
+      "note": "Email Templates section (427:13107): “Frame 1” (427:12689), “Frame 3” (427:12701) and “Frame 6” (427:12720, cut in the gap under the booking card at 953 of 1408 pt), 2x scaled to 989 px wide, rounded corners and a light hairline (outline-villio.mjs, radius 26, stroke 4, #E3E3E3), with arrows in the order Winston made them; a transparent band on top holds labels."
+    },
+    "emails-templates": {
+      "path": "assets/augwa-cs5-emails-templates.png",
+      "sourceNodeIds": [
+        "427:12994",
+        "427:12831",
+        "427:12912"
+      ],
+      "note": "“Booking Confirmation” 427:12994 (blue, Template section 427:12993), “Password Reset” 427:12831 (red row) and “One Time Code” 427:12912 (lime row) from Email Templates (427:13107), full frames at 2x, rounded corners and a light hairline (outline-villio.mjs), top-aligned, no arrows; a transparent band on top holds the labels. Each template exists in all three business colours in Figma; one of each is shown, and the caption says so."
+    },
+    "phone-job-states": {
+      "path": "assets/augwa-cs5-phone-job-states.png",
+      "sourceNodeIds": [
+        "19:3616",
+        "19:3804"
+      ],
+      "note": "“Home - job not started” (19:3616) and “Home - job started” (19:3804) from App Demo (19:3615) at 3x, with an iOS status bar added (the App Demo frames have none; same overlay as hopper-sb/statusbar.py), in Apple’s iPhone 16 Pro (White Titanium) bezel on a transparent background (phones.py), with an arrow."
+    },
+    "phone-punch-clock": {
+      "path": "assets/augwa-cs5-phone-punch-clock.png",
+      "sourceNodeIds": [
+        "19:4511",
+        "19:4386"
+      ],
+      "note": "“Punch clock - no job” (19:4511) and “Punch clock - in job” (19:4386) from App Demo (19:3615) at 3x, with an iOS status bar added (the App Demo frames have none; same overlay as hopper-sb/statusbar.py), in Apple’s iPhone 16 Pro (White Titanium) bezel on a transparent background (phones.py), side by side without an arrow."
+    },
+    "phone-shift-schedule": {
+      "path": "assets/augwa-cs5-phone-shift-schedule.png",
+      "sourceNodeIds": [
+        "19:3911",
+        "19:4114"
+      ],
+      "note": "“Shift log” (19:3911) and “Schedule” (19:4114) from App Demo (19:3615) at 3x, with an iOS status bar added (the App Demo frames have none; same overlay as hopper-sb/statusbar.py), in Apple’s iPhone 16 Pro (White Titanium) bezel on a transparent background (phones.py), side by side without an arrow."
+    },
+    "before-dashboard": {
+      "path": "assets/augwa-cs5-before-dashboard.png",
+      "sourceNodeIds": [
+        "460:1883"
+      ],
+      "note": "The old Augwa dashboard: the original screen image inside Winston’s MacBook mockup 460:1883 (section “Other” 460:1830), cropped from the top to the final dashboard’s proportions (2548×1549 of 2548×1780) so the pair lines up, with rounded corners and a light hairline (outline-villio.mjs, radius 33, stroke 4, #E3E3E3). Shown as the Before half of the before/after at the top of the Problem Statement, with dashboard-final as After."
+    },
+    "before-signup": {
+      "path": "assets/augwa-cs5-before-signup.png",
+      "sourceNodeIds": [
+        "460:1863",
+        "460:1867",
+        "460:1871",
+        "460:1875"
+      ],
+      "note": "The old sign-up screens from Winston’s MacBook mockups 460:1863, 460:1867, 460:1871 and 460:1875 (section 460:1830): the original screen images cropped to the same box around the form card (x 386, y 116, 1775×1547), each with rounded corners and a light hairline, in a 2×2 grid in canvas order with transparent bands for the labels; scaled to 3200 wide. Portfolio copy: Winston’s email in the name-and-email step is blurred, at his request."
+    },
+    "sketches": {
+      "path": "assets/augwa-cs5-sketches.png",
+      "sourceNodeIds": [
+        "460:1888",
+        "460:1889"
+      ],
+      "note": "Winston’s two photos of his sign-up sketches (460:1888, 460:1889 in frame 460:1887), the second scaled to the first’s height (1532 px), rounded corners and a light hairline, side by side."
+    },
+    "login-before-after": {
+      "path": "assets/augwa-cs5-login-before-after.png",
+      "sourceNodeIds": [
+        "460:1879",
+        "427:10098"
+      ],
+      "note": "Before: the old log-in screen image from Winston’s MacBook mockup 460:1879, cropped to Style 12’s proportions. After: Log in STYLE 12 (427:10098) at 2x. Both with rounded corners and a light hairline, an arrow between (outline-villio.mjs), scaled to 3200 wide, with a transparent band on top for the labels."
+    },
+    "ds-components": {
+      "path": "assets/augwa-cs5-ds-components.png",
+      "sourceNodeIds": [
+        "427:6985",
+        "427:6986",
+        "427:6992",
+        "427:6998",
+        "427:7004",
+        "427:6968",
+        "427:6969",
+        "427:6977",
+        "427:7074",
+        "427:7075",
+        "427:7081",
+        "427:7087",
+        "427:7093"
+      ],
+      "note": "Each variant was exported at 2x with MCP download_assets. The Navbar section’s #FAFAFA background was baked into the exports and replaced with white; nothing else changed. Laid out in HTML with Inter captions, given rounded corners and a #E3E3E3 hairline (outline-villio.mjs: radius 33, stroke 4, gap 104), with a transparent band on top (175/3200 of width) for the labels. 1960×859. The Status captions describe the variants, which the file names Default/Variant2/Variant3/Variant4."
+    },
+    "ds-tokens": {
+      "path": "assets/augwa-cs5-ds-tokens.png",
+      "sourceNodeIds": [
+        "9:5277"
+      ],
+      "note": "Token card for Augwa Tokens, rendered in HTML at 2.3x (tokens_extended.py, render.cjs) with rounded corners and a light hairline. It shows the 20 tokens from the Figma library (surface/base, surface/brand, landsurf, buttons) plus 45 added at Winston’s request on Nov 20 2026 to make the set complete (surface hover/subtle, text, border, status, nav, more buttons, chart). The added tokens are not in the Figma library; all 65 alias the unchanged 35 primitives, directly or through other tokens (list in scratchpad augwa-ds/work/tokens-extended.json, with inFigma flags)."
+    },
+    "ds-anatomy": {
+      "path": "assets/augwa-cs5-ds-anatomy.png",
+      "sourceNodeIds": [
+        "427:7415",
+        "427:7416",
+        "427:7430",
+        "427:7436",
+        "427:7441"
+      ],
+      "note": "The top 320 pt of 427:7415 at 2x, reusing the existing export scratchpad/exports/augwa/work/427-7415-viewport.png. The outlines (#9747FF, placed from the instances’ real bounds), the markers and the legend are drawn only in this image; the Figma file is untouched. Outlined with outline-villio.mjs (radius 33, stroke 4, #E3E3E3). 2568×870. No label band, since the legend is inside the card."
+    },
+    "ds-primitives": {
+      "path": "assets/augwa-cs5-ds-primitives.png",
+      "sourceNodeIds": [
+        "9:5277"
+      ],
+      "note": "A colour-ramp card drawn from the 35 Augwa Primitives variables bound on the Augwa page (read with the Plugin API; values in scratchpad augwa-ds/variables.json), rendered in HTML at 3x (tokens_html.py, render.cjs) with rounded corners and a light hairline (outline-villio.mjs). Values match the file exactly."
+    }
+  }
+}
