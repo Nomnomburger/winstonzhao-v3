@@ -305,7 +305,9 @@ export function AnimatedText({ children, baseDelay = 0, staggerDelay = 0.08, cla
 
 // The hero name's intro: each letter rises through its own mask and fades in,
 // on a stagger that runs on across the words.
-const LETTER_REVEAL_STAGGER = 0.035;
+const LETTER_REVEAL_STAGGER = 0.02;
+// How far below its resting place each letter starts, as a share of its height
+const LETTER_REVEAL_DISTANCE = '70%';
 const LETTER_REVEAL_DURATION = 0.7;
 const LETTER_REVEAL_EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -412,7 +414,7 @@ export function LetterRevealText({ children, baseDelay = 0, letterOffset = 0, in
                 >
                   <motion.span
                     className="inline-block"
-                    initial={{ y: '100%', opacity: 0 }}
+                    initial={{ y: LETTER_REVEAL_DISTANCE, opacity: 0 }}
                     animate={{ y: '0%', opacity: 1 }}
                     transition={{ duration: LETTER_REVEAL_DURATION, delay, ease: LETTER_REVEAL_EASE }}
                     onAnimationComplete={() => land(order)}
