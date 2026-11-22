@@ -6,6 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import {
   AnimatedText,
+  LetterRevealText,
   ScrambleText,
   formatTorontoTime,
   useCurrentTime,
@@ -339,7 +340,9 @@ export default function HomePanelMobile({
   const [firstName, lastName] = t.name.split(' ');
   const [fromFirstName, fromLastName] = fromT.name.split(' ');
 
-  useEffect(() => {
+  // Fitted before the first paint and never animated (see the h1's
+  // transition), so the name loads in at full width rather than growing.
+  useLayoutEffect(() => {
     let lastViewportWidth = window.innerWidth;
     const updateFontSize = () => {
       // Don't update if already shrunk
@@ -392,8 +395,16 @@ export default function HomePanelMobile({
       updateFontSize();
     };
     updateFontSize();
+    // Fit again once the webfont is in, in case it was still loading.
+    let cancelled = false;
+    void document.fonts?.ready.then(() => {
+      if (!cancelled) updateFontSize();
+    });
     window.addEventListener('resize', onResize);
-    return () => window.removeEventListener('resize', onResize);
+    return () => {
+      cancelled = true;
+      window.removeEventListener('resize', onResize);
+    };
   }, [hasShrunk]);
 
   // Shrunk size: "Zhao" fills from its column offset to the right edge of
@@ -545,7 +556,8 @@ export default function HomePanelMobile({
 
   useLayoutEffect(() => {
     const targetHeight = (hasShrunk ? shrunkFontSize : parseFloat(fontSize)) * 1.75 + 8;
-    if (reducedMotion || instant && !langSwitched) {
+    // Before the shrink the space follows the fitted name without animating.
+    if (reducedMotion || instant && !langSwitched || !hasShrunk) {
       titleBaseHeight.set(targetHeight);
       return;
     }
@@ -678,7 +690,8 @@ export default function HomePanelMobile({
                 animate={{
                   fontSize: hasShrunk ? `${shrunkFontSize}px` : fontSize,
                 }}
-                transition={shrinkTransition}
+                // Only the shrink animates; fitting to the width snaps.
+                transition={hasShrunk ? shrinkTransition : { duration: 0 }}
                 style={{
                   letterSpacing: '-0.05em',
                   marginTop: '-0.15em',
@@ -692,9 +705,9 @@ export default function HomePanelMobile({
                         {firstName}
                       </ScrambleText>
                     ) : showContent ? (
-                      <AnimatedText baseDelay={headerDelay} staggerDelay={stagger} instant={instant}>
+                      <LetterRevealText baseDelay={headerDelay} instant={instant}>
                         {firstName}
-                      </AnimatedText>
+                      </LetterRevealText>
                     ) : (
                       <span className="opacity-0">{firstName}</span>
                     )}
@@ -744,9 +757,13 @@ export default function HomePanelMobile({
                         {lastName}
                       </ScrambleText>
                     ) : showContent ? (
-                      <AnimatedText baseDelay={headerDelay + stagger} staggerDelay={stagger} instant={instant}>
+                      <LetterRevealText
+                        baseDelay={headerDelay}
+                        letterOffset={Array.from(firstName).length}
+                        instant={instant}
+                      >
                         {lastName}
-                      </AnimatedText>
+                      </LetterRevealText>
                     ) : (
                       <span className="opacity-0">{lastName}</span>
                     )}

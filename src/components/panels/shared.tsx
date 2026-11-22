@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, useMotionValue, useTransform, useAnimationControls, useReducedMotion, animate, type AnimationPlaybackControls, type MotionValue } from 'framer-motion';
-import { Fragment, ReactNode, useCallback, useContext, useEffect, useEffectEvent, useId, useRef, useState, useSyncExternalStore } from 'react';
+import { Fragment, ReactNode, useCallback, useContext, useEffect, useEffectEvent, useId, useLayoutEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { Language } from './translations';
 import { HeroBioExitContext, HeroBioExitWord } from './HeroBioLine';
 import { revealMaskAnimation } from './text-reveal';
@@ -297,6 +297,133 @@ export function AnimatedText({ children, baseDelay = 0, staggerDelay = 0.08, cla
             </AnimatedWord>
           )}
           {index < words.length - 1 && ' '}
+        </span>
+      ))}
+    </span>
+  );
+}
+
+// The hero name's intro: each letter rises through its own mask and fades in,
+// on a stagger that runs on across the words.
+const LETTER_REVEAL_STAGGER = 0.035;
+const LETTER_REVEAL_DURATION = 0.7;
+const LETTER_REVEAL_EASE = [0.22, 1, 0.36, 1] as const;
+
+// Kerning between each letter and the next, in em. A letter split into its own
+// inline-block is shaped on its own, which drops the font's pair kerning, so
+// the letters carry it back as margins. The split word then keeps exactly the
+// width and letter positions of the plain text it swaps back to.
+function measureLetterKerning(element: HTMLElement, words: string[][]) {
+  const style = getComputedStyle(element);
+  const fontSize = parseFloat(style.fontSize);
+  const probeSize = 1000;
+  const probe = document.createElement('span');
+  probe.style.cssText = `position:absolute;left:0;top:0;visibility:hidden;white-space:pre;font-size:${probeSize}px`;
+  probe.style.fontFamily = style.fontFamily;
+  probe.style.fontWeight = style.fontWeight;
+  probe.style.fontStyle = style.fontStyle;
+  probe.style.fontStretch = style.fontStretch;
+  probe.style.fontFeatureSettings = style.fontFeatureSettings;
+  probe.style.fontVariationSettings = style.fontVariationSettings;
+  probe.style.fontKerning = style.fontKerning;
+  // Letter-spacing cancels out of the pair widths, but it also switches
+  // ligatures off, so the probe keeps it.
+  if (fontSize > 0) probe.style.letterSpacing = `${(parseFloat(style.letterSpacing) || 0) / fontSize}em`;
+  document.body.appendChild(probe);
+  const width = (text: string) => {
+    probe.textContent = text;
+    return probe.getBoundingClientRect().width;
+  };
+  const kerning = words.map((letters) => {
+    const widths = letters.map(width);
+    return letters.map((letter, i) => i < letters.length - 1
+      ? (width(letter + letters[i + 1]) - widths[i] - widths[i + 1]) / probeSize
+      : 0);
+  });
+  probe.remove();
+  return kerning;
+}
+
+interface LetterRevealTextProps {
+  children: string;
+  baseDelay?: number;
+  // Letters revealed by earlier words, so the stagger carries on from them
+  letterOffset?: number;
+  instant?: boolean;
+}
+
+export function LetterRevealText({ children, baseDelay = 0, letterOffset = 0, instant = false }: LetterRevealTextProps) {
+  const words = children.split(' ').map((word) => Array.from(word));
+  const letterCount = words.reduce((count, letters) => count + letters.length, 0);
+  // Once every letter has landed the masks come off entirely: the text swaps
+  // to the same unmasked markup a skipped intro renders, so nothing (accents,
+  // descenders, the shrink, a language switch) can be clipped afterwards.
+  const [revealed, setRevealed] = useState(instant);
+  const [kerning, setKerning] = useState<number[][]>([]);
+  const rootRef = useRef<HTMLSpanElement>(null);
+  const landedRef = useRef(new Set<number>());
+
+  useLayoutEffect(() => {
+    if (revealed) return;
+    const root = rootRef.current;
+    if (!root) return;
+    const letters = children.split(' ').map((word) => Array.from(word));
+    const measure = () => setKerning(measureLetterKerning(root, letters));
+    measure();
+    // Measure again once the webfont is in, if it was still loading.
+    let cancelled = false;
+    if (document.fonts && document.fonts.status !== 'loaded') {
+      void document.fonts.ready.then(() => {
+        if (!cancelled) measure();
+      });
+    }
+    return () => {
+      cancelled = true;
+    };
+  }, [children, revealed]);
+
+  if (revealed || letterCount === 0) return <AnimatedText instant>{children}</AnimatedText>;
+
+  const land = (index: number) => {
+    landedRef.current.add(index);
+    for (let i = 0; i < letterCount; i++) {
+      if (!landedRef.current.has(i)) return;
+    }
+    setRevealed(true);
+  };
+
+  const wordStarts = words.map((_, wordIndex) =>
+    words.slice(0, wordIndex).reduce((count, letters) => count + letters.length, 0));
+  return (
+    <span ref={rootRef}>
+      {words.map((letters, wordIndex) => (
+        <span key={wordIndex}>
+          <span className="inline-block align-bottom">
+            {letters.map((letter, index) => {
+              const order = wordStarts[wordIndex] + index;
+              const delay = baseDelay + (letterOffset + order) * LETTER_REVEAL_STAGGER;
+              const kern = kerning[wordIndex]?.[index] ?? 0;
+              return (
+                <motion.span
+                  key={index}
+                  className="text-reveal-mask inline-block align-bottom"
+                  style={kern ? { marginRight: `${kern}em` } : undefined}
+                  {...revealMaskAnimation(delay, LETTER_REVEAL_DURATION)}
+                >
+                  <motion.span
+                    className="inline-block"
+                    initial={{ y: '100%', opacity: 0 }}
+                    animate={{ y: '0%', opacity: 1 }}
+                    transition={{ duration: LETTER_REVEAL_DURATION, delay, ease: LETTER_REVEAL_EASE }}
+                    onAnimationComplete={() => land(order)}
+                  >
+                    {letter}
+                  </motion.span>
+                </motion.span>
+              );
+            })}
+          </span>
+          {wordIndex < words.length - 1 && ' '}
         </span>
       ))}
     </span>
