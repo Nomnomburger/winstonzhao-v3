@@ -293,4 +293,11 @@ body {
   #overview[data-faded] {
     opacity: 1 !important;
   }
+  /* Paper is often narrower than 768px, which would otherwise give the
+     project page's phone first screen (page.tsx) and push the details and
+     hero to the foot of page 1. */
+  [data-first-screen] {
+    display: block !important;
+    min-height: 0 !important;
+  }
 }

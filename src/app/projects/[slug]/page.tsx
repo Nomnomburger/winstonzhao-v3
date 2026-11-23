@@ -80,8 +80,13 @@ export default async function ProjectPage({ params }: { params: Params }) {
             sets the details and hero at the bottom, with open space between.
             The hero's own bottom padding (the side padding) then rests on the
             bottom of the screen as it first loads, with Safari's bars showing
-            (svh), so it stays clear of them. 65px is ProjectHeader's spacer. */}
-        <div className={hero || hasMeta ? 'max-md:flex max-md:flex-col max-md:min-h-[calc(100svh_-_65px)]' : undefined}>
+            (svh), so it stays clear of them. Content taller than the screen
+            flows as before. 65px is ProjectHeader's spacer; print undoes this
+            (globals.css). */}
+        <div
+          data-first-screen
+          className={hero ? 'max-md:flex max-md:flex-col max-md:min-h-[calc(100svh_-_65px)]' : undefined}
+        >
           {/* Title and intro: the top of the page plays as soon as it loads. */}
           <RevealArea
             immediate
