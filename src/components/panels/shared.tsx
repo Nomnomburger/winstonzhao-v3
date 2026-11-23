@@ -306,8 +306,15 @@ export function AnimatedText({ children, baseDelay = 0, staggerDelay = 0.08, cla
 // The hero name's intro: each letter rises through its own mask and fades in,
 // on a stagger that runs on across the words.
 const LETTER_REVEAL_STAGGER = 0.02;
-// How far below its resting place each letter starts, as a share of its height
-const LETTER_REVEAL_DISTANCE = '70%';
+// How far below its resting place each letter starts, as a share of its box
+// (1em at the name's leading-none).
+const LETTER_REVEAL_DISTANCE = '35%';
+// The clip line sits just under the baseline while the letters rise, so each
+// starts cut about in half (the baseline is 0.144em above the box bottom in
+// PP Neue Montreal; the extra 0.024em keeps round letters' overshoot clear).
+// It drops below the descenders as the letters land, and the masks come off
+// entirely once they all have.
+const LETTER_REVEAL_FLOOR = '0.12em';
 const LETTER_REVEAL_DURATION = 0.7;
 const LETTER_REVEAL_EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -405,12 +412,15 @@ export function LetterRevealText({ children, baseDelay = 0, letterOffset = 0, in
               const order = wordStarts[wordIndex] + index;
               const delay = baseDelay + (letterOffset + order) * LETTER_REVEAL_STAGGER;
               const kern = kerning[wordIndex]?.[index] ?? 0;
+              const mask = revealMaskAnimation(delay, LETTER_REVEAL_DURATION);
               return (
                 <motion.span
                   key={index}
                   className="text-reveal-mask inline-block align-bottom"
                   style={kern ? { marginRight: `${kern}em` } : undefined}
-                  {...revealMaskAnimation(delay, LETTER_REVEAL_DURATION)}
+                  initial={{ clipPath: `inset(-0.15em -0.5em ${LETTER_REVEAL_FLOOR} -0.5em)` }}
+                  animate={mask.animate}
+                  transition={mask.transition}
                 >
                   <motion.span
                     className="inline-block"
