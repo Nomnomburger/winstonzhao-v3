@@ -15,7 +15,8 @@ import type { ProjectCardData } from './types';
 // Wide cards are 560px of a 2-column span at the 1280px reference (≈70%).
 // The first caption sits in the space beside its photo; the second sits
 // above its photo without changing the desktop photo positions.
-// Below md everything stacks full width with both captions beneath the photos.
+// Below md everything stacks full width, with square photos and both captions
+// beneath them.
 type Slot = { className: string; wide: boolean };
 type CaptionPlacement = 'bottom' | 'right' | 'top';
 
@@ -51,6 +52,7 @@ function FeaturedCard({
   delay,
   captionPlacement,
   skipImageReveal,
+  mobile,
 }: {
   project: ProjectCardData;
   slot: Slot;
@@ -58,13 +60,18 @@ function FeaturedCard({
   delay: number;
   captionPlacement: CaptionPlacement;
   skipImageReveal: boolean;
+  mobile: boolean;
 }) {
   const { ref, shown, still } = useReveal<HTMLAnchorElement>();
   const { ref: captionRef, shown: replayCaptionShown } = useCaptionReveal<HTMLDivElement>();
   const sideCaption = captionPlacement === 'right';
   const CaptionLine = captionPlacement === 'bottom' ? MaskLine : FadeLine;
   const captionShown = captionPlacement === 'bottom' ? shown : replayCaptionShown;
-  const src = imageUrl(project.coverImage, slot.wide ? 1400 : 1000);
+  // Phones crop every photo square (object-cover, around the hotspot), so
+  // they all load the 1400px image: enough detail left in the square for a
+  // 3x screen, and the same file the project page's hero picks there, so a
+  // tap opens it from cache.
+  const src = imageUrl(project.coverImage, mobile || slot.wide ? 1400 : 1000);
   const shape = !slot.wide
     ? 'md:aspect-[387/398]'
     : paired
@@ -101,7 +108,7 @@ function FeaturedCard({
       }`}
     >
       <motion.div
-        className={`relative w-full overflow-hidden bg-foreground/5 aspect-[4/3] ${shape}`}
+        className={`relative w-full overflow-hidden bg-foreground/5 aspect-square ${shape}`}
         initial={false}
         animate={skipImageReveal ? undefined : { clipPath: shown ? 'inset(0% 0% 0% 0%)' : 'inset(100% 0% 0% 0%)' }}
         transition={revealTransition(still, 1.1, delay)}
@@ -162,6 +169,7 @@ export default function FeaturedProjects({
               paired={paired}
               captionPlacement={!isMobile && r === 0 ? (i === 0 ? 'right' : 'top') : 'bottom'}
               skipImageReveal={skipFirstImageReveals && r === 0}
+              mobile={isMobile}
               // The second card of a pair follows the first a beat later
               delay={paired ? i * 0.12 : 0}
             />
