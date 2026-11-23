@@ -439,7 +439,7 @@ export default function HomePanel({
 
   // Timing configuration
   const headerAnimationDelay = 0.2; // When header starts appearing
-  const shrinkDelay = 1.3; // Seconds after page load to start shrinking
+  const shrinkDelay = 1.1; // Seconds after page load to start shrinking
   const shrinkDuration = NAME_SHRINK_DURATION;
   const nameStagger = NAME_SHRINK_STAGGER;
 

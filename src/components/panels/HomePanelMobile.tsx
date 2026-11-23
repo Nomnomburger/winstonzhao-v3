@@ -497,7 +497,7 @@ export default function HomePanelMobile({
 
   // Timing configuration
   const headerAnimationDelay = 0.2; // When header starts appearing
-  const shrinkDelay = 1.3; // Seconds after page load to start shrinking
+  const shrinkDelay = 1.1; // Seconds after page load to start shrinking
   const shrinkDuration = 0.8; // Duration of shrink animation
 
   // Trigger shrink after delay
