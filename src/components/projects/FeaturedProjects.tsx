@@ -67,12 +67,11 @@ function FeaturedCard({
   const sideCaption = captionPlacement === 'right';
   const CaptionLine = captionPlacement === 'bottom' ? MaskLine : FadeLine;
   const captionShown = captionPlacement === 'bottom' ? shown : replayCaptionShown;
-  // Phones show every photo square, so the CDN crops it square around the
-  // studio hotspot at full phone resolution instead of the browser cutting
-  // the sides off a landscape image.
-  const src = mobile
-    ? imageUrl(project.coverImage, 1200, 1200)
-    : imageUrl(project.coverImage, slot.wide ? 1400 : 1000);
+  // Phones crop every photo square (object-cover, around the hotspot), so
+  // they all load the 1400px image: enough detail left in the square for a
+  // 3x screen, and the same file the project page's hero picks there, so a
+  // tap opens it from cache.
+  const src = imageUrl(project.coverImage, mobile || slot.wide ? 1400 : 1000);
   const shape = !slot.wide
     ? 'md:aspect-[387/398]'
     : paired
