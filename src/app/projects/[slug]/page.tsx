@@ -211,10 +211,11 @@ export default async function ProjectPage({ params }: { params: Params }) {
       </div>
 
       {/* The case study itself. On desktop the page snaps between it and
-          the overview above. */}
+          the overview above. On phones the divider gets extra room either
+          side, about the gap between the case study's own sections. */}
       {sections.length > 0 && (
-        <div id="case-study">
-          <hr className="border-0 border-t border-foreground/[0.04] w-full" />
+        <div id="case-study" className="max-md:pt-6">
+          <hr className="border-0 border-t border-foreground/[0.04] w-full max-md:mb-6" />
           <ProjectSections sections={sections} showSideMenu={project.showSideMenu !== false} />
           <ContentSnap contentId="case-study" overviewId="overview" />
         </div>
