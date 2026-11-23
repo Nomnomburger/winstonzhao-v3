@@ -6,6 +6,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import {
   AnimatedText,
+  LetterRevealText,
   ScrambleText,
   formatTorontoTime,
   useCurrentTime,
@@ -366,7 +367,9 @@ export default function HomePanel({
     return () => clearTimeout(timer);
   }, [language, langSwitched]);
 
-  useEffect(() => {
+  // Fitted before the first paint and never animated, so the name loads in
+  // at full width rather than growing into it.
+  useLayoutEffect(() => {
     const updateFontSize = () => {
       // Don't update if already shrunk
       if (hasShrunk) return;
@@ -413,9 +416,17 @@ export default function HomePanel({
     };
 
     updateFontSize();
+    // Fit again once the webfont is in, in case it was still loading.
+    let cancelled = false;
+    void document.fonts?.ready.then(() => {
+      if (!cancelled) updateFontSize();
+    });
     window.addEventListener('resize', updateFontSize);
-    return () => window.removeEventListener('resize', updateFontSize);
-  }, [hasShrunk]);
+    return () => {
+      cancelled = true;
+      window.removeEventListener('resize', updateFontSize);
+    };
+  }, [hasShrunk, t.name]);
 
   // Scale the shrunk header up on screens larger than a 16" MacBook (1728px),
   // keeping 128px as the floor for normal laptop sizes.
@@ -428,7 +439,7 @@ export default function HomePanel({
 
   // Timing configuration
   const headerAnimationDelay = 0.2; // When header starts appearing
-  const shrinkDelay = 1.3; // Seconds after page load to start shrinking
+  const shrinkDelay = 1.1; // Seconds after page load to start shrinking
   const shrinkDuration = NAME_SHRINK_DURATION;
   const nameStagger = NAME_SHRINK_STAGGER;
 
@@ -583,9 +594,13 @@ export default function HomePanel({
         {text}
       </ScrambleText>
     ) : showContent ? (
-      <AnimatedText baseDelay={headerDelay + wordIndex * stagger} staggerDelay={stagger} instant={instant}>
+      <LetterRevealText
+        baseDelay={headerDelay}
+        letterOffset={wordIndex === 0 ? 0 : Array.from(firstName).length}
+        instant={instant}
+      >
         {text}
-      </AnimatedText>
+      </LetterRevealText>
     ) : (
       <span className="opacity-0">{text}</span>
     );
@@ -676,7 +691,7 @@ export default function HomePanel({
             className="w-full shrink-0"
             initial={instant ? false : undefined}
             animate={{ height: hasShrunk ? shrunkFontSize : fontSize }}
-            transition={shrinkTransition}
+            transition={hasShrunk ? shrinkTransition : { duration: 0 }}
           />
           {/* Header Content */}
           <motion.div
@@ -691,7 +706,9 @@ export default function HomePanel({
             <motion.div data-navigation-contrast="name" className="navigation-color-fade flex gap-4 items-start pointer-events-auto" style={{ scale: nameScale, transformOrigin: 'top left', color: navigationColor }}>
               {/* The font size snaps to its target and each word FLIPs from
                   its previous box via the layout prop, so the last name's
-                  position and scale can trail the first name's together. */}
+                  position and scale can trail the first name's together.
+                  Only the shrink FLIPs (layoutDependency); fitting the name
+                  to the page width snaps, so it never grows into place. */}
               <h1
                 ref={headerRef}
                 aria-label={t.name}
@@ -725,6 +742,7 @@ export default function HomePanel({
                 >
                   <motion.span
                     layout={!nameShrinkDone}
+                    layoutDependency={hasShrunk}
                     data-navigation-name="first"
                     className="inline-block align-top"
                     transition={shrinkTransition}
@@ -741,6 +759,7 @@ export default function HomePanel({
                       >
                         <motion.span
                           layout={!nameShrinkDone}
+                          layoutDependency={hasShrunk}
                           data-navigation-name="last"
                           className="inline-block align-top"
                           transition={lastNameShrinkTransition}
