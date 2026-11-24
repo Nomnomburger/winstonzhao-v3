@@ -9,6 +9,7 @@ export interface ProjectCardData {
   year?: number;
   featured?: boolean;
   order?: number;
+  orderRank?: string;
   description?: string;
   coverImage?: ImageSource;
 }

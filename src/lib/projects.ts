@@ -89,6 +89,7 @@ export interface ProjectSummary {
   year?: number;
   featured?: boolean;
   order?: number;
+  orderRank?: string;
   description?: string;
   coverImage?: SanityImage;
 }
@@ -119,6 +120,7 @@ const summaryFields = groq`
   year,
   featured,
   order,
+  orderRank,
   description,
   coverImage{${imageFields}}
 `;

@@ -1,15 +1,33 @@
+import {orderableDocumentListDeskItem} from '@sanity/orderable-document-list'
 import type {StructureResolver} from 'sanity/structure'
-import {CaseIcon, StarFilledIcon, ImagesIcon} from '@sanity/icons'
+import {CaseIcon, StarFilledIcon, ImagesIcon, SortIcon} from '@sanity/icons'
+import {resetNewestFirstAction, visibleProjectsFilter} from './projectOrdering'
 
 // Studio sidebar: featured and listed projects are split so it's easy to see
 // what shows with a photo on the home page and what sits in the list. New
 // projects made from the featured list start out featured.
 const API_VERSION = '2025-02-19'
 
-export const structure: StructureResolver = (S) =>
+export const structure: StructureResolver = (S, context) =>
   S.list()
     .title('Content')
     .items([
+      orderableDocumentListDeskItem({
+        type: 'project',
+        title: 'Reorder projects',
+        icon: CaseIcon,
+        filter: visibleProjectsFilter,
+        createIntent: false,
+        menuItems: [
+          S.menuItem()
+            .title('Reset to newest first')
+            .icon(SortIcon)
+            .action(resetNewestFirstAction(context.getClient({apiVersion: API_VERSION})))
+            .serialize(),
+        ],
+        S,
+        context,
+      }),
       S.listItem()
         .title('All projects')
         .icon(CaseIcon)
@@ -17,6 +35,7 @@ export const structure: StructureResolver = (S) =>
           S.documentTypeList('project')
             .title('All projects')
             .defaultOrdering([
+              {field: 'orderRank', direction: 'asc'},
               {field: 'order', direction: 'asc'},
               {field: 'year', direction: 'desc'},
             ]),
@@ -31,6 +50,7 @@ export const structure: StructureResolver = (S) =>
             .filter('_type == "project" && featured == true')
             .apiVersion(API_VERSION)
             .defaultOrdering([
+              {field: 'orderRank', direction: 'asc'},
               {field: 'order', direction: 'asc'},
               {field: 'year', direction: 'desc'},
             ])
@@ -47,6 +67,7 @@ export const structure: StructureResolver = (S) =>
             .filter('_type == "project" && featured != true')
             .apiVersion(API_VERSION)
             .defaultOrdering([
+              {field: 'orderRank', direction: 'asc'},
               {field: 'order', direction: 'asc'},
               {field: 'year', direction: 'desc'},
             ])

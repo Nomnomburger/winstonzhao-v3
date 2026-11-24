@@ -63,3 +63,24 @@ test('sorting never mutates the incoming server or CMS array', () => {
   assert.deepEqual(ids(sortHomeProjects(projects)), ['newer', 'older']);
   assert.deepEqual(ids(projects), ['older', 'newer']);
 });
+
+test('drag-and-drop order overrides years and legacy numeric positions', () => {
+  const projects = [
+    {_id: 'new', year: 2026, order: 1, orderRank: '0|00000c:'},
+    {_id: 'old', year: 2020, order: 99, orderRank: '0|00000a:'},
+    {_id: 'unranked', year: 2027, order: 0},
+  ];
+  assert.deepEqual(ids(sortProjectList(projects)), ['old', 'new', 'unranked']);
+});
+
+test('ranked featured and listed projects retain their separate home page sections', () => {
+  const projects = [
+    {_id: 'list-second', orderRank: '0|00000d:'},
+    {_id: 'feature-second', featured: true, order: 1, orderRank: '0|00000c:'},
+    {_id: 'list-first', orderRank: '0|00000a:'},
+    {_id: 'feature-first', featured: true, order: 2, orderRank: '0|00000b:'},
+  ];
+  assert.deepEqual(ids(sortHomeProjects(projects)), [
+    'feature-first', 'feature-second', 'list-first', 'list-second',
+  ]);
+});

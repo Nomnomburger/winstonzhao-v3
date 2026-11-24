@@ -1,3 +1,4 @@
+import {orderRankField, orderRankOrdering} from '@sanity/orderable-document-list'
 import {defineArrayMember, defineField, defineType} from 'sanity'
 import {CaseIcon, StarFilledIcon} from '@sanity/icons'
 
@@ -17,6 +18,7 @@ export default defineType({
     {name: 'body', title: '4. Case study'},
   ],
   fields: [
+    orderRankField({type: 'project'}),
     // 1. Home page -----------------------------------------------------------
     defineField({
       name: 'title',
@@ -87,10 +89,10 @@ export default defineType({
     }),
     defineField({
       name: 'order',
-      title: 'Sort order (optional)',
+      title: 'Legacy sort order',
       type: 'number',
       group: 'listing',
-      description: 'Lower numbers show first. Projects without a number follow, newest year first.',
+      description: 'Used until drag-and-drop ordering is set. Use Reorder projects in the sidebar to arrange projects.',
     }),
     // Older projects have tags. They aren't shown on the site, so the field is
     // hidden unless it has data.
@@ -236,6 +238,7 @@ export default defineType({
     }),
   ],
   orderings: [
+    orderRankOrdering,
     {
       title: 'Sort order, then newest',
       name: 'orderYear',
