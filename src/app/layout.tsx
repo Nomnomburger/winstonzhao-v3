@@ -4,7 +4,6 @@ import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import ThemeController from "@/components/ThemeController";
 import SmoothScroll from "@/components/SmoothScroll";
-import SafariScrollbarReset from "@/components/SafariScrollbarReset";
 import NavigationProvider from "@/components/NavigationProvider";
 
 const ppNeueMontreal = localFont({
@@ -175,7 +174,6 @@ export default function RootLayout({
         />
         <ThemeController />
         <SmoothScroll />
-        <SafariScrollbarReset />
         <NavigationProvider>{children}</NavigationProvider>
         <Analytics />
       </body>
