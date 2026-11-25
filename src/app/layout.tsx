@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import ThemeController from "@/components/ThemeController";
 import SmoothScroll from "@/components/SmoothScroll";
@@ -163,6 +164,7 @@ export default function RootLayout({
         <ThemeController />
         <SmoothScroll />
         <NavigationProvider>{children}</NavigationProvider>
+        <Analytics />
       </body>
     </html>
   );

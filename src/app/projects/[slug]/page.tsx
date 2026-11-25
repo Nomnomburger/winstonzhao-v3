@@ -76,65 +76,79 @@ export default async function ProjectPage({ params }: { params: Params }) {
         id="overview"
         className="transition-opacity duration-500 ease-[cubic-bezier(0.2,0.8,0.2,1)] data-[faded]:opacity-0 data-[faded]:pointer-events-none"
       >
-        {/* Title and intro: the top of the page plays as soon as it loads. */}
-        <RevealArea
-          immediate
-          as="section"
-          className="grid grid-cols-1 md:grid-cols-3 gap-x-6 gap-y-6 px-6 md:px-9 pt-16 md:pt-24 pb-6 md:pb-9"
+        {/* On phones the first screen keeps the title and intro at the top and
+            sets the details and hero at the bottom, with open space between.
+            The hero's own bottom padding (the side padding) then rests on the
+            bottom of the screen as it first loads, with Safari's bars showing
+            (svh), so it stays clear of them. Content taller than the screen
+            flows as before. 65px is ProjectHeader's spacer; print undoes this
+            (globals.css). */}
+        <div
+          data-first-screen
+          className={hero ? 'max-md:flex max-md:flex-col max-md:min-h-[calc(100svh_-_65px)]' : undefined}
         >
-          <h1 className="md:col-span-2 self-end font-medium text-[32px] md:text-[40px] tracking-[-0.04em] leading-[1.2]">
-            <RevealText delay={0.1}>{project.title}</RevealText>
-          </h1>
-          {project.intro && (
-            <RevealFade delay={0.25} className="md:col-start-3">
-              <p className="text-[14px] text-justify leading-[1.2] whitespace-pre-line">{project.intro}</p>
-            </RevealFade>
-          )}
-        </RevealArea>
-
-        {/* Client, discipline, year and link. On phones it's two lines: client
-            and discipline on the left, year and link on the right. */}
-        {hasMeta && (
+          {/* Title and intro: the top of the page plays as soon as it loads. */}
           <RevealArea
             immediate
             as="section"
-            className="grid grid-cols-[minmax(0,1fr)_auto] md:grid-cols-3 gap-x-6 gap-y-1 px-6 md:px-9 text-[14px] tracking-[-0.02em] leading-[1.2]"
+            className="grid grid-cols-1 md:grid-cols-3 gap-x-6 gap-y-6 px-6 md:px-9 pt-16 md:pt-24 pb-6 md:pb-9"
           >
-            <p className="col-start-1 row-start-1 text-justify">
-              <RevealText delay={0.3}>{project.client}</RevealText>
-            </p>
-            <p className="col-start-1 row-start-2 md:col-start-2 md:row-start-1 text-justify">
-              <RevealText delay={0.35}>{project.discipline}</RevealText>
-            </p>
-            <p className="col-start-2 row-start-1 md:col-start-3 text-right md:text-left">
-              <RevealText delay={0.4}>{project.year}</RevealText>
-            </p>
-            <div className="col-start-2 row-start-2 md:col-start-3 md:row-start-1 justify-self-end text-right">
-              <RevealText delay={0.45}>
-                {project.link?.url ? (
-                  <a href={project.link.url} target="_blank" rel="noopener noreferrer" className="hover:underline">
-                    {project.link.label || 'Visit'} ↗
-                  </a>
-                ) : (
-                  <ReadLink target="read" />
-                )}
-              </RevealText>
-            </div>
+            <h1 className="md:col-span-2 self-end font-medium text-[32px] md:text-[40px] tracking-[-0.04em] leading-[1.2]">
+              <RevealText delay={0.1}>{project.title}</RevealText>
+            </h1>
+            {project.intro && (
+              <RevealFade delay={0.25} className="md:col-start-3">
+                <p className="text-[14px] text-justify leading-[1.2] whitespace-pre-line">{project.intro}</p>
+              </RevealFade>
+            )}
           </RevealArea>
-        )}
 
-        {/* Hero image or video */}
-        {hero && (
-          <RevealArea immediate className="p-6 md:p-9">
-            <RevealMedia delay={0.1}>
-              {hero._type === 'mediaImage' ? (
-                <ImageFigure image={hero} caption={hero.caption} sizes="100vw" priority />
-              ) : (
-                <VideoFigure video={hero} />
-              )}
-            </RevealMedia>
-          </RevealArea>
-        )}
+          <div className="max-md:mt-auto">
+            {/* Client, discipline, year and link. On phones it's two lines: client
+                and discipline on the left, year and link on the right. */}
+            {hasMeta && (
+              <RevealArea
+                immediate
+                as="section"
+                className="grid grid-cols-[minmax(0,1fr)_auto] md:grid-cols-3 gap-x-6 gap-y-1 px-6 md:px-9 text-[14px] tracking-[-0.02em] leading-[1.2]"
+              >
+                <p className="col-start-1 row-start-1 text-justify">
+                  <RevealText delay={0.3}>{project.client}</RevealText>
+                </p>
+                <p className="col-start-1 row-start-2 md:col-start-2 md:row-start-1 text-justify">
+                  <RevealText delay={0.35}>{project.discipline}</RevealText>
+                </p>
+                <p className="col-start-2 row-start-1 md:col-start-3 text-right md:text-left">
+                  <RevealText delay={0.4}>{project.year}</RevealText>
+                </p>
+                <div className="col-start-2 row-start-2 md:col-start-3 md:row-start-1 justify-self-end text-right">
+                  <RevealText delay={0.45}>
+                    {project.link?.url ? (
+                      <a href={project.link.url} target="_blank" rel="noopener noreferrer" className="hover:underline">
+                        {project.link.label || 'Visit'} ↗
+                      </a>
+                    ) : (
+                      <ReadLink target="read" />
+                    )}
+                  </RevealText>
+                </div>
+              </RevealArea>
+            )}
+
+            {/* Hero image or video */}
+            {hero && (
+              <RevealArea immediate className="p-6 md:p-9">
+                <RevealMedia delay={0.1}>
+                  {hero._type === 'mediaImage' ? (
+                    <ImageFigure image={hero} caption={hero.caption} sizes="100vw" priority />
+                  ) : (
+                    <VideoFigure video={hero} />
+                  )}
+                </RevealMedia>
+              </RevealArea>
+            )}
+          </div>
+        </div>
 
         {/* Summary and overview, below the hero; "Read ↓" lands here. On desktop
             it ends with extra room above the screen's bottom edge where the page
@@ -197,10 +211,11 @@ export default async function ProjectPage({ params }: { params: Params }) {
       </div>
 
       {/* The case study itself. On desktop the page snaps between it and
-          the overview above. */}
+          the overview above. On phones the divider gets extra room either
+          side, about the gap between the case study's own sections. */}
       {sections.length > 0 && (
-        <div id="case-study">
-          <hr className="border-0 border-t border-foreground/[0.04] w-full" />
+        <div id="case-study" className="max-md:pt-6">
+          <hr className="border-0 border-t border-foreground/[0.04] w-full max-md:mb-6" />
           <ProjectSections sections={sections} showSideMenu={project.showSideMenu !== false} />
           <ContentSnap contentId="case-study" overviewId="overview" />
         </div>
