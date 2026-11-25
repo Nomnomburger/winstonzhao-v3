@@ -1,0 +1,364 @@
+{
+  "documentId": "figma-portfolio-habitat",
+  "source": {
+    "figmaFile": "qDdxlqtBxVpaAOUMITle4W",
+    "url": "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W/Winston-Design-Demo?node-id=524-1432",
+    "page": "HabitAt (524:1432): Onboard (525:2495, 525:2512), Your Home (525:2099, house Frame 9 525:2101), New Task (525:2534), Living Room (525:2649), Dining Room (525:2689), Shop (525:2891, 525:3002, 525:3059), Friend Map (525:2745), Smaller House (525:3829), Prompt (528:4505), Ideas (528:4507), Components (525:4304)",
+    "facts": "Confirmed by Winston (Nov 25 2026, ANSWERS.md, HabitAt rounds 1–3): HabitAt was made at the UWUX Design Sprint 2025, a two-hour event in June 2025, and won 1st place. The organizers gave both the HMW (“How might we make a boring everyday task feel rewarding and engaging through gamification?”, used word for word as the heading) and the persona Jasmine (528:4504; the source typos “Paint Points”, “i.e” and “calendars study apps” are fixed in the copy, the wording kept). Team: Amna, Andrew, Anita and Winston; Winston “did most things”, so the copy credits him with most of the design, not all of it, and doesn’t split credit by screen. Deliverables: a clickable prototype and a live demo pitch. In his words, the screens are “a higher quality mid fidelity rather than a complete high fidelity design because of the time constraints”; the copy calls it a polished mid-fidelity prototype, plainly, with no apology. Why a house: chores already belong to rooms, so the house sorts them; a house you can see fill up and grow is the visual progress Jasmine wants; it’s fun and familiar. The number on each room is the tasks left in that room; AI sorts a new task into its room, so New Task asks only for a name and a due date (no room picker). Points: finishing tasks earns points, spent on furniture and on new or bigger rooms that grow the house; the Smaller House (525:3829, no Master Bedroom) is your house before a new room. Friend Map: see friends’ houses and keep each other on track (Jasmine’s peer accountability). The full ideas list (528:4507: 525:2887 features, 525:2888 pages) is shown as two sticky-note boards, including ideas that weren’t designed, with no comment on them. Lessons he chose: rewards you can see; scope to the clock (in two hours, design the core loop first: add a task, finish it, spend the points). Hero: Welcome, Your Home (centre), Living Room; the cover is his current thumbnail, kept as is. Placeholders are cleaned in portfolio-only copies at his request (the Figma file is unchanged and was only read); the replacement chore names (“Vacuum the rug”, “Water the plants”, “Wipe the table”, “Sweep the floor”) are made up and aren’t quoted as event fact; “Clean room” and “Wash dishes” are his own text. Not shown: the reference screenshots 525:2743 and 525:2744 (other people’s illustrations). Not stated, because no source gives them: the exact date, who designed which screen, judge feedback, why household chores were chosen as the task, the horizontal scroll to the smaller house on Home, what each Friend Map pin stands for, and any order of work. Design facts (layouts, prototype wiring, the Smart Animate welcome) come from the Figma page 524:1432 (research10/habitat.md)."
+  },
+  "fields": {
+    "title": "HabitAt",
+    "description": "House-shaped chore app, 1st place at UWUX Design Sprint.",
+    "client": "UWUX Design Sprint 2025",
+    "discipline": "Product Design",
+    "intro": "HabitAt is an app concept that turns your chores into a house: each room holds its tasks, and finishing them earns points for furniture and new rooms. In a team of four, I did most of the design, and we won 1st place at the UWUX Design Sprint 2025.",
+    "summary": "Turning a two-hour sprint prompt into a clickable prototype for a chore app where tasks live in the rooms of a house.",
+    "overview": "Tap a room to see its to-do list, or add a task with just a name and a due date, and AI files it into the right room. The house grows as you spend your points on new and bigger rooms, and a Friend Map lets friends keep each other on track. Amna, Andrew, Anita and I made the prototype in two hours.",
+    "impact": "1st place, UWUX Design Sprint 2025.",
+    "details": [
+      {
+        "label": "Event",
+        "value": "UWUX Design Sprint 2025\nTwo hours · June 2025"
+      },
+      {
+        "label": "Result",
+        "value": "1st place"
+      },
+      {
+        "label": "Team",
+        "value": "Amna, Andrew, Anita and Winston"
+      },
+      {
+        "label": "Deliverables",
+        "value": "Clickable prototype · Live demo pitch"
+      },
+      {
+        "label": "Platform",
+        "value": "Mobile"
+      },
+      {
+        "label": "Tools",
+        "value": "Figma"
+      }
+    ],
+    "cover": {
+      "asset": "cover",
+      "alt": "An iPhone showing the HabitAt home: a house of six coloured rooms with a number on each, a 30 pts cloud, a picket fence and lawn with a New Task button, and the Home, Shop and Friend Map tabs"
+    },
+    "hero": {
+      "image": "hero",
+      "alt": "Three HabitAt screens on iPhones: Welcome to HabitAt over a giant colour-block house, Your Home with its six-room house, and the Living Room with its tasks and furniture"
+    },
+    "sections": [
+      {
+        "title": "Problem Statement",
+        "heading": "How might we make a boring everyday task feel rewarding and engaging through gamification?",
+        "content": [
+          "This was the prompt at the UWUX Design Sprint 2025, and four of us had two hours to answer it. The organizers gave us a persona with it, Jasmine:",
+          {
+            "bullets": [
+              "**Background:** a 20-year-old undergraduate university student living in a shared apartment.",
+              "**Tech familiarity:** high. She uses her smartphone daily for social media, calendars and study apps.",
+              "**Motivators:** visual progress, streaks, mini-rewards, instant gratification and peer accountability.",
+              "**Pain points:** she struggles with managing daily chores and routines (cleaning, laundry, organizing), is easily distracted or overwhelmed by schoolwork and social life, and finds mundane tasks unmotivating unless there’s a sense of reward or fun."
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Idea",
+        "heading": "A house full of chores",
+        "content": [
+          "We took household chores as our boring everyday task, and listed the features and pages an app for them could have:",
+          {
+            "board": {
+              "label": "Features",
+              "notes": [
+                {
+                  "text": "Add and view tasks",
+                  "color": "yellow"
+                },
+                {
+                  "text": "Sort new tasks automatically with AI",
+                  "color": "blue"
+                },
+                {
+                  "text": "View friends’ houses",
+                  "color": "green"
+                },
+                {
+                  "text": "Buy furniture",
+                  "color": "pink"
+                },
+                {
+                  "text": "Bad weather and an angry avatar when you don’t do your tasks",
+                  "color": "blue"
+                },
+                {
+                  "text": "Customize your avatar",
+                  "color": "yellow"
+                }
+              ]
+            }
+          },
+          {
+            "board": {
+              "label": "Pages",
+              "notes": [
+                {
+                  "text": "House view: shows your house",
+                  "color": "yellow"
+                },
+                {
+                  "text": "Room view: shows a room in your house",
+                  "color": "pink"
+                },
+                {
+                  "text": "Map view: find the houses of your friends",
+                  "color": "green"
+                },
+                {
+                  "text": "Task view: shows all your tasks and lets you mark them as completed",
+                  "color": "blue"
+                },
+                {
+                  "text": "Add task view: title + due date",
+                  "color": "green"
+                },
+                {
+                  "text": "Shop view: furniture you can buy",
+                  "color": "pink"
+                },
+                {
+                  "text": "Avatar customization view: choose a human, cat or dog, for now",
+                  "color": "yellow"
+                }
+              ]
+            },
+            "caption": "Our list of features and pages."
+          },
+          {
+            "h3": "Why a house"
+          },
+          "Most of the list hangs on one picture: your home, drawn as a house. We centred the app on a house for three reasons:",
+          {
+            "bullets": [
+              "**Chores already belong to rooms,** so the house sorts them for you.",
+              "**You can see it fill up and grow.** That’s the visual progress Jasmine wants.",
+              "**It’s fun and familiar.**"
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Home",
+        "heading": "Your chores, room by room",
+        "content": [
+          "In HabitAt, your chores are a house. Your Home draws it as six coloured rooms: Laundry and Bathroom under the roof, then the Master Bedroom, Dining Room, Office and Living Room.",
+          "The number on each room is how many tasks are left in it. Your points sit in a cloud at the top, New Task sits on the lawn under the picket fence, and the tab bar holds Home, Shop and Friend Map.",
+          {
+            "image": "home",
+            "alt": "An iPhone showing Your Home: a house of six coloured rooms (Laundry, Bathroom, Master Bedroom, Dining Room, Office and Living Room), each with a number in a white circle, a 30 pts cloud, a picket fence on a green lawn with a New Task button, and the Home, Shop and Friend Map tabs"
+          }
+        ]
+      },
+      {
+        "title": "Tasks",
+        "heading": "Inside a room",
+        "content": [
+          "Each room holds its own to-do list. Tap the Living Room on the house, and you see the tasks left in it, with the room’s furniture drawn large below them. The green × takes you back home.",
+          {
+            "image": "open-room",
+            "alt": "Two iPhones with an arrow: Your Home, then the Living Room opened from it, with a 3 Tasks pill, three chores with empty tick circles, a large couch, TV and cabinet, a green close button and New Task",
+            "caption": "From the house into the Living Room."
+          },
+          "The Dining Room uses the same layout in its own colour: pink, with a table and two chairs.",
+          {
+            "image": "dining-room",
+            "alt": "An iPhone showing the Dining Room in pink: a 3 Tasks pill, three chores in white, a table and two chairs, a green close button and New Task"
+          },
+          {
+            "h3": "Adding a task"
+          },
+          "New Task asks for only two things: a name and a due date. There’s no room to pick, because AI sorts each new task into its room. That’s the AI idea from our features list.",
+          {
+            "image": "new-task",
+            "alt": "Two iPhones with an arrow: Your Home, then the New Task sheet over the dimmed house, with Enter task name, a Due date field with a calendar icon, a green Save button and the keyboard"
+          }
+        ]
+      },
+      {
+        "title": "Rewards",
+        "heading": "Points you can live in",
+        "content": [
+          "Finishing a task earns points, and points are how the house grows. Your balance sits in the same cloud on Home and in the Shop, which has two tabs.",
+          "Furniture sells pieces for your rooms, like a table or a pair of chairs, each priced in points.",
+          {
+            "image": "shop-furniture",
+            "alt": "An iPhone showing the Shop on the Furniture tab: a 30 pts cloud and a grid of tiles for a table at 8 pts and two chairs at 4 pts",
+            "caption": "The Furniture tab, priced in points."
+          },
+          "On the Rooms tab, you spend points on new or bigger rooms. Choose a room’s size and colour, and tap + to make it bigger, from a 1x2 room to a 2x2.",
+          {
+            "image": "shop-rooms",
+            "alt": "Two iPhones with an arrow: the Shop’s Rooms tab with an orange 1x2 Room, a small plus button, six colour swatches with orange ticked and a Done button; then the same tab with a taller 2x2 Room"
+          },
+          {
+            "h3": "A house that grows"
+          },
+          "Each new room changes the house itself. On the left is your house before a new room; on the right, a Master Bedroom has joined it, below Laundry and Bathroom.",
+          {
+            "image": "grow",
+            "size": "content",
+            "alt": "Two houses with an arrow: the smaller house with Laundry, Bathroom, Dining Room, Office and Living Room, then the full house with a purple Master Bedroom added under the roof",
+            "caption": "Your house before and after a new room.",
+            "labels": [
+              {
+                "text": "Before",
+                "x": 0.2387,
+                "y": 0.0667
+              },
+              {
+                "text": "After",
+                "x": 0.7612,
+                "y": 0.0667
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Friends",
+        "heading": "Keeping each other on track",
+        "content": [
+          "Jasmine is motivated by peer accountability, and that’s what the third tab is for. Friend Map lets you see your friends’ houses and keep each other on track.",
+          "It’s drawn as a small world: green islands on a light blue circle, dotted with pins, with Add Friend at the bottom.",
+          {
+            "image": "friend-map",
+            "alt": "An iPhone showing Friend Map: green islands on a light blue circle against dark blue, orange-red pins on two of the islands, an Add Friend button and the tab bar"
+          }
+        ]
+      },
+      {
+        "title": "Welcome",
+        "heading": "Welcome home",
+        "content": [
+          "HabitAt opens on a house before you have one of your own. “Welcome to HabitAt” sits above a giant house built from blocks in the room colours, with Get Started near the bottom.",
+          "Tap Get Started, and the house slides up and off the screen as Make an account comes in: an email, a password and Create Account, which takes you to Your Home.",
+          {
+            "image": "welcome",
+            "alt": "Two iPhones with an arrow: Welcome to HabitAt above a giant house of colour blocks with a Get Started button, then Make an account with Email and Password fields, a green Create Account button and the keyboard",
+            "caption": "Welcome, then sign-up."
+          }
+        ]
+      },
+      {
+        "title": "Outcome",
+        "heading": "Results and lessons",
+        "content": [
+          "HabitAt won 1st place at the UWUX Design Sprint 2025. In two hours, we made a polished mid-fidelity prototype, clickable from the welcome screen through sign-up into the house, and presented it in a live demo pitch.",
+          {
+            "h3": "What I learned"
+          },
+          {
+            "bullets": [
+              "**Rewards you can see.** Points that turn into furniture and rooms feel more real than a score.",
+              "**Scope to the clock.** In two hours, design the core loop first: add a task, finish it, spend the points."
+            ]
+          },
+          {
+            "h3": "Summary"
+          },
+          "HabitAt started from a prompt and a persona. The prompt: make a boring everyday task feel rewarding and engaging through gamification. The persona: Jasmine, a student who struggles with chores and finds mundane tasks unmotivating without a sense of reward or fun. In two hours, our team of four turned her chores into a house.",
+          "Each room holds its tasks and shows how many are left, AI sorts new tasks into their rooms, and finished tasks earn points for furniture and for new or bigger rooms that grow the house. A Friend Map lets friends keep each other on track. I did most of the design, and HabitAt won 1st place."
+        ]
+      }
+    ]
+  },
+  "assets": {
+    "cover": {
+      "path": "assets/habitat-cover.png",
+      "existingAssetId": "image-0dced57f3eca6eda3be9c785a2fa4873ce61284c-716x717-png",
+      "note": "Winston’s current thumbnail in Sanity (716×717), kept as is, at his request. It is his phone mockup of Your Home (525:2099) from Portfolio V3 (600:1042, a screenshot dated 2025-08-11), so it still shows the original Living Room counter “2” and the original TV picture at thumbnail size, unlike the cleaned screens on the page."
+    },
+    "hero": {
+      "path": "assets/habitat-cs5-hero.jpg",
+      "sourceNodeIds": [
+        "525:2495",
+        "525:2099",
+        "525:2649"
+      ],
+      "note": "Welcome (525:2495, as exported), Your Home (centre) and Living Room at 3x in Apple’s iPhone 16 Pro (White Titanium) bezel, laid out like the Yelo, Arca and CoStudy heroes (2400×1350, bezel at 0.391 scale, 612 px apart, soft drop shadow; tools/hero.py) on a pale gradient from the Laundry yellow to the lawn green. Your Home and Living Room are the cleaned portfolio copies used on the page (see home and open-room). The chore names are made up for the portfolio copy and aren’t quoted as event fact."
+    },
+    "home": {
+      "path": "assets/habitat-cs5-home.png",
+      "sourceNodeIds": [
+        "525:2099"
+      ],
+      "note": "Your Home (525:2099) at 3x in Apple’s iPhone 16 Pro (White Titanium) bezel on a transparent background (phones.py, pad_to 1.6), 3200×2000, cleaned locally at Winston’s request as a portfolio-only copy (the Figma file is unchanged; tools/clean.py): the Living Room counter on the house reads 3 instead of 2, to match the three tasks in the Living Room view (the “3” is copied pixel for pixel from the Dining Room counter), and the TV picture, an AI-generated stock image with a watermark, is replaced by a plain flat landscape in the app’s own colours. The house sits in a horizontally scrolling frame; the smaller house to its right (Frame 10) is off screen, as in the export."
+    },
+    "open-room": {
+      "path": "assets/habitat-cs5-open-room.png",
+      "sourceNodeIds": [
+        "525:2099",
+        "525:2649"
+      ],
+      "note": "Your Home (525:2099) and Living Room (525:2649) at 3x in Apple’s iPhone 16 Pro (White Titanium) bezel on a transparent background (phones.py, pad_to 1.6), 3200×2000, with an arrow, as the prototype wires it (Living Room on the house → 525:2649). Both are the cleaned copies: the house as in home; Living Room: the pill reads “3 Tasks” (was “2 Tasks”) to match its three tiles and the house counter, “Eat apples” and “Study” become “Vacuum the rug” and “Water the plants” (“Clean room” stays), and the TV shows the same plain landscape. Text is redrawn in DM Sans (Light 20; Medium 16 for the pill) at the export’s own size, weight, colour and baseline, calibrated on the old strings (tools/tx.py). The chore names are made up for the portfolio copy and aren’t quoted as event fact."
+    },
+    "dining-room": {
+      "path": "assets/habitat-cs5-dining-room.png",
+      "sourceNodeIds": [
+        "525:2689"
+      ],
+      "note": "Dining Room (525:2689), the same room template as the Living Room (525:2649) in the Dining Room’s pink, at 3x in Apple’s iPhone 16 Pro (White Titanium) bezel on a transparent background (phones.py, pad_to 1.6), 3200×2000, alone, so the Living Room (already in the hero and open-room) isn’t shown a third time. Cleaned locally at Winston’s request as a portfolio-only copy (the Figma file is unchanged; tools/clean.py): the pill reads “3 Tasks” (was “2 Tasks”) to match its three tiles and the house’s Dining Room counter (3); the two “Task Title” placeholders become “Wipe the table” and “Sweep the floor” (“Wash dishes” stays), in DM Sans Light 20, white, calibrated on the old strings like the Living Room text (tools/tx.py). The chore names are made up for the portfolio copy and aren’t quoted as event fact."
+    },
+    "new-task": {
+      "path": "assets/habitat-cs5-new-task.png",
+      "sourceNodeIds": [
+        "525:2099",
+        "525:2534",
+        "525:2101",
+        "525:2535"
+      ],
+      "note": "Your Home (525:2099, cleaned as in home) and New Task (525:2534) at 3x in Apple’s iPhone 16 Pro (White Titanium) bezel on a transparent background (phones.py, pad_to 1.6), 3200×2000, with an arrow, as the prototype wires it (New Task → 525:2534). New Task is cleaned locally at Winston’s request as a portfolio-only copy (tools/clean.py): its dimmed background was an older copy of the house (525:2535: “Room 2” / “Room 3”, every counter 2, no floor lines); the cleaned final house (525:2101) is put in its place under a model of the #3D3D3D 50% overlay and the sheet’s faint shadow, which reproduces the original pixels to 0.24 levels on average. It was the only phone screen without a status bar; one is added the way statusbar.py does. The sheet, keyboard, title and cloud are the export’s own pixels."
+    },
+    "shop-furniture": {
+      "path": "assets/habitat-cs5-shop-furniture.png",
+      "sourceNodeIds": [
+        "525:2891"
+      ],
+      "note": "Shop, Furniture (525:2891) at 3x in Apple’s iPhone 16 Pro (White Titanium) bezel on a transparent background (phones.py, pad_to 1.6), 3200×2000, as exported. The grid runs past the tab bar and is clipped, as designed. Prices are sample data in the design."
+    },
+    "shop-rooms": {
+      "path": "assets/habitat-cs5-shop-rooms.png",
+      "sourceNodeIds": [
+        "525:3002",
+        "525:3059"
+      ],
+      "note": "Shop, Rooms (525:3002 → 525:3059) at 3x in Apple’s iPhone 16 Pro (White Titanium) bezel on a transparent background (phones.py, pad_to 1.6), 3200×2000, with an arrow, as the prototype wires it (“+” → 525:3059). As exported: on 525:3059 the taller block pushes “Choose Colour” down, so only the first row of swatches shows above the tab bar, and there is no Done button, as designed."
+    },
+    "grow": {
+      "path": "assets/habitat-cs5-grow.png",
+      "sourceNodeIds": [
+        "525:3829",
+        "525:2101"
+      ],
+      "note": "Smaller House (525:3829) → the house in Your Home (Frame 9, 525:2101), both at 3x, bottom-aligned, on a transparent 2400×1500 canvas for \"size\": \"content\", with an arrow sized for the text column (arrows.py). Per Winston, the smaller house is your house before a new room. Both are cleaned like home (Living Room counter 3, plain TV picture) and lifted off their frame fills (white on 525:2101, #E8E8E8 on 525:3829; tools/houses.py; re-composited, they match the exports to within 2.2 levels). Labels Before / After at x 0.2387 / 0.7612, y 0.0667 (the transparent band on top)."
+    },
+    "friend-map": {
+      "path": "assets/habitat-cs5-friend-map.png",
+      "sourceNodeIds": [
+        "525:2745"
+      ],
+      "note": "Friend Map (525:2745) at 3x in Apple’s iPhone 16 Pro (White Titanium) bezel on a transparent background (phones.py, pad_to 1.6), 3200×2000, as exported (light status bar; the second, identical Add Friend frame stacked on the first is invisible)."
+    },
+    "welcome": {
+      "path": "assets/habitat-cs5-welcome.png",
+      "sourceNodeIds": [
+        "525:2495",
+        "525:2512"
+      ],
+      "note": "Onboard 525:2495 → 525:2512 at 3x in Apple’s iPhone 16 Pro (White Titanium) bezel on a transparent background (phones.py, pad_to 1.6), 3200×2000, with an arrow, as exported. In the prototype “Get Started” Smart Animates (gentle spring, about 1 s) and the house slides up and off the screen; stills can’t show the slide."
+    }
+  }
+}

@@ -42,6 +42,7 @@ const BASE = {
   'hopper-hangout': { _id: 'legacy-portfolio-hopperhangout', title: 'Hopper Hangout', slug: 'hopper-hangout', year: 2023, order: 19, featured: false },
   'augwa': { _id: 'figma-portfolio-augwa', title: 'Augwa', slug: 'augwa', year: 2025, order: 6, featured: false },
   'hack404-launchpad': { _id: 'figma-portfolio-hack404-launchpad', title: 'Hack404 Launchpad', slug: 'hack404-launchpad', year: 2025, order: 7, featured: false },
+  'habitat': { _id: 'figma-portfolio-habitat', title: 'HabitAt', slug: 'habitat', year: 2025, order: 8, featured: false },
 };
 
 const slugs = process.argv.slice(2).length ? process.argv.slice(2)
