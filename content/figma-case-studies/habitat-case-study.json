@@ -8,7 +8,7 @@
     "discipline": "Product Design",
     "intro": "HabitAt is an app concept that turns your chores into a house: each room holds its tasks, and finishing them earns points for furniture and new rooms. In a team of four, I did most of the design, and we won 1st place at the UWUX Design Sprint 2025.",
     "summary": "Turning a two-hour sprint prompt into a clickable prototype for a chore app where tasks live in the rooms of a house.",
-    "overview": "HabitAt is for people like Jasmine, the student persona that came with the prompt, who struggles with chores and finds mundane tasks unmotivating unless there’s a sense of reward or fun. Amna, Andrew, Anita and I had two hours, and we submitted a clickable prototype and a live demo pitch.",
+    "overview": "Tap a room to see its to-do list, or add a task with just a name and a due date, and AI files it into the right room. The house grows as you spend your points on new and bigger rooms, and a Friend Map lets friends keep each other on track. Amna, Andrew, Anita and I made the prototype in two hours.",
     "impact": "1st place, UWUX Design Sprint 2025.",
     "showSideMenu": true,
     "details": [
