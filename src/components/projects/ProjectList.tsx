@@ -12,24 +12,25 @@ import type { ProjectCardData } from './types';
 // Width of the thumbnail that trails the cursor while hovering a row
 const THUMB_WIDTH = 280;
 
-// Rows that scroll into view together slide up one after another
+// When the list scrolls into view, every row slides up in order, top to
+// bottom, as one staggered sequence (the whole list spread over at most
+// MAX_STAGGER_SPREAD seconds).
 const ROW_STAGGER = 0.06;
-const MAX_ROW_DELAY = 0.6;
-// Rows revealed within this long of each other count as one batch
-const BATCH_MS = 100;
+const MAX_STAGGER_SPREAD = 1;
 
 interface ProjectRowProps {
   project: ProjectCardData;
   active: boolean;
   dimmed: boolean;
   onMouseEnter: (e: React.MouseEvent) => void;
-  // Delay for this row within the batch of rows being revealed right now
-  nextDelay: () => number;
+  // Whether the list has been revealed, and this row's delay within it
+  shown: boolean;
+  still: boolean;
+  delay: number;
 }
 
-// Each row slides up from behind its own bottom edge as it scrolls into view.
-function ProjectRow({ project, active, dimmed, onMouseEnter, nextDelay }: ProjectRowProps) {
-  const { ref, shown, still } = useReveal<HTMLLIElement>('some', '0px 0px -5% 0px');
+// Each row slides up from behind its own bottom edge once the list is revealed.
+function ProjectRow({ project, active, dimmed, onMouseEnter, shown, still, delay }: ProjectRowProps) {
   const [scope, animate] = useAnimate<HTMLSpanElement>();
   const [shownAtMount] = useState(shown);
   const played = useRef(shownAtMount);
@@ -37,11 +38,11 @@ function ProjectRow({ project, active, dimmed, onMouseEnter, nextDelay }: Projec
   useEffect(() => {
     if (!shown || played.current) return;
     played.current = true;
-    animate(scope.current, { y: '0%' }, revealTransition(still, 0.9, nextDelay()));
-  }, [shown, still, animate, scope, nextDelay]);
+    animate(scope.current, { y: '0%' }, revealTransition(still, 0.9, delay));
+  }, [shown, still, animate, scope, delay]);
 
   return (
-    <li ref={ref}>
+    <li>
       <Link
         href={`/projects/${project.slug}`}
         onMouseEnter={onMouseEnter}
@@ -77,21 +78,19 @@ function ProjectRow({ project, active, dimmed, onMouseEnter, nextDelay }: Projec
 
 export default function ProjectList({ projects }: { projects: ProjectCardData[] }) {
   const preview = useCursorPreview();
-  const batch = useRef({ start: -Infinity, count: 0 });
+  // One trigger for the whole list, so rows that reach the screen at different
+  // moments (Lenis spreads a scroll over many frames) still play in order.
+  const { ref, shown, still } = useReveal<HTMLUListElement>('some', '0px 0px -5% 0px');
   const orderedProjects = sortProjectList(projects);
 
   if (projects.length === 0) return null;
 
-  const nextDelay = () => {
-    const now = performance.now();
-    if (now - batch.current.start > BATCH_MS) batch.current = { start: now, count: 0 };
-    return Math.min(batch.current.count++ * ROW_STAGGER, MAX_ROW_DELAY);
-  };
+  const step = Math.min(ROW_STAGGER, MAX_STAGGER_SPREAD / Math.max(1, orderedProjects.length - 1));
 
   return (
     <div className="relative w-full" onMouseMove={preview.move} onMouseLeave={preview.hide}>
-      <ul className="flex flex-col gap-2 w-full text-[12px] md:text-[14px] leading-[1.2]">
-        {orderedProjects.map((project) => (
+      <ul ref={ref} className="flex flex-col gap-2 w-full text-[12px] md:text-[14px] leading-[1.2]">
+        {orderedProjects.map((project, index) => (
           <ProjectRow
             key={project._id}
             project={project}
@@ -103,7 +102,9 @@ export default function ProjectList({ projects }: { projects: ProjectCardData[] 
                 height: THUMB_WIDTH / imageAspect(project.coverImage),
               })
             }
-            nextDelay={nextDelay}
+            shown={shown}
+            still={still}
+            delay={index * step}
           />
         ))}
       </ul>
