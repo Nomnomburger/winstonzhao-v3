@@ -74,7 +74,8 @@ export const metadata: Metadata = {
   keywords: [
     "Winston Zhao",
     "product designer",
-    "Stockholm",
+    "Figma Campus Leader",
+    "Industrial Design",
     "portfolio",
     "UX designer",
     "UI designer",
@@ -138,14 +139,22 @@ const personJsonLd = {
   email: "hello@winstonzhao.ca",
   address: {
     "@type": "PostalAddress",
-    addressLocality: "Stockholm",
-    addressCountry: "SE",
+    addressLocality: "Toronto",
+    addressRegion: "ON",
+    addressCountry: "CA",
   },
-  worksFor: {
-    "@type": "Organization",
-    name: "Newly",
-    url: "https://newly.app",
-  },
+  affiliation: [
+    {
+      "@type": "CollegeOrUniversity",
+      name: "OCAD University",
+      url: "https://www.ocadu.ca",
+    },
+    {
+      "@type": "Organization",
+      name: "Figma",
+      url: "https://www.figma.com",
+    },
+  ],
   sameAs: ["https://www.linkedin.com/in/zhaowinston/"],
 };
 

@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: "Winston Zhao",
     short_name: "Winston Zhao",
     description:
-      "Winston Zhao is a product designer based in Stockholm, blending form and function.",
+      "Winston Zhao is a product designer based in Toronto, blending form and function.",
     start_url: "/",
     display: "standalone",
     background_color: "#ffffff",
