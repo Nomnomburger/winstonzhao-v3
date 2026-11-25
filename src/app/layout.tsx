@@ -59,8 +59,10 @@ const ppNeueMontreal = localFont({
 });
 
 const SITE_URL = "https://winston.studio";
+// Search snippets show this text, so keep it under ~160 characters and free of
+// apostrophes: Google has been showing the encoded apostrophe as "&#39;".
 const SITE_DESCRIPTION =
-  "Hej! I'm Winston, a product designer currently working at Newly in Stockholm Sweden. I'm pursuing a degree in Industrial Design at OCAD University in Toronto Canada.";
+  "Winston Zhao is a product designer and Figma Campus Leader studying Industrial Design at OCAD University. Previously designed at Newly, TextQL and Yelo.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
