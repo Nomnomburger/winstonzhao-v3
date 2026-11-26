@@ -14,7 +14,6 @@ import {
   FigmaRole,
   WZLogo,
   LanguageGlobe,
-  OLD_SITE_URL,
   RESUME_URL,
   EMAIL,
 } from './shared';
@@ -1042,23 +1041,18 @@ export default function HomePanel({
               </div>
               <div className="w-[354px] font-normal text-[14px] tracking-[-0.28px] leading-[1.2]">
                 <p className="mb-0">
-                  {translations.en.newPortfolio}
+                  {translations.en.openToWork}
                 </p>
                 <p>
-                  {translations.en.checkBackPrefix}
-                  <a
-                    href={OLD_SITE_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="underline"
-                  >
-                    {translations.en.oldSiteLink}
+                  {translations.en.contactPrefix}
+                  <a href={`mailto:${EMAIL}`} className="underline">
+                    {translations.en.contactLink}
                   </a>
                   {translations.en.period}
                 </p>
               </div>
             </div>
-            <div className="flex gap-3 items-center justify-end font-normal text-[12px] tracking-[-0.24px] leading-normal whitespace-nowrap">
+            <div className="flex gap-3 items-center justify-end font-normal text-[14px] tracking-[-0.28px] leading-[1.2] whitespace-nowrap">
               <a href={`mailto:${EMAIL}`}>hello [at] winstonzhao.ca</a>
               <Link href={RESUME_URL}>
                 {translations.en.resume}

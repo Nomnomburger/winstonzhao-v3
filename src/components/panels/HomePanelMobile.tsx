@@ -14,7 +14,6 @@ import {
   LanguageGlobe,
   PrevDesignRole,
   FigmaRole,
-  OLD_SITE_URL,
   RESUME_URL,
   EMAIL,
 } from './shared';
@@ -1089,17 +1088,12 @@ export default function HomePanelMobile({
             <div className="relative flex flex-col gap-12 p-6 w-full">
               <div className="max-w-[354px] font-normal text-[12px] tracking-[-0.24px] leading-normal">
                 <p className="mb-0">
-                  {translations.en.newPortfolio}
+                  {translations.en.openToWork}
                 </p>
                 <p>
-                  {translations.en.checkBackPrefix}
-                  <a
-                    href={OLD_SITE_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="underline"
-                  >
-                    {translations.en.oldSiteLink}
+                  {translations.en.contactPrefix}
+                  <a href={`mailto:${EMAIL}`} className="underline">
+                    {translations.en.contactLink}
                   </a>
                   {translations.en.period}
                 </p>
