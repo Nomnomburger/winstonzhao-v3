@@ -1,0 +1,183 @@
+{
+  "documentId": "figma-portfolio-ryri",
+  "source": {
+    "figmaFile": "qDdxlqtBxVpaAOUMITle4W",
+    "url": "https://www.figma.com/design/qDdxlqtBxVpaAOUMITle4W/Winston-Design-Demo?node-id=1-10967",
+    "page": "Ryri (1:10967): Dashboard – Ready (1:11468, full-length 1:11537 and 1:11606), Ready SELECTED (1:11809), Focus (1:11138), Account (1:11238), Chat with TED (1:11319), Create task overlay component (1:12190), Session Length (1:11991: 1:11992, 1:12016, 1:12040, 1:12064), Ambient Music (1:12121), Task Tile (1:12088). Older window-button screens with TED’s Tone (1:11352, 1:11675, 1:11878) are not shown, at Winston’s request.",
+    "facts": "Confirmed by Winston (Nov 26 2026, ANSWERS.md, Ryri): a side project, not a case study, so the page describes the features and doesn’t go too in depth. Ryri started as our Hack the North 2024 project, and Winston redesigned it for phones on his own (LinkedIn dates it December 2024 – January 2025, “a mobile adaptation of the earlier Hack the North project”). It is a Figma design. TED is renamed Ryri everywhere (“Chat with Ryri”); the tone picker is left out; only the Ryri screens are shown. Chat messages are kept as they are, with TED renamed. Clean-ups: the stray “Home” label is removed; “69 hours” and the email stay. The cover stays; the hero is new (Ready, Focus, Chat). Features are read from the frames and the prototype: session length chips 30/60/90/120 with − and +, one break for 30 or 60 and two for 90 or 120 (component 1:11991); task list with due dates; + and Create a task open the Create task overlay (title, date, reminder, Save task); picking a task turns the button into Start session (→ Focus); Focus shows the current task, a bar row with minutes done and left, the next break, Ambience, other tasks and I’m done! (→ Ready); Ambience is the Ambient Music component with Zen, Nature, Upbeat and Flow, switchable on Ready and Focus; the status pill’s chat icon opens the chat (text field and mic); the account icon opens Your account (name, email, Edit account, Log out, all-time focus, focus history with delete icons)."
+  },
+  "fields": {
+    "description": "Focus timer with tasks, planned breaks and background music.",
+    "client": "Side project",
+    "discipline": "Product Design",
+    "intro": "Ryri is a focus app for your phone: pick a task and a session length, and it times your session and plans your breaks, with background music in the mood you choose. It started as our Hack the North 2024 project, and I redesigned it for phones on my own.",
+    "summary": "Designing a focus app for phones that keeps your task, a session timer with planned breaks and background music on one screen.",
+    "overview": "Ryri takes you from setting up a session to focusing on one task, with a chat with Ryri and your focus history a tap away. It’s a side project I designed on my own in Figma, from December 2024 to January 2025.",
+    "details": [
+      {
+        "label": "Project",
+        "value": "Side project\nStarted at Hack the North 2024"
+      },
+      {
+        "label": "Team",
+        "value": "Solo"
+      },
+      {
+        "label": "Timeline",
+        "value": "December 2024 – January 2025"
+      },
+      {
+        "label": "Platform",
+        "value": "Mobile"
+      },
+      {
+        "label": "Tools",
+        "value": "Figma"
+      }
+    ],
+    "cover": {
+      "asset": "cover",
+      "alt": "An iPhone showing Ryri’s Focus screen: Good afternoon, Ryri is active, Currently focusing on CS115 Assignment with a row of bars, 20 mins complete and 25 mins left, Up next: 5 min break, Ambience, Other Tasks and an I’m done! button"
+    },
+    "hero": {
+      "image": "hero",
+      "alt": "Three iPhones on a pale cyan-to-yellow gradient: Ryri’s Ready screen with Session length, Select Task and Create a task; the Focus screen on CS115 Assignment with its row of bars and Ambience; and Chat with Ryri with the message bubbles, Ask a question and a mic button"
+    },
+    "sections": [
+      {
+        "title": "Origin",
+        "heading": "From Hack the North to phones",
+        "content": [
+          "Ryri began as our team’s project at Hack the North 2024. Afterwards, I took the idea further as a side project and redesigned it for phones on my own, over December and January.",
+          "The app follows one loop: set up a session, focus on one task, and finish it. Each step has its own screen, and the chat and your focus history are a tap away from either."
+        ]
+      },
+      {
+        "title": "Setup",
+        "heading": "Ready to lock in",
+        "content": [
+          "Every session starts on the Ready screen, which asks “Ready to lock in?” and holds the three choices you make first: how long, which task and what to listen to.",
+          {
+            "h3": "Session length"
+          },
+          "Pick 30, 60, 90 or 120 minutes, or nudge the time with − and +. Under the time, Ryri tells you how many breaks you’ll get: one for 30 or 60 minutes, and two for 90 or 120.",
+          {
+            "image": "session-length",
+            "size": "content",
+            "alt": "Four Session length cards in a grid: 30 mins and 60 mins with “You’ll have one break”, 90 mins and 120 mins with “You’ll have two breaks”, each with the matching chip highlighted in a row of 30, 60, 90 and 120",
+            "caption": "The four session lengths and their breaks."
+          },
+          {
+            "h3": "Tasks"
+          },
+          "Below that is your task list, each task with its due date. Tap + or Create a task to add one: give it a title, a date and a reminder, then Save task.",
+          {
+            "image": "setup",
+            "alt": "Two iPhones with an arrow: the Ready screen with Session length, Select Task and a cyan Create a task button, then the Create a task sheet over the dimmed Ready screen, with Add a title, Date Sep 16, Reminder On and a yellow Save task button",
+            "caption": "Create a task opens a sheet over the Ready screen."
+          },
+          {
+            "h3": "Ambience"
+          },
+          "Ambience plays background music in one of four moods: Zen, Nature, Upbeat and Flow. Pick one before you start, and change it any time during the session."
+        ]
+      },
+      {
+        "title": "Focus",
+        "heading": "One task on screen",
+        "content": [
+          "Once you pick a task, the button at the bottom turns from Create a task into Start session. Tap it, and the Ready screen becomes the Focus screen.",
+          {
+            "image": "focus",
+            "alt": "Two iPhones with an arrow: the Ready screen with CS115 Assignment picked and a yellow Start session button, then the Focus screen with Ryri is active, Currently focusing on CS115 Assignment, a row of bars partly filled in yellow, 20 mins complete, 25 mins left, Up next: 5 min break, Ambience and I’m done!",
+            "caption": "Pick a task, then Start session."
+          },
+          "The task you’re working on fills the top card, under “Currently focusing on”. A row of bars fills in with yellow as time passes, with the minutes done on one side, the minutes left on the other and your next break underneath.",
+          "Ambience stays on this screen, so you can change the mood mid-session. Below it, your other tasks wait in a list, with a nudge to start another one after this. When you finish, I’m done! ends the session and takes you back to the Ready screen."
+        ]
+      },
+      {
+        "title": "Chat",
+        "heading": "Chat with Ryri",
+        "content": [
+          "Ryri also talks back. The pill under the greeting is its status: “Hi Winston, let’s focus!” before a session, and “Ryri is active” during one. Its chat icon opens Chat with Ryri, where you can type a question or tap the mic to speak.",
+          "Ryri answers in a casual, friendly voice, and it’s keen to help you focus more often.",
+          {
+            "image": "chat",
+            "alt": "An iPhone showing Chat with Ryri: casual messages back and forth, from “Whats up big man ryri” to a sad face, an Ask a question field and a yellow mic button"
+          }
+        ]
+      },
+      {
+        "title": "Account",
+        "heading": "Your focus history",
+        "content": [
+          "The account icon in the top corner opens Your account. Next to your name, email, Edit account and Log out, it adds up your all-time focus and keeps a focus history: every task you’ve focused on, with its date and a delete button.",
+          {
+            "image": "account",
+            "alt": "An iPhone showing Your account: What’s up Winston Zhao, the email, Edit account and Log out, Thanks for using Ryri!, All time focus 69 hours, and a Focus history of five tasks with dates and delete icons"
+          }
+        ]
+      }
+    ]
+  },
+  "assets": {
+    "cover": {
+      "path": "assets/ryri-cover.png",
+      "existingAssetId": "image-5a11bee732c97a91f6e6639b9bae33eb5ce378f9-716x717-png",
+      "sourceNodeIds": [
+        "1:11138"
+      ],
+      "note": "Winston’s current thumbnail in Sanity (716×717), kept as is, at his request: his phone mockup of the Focus screen from the portfolio file (r2Feu1tLXWg8ApMcINffew 595:1034). The repo file is byte-identical to the Sanity asset (its SHA-1 is the asset id)."
+    },
+    "hero": {
+      "path": "assets/ryri-cs5-hero.jpg",
+      "sourceNodeIds": [
+        "1:11468",
+        "1:11138",
+        "1:11319"
+      ],
+      "note": "Ready (1:11468), Focus (1:11138, centre) and Chat (1:11319) at 3x in Apple’s iPhone 16 Pro (White Titanium) bezel, laid out like the Yelo, Arca, CoStudy and HabitAt heroes (2400×1350, bezel at 0.391 scale, 612 px apart, soft drop shadow; tools/hero.py) on a pale gradient from Ryri’s cyan (#9DFFF9) to its yellow (#F7FE72). Focus and Chat are the cleaned copies used on the page (see focus and chat). Each 393×852 pt frame is scaled to cover the iPhone 16 Pro display (1206×2622, top-aligned, as phones.py does) and gets a white iOS status bar (9:41, signal, Wi-Fi, battery: the glyphs of the clean 3x iPhone 16 Pro export Villio 421:51162), because the frames have none (scratchpad exports/ryri/tools/clean.py)."
+    },
+    "session-length": {
+      "path": "assets/ryri-cs5-session-length.png",
+      "sourceNodeIds": [
+        "1:11992",
+        "1:12016",
+        "1:12040",
+        "1:12064"
+      ],
+      "note": "The four Session Length variants (30, 60, 90, 120 mins; component 1:11991) at 3x in a 2×2 grid with 16 pt gaps on a transparent background (tools/cards.py). The exports come back flattened over white, so the 24 pt corners (radius fitted on the export) get their transparency back; nothing else changes."
+    },
+    "setup": {
+      "path": "assets/ryri-cs5-setup.png",
+      "sourceNodeIds": [
+        "1:11468",
+        "1:12190"
+      ],
+      "note": "Ready (1:11468) and Create task (the Ready screen with the Create task overlay 1:12190, composited the way the prototype opens it: navigation OVERLAY, Bkg #000 at 80% over the screen, then the sheet and Save task; the overlay export is flattened over white, so the composite is P + (1 − a) · (0.2 · Ready − 51) with a the sheet’s coverage) at 3x in Apple’s iPhone 16 Pro (White Titanium) bezel on a transparent background (phones.py, pad_to 1.6), 3200×2000, with an arrow. Each 393×852 pt frame is scaled to cover the iPhone 16 Pro display (1206×2622, top-aligned, as phones.py does) and gets a white iOS status bar (9:41, signal, Wi-Fi, battery: the glyphs of the clean 3x iPhone 16 Pro export Villio 421:51162), because the frames have none (scratchpad exports/ryri/tools/clean.py); on the dimmed screen the status bar stays white, as system UI above the overlay."
+    },
+    "focus": {
+      "path": "assets/ryri-cs5-focus.png",
+      "sourceNodeIds": [
+        "1:11809",
+        "1:11138"
+      ],
+      "note": "Ready with CS115 Assignment picked (1:11809) and Focus (1:11138) at 3x in Apple’s iPhone 16 Pro (White Titanium) bezel on a transparent background (phones.py, pad_to 1.6), 3200×2000, with an arrow, as the prototype wires it (Start session → 1:11138). Focus is a portfolio-only copy at Winston’s request: the stray “Home” label (1:11230, Inter 16, black, overlapping the top of the screen) is painted out with the screen colour #121314; its ink ends 1.4 pt above “Good afternoon”, so nothing else changes. Each 393×852 pt frame is scaled to cover the iPhone 16 Pro display (1206×2622, top-aligned, as phones.py does) and gets a white iOS status bar (9:41, signal, Wi-Fi, battery: the glyphs of the clean 3x iPhone 16 Pro export Villio 421:51162), because the frames have none (scratchpad exports/ryri/tools/clean.py)."
+    },
+    "chat": {
+      "path": "assets/ryri-cs5-chat.png",
+      "sourceNodeIds": [
+        "1:11319"
+      ],
+      "note": "Chat (1:11319) at 3x in Apple’s iPhone 16 Pro (White Titanium) bezel on a transparent background (phones.py, pad_to 1.6), 3200×2000, a portfolio-only copy at Winston’s request (Nov 26 2026: TED is renamed Ryri, messages kept; the Figma file is unchanged): “Chat with TED” → “Chat with Ryri”, “Whats up big man ted” → “Whats up big man ryri”, “The life of TED” → “The life of Ryri”, “no stfu ted” → “no stfu ryri”. Albert Sans 24/14 (the frame’s font, wght 400, −0.5 px tracking) calibrated on the old strings; the two user bubbles hug their text, so they are redrawn 1 pt narrower from the same right edge (radii 24/4/24/24); in Ryri’s reply only the word is redrawn and the rest of the line moved with it, so the line breaks stay the same. Everything above the input bar is moved down 40 pt so the title clears the status bar and sits where “Good afternoon” sits on the Focus screen. Each 393×852 pt frame is scaled to cover the iPhone 16 Pro display (1206×2622, top-aligned, as phones.py does) and gets a white iOS status bar (9:41, signal, Wi-Fi, battery: the glyphs of the clean 3x iPhone 16 Pro export Villio 421:51162), because the frames have none (scratchpad exports/ryri/tools/clean.py)."
+    },
+    "account": {
+      "path": "assets/ryri-cs5-account.png",
+      "sourceNodeIds": [
+        "1:11238"
+      ],
+      "note": "Your account (1:11238) at 3x in Apple’s iPhone 16 Pro (White Titanium) bezel on a transparent background (phones.py, pad_to 1.6), 3200×2000. Moved down 40 pt so the title clears the status bar (the rows pushed out at the bottom are empty). Each 393×852 pt frame is scaled to cover the iPhone 16 Pro display (1206×2622, top-aligned, as phones.py does) and gets a white iOS status bar (9:41, signal, Wi-Fi, battery: the glyphs of the clean 3x iPhone 16 Pro export Villio 421:51162), because the frames have none (scratchpad exports/ryri/tools/clean.py)."
+    }
+  }
+}
