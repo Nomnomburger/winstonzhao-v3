@@ -1041,14 +1041,14 @@ export default function HomePanel({
               </div>
               <div className="w-[354px] font-normal text-[14px] tracking-[-0.28px] leading-[1.2]">
                 <p className="mb-0">
-                  {translations.en.openToWork}
+                  {roleLabel(t.openToWork, fromT.openToWork)}
                 </p>
                 <p>
-                  {translations.en.contactPrefix}
+                  {roleLabel(t.contactPrefix, fromT.contactPrefix)}
                   <a href={`mailto:${EMAIL}`} className="underline">
-                    {translations.en.contactLink}
+                    {roleLabel(t.contactLink, fromT.contactLink)}
                   </a>
-                  {translations.en.period}
+                  {roleLabel(t.period, fromT.period)}
                 </p>
               </div>
             </div>

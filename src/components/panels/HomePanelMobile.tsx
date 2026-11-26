@@ -568,6 +568,15 @@ export default function HomePanelMobile({
   // Scramble timing for language switches: all texts animate at once, each
   // sweeping through its own characters left to right.
   const switchCharDelay = 0.02;
+  // Short labels render as plain text until a language switch, then scramble.
+  const switchLabel = (text: string, fromText: string) =>
+    langSwitched ? (
+      <ScrambleText from={fromText} charDelay={switchCharDelay}>
+        {text}
+      </ScrambleText>
+    ) : (
+      text
+    );
   // The second name line is right-anchored during switches, so extra
   // characters ("Zhao" → "Sizhong") are added on the LEFT and the right
   // edge never leaves the page. Its sweep is held back and spread out so
@@ -1086,14 +1095,14 @@ export default function HomePanelMobile({
             <div className="relative flex flex-col gap-12 p-6 w-full">
               <div className="max-w-[354px] font-normal text-[12px] tracking-[-0.24px] leading-normal">
                 <p className="mb-0">
-                  {translations.en.openToWork}
+                  {switchLabel(t.openToWork, fromT.openToWork)}
                 </p>
                 <p>
-                  {translations.en.contactPrefix}
+                  {switchLabel(t.contactPrefix, fromT.contactPrefix)}
                   <a href={`mailto:${EMAIL}`} className="underline">
-                    {translations.en.contactLink}
+                    {switchLabel(t.contactLink, fromT.contactLink)}
                   </a>
-                  {translations.en.period}
+                  {switchLabel(t.period, fromT.period)}
                 </p>
               </div>
               <div className="flex items-end justify-between w-full">
