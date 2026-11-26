@@ -3,7 +3,6 @@
 import { motion, AnimatePresence, animate, useMotionValue, useReducedMotion, useTransform } from 'framer-motion';
 import { useEffect, useId, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore, type ReactNode } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import {
   AnimatedText,
   LetterRevealText,
@@ -14,7 +13,6 @@ import {
   LanguageGlobe,
   PrevDesignRole,
   FigmaRole,
-  RESUME_URL,
   EMAIL,
 } from './shared';
 import { Language, translations } from './translations';
@@ -1104,9 +1102,6 @@ export default function HomePanelMobile({
                 </div>
                 <div className="flex gap-3 items-center justify-end font-normal text-[12px] tracking-[-0.24px] leading-normal whitespace-nowrap">
                   <a href={`mailto:${EMAIL}`}>hello [at] winstonzhao.ca</a>
-                  <Link href={RESUME_URL}>
-                    {translations.en.resume}
-                  </Link>
                 </div>
               </div>
             </div>

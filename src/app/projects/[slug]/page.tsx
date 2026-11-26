@@ -9,7 +9,7 @@ import ContentSnap from '@/components/project/ContentSnap';
 import { ImageFigure, VideoFigure } from '@/components/project/Media';
 import { ReadLink, RevealArea, RevealFade, RevealMedia, RevealText } from '@/components/project/Reveal';
 import { WZLogo } from '@/components/panels/shared';
-import { EMAIL, RESUME_URL } from '@/lib/site';
+import { EMAIL } from '@/lib/site';
 
 // Pages are built ahead of time and refreshed from Sanity at most once a
 // minute; projects published later are rendered on first visit.
@@ -242,7 +242,6 @@ export default async function ProjectPage({ params }: { params: Params }) {
         </Link>
         <div className="flex gap-3 items-center justify-end font-normal text-[12px] tracking-[-0.24px] md:text-[14px] md:tracking-[-0.28px] leading-[1.2] whitespace-nowrap">
           <a href={`mailto:${EMAIL}`}>hello [at] winstonzhao.ca</a>
-          <Link href={RESUME_URL}>resume</Link>
         </div>
       </footer>
     </main>

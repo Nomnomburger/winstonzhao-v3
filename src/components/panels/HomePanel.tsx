@@ -1054,9 +1054,6 @@ export default function HomePanel({
             </div>
             <div className="flex gap-3 items-center justify-end font-normal text-[14px] tracking-[-0.28px] leading-[1.2] whitespace-nowrap">
               <a href={`mailto:${EMAIL}`}>hello [at] winstonzhao.ca</a>
-              <Link href={RESUME_URL}>
-                {translations.en.resume}
-              </Link>
             </div>
           </motion.div>
         )}
