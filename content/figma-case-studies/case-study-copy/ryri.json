@@ -41,7 +41,7 @@
     },
     "hero": {
       "image": "hero",
-      "alt": "Three iPhones on a pale cyan-to-yellow gradient: Ryri’s Ready screen with Session length, Select Task and Create a task; the Focus screen on CS115 Assignment with its row of bars and Ambience; and Chat with Ryri with the message bubbles, Ask a question and a mic button"
+      "alt": "Three iPhones on a pale cyan-to-yellow gradient: Ryri’s Ready screen with Session length, CS115 Assignment picked under Select Task and a Start session button; the Focus screen on CS115 Assignment with its row of bars and Ambience; and Chat with Ryri with the message bubbles, Ask a question and a mic button"
     },
     "sections": [
       {
@@ -49,7 +49,7 @@
         "heading": "From Hack the North to phones",
         "content": [
           "Ryri began as our team’s project at Hack the North 2024. Afterwards, I took the idea further as a side project and redesigned it for phones on my own, over December and January.",
-          "The app follows one loop: set up a session, focus on one task, and finish it. Each step has its own screen, and the chat and your focus history are a tap away from either."
+          "The app follows one loop: set up a session, focus on one task and finish it. Setting up and focusing each get their own screen, and the chat and your focus history are a tap away from both."
         ]
       },
       {
@@ -92,7 +92,7 @@
             "alt": "Two iPhones with an arrow: the Ready screen with CS115 Assignment picked and a yellow Start session button, then the Focus screen with Ryri is active, Currently focusing on CS115 Assignment, a row of bars partly filled in yellow, 20 mins complete, 25 mins left, Up next: 5 min break, Ambience and I’m done!",
             "caption": "Pick a task, then Start session."
           },
-          "The task you’re working on fills the top card, under “Currently focusing on”. A row of bars fills in with yellow as time passes, with the minutes done on one side, the minutes left on the other and your next break underneath.",
+          "The task you’re working on sits in the top card, under “Currently focusing on”. A row of bars fills in with yellow as time passes, with the minutes done on one side, the minutes left on the other and your next break underneath.",
           "Ambience stays on this screen, so you can change the mood mid-session. Below it, your other tasks wait in a list, with a nudge to start another one after this. When you finish, I’m done! ends the session and takes you back to the Ready screen."
         ]
       },
@@ -100,8 +100,8 @@
         "title": "Chat",
         "heading": "Chat with Ryri",
         "content": [
-          "Ryri also talks back. The pill under the greeting is its status: “Hi Winston, let’s focus!” before a session, and “Ryri is active” during one. Its chat icon opens Chat with Ryri, where you can type a question or tap the mic to speak.",
-          "Ryri answers in a casual, friendly voice, and it’s keen to help you focus more often.",
+          "Ryri also talks back. The pill under the title is its status: “Hi Winston, let’s focus!” before a session, and “Ryri is active” during one. Its chat icon opens Chat with Ryri, where you can type a question or tap the mic to speak.",
+          "In the chat, Ryri asks you to use it more often, because it wants to help you focus.",
           {
             "image": "chat",
             "alt": "An iPhone showing Chat with Ryri: casual messages back and forth, from “Whats up big man ryri” to a sad face, an Ask a question field and a yellow mic button"
@@ -112,7 +112,7 @@
         "title": "Account",
         "heading": "Your focus history",
         "content": [
-          "The account icon in the top corner opens Your account. Next to your name, email, Edit account and Log out, it adds up your all-time focus and keeps a focus history: every task you’ve focused on, with its date and a delete button.",
+          "The account icon in the top corner opens Your account. Along with your name, email, Edit account and Log out, it adds up your all-time focus and keeps a focus history: every task you’ve focused on, with its date and a delete button.",
           {
             "image": "account",
             "alt": "An iPhone showing Your account: What’s up Winston Zhao, the email, Edit account and Log out, Thanks for using Ryri!, All time focus 69 hours, and a Focus history of five tasks with dates and delete icons"
@@ -133,11 +133,11 @@
     "hero": {
       "path": "assets/ryri-cs5-hero.jpg",
       "sourceNodeIds": [
-        "1:11468",
+        "1:11809",
         "1:11138",
         "1:11319"
       ],
-      "note": "Ready (1:11468), Focus (1:11138, centre) and Chat (1:11319) at 3x in Apple’s iPhone 16 Pro (White Titanium) bezel, laid out like the Yelo, Arca, CoStudy and HabitAt heroes (2400×1350, bezel at 0.391 scale, 612 px apart, soft drop shadow; tools/hero.py) on a pale gradient from Ryri’s cyan (#9DFFF9) to its yellow (#F7FE72). Focus and Chat are the cleaned copies used on the page (see focus and chat). Each 393×852 pt frame is scaled to cover the iPhone 16 Pro display (1206×2622, top-aligned, as phones.py does) and gets a white iOS status bar (9:41, signal, Wi-Fi, battery: the glyphs of the clean 3x iPhone 16 Pro export Villio 421:51162), because the frames have none (scratchpad exports/ryri/tools/clean.py)."
+      "note": "Ready with CS115 Assignment picked (1:11809; its title sits at the same height as on Focus and Chat, unlike 1:11468), Focus (1:11138, centre) and Chat (1:11319) at 3x in Apple’s iPhone 16 Pro (White Titanium) bezel, laid out like the Yelo, Arca, CoStudy and HabitAt heroes (2400×1350, bezel at 0.391 scale, 612 px apart, soft drop shadow; tools/hero.py) on a pale gradient from Ryri’s cyan (#9DFFF9) to its yellow (#F7FE72). Focus and Chat are the cleaned copies used on the page (see focus and chat). Each 393×852 pt frame is scaled to cover the iPhone 16 Pro display (1206×2622, top-aligned, as phones.py does) and gets a white iOS status bar (9:41, signal, Wi-Fi, battery: the glyphs of the clean 3x iPhone 16 Pro export Villio 421:51162), because the frames have none (scratchpad exports/ryri/tools/clean.py)."
     },
     "session-length": {
       "path": "assets/ryri-cs5-session-length.png",
