@@ -240,7 +240,7 @@ export default async function ProjectPage({ params }: { params: Params }) {
         <Link href="/" aria-label="Home" className="block w-[45px] h-[28px] shrink-0">
           <WZLogo className="w-full h-full" />
         </Link>
-        <div className="flex gap-3 items-center justify-end font-normal text-[12px] tracking-[-0.24px] leading-[1.2] whitespace-nowrap">
+        <div className="flex gap-3 items-center justify-end font-normal text-[12px] tracking-[-0.24px] md:text-[14px] md:tracking-[-0.28px] leading-[1.2] whitespace-nowrap">
           <a href={`mailto:${EMAIL}`}>hello [at] winstonzhao.ca</a>
           <Link href={RESUME_URL}>resume</Link>
         </div>
