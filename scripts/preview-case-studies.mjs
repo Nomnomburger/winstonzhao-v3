@@ -44,6 +44,7 @@ const BASE = {
   'hack404-launchpad': { _id: 'figma-portfolio-hack404-launchpad', title: 'Hack404 Launchpad', slug: 'hack404-launchpad', year: 2025, order: 7, featured: false },
   'habitat': { _id: 'figma-portfolio-habitat', title: 'HabitAt', slug: 'habitat', year: 2025, order: 8, featured: false },
   'ryri': { _id: 'figma-portfolio-ryri', title: 'Ryri', slug: 'ryri', year: 2025, order: 13, featured: false },
+  'garden': { _id: 'figma-portfolio-garden', title: 'Garden', slug: 'garden', year: 2024, order: 15, featured: false },
 };
 
 const slugs = process.argv.slice(2).length ? process.argv.slice(2)
