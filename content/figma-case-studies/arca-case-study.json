@@ -1388,7 +1388,7 @@
         "0:131",
         "0:499"
       ],
-      "note": "Kit page, delivered home (centre) and guide step 1 at 3x in Apple’s iPhone 16 Pro (White Titanium) bezel, laid out like the Yelo and Villio heroes on a pale plum gradient. Replaces the old hero, which was the cover image with placeholder copy."
+      "note": "Kit page, delivered home (centre) and guide step 1 at 3x in Apple’s iPhone 16 Pro (White Titanium) bezel, laid out like the Yelo and Villio heroes, on a light watercolour background at Winston’s request (Nov 27 2026): faint washes in Arca’s plum, rose, terracotta and ochre on white paper, painted procedurally and seeded so it can be re-rendered (scratchpad arca-hero/watercolour.py, seed 11, strength 0.32, colour 1.5×, style “streak”: a little more vibrant, with long brush streaks that read like motion blur, both Winston’s picks). Replaces the old hero, which was the cover image with placeholder copy."
     },
     "prompt": {
       "path": "assets/arca-cs4-prompt.png",
