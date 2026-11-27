@@ -2,7 +2,7 @@
 /**
  * Publish the rewritten case studies to Sanity (Newly, Yelo, Elapse, CoStudy,
  * Heatmap, Villio AI, Arca, Sparks, SmartBasket, CoCart, Hopper Hangout,
- * Augwa, Hack404 Launchpad, HabitAt, Ryri).
+ * Augwa, Hack404 Launchpad, HabitAt, Ryri, Garden).
  * A case study whose file isn't written yet is skipped.
  *
  * Preview: node scripts/update-newly-yelo-case-studies.mjs
@@ -50,6 +50,7 @@ const SPECS = [
   { slug: 'hack404-launchpad', file: 'hack404-launchpad-case-study.json', id: 'figma-portfolio-hack404-launchpad' },
   { slug: 'habitat', file: 'habitat-case-study.json', id: 'figma-portfolio-habitat' },
   { slug: 'ryri', file: 'ryri-case-study.json', id: 'figma-portfolio-ryri' },
+  { slug: 'garden', file: 'garden-case-study.json', id: 'figma-portfolio-garden' },
 ];
 // Fields the case study files may change. Everything else on the document is
 // left exactly as it is.
