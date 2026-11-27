@@ -102,7 +102,7 @@ export const metadata: Metadata = {
     alternateLocale: ["sv_SE", "zh_CN"],
     images: [
       {
-        url: "/SocialImage.png",
+        url: "/SocialImage.png?v=2",
         width: 1200,
         height: 630,
         alt: "Winston Zhao",
@@ -113,7 +113,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Winston Zhao",
     description: SITE_DESCRIPTION,
-    images: ["/SocialImage.png"],
+    images: ["/SocialImage.png?v=2"],
   },
   robots: {
     index: true,
