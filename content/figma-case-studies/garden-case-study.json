@@ -5,7 +5,7 @@
     "description": "Savings plans that bloom as you reach each goal.",
     "client": "Sun Life uXperience Design Jam 2024",
     "discipline": "Product Design",
-    "intro": "Garden is a money app for young Canadians: tell it what you’re saving for, and it builds a plan of small steps and grows flowers and trees as you go. I designed the app screens and the design system with a team of six at the Sun Life uXperience Design Jam 2024.",
+    "intro": "Garden is a money app for young Canadians: tell it what you’re saving for, and it builds a plan of small steps and grows flowers and trees as you go. In a team of six at the Sun Life uXperience Design Jam 2024, I designed the app screens and a basic design system.",
     "summary": "Designing a savings app that breaks big money goals into small steps and grows a garden as you reach them.",
     "overview": "Garden is for young Canadians like Sarah, a busy student saving for her first car. Our team of six designed it in one day at the Sun Life uXperience Design Jam, and we presented it as Sarah’s story in a three-minute live pitch.",
     "showSideMenu": true,
@@ -51,7 +51,7 @@
         "_type": "mediaImage",
         "_key": "garden-hero",
         "localAssetKey": "hero",
-        "alt": "Three iPhones on a pale green-to-sunflower gradient: Garden’s home with a New MacBook Pro goal, Recent Plans and badges; the Car Savings Plan, $500 every three months; and the Garden view with a big green tree and sunflowers",
+        "alt": "Three iPhones on a photo of green leaves: Garden’s home with a New MacBook Pro goal, Recent Plans and badges; the Car Savings Plan, $500 every three months; and the Garden view with a big green tree, a yellow tulip, a sunflower and sprouts",
         "size": "full"
       }
     ],
@@ -100,7 +100,7 @@
                 "_type": "span",
                 "_key": "garden-s-0-b-2-s",
                 "marks": [],
-                "text": "Sun Life also ran two workshops that morning, one on financial fluency and one on breaking down barriers with behavioural economics."
+                "text": "There were also two workshops that morning: one on financial fluency and one on breaking down barriers with behavioural economics."
               }
             ]
           }
@@ -196,7 +196,7 @@
                 "_type": "span",
                 "_key": "garden-s-2-b-0-s",
                 "marks": [],
-                "text": "We started at the whiteboard. Around Sun Life’s question, we listed why young people don’t use financial tools (they take time, fear, procrastination, relying on parents), the functions we wanted, visual ideas and the problems to design for."
+                "text": "Before any screens, there was a whiteboard. Around Sun Life’s question, we listed why young people don’t use financial tools: the time it takes, fear, procrastination and relying on parents. Then came the functions we wanted, visual ideas and the problems to design for."
               }
             ]
           },
@@ -222,7 +222,7 @@
               {
                 "_type": "stickyNote",
                 "_key": "garden-s-2-b-2-n1",
-                "text": "Anxiety with starting",
+                "text": "Anxiety with “starting”",
                 "color": "yellow"
               },
               {
@@ -384,7 +384,7 @@
         "_type": "projectSection",
         "_key": "garden-section-3",
         "title": "Plan",
-        "heading": "A plan from one message",
+        "heading": "Planning by chat",
         "content": [
           {
             "_type": "block",
@@ -432,7 +432,7 @@
                 "_type": "span",
                 "_key": "garden-s-3-b-3-s",
                 "marks": [],
-                "text": "Each step opens to explain itself, like why it’s $500 every three months, and Save and activate plan turns it on. In our pitch, Sarah’s first steps take minutes: open a high-interest savings account, link it to Garden and set up automatic transfers."
+                "text": "Each step opens to explain itself, like why it’s $500 every three months, and the Save and activate plan button turns it on. In our pitch, Sarah’s first steps take minutes: open a high-interest savings account, link it to Garden and set up automatic transfers."
               }
             ]
           }
@@ -454,7 +454,7 @@
                 "_type": "span",
                 "_key": "garden-s-4-b-0-s",
                 "marks": [],
-                "text": "Every plan lives in the Plans tab. Big plans get cards with their total, the next goal and a plant that grows with them. Smaller ones, like a MacBook Pro or a Mexico trip, sit in a list with a flower each."
+                "text": "Every plan lives in the Plans tab. Big plans get cards with their total, the next goal and a plant that grows with them. Smaller ones, like a MacBook Pro or a Mexico trip, sit in a list, each with a flower at its own stage."
               }
             ]
           },
@@ -476,7 +476,7 @@
             "_type": "mediaImage",
             "_key": "garden-s-4-b-2",
             "localAssetKey": "garden",
-            "alt": "Three iPhones with arrows: the Plans tab with cards for Buy Car, Buy House, Retirement Plan and Student Loans, a list of smaller plans with flowers and a New button; the Garden view with two yellow flowers; and the Garden view with a big green tree, sunflowers and sprouts",
+            "alt": "Three iPhones with arrows: the Plans tab with cards for Buy Car, Buy House, Retirement Plan and Student Loans, a list of smaller plans (MacBook Pro, Mexico Trip, New Tattoo), each with a flower at its stage, and a New button; the Garden view with two yellow flowers; and the Garden view with a big green tree, a yellow tulip, a sunflower and sprouts",
             "caption": "Plans, then the garden as it grows.",
             "size": "full"
           }
@@ -498,7 +498,7 @@
                 "_type": "span",
                 "_key": "garden-s-5-b-0-s",
                 "marks": [],
-                "text": "Home is the daily check-in. It leads with a pinned goal, then recent plans with their progress and the badges Sarah has earned, like 500 Saver and 1k Saver."
+                "text": "Each time Sarah opens Garden, she lands on Home. It leads with a pinned goal, then recent plans with their progress and the badges she has earned, like 500 Saver and 1k Saver."
               }
             ]
           },
@@ -512,7 +512,7 @@
                 "_type": "span",
                 "_key": "garden-s-5-b-1-s",
                 "marks": [],
-                "text": "Three passes"
+                "text": "Earlier versions"
               }
             ]
           },
@@ -526,7 +526,7 @@
                 "_type": "span",
                 "_key": "garden-s-5-b-2-s",
                 "marks": [],
-                "text": "Home took three passes. The first had a goal card and plain progress bars for every plan. The second swapped the bars for dotted timelines with a plant icon at the end, and added an Ask button next to the tabs. The final version added the flower on the goal card, badges and a Search tab."
+                "text": "Home went through three rougher versions before the final one, and two of them are shown here. One had a goal card and plain progress bars for every plan. Another showed plans as dotted timelines with a plant icon at the end, with an Ask button next to the tabs. The final home added the flower on the goal card, badges and a Search tab."
               }
             ]
           },
@@ -534,8 +534,8 @@
             "_type": "mediaImage",
             "_key": "garden-s-5-b-3",
             "localAssetKey": "home",
-            "alt": "Three iPhones with arrows: an early home with a New MacBook Pro card and plain progress bars for Retirement and Student Loan; a second version with Plans as dotted timelines ending in plant icons and an Ask button; and the final home with a sunflower on the goal card, Recent Plans, earned badges and a Search tab",
-            "caption": "Three passes at Home, from first to final.",
+            "alt": "Three iPhones with arrows: an early home with a New MacBook Pro card and plain progress bars for Retirement and Student Loan; another early version with Plans as dotted timelines ending in plant icons and an Ask button; and the final home with a sunflower on the goal card, Recent Plans, earned badges and a Search tab",
+            "caption": "Two earlier versions of Home, then the final one.",
             "size": "full"
           }
         ]
@@ -556,7 +556,7 @@
                 "_type": "span",
                 "_key": "garden-s-6-b-0-s",
                 "marks": [],
-                "text": "Garden teaches as well as tracks. Resources holds knowledge cards on topics like OSAP loans, GICs, savings and buying a car, each with a few minigames, and a list below covers leasing a house, mutual funds and retirement."
+                "text": "Garden teaches as well as tracks. Resources holds knowledge cards on topics like OSAP loans, GICs, savings and buying a car, each with its own minigames. A list below covers leasing a house, mutual funds and retirement."
               }
             ]
           },
@@ -643,7 +643,7 @@
                 "_type": "span",
                 "_key": "garden-s-8-b-0-s",
                 "marks": [],
-                "text": "We presented Garden in a three-minute live pitch, told as Sarah’s story: from a $2,000 down payment that felt like a mountain, to reaching her goal six months later, and back two years on for an emergency fund. Our clickable prototype carried the story."
+                "text": "We presented Garden in a three-minute live pitch, told as Sarah’s story. It followed her from a $2,000 down payment that felt like a mountain to reaching her goal six months later, then two years on to an emergency fund. Alongside the pitch, we made a clickable prototype of the app."
               }
             ]
           },
@@ -679,7 +679,7 @@
                 "_type": "span",
                 "_key": "garden-s-8-b-2-0-s1",
                 "marks": [],
-                "text": " Following Sarah through her week made every feature make sense in three minutes."
+                "text": " Following Sarah made the features make sense in three minutes."
               }
             ],
             "listItem": "bullet",
@@ -729,7 +729,7 @@
         "558:9845",
         "558:10199"
       ],
-      "note": "Home (558:9463), the Car Savings Plan with March open (558:9845, centre) and the Garden view (558:10199) at 3x in Apple’s iPhone 16 Pro (White Titanium) bezel, laid out like the other heroes (2400×1350, bezel at 0.391 scale, 612 px apart, soft drop shadow; tools/hero.py) on a pale gradient from Garden’s green (#399C74) to its sunflower yellow (#EDBC33). The frames are 402×874 with their own status bars, exported as is."
+      "note": "Home (558:9463), the Car Savings Plan with March open (558:9845, centre) and the Garden view (558:10199) at 3x in Apple’s iPhone 16 Pro (White Titanium) bezel, laid out like the other heroes (2400×1350, bezel at 0.391 scale, 612 px apart, soft drop shadow; tools/hero_leaves.py), at Winston’s request on a photo of real leaves: “Lush Foliage (A Verdant Tapestry of Green Leaves)” by Ayyuha Sideeq, CC0, Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Lush_Foliage_(A_Verdant_Tapestry_of_Green_Leaves).jpg; the 3840×2880 rendition, centre-cropped to 16:9, Gaussian blur 3 px and 95% brightness so the phones stand out). The frames are 402×874 with their own status bars, exported as is."
     },
     "whiteboard": {
       "path": "assets/garden-cs5-whiteboard.jpg",
@@ -768,7 +768,7 @@
         "558:10815",
         "558:9463"
       ],
-      "note": "Winston’s two earlier home screens (558:10930, 558:10815) and the final home (558:9463) at 3x in Apple’s iPhone 16 Pro (White Titanium) bezel on a transparent background (phones.py, pad_to 1.6), 3200×2000, spread, with arrows. The two early frames have no status bar, so one is added (the glyphs of the clean 3x iPhone 16 Pro export Villio 421:51162, in black; tools/prep.py)."
+      "note": "Winston’s two earlier home screens (558:10930, 558:10815) and the final home (558:9463) at 3x in Apple’s iPhone 16 Pro (White Titanium) bezel on a transparent background (phones.py, pad_to 1.6), 3200×2000, spread, with arrows. The two early frames have no status bar, so one is added (the glyphs of the clean 3x iPhone 16 Pro export Villio 421:51162, in black; tools/prep.py), and the home indicator from the final home (558:9463), so all three phones match."
     },
     "learn": {
       "path": "assets/garden-cs5-learn.png",
@@ -784,7 +784,7 @@
         "558:11234",
         "558:9297"
       ],
-      "note": "The phone home screen with the Garden widget (558:11234, 421×910, scaled to cover the display as phones.py does) and Garden’s home with the emergency fund card (558:9297) at 3x in Apple’s iPhone 16 Pro (White Titanium) bezel on a transparent background (phones.py, pad_to 1.6), 3200×2000, with an arrow."
+      "note": "The phone home screen with the Garden widget (558:11234, 421×910, scaled to cover the display as phones.py does; its own status bar is moved 31 px down, with only the plain wallpaper around it resampled, so it lines up with the Dynamic Island like the app frames; tools/prep.py) and Garden’s home with the emergency fund card (558:9297) at 3x in Apple’s iPhone 16 Pro (White Titanium) bezel on a transparent background (phones.py, pad_to 1.6), 3200×2000, with an arrow."
     }
   }
 }
