@@ -288,14 +288,14 @@
         "525:2099",
         "525:2649"
       ],
-      "note": "Welcome (525:2495, as exported), Your Home (centre) and Living Room at 3x in Apple’s iPhone 16 Pro (White Titanium) bezel, laid out like the Yelo, Arca and CoStudy heroes (2400×1350, bezel at 0.391 scale, 612 px apart, soft drop shadow; tools/hero.py) on a pale gradient from the Laundry yellow to the lawn green. Your Home and Living Room are the cleaned portfolio copies used on the page (see home and open-room). The chore names are made up for the portfolio copy and aren’t quoted as event fact."
+      "note": "Welcome (525:2495, as exported), Your Home (centre) and Living Room at 3x in Apple’s iPhone 16 Pro (White Titanium) bezel, laid out like the Yelo, Arca and CoStudy heroes (2400×1350, bezel at 0.391 scale, 612 px apart, soft drop shadow; tools/hero.py) on a pale gradient from the Laundry yellow to the lawn green. Your Home and Living Room are the cleaned portfolio copies used on the page (see home and open-room). The chore names are made up for the portfolio copy and aren’t quoted as event fact. Re-exported Nov 27 2026 after Winston’s navbar update (only the tab bar changed; the clean-ups above were re-applied by the same tools)."
     },
     "home": {
       "path": "assets/habitat-cs5-home.png",
       "sourceNodeIds": [
         "525:2099"
       ],
-      "note": "Your Home (525:2099) at 3x in Apple’s iPhone 16 Pro (White Titanium) bezel on a transparent background (phones.py, pad_to 1.6), 3200×2000, cleaned locally at Winston’s request as a portfolio-only copy (the Figma file is unchanged; tools/clean.py): the Living Room counter on the house reads 3 instead of 2, to match the three tasks in the Living Room view (the “3” is copied pixel for pixel from the Dining Room counter), and the TV picture, an AI-generated stock image with a watermark, is replaced by a plain flat landscape in the app’s own colours. The house sits in a horizontally scrolling frame; the smaller house to its right (Frame 10) is off screen, as in the export."
+      "note": "Your Home (525:2099) at 3x in Apple’s iPhone 16 Pro (White Titanium) bezel on a transparent background (phones.py, pad_to 1.6), 3200×2000, cleaned locally at Winston’s request as a portfolio-only copy (the Figma file is unchanged; tools/clean.py): the Living Room counter on the house reads 3 instead of 2, to match the three tasks in the Living Room view (the “3” is copied pixel for pixel from the Dining Room counter), and the TV picture, an AI-generated stock image with a watermark, is replaced by a plain flat landscape in the app’s own colours. The house sits in a horizontally scrolling frame; the smaller house to its right (Frame 10) is off screen, as in the export. Re-exported Nov 27 2026 after Winston’s navbar update (only the tab bar changed; the clean-ups above were re-applied by the same tools)."
     },
     "open-room": {
       "path": "assets/habitat-cs5-open-room.png",
@@ -303,14 +303,14 @@
         "525:2099",
         "525:2649"
       ],
-      "note": "Your Home (525:2099) and Living Room (525:2649) at 3x in Apple’s iPhone 16 Pro (White Titanium) bezel on a transparent background (phones.py, pad_to 1.6), 3200×2000, with an arrow, as the prototype wires it (Living Room on the house → 525:2649). Both are the cleaned copies: the house as in home; Living Room: the pill reads “3 Tasks” (was “2 Tasks”) to match its three tiles and the house counter, “Eat apples” and “Study” become “Vacuum the rug” and “Water the plants” (“Clean room” stays), and the TV shows the same plain landscape. Text is redrawn in DM Sans (Light 20; Medium 16 for the pill) at the export’s own size, weight, colour and baseline, calibrated on the old strings (tools/tx.py). The chore names are made up for the portfolio copy and aren’t quoted as event fact."
+      "note": "Your Home (525:2099) and Living Room (525:2649) at 3x in Apple’s iPhone 16 Pro (White Titanium) bezel on a transparent background (phones.py, pad_to 1.6), 3200×2000, with an arrow, as the prototype wires it (Living Room on the house → 525:2649). Both are the cleaned copies: the house as in home; Living Room: the pill reads “3 Tasks” (was “2 Tasks”) to match its three tiles and the house counter, “Eat apples” and “Study” become “Vacuum the rug” and “Water the plants” (“Clean room” stays), and the TV shows the same plain landscape. Text is redrawn in DM Sans (Light 20; Medium 16 for the pill) at the export’s own size, weight, colour and baseline, calibrated on the old strings (tools/tx.py). The chore names are made up for the portfolio copy and aren’t quoted as event fact. Re-exported Nov 27 2026 after Winston’s navbar update (only the tab bar changed; the clean-ups above were re-applied by the same tools)."
     },
     "dining-room": {
       "path": "assets/habitat-cs5-dining-room.png",
       "sourceNodeIds": [
         "525:2689"
       ],
-      "note": "Dining Room (525:2689), the same room template as the Living Room (525:2649) in the Dining Room’s pink, at 3x in Apple’s iPhone 16 Pro (White Titanium) bezel on a transparent background (phones.py, pad_to 1.6), 3200×2000, alone, so the Living Room (already in the hero and open-room) isn’t shown a third time. Cleaned locally at Winston’s request as a portfolio-only copy (the Figma file is unchanged; tools/clean.py): the pill reads “3 Tasks” (was “2 Tasks”) to match its three tiles and the house’s Dining Room counter (3); the two “Task Title” placeholders become “Wipe the table” and “Sweep the floor” (“Wash dishes” stays), in DM Sans Light 20, white, calibrated on the old strings like the Living Room text (tools/tx.py). The chore names are made up for the portfolio copy and aren’t quoted as event fact."
+      "note": "Dining Room (525:2689), the same room template as the Living Room (525:2649) in the Dining Room’s pink, at 3x in Apple’s iPhone 16 Pro (White Titanium) bezel on a transparent background (phones.py, pad_to 1.6), 3200×2000, alone, so the Living Room (already in the hero and open-room) isn’t shown a third time. Cleaned locally at Winston’s request as a portfolio-only copy (the Figma file is unchanged; tools/clean.py): the pill reads “3 Tasks” (was “2 Tasks”) to match its three tiles and the house’s Dining Room counter (3); the two “Task Title” placeholders become “Wipe the table” and “Sweep the floor” (“Wash dishes” stays), in DM Sans Light 20, white, calibrated on the old strings like the Living Room text (tools/tx.py). The chore names are made up for the portfolio copy and aren’t quoted as event fact. Re-exported Nov 27 2026 after Winston’s navbar update (only the tab bar changed; the clean-ups above were re-applied by the same tools)."
     },
     "new-task": {
       "path": "assets/habitat-cs5-new-task.png",
@@ -320,14 +320,14 @@
         "525:2101",
         "525:2535"
       ],
-      "note": "Your Home (525:2099, cleaned as in home) and New Task (525:2534) at 3x in Apple’s iPhone 16 Pro (White Titanium) bezel on a transparent background (phones.py, pad_to 1.6), 3200×2000, with an arrow, as the prototype wires it (New Task → 525:2534). New Task is cleaned locally at Winston’s request as a portfolio-only copy (tools/clean.py): its dimmed background was an older copy of the house (525:2535: “Room 2” / “Room 3”, every counter 2, no floor lines); the cleaned final house (525:2101) is put in its place under a model of the #3D3D3D 50% overlay and the sheet’s faint shadow, which reproduces the original pixels to 0.24 levels on average. It was the only phone screen without a status bar; one is added the way statusbar.py does. The sheet, keyboard, title and cloud are the export’s own pixels."
+      "note": "Your Home (525:2099, cleaned as in home) and New Task (525:2534) at 3x in Apple’s iPhone 16 Pro (White Titanium) bezel on a transparent background (phones.py, pad_to 1.6), 3200×2000, with an arrow, as the prototype wires it (New Task → 525:2534). New Task is cleaned locally at Winston’s request as a portfolio-only copy (tools/clean.py): its dimmed background was an older copy of the house (525:2535: “Room 2” / “Room 3”, every counter 2, no floor lines); the cleaned final house (525:2101) is put in its place under a model of the #3D3D3D 50% overlay and the sheet’s faint shadow, which reproduces the original pixels to 0.24 levels on average. It was the only phone screen without a status bar; one is added the way statusbar.py does. The sheet, keyboard, title and cloud are the export’s own pixels. Re-exported Nov 27 2026 after Winston’s navbar update (only the tab bar changed; the clean-ups above were re-applied by the same tools)."
     },
     "shop-furniture": {
       "path": "assets/habitat-cs5-shop-furniture.png",
       "sourceNodeIds": [
         "525:2891"
       ],
-      "note": "Shop, Furniture (525:2891) at 3x in Apple’s iPhone 16 Pro (White Titanium) bezel on a transparent background (phones.py, pad_to 1.6), 3200×2000, as exported. The grid runs past the tab bar and is clipped, as designed. Prices are sample data in the design."
+      "note": "Shop, Furniture (525:2891) at 3x in Apple’s iPhone 16 Pro (White Titanium) bezel on a transparent background (phones.py, pad_to 1.6), 3200×2000, as exported. The grid runs past the tab bar and is clipped, as designed. Prices are sample data in the design. Re-exported Nov 27 2026 after Winston’s navbar update (only the tab bar changed; the clean-ups above were re-applied by the same tools)."
     },
     "shop-rooms": {
       "path": "assets/habitat-cs5-shop-rooms.png",
@@ -335,7 +335,7 @@
         "525:3002",
         "525:3059"
       ],
-      "note": "Shop, Rooms (525:3002 → 525:3059) at 3x in Apple’s iPhone 16 Pro (White Titanium) bezel on a transparent background (phones.py, pad_to 1.6), 3200×2000, with an arrow, as the prototype wires it (“+” → 525:3059). As exported: on 525:3059 the taller block pushes “Choose Colour” down, so only the first row of swatches shows above the tab bar, and there is no Done button, as designed."
+      "note": "Shop, Rooms (525:3002 → 525:3059) at 3x in Apple’s iPhone 16 Pro (White Titanium) bezel on a transparent background (phones.py, pad_to 1.6), 3200×2000, with an arrow, as the prototype wires it (“+” → 525:3059). As exported: on 525:3059 the taller block pushes “Choose Colour” down, so only the first row of swatches shows above the tab bar, and there is no Done button, as designed. Re-exported Nov 27 2026 after Winston’s navbar update (only the tab bar changed; the clean-ups above were re-applied by the same tools)."
     },
     "grow": {
       "path": "assets/habitat-cs5-grow.png",
@@ -350,7 +350,7 @@
       "sourceNodeIds": [
         "525:2745"
       ],
-      "note": "Friend Map (525:2745) at 3x in Apple’s iPhone 16 Pro (White Titanium) bezel on a transparent background (phones.py, pad_to 1.6), 3200×2000, as exported (light status bar; the second, identical Add Friend frame stacked on the first is invisible)."
+      "note": "Friend Map (525:2745) at 3x in Apple’s iPhone 16 Pro (White Titanium) bezel on a transparent background (phones.py, pad_to 1.6), 3200×2000, as exported (light status bar; the second, identical Add Friend frame stacked on the first is invisible). Re-exported Nov 27 2026 after Winston’s navbar update (only the tab bar changed; the clean-ups above were re-applied by the same tools)."
     },
     "welcome": {
       "path": "assets/habitat-cs5-welcome.png",
