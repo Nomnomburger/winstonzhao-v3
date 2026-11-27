@@ -114,7 +114,7 @@
                 "_type": "span",
                 "_key": "garden-s-0-b-3-s",
                 "marks": [],
-                "text": "We split the work like a small product team: one of us on product, one writing the script, one making the slides and two on UI. I set up the design system and designed the app screens, and the other UI designer made the illustrations."
+                "text": "We split the work into roles: product, script, slides and two UI designers. I set up the design system and designed the app screens, and the other UI designer made the illustrations."
               }
             ]
           }
@@ -387,12 +387,26 @@
           {
             "_type": "block",
             "_key": "garden-s-2-b-4",
-            "style": "h3",
+            "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
                 "_key": "garden-s-2-b-4-s",
+                "marks": [],
+                "text": "Garden is its own app, and it points people to Sun Life’s products and advisors along the way."
+              }
+            ]
+          },
+          {
+            "_type": "block",
+            "_key": "garden-s-2-b-5",
+            "style": "h3",
+            "markDefs": [],
+            "children": [
+              {
+                "_type": "span",
+                "_key": "garden-s-2-b-5-s",
                 "marks": [],
                 "text": "Why a garden"
               }
@@ -400,13 +414,13 @@
           },
           {
             "_type": "block",
-            "_key": "garden-s-2-b-5",
+            "_key": "garden-s-2-b-6",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "garden-s-2-b-5-s",
+                "_key": "garden-s-2-b-6-s",
                 "marks": [],
                 "text": "Progress shows up as a garden: smaller goals grow flowers, and saving and learning grow trees. We built the whole app around it for four reasons:"
               }
@@ -414,13 +428,13 @@
           },
           {
             "_type": "block",
-            "_key": "garden-s-2-b-6-0",
+            "_key": "garden-s-2-b-7-0",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "garden-s-2-b-6-0-s",
+                "_key": "garden-s-2-b-7-0-s",
                 "marks": [
                   "strong"
                 ],
@@ -428,7 +442,7 @@
               },
               {
                 "_type": "span",
-                "_key": "garden-s-2-b-6-0-s1",
+                "_key": "garden-s-2-b-7-0-s1",
                 "marks": [],
                 "text": " Plants growing feel like progress in a way charts and numbers don’t, and numbers were on our list of problems."
               }
@@ -438,13 +452,13 @@
           },
           {
             "_type": "block",
-            "_key": "garden-s-2-b-6-1",
+            "_key": "garden-s-2-b-7-1",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "garden-s-2-b-6-1-s",
+                "_key": "garden-s-2-b-7-1-s",
                 "marks": [
                   "strong"
                 ],
@@ -452,7 +466,7 @@
               },
               {
                 "_type": "span",
-                "_key": "garden-s-2-b-6-1-s1",
+                "_key": "garden-s-2-b-7-1-s1",
                 "marks": [],
                 "text": " Saving is slow, like a garden. As Sarah grows, Garden grows with her."
               }
@@ -462,13 +476,13 @@
           },
           {
             "_type": "block",
-            "_key": "garden-s-2-b-6-2",
+            "_key": "garden-s-2-b-7-2",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "garden-s-2-b-6-2-s",
+                "_key": "garden-s-2-b-7-2-s",
                 "marks": [
                   "strong"
                 ],
@@ -476,7 +490,7 @@
               },
               {
                 "_type": "span",
-                "_key": "garden-s-2-b-6-2-s1",
+                "_key": "garden-s-2-b-7-2-s1",
                 "marks": [],
                 "text": " The pitch tips we worked from asked for a fun brand with custom illustrations, and a garden gave us one."
               }
@@ -486,13 +500,13 @@
           },
           {
             "_type": "block",
-            "_key": "garden-s-2-b-6-3",
+            "_key": "garden-s-2-b-7-3",
             "style": "normal",
             "markDefs": [],
             "children": [
               {
                 "_type": "span",
-                "_key": "garden-s-2-b-6-3-s",
+                "_key": "garden-s-2-b-7-3-s",
                 "marks": [
                   "strong"
                 ],
@@ -500,27 +514,13 @@
               },
               {
                 "_type": "span",
-                "_key": "garden-s-2-b-6-3-s1",
+                "_key": "garden-s-2-b-7-3-s1",
                 "marks": [],
                 "text": " When your virtual tree is fully grown, a real one gets planted, so the progress means something outside the app."
               }
             ],
             "listItem": "bullet",
             "level": 1
-          },
-          {
-            "_type": "block",
-            "_key": "garden-s-2-b-7",
-            "style": "normal",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "garden-s-2-b-7-s",
-                "marks": [],
-                "text": "Garden is its own app, and it points people to Sun Life’s products and advisors along the way."
-              }
-            ]
           },
           {
             "_type": "mediaImage",
@@ -594,7 +594,7 @@
                 "_type": "span",
                 "_key": "garden-s-3-b-1-1-s1",
                 "marks": [],
-                "text": " You don’t need to know which account or product you need to start."
+                "text": " You can start without knowing which account or product you need."
               }
             ],
             "listItem": "bullet",
@@ -634,7 +634,7 @@
                 "_type": "span",
                 "_key": "garden-s-3-b-2-s",
                 "marks": [],
-                "text": "Sarah types “I need to save $2000 for a car”. Garden asks about her timeline, her income and her saving style, then lays out a Car Savings Plan: $500 every three months, $2,000 over 12 months."
+                "text": "Sarah types “I need to save $2000 for a car”. Garden asks about her timeline, her income and her saving style, and once she answers, it lays out a Car Savings Plan: $500 every three months, $2,000 over 12 months."
               }
             ]
           },
@@ -670,7 +670,7 @@
                 "_type": "span",
                 "_key": "garden-s-3-b-5-s",
                 "marks": [],
-                "text": "The first steps are quick on purpose. Drawing on behavioural economics, the plan puts easy steps first to build momentum: in our pitch, Sarah opens a high-interest savings account, links it to Garden and sets up automatic transfers in a few minutes."
+                "text": "In our pitch, the first steps are quick on purpose. Drawing on behavioural economics, Garden puts easy steps first to build momentum: Sarah opens a high-interest savings account, links it to Garden and sets up automatic transfers in a few minutes."
               }
             ]
           }
@@ -794,7 +794,7 @@
                 "_type": "span",
                 "_key": "garden-s-6-b-0-s",
                 "marks": [],
-                "text": "Two more problems on our list were being afraid to reach out and finance feeling intimidating to younger users. Next to the first, our whiteboard says “make it less human”. Garden’s answer is to teach as well as track."
+                "text": "Two more problems on our list were “afraid to reach out” and “intimidating to younger users”. Next to the first, our whiteboard says “make it less human”. In Garden, help sits inside the app: Sarah can learn from Resources and ask Search questions on her own."
               }
             ]
           },
@@ -901,7 +901,7 @@
                 "_type": "span",
                 "_key": "garden-s-7-b-0-s",
                 "marks": [],
-                "text": "As one of the two UI designers, I set up Garden’s design system and designed every screen with it. I wanted Garden to feel friendly and calm, not like a bank:"
+                "text": "Every screen in this story is built on the basic design system I set up. Each choice had its own reason:"
               }
             ]
           },
@@ -971,31 +971,7 @@
                 "_type": "span",
                 "_key": "garden-s-7-b-1-2-s1",
                 "marks": [],
-                "text": " Hedvig Letters Serif for headings, with Inter for everything else and soft colours around them."
-              }
-            ],
-            "listItem": "bullet",
-            "level": 1
-          },
-          {
-            "_type": "block",
-            "_key": "garden-s-7-b-1-3",
-            "style": "normal",
-            "markDefs": [],
-            "children": [
-              {
-                "_type": "span",
-                "_key": "garden-s-7-b-1-3-s",
-                "marks": [
-                  "strong"
-                ],
-                "text": "Progress that shows its stage."
-              },
-              {
-                "_type": "span",
-                "_key": "garden-s-7-b-1-3-s1",
-                "marks": [],
-                "text": " Each plan’s dotted timeline ends in a plant icon that shows how far along it is."
+                "text": " Hedvig Letters Serif headings, with Inter for everything else and soft colours around them, keep Garden friendly and calm, not like a bank."
               }
             ],
             "listItem": "bullet",
@@ -1027,7 +1003,7 @@
                 "_type": "span",
                 "_key": "garden-s-8-b-0-s",
                 "marks": [],
-                "text": "We presented Garden in a three-minute live pitch, told as Sarah’s story. It followed her from a $2,000 down payment that felt like a mountain to reaching her goal six months later, then two years on to an emergency fund. Alongside the pitch, we made a clickable prototype of the app."
+                "text": "We presented Garden in a three-minute live pitch, told as Sarah’s story. It followed her from a $2,000 down payment that felt like a mountain to reaching her goal, then two years on to an emergency fund. Alongside the pitch, we made a clickable prototype of the app."
               }
             ]
           },
@@ -1117,7 +1093,7 @@
                 "_type": "span",
                 "_key": "garden-s-8-b-4-s",
                 "marks": [],
-                "text": "Garden started with Sun Life’s question and one overwhelmed student. For the anxiety of starting, it plans by chat and puts quick steps first. For the numbers, it grows a garden. In one day, our team of six turned that into a clickable prototype and a three-minute story."
+                "text": "Garden started with Sun Life’s question and one overwhelmed student. For the anxiety of starting, it plans by chat and puts quick steps first. For the numbers, it grows a garden. For finding and using the tools, it gives each step its own resources and a way to act on it in the app. In one day, our team of six turned that into a clickable prototype and a three-minute story."
               }
             ]
           }

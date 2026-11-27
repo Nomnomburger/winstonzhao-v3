@@ -52,7 +52,7 @@
           "This was Sun Life’s prompt at the uXperience Design Jam, held at the University of Waterloo’s Stratford School on November 2, 2024. Six of us had about six and a half hours to answer it, with a three-minute pitch at the end.",
           "Sun Life’s brief was simple: there are financial tools and education to help young people make money decisions and plan for their goals, but they’re under-used. They asked for something easy and inclusive that helps young Canadians open up about money and feel confident about their financial future.",
           "There were also two workshops that morning: one on financial fluency and one on breaking down barriers with behavioural economics.",
-          "We split the work like a small product team: one of us on product, one writing the script, one making the slides and two on UI. I set up the design system and designed the app screens, and the other UI designer made the illustrations."
+          "We split the work into roles: product, script, slides and two UI designers. I set up the design system and designed the app screens, and the other UI designer made the illustrations."
         ]
       },
       {
@@ -139,6 +139,7 @@
               "**Act on the plan** in the app, like saving into a new account."
             ]
           },
+          "Garden is its own app, and it points people to Sun Life’s products and advisors along the way.",
           {
             "h3": "Why a garden"
           },
@@ -151,7 +152,6 @@
               "**Real-world impact.** When your virtual tree is fully grown, a real one gets planted, so the progress means something outside the app."
             ]
           },
-          "Garden is its own app, and it points people to Sun Life’s products and advisors along the way.",
           {
             "image": "welcome",
             "alt": "An iPhone showing Garden’s first home screen: Hello, Sarah; Welcome to your Garden with Create a plan, Find resources and Earn badges; and About your Garden, explaining Trees (a real tree is planted after your virtual tree is grown) and Flowers for smaller goals",
@@ -167,18 +167,18 @@
           {
             "bullets": [
               "**It’s less intimidating.** Typing a goal in your own words is easier than a form full of money fields.",
-              "**It’s beginner friendly.** You don’t need to know which account or product you need to start.",
+              "**It’s beginner friendly.** You can start without knowing which account or product you need.",
               "**It’s personal.** Garden asks follow-up questions to fit the plan to you."
             ]
           },
-          "Sarah types “I need to save $2000 for a car”. Garden asks about her timeline, her income and her saving style, then lays out a Car Savings Plan: $500 every three months, $2,000 over 12 months.",
+          "Sarah types “I need to save $2000 for a car”. Garden asks about her timeline, her income and her saving style, and once she answers, it lays out a Car Savings Plan: $500 every three months, $2,000 over 12 months.",
           {
             "image": "create-plan",
             "alt": "Three iPhones with arrows: Create a plan with example goals; Sarah’s message “I need to save $2000 for a car” and Garden asking about Timeline, Your income and Saving style; then the Car Savings Plan with four $500 steps from November 2024 to November 2025, March open with its explanation, and Save and activate plan",
             "caption": "From a goal to a plan in two messages."
           },
           "Each step opens to explain itself, like why it’s $500 every three months, and the Save and activate plan button turns it on.",
-          "The first steps are quick on purpose. Drawing on behavioural economics, the plan puts easy steps first to build momentum: in our pitch, Sarah opens a high-interest savings account, links it to Garden and sets up automatic transfers in a few minutes."
+          "In our pitch, the first steps are quick on purpose. Drawing on behavioural economics, Garden puts easy steps first to build momentum: Sarah opens a high-interest savings account, links it to Garden and sets up automatic transfers in a few minutes."
         ]
       },
       {
@@ -214,7 +214,7 @@
         "title": "Support",
         "heading": "Help along the way",
         "content": [
-          "Two more problems on our list were being afraid to reach out and finance feeling intimidating to younger users. Next to the first, our whiteboard says “make it less human”. Garden’s answer is to teach as well as track.",
+          "Two more problems on our list were “afraid to reach out” and “intimidating to younger users”. Next to the first, our whiteboard says “make it less human”. In Garden, help sits inside the app: Sarah can learn from Resources and ask Search questions on her own.",
           "Resources holds knowledge cards on topics like OSAP loans, GICs, savings and buying a car, each with its own minigames. A list below covers leasing a house, mutual funds and retirement.",
           "Search takes questions in plain words, like “How do I open a savings account?” Its answers come from Garden’s resource bank, and a note under the questions says Search doesn’t generate new data or store yours.",
           {
@@ -237,13 +237,12 @@
         "title": "Design system",
         "heading": "A friendly money app",
         "content": [
-          "As one of the two UI designers, I set up Garden’s design system and designed every screen with it. I wanted Garden to feel friendly and calm, not like a bank:",
+          "Every screen in this story is built on the basic design system I set up. Each choice had its own reason:",
           {
             "bullets": [
               "**Green for growth.** Garden green ties the app to plants, growth and money.",
               "**Sunflower yellow for Sun Life.** It nods to Sun Life’s slogan, “Life’s brighter under the sun”.",
-              "**Warm type.** Hedvig Letters Serif for headings, with Inter for everything else and soft colours around them.",
-              "**Progress that shows its stage.** Each plan’s dotted timeline ends in a plant icon that shows how far along it is."
+              "**Warm type.** Hedvig Letters Serif headings, with Inter for everything else and soft colours around them, keep Garden friendly and calm, not like a bank."
             ]
           },
           {
@@ -257,7 +256,7 @@
         "title": "Outcome",
         "heading": "Results and lessons",
         "content": [
-          "We presented Garden in a three-minute live pitch, told as Sarah’s story. It followed her from a $2,000 down payment that felt like a mountain to reaching her goal six months later, then two years on to an emergency fund. Alongside the pitch, we made a clickable prototype of the app.",
+          "We presented Garden in a three-minute live pitch, told as Sarah’s story. It followed her from a $2,000 down payment that felt like a mountain to reaching her goal, then two years on to an emergency fund. Alongside the pitch, we made a clickable prototype of the app.",
           {
             "h3": "What I learned"
           },
@@ -270,7 +269,7 @@
           {
             "h3": "Summary"
           },
-          "Garden started with Sun Life’s question and one overwhelmed student. For the anxiety of starting, it plans by chat and puts quick steps first. For the numbers, it grows a garden. In one day, our team of six turned that into a clickable prototype and a three-minute story."
+          "Garden started with Sun Life’s question and one overwhelmed student. For the anxiety of starting, it plans by chat and puts quick steps first. For the numbers, it grows a garden. For finding and using the tools, it gives each step its own resources and a way to act on it in the app. In one day, our team of six turned that into a clickable prototype and a three-minute story."
         ]
       }
     ]
