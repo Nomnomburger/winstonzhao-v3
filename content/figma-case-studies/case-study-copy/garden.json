@@ -42,7 +42,7 @@
     },
     "hero": {
       "image": "hero",
-      "alt": "Three iPhones on a photo of green leaves: Garden’s home with a New MacBook Pro goal, Recent Plans and badges; the Car Savings Plan, $500 every three months; and the Garden view with a big green tree, a yellow tulip, a sunflower and sprouts"
+      "alt": "Three iPhones on a photo of green leaves: Garden’s home with a New MacBook Pro goal, Recent Plans and badges; Search with How can we help? and three suggested questions; and the Garden view with a big green tree, a yellow tulip, a sunflower and sprouts"
     },
     "sections": [
       {
@@ -287,10 +287,10 @@
       "path": "assets/garden-cs5-hero.jpg",
       "sourceNodeIds": [
         "558:9463",
-        "558:9845",
+        "558:10135",
         "558:10199"
       ],
-      "note": "Home (558:9463), the Car Savings Plan with March open (558:9845, centre) and the Garden view (558:10199) at 3x in Apple’s iPhone 16 Pro (White Titanium) bezel, laid out like the other heroes (2400×1350, bezel at 0.391 scale, 612 px apart, soft drop shadow; tools/hero_leaves.py), at Winston’s request on a photo of real leaves: “Lush Foliage (A Verdant Tapestry of Green Leaves)” by Ayyuha Sideeq, CC0, Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Lush_Foliage_(A_Verdant_Tapestry_of_Green_Leaves).jpg; the 3840×2880 rendition, centre-cropped to 16:9, Gaussian blur 3 px and 95% brightness so the phones stand out). The frames are 402×874 with their own status bars, exported as is."
+      "note": "Home (558:9463), Search (558:10135, centre, at Winston’s request) and the Garden view (558:10199, re-exported Nov 27 2026 after his update) at 3x in Apple’s iPhone 16 Pro (White Titanium) bezel, laid out like the other heroes (2400×1350, bezel at 0.391 scale, 612 px apart, soft drop shadow; tools/hero_leaves.py), at Winston’s request on a photo of real leaves: “Lush Foliage (A Verdant Tapestry of Green Leaves)” by Ayyuha Sideeq, CC0, Wikimedia Commons (https://commons.wikimedia.org/wiki/File:Lush_Foliage_(A_Verdant_Tapestry_of_Green_Leaves).jpg; the 3840×2880 rendition, centre-cropped to 16:9, Gaussian blur 3 px and 95% brightness so the phones stand out). The frames are 402×874 with their own status bars, exported as is."
     },
     "whiteboard": {
       "path": "assets/garden-cs5-whiteboard.jpg",
@@ -320,7 +320,7 @@
         "558:10340",
         "558:10199"
       ],
-      "note": "The Plans tab (558:10506), the Garden view with two flowers (558:10340) and the Garden view with a tree and flowers (558:10199) at 3x in Apple’s iPhone 16 Pro (White Titanium) bezel on a transparent background (phones.py, pad_to 1.6), 3200×2000, spread, with arrows. The order follows the pitch’s screens-needed list (“virtual garden with 2 flowers”, then a bigger garden)."
+      "note": "The Plans tab (558:10506), the Garden view with two flowers (558:10340) and the Garden view with a tree and flowers (558:10199) at 3x in Apple’s iPhone 16 Pro (White Titanium) bezel on a transparent background (phones.py, pad_to 1.6), 3200×2000, spread, with arrows. The order follows the pitch’s screens-needed list (“virtual garden with 2 flowers”, then a bigger garden). Re-exported Nov 27 2026 after Winston updated 558:10506, 558:10340 and 558:10199."
     },
     "home": {
       "path": "assets/garden-cs5-home.png",
@@ -337,7 +337,7 @@
         "558:9913",
         "558:10135"
       ],
-      "note": "Resources (558:9913) and Search (558:10135) at 3x in Apple’s iPhone 16 Pro (White Titanium) bezel on a transparent background (phones.py, pad_to 1.6), 3200×2000."
+      "note": "Resources (558:9913) and Search (558:10135) at 3x in Apple’s iPhone 16 Pro (White Titanium) bezel on a transparent background (phones.py, pad_to 1.6), 3200×2000. Re-exported Nov 27 2026 after Winston updated 558:9913."
     },
     "nudge": {
       "path": "assets/garden-cs5-nudge.png",
@@ -353,7 +353,7 @@
         "558:9463",
         "558:9617"
       ],
-      "note": "Garden’s design system tile (3200×2000, transparent outside a rounded panel in the screens’ own background colour #FFFEFC; scratchpad exports/garden/tools/system.py): the five colours and two typefaces the screens use (read from the Figma file: #399C74, #C2E0D4, #EDBC33, #184231, #64615B; Hedvig Letters Serif and Inter, set here from the Google Fonts files), and three components cropped from the 3x exports, each framed as a rounded tile of its own screen with a hairline: the New MacBook Pro goal card and the plan list with View all plans from the final home (558:9463), and the tab bar from the first home (558:9617), where nothing sits behind it."
+      "note": "Garden’s design system tile (3200×2000, transparent outside a rounded panel in the screens’ own background colour #FFFEFC; scratchpad exports/garden/tools/system.py): the five colours and two typefaces the screens use (read from the Figma file: #399C74, #C2E0D4, #EDBC33, #184231, #64615B; Hedvig Letters Serif and Inter, set here from the Google Fonts files), and three components cropped from the 3x exports, each framed as a rounded tile of its own screen with a hairline and exactly 10 pt of padding on every side, measured from the component’s own edges (the goal card’s page dots, 8 pt below it, are painted out): the New MacBook Pro goal card and the plan list with View all plans from the final home (558:9463), and the tab bar from the first home (558:9617), where nothing sits behind it."
     }
   }
 }
